@@ -1,0 +1,63 @@
+name: Score images (juge Gemini Vision)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_dir:
+        description: "Dossier à noter (generated_images, images)"
+        required: false
+        default: "generated_images"
+      gemini_model:
+        description: "Modèle Gemini (gemini-2.0-flash-exp, gemini-1.5-flash)"
+        required: false
+        default: "gemini-2.0-flash-exp"
+
+concurrency:
+  group: score-images-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --quiet google-generativeai
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run scorer
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL:   ${{ inputs.gemini_model }}
+          TARGET_DIR:     ${{ inputs.target_dir }}
+        run: python scripts/score_images.py
+
+      - name: Commit scores
+        if: always()
+        run: |
+          git add image_scores.json image_scores_log.txt 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Aucun changement de score à commit."
+          else
+            git commit -m "Ajoute classement IA de $(grep -c '"filename"' image_scores.json 2>/dev/null || echo '?') images"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
