@@ -25,6 +25,8 @@ USER_AGENT = (
 )
 DELAY_SECONDS = 1.0
 TIMEOUT_SECONDS = 60
+MAX_RETRIES = 3
+RETRY_BACKOFF = [2, 5, 15]  # secondes
 
 
 def normalize_latin(latin: str) -> str:
@@ -47,14 +49,19 @@ def download(url: str, dest: str) -> tuple[bool, str]:
         url,
         headers={"User-Agent": USER_AGENT, "Accept": "image/jpeg,image/*"},
     )
-    try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT_SECONDS) as resp:
-            data = resp.read()
-        with open(dest, "wb") as f:
-            f.write(data)
-        return True, f"{len(data) // 1024} KB"
-    except Exception as exc:  # noqa: BLE001
-        return False, str(exc)
+    last_err = ""
+    for attempt in range(MAX_RETRIES):
+        try:
+            with urllib.request.urlopen(req, timeout=TIMEOUT_SECONDS) as resp:
+                data = resp.read()
+            with open(dest, "wb") as f:
+                f.write(data)
+            return True, f"{len(data) // 1024} KB"
+        except Exception as exc:  # noqa: BLE001
+            last_err = f"{type(exc).__name__}: {exc}"
+            if attempt < MAX_RETRIES - 1:
+                time.sleep(RETRY_BACKOFF[attempt])
+    return False, last_err
 
 
 def main() -> int:
@@ -103,7 +110,12 @@ def main() -> int:
                 f.write(f"{latin}\t{url}\t{info}\n")
         print(f"Log des échecs : {log_path}")
 
-    return 0 if failed == 0 else 1
+    # Succès partiel acceptable : on commit ce qui est téléchargé.
+    # On n'échoue que si rien du tout n'a pu être récupéré.
+    if downloaded == 0 and skipped == 0:
+        print("Aucune image téléchargée et aucune existante : échec total.")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
