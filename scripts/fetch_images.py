@@ -2,7 +2,11 @@
 Télécharge les illustrations botaniques Wikimedia listées dans Data.py.
 
 - Déduplique par URL (302 images uniques sur 365 entrées).
-- Idempotent : ignore les fichiers déjà présents (relance possible sans risque).
+- Reconstruit l'URL Wikimedia depuis le nom de fichier : sur Commons, le
+  chemin /X/XX/ est le MD5 du nom de fichier. Les URLs hardcodées dans
+  Data.py utilisent des hashes erronés (404 sauf coup de chance) — on
+  les ignore et on recalcule.
+- Idempotent : ignore les fichiers déjà présents (relance possible).
 - Respecte la User-Agent policy Wikimedia + délai entre requêtes.
 - Nomme les fichiers d'après le nom latin normalisé.
 - Commit intermédiaire toutes les COMMIT_EVERY images réussies : si le runner
@@ -10,6 +14,7 @@ Télécharge les illustrations botaniques Wikimedia listées dans Data.py.
   reprend où on s'est arrêté.
 """
 
+import hashlib
 import os
 import re
 import subprocess
@@ -38,6 +43,24 @@ def normalize_latin(latin: str) -> str:
     slug = latin.strip().lower()
     slug = re.sub(r"[^a-z0-9]+", "_", slug)
     return slug.strip("_")
+
+
+def canonical_wikimedia_url(original_url: str) -> str:
+    """Reconstruit l'URL Wikimedia avec le bon hash MD5.
+
+    Les URLs Data.py ont la forme
+        https://upload.wikimedia.org/wikipedia/commons/X/XX/<filename>
+    où <filename> est le nom de fichier réel sur Commons (ex. avec en-dash
+    'Köhler–s'). Le hash /X/XX/ est calculé sur le filename underscored.
+    """
+    encoded_filename = original_url.rsplit("/", 1)[-1]
+    filename_underscored = urllib.parse.unquote(encoded_filename).replace(" ", "_")
+    md5 = hashlib.md5(filename_underscored.encode("utf-8")).hexdigest()
+    quoted = urllib.parse.quote(filename_underscored, safe="")
+    return (
+        f"https://upload.wikimedia.org/wikipedia/commons/"
+        f"{md5[0]}/{md5[:2]}/{quoted}"
+    )
 
 
 def unique_by_url(plants):
@@ -104,7 +127,7 @@ def main() -> int:
 
     for i, plant in enumerate(unique, 1):
         latin = plant["latin"]
-        url = plant["image_url"]
+        url = canonical_wikimedia_url(plant["image_url"])
         filename = f"{normalize_latin(latin)}.jpg"
         dest = os.path.join(IMAGES_DIR, filename)
 
