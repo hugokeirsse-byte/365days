@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Herbier des 365 Plantes</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f7f6; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .latin { font-style: italic; color: #7f8c8d; font-size: 0.9em; }
+        .desc { font-size: 0.85em; margin-top: 10px; color: #34495e; }
+    </style>
+</head>
+<body>
+    <h1>🌿 Mon Herbier Médicinal</h1>
+    <div class="grid">
+        {% for plant in plants %}
+        <div class="card">
+            <img src="{{ plant.image_url }}" alt="{{ plant.name }}">
+            <h3>{{ plant.name }}</h3>
+            <p class="latin">{{ plant.latin }}</p>
+            <p class="desc">{{ plant.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
