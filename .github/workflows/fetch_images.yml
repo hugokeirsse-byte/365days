@@ -1,0 +1,48 @@
+name: Fetch Wikimedia images
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - .github/workflows/fetch_images.yml
+      - scripts/fetch_images.py
+      - Data.py
+
+concurrency:
+  group: fetch-images-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run fetcher
+        run: python scripts/fetch_images.py
+
+      - name: Commit images
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/ fetch_failures.log 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Aucune nouvelle image à committer."
+          else
+            count=$(git diff --cached --name-only -- images/ | wc -l)
+            git commit -m "Ajoute $count illustrations botaniques Wikimedia"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
