@@ -1,0 +1,66 @@
+name: Generate AI images
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Modèle Pollinations (flux, flux-realism, turbo…)"
+        required: false
+        default: "flux"
+      width:
+        description: "Largeur en pixels"
+        required: false
+        default: "1024"
+      height:
+        description: "Hauteur en pixels"
+        required: false
+        default: "1024"
+
+concurrency:
+  group: generate-images-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run generator
+        env:
+          POLLINATIONS_MODEL:  ${{ inputs.model }}
+          POLLINATIONS_WIDTH:  ${{ inputs.width }}
+          POLLINATIONS_HEIGHT: ${{ inputs.height }}
+          POLLINATIONS_TOKEN:  ${{ secrets.POLLINATIONS_TOKEN }}
+        run: python scripts/generate_images.py
+
+      - name: Commit images restantes
+        if: always()
+        run: |
+          git add generated_images/ generation_failures.log 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Aucune image restante (déjà commit en cours de route)."
+          else
+            count=$(git diff --cached --name-only -- generated_images/ | wc -l)
+            git commit -m "Ajoute $count dernières images IA"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
