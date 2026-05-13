@@ -18,32 +18,36 @@ permissions:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Run fetcher
-        run: python scripts/fetch_images.py
-
-      - name: Commit images
-        if: always()
+      - name: Configure git
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run fetcher (commits intermédiaires tous les 30)
+        run: python scripts/fetch_images.py
+
+      - name: Commit images restantes
+        if: always()
+        run: |
           git add images/ fetch_failures.log 2>/dev/null || true
           if git diff --cached --quiet; then
-            echo "Aucune nouvelle image à committer."
+            echo "Aucune image restante à committer (déjà commit en cours de route)."
           else
             count=$(git diff --cached --name-only -- images/ | wc -l)
-            git commit -m "Ajoute $count illustrations botaniques Wikimedia"
+            git commit -m "Ajoute $count dernières illustrations Wikimedia"
             git push origin HEAD:${{ github.ref_name }}
           fi

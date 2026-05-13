@@ -2,13 +2,17 @@
 Télécharge les illustrations botaniques Wikimedia listées dans Data.py.
 
 - Déduplique par URL (302 images uniques sur 365 entrées).
-- Idempotent : ignore les fichiers déjà présents.
-- Respecte la User-Agent policy Wikimedia + délai 1 s entre requêtes.
+- Idempotent : ignore les fichiers déjà présents (relance possible sans risque).
+- Respecte la User-Agent policy Wikimedia + délai entre requêtes.
 - Nomme les fichiers d'après le nom latin normalisé.
+- Commit intermédiaire toutes les COMMIT_EVERY images réussies : si le runner
+  GitHub Actions atteint son timeout, l'avancée est préservée et la relance
+  reprend où on s'est arrêté.
 """
 
 import os
 import re
+import subprocess
 import sys
 import time
 import urllib.parse
@@ -23,10 +27,11 @@ USER_AGENT = (
     "MirabiliaEditions-365MedicinalPlants/1.0 "
     "(https://github.com/hugokeirsse-byte/365days; contact via GitHub)"
 )
-DELAY_SECONDS = 1.0
+DELAY_SECONDS = 0.5
 TIMEOUT_SECONDS = 60
-MAX_RETRIES = 3
-RETRY_BACKOFF = [2, 5, 15]  # secondes
+MAX_RETRIES = 2
+RETRY_BACKOFF = [2, 5]  # secondes
+COMMIT_EVERY = 30
 
 
 def normalize_latin(latin: str) -> str:
@@ -64,6 +69,29 @@ def download(url: str, dest: str) -> tuple[bool, str]:
     return False, last_err
 
 
+def git_checkpoint(batch_index: int, batch_total: int) -> None:
+    """Commit et push l'avancée actuelle. Silencieux hors CI."""
+    if os.environ.get("GITHUB_ACTIONS") != "true":
+        return
+    branch = os.environ.get("GITHUB_REF_NAME", "")
+    try:
+        subprocess.run(["git", "add", "images/"], check=True, cwd=ROOT)
+        diff = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"], cwd=ROOT
+        ).returncode
+        if diff == 0:
+            return  # rien à commiter
+        msg = f"Checkpoint {batch_index}/{batch_total} ({COMMIT_EVERY} images)"
+        subprocess.run(["git", "commit", "-m", msg], check=True, cwd=ROOT)
+        if branch:
+            subprocess.run(
+                ["git", "push", "origin", f"HEAD:{branch}"], check=True, cwd=ROOT
+            )
+        print(f"  → checkpoint committed: {msg}")
+    except subprocess.CalledProcessError as exc:
+        print(f"  ! checkpoint failed: {exc}")
+
+
 def main() -> int:
     os.makedirs(IMAGES_DIR, exist_ok=True)
     unique = unique_by_url(PLANTS)
@@ -72,6 +100,7 @@ def main() -> int:
 
     downloaded = skipped = failed = 0
     failures = []
+    since_last_commit = 0
 
     for i, plant in enumerate(unique, 1):
         latin = plant["latin"]
@@ -89,7 +118,11 @@ def main() -> int:
         ok, info = download(url, dest)
         if ok:
             downloaded += 1
+            since_last_commit += 1
             print(f"                  ✓ {info}")
+            if since_last_commit >= COMMIT_EVERY:
+                git_checkpoint(downloaded // COMMIT_EVERY, len(unique) // COMMIT_EVERY)
+                since_last_commit = 0
         else:
             failed += 1
             failures.append((latin, url, info))
@@ -110,8 +143,6 @@ def main() -> int:
                 f.write(f"{latin}\t{url}\t{info}\n")
         print(f"Log des échecs : {log_path}")
 
-    # Succès partiel acceptable : on commit ce qui est téléchargé.
-    # On n'échoue que si rien du tout n'a pu être récupéré.
     if downloaded == 0 and skipped == 0:
         print("Aucune image téléchargée et aucune existante : échec total.")
         return 1
