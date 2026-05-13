@@ -1,46 +1,54 @@
-# Cahier des charges — Pipeline Redbubble POD
+# Cahier des charges — Pipeline images (Redbubble POD + Livres KDP)
 *À destination de Claude Code pour implémentation*
 
 ## Contexte
 
-L'infrastructure existante génère des images via Pollinations.ai (Flux) et les note via Gemini Vision. L'objectif ici est d'ajouter un pipeline secondaire dédié à la création de designs print-on-demand pour Redbubble.
+Pipeline de génération et traitement d'images utilisé pour deux usages :
+1. **Livres KDP** — illustrations intérieures haute résolution
+2. **Designs Redbubble POD** — prints, posters, t-shirts, etc.
+
+L'upscaler est un outil partagé. Il tourne uniquement sur les images
+**manuellement sélectionnées** par l'utilisateur — jamais en automatique,
+jamais sur le batch complet.
 
 **Contraintes dures :**
 - Zéro budget. APIs gratuites uniquement.
-- Pilotage Android via GitHub mobile (bouton "Run workflow").
-- Quota à préserver : Hugging Face Inference API (Real-ESRGAN) est gratuit mais limité. **On n'upscale que les images sélectionnées**, jamais le batch complet.
-- Tout tourne dans GitHub Actions. Aucun serveur, aucun VPS.
+- Pilotage Android via GitHub mobile (bouton "Run workflow" + édition de fichier texte).
+- Quota Hugging Face à préserver : on n'upscale que ce que l'utilisateur a validé.
 
 ---
 
-## Ce que le pipeline doit faire (vue d'ensemble)
+## Vue d'ensemble du pipeline
 
 ```
-[1] prompts_redbubble.py        ← fichier de config : niche + prompts
+[1] prompts_images.py           ← config : niche + prompts + style
         ↓
 [2] generate_images.py          ← génère N images via Pollinations.ai
         ↓
 [3] score_images.py             ← note toutes les images via Gemini Vision
+                                   (aide au tri, pas de sélection auto)
         ↓
-[4] select_top.py               ← copie les TOP K images dans /selected/
+[4] >>> L'UTILISATEUR CHOISIT <<<
+        Il édite to_upscale.txt depuis GitHub mobile
+        et y écrit les noms des fichiers qu'il veut upscaler
         ↓
-[5] upscale_images.py           ← upscale UNIQUEMENT /selected/ via Real-ESRGAN
+[5] upscale_selected.py         ← upscale UNIQUEMENT les fichiers listés
+                                   dans to_upscale.txt via Real-ESRGAN (HF)
         ↓
-[6] /output_redbubble/          ← dossier final, images prêtes pour upload
+[6] /output/                    ← images finales 4096px, prêtes à l'emploi
+                                   (livres KDP ou upload Redbubble)
 ```
-
-Chaque étape est un script Python indépendant, déclenchable séparément ou en chaîne via un workflow GitHub Actions.
 
 ---
 
 ## Détail de chaque brique
 
-### [1] `prompts_redbubble.py` — Config de la niche
+### [1] `prompts_images.py` — Config
 
-Fichier de configuration unique à modifier pour changer de niche. Exemple :
+Un seul fichier à modifier pour changer de niche ou de projet.
 
 ```python
-NICHE = "botanical_watercolor"
+PROJECT = "botanical_watercolor"   # nom du dossier de sortie
 
 STYLE_SUFFIX = (
     "botanical watercolor illustration, soft color washes, "
@@ -51,86 +59,106 @@ SUBJECTS = [
     "chamomile flower",
     "lavender sprig",
     "rosemary branch",
-    "mint leaves",
-    # ... autant de sujets que voulu
+    # ...
 ]
 
-N_IMAGES_PER_SUBJECT = 3   # nombre d'images générées par sujet
-TOP_K = 30                  # nombre d'images à sélectionner pour l'upscale
+N_IMAGES_PER_SUBJECT = 3   # images générées par sujet
 IMAGE_WIDTH = 1024
 IMAGE_HEIGHT = 1024
 ```
 
-**Le prompt final envoyé à Pollinations = `SUBJECTS[i]` + `, ` + `STYLE_SUFFIX`**
-
-Changer de niche = modifier uniquement ce fichier (changer NICHE, STYLE_SUFFIX, SUBJECTS).
+Changer de projet = modifier uniquement ce fichier.
 
 ---
 
-### [2] `generate_images_redbubble.py` — Génération
+### [2] `generate_images.py` — Génération via Pollinations.ai
 
-- Lit `prompts_redbubble.py`
-- Pour chaque sujet × N_IMAGES_PER_SUBJECT : appelle `https://image.pollinations.ai/prompt/{prompt}?width={W}&height={H}&nologo=true`
-- Sauvegarde dans `/images_raw/{niche}/{subject}_{index}.jpg`
-- **Idempotent** : si le fichier existe déjà, skip (ne re-génère pas)
-- Retry automatique (3 tentatives, délai exponentiel) si Pollinations timeout
-- Log de progression dans la console GitHub Actions
+- Construit le prompt : `SUBJECTS[i]` + `, ` + `STYLE_SUFFIX`
+- Appelle `https://image.pollinations.ai/prompt/{prompt}?width={W}&height={H}&nologo=true`
+- Sauvegarde dans `/images_raw/{PROJECT}/{subject}_{index}.jpg`
+- Idempotent : si le fichier existe déjà, skip
+- Retry automatique (3 tentatives, délai exponentiel) sur timeout
+- Log clair dans GitHub Actions
 
 ---
 
-### [3] `score_images_redbubble.py` — Notation via Gemini Vision
+### [3] `score_images.py` — Notation via Gemini Vision
 
-- Lit tous les fichiers de `/images_raw/{niche}/`
-- Pour chaque image, appelle Gemini Vision (API gratuite, 1500 req/jour) avec ce prompt de scoring :
+**Rôle : aider l'utilisateur à trier, pas décider à sa place.**
+
+- Lit tous les fichiers de `/images_raw/{PROJECT}/`
+- Pour chaque image, appelle Gemini Vision avec le prompt :
 
 ```
-Rate this image for print-on-demand product design on a scale of 1-10.
+Rate this image for print quality on a scale of 1-10.
 Criteria:
-- Clean white or very light background (mandatory for POD): /3
-- Visual clarity and impact at small size: /3  
-- Professional illustration quality: /2
-- Originality / not generic: /2
+- Clean light background (important for print): /3
+- Visual clarity and sharpness: /3
+- Overall quality and appeal: /4
 
-Return JSON: {"score": X, "background_clean": true/false, "notes": "..."}
+Return JSON only: {"score": X, "background_clean": true/false}
 ```
 
-- Sauvegarde les scores dans `/scores/{niche}_scores.json`
-- **Si le quota Gemini est atteint** : pause et reprend au prochain run (checkpoint dans le JSON)
+- Génère `/scores/{PROJECT}_scores.json`
+- **Génère aussi `/scores/{PROJECT}_review.md`** : un fichier Markdown
+  lisible depuis GitHub mobile, avec pour chaque image son score,
+  son statut fond propre, et l'URL de l'image pour la voir directement.
+  Exemple de ligne :
+  ```
+  | chamomile_1.jpg | 8/10 | ✅ fond propre | ![](../images_raw/botanical_watercolor/chamomile_1.jpg) |
+  ```
+- Checkpoint : si le quota Gemini est atteint, sauvegarde la progression
+  et reprend au prochain run
 
 ---
 
-### [4] `select_top.py` — Sélection
+### [4] `to_upscale.txt` — Sélection manuelle
 
-- Lit `/scores/{niche}_scores.json`
-- Filtre : **exclure toutes les images où `background_clean == false`** (fond non blanc = inutilisable sur Redbubble sans post-traitement)
-- Trie par score décroissant
-- Copie les `TOP_K` meilleures images dans `/selected/{niche}/`
-- Génère `/selected/{niche}/manifest.json` avec la liste des fichiers sélectionnés et leurs scores
+**C'est l'unique étape manuelle. L'utilisateur édite ce fichier depuis GitHub mobile.**
+
+Format : un nom de fichier par ligne.
+
+```
+chamomile_1.jpg
+lavender_3.jpg
+rosemary_2.jpg
+mint_1.jpg
+```
+
+Il ouvre `/scores/{PROJECT}_review.md` pour voir les images notées,
+choisit celles qu'il veut, et écrit leurs noms dans `to_upscale.txt`.
+
+Quand il est prêt, il lance le workflow `upscale` depuis GitHub mobile.
 
 ---
 
-### [5] `upscale_images.py` — Upscale (Real-ESRGAN via Hugging Face)
+### [5] `upscale_selected.py` — Upscale Real-ESRGAN
 
-**C'est l'étape la plus critique côté quota — on n'upscale QUE ce qui est dans `/selected/`.**
+**Upscale UNIQUEMENT les fichiers listés dans `to_upscale.txt`.**
 
-- Lit `/selected/{niche}/manifest.json`
-- Pour chaque image listée : appelle l'API Hugging Face Inference avec le modèle `Seyys/Real-ESRGAN` (ou `ai-forever/Real-ESRGAN` selon disponibilité)
-- Sauvegarde le résultat dans `/output_redbubble/{niche}/{filename}_4x.png`
-- **Checkpoint** : si une image est déjà dans `/output_redbubble/`, skip
-- Si le quota HF est atteint dans la session, s'arrête proprement et log combien il reste à upscaler
-
-Format de sortie : PNG, résolution ×4 (donc 1024px → 4096px).
+- Lit `to_upscale.txt`
+- Pour chaque fichier listé :
+  - Cherche l'image dans `/images_raw/{PROJECT}/`
+  - Appelle l'API Hugging Face Inference avec Real-ESRGAN
+  - Sauvegarde dans `/output/{PROJECT}/{filename}_4x.png`
+- Checkpoint : si une image est déjà dans `/output/`, skip
+- Si quota HF atteint en cours de run, s'arrête proprement
+  et log combien il reste à traiter
+- À la fin : log du nombre d'images traitées + taille finale
 
 **Secret GitHub requis** : `HF_TOKEN` (token Hugging Face gratuit)
 
+Format de sortie : PNG, ×4 résolution (1024px → 4096px).
+4096px = suffisant pour poster A2 à 300 DPI et pour les intérieurs KDP.
+
 ---
 
-### [6] Workflow GitHub Actions — `redbubble_pipeline.yml`
+### [6] Workflow GitHub Actions — `images_pipeline.yml`
 
-Déclenchement : **manuel uniquement** (`workflow_dispatch`) avec un paramètre `niche` pour choisir quel fichier de config charger.
+Déclenchement : **manuel uniquement** (`workflow_dispatch`).
 
 ```yaml
-name: Redbubble Pipeline
+name: Images Pipeline
 
 on:
   workflow_dispatch:
@@ -138,66 +166,65 @@ on:
       step:
         description: 'Étape à lancer'
         required: true
-        default: 'all'
+        default: 'generate'
         type: choice
         options:
-          - all          # Lance tout en séquence
-          - generate     # Étape 2 seulement
-          - score        # Étape 3 seulement
-          - select       # Étape 4 seulement
-          - upscale      # Étape 5 seulement (upscale uniquement les selected)
-      niche:
-        description: 'Nom de la niche (doit correspondre à NICHE dans prompts_redbubble.py)'
+          - generate      # Génère les images (étape 2)
+          - score         # Note toutes les images (étape 3)
+          - upscale       # Upscale les fichiers dans to_upscale.txt (étape 5)
+      project:
+        description: 'Nom du projet (doit correspondre à PROJECT dans prompts_images.py)'
         required: true
         default: 'botanical_watercolor'
 ```
 
-**Pourquoi les étapes séparées ?** Gemini Vision a 1500 req/jour. Si on génère 200 images, le scoring prend 2 runs. Le découpage permet de reprendre sans tout relancer.
+**Pourquoi les étapes sont séparées :**
+- `generate` peut tourner des heures sur 200 images
+- `score` consomme du quota Gemini (1500 req/jour)
+- `upscale` consomme du quota HF et doit attendre la sélection manuelle
 
-**Secrets GitHub Actions nécessaires :**
-- `GEMINI_API_KEY` (déjà présent si score_images.py existe)
-- `HF_TOKEN` (Hugging Face, gratuit, à créer sur huggingface.co)
+L'utilisateur lance chaque étape quand il est prêt, depuis GitHub mobile.
+
+**Secrets GitHub Actions requis :**
+- `GEMINI_API_KEY`
+- `HF_TOKEN`
 
 ---
 
-## Structure de dossiers finale
+## Structure de dossiers
 
 ```
 /
-├── prompts_redbubble.py          ← config niche (à modifier)
-├── generate_images_redbubble.py
-├── score_images_redbubble.py
-├── select_top.py
-├── upscale_images.py
+├── prompts_images.py             ← config projet (seul fichier à modifier)
+├── generate_images.py
+├── score_images.py
+├── upscale_selected.py
+├── to_upscale.txt                ← liste manuelle des images à upscaler
 ├── images_raw/
-│   └── botanical_watercolor/     ← images brutes générées
+│   └── botanical_watercolor/    ← images brutes 1024px
 ├── scores/
-│   └── botanical_watercolor_scores.json
-├── selected/
-│   └── botanical_watercolor/     ← top K images pré-upscale
-│       └── manifest.json
-├── output_redbubble/
-│   └── botanical_watercolor/     ← images finales 4096px, prêtes upload
+│   ├── botanical_watercolor_scores.json
+│   └── botanical_watercolor_review.md   ← lisible depuis GitHub mobile
+├── output/
+│   └── botanical_watercolor/    ← images finales 4096px (livres + Redbubble)
 └── .github/workflows/
-    └── redbubble_pipeline.yml
+    └── images_pipeline.yml
 ```
 
 ---
 
-## Ce que ce pipeline ne fait PAS
+## Usage selon la destination
 
-- Il ne gère pas l'upload sur Redbubble (pas d'API publique). L'upload reste manuel depuis le navigateur mobile.
-- Il ne génère pas les titres/tags pour les listings Redbubble (ça peut être un script Gemini séparé si besoin).
-- Il ne resize pas au format exact de chaque produit Redbubble (poster vs t-shirt vs mug) — le recadrage se fait lors de l'upload sur Redbubble directement.
+**Pour un livre KDP :**
+1. Générer les illustrations du livre
+2. Scorer pour identifier les meilleures
+3. Sélectionner manuellement celles qui vont dans le livre → `to_upscale.txt`
+4. Upscaler → `/output/` → intégrer dans le PDF du livre
 
----
+**Pour Redbubble POD :**
+1. Générer des designs (niche au choix — pas uniquement botanique)
+2. Scorer pour trier
+3. Sélectionner les designs vendables → `to_upscale.txt`
+4. Upscaler → `/output/` → upload manuel sur Redbubble/Displate/Society6
 
-## Changer de niche
-
-Pour passer de "botanical watercolor" à n'importe quelle autre niche (cottagecore, space art, anime chibi, typographie, etc.) :
-
-1. Modifier `prompts_redbubble.py` — changer `NICHE`, `STYLE_SUFFIX`, `SUBJECTS`
-2. Lancer le workflow avec le nouveau nom de niche
-3. Tout le reste est automatique
-
-**C'est le seul fichier à toucher pour changer complètement de produit.**
+**Le pipeline est identique. Seul `prompts_images.py` change selon le projet.**
