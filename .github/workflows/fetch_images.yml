@@ -43,7 +43,8 @@ jobs:
       - name: Commit images restantes
         if: always()
         run: |
-          git add images/ fetch_failures.log 2>/dev/null || true
+          git add images/
+          git add fetch_failures.log 2>/dev/null || echo "(fetch_failures.log absent, ignoré)"
           if git diff --cached --quiet; then
             echo "Aucune image restante à committer (déjà commit en cours de route)."
           else

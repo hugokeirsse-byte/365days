@@ -54,7 +54,8 @@ jobs:
       - name: Commit scores
         if: always()
         run: |
-          git add image_scores.json image_scores_log.txt 2>/dev/null || true
+          git add image_scores.json 2>/dev/null || echo "(image_scores.json absent)"
+          git add image_scores_log.txt 2>/dev/null || echo "(image_scores_log.txt absent)"
           if git diff --cached --quiet; then
             echo "Aucun changement de score à commit."
           else
