@@ -15,6 +15,7 @@ Télécharge les illustrations botaniques Wikimedia listées dans Data.py.
 """
 
 import hashlib
+import json
 import os
 import re
 import subprocess
@@ -109,6 +110,85 @@ def url_exists(url: str) -> bool:
         return False
 
 
+# ─────────────────────────────────────────────────────────────────────
+# API Commons : index global des fichiers Köhler
+# ─────────────────────────────────────────────────────────────────────
+KOHLER_CATEGORIES = [
+    "Category:Köhler's_Medizinal-Pflanzen",
+    "Category:Köhler's_Medizinal-Pflanzen_(Atlas)",
+]
+COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+_KOHLER_INDEX = None  # cache global
+
+
+def fetch_kohler_index() -> dict:
+    """Récupère via l'API Commons l'index des fichiers Köhler.
+
+    Une requête de catégorie suffit (≤500 fichiers). On retourne un
+    dict {nom_latin_normalisé: [liste de filenames]}.
+    """
+    global _KOHLER_INDEX
+    if _KOHLER_INDEX is not None:
+        return _KOHLER_INDEX
+
+    all_files: list[str] = []
+    for category in KOHLER_CATEGORIES:
+        cmcontinue = None
+        while True:
+            params = {
+                "action": "query",
+                "list": "categorymembers",
+                "cmtitle": category,
+                "cmtype": "file",
+                "cmlimit": "500",
+                "format": "json",
+            }
+            if cmcontinue:
+                params["cmcontinue"] = cmcontinue
+            url = COMMONS_API + "?" + urllib.parse.urlencode(params)
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+            except Exception as exc:  # noqa: BLE001
+                print(f"  ! API Commons {category}: {type(exc).__name__}: {exc}")
+                break
+            for m in data.get("query", {}).get("categorymembers", []):
+                all_files.append(m["title"])
+            cmcontinue = data.get("continue", {}).get("cmcontinue")
+            if not cmcontinue:
+                break
+
+    index: dict[str, list[str]] = {}
+    for fn in all_files:
+        title = fn.replace("File:", "")
+        base = title.rsplit(".", 1)[0]
+        parts = base.split(" - ", 1)
+        if len(parts) < 2:
+            continue
+        latin = parts[0].strip().lower()
+        index.setdefault(latin, []).append(title)
+
+    print(f"Index Köhler API Commons : {len(index)} plantes, {len(all_files)} fichiers")
+    _KOHLER_INDEX = index
+    return index
+
+
+def find_kohler_url(latin_name: str) -> str | None:
+    """Cherche dans l'index Köhler une URL pour cette plante."""
+    index = fetch_kohler_index()
+    norm = latin_name.strip().lower()
+    # match exact
+    if norm in index:
+        return canonical_wikimedia_url(index[norm][0].replace(" ", "_"))
+    # match préfixe (cas synonymes : "Cinnamomum verum" → "Cinnamomum zeylanicum")
+    genus = norm.split()[0] if norm else ""
+    for latin_key, files in index.items():
+        if latin_key.startswith(genus + " ") and len(files) > 0:
+            return canonical_wikimedia_url(files[0].replace(" ", "_"))
+    return None
+
+
 def download(url: str, dest: str) -> tuple[bool, str]:
     req = urllib.request.Request(
         url,
@@ -175,13 +255,19 @@ def main() -> int:
         print(f"[{i:>3}/{len(unique)}] GET   {filename}")
         ok = False
         info = "aucune variante n'a répondu 200"
-        for url in url_variants(plant["image_url"]):
+        urls_to_try: list[str] = list(url_variants(plant["image_url"]))
+        # Fallback : index Köhler via API Commons
+        api_url = find_kohler_url(latin)
+        if api_url and api_url not in urls_to_try:
+            urls_to_try.append(api_url)
+        for url in urls_to_try:
             if not url_exists(url):
                 continue
             ok, info = download(url, dest)
             if ok:
                 variant_tail = urllib.parse.unquote(url).rsplit("/", 1)[-1]
-                print(f"                  ✓ {info}  ({variant_tail})")
+                source = "API" if url == api_url else "variante"
+                print(f"                  ✓ {info}  ({source}: {variant_tail})")
                 break
         if ok:
             downloaded += 1
