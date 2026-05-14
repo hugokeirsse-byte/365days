@@ -56,11 +56,26 @@ jobs:
       - name: Commit images restantes
         if: always()
         run: |
-          git add generated_images/ generation_failures.log 2>/dev/null || true
+          echo "=== Contenu de generated_images/ ==="
+          ls -la generated_images/ 2>&1 || echo "(dossier introuvable)"
+          echo ""
+          echo "=== git status (avant add) ==="
+          git status --short || true
+          echo ""
+          echo "=== git add generated_images/ ==="
+          git add generated_images/
+          git add generation_failures.log 2>/dev/null || echo "(generation_failures.log absent, ignoré)"
+          echo ""
+          echo "=== git status (après add) ==="
+          git status --short || true
+          echo ""
           if git diff --cached --quiet; then
-            echo "Aucune image restante (déjà commit en cours de route)."
+            echo "Rien à commit (cache git vide)."
           else
             count=$(git diff --cached --name-only -- generated_images/ | wc -l)
+            echo "=== Commit de $count fichiers ==="
             git commit -m "Ajoute $count dernières images IA"
+            echo ""
+            echo "=== git push ==="
             git push origin HEAD:${{ github.ref_name }}
           fi
