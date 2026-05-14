@@ -45,22 +45,45 @@ def normalize_latin(latin: str) -> str:
     return slug.strip("_")
 
 
-def canonical_wikimedia_url(original_url: str) -> str:
-    """Reconstruit l'URL Wikimedia avec le bon hash MD5.
+def canonical_wikimedia_url(filename_underscored: str) -> str:
+    """Construit l'URL Wikimedia canonique pour un nom de fichier donné.
 
-    Les URLs Data.py ont la forme
-        https://upload.wikimedia.org/wikipedia/commons/X/XX/<filename>
-    où <filename> est le nom de fichier réel sur Commons (ex. avec en-dash
-    'Köhler–s'). Le hash /X/XX/ est calculé sur le filename underscored.
+    Sur Commons, le chemin /X/XX/ est le MD5 du nom de fichier underscored.
     """
-    encoded_filename = original_url.rsplit("/", 1)[-1]
-    filename_underscored = urllib.parse.unquote(encoded_filename).replace(" ", "_")
     md5 = hashlib.md5(filename_underscored.encode("utf-8")).hexdigest()
     quoted = urllib.parse.quote(filename_underscored, safe="")
     return (
         f"https://upload.wikimedia.org/wikipedia/commons/"
         f"{md5[0]}/{md5[:2]}/{quoted}"
     )
+
+
+def url_variants(original_url: str):
+    """Yield les URLs Wikimedia à essayer pour cette entrée Data.py.
+
+    Data.py contient des URLs avec des hashes /X/XX/ presque tous erronés
+    et un nom de fichier qui utilise l'en-dash (Köhler–s). En réalité, la
+    plupart des fichiers Wikimedia Köhler portent l'apostrophe (Köhler's).
+    On essaie les deux orthographes, recalculées via MD5.
+    """
+    encoded_filename = original_url.rsplit("/", 1)[-1]
+    base = urllib.parse.unquote(encoded_filename).replace(" ", "_")
+
+    seen = set()
+    # 1. Apostrophe ASCII (la plus courante sur Commons)
+    apos = base.replace("Köhler–s", "Köhler's").replace("Köhler–s", "Köhler's")
+    if apos not in seen:
+        seen.add(apos)
+        yield canonical_wikimedia_url(apos)
+    # 2. En-dash (cas Taraxacum, fichiers historiques)
+    if base not in seen:
+        seen.add(base)
+        yield canonical_wikimedia_url(base)
+    # 3. Sans apostrophe ni dash (cas marginal)
+    plain = base.replace("Köhler–s", "Köhlers").replace("Köhler–s", "Köhlers")
+    if plain not in seen:
+        seen.add(plain)
+        yield canonical_wikimedia_url(plain)
 
 
 def unique_by_url(plants):
@@ -70,6 +93,20 @@ def unique_by_url(plants):
         if url not in seen:
             seen[url] = p
     return list(seen.values())
+
+
+def url_exists(url: str) -> bool:
+    """HEAD request rapide pour vérifier qu'une URL Wikimedia répond 200."""
+    req = urllib.request.Request(
+        url,
+        method="HEAD",
+        headers={"User-Agent": USER_AGENT},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            return 200 <= resp.status < 300
+    except Exception:  # noqa: BLE001
+        return False
 
 
 def download(url: str, dest: str) -> tuple[bool, str]:
@@ -127,7 +164,6 @@ def main() -> int:
 
     for i, plant in enumerate(unique, 1):
         latin = plant["latin"]
-        url = canonical_wikimedia_url(plant["image_url"])
         filename = f"{normalize_latin(latin)}.jpg"
         dest = os.path.join(IMAGES_DIR, filename)
 
@@ -136,19 +172,26 @@ def main() -> int:
             print(f"[{i:>3}/{len(unique)}] SKIP  {filename}")
             continue
 
-        decoded = urllib.parse.unquote(url)
-        print(f"[{i:>3}/{len(unique)}] GET   {filename}  ← {decoded[-70:]}")
-        ok, info = download(url, dest)
+        print(f"[{i:>3}/{len(unique)}] GET   {filename}")
+        ok = False
+        info = "aucune variante n'a répondu 200"
+        for url in url_variants(plant["image_url"]):
+            if not url_exists(url):
+                continue
+            ok, info = download(url, dest)
+            if ok:
+                variant_tail = urllib.parse.unquote(url).rsplit("/", 1)[-1]
+                print(f"                  ✓ {info}  ({variant_tail})")
+                break
         if ok:
             downloaded += 1
             since_last_commit += 1
-            print(f"                  ✓ {info}")
             if since_last_commit >= COMMIT_EVERY:
                 git_checkpoint(downloaded // COMMIT_EVERY, len(unique) // COMMIT_EVERY)
                 since_last_commit = 0
         else:
             failed += 1
-            failures.append((latin, url, info))
+            failures.append((latin, plant["image_url"], info))
             print(f"                  ✗ {info}")
 
         time.sleep(DELAY_SECONDS)
