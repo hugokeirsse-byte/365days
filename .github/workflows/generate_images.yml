@@ -50,9 +50,9 @@ jobs:
 
       - name: Run generator
         env:
-          POLLINATIONS_MODEL:  ${{ inputs.model }}
-          POLLINATIONS_WIDTH:  ${{ inputs.width }}
-          POLLINATIONS_HEIGHT: ${{ inputs.height }}
+          POLLINATIONS_MODEL:  ${{ inputs.model  || 'flux' }}
+          POLLINATIONS_WIDTH:  ${{ inputs.width  || '2048' }}
+          POLLINATIONS_HEIGHT: ${{ inputs.height || '2048' }}
           POLLINATIONS_TOKEN:  ${{ secrets.POLLINATIONS_TOKEN }}
         run: python scripts/generate_images.py
 
@@ -66,7 +66,8 @@ jobs:
           git status --short || true
           echo ""
           echo "=== git add generated_images/ ==="
-          git add generated_images/
+          mkdir -p generated_images
+          git add generated_images/ 2>/dev/null || echo "(rien à ajouter)"
           git add generation_failures.log 2>/dev/null || echo "(generation_failures.log absent, ignoré)"
           echo ""
           echo "=== git status (après add) ==="

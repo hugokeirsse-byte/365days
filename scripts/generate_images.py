@@ -29,10 +29,10 @@ except ImportError:
 
 GENERATED_DIR = os.path.join(ROOT, "generated_images")
 POLLINATIONS_BASE = "https://image.pollinations.ai/prompt/"
-MODEL = os.environ.get("POLLINATIONS_MODEL", "flux")
-WIDTH = int(os.environ.get("POLLINATIONS_WIDTH", "1024"))
-HEIGHT = int(os.environ.get("POLLINATIONS_HEIGHT", "1024"))
-TOKEN = os.environ.get("POLLINATIONS_TOKEN", "").strip()
+MODEL = (os.environ.get("POLLINATIONS_MODEL") or "flux").strip()
+WIDTH = int(os.environ.get("POLLINATIONS_WIDTH") or "1024")
+HEIGHT = int(os.environ.get("POLLINATIONS_HEIGHT") or "1024")
+TOKEN = (os.environ.get("POLLINATIONS_TOKEN") or "").strip()
 
 USER_AGENT = (
     "MirabiliaEditions-ImageRobot/1.0 "
