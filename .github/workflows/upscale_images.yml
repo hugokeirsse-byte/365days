@@ -12,9 +12,9 @@ on:
         required: false
         default: "generated_images_hd"
       model:
-        description: "Modèle (realesrgan-x4plus, realesrgan-x4plus-anime, realesr-animevideov3)"
+        description: "Modèle (RealESRGAN_x4plus, RealESRGAN_x4plus_anime_6B, RealESRGAN_x2plus)"
         required: false
-        default: "realesrgan-x4plus"
+        default: "RealESRGAN_x4plus"
   push:
     paths:
       - .triggers/upscale
@@ -48,23 +48,33 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Download Real-ESRGAN binary
+      - name: Install Real-ESRGAN (PyTorch CPU)
         run: |
           set -e
-          REL=https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip
-          curl -sSL -o realesrgan.zip "$REL"
-          unzip -q realesrgan.zip -d realesrgan-bin
-          mv realesrgan-bin/realesrgan-ncnn-vulkan ./realesrgan-ncnn-vulkan
-          mv realesrgan-bin/models ./models 2>/dev/null || true
-          chmod +x ./realesrgan-ncnn-vulkan
-          ./realesrgan-ncnn-vulkan -h | head -3 || true
-          ls -la
+          pip install --quiet --upgrade pip
+          pip install --quiet torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet realesrgan basicsr opencv-python-headless numpy "pillow>=9.1.0"
+          # Patch basicsr pour torchvision >=0.17 (rgb_to_grayscale a déménagé)
+          python - <<'PY'
+          import site, os
+          for sp in site.getsitepackages():
+              p = os.path.join(sp, "basicsr", "data", "degradations.py")
+              if os.path.exists(p):
+                  s = open(p).read()
+                  s = s.replace(
+                      "from torchvision.transforms.functional_tensor import rgb_to_grayscale",
+                      "from torchvision.transforms.functional import rgb_to_grayscale",
+                  )
+                  open(p, "w").write(s)
+                  print(f"Patched: {p}")
+          PY
+          python -c "import torch, realesrgan; print('OK', torch.__version__)"
 
       - name: Run upscaler
         env:
           SOURCE_DIR:    ${{ inputs.source_dir || 'generated_images' }}
           TARGET_DIR:    ${{ inputs.target_dir || 'generated_images_hd' }}
-          UPSCALE_MODEL: ${{ inputs.model      || 'realesrgan-x4plus' }}
+          UPSCALE_MODEL: ${{ inputs.model      || 'RealESRGAN_x4plus' }}
         run: python scripts/upscale_images.py
 
       - name: Commit images restantes

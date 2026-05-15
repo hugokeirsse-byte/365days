@@ -1,36 +1,42 @@
 """
-Upscale ×4 des images via Real-ESRGAN (binaire local sur GitHub Actions).
+Upscale ×4 des images via Real-ESRGAN — PyTorch CPU sur GitHub Actions.
+
+Approche 100% gratuite et sans clé : utilise le package Python officiel
+realesrgan (basé sur PyTorch CPU), pas le binaire ncnn-vulkan qui plante
+sur les runners sans GPU.
 
 - Lit toutes les images dans SOURCE_DIR (par défaut generated_images/).
-- Passe chaque image au binaire realesrgan-ncnn-vulkan (mode CPU sur Actions).
-- Écrit le résultat dans TARGET_DIR (par défaut generated_images_hd/).
-- Idempotent : skip les images déjà upscalées.
-- Commit intermédiaire toutes les 5 images réussies pour ne rien perdre
-  en cas de timeout du workflow.
-
-Le binaire et les modèles sont téléchargés par le workflow GitHub Actions
-depuis les releases officielles de Real-ESRGAN, donc aucune dépendance
-Python, aucune API tierce, aucun compte, aucune clé.
+- Charge le modèle Real-ESRGAN x4plus depuis l'URL officielle.
+- Upscale chaque image (~30-60s/image en CPU).
+- Écrit dans TARGET_DIR (par défaut generated_images_hd/).
+- Idempotent : skip ce qui existe déjà.
+- Commit checkpoint toutes les 3 images réussies (CPU = lent, on
+  protège l'avancée).
 """
 
 import os
 import subprocess
 import sys
 import time
+from pathlib import Path
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = Path(__file__).resolve().parent.parent
 
 SOURCE_DIR_NAME = os.environ.get("SOURCE_DIR", "generated_images")
 TARGET_DIR_NAME = os.environ.get("TARGET_DIR", "generated_images_hd")
-MODEL = os.environ.get("UPSCALE_MODEL", "realesrgan-x4plus")
-SCALE = os.environ.get("UPSCALE_SCALE", "4")
-BIN = os.environ.get("REALESRGAN_BIN", "./realesrgan-ncnn-vulkan")
-GPU_ID = os.environ.get("REALESRGAN_GPU", "-1")  # -1 = CPU forcé
+MODEL_NAME = os.environ.get("UPSCALE_MODEL", "RealESRGAN_x4plus")
+SCALE = int(os.environ.get("UPSCALE_SCALE", "4"))
 
-SOURCE_DIR = os.path.join(ROOT, SOURCE_DIR_NAME)
-TARGET_DIR = os.path.join(ROOT, TARGET_DIR_NAME)
-COMMIT_EVERY = 5
+SOURCE_DIR = ROOT / SOURCE_DIR_NAME
+TARGET_DIR = ROOT / TARGET_DIR_NAME
+COMMIT_EVERY = 3
 MIN_IMAGE_BYTES = 2000
+
+MODEL_URLS = {
+    "RealESRGAN_x4plus": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth",
+    "RealESRGAN_x4plus_anime_6B": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.4/RealESRGAN_x4plus_anime_6B.pth",
+    "RealESRGAN_x2plus": "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth",
+}
 
 
 def git_checkpoint(label: str) -> None:
@@ -58,15 +64,47 @@ def git_checkpoint(label: str) -> None:
         print(f"  ! checkpoint en échec : {exc}")
 
 
+def build_upsampler():
+    """Charge Real-ESRGAN sur CPU, télécharge le modèle si besoin."""
+    import cv2  # noqa: F401 (vérifie l'install)
+    import torch
+    from basicsr.archs.rrdbnet_arch import RRDBNet
+    from realesrgan import RealESRGANer
+
+    print(f"PyTorch : {torch.__version__}  ·  device : cpu")
+
+    if MODEL_NAME not in MODEL_URLS:
+        raise SystemExit(f"Modèle inconnu : {MODEL_NAME}. Choix : {list(MODEL_URLS)}")
+
+    if "anime" in MODEL_NAME:
+        net = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=6, num_grow_ch=32, scale=4)
+        scale = 4
+    elif "x2" in MODEL_NAME:
+        net = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32, scale=2)
+        scale = 2
+    else:
+        net = RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32, scale=4)
+        scale = 4
+
+    upsampler = RealESRGANer(
+        scale=scale,
+        model_path=MODEL_URLS[MODEL_NAME],
+        model=net,
+        tile=400,       # tiles pour limiter la RAM
+        tile_pad=10,
+        pre_pad=0,
+        half=False,     # FP32 sur CPU
+        device=torch.device("cpu"),
+    )
+    return upsampler, scale
+
+
 def main() -> int:
-    if not os.path.isdir(SOURCE_DIR):
+    if not SOURCE_DIR.is_dir():
         print(f"ERREUR : dossier source {SOURCE_DIR} introuvable.")
         return 2
-    if not os.path.exists(BIN):
-        print(f"ERREUR : binaire {BIN} introuvable. Le workflow doit le télécharger.")
-        return 2
 
-    os.makedirs(TARGET_DIR, exist_ok=True)
+    TARGET_DIR.mkdir(parents=True, exist_ok=True)
     images = sorted(
         f
         for f in os.listdir(SOURCE_DIR)
@@ -79,64 +117,59 @@ def main() -> int:
 
     print(f"Source : {SOURCE_DIR}")
     print(f"Cible  : {TARGET_DIR}")
-    print(f"Modèle : {MODEL} (×{SCALE})  ·  GPU : {GPU_ID} (-1 = CPU)")
+    print(f"Modèle : {MODEL_NAME}")
     print(f"À traiter : {len(images)}")
     print()
 
+    print("Initialisation Real-ESRGAN…")
+    upsampler, real_scale = build_upsampler()
+    print(f"  → upscale ×{real_scale} prêt")
+    print()
+
+    import cv2
     done = skipped = failed = 0
     since_last_commit = 0
     start = time.time()
 
     for i, name in enumerate(images, 1):
-        inp = os.path.join(SOURCE_DIR, name)
-        out = os.path.join(TARGET_DIR, name)
+        inp = SOURCE_DIR / name
+        out = TARGET_DIR / name
 
-        if os.path.exists(out) and os.path.getsize(out) > MIN_IMAGE_BYTES:
+        if out.exists() and out.stat().st_size > MIN_IMAGE_BYTES:
             skipped += 1
             print(f"[{i:>3}/{len(images)}] SKIP  {name}")
             continue
 
         print(f"[{i:>3}/{len(images)}] UP    {name}")
         t0 = time.time()
-        cmd = [
-            BIN,
-            "-i", inp,
-            "-o", out,
-            "-n", MODEL,
-            "-s", SCALE,
-            "-g", GPU_ID,
-            "-f", "jpg",
-        ]
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        dt = time.time() - t0
-
-        if result.returncode != 0:
+        try:
+            img = cv2.imread(str(inp), cv2.IMREAD_UNCHANGED)
+            if img is None:
+                raise RuntimeError("cv2.imread retour None (image corrompue ?)")
+            output, _ = upsampler.enhance(img, outscale=SCALE)
+            cv2.imwrite(str(out), output, [cv2.IMWRITE_JPEG_QUALITY, 92])
+            dt = time.time() - t0
+            size_kb = out.stat().st_size // 1024
+            done += 1
+            since_last_commit += 1
+            print(f"                  ✓ {size_kb} KB en {dt:.1f}s")
+        except Exception as exc:  # noqa: BLE001
+            dt = time.time() - t0
             failed += 1
-            tail = (result.stderr or result.stdout or "")[-200:].replace("\n", " ")
-            print(f"                  ✗ exit {result.returncode} en {dt:.1f}s · {tail}")
+            print(f"                  ✗ {type(exc).__name__}: {exc} (après {dt:.1f}s)")
             continue
-
-        if not os.path.exists(out) or os.path.getsize(out) < MIN_IMAGE_BYTES:
-            failed += 1
-            print(f"                  ✗ fichier de sortie vide ou trop petit")
-            continue
-
-        size_kb = os.path.getsize(out) // 1024
-        done += 1
-        since_last_commit += 1
-        print(f"                  ✓ {size_kb} KB en {dt:.1f}s")
 
         if since_last_commit >= COMMIT_EVERY:
             git_checkpoint(f"{done} images upscalées")
             since_last_commit = 0
 
-    total_time = time.time() - start
+    total = time.time() - start
     print()
     print("=" * 60)
     print(f"Upscalées : {done}")
     print(f"Ignorées  : {skipped}")
     print(f"Échecs    : {failed}")
-    print(f"Durée     : {total_time / 60:.1f} min")
+    print(f"Durée     : {total / 60:.1f} min")
     return 0
 
 
