@@ -294,9 +294,17 @@ def git_checkpoint(batch_index: int, batch_total: int) -> None:
         msg = f"Checkpoint {batch_index}/{batch_total} ({COMMIT_EVERY} images)"
         subprocess.run(["git", "commit", "-m", msg], check=True, cwd=ROOT)
         if branch:
-            subprocess.run(
-                ["git", "push", "origin", f"HEAD:{branch}"], check=True, cwd=ROOT
-            )
+            for attempt in range(5):
+                push = subprocess.run(
+                    ["git", "push", "origin", f"HEAD:{branch}"], cwd=ROOT
+                )
+                if push.returncode == 0:
+                    break
+                print(f"  ⟲ push rejeté, rebase + retry {attempt + 1}/5")
+                subprocess.run(
+                    ["git", "pull", "--rebase", "origin", branch],
+                    cwd=ROOT, check=False,
+                )
         print(f"  → checkpoint committed: {msg}")
     except subprocess.CalledProcessError as exc:
         print(f"  ! checkpoint failed: {exc}")

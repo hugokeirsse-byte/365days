@@ -56,9 +56,19 @@ def git_checkpoint(label: str) -> None:
             cwd=ROOT,
         )
         if branch:
-            subprocess.run(
-                ["git", "push", "origin", f"HEAD:{branch}"], check=True, cwd=ROOT
-            )
+            # Push avec retry + rebase pour gérer les runs parallèles
+            # (ex. fetch_images qui pousse sur la même branche).
+            for attempt in range(5):
+                push = subprocess.run(
+                    ["git", "push", "origin", f"HEAD:{branch}"], cwd=ROOT
+                )
+                if push.returncode == 0:
+                    break
+                print(f"  ⟲ push rejeté, rebase + retry {attempt + 1}/5")
+                subprocess.run(
+                    ["git", "pull", "--rebase", "origin", branch],
+                    cwd=ROOT, check=False,
+                )
         print(f"  → checkpoint pushé : {label}")
     except subprocess.CalledProcessError as exc:
         print(f"  ! checkpoint en échec : {exc}")

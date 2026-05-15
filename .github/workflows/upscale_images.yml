@@ -88,5 +88,12 @@ jobs:
           else
             count=$(git diff --cached --name-only -- "$TARGET_DIR/" | wc -l)
             git commit -m "Upscale ×4 : $count dernières images HD"
-            git push origin HEAD:${{ github.ref_name }}
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then
+                break
+              fi
+              echo "push rejeté, rebase + retry $i/5"
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
           fi

@@ -79,6 +79,13 @@ jobs:
             echo "=== Commit de $count fichiers ==="
             git commit -m "Ajoute $count dernières images IA"
             echo ""
-            echo "=== git push ==="
-            git push origin HEAD:${{ github.ref_name }}
+            echo "=== git push (avec rebase si rejeté) ==="
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then
+                break
+              fi
+              echo "push rejeté, rebase + retry $i/5"
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
           fi
