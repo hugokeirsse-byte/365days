@@ -1,57 +1,85 @@
 """
-Test rapide de 5 mandalas via Pollinations Flux.
+Test 5 cryptides US — style Coco Wyo cute pour la 4ème marque.
 
-Objectif : valider la qualité du line art Pollinations pour les mandalas
-avant de lancer la production complète des 100 mandalas Floral Mandalas.
+Objectif : valider que Pollinations Flux peut produire des illustrations
+dans le style Coco Wyo (lignes noires fines, formes rondes, grands yeux
+expressifs, espace blanc généreux, adorable) avec un sujet cryptide
+mignon devant un monument architectural emblématique de son état US.
 
-STYLE_COMMUN ultra-strict (no color, no shading, lignes nettes,
-8-fold radial symmetry) pour maximiser les chances de sortir du
-coloring-book-quality directement.
-
-Si la qualité est bonne après post-processing Pillow (threshold +
-symétrie forcée), on garde Pollinations pour Inkwell & Hush.
-Sinon on bascule sur Ideogram avec compte.
+Si la qualité est bonne, on lance les 50 cryptides du Vol I de la 4ᵉ
+marque (Snug & Strange / Plush & Peculiar / autre — à valider).
 """
 
-# Suffixe stylistique identique sur tous les prompts pour cohérence.
 STYLE = (
-    "perfectly symmetric mandala viewed from above, black ink line art on "
-    "pure white background, NO COLOR, NO SHADING, NO GRADIENT, thick clean "
-    "outlines, intricate ornate filigree details, high contrast coloring "
-    "book page design, vector-style precision, 8-fold radial symmetry, "
-    "centered composition, fine ornamental patterns, sharp crisp lines, "
-    "professional adult coloring book quality, no text, no signature"
+    "cute kawaii coloring book illustration, minimalist line art style, "
+    "thick clean black ink outlines on PURE WHITE background, NO COLOR, "
+    "NO SHADING, NO GRADIENT, large round expressive eyes, simple "
+    "rounded shapes, friendly chubby proportions, generous white space, "
+    "professional adult coloring book quality, square composition, "
+    "adorable and whimsical, sharp crisp lines, no text in the image, "
+    "no signature, gentle smile, peaceful mood, decorative elements to "
+    "color around the main scene"
 )
 
 PROMPTS = [
     {
         "id": "1",
-        "filename": "test_mandala_rose_floral",
-        "prompt": f"A floral mandala centered on a blooming rose with detailed petals and leaves radiating outward, vintage botanical illustration style, {STYLE}",
-        "seed": 1001,
+        "filename": "test_cryptid_bigfoot_seattle",
+        "prompt": (
+            "An adorable chubby Bigfoot creature with round friendly face and "
+            "fluffy fur, standing in front of the Seattle Space Needle tower, "
+            "small Pacific Northwest pine trees around, a small steaming "
+            "coffee cup at his feet, "
+            + STYLE
+        ),
+        "seed": 2001,
     },
     {
         "id": "2",
-        "filename": "test_mandala_sacred_geometry",
-        "prompt": f"A sacred geometry mandala with concentric circles, hexagons and triangles forming a flower of life pattern, mathematical precision, {STYLE}",
-        "seed": 1002,
+        "filename": "test_cryptid_mothman_west_virginia",
+        "prompt": (
+            "An adorable little Mothman creature with round body, fluffy wings "
+            "and big innocent glowing eyes, hovering in front of the Silver "
+            "Bridge of Point Pleasant West Virginia, a tiny lantern in its "
+            "hands, small moths flying around, "
+            + STYLE
+        ),
+        "seed": 2002,
     },
     {
         "id": "3",
-        "filename": "test_mandala_art_nouveau_lotus",
-        "prompt": f"An art nouveau mandala centered on a lotus flower with flowing organic lines and ornamental swirls, Alphonse Mucha inspired patterns, {STYLE}",
-        "seed": 1003,
+        "filename": "test_cryptid_jersey_devil_atlantic_city",
+        "prompt": (
+            "An adorable little Jersey Devil creature with tiny horns, small "
+            "wings, and a cute curious expression, standing on the Atlantic "
+            "City Boardwalk with the iconic ferris wheel pier in the "
+            "background, small seashells and ice cream cone in the decor, "
+            + STYLE
+        ),
+        "seed": 2003,
     },
     {
         "id": "4",
-        "filename": "test_mandala_cosmic_sun_moon",
-        "prompt": f"A cosmic mandala with a central sun surrounded by moons stars and celestial patterns, mystical ornamental design, {STYLE}",
-        "seed": 1004,
+        "filename": "test_cryptid_champ_vermont",
+        "prompt": (
+            "An adorable chubby plesiosaur-like Champ creature with round "
+            "friendly face poking out of Lake Champlain water, the iconic "
+            "Champlain Bridge in the background, small water lilies and a "
+            "tiny rowboat in the decor, "
+            + STYLE
+        ),
+        "seed": 2004,
     },
     {
         "id": "5",
-        "filename": "test_mandala_tibetan_inspired",
-        "prompt": f"A Tibetan thangka inspired mandala with lotus petals, dorje symbols and traditional Buddhist ornamental patterns, sacred art style, {STYLE}",
-        "seed": 1005,
+        "filename": "test_cryptid_skunk_ape_everglades",
+        "prompt": (
+            "An adorable chubby Skunk Ape creature with shaggy round fur and "
+            "happy expression, peeking from behind palmetto plants in the "
+            "Florida Everglades, a small airboat and tropical flowers in the "
+            "background, "
+            + STYLE
+        ),
+        "seed": 2005,
     },
 ]
