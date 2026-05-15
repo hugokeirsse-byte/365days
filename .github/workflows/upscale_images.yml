@@ -1,0 +1,77 @@
+name: Upscale images (Real-ESRGAN ×4)
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_dir:
+        description: "Dossier source à upscaler"
+        required: false
+        default: "generated_images"
+      target_dir:
+        description: "Dossier cible (créé si absent)"
+        required: false
+        default: "generated_images_hd"
+      model:
+        description: "Modèle (realesrgan-x4plus, realesrgan-x4plus-anime, realesr-animevideov3)"
+        required: false
+        default: "realesrgan-x4plus"
+
+concurrency:
+  group: upscale-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  upscale:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Download Real-ESRGAN binary
+        run: |
+          set -e
+          REL=https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip
+          curl -sSL -o realesrgan.zip "$REL"
+          unzip -q realesrgan.zip -d realesrgan-bin
+          mv realesrgan-bin/realesrgan-ncnn-vulkan ./realesrgan-ncnn-vulkan
+          mv realesrgan-bin/models ./models 2>/dev/null || true
+          chmod +x ./realesrgan-ncnn-vulkan
+          ./realesrgan-ncnn-vulkan -h | head -3 || true
+          ls -la
+
+      - name: Run upscaler
+        env:
+          SOURCE_DIR: ${{ inputs.source_dir }}
+          TARGET_DIR: ${{ inputs.target_dir }}
+          UPSCALE_MODEL: ${{ inputs.model }}
+        run: python scripts/upscale_images.py
+
+      - name: Commit images restantes
+        if: always()
+        run: |
+          git add "${{ inputs.target_dir }}"/
+          if git diff --cached --quiet; then
+            echo "Aucune image upscalée restante à commit."
+          else
+            count=$(git diff --cached --name-only -- "${{ inputs.target_dir }}/" | wc -l)
+            git commit -m "Upscale ×4 : $count dernières images HD"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
