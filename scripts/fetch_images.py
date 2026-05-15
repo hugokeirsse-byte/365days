@@ -189,6 +189,40 @@ def find_kohler_url(latin_name: str) -> str | None:
     return None
 
 
+def search_commons(latin_name: str) -> str | None:
+    """Recherche par plante via l'API search de Commons (fallback robuste).
+
+    Plus lent (1 requête HTTP par plante manquante) mais ne dépend pas
+    du nom exact de catégorie. Trouve les fichiers Köhler quelle que soit
+    la typographie réelle sur Commons.
+    """
+    params = {
+        "action": "query",
+        "list": "search",
+        "srnamespace": "6",  # File:
+        "srsearch": f'"{latin_name}" Köhler Medizinal',
+        "srlimit": "3",
+        "format": "json",
+    }
+    url = COMMONS_API + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except Exception:  # noqa: BLE001
+        return None
+    for item in data.get("query", {}).get("search", []):
+        title = item.get("title", "")
+        if not title.startswith("File:"):
+            continue
+        lower = title.lower()
+        if not (".jpg" in lower or ".jpeg" in lower or ".png" in lower):
+            continue
+        filename = title.replace("File:", "")
+        return canonical_wikimedia_url(filename.replace(" ", "_"))
+    return None
+
+
 def download(url: str, dest: str) -> tuple[bool, str]:
     req = urllib.request.Request(
         url,
@@ -254,19 +288,26 @@ def main() -> int:
 
         print(f"[{i:>3}/{len(unique)}] GET   {filename}")
         ok = False
-        info = "aucune variante n'a répondu 200"
-        urls_to_try: list[str] = list(url_variants(plant["image_url"]))
-        # Fallback : index Köhler via API Commons
+        info = "aucune source n'a répondu"
+        # 1) variantes URL locales (apostrophe / en-dash / sans)
+        urls_to_try: list[tuple[str, str]] = [
+            (u, "variante") for u in url_variants(plant["image_url"])
+        ]
+        # 2) index Köhler via API Commons categorymembers
         api_url = find_kohler_url(latin)
-        if api_url and api_url not in urls_to_try:
-            urls_to_try.append(api_url)
-        for url in urls_to_try:
+        if api_url and api_url not in [u for u, _ in urls_to_try]:
+            urls_to_try.append((api_url, "API-cat"))
+        # 3) recherche par plante via API Commons search
+        search_url = search_commons(latin)
+        if search_url and search_url not in [u for u, _ in urls_to_try]:
+            urls_to_try.append((search_url, "API-search"))
+
+        for url, source in urls_to_try:
             if not url_exists(url):
                 continue
             ok, info = download(url, dest)
             if ok:
                 variant_tail = urllib.parse.unquote(url).rsplit("/", 1)[-1]
-                source = "API" if url == api_url else "variante"
                 print(f"                  ✓ {info}  ({source}: {variant_tail})")
                 break
         if ok:
