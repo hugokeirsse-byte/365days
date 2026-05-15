@@ -189,18 +189,28 @@ def find_kohler_url(latin_name: str) -> str | None:
     return None
 
 
-def search_commons(latin_name: str) -> str | None:
-    """Recherche par plante via l'API search de Commons (fallback robuste).
+# Atlas botaniques XIXᵉ siècle disponibles sur Wikimedia Commons.
+# On les essaie en cascade pour couvrir les plantes absentes de Köhler.
+BOTANICAL_SOURCES = [
+    "Köhler",   # Hermann A. Köhler — Medizinal-Pflanzen (1887) — déjà essayé en 1ère passe
+    "Sturm",    # Jacob Sturm — Deutschlands Flora in Abbildungen (1798-1862)
+    "Lindman",  # Carl A. M. Lindman — Bilder ur Nordens Flora (1917-1926)
+    "Thomé",    # Otto Wilhelm Thomé — Flora von Deutschland (1885)
+    "Britton",  # Britton & Brown — Illustrated Flora (1913)
+    "Curtis",   # Curtis's Botanical Magazine
+]
 
-    Plus lent (1 requête HTTP par plante manquante) mais ne dépend pas
-    du nom exact de catégorie. Trouve les fichiers Köhler quelle que soit
-    la typographie réelle sur Commons.
-    """
+
+def _search_one_source(latin_name: str, source: str) -> str | None:
+    """Une requête API Commons search pour un nom latin + une source donnée."""
+    query = f'"{latin_name}"'
+    if source:
+        query += f" {source}"
     params = {
         "action": "query",
         "list": "search",
         "srnamespace": "6",  # File:
-        "srsearch": f'"{latin_name}" Köhler Medizinal',
+        "srsearch": query,
         "srlimit": "3",
         "format": "json",
     }
@@ -218,9 +228,35 @@ def search_commons(latin_name: str) -> str | None:
         lower = title.lower()
         if not (".jpg" in lower or ".jpeg" in lower or ".png" in lower):
             continue
+        # Filtre minimum : éviter les fichiers sans rapport (drapeaux, photos
+        # modernes de touristes, cartes…). On garde si l'un des mots-clés
+        # botaniques apparaît dans le titre.
+        botanical_hint = any(
+            h in lower
+            for h in ("plant", "flora", "köhler", "sturm", "lindman",
+                      "thomé", "thome", "botanical", "britton", "curtis",
+                      "pflanzen", "medizinal")
+        )
+        if source and not botanical_hint:
+            continue  # source précisée → on exige un indice botanique
         filename = title.replace("File:", "")
         return canonical_wikimedia_url(filename.replace(" ", "_"))
     return None
+
+
+def search_commons(latin_name: str) -> str | None:
+    """Recherche multi-sources via l'API Commons.
+
+    Essaie successivement Köhler, Sturm, Lindman, Thomé, Britton, Curtis.
+    Retourne la première URL valide trouvée. Si aucune source ne match,
+    tentative finale en recherche large avec exigence botanique.
+    """
+    for source in BOTANICAL_SOURCES:
+        url = _search_one_source(latin_name, source)
+        if url:
+            return url
+    # Dernière chance : sans source précisée, mais on garde le filtre botanique
+    return _search_one_source(latin_name, "")
 
 
 def download(url: str, dest: str) -> tuple[bool, str]:
