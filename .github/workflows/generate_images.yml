@@ -8,13 +8,16 @@ on:
         required: false
         default: "flux"
       width:
-        description: "Largeur en pixels"
+        description: "Largeur en pixels (2048 = qualité max, 1024 = rapide)"
         required: false
-        default: "1024"
+        default: "2048"
       height:
-        description: "Hauteur en pixels"
+        description: "Hauteur en pixels (2048 = qualité max, 1024 = rapide)"
         required: false
-        default: "1024"
+        default: "2048"
+  push:
+    paths:
+      - .triggers/generate
 
 concurrency:
   group: generate-images-${{ github.ref }}

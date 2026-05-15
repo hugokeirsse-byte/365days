@@ -15,6 +15,9 @@ on:
         description: "Modèle (realesrgan-x4plus, realesrgan-x4plus-anime, realesr-animevideov3)"
         required: false
         default: "realesrgan-x4plus"
+  push:
+    paths:
+      - .triggers/upscale
 
 concurrency:
   group: upscale-${{ github.ref }}
@@ -59,19 +62,21 @@ jobs:
 
       - name: Run upscaler
         env:
-          SOURCE_DIR: ${{ inputs.source_dir }}
-          TARGET_DIR: ${{ inputs.target_dir }}
-          UPSCALE_MODEL: ${{ inputs.model }}
+          SOURCE_DIR:    ${{ inputs.source_dir || 'generated_images' }}
+          TARGET_DIR:    ${{ inputs.target_dir || 'generated_images_hd' }}
+          UPSCALE_MODEL: ${{ inputs.model      || 'realesrgan-x4plus' }}
         run: python scripts/upscale_images.py
 
       - name: Commit images restantes
         if: always()
+        env:
+          TARGET_DIR: ${{ inputs.target_dir || 'generated_images_hd' }}
         run: |
-          git add "${{ inputs.target_dir }}"/
+          git add "$TARGET_DIR"/
           if git diff --cached --quiet; then
             echo "Aucune image upscalée restante à commit."
           else
-            count=$(git diff --cached --name-only -- "${{ inputs.target_dir }}/" | wc -l)
+            count=$(git diff --cached --name-only -- "$TARGET_DIR/" | wc -l)
             git commit -m "Upscale ×4 : $count dernières images HD"
             git push origin HEAD:${{ github.ref_name }}
           fi
