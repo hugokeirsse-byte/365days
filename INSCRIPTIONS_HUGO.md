@@ -30,29 +30,35 @@ L'objectif : avoir une boutique active + le moteur IA + le canal de trafic + la 
 - [ ] **6. Printables.com** (Prusa) — https://www.printables.com (5 min)
   → Marketplace en explosion 2026
 
-### Cerveau IA (APIs gratuites critiques pour Pari 4 ebook + tous pipelines)
+### Cerveau IA (APIs gratuites critiques pour Pari 4 ebook + tous pipelines + coloriages Coco Wyo)
 - [ ] **7. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (5 min)
   → Génère ta clé API gratuite (1500 req/jour)
   → Ajoute en **Secret GitHub** : Settings → Secrets and variables → Actions → New repository secret → Nom : `GEMINI_API_KEY`
 
+- [ ] **8. Hugging Face** — https://huggingface.co/settings/tokens (5 min) ⭐ **CRITIQUE pour coloriages style Coco Wyo**
+  → Crée compte → Settings → Access Tokens → New Token "Read"
+  → Secret GitHub : `HF_API_KEY`
+  → Débloque InstantID, IP-Adapter, ControlNet line art (image-to-image avec référence)
+
 ### Sécurité & gestion comptes
-- [ ] **8. Bitwarden** — https://bitwarden.com (5 min)
+- [ ] **9. Bitwarden** — https://bitwarden.com (5 min)
   → Gratuit illimité, indispensable pour les 30+ comptes
 
 ### Réseaux sociaux (préparation lancement)
-- [ ] **9. TikTok Creator Account** — https://www.tiktok.com (5 min)
-- [ ] **10. Instagram Business** — https://business.instagram.com (5 min)
+- [ ] **10. TikTok Creator Account** — https://www.tiktok.com (5 min)
+- [ ] **11. Instagram Business** — https://business.instagram.com (5 min)
 
 ### Alternatives POD (à activer plus tard mais inscription rapide)
-- [ ] **11. Printify** — https://printify.com (5 min)
+- [ ] **12. Printify** — https://printify.com (5 min)
   → Alternative à Printful, prix bas
-- [ ] **12. Gelato** — https://www.gelato.com (5 min)
+- [ ] **13. Gelato** — https://www.gelato.com (5 min)
   → POD européen (shipping rapide FR/EU)
 
 ### À la fin de Semaine 1, tu peux
 - ✅ Encaisser légalement
 - ✅ Recevoir le pipeline Gemini en secret pour ebooks
-- ✅ Lancer les 4 paris parallèles dès la production
+- ✅ **Débloquer la production de coloriages Coco Wyo-style via Hugging Face**
+- ✅ Lancer les 4 paris parallèles + le pari coloriage cute
 - ✅ Pousser du trafic Pinterest
 
 ---
@@ -87,11 +93,20 @@ L'objectif : préparer la distribution multi-plateformes et la première vraie p
 - [ ] **22. Payhip** — https://payhip.com (5 min)
   → Alternative simple low-cost
 
-### Trafic externe
+### Trafic externe + APIs pub auto
 - [ ] **23. Pinterest Developer** — https://developers.pinterest.com (5 min)
   → Clé API pour auto-publication pins
   → Secret GitHub : `PINTEREST_API_KEY`
-- [ ] **24. Substack** — https://substack.com (5 min)
+- [ ] **24. Reddit Developer (script app)** — https://www.reddit.com/prefs/apps (5 min)
+  → "create another app" → script app → secrets `REDDIT_CLIENT_ID` + `REDDIT_CLIENT_SECRET`
+  → Pour auto-poster sur subreddits pertinents (respect règles)
+- [ ] **25. X (Twitter) Developer** — https://developer.x.com (10 min)
+  → Free tier limité (1500 tweets/mois) → secret `X_API_BEARER`
+- [ ] **26. Groq Cloud** — https://console.groq.com (5 min)
+  → 14k req/jour Llama 3.3 70B → secret `GROQ_API_KEY`
+- [ ] **27. Mistral La Plateforme** — https://console.mistral.ai (5 min)
+  → 1 req/sec free tier → secret `MISTRAL_API_KEY`
+- [ ] **28. Substack** — https://substack.com (5 min)
   → Newsletter gratuite + future monétisation
 
 ### À la fin de Semaine 2, tu peux
