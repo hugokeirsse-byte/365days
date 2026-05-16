@@ -10,54 +10,50 @@
 
 ## 🟥 SEMAINE 1 — FONDATIONS (12 inscriptions, ~50 min total)
 
-L'objectif : avoir une boutique active + le moteur IA + le canal de trafic + la légalité.
+L'objectif : avoir une boutique active + le moteur IA + le canal de trafic + la légalité + les 4 plateformes pour les 4 paris parallèles.
 
 ### Légal (obligatoire avant TOUT encaissement >300 €)
 - [ ] **1. URSSAF Auto-entrepreneur** — https://autoentrepreneur.urssaf.fr (10 min)
   Activité : *Vente de produits digitaux et imprimés à la demande*
 
-### Ventes principales
+### Ventes principales (pour Paris 1, 2)
 - [ ] **2. Etsy Seller** — https://www.etsy.com/sell (10 min)
-  → Boutique nommée à valider (suggestion : `MirabiliaShop` ou similaire générique)
+  → Boutique pour Tumbler Wraps + Mug/T-shirt POD
 - [ ] **3. Printful** — https://www.printful.com (5 min)
   → Connecter à Etsy : Settings → Stores → Add Etsy
 - [ ] **4. Pinterest Business** — https://business.pinterest.com (5 min)
   → Active "Rich Pins" pour Etsy
 
-### Cerveau IA (APIs gratuites critiques)
-- [ ] **5. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (5 min)
+### Marketplace 3D (pour Pari 3)
+- [ ] **5. Cults3D** — https://cults3d.com (10 min)
+  → Compte vendeur 3D STL (80 % royalties)
+- [ ] **6. Printables.com** (Prusa) — https://www.printables.com (5 min)
+  → Marketplace en explosion 2026
+
+### Cerveau IA (APIs gratuites critiques pour Pari 4 ebook + tous pipelines)
+- [ ] **7. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (5 min)
   → Génère ta clé API gratuite (1500 req/jour)
-  → Ajoute en **Secret GitHub** repo : Settings → Secrets and variables → Actions → New repository secret → Nom : `GEMINI_API_KEY`
-
-- [ ] **6. Groq Cloud** — https://console.groq.com (5 min)
-  → Génère clé API gratuite (14k req/jour Llama 3.3 70B)
-  → Secret GitHub : `GROQ_API_KEY`
-
-- [ ] **7. Hugging Face** — https://huggingface.co/settings/tokens (5 min)
-  → Génère token "Read" gratuit
-  → Secret GitHub : `HF_API_KEY`
+  → Ajoute en **Secret GitHub** : Settings → Secrets and variables → Actions → New repository secret → Nom : `GEMINI_API_KEY`
 
 ### Sécurité & gestion comptes
-- [ ] **8. Bitwarden (gestionnaire mots de passe)** — https://bitwarden.com (5 min)
-  → Gratuit illimité, indispensable pour les 30+ comptes à venir
-
-### Bonus si temps (alternatives POD pour diversifier vite)
-- [ ] **9. Printify** — https://printify.com (5 min)
-  → Alternative à Printful, plus de fournisseurs
-- [ ] **10. Gelato** — https://www.gelato.com (5 min)
-  → POD européen (shipping rapide FR/EU)
+- [ ] **8. Bitwarden** — https://bitwarden.com (5 min)
+  → Gratuit illimité, indispensable pour les 30+ comptes
 
 ### Réseaux sociaux (préparation lancement)
-- [ ] **11. TikTok Creator Account** — https://www.tiktok.com (5 min)
-  → Compte pro pour BookTok / promotion future
-- [ ] **12. Instagram Business** — https://business.instagram.com (5 min)
-  → Pour visuels POD + reposts Pinterest
+- [ ] **9. TikTok Creator Account** — https://www.tiktok.com (5 min)
+- [ ] **10. Instagram Business** — https://business.instagram.com (5 min)
+
+### Alternatives POD (à activer plus tard mais inscription rapide)
+- [ ] **11. Printify** — https://printify.com (5 min)
+  → Alternative à Printful, prix bas
+- [ ] **12. Gelato** — https://www.gelato.com (5 min)
+  → POD européen (shipping rapide FR/EU)
 
 ### À la fin de Semaine 1, tu peux
-- ✅ Encaisser sur Etsy légalement
-- ✅ Recevoir les pipelines Gemini/Groq/HF en secret
-- ✅ Pousser du trafic via Pinterest
-- ✅ Etre prêt à recevoir le 1er pipeline COPE en production
+- ✅ Encaisser légalement
+- ✅ Recevoir le pipeline Gemini en secret pour ebooks
+- ✅ Lancer les 4 paris parallèles dès la production
+- ✅ Pousser du trafic Pinterest
 
 ---
 
