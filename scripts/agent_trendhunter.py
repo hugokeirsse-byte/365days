@@ -40,21 +40,38 @@ USER_AGENT = (
 TIMEOUT = 30
 
 SUBREDDITS = [
+    # Marketplaces sellers
+    ("Etsy", "hot", "day"),
     ("Etsy", "top", "week"),
     ("EtsySellers", "top", "week"),
-    ("EtsySellersClub", "top", "month"),
+    ("EtsySellersClub", "top", "week"),
+    ("PrintOnDemand", "hot", "day"),
     ("PrintOnDemand", "top", "week"),
-    ("printondemand", "top", "month"),
     ("RedBubble", "top", "week"),
+    ("ArtsAndCrafts", "top", "week"),
+    ("SmallBusinessClub", "top", "week"),
+    ("CricutCraft", "top", "week"),
+    # Aesthetics & niches
     ("aestheticshop", "top", "week"),
     ("cottagecore", "top", "week"),
     ("witchcore", "top", "month"),
     ("cozycore", "top", "month"),
-    ("ArtsAndCrafts", "top", "week"),
-    ("SmallBusinessClub", "top", "week"),
+    ("DarkAcademia", "top", "week"),
+    ("blackmetalandcoffee", "top", "month"),
+    # Trends meta
     ("InteriorDesign", "top", "week"),
     ("designporn", "top", "week"),
+    ("BookTok", "top", "week"),
+    ("RoomPorn", "top", "month"),
 ]
+
+# Sources non-Reddit
+HACKERNEWS_URL = "https://hacker-news.firebaseio.com/v0/topstories.json"
+HN_ITEM_URL = "https://hacker-news.firebaseio.com/v0/item/{id}.json"
+WIKI_TRENDING_URL = (
+    "https://wikimedia.org/api/rest_v1/metrics/pageviews/top/"
+    "en.wikipedia/all-access/{year}/{month}/{day}"
+)
 
 # Mots vides à ignorer dans l'extraction
 STOPWORDS = {
@@ -109,6 +126,68 @@ STOPWORDS = {
     "oldest", "young", "youngest", "small", "big", "large", "tiny",
     "huge", "minimum", "maximum", "min", "max",
 }
+
+
+def fetch_hackernews_top(limit: int = 30) -> list[dict]:
+    """Top stories Hacker News (texte + score)."""
+    try:
+        req = urllib.request.Request(HACKERNEWS_URL,
+                                     headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            ids = json.loads(resp.read())[:limit]
+    except Exception as exc:  # noqa: BLE001
+        print(f"  ✗ HackerNews list : {exc}")
+        return []
+    results = []
+    for hid in ids:
+        try:
+            req = urllib.request.Request(HN_ITEM_URL.format(id=hid),
+                                         headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                item = json.loads(resp.read())
+            if item and item.get("type") == "story":
+                results.append({
+                    "title": item.get("title", ""),
+                    "ups": item.get("score", 0),
+                    "num_comments": item.get("descendants", 0),
+                    "selftext": "",
+                })
+        except Exception:
+            continue
+        time.sleep(0.3)
+    return results
+
+
+def fetch_wikipedia_trending() -> list[dict]:
+    """Pages Wikipedia avec le plus de vues hier (signal culturel fort)."""
+    from datetime import date, timedelta
+    yesterday = date.today() - timedelta(days=1)
+    url = WIKI_TRENDING_URL.format(
+        year=yesterday.year,
+        month=f"{yesterday.month:02d}",
+        day=f"{yesterday.day:02d}",
+    )
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+            data = json.loads(resp.read())
+        articles = data.get("items", [{}])[0].get("articles", [])
+        # Filtre articles de "Main Page", "Special:" et "user:"
+        out = []
+        for a in articles[:50]:
+            title = a.get("article", "").replace("_", " ")
+            if any(k in title for k in ["Main Page", "Special:", "User:", "Wikipedia:"]):
+                continue
+            out.append({
+                "title": title,
+                "ups": a.get("views", 0) // 100,  # normalise
+                "num_comments": 0,
+                "selftext": "",
+            })
+        return out
+    except Exception as exc:  # noqa: BLE001
+        print(f"  ✗ Wikipedia trending : {exc}")
+        return []
 
 
 def fetch_subreddit(sub: str, sort: str = "top", timespan: str = "week") -> list[dict]:
@@ -171,8 +250,30 @@ def run() -> dict:
             score = score_post(post)
             for kw in extract_keywords(text):
                 keyword_scores[kw] += score
-                keyword_sources[kw].add(sub)
+                keyword_sources[kw].add(f"r/{sub}")
         time.sleep(1.5)  # respect rate-limit Reddit
+
+    # Hacker News
+    print("Hacker News ", end="", flush=True)
+    hn_posts = fetch_hackernews_top(30)
+    print(f"→ {len(hn_posts)} stories")
+    all_posts += len(hn_posts)
+    for post in hn_posts:
+        score = score_post(post)
+        for kw in extract_keywords(post["title"]):
+            keyword_scores[kw] += score
+            keyword_sources[kw].add("hackernews")
+
+    # Wikipedia trending
+    print("Wikipedia trending ", end="", flush=True)
+    wiki_posts = fetch_wikipedia_trending()
+    print(f"→ {len(wiki_posts)} pages")
+    all_posts += len(wiki_posts)
+    for post in wiki_posts:
+        score = score_post(post)
+        for kw in extract_keywords(post["title"]):
+            keyword_scores[kw] += score
+            keyword_sources[kw].add("wikipedia")
 
     # Top niches : keyword qui apparaît dans au moins 2 subreddits différents
     # ET avec score cumulé élevé

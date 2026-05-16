@@ -3,8 +3,8 @@ name: Agent Trendhunter (scan niches émergentes)
 on:
   workflow_dispatch: {}
   schedule:
-    # Tous les lundis 6h UTC = lundi matin Hugo
-    - cron: "0 6 * * 1"
+    # Toutes les 4 heures — données fraîches pour décider quoi produire
+    - cron: "0 */4 * * *"
   push:
     paths:
       - .triggers/trendhunt
