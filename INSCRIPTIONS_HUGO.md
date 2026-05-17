@@ -8,6 +8,26 @@
 
 ---
 
+## ⚡ DEMAIN J1 — la séquence en 30 min, dans cet ordre
+
+L'ordre est IMPORTANT car certains comptes dépendent d'autres.
+
+1. **Bitwarden** (5 min) — installe l'app sur ton tél AVANT tout. Tu sauveras chaque login dedans.
+2. **URSSAF Auto-entrepreneur** (10 min) — légal d'abord, après tu peux encaisser sans peur.
+3. **Etsy Seller** (10 min) — la plateforme #1 pour les revenus dès cette semaine.
+4. **Printful** (5 min) — connecte direct à ton Etsy au moment de l'inscription.
+
+🎯 **Après ces 4 étapes**, tu peux DÉJÀ lancer le pipeline `produce_iheart_x` ou `produce_tumbler_wraps` depuis GitHub Actions et uploader le résultat sur Etsy le soir même.
+
+5. **Hugging Face** (5 min) — pour les pipelines IA avancés en v2
+6. **Gemini API** (5 min) — pour les ebooks romance + brouillons descriptions Etsy
+
+Puis le reste de la Semaine 1 sur 3-4 jours, à ton rythme.
+
+---
+
+---
+
 ## 🟥 SEMAINE 1 — FONDATIONS (12 inscriptions, ~50 min total)
 
 L'objectif : avoir une boutique active + le moteur IA + le canal de trafic + la légalité + les 4 plateformes pour les 4 paris parallèles.
