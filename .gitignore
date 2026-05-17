@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 *.pyo
 .DS_Store
+
+/__pycache__/
+*.swp
+.DS_Store
