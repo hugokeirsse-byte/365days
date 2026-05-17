@@ -48,7 +48,23 @@ jobs:
           NICHE:     ${{ inputs.niche || 'mystical_mushrooms' }}
           PAGES:     ${{ inputs.pages || '30' }}
           EVENT_KEY: ${{ inputs.event_key }}
-        run: python scripts/produce_coloring_book.py
+        run: |
+          # Si déclenché via workflow_dispatch : on lance la niche choisie.
+          # Si déclenché via push .triggers/coloring_book : on produit
+          # automatiquement les 3 niches en batch (mushrooms si pas déjà,
+          # creatures, cottages) pour que Hugo ait un catalogue varié.
+          if [ "${{ github.event_name }}" = "push" ]; then
+            for niche in mystical_mushrooms mystical_creatures fairy_cottages; do
+              if [ ! -f "products/coloring_books/${niche}/${niche}.pdf" ]; then
+                echo "→ Production : $niche"
+                NICHE=$niche python scripts/produce_coloring_book.py || true
+              else
+                echo "⊝ $niche déjà produit, skip"
+              fi
+            done
+          else
+            python scripts/produce_coloring_book.py
+          fi
       - name: Commit book
         if: always()
         run: |

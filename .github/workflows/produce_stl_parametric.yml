@@ -48,7 +48,27 @@ jobs:
           PRODUCT:      ${{ inputs.product || 'bookmark' }}
           TEMPLATE:     ${{ inputs.template || 'cottagecore' }}
           MAX_VARIANTS: ${{ inputs.max_variants || '10' }}
-        run: python scripts/produce_stl_parametric.py
+        run: |
+          # Via workflow_dispatch : run le product/template demandé.
+          # Via .triggers/stl_parametric : batch sur 4 product types ×
+          # 6 templates pour catalogue complet Cults3D.
+          if [ "${{ github.event_name }}" = "push" ]; then
+            for product in bookmark keychain coaster door_plate; do
+              for template in cottagecore dnd witchy booklover coffee minimalist; do
+                # Skip si déjà produit pour cette combo
+                if [ -d "products/stl_parametric/${product}/${template}" ] && \
+                   [ "$(ls products/stl_parametric/${product}/${template}/*.stl 2>/dev/null | wc -l)" -gt 0 ]; then
+                  echo "⊝ $product × $template déjà produit, skip"
+                  continue
+                fi
+                echo "→ Production : $product × $template"
+                PRODUCT=$product TEMPLATE=$template MAX_VARIANTS=8 \
+                  python scripts/produce_stl_parametric.py || true
+              done
+            done
+          else
+            python scripts/produce_stl_parametric.py
+          fi
       - name: Commit STL
         if: always()
         run: |
