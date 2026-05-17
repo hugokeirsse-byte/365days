@@ -1,0 +1,53 @@
+name: Opportunity Hunter (cerveau hebdo)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # Lundi 7h UTC = après seasonal_calendar (6h) et trendhunter (00h)
+    - cron: "0 7 * * 1"
+  push:
+    paths:
+      - .triggers/opportunity
+
+concurrency:
+  group: opportunity-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  hunt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run Opportunity Hunter
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/agent_opportunity_hunter.py
+      - name: Commit opportunities
+        if: always()
+        run: |
+          mkdir -p data
+          git add data/opportunities.json 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucune nouvelle opportunité."
+          else
+            git commit -m "Opportunity Hunter update ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
