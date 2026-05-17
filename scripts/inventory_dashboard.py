@@ -63,15 +63,71 @@ PIPELINE_INFO = {
         "avg_price_eur": 7.99,
         "estimated_sales_per_month_per_design": 4.0,
     },
+    "viral_formats": {
+        "label": "Viral Formats (50 concepts moteurs)",
+        "platform": "Etsy + Printful + Redbubble",
+        "unit": "design",
+        "avg_price_eur": 3.99,
+        "estimated_sales_per_month_per_design": 0.5,
+    },
+    "iheart_v2": {
+        "label": "I Heart V2 (scène DANS le cœur)",
+        "platform": "Etsy + Printful + Redbubble",
+        "unit": "design",
+        "avg_price_eur": 4.50,
+        "estimated_sales_per_month_per_design": 0.6,
+    },
+    "stl_parametric": {
+        "label": "STL Parametric (Cults3D + Printables)",
+        "platform": "Cults3D + Printables",
+        "unit": "STL",
+        "avg_price_eur": 1.80,
+        "estimated_sales_per_month_per_design": 1.5,
+    },
+    "bible_verses": {
+        "label": "Bible Verses (christian wall art)",
+        "platform": "Etsy + Redbubble",
+        "unit": "design",
+        "avg_price_eur": 4.99,
+        "estimated_sales_per_month_per_design": 0.7,
+    },
+    "cope_pack": {
+        "label": "COPE Multi-Format (witchy etc.)",
+        "platform": "Etsy + Pinterest + Society6",
+        "unit": "design",
+        "avg_price_eur": 4.99,
+        "estimated_sales_per_month_per_design": 0.4,
+    },
 }
 
 
 def count_designs(pipeline_dir: Path) -> tuple[int, list[str]]:
     """Retourne (nombre de designs avec metadata.json, liste des dossiers)."""
     if not pipeline_dir.exists():
+        # Fallback : pour cope_pack et autres, regarde sous-dossiers racine de products/
         return 0, []
     designs = list(pipeline_dir.rglob("metadata.json"))
     return len(designs), [str(d.parent.relative_to(pipeline_dir)) for d in designs]
+
+
+def count_stl_files(pipeline_dir: Path) -> int:
+    if not pipeline_dir.exists():
+        return 0
+    return len(list(pipeline_dir.rglob("*.stl")))
+
+
+def count_cope_pack_designs() -> int:
+    """COPE pack n'a pas de sous-dossier dédié — produits directement sous products/<niche>/."""
+    count = 0
+    for d in PRODUCTS_DIR.iterdir():
+        if not d.is_dir():
+            continue
+        # Skip les pipelines connus
+        if d.name in PIPELINE_INFO:
+            continue
+        # Compte les metadata.json
+        count += len(list(d.rglob("metadata.json")))
+    return count
 
 
 def count_csv_files(pipeline_dir: Path) -> int:
@@ -108,7 +164,15 @@ def main() -> int:
         pipeline_dir = PRODUCTS_DIR / key
         count, designs = count_designs(pipeline_dir)
         pdfs = count_pdfs(pipeline_dir)
-        unit_count = pdfs if key == "coloring_books" else count
+        stls = count_stl_files(pipeline_dir)
+        if key == "coloring_books":
+            unit_count = pdfs
+        elif key == "stl_parametric":
+            unit_count = stls
+        elif key == "cope_pack":
+            unit_count = count_cope_pack_designs()
+        else:
+            unit_count = count
         csvs = count_csv_files(pipeline_dir)
 
         if unit_count == 0:
