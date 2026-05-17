@@ -1,8 +1,46 @@
 # 🏛️ EMPIRE HUGO — Mode d'emploi opérationnel
 
-**Mise à jour** : 2026-05-15
-**Statut** : Phase 1 (déploiement multi-pipelines)
+**Mise à jour** : 2026-05-17
+**Statut** : Phase 1 (déploiement multi-pipelines) — **7 pipelines de production codés + 2 agents de détection**
 **Objectif** : 1500-5000 €/mois passifs à 12 mois, 4000-10 000 €/mois à 24 mois
+
+---
+
+## 📍 STATUT AU 2026-05-17 — Ce qui est prêt VS ce qui attend les inscriptions
+
+### ✅ CÔTÉ ROBOT (prêt à tourner, déclenchable depuis ton tél)
+
+**Détection d'opportunités (cerveau)** :
+- `agent_trend_explosion` (Voie A — ce qui explose maintenant) — cron 6h
+- `agent_niche_gap` (Voie B — niches sous-exploitées) — cron quotidien
+- `agent_opportunity_hunter` (croise les 2 + styles + events) — cron lundi 8h
+- `lib/seasonal_calendar.py` (35 events anticipés, recompute dynamique)
+
+**Pipelines de production** (Pollinations gratuit, pas d'API key requise) :
+| Pipeline | Niches/objets | Sortie | Plateforme cible |
+|---|---|---|---|
+| `produce_svg_pack` | SVG Cricut | ZIP + listings | Etsy |
+| `produce_cope_pack` | 5 niches × 8 formats | Multi-format | Etsy + Pinterest + Society6 |
+| `produce_tumbler_wraps` | 5 niches × 5 wraps | 9.3×8.3" wraps | Etsy sublimation |
+| `produce_cultural_arbitrage` | 32 expressions × 4 formats = 128 designs | Print 3000×3000 | Etsy + Redbubble |
+| `produce_iheart_x` | 24 niches × 4 variants = 96 designs | Print + tshirt | Etsy + Printful |
+| `produce_literal_idioms` | 30 idiomes humour visuel | Print 3000×3000 | Etsy + Redbubble |
+| `produce_coloring_book` | 3 livres × 30 pages | PDF KDP-ready | KDP + Etsy |
+| `produce_chess_book` | 100 puzzles Lichess CC0 | PDF interior | Mirabilia/KDP |
+
+**Total potentiel sans clé API ni inscription** : ~300+ designs uniques + 3 livres coloring + 1 chess book.
+
+### ⏳ CÔTÉ HUGO (à faire dès demain par ordre de priorité)
+
+**Semaine 1 critique** (cf. `INSCRIPTIONS_HUGO.md`) :
+1. URSSAF auto-entrepreneur (légal pour encaisser)
+2. Etsy Seller + Printful + connexion (POD le plus rentable)
+3. Pinterest Business (trafic gratuit)
+4. KDP (pour les coloring books + chess book)
+5. Cults3D + Printables (préparer le pipeline STL)
+6. Gemini API + Hugging Face (pour pipelines avancés v2)
+
+Dès qu'un compte est validé : tu pings, je lance le pipeline correspondant, et tu uploads.
 
 ---
 
@@ -14,21 +52,36 @@ Pipeline IA central (GitHub Actions + Pollinations + Pillow) qui tourne en autom
 
 ---
 
-## 📦 Les 5 pipelines actifs ou planifiés
+## 📦 Tous les pipelines (statut 2026-05-17)
 
-| # | Pipeline | Marque/Branding | Statut |
+| # | Pipeline | Statut | Plateformes |
 |---|---|---|---|
-| 1 | **SVG Packs Cricut/Silhouette** | shop Etsy générique | ✓ Code déployé (`scripts/produce_svg_pack.py`) |
-| 2 | **COPE Designs multi-niches** (Witchy, Coffee, Mountain, Pet Mom, Faith) | shop Etsy par niche | ✓ Code déployé (`scripts/produce_cope_pack.py`) |
-| 3 | **Pinterest SEO Empire** | account business Hugo | À coder (script `pinterest_publisher.py`) |
-| 4 | **Romance Ebooks KDP** série | sous-pseudo auteur | À coder (`produce_romance_ebook.py`) |
-| 5 | **Faceless YouTube Kids** | chaîne YT dédiée | À coder (vague 2) |
+| 1 | **SVG Packs Cricut/Silhouette** | ✓ Code prêt (`produce_svg_pack`) | Etsy |
+| 2 | **COPE Designs multi-niches** | ✓ Code prêt (`produce_cope_pack`) | Etsy + Pinterest + Society6 |
+| 3 | **Tumbler Wraps sublimation** | ✓ Code prêt (`produce_tumbler_wraps`) | Etsy |
+| 4 | **Cultural Arbitrage** (mots intraduisibles) | ✓ Code prêt (`produce_cultural_arbitrage`) | Etsy + Redbubble |
+| 5 | **I ❤️ X** (avec illustration de fond) | ✓ Code prêt (`produce_iheart_x`) | Etsy + Printful |
+| 6 | **Literal Idioms** (humour polyglottes) | ✓ Code prêt (`produce_literal_idioms`) | Etsy + Redbubble |
+| 7 | **Coloring Books triple-trend** | ✓ Code prêt (`produce_coloring_book`) | KDP + Etsy |
+| 8 | **Chess Book Mirabilia** | ✓ Code prêt (`produce_chess_book`) | KDP |
+| 9 | **Pinterest auto-publisher** | À coder (besoin clé Pinterest API) | Pinterest |
+| 10 | **Romance Ebooks KDP** | À coder (besoin Gemini API) | KDP + Audible |
+| 11 | **STL Cults3D** | À coder (focus modèles paramétriques python) | Cults3D + Printables |
+| 12 | **Bot Coloriage HF style-transfer** | À coder (besoin HF Pro API) | KDP + Etsy |
+| 13 | **Faceless YouTube Kids** | Backlog vague 2 | YouTube |
+| 14 | **Bot IDEATOR multi-LLM** | À coder (besoin Groq + Gemini) | Interne (idéation) |
 
-**Backlog en standby** (à reprendre après cash flow stabilisé) :
-- Mirabilia Éditions (Chess Puzzles Vol I, Plantes médicinales, etc.)
-- Inkwell & Hush (Mandalas — saturé)
-- Daystone Press (Sudoku Mastery)
-- Tiny Curio Co. (Cryptids cute — nécessite IA image-to-image type Ideogram)
+**Agents de détection** (cerveau du système) :
+- ✓ `agent_trend_explosion` (Voie A — explosions Reddit subs commerciaux)
+- ✓ `agent_niche_gap` (Voie B — demandes non comblées subs passionnés)
+- ✓ `agent_opportunity_hunter` (croise A+B avec styles + events + produits)
+- ✓ `agent_auditor` (anti-AI, vérifie qualité visuelle)
+- ⊖ `agent_trendhunter` (DEPRECATED — polluait avec HN/Wiki)
+
+**Backlog Mirabilia premium** (à reprendre après cash flow stabilisé) :
+- Plantes médicinales Vol I (Wikimedia + texte enrichi)
+- Inkwell & Hush (Mandalas — marché saturé, à reconsidérer)
+- Tiny Curio Co. (Cryptids cute — nécessite Bot Coloriage HF)
 
 ---
 

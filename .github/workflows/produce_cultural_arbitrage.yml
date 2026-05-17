@@ -1,0 +1,67 @@
+name: Produce Cultural Arbitrage (Etsy untranslatable words)
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_expressions:
+        description: "Max expressions (vide=toutes ~30)"
+        required: false
+        default: "5"
+      max_formats:
+        description: "Max formats par expression (1-4)"
+        required: false
+        default: "2"
+      source_lang:
+        description: "Filtre par origine (japanese, german, french… vide=toutes)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - .triggers/cultural_arbitrage
+
+concurrency:
+  group: cultural-arbitrage-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --quiet Pillow
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run Cultural Arbitrage producer
+        env:
+          MAX_EXPRESSIONS: ${{ inputs.max_expressions || '5' }}
+          MAX_FORMATS:     ${{ inputs.max_formats || '2' }}
+          SOURCE_LANG:     ${{ inputs.source_lang }}
+        run: python scripts/produce_cultural_arbitrage.py
+      - name: Commit designs
+        if: always()
+        run: |
+          mkdir -p products/cultural_arbitrage
+          git add products/cultural_arbitrage/ 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun design à commit."
+          else
+            count=$(find products/cultural_arbitrage -name "metadata.json" 2>/dev/null | wc -l)
+            git commit -m "Cultural Arbitrage : produit $count designs"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
