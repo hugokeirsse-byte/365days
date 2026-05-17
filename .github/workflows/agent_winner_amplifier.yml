@@ -1,0 +1,51 @@
+name: Agent Winner Amplifier (apprentissage des ventes)
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # Dimanche 22h UTC — après que Hugo ait fait son point hebdo
+    - cron: "0 22 * * 0"
+  push:
+    paths:
+      - data/sales_feedback.csv
+      - .triggers/winner_amplifier
+
+concurrency:
+  group: winner-amplifier-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  amplify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - run: python scripts/agent_winner_amplifier.py
+      - name: Commit strategy
+        if: always()
+        run: |
+          mkdir -p data
+          git add data/winner_strategy.json data/sales_feedback.csv 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun changement de stratégie."
+          else
+            git commit -m "Winner Amplifier : analyse ventes hebdo"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi

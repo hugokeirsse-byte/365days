@@ -1,0 +1,54 @@
+name: Agent Orchestrator (auto-trigger pipelines)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (1=simule sans trigger)"
+        required: false
+        default: "0"
+  schedule:
+    # Jeudi 7h UTC — après opp_hunter (lundi) + ideator (mercredi)
+    - cron: "0 7 * * 4"
+
+concurrency:
+  group: orchestrator-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  orchestrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run Orchestrator
+        env:
+          DRY_RUN: ${{ inputs.dry_run || '0' }}
+        run: python scripts/agent_orchestrator.py
+      - name: Commit triggers + log
+        if: always()
+        run: |
+          git add .triggers/ data/orchestrator_log.json 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucune décision à commit."
+          else
+            git commit -m "Orchestrator : décisions de production hebdo"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
