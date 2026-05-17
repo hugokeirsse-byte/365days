@@ -1,0 +1,72 @@
+name: Produce Viral Formats (50 concepts moteurs × niches)
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_formats:
+        description: "Max formats (vide=65)"
+        required: false
+        default: "5"
+      max_niches:
+        description: "Max niches (vide=25)"
+        required: false
+        default: "5"
+      max_styles:
+        description: "Styles par combo (1-2)"
+        required: false
+        default: "1"
+      format_family:
+        description: "Filtre family (medical, geek, vintage, introvert, house…)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - .triggers/viral_formats
+
+concurrency:
+  group: viral-formats-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --quiet Pillow
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run Viral Formats producer
+        env:
+          MAX_FORMATS:   ${{ inputs.max_formats || '5' }}
+          MAX_NICHES:    ${{ inputs.max_niches || '5' }}
+          MAX_STYLES:    ${{ inputs.max_styles || '1' }}
+          FORMAT_FAMILY: ${{ inputs.format_family }}
+        run: python scripts/produce_viral_formats.py
+      - name: Commit designs
+        if: always()
+        run: |
+          mkdir -p products/viral_formats
+          git add products/viral_formats/ 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun design à commit."
+          else
+            count=$(find products/viral_formats -name "metadata.json" 2>/dev/null | wc -l)
+            git commit -m "Viral Formats : produit $count designs"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi

@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "description": "Bibliothèque des styles graphiques porteurs en 2026, à croiser avec les trends et événements pour générer des produits ciblés.",
+    "last_updated": "2026-05-15",
+    "format_note": "Chaque style contient ses mots-clés Pollinations, son contexte culturel et les types de produits où il marche le mieux."
+  },
+  "styles": {
+    "cute_kawaii_line_art": {
+      "display_name": "Cute Kawaii Line Art (Coco Wyo-like generic)",
+      "prompt_keywords": [
+        "cute kawaii coloring book illustration",
+        "minimalist line art style",
+        "thick clean black ink outlines on pure white background",
+        "large round expressive eyes",
+        "simple rounded shapes",
+        "friendly chubby proportions",
+        "generous white space",
+        "professional adult coloring book quality"
+      ],
+      "best_for_products": ["coloring_books", "stickers", "greeting_cards", "mug_designs"],
+      "popularity_2026": 5,
+      "saturation": 4,
+      "differentiation_angle": "à utiliser SUR des niches/thèmes non saturés, jamais en générique"
+    },
+    "vintage_botanical": {
+      "display_name": "Vintage Botanical Illustration (Köhler-like)",
+      "prompt_keywords": [
+        "vintage botanical illustration",
+        "scientific plant drawing",
+        "ink and watercolor on aged parchment",
+        "detailed leaves and flowers",
+        "naturalistic colors",
+        "Victorian era encyclopedia style",
+        "elegant ornamental composition"
+      ],
+      "best_for_products": ["wall_art", "tumbler_wraps", "books", "tote_bags"],
+      "popularity_2026": 4,
+      "saturation": 3,
+      "differentiation_angle": "thèmes botaniques inhabituels (plantes carnivores, fungi étranges, etc.)"
+    },
+    "dark_academia": {
+      "display_name": "Dark Academia Aesthetic",
+      "prompt_keywords": [
+        "dark academia illustration",
+        "moody library atmosphere",
+        "candlelit ancient books",
+        "deep burgundy and forest green palette",
+        "vintage manuscripts and quills",
+        "gothic ornamental borders",
+        "scholarly Victorian aesthetic"
+      ],
+      "best_for_products": ["books", "tumbler_wraps", "t_shirts", "posters", "stickers"],
+      "popularity_2026": 5,
+      "saturation": 3,
+      "differentiation_angle": "croisement avec niches non-académiques (kitchen dark academia, gardening dark academia)"
+    },
+    "cottagecore_watercolor": {
+      "display_name": "Cottagecore Watercolor",
+      "prompt_keywords": [
+        "cottagecore watercolor illustration",
+        "soft pastel palette",
+        "cozy cottage scene with garden",
+        "wildflowers and herbs",
+        "hand-painted aesthetic",
+        "warm bucolic atmosphere",
+        "vintage countryside charm"
+      ],
+      "best_for_products": ["coloring_books", "tumbler_wraps", "wall_art", "greeting_cards"],
+      "popularity_2026": 5,
+      "saturation": 3,
+      "differentiation_angle": "saisonnalité forte (printemps, automne) + croisement avec dark cottagecore"
+    },
+    "y2k_aesthetic": {
+      "display_name": "Y2K Pixel / Cyber Aesthetic",
+      "prompt_keywords": [
+        "Y2K aesthetic design",
+        "early 2000s nostalgia",
+        "pink chrome metallic effects",
+        "butterfly motifs and stars",
+        "pixel art accents",
+        "cyber pop palette",
+        "rhinestone gemstone visuals"
+      ],
+      "best_for_products": ["t_shirts", "stickers", "phone_cases", "tote_bags"],
+      "popularity_2026": 5,
+      "saturation": 4,
+      "differentiation_angle": "Gen Z TikTok hit, à appliquer sur thèmes émergents avant saturation"
+    },
+    "pastel_goth": {
+      "display_name": "Pastel Goth",
+      "prompt_keywords": [
+        "pastel goth illustration",
+        "kawaii horror aesthetic",
+        "cute spooky elements",
+        "soft purple and pink with black accents",
+        "skulls hearts and bats",
+        "creepy cute style",
+        "alternative kawaii"
+      ],
+      "best_for_products": ["t_shirts", "stickers", "coloring_books", "tumbler_wraps"],
+      "popularity_2026": 4,
+      "saturation": 3,
+      "differentiation_angle": "Halloween extension, cross avec witchy / cottagecore"
+    },
+    "minimalist_line_tattoo": {
+      "display_name": "Minimalist Line Art / Tattoo Flash",
+      "prompt_keywords": [
+        "minimalist single line tattoo",
+        "fine black line drawing",
+        "clean simple shapes",
+        "modern body art style",
+        "delicate continuous line",
+        "elegant minimal design",
+        "monochrome on white"
+      ],
+      "best_for_products": ["tattoo_flash_sheets", "stickers", "wall_art", "t_shirts"],
+      "popularity_2026": 5,
+      "saturation": 4,
+      "differentiation_angle": "thèmes inhabituels (mythologie celtique, idiomes visuels)"
+    },
+    "folk_art": {
+      "display_name": "Folk Art (Mexican, Japanese, Eastern European)",
+      "prompt_keywords": [
+        "traditional folk art illustration",
+        "vibrant decorative pattern",
+        "cultural heritage design",
+        "intricate ornamental motifs",
+        "rich saturated colors",
+        "ethnic geometric patterns",
+        "handmade artisanal aesthetic"
+      ],
+      "best_for_products": ["wall_art", "tumbler_wraps", "tote_bags", "tea_towels"],
+      "popularity_2026": 3,
+      "saturation": 2,
+      "differentiation_angle": "niche premium, public lifestyle culture-curieux"
+    },
+    "anime_manga_line": {
+      "display_name": "Anime / Manga Line Art",
+      "prompt_keywords": [
+        "anime manga illustration style",
+        "Studio Ghibli inspired",
+        "soft watercolor anime aesthetic",
+        "expressive character design",
+        "Japanese animation art",
+        "kawaii character illustration",
+        "shoujo manga style"
+      ],
+      "best_for_products": ["coloring_books", "t_shirts", "stickers", "posters"],
+      "popularity_2026": 5,
+      "saturation": 4,
+      "differentiation_angle": "thèmes non-japonais traités en style anime (Tarot anime, Cryptids anime, etc.)"
+    },
+    "art_nouveau": {
+      "display_name": "Art Nouveau (Mucha-inspired)",
+      "prompt_keywords": [
+        "art nouveau decorative illustration",
+        "Alphonse Mucha inspired style",
+        "flowing organic ornamental lines",
+        "elegant female figures with flowers",
+        "gold and pastel palette",
+        "intricate floral borders",
+        "Belle Epoque aesthetic"
+      ],
+      "best_for_products": ["wall_art", "posters", "books", "tarot_cards"],
+      "popularity_2026": 3,
+      "saturation": 2,
+      "differentiation_angle": "tarot, calendars, posters premium"
+    },
+    "lo_fi_chill": {
+      "display_name": "Lo-fi Chill Aesthetic",
+      "prompt_keywords": [
+        "lo-fi chill aesthetic illustration",
+        "study girl by window scene",
+        "cozy bedroom with plants",
+        "warm muted palette",
+        "anime soft style with realistic touch",
+        "rainy day atmosphere",
+        "relaxing study vibe"
+      ],
+      "best_for_products": ["wall_art", "phone_wallpapers", "playlists_covers", "stickers"],
+      "popularity_2026": 4,
+      "saturation": 3,
+      "differentiation_angle": "audio (Spotify lo-fi) + visual cohérent"
+    },
+    "retro_70s": {
+      "display_name": "Retro 70s Groovy",
+      "prompt_keywords": [
+        "retro 70s groovy illustration",
+        "bold geometric patterns",
+        "warm earth palette of mustard rust and brown",
+        "psychedelic flowers and sunsets",
+        "vintage typography",
+        "hippie counter-culture aesthetic",
+        "groovy disco vibes"
+      ],
+      "best_for_products": ["t_shirts", "tumbler_wraps", "wall_art", "stickers"],
+      "popularity_2026": 4,
+      "saturation": 3,
+      "differentiation_angle": "Gen Z nostalgie + appliqué à niches contemporaines"
+    },
+    "minimalist_scandinavian": {
+      "display_name": "Minimalist Scandinavian",
+      "prompt_keywords": [
+        "minimalist Scandinavian design",
+        "clean simple geometric shapes",
+        "warm neutral palette",
+        "hygge cozy aesthetic",
+        "thin elegant line work",
+        "negative space focused",
+        "Nordic interior style"
+      ],
+      "best_for_products": ["wall_art", "notion_templates", "mug_designs"],
+      "popularity_2026": 4,
+      "saturation": 3,
+      "differentiation_angle": "marché premium B2B (offices, freelancers)"
+    },
+    "vintage_americana": {
+      "display_name": "Vintage Americana / Park Service",
+      "prompt_keywords": [
+        "vintage WPA national park poster style",
+        "art deco illustration",
+        "warm earth tones of orange brown cream",
+        "retro adventure travel poster",
+        "1930s commercial art style",
+        "geometric landscape composition",
+        "outdoor recreation aesthetic"
+      ],
+      "best_for_products": ["wall_art", "posters", "t_shirts", "mug_designs"],
+      "popularity_2026": 4,
+      "saturation": 3,
+      "differentiation_angle": "parcs nationaux + lieux non-américains, lieux locaux niches"
+    },
+    "art_deco_gold": {
+      "display_name": "Art Deco Gold Geometric",
+      "prompt_keywords": [
+        "art deco geometric design",
+        "gold and black palette",
+        "symmetric ornamental patterns",
+        "fan and sunburst motifs",
+        "1920s Gatsby aesthetic",
+        "luxury elegant style",
+        "metallic gold accents"
+      ],
+      "best_for_products": ["wall_art", "wedding_invitations", "luxury_packaging"],
+      "popularity_2026": 3,
+      "saturation": 3,
+      "differentiation_angle": "weddings + new year + luxury events"
+    },
+    "watercolor_loose": {
+      "display_name": "Loose Watercolor (Botanical/Romantic)",
+      "prompt_keywords": [
+        "loose watercolor illustration",
+        "soft romantic painting style",
+        "blended pastel colors",
+        "expressive brush strokes",
+        "delicate floral subjects",
+        "dreamy atmosphere",
+        "feminine artistic style"
+      ],
+      "best_for_products": ["wedding_invitations", "wall_art", "greeting_cards", "stationery"],
+      "popularity_2026": 4,
+      "saturation": 3,
+      "differentiation_angle": "mariages, naissances, événements personnels"
+    },
+    "tribal_geometric": {
+      "display_name": "Tribal Geometric Sacred",
+      "prompt_keywords": [
+        "tribal geometric sacred design",
+        "bold black symmetric pattern",
+        "mandala and yantra inspired",
+        "spiritual ornamental art",
+        "ancient cultural motifs",
+        "sacred geometry composition",
+        "monochrome power symbols"
+      ],
+      "best_for_products": ["tattoo_flash", "wall_art", "tarot_cards", "t_shirts"],
+      "popularity_2026": 3,
+      "saturation": 3,
+      "differentiation_angle": "spiritual + yoga community"
+    }
+  }
+}

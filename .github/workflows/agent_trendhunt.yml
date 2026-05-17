@@ -1,0 +1,60 @@
+name: Agent Trendhunter (DEPRECATED — remplacé par trend_explosion + niche_gap)
+
+# DEPRECATED 2026-05-17 : pollué par HN/Wikipedia, mots-clés génériques.
+# Remplacé par 2 agents spécialisés :
+#   - agent_trend_explosion (Voie A — ce qui explose maintenant)
+#   - agent_niche_gap (Voie B — niches sous-exploitées)
+# Workflow conservé en manuel pour archives uniquement.
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - .triggers/trendhunt
+
+concurrency:
+  group: trendhunt-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run Trendhunter
+        run: python scripts/agent_trendhunter.py
+
+      - name: Commit trends
+        if: always()
+        run: |
+          mkdir -p data
+          git add data/trends.json 2>/dev/null || echo "(rien à ajouter)"
+          if git diff --cached --quiet; then
+            echo "Aucun changement de trends."
+          else
+            git commit -m "Trends update : scan niches émergentes ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi

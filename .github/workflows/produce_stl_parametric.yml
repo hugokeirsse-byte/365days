@@ -1,0 +1,67 @@
+name: Produce STL Parametric (Cults3D + Printables)
+
+on:
+  workflow_dispatch:
+    inputs:
+      product:
+        description: "Product (bookmark, keychain, coaster, door_plate)"
+        required: true
+        default: "bookmark"
+      template:
+        description: "Template (cottagecore, dnd, witchy, minimalist, booklover, coffee)"
+        required: true
+        default: "cottagecore"
+      max_variants:
+        description: "Max variants (vide=15)"
+        required: false
+        default: "10"
+  push:
+    paths:
+      - .triggers/stl_parametric
+
+concurrency:
+  group: stl-parametric-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --quiet numpy-stl
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run STL producer
+        env:
+          PRODUCT:      ${{ inputs.product || 'bookmark' }}
+          TEMPLATE:     ${{ inputs.template || 'cottagecore' }}
+          MAX_VARIANTS: ${{ inputs.max_variants || '10' }}
+        run: python scripts/produce_stl_parametric.py
+      - name: Commit STL
+        if: always()
+        run: |
+          mkdir -p products/stl_parametric
+          git add products/stl_parametric/ 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun STL à commit."
+          else
+            count=$(find products/stl_parametric -name "*.stl" 2>/dev/null | wc -l)
+            git commit -m "STL Parametric : produit $count fichiers"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi

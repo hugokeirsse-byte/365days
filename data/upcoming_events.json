@@ -1,0 +1,191 @@
+[
+  {
+    "event": "Pride Month",
+    "date": "2026-06-01",
+    "days_to_event": 16,
+    "weeks_to_event": 2.3,
+    "anticipation_weeks": 6,
+    "optimal_production_start": "2026-04-20",
+    "days_to_optimal_start": -26,
+    "status": "OVERDUE \u2014 start NOW",
+    "intensity": 4,
+    "countries": [
+      "WORLD",
+      "US",
+      "WESTERN"
+    ],
+    "niches_primary": [
+      "lgbtq",
+      "rainbow",
+      "pride",
+      "queer",
+      "inclusion",
+      "love is love"
+    ],
+    "double_trend_combos": [
+      "Pride Month \u00d7 cottagecore aesthetic",
+      "Pride Month \u00d7 dark academia",
+      "Pride Month \u00d7 witchy mystical",
+      "Pride Month \u00d7 romantasy fantasy romance",
+      "Pride Month \u00d7 cute kawaii (Coco Wyo style)",
+      "Pride Month \u00d7 boho minimalist",
+      "Pride Month \u00d7 vintage aesthetic 90s",
+      "Pride Month \u00d7 anime manga style",
+      "Pride Month \u00d7 litRPG fantasy"
+    ]
+  },
+  {
+    "event": "Father's Day (US)",
+    "date": "2026-06-21",
+    "days_to_event": 36,
+    "weeks_to_event": 5.1,
+    "anticipation_weeks": 6,
+    "optimal_production_start": "2026-05-10",
+    "days_to_optimal_start": -6,
+    "status": "OVERDUE \u2014 start NOW",
+    "intensity": 4,
+    "countries": [
+      "US"
+    ],
+    "niches_primary": [
+      "dad gifts",
+      "father quotes",
+      "best dad",
+      "grilling humor"
+    ],
+    "double_trend_combos": [
+      "Father's Day (US) \u00d7 cottagecore aesthetic",
+      "Father's Day (US) \u00d7 dark academia",
+      "Father's Day (US) \u00d7 witchy mystical",
+      "Father's Day (US) \u00d7 romantasy fantasy romance",
+      "Father's Day (US) \u00d7 cute kawaii (Coco Wyo style)",
+      "Father's Day (US) \u00d7 boho minimalist",
+      "Father's Day (US) \u00d7 vintage aesthetic 90s",
+      "Father's Day (US) \u00d7 anime manga style",
+      "Father's Day (US) \u00d7 litRPG fantasy"
+    ]
+  },
+  {
+    "event": "Summer Solstice",
+    "date": "2026-06-21",
+    "days_to_event": 36,
+    "weeks_to_event": 5.1,
+    "anticipation_weeks": 6,
+    "optimal_production_start": "2026-05-10",
+    "days_to_optimal_start": -6,
+    "status": "OVERDUE \u2014 start NOW",
+    "intensity": 4,
+    "countries": [
+      "WORLD"
+    ],
+    "niches_primary": [
+      "summer",
+      "beach",
+      "sun",
+      "vacation"
+    ],
+    "double_trend_combos": [
+      "Summer Solstice \u00d7 cottagecore aesthetic",
+      "Summer Solstice \u00d7 dark academia",
+      "Summer Solstice \u00d7 witchy mystical",
+      "Summer Solstice \u00d7 romantasy fantasy romance",
+      "Summer Solstice \u00d7 cute kawaii (Coco Wyo style)",
+      "Summer Solstice \u00d7 boho minimalist",
+      "Summer Solstice \u00d7 vintage aesthetic 90s",
+      "Summer Solstice \u00d7 anime manga style",
+      "Summer Solstice \u00d7 litRPG fantasy"
+    ]
+  },
+  {
+    "event": "Independence Day (US)",
+    "date": "2026-07-04",
+    "days_to_event": 49,
+    "weeks_to_event": 7.0,
+    "anticipation_weeks": 4,
+    "optimal_production_start": "2026-06-06",
+    "days_to_optimal_start": 21,
+    "status": "PLAN \u2014 start in 2-3 weeks",
+    "intensity": 4,
+    "countries": [
+      "US"
+    ],
+    "niches_primary": [
+      "patriotic",
+      "american flag",
+      "july 4th",
+      "freedom",
+      "bbq"
+    ],
+    "double_trend_combos": [
+      "Independence Day (US) \u00d7 cottagecore aesthetic",
+      "Independence Day (US) \u00d7 dark academia",
+      "Independence Day (US) \u00d7 witchy mystical",
+      "Independence Day (US) \u00d7 romantasy fantasy romance",
+      "Independence Day (US) \u00d7 cute kawaii (Coco Wyo style)",
+      "Independence Day (US) \u00d7 boho minimalist",
+      "Independence Day (US) \u00d7 vintage aesthetic 90s",
+      "Independence Day (US) \u00d7 anime manga style",
+      "Independence Day (US) \u00d7 litRPG fantasy"
+    ]
+  },
+  {
+    "event": "Bastille Day (FR)",
+    "date": "2026-07-14",
+    "days_to_event": 59,
+    "weeks_to_event": 8.4,
+    "anticipation_weeks": 4,
+    "optimal_production_start": "2026-06-16",
+    "days_to_optimal_start": 31,
+    "status": "FUTURE \u2014 keep on radar",
+    "intensity": 2,
+    "countries": [
+      "FR"
+    ],
+    "niches_primary": [
+      "french",
+      "patriotic fr",
+      "paris"
+    ],
+    "double_trend_combos": [
+      "Bastille Day (FR) \u00d7 cottagecore aesthetic",
+      "Bastille Day (FR) \u00d7 dark academia",
+      "Bastille Day (FR) \u00d7 witchy mystical",
+      "Bastille Day (FR) \u00d7 romantasy fantasy romance",
+      "Bastille Day (FR) \u00d7 cute kawaii (Coco Wyo style)",
+      "Bastille Day (FR) \u00d7 boho minimalist",
+      "Bastille Day (FR) \u00d7 vintage aesthetic 90s",
+      "Bastille Day (FR) \u00d7 anime manga style",
+      "Bastille Day (FR) \u00d7 litRPG fantasy"
+    ]
+  },
+  {
+    "event": "Friendship Day",
+    "date": "2026-08-04",
+    "days_to_event": 80,
+    "weeks_to_event": 11.4,
+    "anticipation_weeks": 4,
+    "optimal_production_start": "2026-07-07",
+    "days_to_optimal_start": 52,
+    "status": "FUTURE \u2014 keep on radar",
+    "intensity": 3,
+    "countries": [
+      "WORLD"
+    ],
+    "niches_primary": [
+      "friends",
+      "best friend gifts",
+      "friendship quotes"
+    ],
+    "double_trend_combos": [
+      "Friendship Day \u00d7 cottagecore aesthetic",
+      "Friendship Day \u00d7 dark academia",
+      "Friendship Day \u00d7 witchy mystical",
+      "Friendship Day \u00d7 romantasy fantasy romance",
+      "Friendship Day \u00d7 cute kawaii (Coco Wyo style)",
+      "Friendship Day \u00d7 boho minimalist",
+      "Friendship Day \u00d7 vintage aesthetic 90s",
+      "Friendship Day \u00d7 anime manga style",
+      "Friendship Day \u00d7 litRPG fantasy"
+    ]
+  }
+]
