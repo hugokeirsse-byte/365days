@@ -1,21 +1,46 @@
 {
-  "scanned_at": "2026-05-15T16:03:18.395993Z",
-  "posts_scanned": 0,
+  "scanned_at": "2026-05-17T07:42:55.243526Z",
+  "posts_scanned": 77,
   "subreddits_scanned": [
+    "Etsy",
     "Etsy",
     "EtsySellers",
     "EtsySellersClub",
     "PrintOnDemand",
-    "printondemand",
+    "PrintOnDemand",
     "RedBubble",
+    "ArtsAndCrafts",
+    "SmallBusinessClub",
+    "CricutCraft",
     "aestheticshop",
     "cottagecore",
     "witchcore",
     "cozycore",
-    "ArtsAndCrafts",
-    "SmallBusinessClub",
+    "DarkAcademia",
+    "blackmetalandcoffee",
     "InteriorDesign",
-    "designporn"
+    "designporn",
+    "BookTok",
+    "RoomPorn"
   ],
-  "top_trending_keywords": []
+  "top_trending_keywords": [
+    {
+      "keyword": "chatgpt",
+      "score": 1374.5,
+      "cross_subreddit_count": 2,
+      "sources": [
+        "hackernews",
+        "wikipedia"
+      ]
+    },
+    {
+      "keyword": "project",
+      "score": 751.8,
+      "cross_subreddit_count": 2,
+      "sources": [
+        "hackernews",
+        "wikipedia"
+      ]
+    }
+  ]
 }
