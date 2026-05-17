@@ -1,0 +1,63 @@
+name: Agent Trend Design Matcher (structures phrases bestsellers Etsy)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_niches:
+        description: "Niches Etsy (csv, vide=défaut)"
+        required: false
+        default: ""
+      use_live_etsy:
+        description: "Tenter Etsy live (1) ou fallback local (0)"
+        required: false
+        default: "1"
+  schedule:
+    # Tous les mardis 5h UTC — pour découvrir de nouveaux formats viraux
+    - cron: "0 5 * * 2"
+  push:
+    paths:
+      - .triggers/trend_design_matcher
+
+concurrency:
+  group: trend-design-matcher-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run Trend Design Matcher
+        env:
+          TARGET_NICHES:  ${{ inputs.target_niches }}
+          USE_LIVE_ETSY:  ${{ inputs.use_live_etsy || '1' }}
+        run: python scripts/agent_trend_design_matcher.py
+      - name: Commit results
+        if: always()
+        run: |
+          mkdir -p data
+          git add data/trend_design_matches.json 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun match nouveau."
+          else
+            git commit -m "Trend Design Matcher : nouvelles structures détectées"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi

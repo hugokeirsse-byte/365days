@@ -1,0 +1,58 @@
+name: Produce KDP Cover (auto pour coloring books)
+
+on:
+  workflow_dispatch:
+    inputs:
+      book_id:
+        description: "Book ID (vide = tous les livres sans cover)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - .triggers/kdp_cover
+
+concurrency:
+  group: kdp-cover-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-dejavu
+          pip install --quiet Pillow
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run KDP Cover generator
+        env:
+          BOOK_ID: ${{ inputs.book_id }}
+        run: python scripts/produce_kdp_cover.py
+      - name: Commit covers
+        if: always()
+        run: |
+          git add products/coloring_books/*/cover_front.png 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucune cover à commit."
+          else
+            git commit -m "KDP Covers : génération auto"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
