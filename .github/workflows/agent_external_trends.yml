@@ -1,0 +1,58 @@
+name: Agent External Trends (Google + TikTok + Pinterest)
+
+on:
+  workflow_dispatch:
+    inputs:
+      country:
+        description: "Country code Google Trends (US, FR, GB, DE…)"
+        required: false
+        default: "US"
+  schedule:
+    # Mardi 4h UTC — avant Trend Design Matcher (5h)
+    - cron: "0 4 * * 2"
+  push:
+    paths:
+      - .triggers/external_trends
+
+concurrency:
+  group: external-trends-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run External Trends scanner
+        env:
+          GOOGLE_TRENDS_COUNTRY: ${{ inputs.country || 'US' }}
+        run: python scripts/agent_external_trends.py
+      - name: Commit results
+        if: always()
+        run: |
+          mkdir -p data
+          git add data/external_trends.json 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun changement."
+          else
+            git commit -m "External Trends update ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
