@@ -1,19 +1,16 @@
-name: Agent Trendhunter (DEPRECATED — remplacé par trend_explosion + niche_gap)
-
-# DEPRECATED 2026-05-17 : pollué par HN/Wikipedia, mots-clés génériques.
-# Remplacé par 2 agents spécialisés :
-#   - agent_trend_explosion (Voie A — ce qui explose maintenant)
-#   - agent_niche_gap (Voie B — niches sous-exploitées)
-# Workflow conservé en manuel pour archives uniquement.
+name: Agent Trend Explosion (Voie A — scan ce qui explose)
 
 on:
   workflow_dispatch: {}
+  schedule:
+    # Toutes les 6 heures — données fraîches sur les explosions du moment
+    - cron: "0 */6 * * *"
   push:
     paths:
-      - .triggers/trendhunt
+      - .triggers/trend_explosion
 
 concurrency:
-  group: trendhunt-${{ github.ref }}
+  group: trend-explosion-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -22,7 +19,7 @@ permissions:
 jobs:
   scan:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,18 +37,18 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Run Trendhunter
-        run: python scripts/agent_trendhunter.py
+      - name: Run Trend Explosion scanner
+        run: python scripts/agent_trend_explosion.py
 
-      - name: Commit trends
+      - name: Commit results
         if: always()
         run: |
           mkdir -p data
-          git add data/trends.json 2>/dev/null || echo "(rien à ajouter)"
+          git add data/trend_explosion.json 2>/dev/null || echo "(rien à ajouter)"
           if git diff --cached --quiet; then
-            echo "Aucun changement de trends."
+            echo "Aucun changement d'explosion."
           else
-            git commit -m "Trends update : scan niches émergentes ($(date -u +%Y-%m-%d))"
+            git commit -m "Trend Explosion update ($(date -u +%Y-%m-%d-%H))"
             for i in 1 2 3 4 5; do
               if git push origin HEAD:${{ github.ref_name }}; then break; fi
               git pull --rebase origin ${{ github.ref_name }} || true

@@ -1,41 +1,36 @@
 """
 Agent OPPORTUNITY HUNTER — le cerveau du système.
 
-Croise 4 dimensions pour identifier les meilleures opportunités de
+Croise les dimensions pour identifier les meilleures opportunités de
 production de la semaine :
-  STYLE  × TREND  × ÉVÉNEMENT  × CATÉGORIE PRODUIT
+  STYLE  × SIGNAL  × ÉVÉNEMENT  × CATÉGORIE PRODUIT
+
+Sort DEUX listes séparées :
+  1. URGENT EXPLOSION (Voie A) — produire maintenant pour surfer la vague
+  2. STABLE NICHE GAP (Voie B) — investir durablement sur un besoin non comblé
 
 Lit :
-- data/trends.json           (Trendhunter v2 — niches émergentes Reddit)
-- data/upcoming_events.json  (Seasonal Calendar — événements 12 semaines)
+- data/trend_explosion.json  (Voie A — explosions Reddit subs commerciaux)
+- data/niche_gap.json        (Voie B — demandes non comblées subs passionnés)
+- data/upcoming_events.json  (Seasonal Calendar — 12 semaines)
 - data/styles_du_moment.json (Styles graphiques porteurs 2026)
 
-Sortie : data/opportunities.json — top 10-20 opportunités scorées,
-chacune avec : style + trend + event + catégorie produit + brief
-de production prêt à lancer.
+Sortie : data/opportunities.json
+- 15 opportunités URGENTES (à shipper sous 2-7 jours)
+- 15 opportunités STABLES (à construire sur 3-8 semaines, marché à long terme)
 
-Modes :
-- Mode dégradé (sans Gemini) : scoring heuristique pur (combinatoire +
-  facteurs : intensité event, score trend, popularité style, croisement
-  saturation). Tourne en quelques secondes.
-- Mode optimal (avec GEMINI_API_KEY) : passe le top 50 à Gemini Pro
-  pour synthèse intelligente + brief créatif détaillé.
-
-Cron suggéré : tous les lundis matin (juste après Trendhunter et
-Seasonal Planner), pour orienter la production de la semaine.
+Cron suggéré : lundi matin, juste après les 2 scans Reddit + Seasonal.
 """
 
 import json
-import os
 import sys
-from dataclasses import dataclass, asdict
-from datetime import date, datetime
+from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 
-# Catégories de produits dans lesquels on opère
 PRODUCT_CATEGORIES = {
     "coloring_books":      {"effort": "medium",   "marge": "high", "marche": "Etsy + KDP"},
     "tumbler_wraps":       {"effort": "low",      "marge": "very_high", "marche": "Etsy"},
@@ -52,7 +47,6 @@ PRODUCT_CATEGORIES = {
     "sleep_stories":       {"effort": "medium",   "marge": "long_tail", "marche": "Spotify"},
 }
 
-# Mapping : pour chaque style, quels types de produits sont idéaux
 STYLE_PRODUCT_FIT = {
     "cute_kawaii_line_art": ["coloring_books", "stickers", "mug_pod", "tumbler_wraps"],
     "vintage_botanical":    ["wall_art_prints", "tumbler_wraps", "ebook_non_fiction"],
@@ -74,75 +68,13 @@ STYLE_PRODUCT_FIT = {
 }
 
 
-@dataclass
-class Opportunity:
-    style_key: str
-    style_name: str
-    trend_keyword: str
-    trend_score: float
-    event_name: str
-    event_date: str
-    event_days_away: int
-    event_intensity: int
-    product_category: str
-    product_effort: str
-    product_marge: str
-    composite_score: float
-    brief: str
-    estimated_roi_eur_monthly: str
-
-
 def load_json(path: Path, default=None):
     if not path.exists():
         return default if default is not None else {}
     return json.loads(path.read_text())
 
 
-def score_opportunity(style: dict, trend: dict, event: dict, product_cat: str) -> float:
-    """Score composite — plus haut = meilleure opportunité.
-
-    Facteurs :
-    + popularité du style 2026 (1-5)
-    + score du trend (Reddit)
-    + intensité de l'événement (1-5)
-    + proximité de l'événement (boost si proche, mais malus si trop urgent <14j)
-    + alignement style/produit (déjà filtré en amont)
-    - saturation du style (malus si trop saturé)
-    + effort produit (boost effort low)
-    """
-    score = 0.0
-
-    pop = style.get("popularity_2026", 3)
-    sat = style.get("saturation", 3)
-    score += pop * 10
-    score -= sat * 5  # malus saturation
-
-    score += min(trend.get("score", 0) / 100, 10)  # trend Reddit score normalisé
-
-    intensity = event.get("intensity", 3)
-    days = event.get("days_to_event", 60)
-    score += intensity * 8
-    # Sweet spot : 30-60 jours d'anticipation
-    if 20 <= days <= 70:
-        score += 10
-    elif days < 14:
-        score -= 8  # trop urgent
-    elif days > 90:
-        score -= 5  # trop loin
-
-    # Effort : faible = boost
-    effort_map = {"very_low": 8, "low": 5, "medium": 2, "high": -3}
-    score += effort_map.get(PRODUCT_CATEGORIES[product_cat]["effort"], 0)
-
-    # Marge : haute = boost
-    marge_map = {"very_high": 6, "high": 4, "medium": 2, "long_tail": 1}
-    score += marge_map.get(PRODUCT_CATEGORIES[product_cat]["marge"], 0)
-
-    return round(score, 2)
-
-
-def estimate_roi(product_cat: str, intensity: int) -> str:
-    """ROI mensuel estimé en euros pour un design top de la catégorie."""
+def estimate_roi(product_cat: str, intensity: int, multiplier: float = 1.0) -> str:
     base = {
         "tumbler_wraps":   (50, 200),
         "stickers":        (20, 80),
@@ -158,80 +90,86 @@ def estimate_roi(product_cat: str, intensity: int) -> str:
         "audio_lofi":      (20, 150),
         "sleep_stories":   (30, 200),
     }.get(product_cat, (20, 100))
-    boost = 1 + (intensity / 10)
+    boost = (1 + intensity / 10) * multiplier
     return f"{int(base[0] * boost)}-{int(base[1] * boost)} €/mois"
 
 
-def generate_brief(style_name: str, trend_keyword: str, event: dict,
-                   product_cat: str, score: float) -> str:
+# ============================================================
+# VOIE A — URGENT EXPLOSION
+# ============================================================
+
+def score_explosion_opportunity(style: dict, signal: dict, event: dict, product_cat: str) -> float:
+    """Score Voie A : on PRIVILÉGIE la rapidité de production
+    + alignement avec un signal d'explosion FORT et RÉCENT.
+    """
+    score = 0.0
+    score += style.get("popularity_2026", 3) * 8
+    score -= style.get("saturation", 3) * 3
+
+    # Le signal d'explosion : 0-10 selon score + cross-sub
+    explosion_strength = min(signal.get("score", 0) / 200, 10)
+    cross = signal.get("cross_subreddit_count", 1)
+    score += explosion_strength * 5
+    score += cross * 6  # cross-subreddit = preuve forte
+
+    # Event : compte mais moins (l'explosion est plus urgente que l'event)
     intensity = event.get("intensity", 3)
     days = event.get("days_to_event", 60)
-    urgency = ("DÉMARRER MAINTENANT" if days < 30
-               else "Démarrer cette semaine" if days < 50
-               else "Planifier dans 2-3 semaines")
-    return (
-        f"[{urgency}] Produire un/des {product_cat.replace('_', ' ')} sur le "
-        f"thème '{trend_keyword}' dans le style {style_name}, ciblé pour "
-        f"l'événement '{event['event']}' ({event['date']}, J-{days}). "
-        f"Intensité événement {intensity}/5. Score composite {score:.1f}."
-    )
+    score += intensity * 3
+    if 7 <= days <= 35:
+        score += 8  # event PROCHE pour amplifier la vague
+    elif days > 70:
+        score -= 6  # event trop loin, on perd la vague d'ici-là
+
+    # Pour Voie A on PRIVILÉGIE l'effort low — on doit pouvoir shipper en 2-7j
+    effort_map = {"very_low": 12, "low": 8, "medium": -2, "high": -10}
+    score += effort_map.get(PRODUCT_CATEGORIES[product_cat]["effort"], 0)
+
+    marge_map = {"very_high": 6, "high": 4, "medium": 2, "long_tail": 0}
+    score += marge_map.get(PRODUCT_CATEGORIES[product_cat]["marge"], 0)
+
+    return round(score, 2)
 
 
-def hunt_opportunities() -> list[dict]:
-    trends_data = load_json(DATA_DIR / "trends.json", {})
-    events_data = load_json(DATA_DIR / "upcoming_events.json", [])
-    styles_data = load_json(DATA_DIR / "styles_du_moment.json", {}).get("styles", {})
-
-    if not events_data:
-        print("⚠ data/upcoming_events.json absent — lance d'abord seasonal_calendar.py")
+def hunt_explosion_opportunities(styles_data: dict, events_data: list,
+                                  explosion_data: dict) -> list[dict]:
+    """Voie A : croise les niches en explosion avec styles/events."""
+    signals = explosion_data.get("top_exploding_niches", [])
+    if not signals:
         return []
-    if not styles_data:
-        print("⚠ data/styles_du_moment.json absent")
-        return []
-
-    # Si pas de trends.json, on utilise trends "evergreen" prédéfinis
-    evergreen_trends = [
-        {"keyword": "cottagecore", "score": 500},
-        {"keyword": "witchy", "score": 450},
-        {"keyword": "dark academia", "score": 400},
-        {"keyword": "kawaii cute", "score": 550},
-        {"keyword": "minimalist line art", "score": 350},
-        {"keyword": "Y2K aesthetic", "score": 400},
-        {"keyword": "self-care wellness", "score": 380},
-        {"keyword": "boho wildflowers", "score": 320},
-        {"keyword": "vintage americana", "score": 290},
-        {"keyword": "pastel goth", "score": 280},
-    ]
-    if isinstance(trends_data, dict) and trends_data.get("top_trending_keywords"):
-        trends_list = [
-            {"keyword": t["keyword"], "score": t["score"]}
-            for t in trends_data["top_trending_keywords"][:30]
-        ]
-    else:
-        trends_list = evergreen_trends
 
     opportunities = []
     for style_key, style in styles_data.items():
-        for trend in trends_list[:15]:
-            for event in events_data[:8]:  # 8 events les plus proches
+        for signal in signals[:20]:
+            for event in events_data[:6]:
                 fits = STYLE_PRODUCT_FIT.get(style_key, [])
-                for product_cat in fits[:3]:  # top 3 produits par style
-                    score = score_opportunity(style, trend, event, product_cat)
-                    if score < 25:  # filtre les scores faibles
+                # Pour Voie A, on filtre les produits à effort faible UNIQUEMENT
+                fast_products = [
+                    p for p in fits
+                    if PRODUCT_CATEGORIES[p]["effort"] in ("very_low", "low")
+                ]
+                for product_cat in fast_products[:2]:
+                    score = score_explosion_opportunity(style, signal, event, product_cat)
+                    if score < 35:
                         continue
-                    brief = generate_brief(
-                        style["display_name"],
-                        trend["keyword"],
-                        event,
-                        product_cat,
-                        score,
+                    sample_title = (signal.get("sample_titles") or [""])[0]
+                    days = event.get("days_to_event", 60)
+                    urgency = "SHIPPER SOUS 48H" if days < 14 else "SHIPPER CETTE SEMAINE"
+                    brief = (
+                        f"[{urgency}] {product_cat.replace('_', ' ').title()} "
+                        f"style « {style['display_name']} » sur niche « {signal['niche']} » "
+                        f"(en explosion : « {sample_title[:80]} »). "
+                        f"Synchro avec {event['event']} (J-{days})."
                     )
-                    roi = estimate_roi(product_cat, event.get("intensity", 3))
                     opportunities.append({
+                        "voie": "A_explosion",
                         "style_key": style_key,
                         "style_name": style["display_name"],
-                        "trend_keyword": trend["keyword"],
-                        "trend_score": trend["score"],
+                        "signal_niche": signal["niche"],
+                        "signal_score": signal.get("score", 0),
+                        "signal_cross_subs": signal.get("cross_subreddit_count", 0),
+                        "signal_sample": sample_title[:120],
+                        "signal_sources": signal.get("sources", []),
                         "event_name": event["event"],
                         "event_date": event["date"],
                         "event_days_away": event["days_to_event"],
@@ -242,55 +180,219 @@ def hunt_opportunities() -> list[dict]:
                         "product_marche": PRODUCT_CATEGORIES[product_cat]["marche"],
                         "composite_score": score,
                         "brief": brief,
-                        "estimated_roi_eur_monthly": roi,
+                        "estimated_roi_eur_monthly": estimate_roi(
+                            product_cat, event["intensity"], multiplier=1.3
+                        ),
                     })
 
-    # Dédup : 1 opportunité par triplet (style × event × product_cat)
     seen = set()
     unique = []
     for o in sorted(opportunities, key=lambda x: -x["composite_score"]):
-        key = (o["style_key"], o["event_name"], o["product_category"])
+        key = (o["style_key"], o["signal_niche"], o["product_category"])
         if key in seen:
             continue
         seen.add(key)
         unique.append(o)
+    return unique[:15]
 
-    return unique[:30]  # top 30
 
+# ============================================================
+# VOIE B — STABLE NICHE GAP
+# ============================================================
+
+def score_niche_gap_opportunity(style: dict, gap: dict, event: dict, product_cat: str) -> float:
+    """Score Voie B : on PRIVILÉGIE la profondeur du marché
+    + l'absence de concurrence + l'alignement style/niche.
+    """
+    score = 0.0
+    score += style.get("popularity_2026", 3) * 6
+    # Pour Voie B la saturation pèse MOINS (le gap signifie déjà sous-exploitation)
+    score -= style.get("saturation", 3) * 2
+
+    # Force du gap : nombre de gens qui demandent × cross-subreddit
+    gap_strength = min(gap.get("score", 0) / 100, 10)
+    cross = gap.get("cross_subreddit_count", 1)
+    score += gap_strength * 5
+    score += cross * 8  # cross-sub fort = demande TRANSVERSE
+
+    # Event : on tolère bien plus loin (construction long terme)
+    intensity = event.get("intensity", 3)
+    days = event.get("days_to_event", 60)
+    score += intensity * 4
+    if 30 <= days <= 120:
+        score += 8  # sweet spot construction long terme
+    elif days < 14:
+        score -= 5  # trop pressé pour construire un catalogue de qualité
+
+    # Effort : on accepte effort medium voire high (catalogue durable)
+    effort_map = {"very_low": 4, "low": 6, "medium": 6, "high": 4}
+    score += effort_map.get(PRODUCT_CATEGORIES[product_cat]["effort"], 0)
+
+    marge_map = {"very_high": 8, "high": 6, "medium": 3, "long_tail": 4}
+    score += marge_map.get(PRODUCT_CATEGORIES[product_cat]["marge"], 0)
+
+    return round(score, 2)
+
+
+def hunt_niche_gap_opportunities(styles_data: dict, events_data: list,
+                                   gap_data: dict) -> list[dict]:
+    """Voie B : croise les niches sous-exploitées avec styles/events."""
+    gaps = gap_data.get("top_underserved_niches", [])
+    if not gaps:
+        return []
+
+    opportunities = []
+    for style_key, style in styles_data.items():
+        for gap in gaps[:20]:
+            for event in events_data[:8]:
+                fits = STYLE_PRODUCT_FIT.get(style_key, [])
+                for product_cat in fits[:3]:
+                    score = score_niche_gap_opportunity(style, gap, event, product_cat)
+                    if score < 30:
+                        continue
+                    sample = (gap.get("sample_requests") or [{}])[0]
+                    sample_title = sample.get("title", "")
+                    sample_sub = sample.get("subreddit", "")
+                    days = event.get("days_to_event", 60)
+                    brief = (
+                        f"[CONSTRUCTION LONG TERME] Catalogue "
+                        f"{product_cat.replace('_', ' ')} style « {style['display_name']} » "
+                        f"sur niche sous-exploitée « {gap['niche']} » "
+                        f"(demande r/{sample_sub} : « {sample_title[:80]} »). "
+                        f"Cible event {event['event']} (J-{days})."
+                    )
+                    opportunities.append({
+                        "voie": "B_niche_gap",
+                        "style_key": style_key,
+                        "style_name": style["display_name"],
+                        "gap_niche": gap["niche"],
+                        "gap_score": gap.get("score", 0),
+                        "gap_cross_subs": gap.get("cross_subreddit_count", 0),
+                        "gap_sample_title": sample_title[:120],
+                        "gap_sample_subreddit": sample_sub,
+                        "gap_sample_pattern": sample.get("pattern", ""),
+                        "gap_sources": gap.get("sources", []),
+                        "event_name": event["event"],
+                        "event_date": event["date"],
+                        "event_days_away": event["days_to_event"],
+                        "event_intensity": event["intensity"],
+                        "product_category": product_cat,
+                        "product_effort": PRODUCT_CATEGORIES[product_cat]["effort"],
+                        "product_marge": PRODUCT_CATEGORIES[product_cat]["marge"],
+                        "product_marche": PRODUCT_CATEGORIES[product_cat]["marche"],
+                        "composite_score": score,
+                        "brief": brief,
+                        "estimated_roi_eur_monthly": estimate_roi(
+                            product_cat, event["intensity"], multiplier=1.0
+                        ),
+                    })
+
+    seen = set()
+    unique = []
+    for o in sorted(opportunities, key=lambda x: -x["composite_score"]):
+        key = (o["style_key"], o["gap_niche"], o["product_category"])
+        if key in seen:
+            continue
+        seen.add(key)
+        unique.append(o)
+    return unique[:15]
+
+
+# ============================================================
+# MAIN
+# ============================================================
 
 def main() -> int:
     print("=" * 70)
-    print("OPPORTUNITY HUNTER — croise styles × trends × events × produits")
+    print("OPPORTUNITY HUNTER — Voie A (explosion) × Voie B (niche gap)")
     print("=" * 70)
 
-    opportunities = hunt_opportunities()
-    if not opportunities:
-        print("\n✗ Aucune opportunité — données manquantes.")
-        print("   Lance d'abord :")
-        print("   1. python scripts/lib/seasonal_calendar.py")
-        print("   2. python scripts/agent_trendhunter.py (optionnel)")
+    styles_data = load_json(DATA_DIR / "styles_du_moment.json", {}).get("styles", {})
+    events_data = load_json(DATA_DIR / "upcoming_events.json", [])
+    explosion_data = load_json(DATA_DIR / "trend_explosion.json", {})
+    gap_data = load_json(DATA_DIR / "niche_gap.json", {})
+
+    if not styles_data:
+        print("✗ data/styles_du_moment.json absent.")
+        return 1
+    if not events_data:
+        print("✗ data/upcoming_events.json absent — lance d'abord seasonal_calendar.py")
         return 1
 
-    print(f"\n{len(opportunities)} opportunités identifiées. Top 15 :\n")
-    for i, o in enumerate(opportunities[:15], 1):
-        marker = "🔴" if o["event_days_away"] < 30 else "🟧" if o["event_days_away"] < 50 else "🟨"
-        print(f"{marker} #{i:>2}  score {o['composite_score']:.1f}  "
-              f"({o['estimated_roi_eur_monthly']})")
-        print(f"    {o['style_name']}")
-        print(f"    × {o['trend_keyword']}")
-        print(f"    × {o['event_name']} (J-{o['event_days_away']})")
-        print(f"    → {o['product_category']} sur {o['product_marche']}")
-        print(f"    {o['brief'][:100]}...")
-        print()
+    has_explosion = bool(explosion_data.get("top_exploding_niches"))
+    has_gap = bool(gap_data.get("top_underserved_niches"))
 
-    output_path = DATA_DIR / "opportunities.json"
-    output_path.write_text(json.dumps({
+    if not has_explosion:
+        print("⚠ data/trend_explosion.json vide — lance d'abord agent_trend_explosion.py")
+    if not has_gap:
+        print("⚠ data/niche_gap.json vide — lance d'abord agent_niche_gap.py")
+    if not has_explosion and not has_gap:
+        print("✗ Aucune des 2 sources de signal disponible. Abort.")
+        return 1
+
+    explosion_opps = hunt_explosion_opportunities(
+        styles_data, events_data, explosion_data) if has_explosion else []
+    gap_opps = hunt_niche_gap_opportunities(
+        styles_data, events_data, gap_data) if has_gap else []
+
+    # Affichage console
+    print(f"\n{'=' * 70}")
+    print(f"🔴 VOIE A — URGENT EXPLOSION  ({len(explosion_opps)} opportunités)")
+    print(f"   Action : SHIPPER VITE pour surfer la vague qui monte MAINTENANT")
+    print(f"{'=' * 70}")
+    if explosion_opps:
+        for i, o in enumerate(explosion_opps[:10], 1):
+            print(f"\n  #{i:>2}  score {o['composite_score']:.1f}  "
+                  f"({o['estimated_roi_eur_monthly']})")
+            print(f"      Style    : {o['style_name']}")
+            print(f"      Niche    : « {o['signal_niche']} » "
+                  f"(cross {o['signal_cross_subs']} subs)")
+            print(f"      Event    : {o['event_name']} (J-{o['event_days_away']})")
+            print(f"      Produit  : {o['product_category']} → {o['product_marche']}")
+            if o['signal_sample']:
+                print(f"      Preuve   : « {o['signal_sample'][:90]} »")
+    else:
+        print("  (aucune opportunité d'explosion détectée)")
+
+    print(f"\n{'=' * 70}")
+    print(f"🟦 VOIE B — STABLE NICHE GAP  ({len(gap_opps)} opportunités)")
+    print(f"   Action : CONSTRUIRE catalogue durable sur demande non comblée")
+    print(f"{'=' * 70}")
+    if gap_opps:
+        for i, o in enumerate(gap_opps[:10], 1):
+            print(f"\n  #{i:>2}  score {o['composite_score']:.1f}  "
+                  f"({o['estimated_roi_eur_monthly']})")
+            print(f"      Style    : {o['style_name']}")
+            print(f"      Gap      : « {o['gap_niche']} » "
+                  f"(cross {o['gap_cross_subs']} subs, "
+                  f"r/{o['gap_sample_subreddit']})")
+            print(f"      Event    : {o['event_name']} (J-{o['event_days_away']})")
+            print(f"      Produit  : {o['product_category']} → {o['product_marche']}")
+            if o['gap_sample_title']:
+                print(f"      Preuve   : « {o['gap_sample_title'][:90]} »")
+    else:
+        print("  (aucune opportunité de niche gap détectée)")
+
+    output = {
         "generated_at": datetime.utcnow().isoformat() + "Z",
-        "opportunities_count": len(opportunities),
-        "opportunities": opportunities,
-    }, indent=2, default=str))
+        "voie_a_explosion": {
+            "count": len(explosion_opps),
+            "description": "Opportunités URGENTES : niche en explosion + style + event proche. À shipper sous 2-7 jours.",
+            "opportunities": explosion_opps,
+        },
+        "voie_b_niche_gap": {
+            "count": len(gap_opps),
+            "description": "Opportunités STABLES : demande non comblée + catalogue à construire. ROI long terme.",
+            "opportunities": gap_opps,
+        },
+    }
+    output_path = DATA_DIR / "opportunities.json"
+    output_path.write_text(json.dumps(output, indent=2, default=str, ensure_ascii=False))
+
+    print(f"\n{'=' * 70}")
     print(f"→ Sauvegardé : {output_path}")
-    print("\nProchaine étape : tu choisis une opportunité, je lance le pipeline correspondant.")
+    print(f"   {len(explosion_opps)} opportunités explosion + {len(gap_opps)} niche gap")
+    print(f"{'=' * 70}")
     return 0
 
 
