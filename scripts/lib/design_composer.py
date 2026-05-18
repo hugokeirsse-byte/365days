@@ -452,9 +452,10 @@ LAYOUT_BIBLE_VERSE = DesignLayout(
     background_overlay=(252, 248, 235, 180),
     blur_bg=4.0,
     text_zones=[
-        TextZone(text_key="reference", center_xy_pct=(0.5, 0.12),
-                 max_box_pct=(0.7, 0.06), font_role="title_italic",
-                 color=(120, 80, 30), max_lines=1, auto_size=True),
+        TextZone(text_key="reference", center_xy_pct=(0.5, 0.13),
+                 max_box_pct=(0.7, 0.08), font_role="title_italic",
+                 color=(120, 80, 30), max_lines=1, auto_size=False,
+                 fallback_size=90),
         TextZone(text_key="verse", center_xy_pct=(0.5, 0.50),
                  max_box_pct=(0.82, 0.55), font_role="title_serif",
                  color=(40, 30, 25), max_lines=6, auto_size=True),
