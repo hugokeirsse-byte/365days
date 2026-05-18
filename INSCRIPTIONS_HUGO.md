@@ -57,6 +57,14 @@ Fais ces 4 choses dans l'ordre demain matin. Tout est gratuit, sans CB requise.
 - [ ] **7. Society6 Artist** — https://society6.com/create-store (5 min)
   Premium art prints (posters HD, art mural). 10% sur prints.
 
+- [ ] **7bis. Printify** — https://printify.com (5 min)
+  Alternative Printful, énorme catalogue, marges souvent meilleures.
+  Gratuit base, Premium 24$/mois (à reporter cash flow).
+
+- [ ] **7ter. Prodigi** — https://www.prodigi.com (5 min)
+  POD UK premium : wall art encadré, photo books, **gravure laser**
+  (utile pour Château Local). Gratuit.
+
 ### Jeux POD (ta meilleure idée)
 - [ ] **8. The Game Crafter (TGC)** — https://www.thegamecrafter.com (5 min)
   POD jeux de société. Tu uploadeas notre futur `produce_card_game.py`.
@@ -145,6 +153,26 @@ Fais ces 4 choses dans l'ordre demain matin. Tout est gratuit, sans CB requise.
 
 - [ ] **31. Reddit Dev** — https://www.reddit.com/prefs/apps (5 min)
   API gratuite pour scraping améliorés.
+
+### 🎮 GameDev Asset Marketplaces (nouveau pilier — assets pour créateurs de jeux)
+- [ ] **32. itch.io** — https://itch.io/register (5 min)
+  Marketplace assets indie. Gratuit total, communauté massive.
+  Vente sprites, sons, musique, kits, packs complets. Revenu share ajustable.
+
+- [ ] **33. Unity Publisher** — https://publisher.unity.com (15 min)
+  Unity Asset Store. Gratuit à l'inscription. 30% commission.
+  Marché premium pour assets pros (sprites 2D, tilesets, SFX).
+
+- [ ] **34. Fab Marketplace** (Epic Games) — https://www.fab.com (10 min)
+  Nouveau marketplace unifié Epic. Successeur Unreal Marketplace + Sketchfab.
+  Commission 12% (la meilleure du marché). Gratuit.
+
+- [ ] **35. GameDev Market** — https://www.gamedevmarket.net (5 min)
+  Marketplace assets gamedev gratuit à l'inscription.
+
+- [ ] **36. OpenGameArt** — https://opengameart.org (5 min)
+  Plateforme gratuite assets CC. Pas de revenu direct mais build
+  réputation et lien vers stores payants.
 
 ---
 
