@@ -1,0 +1,15 @@
+{
+  "design_id": "idiom_v2_german_i_only_understand_train_station",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "language": "german",
+  "original": "Ich verstehe nur Bahnhof",
+  "literal_translation": "I only understand train station",
+  "actual_meaning": "I don't understand anything",
+  "title": "I only understand train station — Funny German Idiom Translation Print",
+  "tags_etsy": "funny german idiom, german learning, language learner gift, polyglot art, linguistics print, translation humor, german expression, language teacher gift, etymology art, literal translation, language nerd, idiom wall art, humor poster",
+  "price_etsy": 4.99,
+  "files_included": "etsy_preview.jpg, print_3000.png",
+  "illust_prompt_used": "confused person standing in busy train station with question marks floating around their head, vintage train station with steam and crowds, watercolor illustration, humorous tone, centered illustration, editorial poster quality, ABSOLUTELY NO TEXT NO LETTERS NO WORDS in the image, clean composition with white margins",
+  "seed": 16987
+}
