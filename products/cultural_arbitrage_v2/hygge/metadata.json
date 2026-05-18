@@ -1,0 +1,15 @@
+{
+  "design_id": "cultural_v2_hygge",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "expression": "Hygge",
+  "language": "danish",
+  "meaning": "cozy contentment, the art of comfort",
+  "mood": "cozy",
+  "title": "Hygge — Danish Word Print Untranslatable Definition Art",
+  "tags_etsy": "hygge, danish word, danish art, untranslatable word, language gift, definition print, minimalist art, wall art, literary gift, polyglot gift, etymology print, cozy aesthetic, typography poster",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png (3000x3000)",
+  "bg_prompt_used": "soft warm cream textured paper background with subtle hygge elements candles tea cups very faded delicate ABSOLUTELY NO TEXT NO LETTERS",
+  "seed": 12954
+}

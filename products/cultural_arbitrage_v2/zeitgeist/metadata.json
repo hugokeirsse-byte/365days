@@ -1,0 +1,15 @@
+{
+  "design_id": "cultural_v2_zeitgeist",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "expression": "Zeitgeist",
+  "language": "german",
+  "meaning": "the spirit of the times",
+  "mood": "philosophical",
+  "title": "Zeitgeist — German Word Print Untranslatable Definition Art",
+  "tags_etsy": "zeitgeist, german word, german art, untranslatable word, language gift, definition print, minimalist art, wall art, literary gift, polyglot gift, etymology print, philosophical aesthetic, typography poster",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png (3000x3000)",
+  "bg_prompt_used": "deep navy and antique gold marble texture intellectual classical aesthetic faded ABSOLUTELY NO TEXT NO LETTERS",
+  "seed": 183838
+}

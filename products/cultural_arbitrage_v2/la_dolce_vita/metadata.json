@@ -1,0 +1,15 @@
+{
+  "design_id": "cultural_v2_la_dolce_vita",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "expression": "La Dolce Vita",
+  "language": "italian",
+  "meaning": "the sweet life, the good life",
+  "mood": "joyful",
+  "title": "La Dolce Vita — Italian Word Print Untranslatable Definition Art",
+  "tags_etsy": "la dolce vita, italian word, italian art, untranslatable word, language gift, definition print, minimalist art, wall art, literary gift, polyglot gift, etymology print, joyful aesthetic, typography poster",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png (3000x3000)",
+  "bg_prompt_used": "warm sunshine yellow cream background with subtle italian rural elements faded delicate ABSOLUTELY NO TEXT NO LETTERS",
+  "seed": 61477
+}
