@@ -1,0 +1,201 @@
+card_id,card_type,category,text,multiplier,image_file
+TRA_041,trait,Digital Addict,Unironically uses 'TikTok slang' in real-life conversations with actual human adults.,,specs/roast_and_boast_us_base/cards/traits/TRA_041.png
+TRA_042,trait,Digital Addict,Will film a 15-second video of a tragedy or a car crash before even thinking about calling 911.,,specs/roast_and_boast_us_base/cards/traits/TRA_042.png
+TRA_043,trait,Digital Addict,Has a secret finsta (fake Instagram) purely used to spy on people they claim to hate.,,specs/roast_and_boast_us_base/cards/traits/TRA_043.png
+TRA_044,trait,Digital Addict,"Their phone is constantly at 3% battery, yet they refuse to carry a charger and borrow everyone else's.",,specs/roast_and_boast_us_base/cards/traits/TRA_044.png
+TRA_045,trait,Digital Addict,Spends 45 minutes trying to find the perfect meme to reply to a text that required a simple 'yes'.,,specs/roast_and_boast_us_base/cards/traits/TRA_045.png
+TRA_046,trait,Digital Addict,Would genuinely suffer from physical withdrawal symptoms if they lost access to their phone for 2 hours.,,specs/roast_and_boast_us_base/cards/traits/TRA_046.png
+TRA_047,trait,Digital Addict,Has matched with the same person on three different dating apps and got ghosted on all of them.,,specs/roast_and_boast_us_base/cards/traits/TRA_047.png
+TRA_048,trait,Digital Addict,Takes a photo of their meal from six different angles while their friends starve in silence.,,specs/roast_and_boast_us_base/cards/traits/TRA_048.png
+TRA_049,trait,Digital Addict,Leaves people on 'Read' for three days and then replies with 'Omg so sorry I just saw this!'.,,specs/roast_and_boast_us_base/cards/traits/TRA_049.png
+TRA_050,trait,Digital Addict,Thinks having a curated aesthetic on Pinterest qualifies as having a real personality.,,specs/roast_and_boast_us_base/cards/traits/TRA_050.png
+TRA_051,trait,Romantic Disasters,Falls deeply in love with a retail worker or a barista just because they smiled and said 'Have a nice day'.,,specs/roast_and_boast_us_base/cards/traits/TRA_051.png
+TRA_052,trait,Romantic Disasters,Their type in partners can be best described as 'a walking project that needs heavy psychological rehabilitation'.,,specs/roast_and_boast_us_base/cards/traits/TRA_052.png
+TRA_053,trait,Romantic Disasters,Will ignore 57 red flags just because the person has nice hair or a cool music taste.,,specs/roast_and_boast_us_base/cards/traits/TRA_053.png
+TRA_054,trait,Romantic Disasters,Has broken up and gotten back together with the same toxic person more times than a fast-food menu changes.,,specs/roast_and_boast_us_base/cards/traits/TRA_054.png
+TRA_055,trait,Romantic Disasters,Constantly complains about being single but rejects anyone who shows genuine interest because it's 'too easy'.,,specs/roast_and_boast_us_base/cards/traits/TRA_055.png
+TRA_056,trait,Romantic Disasters,Will plan a whole wedding in their head after a first date that lasted exactly 45 minutes.,,specs/roast_and_boast_us_base/cards/traits/TRA_056.png
+TRA_057,trait,Romantic Disasters,Convinced themselves that their toxic ex is 'the one that got away' instead of 'the one that thankfully left'.,,specs/roast_and_boast_us_base/cards/traits/TRA_057.png
+TRA_058,trait,Romantic Disasters,Has a 'hiding spot' in their room for things they don't want a romantic partner to discover on a first visit.,,specs/roast_and_boast_us_base/cards/traits/TRA_058.png
+TRA_059,trait,Romantic Disasters,Sends a screenshot of a text conversation to the wrong person—specifically the person the text was about.,,specs/roast_and_boast_us_base/cards/traits/TRA_059.png
+TRA_060,trait,Romantic Disasters,Would definitely go on a reality TV dating show just to become a micro-influencer.,,specs/roast_and_boast_us_base/cards/traits/TRA_060.png
+TRA_061,trait,Financial Chaos,Buys a $7 iced coffee every morning but claims they will never buy a house because of 'the system'.,,specs/roast_and_boast_us_base/cards/traits/TRA_061.png
+TRA_062,trait,Financial Chaos,Will Venmo request a friend for $1.50 after splitting a cheap snack.,,specs/roast_and_boast_us_base/cards/traits/TRA_062.png
+TRA_063,trait,Financial Chaos,Has a gym membership they haven't used since the Obama administration but refuses to cancel it 'just in case'.,,specs/roast_and_boast_us_base/cards/traits/TRA_063.png
+TRA_064,trait,Financial Chaos,Owns three different credit cards and treats them like free money generators rather than crushing debt.,,specs/roast_and_boast_us_base/cards/traits/TRA_064.png
+TRA_065,trait,Financial Chaos,Would rather spend $40 on DoorDash delivery fees than walk two blocks to pick up the food themselves.,,specs/roast_and_boast_us_base/cards/traits/TRA_065.png
+TRA_066,trait,Financial Chaos,Always conveniently goes to the bathroom right when the restaurant bill arrives at the table.,,specs/roast_and_boast_us_base/cards/traits/TRA_066.png
+TRA_067,trait,Financial Chaos,Buys expensive concert tickets on a whim and then lives off instant ramen and tap water for a month.,,specs/roast_and_boast_us_base/cards/traits/TRA_067.png
+TRA_068,trait,Financial Chaos,Has a spreadsheet for their budget but stopped filling it out because looking at the numbers caused panic attacks.,,specs/roast_and_boast_us_base/cards/traits/TRA_068.png
+TRA_069,trait,Financial Chaos,Will spend $200 on a night out but will argue with a parking meter over 50 cents.,,specs/roast_and_boast_us_base/cards/traits/TRA_069.png
+TRA_070,trait,Financial Chaos,Their primary investment strategy is literally buying lottery tickets and crossing their fingers.,,specs/roast_and_boast_us_base/cards/traits/TRA_070.png
+TRA_071,trait,Laziness & Hygiene,Will spray an aggressive amount of dry shampoo and cologne instead of just taking a 5-minute shower.,,specs/roast_and_boast_us_base/cards/traits/TRA_071.png
+TRA_072,trait,Laziness & Hygiene,Has a pile of clothes on 'The Chair' that has developed its own micro-ecosystem and political system.,,specs/roast_and_boast_us_base/cards/traits/TRA_072.png
+TRA_073,trait,Laziness & Hygiene,Would rather holding their breath and live in filth than take out a trash bag that is literally overflowing.,,specs/roast_and_boast_us_base/cards/traits/TRA_073.png
+TRA_074,trait,Laziness & Hygiene,Has used the same bath towel for three weeks straight under the logic that 'I'm clean when I use it'.,,specs/roast_and_boast_us_base/cards/traits/TRA_074.png
+TRA_075,trait,Laziness & Hygiene,Will cancel plans with friends solely because the idea of putting on pants with a zipper feels like too much work.,,specs/roast_and_boast_us_base/cards/traits/TRA_075.png
+TRA_076,trait,Laziness & Hygiene,Their car interior looks like a recycling bin for fast-food bags and empty energy drink cans.,,specs/roast_and_boast_us_base/cards/traits/TRA_076.png
+TRA_077,trait,Laziness & Hygiene,Has eaten leftovers that smelled slightly questionable just because they didn't want to cook anything new.,,specs/roast_and_boast_us_base/cards/traits/TRA_077.png
+TRA_078,trait,Laziness & Hygiene,Will text someone who is in the exact same house just to avoid walking up a flight of stairs.,,specs/roast_and_boast_us_base/cards/traits/TRA_078.png
+TRA_079,trait,Laziness & Hygiene,Hasn't changed their bed sheets since the last time they had a romantic prospect over—months ago.,,specs/roast_and_boast_us_base/cards/traits/TRA_079.png
+TRA_080,trait,Laziness & Hygiene,Would rather drive around a parking lot for 15 minutes than park further away and walk for 30 seconds.,,specs/roast_and_boast_us_base/cards/traits/TRA_080.png
+TRA_081,trait,Corporate Misery,Has actively practiced their 'fake corporate phone voice' to sound like a functioning member of society.,,specs/roast_and_boast_us_base/cards/traits/TRA_081.png
+TRA_082,trait,Corporate Misery,Sends Slack or Teams messages at 11:00 PM just so their boss thinks they have a work ethic.,,specs/roast_and_boast_us_base/cards/traits/TRA_082.png
+TRA_083,trait,Corporate Misery,"Steals an absurd amount of office supplies, snacks, and coffee pods from the company breakroom.",,specs/roast_and_boast_us_base/cards/traits/TRA_083.png
+TRA_084,trait,Corporate Misery,Has definitely cried in a corporate bathroom stall or a parked car during a lunch break.,,specs/roast_and_boast_us_base/cards/traits/TRA_084.png
+TRA_085,trait,Corporate Misery,"Their entire professional identity is based on buzzwords like 'synergy', 'touch base', and 'circle back'.",,specs/roast_and_boast_us_base/cards/traits/TRA_085.png
+TRA_086,trait,Corporate Misery,Will schedule a 1-hour meeting that could have easily been a three-word text message.,,specs/roast_and_boast_us_base/cards/traits/TRA_086.png
+TRA_087,trait,Corporate Misery,Has 'Open to Work' on LinkedIn but clears their schedule the second a recruiter actually reaches out.,,specs/roast_and_boast_us_base/cards/traits/TRA_087.png
+TRA_088,trait,Corporate Misery,Spends 80% of their working hours looking at flights or online shopping on a secondary monitor.,,specs/roast_and_boast_us_base/cards/traits/TRA_088.png
+TRA_089,trait,Corporate Misery,Nods aggressively during business meetings while having absolutely no clue what the company actually sells.,,specs/roast_and_boast_us_base/cards/traits/TRA_089.png
+TRA_090,trait,Corporate Misery,Would gladly sell out their closest coworker for a 2% salary raise and a slightly bigger desk.,,specs/roast_and_boast_us_base/cards/traits/TRA_090.png
+TRA_091,trait,Nightlife Disasters,"Always insists on playing DJ in the car or at a party, only to skip every song after 30 seconds.",,specs/roast_and_boast_us_base/cards/traits/TRA_091.png
+TRA_092,trait,Nightlife Disasters,Takes one shot of cheap tequila and suddenly speaks with a fake British accent for the rest of the night.,,specs/roast_and_boast_us_base/cards/traits/TRA_092.png
+TRA_093,trait,Nightlife Disasters,Will Irish-exit (disappear without saying goodbye) from a bar at 11:00 PM to go home and eat shredded cheese over the sink.,,specs/roast_and_boast_us_base/cards/traits/TRA_093.png
+TRA_094,trait,Nightlife Disasters,Suggests going out for 'just one quiet drink' and ends up crying in a fast-food parking lot at 4:00 AM.,,specs/roast_and_boast_us_base/cards/traits/TRA_094.png
+TRA_095,trait,Nightlife Disasters,Vapes so aggressively and constantly that they look like a broken steam engine from the 19th century.,,specs/roast_and_boast_us_base/cards/traits/TRA_095.png
+TRA_096,trait,Nightlife Disasters,"Will aggressively suggest taking shots, but then hypes everyone else up while secretly pouring theirs into a nearby plant.",,specs/roast_and_boast_us_base/cards/traits/TRA_096.png
+TRA_097,trait,Nightlife Disasters,"Spends the entire party sitting on the couch scrolling through TikTok, then posts a story captioning it 'Best night ever!'.",,specs/roast_and_boast_us_base/cards/traits/TRA_097.png
+TRA_098,trait,Nightlife Disasters,Will ruin the entire vibe of a pre-game by trauma-dumping about their childhood memories out of nowhere.,,specs/roast_and_boast_us_base/cards/traits/TRA_098.png
+TRA_099,trait,Nightlife Disasters,Always 'forgets' their wallet when going out but promises to 'Venmo you tomorrow' (they never do).,,specs/roast_and_boast_us_base/cards/traits/TRA_099.png
+TRA_100,trait,Nightlife Disasters,Attempts to do a backflip or a split on the dance floor and pulls a muscle so badly they need medical attention.,,specs/roast_and_boast_us_base/cards/traits/TRA_100.png
+TRA_101,trait,Health Guru,Diagnoses themselves with 4 different rare psychological conditions after watching two 30-second TikTok videos.,,specs/roast_and_boast_us_base/cards/traits/TRA_101.png
+TRA_102,trait,Health Guru,"Buys a $12 green juice made of grass and celery dust, convinced it is actively reversing 10 years of terrible lifestyle choices.",,specs/roast_and_boast_us_base/cards/traits/TRA_102.png
+TRA_103,trait,Health Guru,Will look up a mild headache on WebMD and immediately start drafting a last will and testament on their notes app.,,specs/roast_and_boast_us_base/cards/traits/TRA_103.png
+TRA_104,trait,Health Guru,"Tries a new diet for exactly 36 hours and acts like an insufferable, enlightened cult leader to everyone else.",,specs/roast_and_boast_us_base/cards/traits/TRA_104.png
+TRA_105,trait,Health Guru,"Owns an expensive water bottle that tracks their hydration, but uses it mostly to hide iced coffee or wine.",,specs/roast_and_boast_us_base/cards/traits/TRA_105.png
+TRA_106,trait,Health Guru,"Claims to have a severe food allergy to sound interesting at restaurants, but will happily eat the exact same food when drunk.",,specs/roast_and_boast_us_base/cards/traits/TRA_106.png
+TRA_107,trait,Health Guru,Spends $300 on vitamins and supplements that sit untouched in a cabinet until they expire.,,specs/roast_and_boast_us_base/cards/traits/TRA_107.png
+TRA_108,trait,Health Guru,Will complain about being chronically exhausted while drinking a giant energy drink at midnight.,,specs/roast_and_boast_us_base/cards/traits/TRA_108.png
+TRA_109,trait,Health Guru,Claims that 'nature is my therapy' but gets a massive panic attack the second a medium-sized bug flies near them.,,specs/roast_and_boast_us_base/cards/traits/TRA_109.png
+TRA_110,trait,Health Guru,"Refuses to take a standard ibuprofen for a fever, opting instead for a weird crystal or a specialized tea that smells like wet dog.",,specs/roast_and_boast_us_base/cards/traits/TRA_110.png
+TRA_111,trait,Petty Behavior,"Will deliberately post a group photo on social media where they look incredible, even if everyone else's eyes are closed.",,specs/roast_and_boast_us_base/cards/traits/TRA_111.png
+TRA_112,trait,Petty Behavior,Holds a grudge over a board game argument or a minor text slight that occurred during the Obama administration.,,specs/roast_and_boast_us_base/cards/traits/TRA_112.png
+TRA_113,trait,Petty Behavior,Will aggressively clear their throat or sigh loudly instead of politely asking someone to move out of the way.,,specs/roast_and_boast_us_base/cards/traits/TRA_113.png
+TRA_114,trait,Petty Behavior,"Unfollows people on Instagram just to see if they notice and follow up with a 'hey, is everything okay?' text.",,specs/roast_and_boast_us_base/cards/traits/TRA_114.png
+TRA_115,trait,Petty Behavior,Will stalk an enemy's LinkedIn profile using 'Private Mode' like a highly trained corporate spy.,,specs/roast_and_boast_us_base/cards/traits/TRA_115.png
+TRA_116,trait,Petty Behavior,Leaves an empty toilet paper roll on the holder and just balances a new roll precariously on top of it.,,specs/roast_and_boast_us_base/cards/traits/TRA_116.png
+TRA_117,trait,Petty Behavior,"Will reply to an incredibly long, emotional message with a single thumbs-up emoji response.",,specs/roast_and_boast_us_base/cards/traits/TRA_117.png
+TRA_118,trait,Petty Behavior,Remembers exactly who didn't wish them a happy birthday and secretly plots to do the same when their time comes.,,specs/roast_and_boast_us_base/cards/traits/TRA_118.png
+TRA_119,trait,Petty Behavior,"Will mute a group chat because people are talking too much, then get mad when plans are made without them.",,specs/roast_and_boast_us_base/cards/traits/TRA_119.png
+TRA_120,trait,Petty Behavior,"Borrows a piece of clothing, wears it to death, and returns it months later smelling like a completely different household.",,specs/roast_and_boast_us_base/cards/traits/TRA_120.png
+TRA_121,trait,Obsessions,Knows the entire romantic history and chart performance of Taylor Swift but doesn't know their own bank account balance.,,specs/roast_and_boast_us_base/cards/traits/TRA_121.png
+TRA_122,trait,Obsessions,Listens to true crime podcasts about gruesome serial killers to 'relax' and fall asleep at night.,,specs/roast_and_boast_us_base/cards/traits/TRA_122.png
+TRA_123,trait,Obsessions,Bases 90% of their political and social beliefs on infographics posted by meme accounts.,,specs/roast_and_boast_us_base/cards/traits/TRA_123.png
+TRA_124,trait,Obsessions,Will quote lines from 'The Office' or 'Friends' as if it's original comedy they invented themselves.,,specs/roast_and_boast_us_base/cards/traits/TRA_124.png
+TRA_125,trait,Obsessions,Still acts like their Hogwarts House assignment is a definitive and crucial psychological profile.,,specs/roast_and_boast_us_base/cards/traits/TRA_125.png
+TRA_126,trait,Obsessions,Watched one Formula 1 documentary on Netflix and now acts like a mechanical engineer and a racing expert.,,specs/roast_and_boast_us_base/cards/traits/TRA_126.png
+TRA_127,trait,Obsessions,Will defend a multi-millionaire celebrity online against random strangers as if it's their biological mother.,,specs/roast_and_boast_us_base/cards/traits/TRA_127.png
+TRA_128,trait,Obsessions,Has a Pinterest board dedicated to a lavish mansion lifestyle they will realistically never afford.,,specs/roast_and_boast_us_base/cards/traits/TRA_128.png
+TRA_129,trait,Obsessions,"Is unironically convinced that retro gaming or buying vinyl records counts as having a deep, complex personality.",,specs/roast_and_boast_us_base/cards/traits/TRA_129.png
+TRA_130,trait,Obsessions,Will re-watch the same comfort TV show for the 14th time instead of starting a highly recommended 2-hour movie.,,specs/roast_and_boast_us_base/cards/traits/TRA_130.png
+TRA_131,trait,Moral Superiority,"Buys vintage clothes at thrift stores, marks up the price by 300%, and calls it an 'eco-friendly fashion curation business'.",,specs/roast_and_boast_us_base/cards/traits/TRA_131.png
+TRA_132,trait,Moral Superiority,Acts like drinking their coffee black makes them tougher and more mature than everyone else in the room.,,specs/roast_and_boast_us_base/cards/traits/TRA_132.png
+TRA_133,trait,Moral Superiority,Will judgingly look at your shopping cart at the grocery store if it contains too many processed snacks.,,specs/roast_and_boast_us_base/cards/traits/TRA_133.png
+TRA_134,trait,Moral Superiority,Constantly brags about 'not owning a TV' while spending 9 hours a day staring at a phone screen.,,specs/roast_and_boast_us_base/cards/traits/TRA_134.png
+TRA_135,trait,Moral Superiority,Tells everyone they are 'doing a social media detox' via an incredibly long post across all social media platforms.,,specs/roast_and_boast_us_base/cards/traits/TRA_135.png
+TRA_136,trait,Moral Superiority,"Unironically believes that people are intimidated by them, when in reality, people just find them incredibly exhausting.",,specs/roast_and_boast_us_base/cards/traits/TRA_136.png
+TRA_137,trait,Moral Superiority,"Will use the phrase 'everything happens for a reason' to someone who just experienced a horrific, life-ruining event.",,specs/roast_and_boast_us_base/cards/traits/TRA_137.png
+TRA_138,trait,Moral Superiority,Acts like reading non-fiction self-help books makes them inherently superior to people who read for actual fun.,,specs/roast_and_boast_us_base/cards/traits/TRA_138.png
+TRA_139,trait,Moral Superiority,Will lecture you about the environment while ordering 4 plastic packages from Amazon every single week.,,specs/roast_and_boast_us_base/cards/traits/TRA_139.png
+TRA_140,trait,Moral Superiority,Thinks that traveling to another country for two weeks completely re-wired their soul and made them a citizen of the universe.,,specs/roast_and_boast_us_base/cards/traits/TRA_140.png
+TRA_141,trait,Overthinker,Will spend 35 minutes analyzing the punctuation of a text message that just says 'Ok'.,,specs/roast_and_boast_us_base/cards/traits/TRA_141.png
+TRA_142,trait,Overthinker,Is convinced that a coworker hates them because they didn't say 'good morning' with enough enthusiasm.,,specs/roast_and_boast_us_base/cards/traits/TRA_142.png
+TRA_143,trait,Overthinker,Replays an embarrassing conversation they had in 2016 in their head while trying to fall asleep tonight.,,specs/roast_and_boast_us_base/cards/traits/TRA_143.png
+TRA_144,trait,Overthinker,"Will check if the front door is locked four separate times, walk away, and still worry about it all night.",,specs/roast_and_boast_us_base/cards/traits/TRA_144.png
+TRA_145,trait,Overthinker,"Apologizes for apologizing too much, creating an infinite loop of social awkwardness.",,specs/roast_and_boast_us_base/cards/traits/TRA_145.png
+TRA_146,trait,Overthinker,Will read an entire restaurant menu online three days before going out because making a choice under pressure scares them.,,specs/roast_and_boast_us_base/cards/traits/TRA_146.png
+TRA_147,trait,Overthinker,Convinced that every minor physical symptom is the indicator of an extremely rare and terminal medical anomaly.,,specs/roast_and_boast_us_base/cards/traits/TRA_147.png
+TRA_148,trait,Overthinker,"Drafts a text message in their Notes app, edits it three times, and then decides not to send it at all.",,specs/roast_and_boast_us_base/cards/traits/TRA_148.png
+TRA_149,trait,Overthinker,"Thinks that everyone in the room is looking at them and judging their outfit, when in reality, everyone is just looking at their phones.",,specs/roast_and_boast_us_base/cards/traits/TRA_149.png
+TRA_150,trait,Overthinker,"Will create a worse-case scenario matrix in their head for a completely normal, low-stakes situation.",,specs/roast_and_boast_us_base/cards/traits/TRA_150.png
+TRA_151,trait,Driving Disasters,"Will scream profanities at a grandmother blocking traffic, but immediately acts polite if they make eye contact.",,specs/roast_and_boast_us_base/cards/traits/TRA_151.png
+TRA_152,trait,Driving Disasters,Needs to turn down the car radio entirely just so they can 'see better' while parallel parking.,,specs/roast_and_boast_us_base/cards/traits/TRA_152.png
+TRA_153,trait,Driving Disasters,Treats the highway speed limit like a casual suggestion and tailgates people like a professional race car driver.,,specs/roast_and_boast_us_base/cards/traits/TRA_153.png
+TRA_154,trait,Driving Disasters,Has zero sense of direction and will confidently drive 20 miles in the wrong direction because 'GPS feels wrong'.,,specs/roast_and_boast_us_base/cards/traits/TRA_154.png
+TRA_155,trait,Driving Disasters,Uses their blinker exactly 0.5 seconds after they have already started turning the steering wheel.,,specs/roast_and_boast_us_base/cards/traits/TRA_155.png
+TRA_156,trait,Driving Disasters,Their driving style is so chaotic and aggressive that being their passenger requires signing an unwritten life insurance waiver.,,specs/roast_and_boast_us_base/cards/traits/TRA_156.png
+TRA_157,trait,Driving Disasters,"Will panic and miss their highway exit, then proceed to cut across three lanes of traffic to save 2 minutes.",,specs/roast_and_boast_us_base/cards/traits/TRA_157.png
+TRA_158,trait,Driving Disasters,"Gets into a screaming match with an inanimate object, like a malfunctioning parking garage ticket machine.",,specs/roast_and_boast_us_base/cards/traits/TRA_158.png
+TRA_159,trait,Driving Disasters,"Refuses to ever be the one who drives on road trips, but sits in the passenger seat critiquing every single turn.",,specs/roast_and_boast_us_base/cards/traits/TRA_159.png
+TRA_160,trait,Driving Disasters,Their car has a collection of mysterious dents and scratches that they claim 'just appeared overnight'.,,specs/roast_and_boast_us_base/cards/traits/TRA_160.png
+TRA_161,trait,Food Crimes,Will eat a slice of pizza starting from the crust end like a literal psychopath.,,specs/roast_and_boast_us_base/cards/traits/TRA_161.png
+TRA_162,trait,Food Crimes,"Puts ketchup on high-quality steak or sushi, deeply offending anyone with taste buds.",,specs/roast_and_boast_us_base/cards/traits/TRA_162.png
+TRA_163,trait,Food Crimes,Will double-dip their chip into the communal guacamole after taking a massive bite.,,specs/roast_and_boast_us_base/cards/traits/TRA_163.png
+TRA_164,trait,Food Crimes,"Takes the last slice of pizza or cake without asking, leaving a empty box in the fridge to mock everyone.",,specs/roast_and_boast_us_base/cards/traits/TRA_164.png
+TRA_165,trait,Food Crimes,"Cooks fish or burns popcorn in the office microwave, causing a localized evacuation of the building.",,specs/roast_and_boast_us_base/cards/traits/TRA_165.png
+TRA_166,trait,Food Crimes,Chews their food so loudly that it sounds like a horse walking through heavy mud.,,specs/roast_and_boast_us_base/cards/traits/TRA_166.png
+TRA_167,trait,Food Crimes,"Will steal a single fry or a bite of food from your plate while saying 'I don't want to order anything, I'm not hungry'.",,specs/roast_and_boast_us_base/cards/traits/TRA_167.png
+TRA_168,trait,Food Crimes,"Orders a massive, overly complicated custom meal at a restaurant and then complains that it tastes weird.",,specs/roast_and_boast_us_base/cards/traits/TRA_168.png
+TRA_169,trait,Food Crimes,Puts an empty milk carton back in the fridge just so they aren't the one who has to throw it away.,,specs/roast_and_boast_us_base/cards/traits/TRA_169.png
+TRA_170,trait,Food Crimes,"Uses a metal fork on a non-stick Teflon pan, scratching it to pieces without a single care in the world.",,specs/roast_and_boast_us_base/cards/traits/TRA_170.png
+TRA_171,trait,Absolute Chaos,Will look at a sign that says 'Wet Paint' and immediately touch it with their bare hand to check.,,specs/roast_and_boast_us_base/cards/traits/TRA_171.png
+TRA_172,trait,Absolute Chaos,Laughs at a highly inappropriate moment during a serious or solemn movie scene.,,specs/roast_and_boast_us_base/cards/traits/TRA_172.png
+TRA_173,trait,Absolute Chaos,Can remember a random lyric from a 2000s pop song but forgets the name of the person they met 30 seconds ago.,,specs/roast_and_boast_us_base/cards/traits/TRA_173.png
+TRA_174,trait,Absolute Chaos,"Will buy a highly specific gadget (like an egg poacher) used once, then stores it in the abyss of a cabinet forever.",,specs/roast_and_boast_us_base/cards/traits/TRA_174.png
+TRA_175,trait,Absolute Chaos,"Sets 14 different alarms on their phone at 5-minute intervals, only to sleep through all of them.",,specs/roast_and_boast_us_base/cards/traits/TRA_175.png
+TRA_176,trait,Absolute Chaos,"Walks into a room with absolute purpose, forgets why they came in, stares at the wall, and walks out.",,specs/roast_and_boast_us_base/cards/traits/TRA_176.png
+TRA_177,trait,Absolute Chaos,"Will tell a story that takes 20 minutes to finish, only for the punchline to be completely uninteresting.",,specs/roast_and_boast_us_base/cards/traits/TRA_177.png
+TRA_178,trait,Absolute Chaos,"Has a 'junk drawer' containing 4 dead batteries, 12 mystery keys, a broken pen, and a receipt from 2019.",,specs/roast_and_boast_us_base/cards/traits/TRA_178.png
+TRA_179,trait,Absolute Chaos,"Will aggressively hit the crosswalk button 12 times, convinced it makes the light change faster.",,specs/roast_and_boast_us_base/cards/traits/TRA_179.png
+TRA_180,trait,Absolute Chaos,Still opens their mail with their bare hands like a raccoon tearing into a garbage bag.,,specs/roast_and_boast_us_base/cards/traits/TRA_180.png
+TRA_181,trait,Absolute Chaos,"Stares into an open fridge for 5 minutes hoping that new, gourmet food has miraculously spawned since they checked 10 minutes ago.",,specs/roast_and_boast_us_base/cards/traits/TRA_181.png
+TRA_182,trait,Absolute Chaos,"Will put on a completely new outfit just to go to the grocery store for 10 minutes, treating the aisle like a runway.",,specs/roast_and_boast_us_base/cards/traits/TRA_182.png
+TRA_183,trait,Absolute Chaos,"Answers a rhetorical question seriously, creating a heavy, awkward silence over the entire room.",,specs/roast_and_boast_us_base/cards/traits/TRA_183.png
+TRA_184,trait,Absolute Chaos,Will read the plot summary of a movie on Wikipedia while actively watching the movie next to you.,,specs/roast_and_boast_us_base/cards/traits/TRA_184.png
+TRA_185,trait,Absolute Chaos,Lies about having seen a classic movie just to avoid the exhausting 'Omg you haven't seen it?!' conversation.,,specs/roast_and_boast_us_base/cards/traits/TRA_185.png
+TRA_186,trait,Absolute Chaos,Will wave back at someone who was actually waving at the person standing directly behind them.,,specs/roast_and_boast_us_base/cards/traits/TRA_186.png
+TRA_187,trait,Absolute Chaos,Keeps the plastic protective film on electronic devices until it naturally peels off and looks disgusting.,,specs/roast_and_boast_us_base/cards/traits/TRA_187.png
+TRA_188,trait,Absolute Chaos,Will try to push a door that clearly and boldly says 'PULL' in high-contrast lettering.,,specs/roast_and_boast_us_base/cards/traits/TRA_188.png
+TRA_189,trait,Absolute Chaos,Has definitely Google-searched their own name in incognito mode just to see if they are internet-famous yet.,,specs/roast_and_boast_us_base/cards/traits/TRA_189.png
+TRA_190,trait,Absolute Chaos,Would definitely survive an actual horror movie scenario purely because they are too lazy or stubborn to investigate the weird noise in the basement.,,specs/roast_and_boast_us_base/cards/traits/TRA_190.png
+TAR_001,target,Table_Combat,The person to your right.,1,specs/roast_and_boast_us_base/cards/targets/TAR_001.png
+TAR_002,target,Table_Combat,The person to your right.,1,specs/roast_and_boast_us_base/cards/targets/TAR_002.png
+TAR_003,target,Table_Combat,The person to your right.,1,specs/roast_and_boast_us_base/cards/targets/TAR_003.png
+TAR_004,target,Table_Combat,The person to your left.,1,specs/roast_and_boast_us_base/cards/targets/TAR_004.png
+TAR_005,target,Table_Combat,The person to your left.,1,specs/roast_and_boast_us_base/cards/targets/TAR_005.png
+TAR_006,target,Table_Combat,The person to your left.,1,specs/roast_and_boast_us_base/cards/targets/TAR_006.png
+TAR_007,target,Table,The oldest player at the table.,1,specs/roast_and_boast_us_base/cards/targets/TAR_007.png
+TAR_008,target,Table,The oldest player at the table.,1,specs/roast_and_boast_us_base/cards/targets/TAR_008.png
+TAR_009,target,Table,The youngest player at the table.,1,specs/roast_and_boast_us_base/cards/targets/TAR_009.png
+TAR_010,target,Table,The youngest player at the table.,1,specs/roast_and_boast_us_base/cards/targets/TAR_010.png
+TAR_011,target,Table,"You (Yes, you are roasting/boasting yourself this round).",2,specs/roast_and_boast_us_base/cards/targets/TAR_011.png
+TAR_012,target,Table,"You (Yes, you are roasting/boasting yourself this round).",2,specs/roast_and_boast_us_base/cards/targets/TAR_012.png
+TAR_013,target,Judge,The Judge of this round.,2,specs/roast_and_boast_us_base/cards/targets/TAR_013.png
+TAR_014,target,Judge,The Judge of this round.,2,specs/roast_and_boast_us_base/cards/targets/TAR_014.png
+TAR_015,target,Judge,The Judge of this round.,2,specs/roast_and_boast_us_base/cards/targets/TAR_015.png
+TAR_016,target,Relatives,One of the parents of someone around this table.,2,specs/roast_and_boast_us_base/cards/targets/TAR_016.png
+TAR_017,target,Relatives,One of the parents of someone around this table.,2,specs/roast_and_boast_us_base/cards/targets/TAR_017.png
+TAR_018,target,Relatives,One of the parents of someone around this table.,2,specs/roast_and_boast_us_base/cards/targets/TAR_018.png
+TAR_019,target,Relatives,The sibling (brother/sister) of someone around this table.,2,specs/roast_and_boast_us_base/cards/targets/TAR_019.png
+TAR_020,target,Relatives,The sibling (brother/sister) of someone around this table.,2,specs/roast_and_boast_us_base/cards/targets/TAR_020.png
+TAR_021,target,Relatives,The sibling (brother/sister) of someone around this table.,2,specs/roast_and_boast_us_base/cards/targets/TAR_021.png
+TAR_022,target,Relatives,The significant other (boyfriend/girlfriend) of someone around this table.,3,specs/roast_and_boast_us_base/cards/targets/TAR_022.png
+TAR_023,target,Relatives,The significant other (boyfriend/girlfriend) of someone around this table.,3,specs/roast_and_boast_us_base/cards/targets/TAR_023.png
+TAR_024,target,Relatives,The significant other (boyfriend/girlfriend) of someone around this table.,3,specs/roast_and_boast_us_base/cards/targets/TAR_024.png
+TAR_025,target,Relatives,The most recent ex of someone around this table.,3,specs/roast_and_boast_us_base/cards/targets/TAR_025.png
+TAR_026,target,Relatives,The most recent ex of someone around this table.,3,specs/roast_and_boast_us_base/cards/targets/TAR_026.png
+TAR_027,target,Relatives,The most recent ex of someone around this table.,3,specs/roast_and_boast_us_base/cards/targets/TAR_027.png
+TAR_028,target,Absent,A mutual friend who is NOT in this room tonight.,2,specs/roast_and_boast_us_base/cards/targets/TAR_028.png
+TAR_029,target,Absent,A mutual friend who is NOT in this room tonight.,2,specs/roast_and_boast_us_base/cards/targets/TAR_029.png
+TAR_030,target,Absent,A mutual friend who is NOT in this room tonight.,2,specs/roast_and_boast_us_base/cards/targets/TAR_030.png
+BLANK_TRAIT_001,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_001.png
+BLANK_TRAIT_002,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_002.png
+BLANK_TRAIT_003,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_003.png
+BLANK_TRAIT_004,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_004.png
+BLANK_TRAIT_005,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_005.png
+BLANK_TRAIT_006,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_006.png
+BLANK_TRAIT_007,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_007.png
+BLANK_TRAIT_008,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_008.png
+BLANK_TRAIT_009,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_009.png
+BLANK_TRAIT_010,blank_trait,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TRAIT_010.png
+BLANK_TARGET_001,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_001.png
+BLANK_TARGET_002,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_002.png
+BLANK_TARGET_003,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_003.png
+BLANK_TARGET_004,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_004.png
+BLANK_TARGET_005,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_005.png
+BLANK_TARGET_006,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_006.png
+BLANK_TARGET_007,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_007.png
+BLANK_TARGET_008,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_008.png
+BLANK_TARGET_009,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_009.png
+BLANK_TARGET_010,blank_target,,,,specs/roast_and_boast_us_base/cards/blanks/BLANK_TARGET_010.png

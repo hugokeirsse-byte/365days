@@ -1,0 +1,17 @@
+{
+  "deck_id": "roast_and_boast_us_base",
+  "game": "SPECS",
+  "edition": "Roast & Boast (US Base Deck)",
+  "version": "1.8",
+  "language": "en",
+  "mature": true,
+  "age_rating": "18+",
+  "total_cards": 200,
+  "traits": 150,
+  "targets": 30,
+  "blanks": 20,
+  "card_format": "Poker TGC bleed 825x1125",
+  "platform_target": "The Game Crafter + BoardGamesMaker",
+  "production_method": "Pillow pure (Pollinations-free, gibberish-proof, deterministic identity)",
+  "generated_at": "2026-05-18T15:35:48.226778Z"
+}
