@@ -1,0 +1,28 @@
+AUDIT VISUEL — 2026-05-18T05:07:34.058632Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « y @ ) RE “> =
+Se 3 4 = 7 Ss
+.\. pussll
+{ y ip) ‘ a
+a | A es)
+wy f [ro by 4, |
+I Wy D :
+| whel lr
+a BANG
+' # 1G Be r ve
+| . no nae we eseon ° ’ | g
+¥ eters \an Se 7
+2 ae 4 oes ~~ 7 cs
+Be Wake a OK aa) »
+
+→ OK à uploader.

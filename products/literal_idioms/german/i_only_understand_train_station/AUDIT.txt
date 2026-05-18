@@ -1,0 +1,27 @@
+AUDIT VISUEL — 2026-05-18T05:07:50.662358Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « | Una & @: 2) ? 2
+', - Dia a2 Eo
+{itty Cay Wess
+huitviag Be | I 0. ie isl ul a
+bee a Sed aN Agen rilic
+g. P . mony lia id B.A Hi ‘ax i
+Sat. ULL See
+s F Cente as
+[ecto Lateran
+@
+lid 1 him.
+P kieetiza0
+ »
+
+→ OK à uploader.

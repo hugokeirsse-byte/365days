@@ -1,0 +1,28 @@
+AUDIT VISUEL — 2026-05-18T05:07:32.467882Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « oh ke ee > oe -
+Je Po a le
+e oe OW FN
+oF OS iN
+Vee Lowlh voos 4)
+\ Pm
+\ — route Pococ
+ Gaipeese
+A eS. Icicdic vou = am
+3 eh W  oret wats
+Ee \. Sp » Nie |
+a iN BQ) soul lols _ or<
+Ni Ni oe we \ :
+BA '  »
+
+→ OK à uploader.

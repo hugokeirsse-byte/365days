@@ -1,0 +1,29 @@
+AUDIT VISUEL — 2026-05-18T05:07:28.392334Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « Sore
+ah _ tA / 2 ri
+®t Albis aie
+
+y, = } Vee ke , j >
+ro - Tktinmbs.
+A Ae hl whuokeett~ ag
+Shiw4 ow pecar P. oe
+S| |e bs RA
+wae wecck Ae
+
+a) | ives SS " a y
+, wy ys a = _ tl
+
+\ Wan 3 brelreoirt ne SOR »
+
+→ OK à uploader.

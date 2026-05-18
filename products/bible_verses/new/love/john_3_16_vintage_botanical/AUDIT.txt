@@ -1,0 +1,29 @@
+AUDIT VISUEL — 2026-05-18T05:07:25.465719Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « Awd = awe
+At 4S = ¢/" f my y
+— a OS ‘ Uy, y
+i ys i\\ // Ce
+: = S | { |
+l {is * {\ J >
+7) is g ( =
+RA \\ ‘ Pf”. wi
+\ ww : AJ
+; 7. 3 3
+\ ¥ ou ‘ey |
+Lf y bs af ~ ma 3
+. . 2
+AY. = Y, Al ag
+esncranmicadmme »
+
+→ OK à uploader.

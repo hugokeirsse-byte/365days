@@ -1,0 +1,25 @@
+AUDIT VISUEL — 2026-05-18T05:07:26.421476Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « i) £:
+| = FEor
+— Tb
+
+XY : (b UG eds a | {
+a vy ‘on hob a | Naat
+| : vi Yep ame y :
+fee, F ciédordo pe a , i
+
+La; 7 Q — =
+& ies 4 »
+
+→ OK à uploader.

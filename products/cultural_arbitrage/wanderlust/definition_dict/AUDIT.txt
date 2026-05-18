@@ -1,0 +1,31 @@
+AUDIT VISUEL — 2026-05-18T05:07:35.529481Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « es - — es
+= e ‘g a ra mee a 2 CN
+Mbresteusty., yet or) 8 i Be
+im © |
+| ~= 54
+is
+a
+a
+wee E
+ef x
+| ae ee
+4 of
+4 4
+as Ai
+|
+91 DIR © OF MOD ACID CEO 9 Oe car htnfeace ANAOG, B Ac,
+‘ thea PRON HENLO Smut o »
+
+→ OK à uploader.

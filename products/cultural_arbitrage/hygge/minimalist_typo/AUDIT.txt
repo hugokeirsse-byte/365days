@@ -1,0 +1,28 @@
+AUDIT VISUEL — 2026-05-18T05:07:39.938053Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 70/100
+  - Text   : 90/100
+
+Détails visuels :
+  ['composition très uniforme (peut être vide)']
+
+Texte OCR extrait :
+  « —_
+x Bio eae
+——* || ey GL Aen BA NG A: "
+; } AG! a Weiss) ae
+asi | es a { i A i & | te - (
+f Th ANS ae é ae BAS B\ Ne =
+= a : a
+- ee yh —— (a ;
+CH. Nee i
+ben ——- | ae
+i
+|
+hare
+oa a »
+
+→ OK à uploader.

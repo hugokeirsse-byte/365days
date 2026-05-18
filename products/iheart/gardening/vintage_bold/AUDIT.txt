@@ -1,0 +1,33 @@
+AUDIT VISUEL — 2026-05-18T05:07:41.275604Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « _ five |. oar y Bier ity > . .
+
+i 7 sae, SN \
+| a ~—ti— )
+fi : mam f |
+
+\ ny ae oe
+
+/ . ‘ene Wwe
+aa were CII Yan \ yj ay
+bs Ve aaa / |
+‘ ee
+: ek ees /7
+iy ae —<
+f ¥ : : ,
+9 2 pases
+| ¢ € ))
+
+a ——— »
+
+→ OK à uploader.

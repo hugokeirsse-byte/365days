@@ -1,0 +1,22 @@
+AUDIT VISUEL — 2026-05-18T05:07:27.746072Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « Lv wa Te g \ ‘ay
+Pes | Coand, cD ~|
+iP =6
+¢ << ¢ YG chovonghg de “
+tz hboutosm¢ 4 Se
+Bz bbsve sme. a
+‘Oe T PHH1341 a Qo
+Be mk oe »
+
+→ OK à uploader.

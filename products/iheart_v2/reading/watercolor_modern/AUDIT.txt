@@ -1,15 +1,26 @@
-AUDIT VISUEL — 2026-05-18T05:01:32.220191Z
+AUDIT VISUEL — 2026-05-18T05:07:48.993371Z
 ============================================================
 
-VERDICT : REVIEW
-Score composite : 58.0/100
+VERDICT : APPROVE
+Score composite : 94.0/100
   - Visual : 100/100
-  - Text   : 30/100
+  - Text   : 90/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
+  « Hii lelien »
+e
+: dimg ~~
+~. Re gy
+—“~ ££
+\ X | ‘.
+— AL
+a : d A " i »
+-*, a a Q — |
+= ee
+| Rectatiimg
+— Foetioclranank sentaoneg »
 
-→ REVUE MANUELLE recommandée avant upload.
+→ OK à uploader.

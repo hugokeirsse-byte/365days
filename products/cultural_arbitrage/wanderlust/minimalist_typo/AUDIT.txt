@@ -1,0 +1,15 @@
+AUDIT VISUEL — 2026-05-18T05:07:35.778725Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 70.0/100
+  - Visual : 100/100
+  - Text   : 50/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « 7€ »
+
+→ OK à uploader.

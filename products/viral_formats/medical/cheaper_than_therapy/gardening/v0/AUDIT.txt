@@ -1,15 +1,19 @@
-AUDIT VISUEL — 2026-05-18T05:01:33.562095Z
+AUDIT VISUEL — 2026-05-18T05:08:00.259652Z
 ============================================================
 
-VERDICT : REVIEW
-Score composite : 58.0/100
+VERDICT : APPROVE
+Score composite : 82.0/100
   - Visual : 100/100
-  - Text   : 30/100
+  - Text   : 70/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
+  « Qeeddin
+e Canuthe sg
+mymiy, p@
+5 cilepieh UG
+Stercisék | »
 
-→ REVUE MANUELLE recommandée avant upload.
+→ OK à uploader.

@@ -1,0 +1,15 @@
+AUDIT VISUEL — 2026-05-18T05:07:38.258320Z
+============================================================
+
+VERDICT : REVIEW
+Score composite : 49.0/100
+  - Visual : 70/100
+  - Text   : 35/100
+
+Détails visuels :
+  ['composition très uniforme (peut être vide)']
+
+Texte OCR extrait :
+  « Waibi »
+
+→ REVUE MANUELLE recommandée avant upload.

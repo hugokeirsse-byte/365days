@@ -1,0 +1,27 @@
+AUDIT VISUEL — 2026-05-18T05:07:28.794298Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « ' xg : Zi). >
+aye us
+Tia Sh
+) Og 8
+4 h hiv ° ¢
+fips /
+se, WG
+Pe NA
+
+>| PE  nesemegne
+—7 \ aan = ich 2
+
+Ve Re »
+
+→ OK à uploader.
