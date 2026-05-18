@@ -1,290 +1,215 @@
-# 📋 INSCRIPTIONS HUGO — Roadmap semaine par semaine
+# 📋 INSCRIPTIONS HUGO — version 18/05/2026 (100% GRATUIT)
 
-**Tu utilises ton email KDP partout** (cohérence pour récupération + reset)
-**Mot de passe** : utilise un **gestionnaire gratuit** comme [Bitwarden](https://bitwarden.com) ou [KeePass](https://keepass.info) — INDISPENSABLE quand tu auras 30+ comptes
-**Active 2FA** quand possible (sécurité)
+**Mise à jour majeure** : pivot total vers plateformes 0€ à l'inscription (cf. BRIEFING_18MAI.md).
+Etsy reporté quand cash flow positif (payant 0,20$/listing).
 
-**Règle d'or** : pas de retard. Au moins 10 inscriptions par semaine. Si tu prends de l'avance, tant mieux.
-
----
-
-## ⚡ DEMAIN J1 — la séquence en 30 min, dans cet ordre
-
-L'ordre est IMPORTANT car certains comptes dépendent d'autres.
-
-1. **Bitwarden** (5 min) — installe l'app sur ton tél AVANT tout. Tu sauveras chaque login dedans.
-2. **URSSAF Auto-entrepreneur** (10 min) — légal d'abord, après tu peux encaisser sans peur.
-3. **Etsy Seller** (10 min) — la plateforme #1 pour les revenus dès cette semaine.
-4. **Printful** (5 min) — connecte direct à ton Etsy au moment de l'inscription.
-
-🎯 **Après ces 4 étapes**, tu peux DÉJÀ lancer le pipeline `produce_iheart_x` ou `produce_tumbler_wraps` depuis GitHub Actions et uploader le résultat sur Etsy le soir même.
-
-5. **Hugging Face** (5 min) — pour les pipelines IA avancés en v2
-6. **Gemini API** (5 min) — pour les ebooks romance + brouillons descriptions Etsy
-
-Puis le reste de la Semaine 1 sur 3-4 jours, à ton rythme.
+**Email** : utilise toujours ton email KDP partout (cohérence reset password)
+**Mots de passe** : tous dans **Bitwarden** (à installer en J1)
+**2FA** : actif partout où possible
 
 ---
 
----
+## ⚡ JOUR 1 — la séquence indispensable en 15 min
 
-## 🟥 SEMAINE 1 — FONDATIONS (12 inscriptions, ~50 min total)
+Fais ces 4 choses dans l'ordre demain matin. Tout est gratuit, sans CB requise.
 
-L'objectif : avoir une boutique active + le moteur IA + le canal de trafic + la légalité + les 4 plateformes pour les 4 paris parallèles.
+### 1. Bitwarden (3 min) — gestionnaire mots de passe
+🔗 https://bitwarden.com
+- Inscription gratuite illimitée
+- Installe l'app Android **avant** les autres inscriptions
+- Tu y sauvegardes chaque login que tu crées ensuite
 
-### Légal (obligatoire avant TOUT encaissement >300 €)
-- [ ] **1. URSSAF Auto-entrepreneur** — https://autoentrepreneur.urssaf.fr (10 min)
-  Activité : *Vente de produits digitaux et imprimés à la demande*
+### 2. URSSAF Auto-entrepreneur (10 min) — légal
+🔗 https://autoentrepreneur.urssaf.fr
+- Inscription gratuite
+- Activité : **« Vente de produits digitaux et imprimés à la demande »**
+- BIC : commerce électronique
+- 0€ tant que tu n'as pas vendu → aucun risque
+- **Indispensable pour encaisser légalement**
 
-### Ventes principales (pour Paris 1, 2)
-- [ ] **2. Etsy Seller** — https://www.etsy.com/sell (10 min)
-  → Boutique pour Tumbler Wraps + Mug/T-shirt POD
-- [ ] **3. Printful** — https://www.printful.com (5 min)
-  → Connecter à Etsy : Settings → Stores → Add Etsy
-- [ ] **4. Pinterest Business** — https://business.pinterest.com (5 min)
-  → Active "Rich Pins" pour Etsy
+### 3. Cults3D (3 min) — STL 3D 80% royalties
+🔗 https://cults3d.com
+- Inscription gratuite
+- Onglet vendeur dans paramètres
+- Tu uploades tes STL paramétriques (déjà 50+ produits prêts dans `products/stl_parametric/`)
 
-### Marketplace 3D (pour Pari 3)
-- [ ] **5. Cults3D** — https://cults3d.com (10 min)
-  → Compte vendeur 3D STL (80 % royalties)
-- [ ] **6. Printables.com** (Prusa) — https://www.printables.com (5 min)
-  → Marketplace en explosion 2026
+### 4. Redbubble (3 min) — POD t-shirts/posters/stickers
+🔗 https://www.redbubble.com
+- Inscription gratuite (créateur)
+- Tu uploades nos designs viral_formats / iheart_v3 / quotes_minimal
+- Marge fixée par toi (20-40%)
 
-### Cerveau IA (APIs gratuites critiques pour Pari 4 ebook + tous pipelines + coloriages Coco Wyo)
-- [ ] **7. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (5 min)
-  → Génère ta clé API gratuite (1500 req/jour)
-  → Ajoute en **Secret GitHub** : Settings → Secrets and variables → Actions → New repository secret → Nom : `GEMINI_API_KEY`
-
-- [ ] **8. Hugging Face** — https://huggingface.co/settings/tokens (5 min) ⭐ **CRITIQUE pour coloriages style Coco Wyo**
-  → Crée compte → Settings → Access Tokens → New Token "Read"
-  → Secret GitHub : `HF_API_KEY`
-  → Débloque InstantID, IP-Adapter, ControlNet line art (image-to-image avec référence)
-
-### Sécurité & gestion comptes
-- [ ] **9. Bitwarden** — https://bitwarden.com (5 min)
-  → Gratuit illimité, indispensable pour les 30+ comptes
-
-### Réseaux sociaux (préparation lancement)
-- [ ] **10. TikTok Creator Account** — https://www.tiktok.com (5 min)
-- [ ] **11. Instagram Business** — https://business.instagram.com (5 min)
-
-### Alternatives POD (à activer plus tard mais inscription rapide)
-- [ ] **12. Printify** — https://printify.com (5 min)
-  → Alternative à Printful, prix bas
-- [ ] **13. Gelato** — https://www.gelato.com (5 min)
-  → POD européen (shipping rapide FR/EU)
-
-### À la fin de Semaine 1, tu peux
-- ✅ Encaisser légalement
-- ✅ Recevoir le pipeline Gemini en secret pour ebooks
-- ✅ **Débloquer la production de coloriages Coco Wyo-style via Hugging Face**
-- ✅ Lancer les 4 paris parallèles + le pari coloriage cute
-- ✅ Pousser du trafic Pinterest
+**🎯 Après ces 4 étapes** : tu peux UPLOADER ce soir même tes premiers designs sur Cults3D et Redbubble. Aucun frais. Le système fonctionne.
 
 ---
 
-## 🟧 SEMAINE 2 — AMPLIFICATION (12 inscriptions, ~50 min)
+## 🟢 SEMAINE 1 — tout le reste GRATUIT (12 inscriptions, ~50 min total)
 
-L'objectif : préparer la distribution multi-plateformes et la première vraie production.
+À faire entre lundi et vendredi, dans l'ordre suggéré.
 
-### Distribution livres / ebooks
-- [ ] **13. Amazon KDP** — https://kdp.amazon.com (5 min — tu as peut-être déjà)
-  → Configure compte vendeur (W-8BEN pour fiscalité US)
-- [ ] **14. Draft2Digital** — https://www.draft2digital.com (10 min)
-  → Distribution ebook vers Apple Books, Kobo, Barnes & Noble, etc. (1 upload → 30+ stores)
-- [ ] **15. Smashwords** — https://www.smashwords.com (5 min)
-  → Alternative D2D, distribution multi-stores
+### POD physique gratuit (compléter Redbubble)
+- [ ] **5. TeePublic** — https://www.teepublic.com (5 min)
+  Alternative Redbubble. Upload mêmes designs = double exposition. 0€.
 
-### Audio / Musique
-- [ ] **16. ACX (Audible)** — https://www.acx.com (10 min)
-  → Audiobook auto-production via ACX Production (royalty-share)
-- [ ] **17. Spotify for Podcasters** — https://creators.spotify.com (5 min)
-  → Plateforme podcast monétisable (seuil bas 2026 : 1000 listeners)
-- [ ] **18. RouteNote** — https://routenote.com (5 min)
-  → Distribution musique gratuite vers Spotify, Apple Music, etc.
+- [ ] **6. Zazzle Designer** — https://www.zazzle.com/sell (5 min)
+  Multi-objets (mugs, magnets, marque-pages, wraps de gourdes). Royalty 5-99%.
 
-### Marketplaces digitales secondaires
-- [ ] **19. Gumroad** — https://gumroad.com (5 min)
-  → Pour vente directe digital (templates, prompts)
-- [ ] **20. Sellfy** — https://sellfy.com (5 min)
-  → POD + digital all-in-one alternative à Etsy
-- [ ] **21. Ko-fi** — https://ko-fi.com (5 min)
-  → Tip jar + Ko-fi Shop digital
-- [ ] **22. Payhip** — https://payhip.com (5 min)
-  → Alternative simple low-cost
+- [ ] **7. Society6 Artist** — https://society6.com/create-store (5 min)
+  Premium art prints (posters HD, art mural). 10% sur prints.
 
-### Trafic externe + APIs pub auto
-- [ ] **23. Pinterest Developer** — https://developers.pinterest.com (5 min)
-  → Clé API pour auto-publication pins
-  → Secret GitHub : `PINTEREST_API_KEY`
-- [ ] **24. Reddit Developer (script app)** — https://www.reddit.com/prefs/apps (5 min)
-  → "create another app" → script app → secrets `REDDIT_CLIENT_ID` + `REDDIT_CLIENT_SECRET`
-  → Pour auto-poster sur subreddits pertinents (respect règles)
-- [ ] **25. X (Twitter) Developer** — https://developer.x.com (10 min)
-  → Free tier limité (1500 tweets/mois) → secret `X_API_BEARER`
-- [ ] **26. Groq Cloud** — https://console.groq.com (5 min)
-  → 14k req/jour Llama 3.3 70B → secret `GROQ_API_KEY`
-- [ ] **27. Mistral La Plateforme** — https://console.mistral.ai (5 min)
-  → 1 req/sec free tier → secret `MISTRAL_API_KEY`
-- [ ] **28. Substack** — https://substack.com (5 min)
-  → Newsletter gratuite + future monétisation
+### Jeux POD (ta meilleure idée)
+- [ ] **8. The Game Crafter (TGC)** — https://www.thegamecrafter.com (5 min)
+  POD jeux de société. Tu uploadeas notre futur `produce_card_game.py`.
+  100% gratuit, ils fabriquent à la commande.
 
-### À la fin de Semaine 2, tu peux
-- ✅ Distribuer un ebook sur 30+ stores en 1 upload (D2D)
-- ✅ Lancer un audiobook automatisé sur Audible
-- ✅ Diffuser podcasts Spotify
-- ✅ Distribuer musique IA en streaming
-- ✅ Auto-publier des pins Pinterest via API
+- [ ] **9. BoardGamesMaker (BGM)** — https://www.boardgamesmaker.com (5 min)
+  Alternative TGC. Mêmes designs = double exposition.
 
----
+### Livres KDP (low-content + coloring quand HF dispo)
+- [ ] **10. Amazon KDP** — https://kdp.amazon.com (10 min)
+  Inscription gratuite. Configure W-8BEN (fiscalité US). Tu publieras nos
+  Fishing Log Book + autres journals + coloring book Mystical Mushrooms.
 
-## 🟨 SEMAINE 3 — DIVERSIFICATION POD + NICHES PHYSIQUES (10 inscriptions, ~45 min)
+### Digital direct (sans commission ou minime)
+- [ ] **11. Gumroad** — https://gumroad.com (5 min)
+  Vendre PDF/STL/templates direct. 10% commission.
 
-L'objectif : élargir le catalogue physique (mug, t-shirt, etc.) + amorcer niches premium.
+- [ ] **12. Payhip** — https://payhip.com (5 min)
+  Alternative Gumroad. 5% commission, plus avantageux pour gros prix.
 
-### POD alternatifs (marges variées)
-- [ ] **25. Society6** — https://society6.com (5 min)
-  → Posters, art prints, home decor
-- [ ] **26. Redbubble** — https://www.redbubble.com (5 min)
-  → Diversification mais marges faibles
-- [ ] **27. TeePublic** — https://www.teepublic.com (5 min)
-  → T-shirts uniquement, public US
-- [ ] **28. Displate** — https://displate.com (5 min)
-  → Posters métal premium
-- [ ] **29. Zazzle** — https://www.zazzle.com (5 min)
-  → Catalogue massif (cartes, mugs, etc.)
-- [ ] **30. Casetify** — https://www.casetify.com (5 min)
-  → Coques téléphone premium (sélectif mais marges hautes)
+- [ ] **13. Ko-fi** — https://ko-fi.com (5 min)
+  0% commission. Idéal pour digital + tip jar.
 
-### POD spécialisés stickers / marque-pages
-- [ ] **31. Sticker Mule** — https://www.stickermule.com (5 min)
-  → Stickers vinyle premium (plus chers, perçus premium)
-- [ ] **32. Moo** — https://www.moo.com (5 min)
-  → Bookmarks, business cards, premium papeterie
+### Trafic gratuit (essentiel mois 2-3)
+- [ ] **14. Pinterest Business** — https://business.pinterest.com (5 min)
+  Active **Rich Pins**. Source de trafic gratuite #1 vers nos boutiques.
 
-### Cards / Jeux
-- [ ] **33. MakePlayingCards** — https://www.makeplayingcards.com (5 min)
-  → Decks tarot/oracle/conversation
-- [ ] **34. The Game Crafter** — https://www.thegamecrafter.com (10 min)
-  → POD jeux de société complets
+### Stack IA gratuit (débloque la suite)
+- [ ] **15. Hugging Face Token** — https://huggingface.co/settings/tokens (3 min) ⭐
+  **CRITIQUE pour les coloring books de qualité**
+  Inscription gratuite → New Token "Read" → Sauve-le dans Bitwarden
+  Débloque : ControlNet line-art, SDXL coloring, InstantID
 
-### À la fin de Semaine 3, tu peux
-- ✅ Vendre un même design sur 6-8 plateformes POD simultanément
-- ✅ Produire un deck de cartes/tarot custom
-- ✅ Lancer un jeu de société niche
+- [ ] **16. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (3 min)
+  Clé API gratuite : 1500 req/jour
+  Débloque : QC visuel automatique des designs, rédaction de masse, romance ebooks
+
+### Réseaux sociaux (pour marketing micro-niche)
+- [ ] **17. Reddit** — compte avec ton vrai nom, postera sur r/Fishing, r/dnd, r/devops etc.
+- [ ] **18. TikTok Creator** — https://www.tiktok.com (5 min)
+- [ ] **19. Instagram Business** — https://business.instagram.com (5 min)
 
 ---
 
-## 🟩 SEMAINE 4 — NICHES PREMIUM (10 inscriptions, ~45 min)
+## 🟡 SEMAINE 2 — extension (12 inscriptions, ~30 min)
 
-L'objectif : adresser les marchés à forte marge (3D, game dev, TTRPG, AI tools).
+À faire seulement après avoir uploadé tes premiers produits Semaine 1.
 
-### Modélisation 3D / Impression 3D
-- [ ] **35. Cults3D** — https://cults3d.com (10 min)
-  → Marketplace STL n°1, 80 % royalties
-- [ ] **36. Printables.com** — https://www.printables.com (5 min)
-  → Marketplace Prusa, croissance massive
-- [ ] **37. MyMiniFactory** — https://www.myminifactory.com (5 min)
-  → Marketplace 3D, niche tabletop
+### Distribution ebook étendue (mois 2+)
+- [ ] **20. Draft2Digital** — https://www.draft2digital.com (10 min)
+  Distribution ebook vers Apple Books, Kobo, B&N (1 upload → 30+ stores)
 
-### Game dev assets
-- [ ] **38. Unity Asset Store** — https://assetstore.unity.com (10 min)
-  → Publisher account (validation 1-2 semaines)
-- [ ] **39. itch.io** — https://itch.io (5 min)
-  → Indie games + assets, no validation
-- [ ] **40. GameDev Market** — https://www.gamedevmarket.net (5 min)
-  → Alternative spécialisée
+- [ ] **21. Smashwords** — https://www.smashwords.com (5 min)
+  Alternative D2D
 
-### TTRPG
-- [ ] **41. DriveThruRPG** — https://www.drivethrurpg.com (10 min)
-  → Modules D&D, scenarios, 65-70 % royalties
-- [ ] **42. Roll20 Marketplace** — https://marketplace.roll20.net (5 min)
-  → Tokens, maps, scenarios
+- [ ] **22. ACX (Audible)** — https://www.acx.com (10 min)
+  Audiobooks royalty-share. Pour quand on aura un ebook qui vend.
 
-### AI tools / prompts
-- [ ] **43. PromptBase** — https://promptbase.com (5 min)
-  → Vente prompts IA (5-30 $)
-- [ ] **44. Civitai** — https://civitai.com (5 min)
-  → LoRAs Stable Diffusion + prompts
+### Plateformes spécialisées
+- [ ] **23. Printables (Prusa)** — https://www.printables.com (5 min)
+  Marketplace STL alternative à Cults3D, gros trafic.
 
-### À la fin de Semaine 4, tu peux
-- ✅ Vendre des modèles 3D sur 3 marketplaces
-- ✅ Publier des packs d'assets pour devs jeux
-- ✅ Lancer ton premier module TTRPG
-- ✅ Monétiser des prompts IA spécialisés
+- [ ] **24. Creative Market** — https://creativemarket.com/sell (10 min)
+  Bundle designs/templates premium. 70% royalty.
 
----
+- [ ] **25. CreativeFabrica** — https://www.creativefabrica.com (5 min)
+  Marketplace SVG + commercial license. 70% royalty.
 
-## 🟪 SEMAINE 5 — EXTENSION & COMMUNAUTÉ (10 inscriptions, ~45 min)
+### Apps gratuites essentielles
+- [ ] **26. BoardGameGeek (BGG)** — https://boardgamegeek.com (3 min)
+  Compte gratuit pour scraper l'API publique trending games.
 
-L'objectif : amplifier la marque, communautés, distribution audio premium.
+- [ ] **27. Substack** — https://substack.com (5 min)
+  Newsletter gratuite. Si on extend en mois 3+ (cf. LECONS_DU_WEB.md).
 
-### Audio premium
-- [ ] **45. INAudio (ex-Findaway Voices)** — https://www.findaway.com/inaudio (10 min)
-  → Audiobook multi-distribution non-exclusif, 80 % royalties
-- [ ] **46. Authors Republic** — https://www.authorsrepublic.com (5 min)
-  → Alternative INAudio, 50+ plateformes audio
-- [ ] **47. AudioJungle (Envato)** — https://audiojungle.net (10 min)
-  → Stock music royalty
+- [ ] **28. Beehiiv** — https://beehiiv.com (5 min)
+  Alternative Substack, free tier 2500 abos.
 
-### Stock photo / Video AI
-- [ ] **48. Adobe Stock Contributors** — https://contributor.stock.adobe.com (10 min)
-  → Upload photos AI (3-5 % approval rate au début)
-- [ ] **49. Shutterstock Contributors** — https://submit.shutterstock.com (10 min)
-  → Alternative, public différent
+### Newsletter / Marketing email
+- [ ] **29. Mailerlite** — https://mailerlite.com (5 min)
+  Gratuit jusqu'à 1000 abonnés. Pour mailing list quand tu as des clients.
 
-### Distribution musique premium
-- [ ] **50. DistroKid** — https://distrokid.com (5 min)
-  → 19,99 $/an mais 100 % royalties (à activer si RouteNote dépasse 200 $/an)
+### API stack (à activer plus tard)
+- [ ] **30. Pinterest Developer** — https://developers.pinterest.com (15 min)
+  Pour l'auto-publisher Pinterest (Sprint 3).
 
-### Communautés / Memberships (si tu as une audience)
-- [ ] **51. Whop** — https://whop.com (5 min)
-  → Communautés payantes
-- [ ] **52. Beehiiv** — https://www.beehiiv.com (5 min)
-  → Newsletter alternative Substack
-
-### Réseaux sociaux extension
-- [ ] **53. YouTube Studio (compte chaîne)** — https://studio.youtube.com (5 min)
-  → Préparation chaîne faceless Kids future
-- [ ] **54. LinkedIn Page Business** — https://www.linkedin.com (5 min)
-  → Pour le pilier templates pro et publication d'expertise
-
-### À la fin de Semaine 5, tu peux
-- ✅ Distribuer audiobooks sur 50+ plateformes
-- ✅ Avoir stock photos en revenu passif (lent)
-- ✅ Lancer une newsletter payante
-- ✅ Préparer chaîne YouTube faceless
+- [ ] **31. Reddit Dev** — https://www.reddit.com/prefs/apps (5 min)
+  API gratuite pour scraping améliorés.
 
 ---
 
-## 📊 BILAN À 5 SEMAINES
+## 🔴 À REPORTER quand cash flow positif (≥ 200€/mois)
 
-**~54 inscriptions complètes** sur 5 semaines = empire multi-domaines totalement prêt à recevoir les pipelines de production.
+Ne fais PAS ces inscriptions tant que tu n'as pas de cash flow. Tu n'en as pas besoin pour démarrer.
 
-**Coût** : 0 € (sauf DistroKid 19,99 $/an si tu l'actives, à éviter au départ).
-
-**Temps cumulé** : ~3h45 sur 5 semaines = 45 min/semaine.
-
-**Une fois les inscriptions faites**, le système peut produire et distribuer **en autonomie** sur :
-- 6 marketplaces digitales (Etsy, Gumroad, Ko-fi, Sellfy, Payhip, Creative Market via futur ajout)
-- 8 plateformes POD physique
-- 4 plateformes livres + 3 audiobook
-- 3 marketplaces 3D + 3 game dev + 2 TTRPG
-- 3 plateformes audio/musique
-- 2 plateformes stock photos
-- 3 réseaux sociaux pour traction
-
----
-
-## 🚨 RAPPELS IMPORTANTS
-
-1. **Email dédié** : toujours utiliser ton email KDP pour cohérence + récupération.
-2. **Mots de passe** : tous dans Bitwarden, mots de passe forts différents.
-3. **2FA activée** partout où c'est possible (Etsy, Pinterest, Google, Apple).
-4. **W-8BEN** : pour les plateformes US (Amazon KDP, ACX, Unity, etc.), tu rempliras un formulaire fiscal pour éviter la retenue à la source.
-5. **Quotas free tier** : note quelque part les limites quotidiennes pour les APIs (Gemini 1500/j, Groq 14k/j, etc.).
-6. **Secrets GitHub** : `GEMINI_API_KEY`, `GROQ_API_KEY`, `HF_API_KEY`, `PINTEREST_API_KEY` — tous à ajouter au repo `hugokeirsse-byte/365days` dans Settings → Secrets and variables → Actions.
+- ❌ **Etsy Seller** — 0,20$/listing × 200 listings = ~40$ initial
+  À faire en mois 2-3 quand tu as 200€/mois de revenus solides
+- ❌ **Printful Pro** — 25$/mois
+  Le tier gratuit suffit largement pour démarrer
+- ❌ **eRank Etsy SEO** — 10$/mois
+  Inutile sans boutique Etsy active
+- ❌ **Canva Pro** — 12€/mois
+  Photopea gratuit suffit
+- ❌ **DistroKid** — 19$/an (Spotify music distribution)
+  Cf. LECONS_DU_WEB.md : AI Music = mauvaise idée 2026
+- ❌ **TuneCore** — pareil
 
 ---
 
-**Une fois la Semaine 1 finie, dis-moi : "Semaine 1 OK"** → je code le pipeline COPE Tumbler/Mug Wraps en parallèle pour que tu uploades tes premiers produits dès le lundi suivant.
+## 📊 RÉCAP : ce que tu débloques en SEMAINE 1
+
+À la fin de la semaine 1, tu auras 19 plateformes actives qui couvrent :
+
+| Catégorie | Plateformes |
+|---|---|
+| **Légal** | URSSAF |
+| **Sécurité** | Bitwarden |
+| **POD physique** | Redbubble + TeePublic + Zazzle + Society6 |
+| **POD jeux** | The Game Crafter + BoardGamesMaker |
+| **STL 3D** | Cults3D |
+| **Livres** | KDP |
+| **Digital direct** | Gumroad + Payhip + Ko-fi |
+| **Trafic** | Pinterest + TikTok + Instagram + Reddit |
+| **IA stack** | Hugging Face + Gemini |
+
+**Total dépensé** : 0,00€
+**Capacité de vente** : tous types de produits, 8 catégories différentes
+
+---
+
+## 🎯 PROCHAINE ACTION HUGO
+
+Demain matin, 15 minutes :
+1. Bitwarden ✓
+2. URSSAF ✓
+3. Cults3D ✓
+4. Redbubble ✓
+
+Puis pingue-moi « J1 ok » et je :
+- Lance la production de 50 STL paramétriques nichés (Cults3D)
+- Génère les `redbubble_listing.txt` pour tous nos designs vendables existants
+- Code `produce_card_game.py` pour mardi (TGC)
+
+---
+
+## ⚙️ SECRETS GITHUB à configurer une fois inscrit
+
+Pour que les workflows IA marchent, ajoute ces secrets :
+🔗 https://github.com/hugokeirsse-byte/365days/settings/secrets/actions
+
+| Secret | Source | Workflow qui l'utilise |
+|---|---|---|
+| `GEMINI_API_KEY` | Google AI Studio (étape 16) | `agent_gemini_quality_check`, futur `agent_ideator_llm` |
+| `HF_API_KEY` | Hugging Face (étape 15) | futur `produce_coloring_book_hf` (SDXL line-art) |
+
+Pas urgent — tu peux les ajouter quand tu veux.

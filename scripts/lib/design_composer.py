@@ -191,15 +191,36 @@ def apply_mask(img: Image.Image, mask_shape: str) -> Image.Image:
     if mask_shape == "circle":
         mdraw.ellipse([0, 0, w, h], fill=255)
     elif mask_shape == "heart":
-        # Cœur via 2 cercles + 1 triangle inversé
-        r = w // 4
-        mdraw.ellipse([0, r // 2, 2 * r, 2 * r + r // 2], fill=255)
-        mdraw.ellipse([w - 2 * r, r // 2, w, 2 * r + r // 2], fill=255)
-        mdraw.polygon([
-            (0, r + r // 2),
-            (w, r + r // 2),
-            (w // 2, h - r // 4),
-        ], fill=255)
+        # Cœur paramétrique mathématique propre (équation classique)
+        # x(t) = 16 * sin(t)^3
+        # y(t) = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)
+        # Normalisé et scalé pour remplir le canvas (w, h)
+        import math
+        points = []
+        steps = 200
+        for i in range(steps + 1):
+            t = (i / steps) * 2 * math.pi
+            x = 16 * math.sin(t) ** 3
+            y = -(13 * math.cos(t) - 5 * math.cos(2 * t)
+                  - 2 * math.cos(3 * t) - math.cos(4 * t))
+            points.append((x, y))
+        # Bornes de la courbe
+        xs = [p[0] for p in points]
+        ys = [p[1] for p in points]
+        x_min, x_max = min(xs), max(xs)
+        y_min, y_max = min(ys), max(ys)
+        cw = x_max - x_min
+        ch = y_max - y_min
+        # Scale pour remplir le canvas avec 2% padding
+        scale = min(w / cw, h / ch) * 0.96
+        cx, cy = w / 2, h / 2
+        # Translate & scale les points
+        scaled = []
+        for x, y in points:
+            sx = cx + (x - (x_min + x_max) / 2) * scale
+            sy = cy + (y - (y_min + y_max) / 2) * scale
+            scaled.append((sx, sy))
+        mdraw.polygon(scaled, fill=255)
     result = Image.new("RGBA", img.size, (0, 0, 0, 0))
     result.paste(img, (0, 0), mask)
     return result
@@ -248,20 +269,36 @@ def find_optimal_font_size(draw: ImageDraw.ImageDraw, text: str,
 
 def draw_heart_shape(draw: ImageDraw.ImageDraw, cx: int, cy: int,
                       w: int, color: tuple) -> None:
-    """Dessine un cœur plein centré sur (cx, cy) de largeur w."""
-    r = w // 4
-    h = int(w * 0.9)
-    x0 = cx - w // 2
-    y0 = cy - h // 2
-    # 2 cercles côte à côte
-    draw.ellipse([x0, y0, x0 + 2 * r, y0 + 2 * r], fill=color)
-    draw.ellipse([x0 + w - 2 * r, y0, x0 + w, y0 + 2 * r], fill=color)
-    # Triangle pour la pointe
-    draw.polygon([
-        (x0, y0 + r),
-        (x0 + w, y0 + r),
-        (x0 + w // 2, y0 + h),
-    ], fill=color)
+    """Dessine un cœur plein centré sur (cx, cy) de largeur w.
+
+    Utilise l'équation paramétrique classique :
+    x(t) = 16 * sin(t)^3
+    y(t) = 13*cos(t) - 5*cos(2t) - 2*cos(3t) - cos(4t)
+    """
+    import math
+    points = []
+    steps = 120
+    for i in range(steps + 1):
+        t = (i / steps) * 2 * math.pi
+        x = 16 * math.sin(t) ** 3
+        y = -(13 * math.cos(t) - 5 * math.cos(2 * t)
+              - 2 * math.cos(3 * t) - math.cos(4 * t))
+        points.append((x, y))
+    xs = [p[0] for p in points]
+    ys = [p[1] for p in points]
+    x_min, x_max = min(xs), max(xs)
+    y_min, y_max = min(ys), max(ys)
+    cw = x_max - x_min
+    ch = y_max - y_min
+    h = int(w * ch / cw)  # garde le ratio naturel
+    scale = w / cw
+    # Translate les points : centrés sur (cx, cy)
+    scaled = []
+    for x, y in points:
+        sx = cx + (x - (x_min + x_max) / 2) * scale
+        sy = cy + (y - (y_min + y_max) / 2) * scale
+        scaled.append((sx, sy))
+    draw.polygon(scaled, fill=color)
 
 
 def draw_decorative_element(canvas: Image.Image, elem: DecorativeElement) -> None:
