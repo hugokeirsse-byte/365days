@@ -1,0 +1,17 @@
+{
+  "design_id": "viral_v2_diagnosed_terminal_reading",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "format_key": "diagnosed_terminal",
+  "format_family": "medical",
+  "format_text": "Diagnosed with terminal Reading",
+  "niche": "reading",
+  "niche_label": "Reading",
+  "audience": "booktok readers",
+  "title": "Diagnosed with terminal Reading — Funny Reading Gift Print",
+  "tags_etsy": "reading gift, booktok readers, funny tshirt design, hobby gift, humor print, medical, personality gift, reading lover, digital download, etsy bestseller, redbubble pod, tshirt mug poster, instant download",
+  "price_etsy": 3.99,
+  "files_included": "etsy_preview.jpg, print_3000.png, tshirt_2400x3000.png",
+  "bg_prompt_used": "vintage medical prescription pad parchment background texture, faded sepia and cream, no text no letters, abstract aesthetic",
+  "seed": 45892
+}

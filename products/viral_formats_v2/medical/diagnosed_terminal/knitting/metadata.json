@@ -1,0 +1,17 @@
+{
+  "design_id": "viral_v2_diagnosed_terminal_knitting",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "format_key": "diagnosed_terminal",
+  "format_family": "medical",
+  "format_text": "Diagnosed with terminal Knitting",
+  "niche": "knitting",
+  "niche_label": "Knitting",
+  "audience": "knitters",
+  "title": "Diagnosed with terminal Knitting — Funny Knitting Gift Print",
+  "tags_etsy": "knitting gift, knitters, funny tshirt design, hobby gift, humor print, medical, personality gift, knitting lover, digital download, etsy bestseller, redbubble pod, tshirt mug poster, instant download",
+  "price_etsy": 3.99,
+  "files_included": "etsy_preview.jpg, print_3000.png, tshirt_2400x3000.png",
+  "bg_prompt_used": "vintage medical prescription pad parchment background texture, faded sepia and cream, no text no letters, abstract aesthetic",
+  "seed": 12447
+}
