@@ -1,0 +1,15 @@
+{
+  "design_id": "cultural_v2_fernweh",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "expression": "Fernweh",
+  "language": "german",
+  "meaning": "longing for far-away places",
+  "mood": "adventure",
+  "title": "Fernweh — German Word Print Untranslatable Definition Art",
+  "tags_etsy": "fernweh, german word, german art, untranslatable word, language gift, definition print, minimalist art, wall art, literary gift, polyglot gift, etymology print, adventure aesthetic, typography poster",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png (3000x3000)",
+  "bg_prompt_used": "vintage map texture deep teal and mustard yellow worn traveler aesthetic ABSOLUTELY NO TEXT NO LETTERS",
+  "seed": 180730
+}

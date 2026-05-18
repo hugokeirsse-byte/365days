@@ -1,0 +1,15 @@
+{
+  "design_id": "cultural_v2_mono_no_aware",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "expression": "Mono no aware",
+  "language": "japanese",
+  "meaning": "the pathos of fleeting beauty",
+  "mood": "melancholic",
+  "title": "Mono no aware — Japanese Word Print Untranslatable Definition Art",
+  "tags_etsy": "mono no aware, japanese word, japanese art, untranslatable word, language gift, definition print, minimalist art, wall art, literary gift, polyglot gift, etymology print, melancholic aesthetic, typography poster",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png (3000x3000)",
+  "bg_prompt_used": "dusty blue-grey faded watercolor sky background poetic atmospheric melancholic ABSOLUTELY NO TEXT NO LETTERS",
+  "seed": 260978
+}

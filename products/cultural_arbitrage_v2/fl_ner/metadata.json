@@ -1,0 +1,15 @@
+{
+  "design_id": "cultural_v2_fl_ner",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "expression": "Flâner",
+  "language": "french",
+  "meaning": "to wander without aim, savoring the city",
+  "mood": "elegant",
+  "title": "Flâner — French Word Print Untranslatable Definition Art",
+  "tags_etsy": "flâner, french word, french art, untranslatable word, language gift, definition print, minimalist art, wall art, literary gift, polyglot gift, etymology print, elegant aesthetic, typography poster",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png (3000x3000)",
+  "bg_prompt_used": "soft ivory matte black elegant minimalist background french chic faded ABSOLUTELY NO TEXT NO LETTERS",
+  "seed": 306644
+}

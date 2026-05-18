@@ -1,0 +1,15 @@
+{
+  "design_id": "cultural_v2_saudade",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "expression": "Saudade",
+  "language": "portuguese",
+  "meaning": "a tender longing for what is absent",
+  "mood": "melancholic",
+  "title": "Saudade — Portuguese Word Print Untranslatable Definition Art",
+  "tags_etsy": "saudade, portuguese word, portuguese art, untranslatable word, language gift, definition print, minimalist art, wall art, literary gift, polyglot gift, etymology print, melancholic aesthetic, typography poster",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png (3000x3000)",
+  "bg_prompt_used": "dusty blue-grey faded watercolor sky background poetic atmospheric melancholic ABSOLUTELY NO TEXT NO LETTERS",
+  "seed": 42935
+}
