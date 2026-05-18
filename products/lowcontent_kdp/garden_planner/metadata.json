@@ -1,0 +1,29 @@
+{
+  "book_id": "garden_planner",
+  "title": "The Gardener's Seasonal Planner",
+  "subtitle": "100 entries to track sowings, harvests, and seasons of growth",
+  "author": "Daystone Press",
+  "pages_count": 102,
+  "kdp_keywords": [
+    "gardening journal",
+    "vegetable garden planner",
+    "seed sowing book",
+    "permaculture log",
+    "harvest record book",
+    "gardener gift journal"
+  ],
+  "categories": [
+    "Gardening",
+    "Home & Garden",
+    "Hobbies"
+  ],
+  "trim_size": "6 x 9 in",
+  "interior_type": "black and white",
+  "paper_type": "white paper",
+  "binding": "paperback",
+  "imprint": "Daystone Press",
+  "price_kdp_suggested": 7.99,
+  "price_etsy_digital": 5.99,
+  "production_method": "100% Python ReportLab + DejaVu fonts (no AI image)",
+  "generated_at": "2026-05-18T10:30:46.049284Z"
+}

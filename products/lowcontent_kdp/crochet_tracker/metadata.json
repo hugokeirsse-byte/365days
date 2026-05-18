@@ -1,0 +1,28 @@
+{
+  "book_id": "crochet_tracker",
+  "title": "The Crochet Project Tracker",
+  "subtitle": "100 projects organized — yarn, hooks, hours, and finishing touches",
+  "author": "Daystone Press",
+  "pages_count": 102,
+  "kdp_keywords": [
+    "crochet project journal",
+    "crochet notebook",
+    "crocheter gift",
+    "yarn craft journal",
+    "knitting project log",
+    "fiber arts notebook"
+  ],
+  "categories": [
+    "Crafts & Hobbies",
+    "Knitting & Crochet"
+  ],
+  "trim_size": "6 x 9 in",
+  "interior_type": "black and white",
+  "paper_type": "white paper",
+  "binding": "paperback",
+  "imprint": "Daystone Press",
+  "price_kdp_suggested": 7.99,
+  "price_etsy_digital": 5.99,
+  "production_method": "100% Python ReportLab + DejaVu fonts (no AI image)",
+  "generated_at": "2026-05-18T10:30:45.717030Z"
+}

@@ -1,0 +1,30 @@
+{
+  "book_id": "fishing_log",
+  "title": "The Angler's Log",
+  "subtitle": "100 pages to record every catch, lure, and unforgettable spot",
+  "author": "Daystone Press",
+  "pages_count": 102,
+  "kdp_keywords": [
+    "fishing log book",
+    "angler journal",
+    "fishing diary",
+    "fisherman gift",
+    "fishing record book",
+    "outdoor adventure journal",
+    "bass fishing log"
+  ],
+  "categories": [
+    "Sports & Outdoors",
+    "Fishing",
+    "Hobbies"
+  ],
+  "trim_size": "6 x 9 in",
+  "interior_type": "black and white",
+  "paper_type": "white paper",
+  "binding": "paperback",
+  "imprint": "Daystone Press",
+  "price_kdp_suggested": 7.99,
+  "price_etsy_digital": 5.99,
+  "production_method": "100% Python ReportLab + DejaVu fonts (no AI image)",
+  "generated_at": "2026-05-18T10:30:45.546459Z"
+}
