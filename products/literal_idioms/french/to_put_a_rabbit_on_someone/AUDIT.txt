@@ -1,24 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:52.309127Z
+AUDIT VISUEL — 2026-05-18T05:39:51.284298Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 94.0/100
+VERDICT : REVIEW
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 90/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « Ee f FE; 1% ia 1: BE
-ov fi + ‘ag , —_— } | |
-ted | x =| y Bok
-ee || Ud > \ | mt ‘aa |
-Peri | ss =n “1. Wd M4 :
-Sopa elieee bute |
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-lert bore aezetian
-
-Sere eign ere | »
-
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.

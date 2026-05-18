@@ -1,27 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:39.547971Z
+AUDIT VISUEL — 2026-05-18T05:39:49.791162Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 82.0/100
+VERDICT : REVIEW
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 70/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « st. Goh, Bae is een
-be a. = ee TE feat
-oe — uy ha
-aay . oa
-aes: ae
-- ul
-+2 &
-j a ;
-Nae ape, *
-. aa loans cree
-ota a it a ree nin
-of aa Farpnbroms wie 2YN gos 1 OeAErel oullotud. kt wioontboe F oben
-;  »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.

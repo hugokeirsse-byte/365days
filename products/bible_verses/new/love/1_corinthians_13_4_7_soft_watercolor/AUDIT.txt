@@ -1,24 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:26.759326Z
+AUDIT VISUEL — 2026-05-18T05:39:46.683912Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 94.0/100
+VERDICT : REVIEW
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 90/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « 5 Nir ve
-Sa os x SE o
-" b ie a ~ 4 +
-| Ule
-D WUE Miss dé
-ve
-Iloowaniatimolamdedieb ku
-Bag conse oncno ALLENS Nn 2
-Micpedthet oro a\ hy Oe.
-& TF ma = i disp »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.

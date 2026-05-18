@@ -1,33 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:32.989249Z
+AUDIT VISUEL — 2026-05-18T05:39:47.939028Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 94.0/100
+VERDICT : REVIEW
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 90/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « rs : Tie (Ge SRN
-v Ps > i 7
-S 6 h» ih, }
-| Fei
-ik ¥ oi? >
-k Py “A 4 ri
-Li Wow
-AVG
-j ea
-| 28
-| OW a?
-' 4 5
-@ poe Ui, s 2 (
-EG SY OY
-| af
-] oN \ eh SRLS yrs « iS )
-Kyat .
-are Fac BOE So
-oases eo ba \ >  »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.

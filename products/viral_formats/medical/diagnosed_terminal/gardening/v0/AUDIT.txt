@@ -1,30 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:57.873047Z
+AUDIT VISUEL — 2026-05-18T05:39:52.735229Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 94.0/100
+VERDICT : REVIEW
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 90/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « / — ae | |
-: / | ie : . Co ee : Vi
-& Deaorlerers we
-{ . : , ~ a
-aN, © ses
-Ni) a N\ ~f 75 ,
-eA! / ' / 4
-PW hy 4 lef
-: \\ ‘ a
-/ | |
-' SOR - feongahe a
-4 | . . =
-rh. tenavatin & |
-SS >' footie
-a SS Se
-|) »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.

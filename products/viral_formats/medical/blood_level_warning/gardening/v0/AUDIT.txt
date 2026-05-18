@@ -1,23 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:55.734584Z
+AUDIT VISUEL — 2026-05-18T05:39:53.123129Z
 ============================================================
 
 VERDICT : REVIEW
-Score composite : 61.0/100
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 35/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « PWwarillinGy
-varia
-
-PSxcaery Dens. 7
-
-pe= icellervezts 3
-
- Hsoscine sam
-, Hsagam ‘ »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
 → REVUE MANUELLE recommandée avant upload.

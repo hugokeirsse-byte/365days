@@ -1,35 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:50.085311Z
+AUDIT VISUEL — 2026-05-18T05:39:51.304524Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 94.0/100
+VERDICT : REVIEW
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 90/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « ‘i : | |
-Ay |
-| t » :
-{ % ay, ie” |
-e , YY A a a
-ae wre | 7a ‘
-| : . ‘i ~ NE, x te: \
-\ 4) / —_—_— 4 i
- & ) nw
-H r ; ; 8 \
-‘ )
-a ae ae
-i = 4 |
-} = td |
-| R
-1 “ 4 = |
-— 4 }
-eG \
-|
-‘
-Keorince Hort ucéte »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.

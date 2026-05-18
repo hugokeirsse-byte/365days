@@ -1,38 +1,39 @@
 {
-  "audit_timestamp": "2026-05-18T05:08:01.417038Z",
-  "tesseract_available": true,
+  "audit_timestamp": "2026-05-18T05:39:54.482563Z",
+  "tesseract_available": false,
   "auto_reject": false,
-  "total_audited": 111,
+  "total_audited": 121,
   "totals_by_status": {
-    "approve": 101,
-    "review": 10
+    "review": 80,
+    "approve": 41
   },
   "by_pipeline": {
     "bible_verses": {
-      "approve": 20
+      "review": 20
     },
     "coloring_books": {
       "approve": 1
     },
     "cultural_arbitrage": {
-      "approve": 7,
-      "review": 3
+      "review": 10
     },
     "iheart": {
-      "approve": 10
+      "review": 10
     },
     "iheart_v2": {
+      "review": 10
+    },
+    "iheart_v3": {
       "approve": 10
     },
     "literal_idioms": {
-      "approve": 5
+      "review": 5
     },
     "tumbler_wraps": {
       "approve": 25
     },
     "viral_formats": {
-      "approve": 18,
-      "review": 7
+      "review": 25
     },
     "witchy_cottagecore": {
       "approve": 5
@@ -40,10 +41,10 @@
   },
   "audits": [
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -53,15 +54,15 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": ": Shy hal\nSeek “ip\na, }\n\n7 | Jy .\nWA eraboll bite it, 5 (\\\n} isn iW\n\nXe . God, A wy\n, tes I \\ oe calasdh S % |",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/new/faith/matthew_6_33_soft_watercolor/etsy_preview.jpg",
       "design_path": "bible_verses/new/faith/matthew_6_33_soft_watercolor"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -71,105 +72,15 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "ys em we ff Ua\nPN  Seck Ax\n< ce Oe VY\n\\ : 22 Ny : NI\n» 6.ad VG\na : VA\nyee pe as &)\n\n{ | om noolurcusbid steve ay! |\n\"e - | Metie cid . ai\nar? 2’ Wi QED\n\n\" 2%) 4G ey “ee |",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/new/faith/matthew_6_33_vintage_botanical/etsy_preview.jpg",
       "design_path": "bible_verses/new/faith/matthew_6_33_vintage_botanical"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "bible_verses",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4260.9,
-        "luminosity_avg": 163.7,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Awd = awe\nAt 4S = ¢/\" f my y\n— a OS ‘ Uy, y\ni ys i\\\\ // Ce\n: = S | { |\nl {is * {\\ J >\n7) is g ( =\nRA \\\\ ‘ Pf”. wi\n\\ ww : AJ\n; 7. 3 3\n\\ ¥ ou ‘ey |\nLf y bs af ~ ma 3\n. . 2\nAY. = Y, Al ag\nesncranmicadmme",
-      "image_audited": "bible_verses/new/love/john_3_16_vintage_botanical/etsy_preview.jpg",
-      "design_path": "bible_verses/new/love/john_3_16_vintage_botanical"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "bible_verses",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3689.3,
-        "luminosity_avg": 139.3,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Vo xe Sia a /\n} Pa y\nim y l/\n(in Sr. Re\naE = Leto A ANG\nLge - Qe\nPe 4 i] Mp j Ue MV 2\nP \\| »\\) - J M\nie Thhans tuitfeibbeses > \\An\nJ pre -F TCT eS sineeenG je 1%\n> P tro hor Swoedehtedane hg\n: Va / om",
-      "image_audited": "bible_verses/new/love/1_corinthians_13_4_7_vintage_botanical/etsy_preview.jpg",
-      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_vintage_botanical"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "bible_verses",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 1153.4,
-        "luminosity_avg": 214.6,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "i) £:\n| = FEor\n— Tb\n\nXY : (b UG eds a | {\na vy ‘on hob a | Naat\n| : vi Yep ame y :\nfee, F ciédordo pe a , i\n\nLa; 7 Q — =\n& ies 4",
-      "image_audited": "bible_verses/new/love/john_3_16_soft_watercolor/etsy_preview.jpg",
-      "design_path": "bible_verses/new/love/john_3_16_soft_watercolor"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "bible_verses",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 1541.1,
-        "luminosity_avg": 216.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "5 Nir ve\nSa os x SE o\n\" b ie a ~ 4 +\n| Ule\nD WUE Miss dé\nve\nIloowaniatimolamdedieb ku\nBag conse oncno ALLENS Nn 2\nMicpedthet oro a\\ hy Oe.\n& TF ma = i disp",
-      "image_audited": "bible_verses/new/love/1_corinthians_13_4_7_soft_watercolor/etsy_preview.jpg",
-      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_soft_watercolor"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "bible_verses",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 1902.6,
-        "luminosity_avg": 212.8,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "of aS Nga\n\nNe af\n\neg!\n¥ CMiaeter =\nhy, iertigg te |\n\nZ i é Pode ole. wy ey\n\n; Be i ya N vy\n\nhue 2 waa",
-      "image_audited": "bible_verses/new/strength/philippians_4_13_soft_watercolor/etsy_preview.jpg",
-      "design_path": "bible_verses/new/strength/philippians_4_13_soft_watercolor"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -179,33 +90,33 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Lv wa Te g \\ ‘ay\nPes | Coand, cD ~|\niP =6\n¢ << ¢ YG chovonghg de “\ntz hboutosm¢ 4 Se\nBz bbsve sme. a\n‘Oe T PHH1341 a Qo\nBe mk oe",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/new/strength/philippians_4_13_vintage_botanical/etsy_preview.jpg",
       "design_path": "bible_verses/new/strength/philippians_4_13_vintage_botanical"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3243.9,
-        "luminosity_avg": 139.5,
+        "variance_avg": 1902.6,
+        "luminosity_avg": 212.8,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Sore\nah _ tA / 2 ri\n®t Albis aie\n\ny, = } Vee ke , j >\nro - Tktinmbs.\nA Ae hl whuokeett~ ag\nShiw4 ow pecar P. oe\nS| |e bs RA\nwae wecck Ae\n\na) | ives SS \" a y\n, wy ys a = _ tl\n\n\\ Wan 3 brelreoirt ne SOR",
-      "image_audited": "bible_verses/new/trust/romans_8_28_vintage_botanical/etsy_preview.jpg",
-      "design_path": "bible_verses/new/trust/romans_8_28_vintage_botanical"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/strength/philippians_4_13_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/strength/philippians_4_13_soft_watercolor"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -215,87 +126,105 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "' xg : Zi). >\naye us\nTia Sh\n) Og 8\n4 h hiv ° ¢\nfips /\nse, WG\nPe NA\n\n>| PE  nesemegne\n—7 \\ aan = ich 2\n\nVe Re",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/new/trust/romans_8_28_soft_watercolor/etsy_preview.jpg",
       "design_path": "bible_verses/new/trust/romans_8_28_soft_watercolor"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
         "score": 100,
-        "variance_avg": 2540.7,
-        "luminosity_avg": 208.9,
+        "variance_avg": 3243.9,
+        "luminosity_avg": 139.5,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "* eu G\n| ie HAL Xe\nee Ob V4\nUe a Ps ‘ \\ yg\na oui N\nAY Sar wow EES» :\nfh ». Bisctoi Aal yale [| , \\ ee\n* NS $. Ttsica bin ¥ 4",
-      "image_audited": "bible_verses/old/courage/isaiah_41_10_soft_watercolor/etsy_preview.jpg",
-      "design_path": "bible_verses/old/courage/isaiah_41_10_soft_watercolor"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/trust/romans_8_28_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/trust/romans_8_28_vintage_botanical"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
         "score": 100,
-        "variance_avg": 2649.4,
-        "luminosity_avg": 143.2,
+        "variance_avg": 1153.4,
+        "luminosity_avg": 214.6,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Ad j AL AK 7) alta\nP 3 WIN.\n\nEw f Feces “ON\n. Ww Ye 7\nNAZI\nLr a. Y >, 7 WE\nwy ThVbrwes |\n\n_ nee = Ns ZN Y/ \\ ae\nTRS \\ y= CY Psy eX aw :",
-      "image_audited": "bible_verses/old/courage/isaiah_41_10_vintage_botanical/etsy_preview.jpg",
-      "design_path": "bible_verses/old/courage/isaiah_41_10_vintage_botanical"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/john_3_16_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/john_3_16_soft_watercolor"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4303.7,
-        "luminosity_avg": 164.6,
+        "variance_avg": 4260.9,
+        "luminosity_avg": 163.7,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Ae “eri AG? |\nweal. : ra. N\nrs \"Gir\n| Ss % a?\nry NS ve %\nNAN\nAe f\nHH S€en Cauaws y\naa j ARES\n; ONY) ew jeac Jor@eafos y iy\nOX CV Sa R/\nes y aan ANS\nOo kzGes | ee\nve j i : \\ ‘4 | Ba\n\\ | Na 2 WSN 2\n» ae",
-      "image_audited": "bible_verses/old/courage/joshua_1_9_vintage_botanical/etsy_preview.jpg",
-      "design_path": "bible_verses/old/courage/joshua_1_9_vintage_botanical"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/john_3_16_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/john_3_16_vintage_botanical"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
         "score": 100,
-        "variance_avg": 1982.2,
-        "luminosity_avg": 209.7,
+        "variance_avg": 3689.3,
+        "luminosity_avg": 139.3,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "a i!\ny Ne. y\n( Fy, AB 4 wit 8\n\\ b Prt ie le\nY RENGN \\/\nSa 5 e AN y\nN i ) : =\nan 6Consomy —\nZ comrgals\n4 4 Ke: » . A By.\ni g & Nowe 2a NV\n. Rb oo BRE eae : \\y\nel: wee ae ~ a,\n, Pe\nr } . Asta anni PF pe",
-      "image_audited": "bible_verses/old/courage/joshua_1_9_soft_watercolor/etsy_preview.jpg",
-      "design_path": "bible_verses/old/courage/joshua_1_9_soft_watercolor"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/1_corinthians_13_4_7_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_vintage_botanical"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1541.1,
+        "luminosity_avg": 216.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/1_corinthians_13_4_7_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -305,15 +234,15 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "¥\n” 2%:\n=~ THE\nRy iatlea .\n% suerelh \\ N/\na nal gyre\nCC a",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/old/comfort/psalm_23_1_soft_watercolor/etsy_preview.jpg",
       "design_path": "bible_verses/old/comfort/psalm_23_1_soft_watercolor"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -323,33 +252,87 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "5 “<0 Yh 4 Bk ad a A\nyl SIN iF Thoxeh OOF y ze ; fe Y\n@ Se i is A -\n| i’ ~_ \\ h i) } A } peal ty\n\\ys e al\noN ood Y lV\n| Ue % 2 ( mS i\n| a S a,\nhs ‘ IMy oleh\ni NI f S f et Oy)\n, cae AaNe,!\ni) \\ OW bh P",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/old/comfort/psalm_23_1_vintage_botanical/etsy_preview.jpg",
       "design_path": "bible_verses/old/comfort/psalm_23_1_vintage_botanical"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3318.3,
-        "luminosity_avg": 140.0,
+        "variance_avg": 1982.2,
+        "luminosity_avg": 209.7,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "oh ke ee > oe -\nJe Po a le\ne oe OW FN\noF OS iN\nVee Lowlh voos 4)\n\\ Pm\n\\ — route Pococ\n Gaipeese\nA eS. Icicdic vou = am\n3 eh W  oret wats\nEe \\. Sp » Nie |\na iN BQ) soul lols _ or<\nNi Ni oe we \\ :\nBA ' ",
-      "image_audited": "bible_verses/old/hope/jeremiah_29_11_vintage_botanical/etsy_preview.jpg",
-      "design_path": "bible_verses/old/hope/jeremiah_29_11_vintage_botanical"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/joshua_1_9_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/joshua_1_9_soft_watercolor"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4303.7,
+        "luminosity_avg": 164.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/joshua_1_9_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/joshua_1_9_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2540.7,
+        "luminosity_avg": 208.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/isaiah_41_10_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/isaiah_41_10_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2649.4,
+        "luminosity_avg": 143.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/isaiah_41_10_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/isaiah_41_10_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -359,33 +342,33 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "rs : Tie (Ge SRN\nv Ps > i 7\nS 6 h» ih, }\n| Fei\nik ¥ oi? >\nk Py “A 4 ri\nLi Wow\nAVG\nj ea\n| 28\n| OW a?\n' 4 5\n@ poe Ui, s 2 (\nEG SY OY\n| af\n] oN \\ eh SRLS yrs « iS )\nKyat .\nare Fac BOE So\noases eo ba \\ > ",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/old/hope/jeremiah_29_11_soft_watercolor/etsy_preview.jpg",
       "design_path": "bible_verses/old/hope/jeremiah_29_11_soft_watercolor"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
         "score": 100,
-        "variance_avg": 5016.5,
-        "luminosity_avg": 149.8,
+        "variance_avg": 3318.3,
+        "luminosity_avg": 140.0,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "? { = > | ss ys 4 f\nEo ill ys Se\nLy > Vig |F\nVs PUBIESU = Ng Me\n= S A ang\n3 ome in aprhreiia Hess { as\nvt Lit vwhéato 4\nA nto\n\ntA . Oe9 Bigss ‘ | ~\nwe © { Pe“ e z <= Se i :\nies )\n: @ ae \\ (7 XX : (yj ",
-      "image_audited": "bible_verses/old/trust/proverbs_3_5_6_vintage_botanical/etsy_preview.jpg",
-      "design_path": "bible_verses/old/trust/proverbs_3_5_6_vintage_botanical"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/hope/jeremiah_29_11_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/hope/jeremiah_29_11_vintage_botanical"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "bible_verses",
       "visual_details": {
@@ -395,9 +378,27 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "y @ ) RE “> =\nSe 3 4 = 7 Ss\n.\\. pussll\n{ y ip) ‘ a\na | A es)\nwy f [ro by 4, |\nI Wy D :\n| whel lr\na BANG\n' # 1G Be r ve\n| . no nae we eseon ° ’ | g\n¥ eters \\an Se 7\n2 ae 4 oes ~~ 7 cs\nBe Wake a OK aa)",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "bible_verses/old/trust/proverbs_3_5_6_soft_watercolor/etsy_preview.jpg",
       "design_path": "bible_verses/old/trust/proverbs_3_5_6_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5016.5,
+        "luminosity_avg": 149.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/trust/proverbs_3_5_6_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/trust/proverbs_3_5_6_vintage_botanical"
     },
     {
       "status": "approve",
@@ -418,28 +419,122 @@
       "design_path": "coloring_books/mystical_mushrooms"
     },
     {
-      "status": "approve",
-      "composite_score": 82.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 70,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "cultural_arbitrage",
       "visual_details": {
         "score": 100,
-        "variance_avg": 1745.6,
-        "luminosity_avg": 141.2,
+        "variance_avg": 719.4,
+        "luminosity_avg": 144.7,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "es - — es\n= e ‘g a ra mee a 2 CN\nMbresteusty., yet or) 8 i Be\nim © |\n| ~= 54\nis\na\na\nwee E\nef x\n| ae ee\n4 of\n4 4\nas Ai\n|\n91 DIR © OF MOD ACID CEO 9 Oe car htnfeace ANAOG, B Ac,\n‘ thea PRON HENLO Smut o",
-      "image_audited": "cultural_arbitrage/wanderlust/definition_dict/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/wanderlust/definition_dict"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/saudade/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/saudade/minimalist_typo"
     },
     {
-      "status": "approve",
-      "composite_score": 70.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 50,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1144.8,
+        "luminosity_avg": 135.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/saudade/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/saudade/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 46.0,
+      "visual_score": 70,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 70,
+        "variance_avg": 56.4,
+        "luminosity_avg": 188.4,
+        "dimensions": "1080x1080",
+        "issues": [
+          "composition très uniforme (peut être vide)"
+        ]
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/wabi_sabi/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/wabi_sabi/minimalist_typo"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 516.5,
+        "luminosity_avg": 173.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/wabi_sabi/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/wabi_sabi/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 46.0,
+      "visual_score": 70,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 70,
+        "variance_avg": 32.5,
+        "luminosity_avg": 184.6,
+        "dimensions": "1080x1080",
+        "issues": [
+          "composition très uniforme (peut être vide)"
+        ]
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/hygge/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/hygge/minimalist_typo"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 895.8,
+        "luminosity_avg": 179.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/hygge/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/hygge/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "cultural_arbitrage",
       "visual_details": {
@@ -449,27 +544,27 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "7€",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "cultural_arbitrage/wanderlust/minimalist_typo/etsy_preview.jpg",
       "design_path": "cultural_arbitrage/wanderlust/minimalist_typo"
     },
     {
-      "status": "approve",
-      "composite_score": 82.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 70,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "cultural_arbitrage",
       "visual_details": {
         "score": 100,
-        "variance_avg": 1098.4,
-        "luminosity_avg": 169.3,
+        "variance_avg": 1745.6,
+        "luminosity_avg": 141.2,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "fi ‘fee —-, ive — 5\nlee eer tee\n> fhe oh :\n\n| Oa . Tay ;\n\nBX a : hee cieoe | ‘\n\nS| .\niy i\nia af 3 eS\nain , vey- z\n: ' tneeeat bo mide: at 3 Bs:\n=a i icoN\nim] : F\nie) @ re) j\n> |i\n5 ee ae\nEa eR\nea ,\nA ",
-      "image_audited": "cultural_arbitrage/ikigai/definition_dict/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/ikigai/definition_dict"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/wanderlust/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/wanderlust/definition_dict"
     },
     {
       "status": "review",
@@ -490,100 +585,6 @@
       "design_path": "cultural_arbitrage/ikigai/minimalist_typo"
     },
     {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "cultural_arbitrage",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 516.5,
-        "luminosity_avg": 173.0,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "assoc 2 Be np eg A OR eet Se\nSOG 25 seta ae wa iy shee a Be aPeRR.. = SS\nWN yy Bu} te\nie : \"@ 3 aa\nf ei), 7; vee\n‘ te Sh i! oie\n5: eri 3 Wie, | Bes\nfast JP f p= 5\neae 4 ie\n> Sa s fii\nt Be. re\nPhage: I",
-      "image_audited": "cultural_arbitrage/wabi_sabi/definition_dict/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/wabi_sabi/definition_dict"
-    },
-    {
-      "status": "review",
-      "composite_score": 49.0,
-      "visual_score": 70,
-      "text_score": 35,
-      "uses_overlay": false,
-      "pipeline": "cultural_arbitrage",
-      "visual_details": {
-        "score": 70,
-        "variance_avg": 56.4,
-        "luminosity_avg": 188.4,
-        "dimensions": "1080x1080",
-        "issues": [
-          "composition très uniforme (peut être vide)"
-        ]
-      },
-      "text_extracted": "Waibi",
-      "image_audited": "cultural_arbitrage/wabi_sabi/minimalist_typo/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/wabi_sabi/minimalist_typo"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "cultural_arbitrage",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 895.8,
-        "luminosity_avg": 179.1,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "st. Goh, Bae is een\nbe a. = ee TE feat\noe — uy ha\naay . oa\naes: ae\n- ul\n+2 &\nj a ;\nNae ape, *\n. aa loans cree\nota a it a ree nin\nof aa Farpnbroms wie 2YN gos 1 OeAErel oullotud. kt wioontboe F oben\n; ",
-      "image_audited": "cultural_arbitrage/hygge/definition_dict/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/hygge/definition_dict"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 70,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "cultural_arbitrage",
-      "visual_details": {
-        "score": 70,
-        "variance_avg": 32.5,
-        "luminosity_avg": 184.6,
-        "dimensions": "1080x1080",
-        "issues": [
-          "composition très uniforme (peut être vide)"
-        ]
-      },
-      "text_extracted": "—_\nx Bio eae\n——* || ey GL Aen BA NG A: \"\n; } AG! a Weiss) ae\nasi | es a { i A i & | te - (\nf Th ANS ae é ae BAS B\\ Ne =\n= a : a\n- ee yh —— (a ;\nCH. Nee i\nben ——- | ae\ni\n|\nhare\noa a",
-      "image_audited": "cultural_arbitrage/hygge/minimalist_typo/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/hygge/minimalist_typo"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "cultural_arbitrage",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 1144.8,
-        "luminosity_avg": 135.8,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "a er er ee Sun ig: coe yo\nMee Ss Phe, a ea Fw a ie e\na b\n& bi\nMN le\n\n|\n: }\n|\n\n4\n, ; :\nf “\nbie\n> hea\nSipse BAT. } ]\nitn UO ae hthy, ; ‘\ni suniventts Hellen Invedorer Aez .\n| HOE MEPL EE NTS 10 CaN t ed",
-      "image_audited": "cultural_arbitrage/saudade/definition_dict/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/saudade/definition_dict"
-    },
-    {
       "status": "review",
       "composite_score": 58.0,
       "visual_score": 100,
@@ -592,146 +593,20 @@
       "pipeline": "cultural_arbitrage",
       "visual_details": {
         "score": 100,
-        "variance_avg": 719.4,
-        "luminosity_avg": 144.7,
+        "variance_avg": 1098.4,
+        "luminosity_avg": 169.3,
         "dimensions": "1080x1080",
         "issues": []
       },
       "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
-      "image_audited": "cultural_arbitrage/saudade/minimalist_typo/etsy_preview.jpg",
-      "design_path": "cultural_arbitrage/saudade/minimalist_typo"
+      "image_audited": "cultural_arbitrage/ikigai/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/ikigai/definition_dict"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "iheart",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2758.1,
-        "luminosity_avg": 148.5,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "_ five |. oar y Bier ity > . .\n\ni 7 sae, SN \\\n| a ~—ti— )\nfi : mam f |\n\n\\ ny ae oe\n\n/ . ‘ene Wwe\naa were CII Yan \\ yj ay\nbs Ve aaa / |\n‘ ee\n: ek ees /7\niy ae —<\nf ¥ : : ,\n9 2 pases\n| ¢ € ))\n\na ———",
-      "image_audited": "iheart/gardening/vintage_bold/etsy_preview.jpg",
-      "design_path": "iheart/gardening/vintage_bold"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "iheart",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 1846.3,
-        "luminosity_avg": 226.1,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "/GIRDEN fe\n\n: = ‘\nNN | ’ \\ iy, ! ] °\n\na at we Ay ss",
-      "image_audited": "iheart/gardening/watercolor_pastel/etsy_preview.jpg",
-      "design_path": "iheart/gardening/watercolor_pastel"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "iheart",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4181.1,
-        "luminosity_avg": 131.3,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "“eee a a ———————— a - , pe.\nWE Oe we uf y\ner noah i. Tapes v\naa J (Mee | E |\nSei ei SEE “ a :\naes \\ | a 4 a 4 Rete’ ahd\nee a Ve Pe\n. chive. j { Sakae 1a Ea EN! t\niy ae re) 4 Be NE ; Rhoe oA '\nfis ' ie",
-      "image_audited": "iheart/crochet/vintage_bold/etsy_preview.jpg",
-      "design_path": "iheart/crochet/vintage_bold"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "iheart",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 986.2,
-        "luminosity_avg": 221.7,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "1g |\n| (Leobtett\nwy pare\ni f\n\\ :\nOr: ge",
-      "image_audited": "iheart/crochet/watercolor_pastel/etsy_preview.jpg",
-      "design_path": "iheart/crochet/watercolor_pastel"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "iheart",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3214.3,
-        "luminosity_avg": 151.9,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "rnitthhintiin =\nMewes '\n\\ Y : :\n; : a= Ss r : i g .\n“ (3 A | Ww Qo: . ’ :\nom |",
-      "image_audited": "iheart/knitting/vintage_bold/etsy_preview.jpg",
-      "design_path": "iheart/knitting/vintage_bold"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "iheart",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 1940.4,
-        "luminosity_avg": 221.3,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "y\n\\ Wre\ni\nal WON Cie\nSS Jy =",
-      "image_audited": "iheart/knitting/watercolor_pastel/etsy_preview.jpg",
-      "design_path": "iheart/knitting/watercolor_pastel"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "iheart",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2800.9,
-        "luminosity_avg": 133.0,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": ": | |\n|\n: ie T tl RlSIeTe| = | |\nSai all\np=] bt (Ns a \\—\n' Se ee eee. SS, et” Sarto",
-      "image_audited": "iheart/reading/vintage_bold/etsy_preview.jpg",
-      "design_path": "iheart/reading/vintage_bold"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart",
       "visual_details": {
@@ -741,33 +616,33 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Ss DS,\na 9\nb> Reevelinmets =",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "iheart/reading/watercolor_pastel/etsy_preview.jpg",
       "design_path": "iheart/reading/watercolor_pastel"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart",
       "visual_details": {
         "score": 100,
-        "variance_avg": 1815.2,
-        "luminosity_avg": 98.6,
+        "variance_avg": 2800.9,
+        "luminosity_avg": 133.0,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "aL Ii |\n\naN a.\n\nFRAN 4 } Z\n\nSe\n\nSat Te\n\n| JEIBEBRATRY\n\nAe eS an\nPeer Spee e {",
-      "image_audited": "iheart/embroidery/vintage_bold/etsy_preview.jpg",
-      "design_path": "iheart/embroidery/vintage_bold"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/reading/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/reading/vintage_bold"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart",
       "visual_details": {
@@ -777,105 +652,141 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "rj\n) . y a\nf\niY ck Xe COUBB DY y\\\nVe ff » ax\nRe ® a\n=< No,\n~~ ’) .\nba AY >. Re Ba,",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "iheart/embroidery/watercolor_pastel/etsy_preview.jpg",
       "design_path": "iheart/embroidery/watercolor_pastel"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "iheart_v2",
+      "pipeline": "iheart",
       "visual_details": {
         "score": 100,
-        "variance_avg": 1994.1,
-        "luminosity_avg": 134.1,
+        "variance_avg": 1815.2,
+        "luminosity_avg": 98.6,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "ae = &}\ni |\nwer cS —_ | ———— 4 =\nae” = = / ——— d = z\nte = = See = eee\nos a Ga ————",
-      "image_audited": "iheart_v2/fishing/vintage_engraving/etsy_preview.jpg",
-      "design_path": "iheart_v2/fishing/vintage_engraving"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/embroidery/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/embroidery/vintage_bold"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "iheart_v2",
+      "pipeline": "iheart",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4378.9,
-        "luminosity_avg": 194.2,
+        "variance_avg": 1846.3,
+        "luminosity_avg": 226.1,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "ete = —_ i. -\n4 ical\n‘ % : \\ | , -\n‘a 2\n% / .\n— =\nes —————————————\ni :\nc i 7\n— Fstighng\nsowsonottHe",
-      "image_audited": "iheart_v2/fishing/watercolor_modern/etsy_preview.jpg",
-      "design_path": "iheart_v2/fishing/watercolor_modern"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/gardening/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/gardening/watercolor_pastel"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "iheart_v2",
+      "pipeline": "iheart",
       "visual_details": {
         "score": 100,
-        "variance_avg": 1285.9,
-        "luminosity_avg": 141.5,
+        "variance_avg": 2758.1,
+        "luminosity_avg": 148.5,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "| a —_ a eS eee | Ne og\nWN er mt a\ni _ - aes ze = : ue =: P = we ele = a x\naN “e (panes Ooh RS) NS 43\nSe | \\ : fs oe i eo Se oN ; }\n| see ma oS — = i |\nSY ia — Sieeoun : a ‘eG\n= SS hee! Aue 4 |\n=) | a",
-      "image_audited": "iheart_v2/my_dog/vintage_engraving/etsy_preview.jpg",
-      "design_path": "iheart_v2/my_dog/vintage_engraving"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/gardening/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/gardening/vintage_bold"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "iheart_v2",
+      "pipeline": "iheart",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3067.7,
-        "luminosity_avg": 209.2,
+        "variance_avg": 986.2,
+        "luminosity_avg": 221.7,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": ". « °\nOr\n\\ ‘ CCS : 7) lf i}\n\\ 4 AP Aw ‘| D i Yh\na\\\\ A | A y é \\ { aly if) iP,\n. \\ \\\\ ly ( > “jf ip\nX \\\\ \\ \\\\\\ i sf . (( 4 - of, YY\nwe ~ oN gh ; t nD AY Paurene \\ ¥ ae 3\n= — is i eee = 3",
-      "image_audited": "iheart_v2/my_dog/watercolor_modern/etsy_preview.jpg",
-      "design_path": "iheart_v2/my_dog/watercolor_modern"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/crochet/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/crochet/watercolor_pastel"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "iheart_v2",
+      "pipeline": "iheart",
       "visual_details": {
         "score": 100,
-        "variance_avg": 2722.9,
-        "luminosity_avg": 142.2,
+        "variance_avg": 4181.1,
+        "luminosity_avg": 131.3,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "ae Se\nwe y — : - ge - - = :\npe jp . ; oi >\n. ff Br l * J f . q\n[SEK naa mw > ex B Yo NN\nai. \\y | Wil , wy) he a Z OW,\nbe . | \\ te , i“\n. aN \"ae ~\\ €\ni he 7 AM =\n3 DAN ) \\ ; i SS, SZ\nz i Sos: ie mn . {",
-      "image_audited": "iheart_v2/my_cat/vintage_engraving/etsy_preview.jpg",
-      "design_path": "iheart_v2/my_cat/vintage_engraving"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/crochet/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/crochet/vintage_bold"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1940.4,
+        "luminosity_avg": 221.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/knitting/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/knitting/watercolor_pastel"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3214.3,
+        "luminosity_avg": 151.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/knitting/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/knitting/vintage_bold"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart_v2",
       "visual_details": {
@@ -885,33 +796,33 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "» ei\n\net\n\nhy al +\n-— J\n‘ £ —\\ , | j dl\nos 2\n\nSs saa\n\n4 ~ ee — -.\n\nSe",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "iheart_v2/my_cat/watercolor_modern/etsy_preview.jpg",
       "design_path": "iheart_v2/my_cat/watercolor_modern"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart_v2",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4014.4,
-        "luminosity_avg": 148.2,
+        "variance_avg": 2722.9,
+        "luminosity_avg": 142.2,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "| f E\n— | ==@! |",
-      "image_audited": "iheart_v2/reading/vintage_engraving/etsy_preview.jpg",
-      "design_path": "iheart_v2/reading/vintage_engraving"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_cat/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_cat/vintage_engraving"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart_v2",
       "visual_details": {
@@ -921,33 +832,69 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Hii lelien »\ne\n: dimg ~~\n~. Re gy\n—“~ ££\n\\ X | ‘.\n— AL\na : d A \" i »\n-*, a a Q — |\n= ee\n| Rectatiimg\n— Foetioclranank sentaoneg",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "iheart_v2/reading/watercolor_modern/etsy_preview.jpg",
       "design_path": "iheart_v2/reading/watercolor_modern"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart_v2",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4401.5,
-        "luminosity_avg": 111.5,
+        "variance_avg": 4014.4,
+        "luminosity_avg": 148.2,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "| ‘ oe’ & coe\n\n5 a eee A\n\nAN \\ WW \\ : : 7 \\\n\ni |e\n\nNS Ser V4 @ Yi, |\n\nSS 7 a fi — ge ‘\n\n| I Hnkipiing ©\n7 nkipiing ©\n4 3 WeUUICHiPORs j\n_—_——_——— ————————— }\n\nDanie ote neDtar |",
-      "image_audited": "iheart_v2/hiking/vintage_engraving/etsy_preview.jpg",
-      "design_path": "iheart_v2/hiking/vintage_engraving"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/reading/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/reading/vintage_engraving"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4378.9,
+        "luminosity_avg": 194.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/fishing/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/fishing/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1994.1,
+        "luminosity_avg": 134.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/fishing/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/fishing/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "iheart_v2",
       "visual_details": {
@@ -957,69 +904,249 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "re\n1 - . . \\ | _- , i wy ,\nNI Git",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "iheart_v2/hiking/watercolor_modern/etsy_preview.jpg",
       "design_path": "iheart_v2/hiking/watercolor_modern"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "literal_idioms",
+      "pipeline": "iheart_v2",
       "visual_details": {
         "score": 100,
-        "variance_avg": 2958.9,
-        "luminosity_avg": 186.2,
+        "variance_avg": 4401.5,
+        "luminosity_avg": 111.5,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "‘i : | |\nAy |\n| t » :\n{ % ay, ie” |\ne , YY A a a\nae wre | 7a ‘\n| : . ‘i ~ NE, x te: \\\n\\ 4) / —_—_— 4 i\n & ) nw\nH r ; ; 8 \\\n‘ )\na ae ae\ni = 4 |\n} = td |\n| R\n1 “ 4 = |\n— 4 }\neG \\\n|\n‘\nKeorince Hort ucéte",
-      "image_audited": "literal_idioms/german/to_have_tomatoes_on_your_eyes/etsy_preview.jpg",
-      "design_path": "literal_idioms/german/to_have_tomatoes_on_your_eyes"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/hiking/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/hiking/vintage_engraving"
     },
     {
-      "status": "approve",
-      "composite_score": 82.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 70,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "literal_idioms",
+      "pipeline": "iheart_v2",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4629.0,
-        "luminosity_avg": 156.2,
+        "variance_avg": 3067.7,
+        "luminosity_avg": 209.2,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "| Una & @: 2) ? 2\n', - Dia a2 Eo\n{itty Cay Wess\nhuitviag Be | I 0. ie isl ul a\nbee a Sed aN Agen rilic\ng. P . mony lia id B.A Hi ‘ax i\nSat. ULL See\ns F Cente as\n[ecto Lateran\n@\nlid 1 him.\nP kieetiza0\n",
-      "image_audited": "literal_idioms/german/i_only_understand_train_station/etsy_preview.jpg",
-      "design_path": "literal_idioms/german/i_only_understand_train_station"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_dog/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_dog/watercolor_modern"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "literal_idioms",
+      "pipeline": "iheart_v2",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3245.8,
-        "luminosity_avg": 188.1,
+        "variance_avg": 1285.9,
+        "luminosity_avg": 141.5,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Sy a4 ch ah BO Pe aco\n’ ey pity\nay ” * ees 8 ee)\n¢- an a Cg = (\nae ge Ze : \\ o ge }\nSA wes 2 Ras rf =0\"* : é\n. heft Ces \\ a . bere\ntJ |e : soe 1. & 4 ;\n:. r f a Ness —— a 4\nTe LD Ga ,\n¢ “HRS = SS =\nee",
-      "image_audited": "literal_idioms/german/the_bear_is_dancing_there/etsy_preview.jpg",
-      "design_path": "literal_idioms/german/the_bear_is_dancing_there"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_dog/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_dog/vintage_engraving"
     },
     {
       "status": "approve",
-      "composite_score": 82.0,
+      "composite_score": 100.0,
       "visual_score": 100,
-      "text_score": 70,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2644.6,
+        "luminosity_avg": 226.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_cat/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_cat/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4754.9,
+        "luminosity_avg": 182.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_cat/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_cat/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2620.7,
+        "luminosity_avg": 227.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/reading/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/reading/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 6915.3,
+        "luminosity_avg": 162.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/reading/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/reading/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3329.8,
+        "luminosity_avg": 222.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/fishing/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/fishing/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5470.9,
+        "luminosity_avg": 174.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/fishing/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/fishing/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2643.6,
+        "luminosity_avg": 225.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/hiking/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/hiking/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5980.9,
+        "luminosity_avg": 174.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/hiking/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/hiking/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2264.9,
+        "luminosity_avg": 229.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_dog/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_dog/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4907.3,
+        "luminosity_avg": 180.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_dog/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_dog/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "literal_idioms",
       "visual_details": {
@@ -1029,15 +1156,15 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": ": il Ab = aes: Sette AN Gl, |\ni; ee = Vrs: 2 t\nee : Bees: A)\nLa ee, ‘ ——s : Ee \"y\n\n—_ fer scan a ~ =, EE a 5\n\nin\nf ics |e\n, [\nNrateti oc\n\ne¢ f - ; ;\nAev tdiedk = |\n\nloma chink lade ove 208 a-Laotgik a",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "literal_idioms/french/to_have_the_cockroach/etsy_preview.jpg",
       "design_path": "literal_idioms/french/to_have_the_cockroach"
     },
     {
-      "status": "approve",
-      "composite_score": 94.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 90,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "literal_idioms",
       "visual_details": {
@@ -1047,153 +1174,63 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Ee f FE; 1% ia 1: BE\nov fi + ‘ag , —_— } | |\nted | x =| y Bok\nee || Ud > \\ | mt ‘aa |\nPeri | ss =n “1. Wd M4 :\nSopa elieee bute |\n\nlert bore aezetian\n\nSere eign ere |",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "literal_idioms/french/to_put_a_rabbit_on_someone/etsy_preview.jpg",
       "design_path": "literal_idioms/french/to_put_a_rabbit_on_someone"
     },
     {
-      "status": "approve",
-      "composite_score": 88.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 80,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
+      "pipeline": "literal_idioms",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3920.8,
-        "luminosity_avg": 159.5,
+        "variance_avg": 4629.0,
+        "luminosity_avg": 156.2,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/summer_beach/design_02/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/summer_beach/design_02"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/german/i_only_understand_train_station/etsy_preview.jpg",
+      "design_path": "literal_idioms/german/i_only_understand_train_station"
     },
     {
-      "status": "approve",
-      "composite_score": 88.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 80,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
+      "pipeline": "literal_idioms",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3616.2,
-        "luminosity_avg": 197.7,
+        "variance_avg": 2958.9,
+        "luminosity_avg": 186.2,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/summer_beach/design_01/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/summer_beach/design_01"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/german/to_have_tomatoes_on_your_eyes/etsy_preview.jpg",
+      "design_path": "literal_idioms/german/to_have_tomatoes_on_your_eyes"
     },
     {
-      "status": "approve",
-      "composite_score": 88.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 80,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
+      "pipeline": "literal_idioms",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4814.5,
-        "luminosity_avg": 197.7,
+        "variance_avg": 3245.8,
+        "luminosity_avg": 188.1,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/summer_beach/design_04/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/summer_beach/design_04"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 5558.7,
-        "luminosity_avg": 120.6,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/summer_beach/design_05/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/summer_beach/design_05"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3425.5,
-        "luminosity_avg": 160.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/summer_beach/design_03/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/summer_beach/design_03"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2629.5,
-        "luminosity_avg": 61.6,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/witchy_cottagecore/design_02/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/witchy_cottagecore/design_02"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3999.8,
-        "luminosity_avg": 79.5,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/witchy_cottagecore/design_01/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/witchy_cottagecore/design_01"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3620.3,
-        "luminosity_avg": 83.1,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/witchy_cottagecore/design_04/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/witchy_cottagecore/design_04"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/german/the_bear_is_dancing_there/etsy_preview.jpg",
+      "design_path": "literal_idioms/german/the_bear_is_dancing_there"
     },
     {
       "status": "approve",
@@ -1222,6 +1259,42 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
+        "variance_avg": 3620.3,
+        "luminosity_avg": 83.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2629.5,
+        "luminosity_avg": 61.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
         "variance_avg": 3718.8,
         "luminosity_avg": 140.3,
         "dimensions": "1080x1080",
@@ -1240,50 +1313,14 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
-        "variance_avg": 5372.1,
-        "luminosity_avg": 95.5,
+        "variance_avg": 3999.8,
+        "luminosity_avg": 79.5,
         "dimensions": "1080x1080",
         "issues": []
       },
       "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/coffee_humor/design_02/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/coffee_humor/design_02"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3276.8,
-        "luminosity_avg": 156.5,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/coffee_humor/design_01/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/coffee_humor/design_01"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 5497.7,
-        "luminosity_avg": 154.9,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/coffee_humor/design_04/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/coffee_humor/design_04"
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_01"
     },
     {
       "status": "approve",
@@ -1312,6 +1349,42 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
+        "variance_avg": 5497.7,
+        "luminosity_avg": 154.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/coffee_humor/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5372.1,
+        "luminosity_avg": 95.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/coffee_humor/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
         "variance_avg": 3233.3,
         "luminosity_avg": 217.0,
         "dimensions": "1080x1080",
@@ -1330,14 +1403,14 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
-        "variance_avg": 2726.6,
-        "luminosity_avg": 186.9,
+        "variance_avg": 3276.8,
+        "luminosity_avg": 156.5,
         "dimensions": "1080x1080",
         "issues": []
       },
       "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/fathers_day/design_02/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/fathers_day/design_02"
+      "image_audited": "tumbler_wraps/coffee_humor/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_01"
     },
     {
       "status": "approve",
@@ -1348,14 +1421,14 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3981.4,
-        "luminosity_avg": 160.6,
+        "variance_avg": 5558.7,
+        "luminosity_avg": 120.6,
         "dimensions": "1080x1080",
         "issues": []
       },
       "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/fathers_day/design_01/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/fathers_day/design_01"
+      "image_audited": "tumbler_wraps/summer_beach/design_05/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_05"
     },
     {
       "status": "approve",
@@ -1366,14 +1439,68 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4969.0,
-        "luminosity_avg": 154.8,
+        "variance_avg": 4814.5,
+        "luminosity_avg": 197.7,
         "dimensions": "1080x1080",
         "issues": []
       },
       "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/fathers_day/design_04/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/fathers_day/design_04"
+      "image_audited": "tumbler_wraps/summer_beach/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3920.8,
+        "luminosity_avg": 159.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3425.5,
+        "luminosity_avg": 160.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_03/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3616.2,
+        "luminosity_avg": 197.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_01"
     },
     {
       "status": "approve",
@@ -1402,6 +1529,42 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
+        "variance_avg": 4969.0,
+        "luminosity_avg": 154.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/fathers_day/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2726.6,
+        "luminosity_avg": 186.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/fathers_day/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
         "variance_avg": 6417.0,
         "luminosity_avg": 172.5,
         "dimensions": "1080x1080",
@@ -1420,50 +1583,14 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
-        "variance_avg": 7661.2,
-        "luminosity_avg": 161.2,
+        "variance_avg": 3981.4,
+        "luminosity_avg": 160.6,
         "dimensions": "1080x1080",
         "issues": []
       },
       "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/pride_celebration/design_02/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/pride_celebration/design_02"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3465.4,
-        "luminosity_avg": 199.0,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/pride_celebration/design_01/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/pride_celebration/design_01"
-    },
-    {
-      "status": "approve",
-      "composite_score": 88.0,
-      "visual_score": 100,
-      "text_score": 80,
-      "uses_overlay": false,
-      "pipeline": "tumbler_wraps",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3922.5,
-        "luminosity_avg": 167.0,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "tumbler_wraps/pride_celebration/design_04/etsy_preview.jpg",
-      "design_path": "tumbler_wraps/pride_celebration/design_04"
+      "image_audited": "tumbler_wraps/fathers_day/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_01"
     },
     {
       "status": "approve",
@@ -1492,6 +1619,42 @@
       "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
+        "variance_avg": 3922.5,
+        "luminosity_avg": 167.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 7661.2,
+        "luminosity_avg": 161.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
         "variance_avg": 2631.0,
         "luminosity_avg": 211.2,
         "dimensions": "1080x1080",
@@ -1503,423 +1666,27 @@
     },
     {
       "status": "approve",
-      "composite_score": 82.0,
+      "composite_score": 88.0,
       "visual_score": 100,
-      "text_score": 70,
+      "text_score": 80,
       "uses_overlay": false,
-      "pipeline": "viral_formats",
+      "pipeline": "tumbler_wraps",
       "visual_details": {
         "score": 100,
-        "variance_avg": 4694.1,
-        "luminosity_avg": 140.2,
+        "variance_avg": 3465.4,
+        "luminosity_avg": 199.0,
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Se ALEESICC ie\n: eS a ae\ni HUMANS\n, ean\n-UMScans\n: ; Se eee 3\n| Y Adeonty Libutichiry sv",
-      "image_audited": "viral_formats/medical/allergic_humans/gardening/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/allergic_humans/gardening/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 5602.3,
-        "luminosity_avg": 115.6,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "ALERSSILC |\n\n1 ie utuans |\n\ncam OKKSe\n| dl\n\n‘i CHMOOIER ;",
-      "image_audited": "viral_formats/medical/allergic_humans/crochet/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/allergic_humans/crochet/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2646.1,
-        "luminosity_avg": 134.7,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "f fou : |\no fii ra\n[CZ\nLf \\ WIS if\ni wS BCA L\\\n_ Allleecsye tot Lo s }",
-      "image_audited": "viral_formats/medical/allergic_humans/knitting/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/allergic_humans/knitting/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4320.7,
-        "luminosity_avg": 198.6,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Ej ead |\n7 Hum |\nF | | OES Tite ;\n— —— se",
-      "image_audited": "viral_formats/medical/allergic_humans/reading/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/allergic_humans/reading/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 5468.5,
-        "luminosity_avg": 143.3,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Wursic le\n| ALLER OM\ney HATAS —\n\nANS = i\n\nTMORERMIITY Je\n\nMe Rio folT om ES os",
-      "image_audited": "viral_formats/medical/allergic_humans/embroidery/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/allergic_humans/embroidery/v0"
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_01"
     },
     {
       "status": "review",
-      "composite_score": 61.0,
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 35,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4769.4,
-        "luminosity_avg": 188.4,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "RSCIICION",
-      "image_audited": "viral_formats/medical/strict_prescription/gardening/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/strict_prescription/gardening/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3757.0,
-        "luminosity_avg": 185.6,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Sticst |\n-raiSGio |\nrisciry ;\npiohe |\nlosoce @",
-      "image_audited": "viral_formats/medical/strict_prescription/crochet/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/strict_prescription/crochet/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4179.5,
-        "luminosity_avg": 190.1,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "a a\n(a=\nrites:! cTOn.\n\n| ny thy DIISE |",
-      "image_audited": "viral_formats/medical/strict_prescription/knitting/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/strict_prescription/knitting/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2775.6,
-        "luminosity_avg": 184.3,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "; = =)\n[pee",
-      "image_audited": "viral_formats/medical/strict_prescription/reading/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/strict_prescription/reading/v0"
-    },
-    {
-      "status": "review",
-      "composite_score": 61.0,
-      "visual_score": 100,
-      "text_score": 35,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 5116.3,
-        "luminosity_avg": 213.3,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "F stict\nPSCIIIN\nPrlisCdoox\nUoShilaoy —\nDollie |",
-      "image_audited": "viral_formats/medical/strict_prescription/embroidery/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/strict_prescription/embroidery/v0"
-    },
-    {
-      "status": "review",
-      "composite_score": 61.0,
-      "visual_score": 100,
-      "text_score": 35,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 5264.4,
-        "luminosity_avg": 119.4,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "PWwarillinGy\nvaria\n\nPSxcaery Dens. 7\n\npe= icellervezts 3\n\n Hsoscine sam\n, Hsagam ‘",
-      "image_audited": "viral_formats/medical/blood_level_warning/gardening/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/blood_level_warning/gardening/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 7586.8,
-        "luminosity_avg": 166.7,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "_ al\n. = SY oe a {\n’ Warrhing &\n| Ue) —— reve bletetais eg !",
-      "image_audited": "viral_formats/medical/blood_level_warning/crochet/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/blood_level_warning/crochet/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 6406.6,
-        "luminosity_avg": 157.8,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "eer |\nWANnIGi |\n= ot 4 i :\nFBReeEDOM|",
-      "image_audited": "viral_formats/medical/blood_level_warning/knitting/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/blood_level_warning/knitting/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 5694.1,
-        "luminosity_avg": 125.8,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "oe ee ee ee 2\n| Wanmnirg |\n( ©\nie ~Wanicond\n| REVBES hit: |\n+ | cthitettl teitomon ——\n\nf= ——",
-      "image_audited": "viral_formats/medical/blood_level_warning/reading/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/blood_level_warning/reading/v0"
-    },
-    {
-      "status": "review",
-      "composite_score": 61.0,
-      "visual_score": 100,
-      "text_score": 35,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 8273.3,
-        "luminosity_avg": 157.6,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Ta\nA REWIMI BERS\nMoy",
-      "image_audited": "viral_formats/medical/blood_level_warning/embroidery/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/blood_level_warning/embroidery/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4041.2,
-        "luminosity_avg": 144.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "/ — ae | |\n: / | ie : . Co ee : Vi\n& Deaorlerers we\n{ . : , ~ a\naN, © ses\nNi) a N\\ ~f 75 ,\neA! / ' / 4\nPW hy 4 lef\n: \\\\ ‘ a\n/ | |\n' SOR - feongahe a\n4 | . . =\nrh. tenavatin & |\nSS >' footie\na SS Se\n|)",
-      "image_audited": "viral_formats/medical/diagnosed_terminal/gardening/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/diagnosed_terminal/gardening/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2411.2,
-        "luminosity_avg": 175.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "4 \\ E y ei :\nnese MT A0 |G\n1/¢ sta\n14 7 eee Be\n- f — a  — ——S— =\n: if, sR BES a a hin) ’ |\npee 5 =e A\n; eS Meihent res oa ot os |",
-      "image_audited": "viral_formats/medical/diagnosed_terminal/crochet/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/diagnosed_terminal/crochet/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4225.2,
-        "luminosity_avg": 192.7,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "=\" — 5 _ Ser\na, OES Or j >\nee a ene? PS ee oe ae\na: per e a\neee ~~ (27 1G BING Wi BRE AviIaGe =\ni  Ditceygorey) PAMROLOPE RF ht, et\nc SIO ACRE BRE MEK HE SE GEOF GTS: a\n; mc dl skinner ainccanatee ae\n",
-      "image_audited": "viral_formats/medical/diagnosed_terminal/knitting/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/diagnosed_terminal/knitting/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4246.1,
-        "luminosity_avg": 155.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "| . a sy\nFs pAgOStY | &\ni vit | a. ee |",
-      "image_audited": "viral_formats/medical/diagnosed_terminal/reading/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/diagnosed_terminal/reading/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 94.0,
-      "visual_score": 100,
-      "text_score": 90,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 4525.9,
-        "luminosity_avg": 146.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "i i Ne\n\nr oo _ “4 Ko _\n\nAA iT , :.\n\n| Nee!\n\nme Cumerrevail oe\n\n) a\n\noe\nE s g",
-      "image_audited": "viral_formats/medical/diagnosed_terminal/embroidery/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/diagnosed_terminal/embroidery/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2932.7,
-        "luminosity_avg": 209.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Qeeddin\ne Canuthe sg\nmymiy, p@\n5 cilepieh UG\nStercisék |",
-      "image_audited": "viral_formats/medical/cheaper_than_therapy/gardening/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/cheaper_than_therapy/gardening/v0"
-    },
-    {
-      "status": "approve",
-      "composite_score": 82.0,
-      "visual_score": 100,
-      "text_score": 70,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 2819.9,
-        "luminosity_avg": 204.0,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "“Croteiet.\n\\ Dainbbhy <\n/ DMYY clrerAN /\nN I MREYAY, i\nae nirKy",
-      "image_audited": "viral_formats/medical/cheaper_than_therapy/crochet/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/cheaper_than_therapy/crochet/v0"
-    },
-    {
-      "status": "review",
-      "composite_score": 61.0,
-      "visual_score": 100,
-      "text_score": 35,
-      "uses_overlay": false,
-      "pipeline": "viral_formats",
-      "visual_details": {
-        "score": 100,
-        "variance_avg": 3080.1,
-        "luminosity_avg": 215.2,
-        "dimensions": "1080x1080",
-        "issues": []
-      },
-      "text_extracted": "Ktitthing\nNyala\nPes CY2 nr py:\ncheshecr'PY\n| Six\n_",
-      "image_audited": "viral_formats/medical/cheaper_than_therapy/knitting/v0/etsy_preview.jpg",
-      "design_path": "viral_formats/medical/cheaper_than_therapy/knitting/v0"
-    },
-    {
-      "status": "review",
-      "composite_score": 61.0,
-      "visual_score": 100,
-      "text_score": 35,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "viral_formats",
       "visual_details": {
@@ -1929,15 +1696,15 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "eading «\nN saaill, a\ny tthatbdy\n- Erareranty KK\ncenele chéCieer\nWoecp ssiteex © hak\nny ineak ssriek",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "viral_formats/medical/cheaper_than_therapy/reading/v0/etsy_preview.jpg",
       "design_path": "viral_formats/medical/cheaper_than_therapy/reading/v0"
     },
     {
       "status": "review",
-      "composite_score": 46.0,
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 10,
+      "text_score": 30,
       "uses_overlay": false,
       "pipeline": "viral_formats",
       "visual_details": {
@@ -1947,63 +1714,423 @@
         "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "Embboclim\naletay\nFagheapy\nnly\nbriy deiaiy\nChe Sctterr\nchcocrie;\nMly Sissier\nC4 Sls",
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
       "image_audited": "viral_formats/medical/cheaper_than_therapy/embroidery/v0/etsy_preview.jpg",
       "design_path": "viral_formats/medical/cheaper_than_therapy/embroidery/v0"
     },
     {
-      "status": "approve",
-      "composite_score": 88.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 80,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "witchy_cottagecore",
+      "pipeline": "viral_formats",
       "visual_details": {
         "score": 100,
-        "variance_avg": 3330.8,
-        "luminosity_avg": 64.3,
-        "dimensions": "2000x2500",
+        "variance_avg": 2932.7,
+        "luminosity_avg": 209.2,
+        "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "witchy_cottagecore/design_02/etsy_preview.jpg",
-      "design_path": "witchy_cottagecore/design_02"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/gardening/v0"
     },
     {
-      "status": "approve",
-      "composite_score": 88.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 80,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "witchy_cottagecore",
+      "pipeline": "viral_formats",
       "visual_details": {
         "score": 100,
-        "variance_avg": 2557.7,
-        "luminosity_avg": 76.8,
-        "dimensions": "2000x2500",
+        "variance_avg": 2819.9,
+        "luminosity_avg": 204.0,
+        "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "witchy_cottagecore/design_01/etsy_preview.jpg",
-      "design_path": "witchy_cottagecore/design_01"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/crochet/v0"
     },
     {
-      "status": "approve",
-      "composite_score": 88.0,
+      "status": "review",
+      "composite_score": 58.0,
       "visual_score": 100,
-      "text_score": 80,
+      "text_score": 30,
       "uses_overlay": false,
-      "pipeline": "witchy_cottagecore",
+      "pipeline": "viral_formats",
       "visual_details": {
         "score": 100,
-        "variance_avg": 1803.4,
-        "luminosity_avg": 84.5,
-        "dimensions": "2000x2500",
+        "variance_avg": 3080.1,
+        "luminosity_avg": 215.2,
+        "dimensions": "1080x1080",
         "issues": []
       },
-      "text_extracted": "(no text expected in this pipeline)",
-      "image_audited": "witchy_cottagecore/design_04/etsy_preview.jpg",
-      "design_path": "witchy_cottagecore/design_04"
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4246.1,
+        "luminosity_avg": 155.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4525.9,
+        "luminosity_avg": 146.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4041.2,
+        "luminosity_avg": 144.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2411.2,
+        "luminosity_avg": 175.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4225.2,
+        "luminosity_avg": 192.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5694.1,
+        "luminosity_avg": 125.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 8273.3,
+        "luminosity_avg": 157.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5264.4,
+        "luminosity_avg": 119.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 7586.8,
+        "luminosity_avg": 166.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 6406.6,
+        "luminosity_avg": 157.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4320.7,
+        "luminosity_avg": 198.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5468.5,
+        "luminosity_avg": 143.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4694.1,
+        "luminosity_avg": 140.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5602.3,
+        "luminosity_avg": 115.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2646.1,
+        "luminosity_avg": 134.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2775.6,
+        "luminosity_avg": 184.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5116.3,
+        "luminosity_avg": 213.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4769.4,
+        "luminosity_avg": 188.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3757.0,
+        "luminosity_avg": 185.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4179.5,
+        "luminosity_avg": 190.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/knitting/v0"
     },
     {
       "status": "approve",
@@ -2032,6 +2159,42 @@
       "pipeline": "witchy_cottagecore",
       "visual_details": {
         "score": 100,
+        "variance_avg": 1803.4,
+        "luminosity_avg": 84.5,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_04/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3330.8,
+        "luminosity_avg": 64.3,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_02/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
         "variance_avg": 1770.3,
         "luminosity_avg": 73.1,
         "dimensions": "2000x2500",
@@ -2040,6 +2203,24 @@
       "text_extracted": "(no text expected in this pipeline)",
       "image_audited": "witchy_cottagecore/design_03/etsy_preview.jpg",
       "design_path": "witchy_cottagecore/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2557.7,
+        "luminosity_avg": 76.8,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_01/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_01"
     }
   ]
 }

@@ -1,28 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:39.938053Z
+AUDIT VISUEL — 2026-05-18T05:39:49.781605Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 82.0/100
+VERDICT : REVIEW
+Score composite : 46.0/100
   - Visual : 70/100
-  - Text   : 90/100
+  - Text   : 30/100
 
 Détails visuels :
   ['composition très uniforme (peut être vide)']
 
 Texte OCR extrait :
-  « —_
-x Bio eae
-——* || ey GL Aen BA NG A: "
-; } AG! a Weiss) ae
-asi | es a { i A i & | te - (
-f Th ANS ae é ae BAS B\ Ne =
-= a : a
-- ee yh —— (a ;
-CH. Nee i
-ben ——- | ae
-i
-|
-hare
-oa a »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.

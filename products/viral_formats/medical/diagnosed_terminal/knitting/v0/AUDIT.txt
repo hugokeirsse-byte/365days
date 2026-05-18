@@ -1,23 +1,15 @@
-AUDIT VISUEL — 2026-05-18T05:07:59.218982Z
+AUDIT VISUEL — 2026-05-18T05:39:52.754778Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 82.0/100
+VERDICT : REVIEW
+Score composite : 58.0/100
   - Visual : 100/100
-  - Text   : 70/100
+  - Text   : 30/100
 
 Détails visuels :
   aucun problème
 
 Texte OCR extrait :
-  « =" — 5 _ Ser
-a, OES Or j >
-ee a ene? PS ee oe ae
-a: per e a
-eee ~~ (27 1G BING Wi BRE AviIaGe =
-i  Ditceygorey) PAMROLOPE RF ht, et
-c SIO ACRE BRE MEK HE SE GEOF GTS: a
-; mc dl skinner ainccanatee ae
- »
+  « (Flux text rendering = unreliable, no overlay → suspected gibberish) »
 
-→ OK à uploader.
+→ REVUE MANUELLE recommandée avant upload.
