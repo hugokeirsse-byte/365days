@@ -1,0 +1,52 @@
+name: Agent Auto Regen (cleanup rejected + retrigger)
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (1=simule, 0=exécute)"
+        required: false
+        default: "1"
+      threshold:
+        description: "Seuil rejected pour trigger regen"
+        required: false
+        default: "5"
+  schedule:
+    # Lundi minuit UTC — juste après gemini quality check
+    - cron: "30 0 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - env:
+          DRY_RUN: ${{ inputs.dry_run || '1' }}
+          THRESHOLD: ${{ inputs.threshold || '5' }}
+        run: python scripts/agent_auto_regen.py
+      - if: always()
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Rien à commit"
+          else
+            git commit -m "Auto Regen : cleanup + retrigger"
+            for i in 1 2 3 4 5; do
+              git push origin HEAD:${{ github.ref_name }} && break
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
