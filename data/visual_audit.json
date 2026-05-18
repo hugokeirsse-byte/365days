@@ -1,0 +1,764 @@
+{
+  "audit_timestamp": "2026-05-18T05:01:35.081307Z",
+  "tesseract_available": false,
+  "auto_reject": false,
+  "total_audited": 41,
+  "totals_by_status": {
+    "approve": 6,
+    "review": 35
+  },
+  "by_pipeline": {
+    "coloring_books": {
+      "approve": 1
+    },
+    "iheart_v2": {
+      "review": 10
+    },
+    "viral_formats": {
+      "review": 25
+    },
+    "witchy_cottagecore": {
+      "approve": 5
+    }
+  },
+  "audits": [
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "coloring_books",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4039.2,
+        "luminosity_avg": 157.3,
+        "dimensions": "2625x3375",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "coloring_books/mystical_mushrooms/cover_front.png",
+      "design_path": "coloring_books/mystical_mushrooms"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3235.7,
+        "luminosity_avg": 181.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_cat/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_cat/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2722.9,
+        "luminosity_avg": 142.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_cat/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_cat/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4641.0,
+        "luminosity_avg": 191.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/reading/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/reading/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4014.4,
+        "luminosity_avg": 148.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/reading/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/reading/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4378.9,
+        "luminosity_avg": 194.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/fishing/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/fishing/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1994.1,
+        "luminosity_avg": 134.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/fishing/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/fishing/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5364.9,
+        "luminosity_avg": 196.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/hiking/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/hiking/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4401.5,
+        "luminosity_avg": 111.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/hiking/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/hiking/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3067.7,
+        "luminosity_avg": 209.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_dog/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_dog/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1285.9,
+        "luminosity_avg": 141.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_dog/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_dog/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2468.4,
+        "luminosity_avg": 206.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1508.8,
+        "luminosity_avg": 188.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2932.7,
+        "luminosity_avg": 209.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2819.9,
+        "luminosity_avg": 204.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3080.1,
+        "luminosity_avg": 215.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4246.1,
+        "luminosity_avg": 155.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4525.9,
+        "luminosity_avg": 146.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4041.2,
+        "luminosity_avg": 144.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2411.2,
+        "luminosity_avg": 175.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4225.2,
+        "luminosity_avg": 192.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5694.1,
+        "luminosity_avg": 125.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 8273.3,
+        "luminosity_avg": 157.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5264.4,
+        "luminosity_avg": 119.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 7586.8,
+        "luminosity_avg": 166.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 6406.6,
+        "luminosity_avg": 157.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4320.7,
+        "luminosity_avg": 198.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5468.5,
+        "luminosity_avg": 143.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4694.1,
+        "luminosity_avg": 140.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5602.3,
+        "luminosity_avg": 115.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2646.1,
+        "luminosity_avg": 134.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2775.6,
+        "luminosity_avg": 184.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5116.3,
+        "luminosity_avg": 213.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4769.4,
+        "luminosity_avg": 188.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3757.0,
+        "luminosity_avg": 185.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4179.5,
+        "luminosity_avg": 190.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/knitting/v0"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2120.1,
+        "luminosity_avg": 58.0,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_05/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_05"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2097.3,
+        "luminosity_avg": 89.7,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_04/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2450.1,
+        "luminosity_avg": 58.1,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_02/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1751.7,
+        "luminosity_avg": 61.3,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_03/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2324.7,
+        "luminosity_avg": 76.1,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_01/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_01"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+name: Agent Visual Audit (QC heuristique sans API)
+
+on:
+  workflow_dispatch:
+    inputs:
+      auto_reject:
+        description: "Auto-reject : déplace rejected → _rejected/ (1=oui)"
+        required: false
+        default: "0"
+  schedule:
+    # Tous les jours à 23h UTC — après les productions
+    - cron: "0 23 * * *"
+  push:
+    paths:
+      - .triggers/visual_audit
+
+concurrency:
+  group: visual-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq tesseract-ocr
+          pip install --quiet Pillow
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run Visual Audit
+        env:
+          AUTO_REJECT: ${{ inputs.auto_reject || '0' }}
+        run: python scripts/agent_visual_audit.py
+      - name: Commit audit
+        if: always()
+        run: |
+          mkdir -p data
+          git add data/visual_audit.json products/ 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun changement d'audit."
+          else
+            git commit -m "Visual Audit : QC heuristique des designs"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi

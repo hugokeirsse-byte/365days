@@ -1,0 +1,193 @@
+{
+  "_meta": {
+    "description": "Règles de viabilité par pipeline. Un design qui viole une règle 'critical' est automatiquement rejected. Les règles 'warning' déclenchent une review manuelle.",
+    "last_updated": "2026-05-17"
+  },
+  "global_critical_rules": {
+    "no_gibberish_text": {
+      "description": "Aucun texte généré par IA visible sur l'image (Flux ne sait pas faire de texte fiable). Le texte DOIT être overlay Pillow uniquement.",
+      "check_method": "ocr_dictionary_match",
+      "threshold": "less_than_30_percent_dictionary_words_with_5plus_words"
+    },
+    "minimum_resolution": {
+      "description": "Images minimum 1080x1080 pour Etsy, 3000x3000 pour print.",
+      "check_method": "image_dimensions",
+      "min_width": 1000,
+      "min_height": 1000
+    },
+    "no_watermarks": {
+      "description": "Aucune signature, watermark, ou logo parasite IA dans l'image.",
+      "check_method": "gemini_vision_when_available"
+    },
+    "no_extra_limbs_or_distortions": {
+      "description": "Pas de mains à 7 doigts, visages déformés, anatomie cassée.",
+      "check_method": "gemini_vision_when_available"
+    },
+    "no_nsfw": {
+      "description": "Aucun contenu NSFW généré accidentellement.",
+      "check_method": "gemini_vision_when_available"
+    }
+  },
+  "pipelines": {
+    "viral_formats": {
+      "approach": "BLOCKED_REGENERATE_AS_V2",
+      "current_status": "Pollinations rend du gibberish pour les phrases longues. Refonte en V2 avec illustration sans texte + overlay Pillow.",
+      "critical_rules": [
+        "no_gibberish_text",
+        "text_must_match_format_text_field_in_metadata"
+      ],
+      "warning_rules": [
+        "composition_centered_with_breathing_room",
+        "color_palette_consistent_with_visual_style"
+      ],
+      "examples_of_unacceptable": [
+        "« eading saall thatby teareonsiy » au lieu de « Reading is my therapy »",
+        "Texte coupé ou superposé",
+        "Phrase déformée ou mots manquants"
+      ],
+      "examples_of_acceptable": [
+        "Texte clair et complet correspondant au format_text",
+        "Espacement typographique correct",
+        "Lisible à 1080x1080"
+      ]
+    },
+    "iheart_v2": {
+      "approach": "REGENERATE_AS_V3_WITH_OVERLAY",
+      "current_status": "Concept visuel excellent (scène DANS le cœur), mais le texte 'I ❤️ X' est rendu en gibberish par Flux. V3 : illustration cœur-scène SANS texte + overlay Pillow propre.",
+      "critical_rules": [
+        "no_gibberish_text",
+        "heart_shape_visible_and_centered",
+        "scene_inside_heart_matches_niche"
+      ],
+      "warning_rules": [
+        "heart_aesthetic_consistent_with_style",
+        "scene_recognizable_at_glance"
+      ],
+      "examples_of_unacceptable": [
+        "Texte « I Fishrjijg » au lieu de « I ❤️ Fishing »",
+        "Pas de forme de cœur clairement identifiable",
+        "Scène hors sujet (un t-shirt pour 'reading' qui montre une voiture)"
+      ],
+      "examples_of_acceptable": [
+        "Cœur visible avec scène thématique cohérente",
+        "Texte 'I ❤️ [niche]' parfaitement lisible (overlay Pillow)",
+        "Style cohérent avec variant (vintage_engraving, watercolor_modern, minimalist_silhouette)"
+      ]
+    },
+    "iheart": {
+      "approach": "SAME_AS_V2",
+      "critical_rules": ["no_gibberish_text"],
+      "examples_of_unacceptable": ["Texte 'I' ❤️ flou ou mal rendu"]
+    },
+    "cultural_arbitrage": {
+      "approach": "PARTIAL_REWRITE",
+      "current_status": "Le mot seul (Hygge, Ikigai) peut marcher si court, mais la définition longue est en gibberish. Solution : overlay Pillow pour tout.",
+      "critical_rules": [
+        "word_correctly_spelled",
+        "no_gibberish_definition"
+      ],
+      "warning_rules": [
+        "aesthetic_matches_word_mood_palette"
+      ],
+      "examples_of_unacceptable": [
+        "Mot mal orthographié ('Hyge' au lieu de 'Hygge')",
+        "Définition illisible ou inexistante"
+      ]
+    },
+    "literal_idioms": {
+      "approach": "PARTIAL_REWRITE",
+      "current_status": "Illustration littérale OK mais texte long en gibberish. Solution : overlay Pillow pour le bloc texte.",
+      "critical_rules": [
+        "no_gibberish_text",
+        "literal_scene_clearly_illustrated"
+      ]
+    },
+    "bible_verses": {
+      "approach": "FULL_REWRITE_OVERLAY",
+      "current_status": "Versets longs = Flux fail. Solution : illustration de fond paisible + overlay Pillow du verset + référence.",
+      "critical_rules": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "warning_rules": [
+        "tone_respectful_appropriate_for_christian_market"
+      ],
+      "examples_of_unacceptable": [
+        "Verset modifié ou texte hors-Bible",
+        "Imagerie offensante ou hors-sujet christianisme"
+      ]
+    },
+    "tumbler_wraps": {
+      "approach": "VIABLE_AS_IS",
+      "current_status": "Pas de texte sur les wraps, juste pattern décoratif → Flux OK.",
+      "critical_rules": [
+        "seamless_pattern_repeatable",
+        "no_gibberish_text"
+      ],
+      "warning_rules": [
+        "pattern_density_appropriate",
+        "color_consistency_across_wrap"
+      ]
+    },
+    "coloring_books": {
+      "approach": "NEEDS_HF_DEDICATED_MODEL",
+      "current_status": "Pollinations 70% bon, 30% off-topic ou traits trop fins. À améliorer avec ControlNet line-art via HF (besoin clé HF).",
+      "critical_rules": [
+        "pure_black_lines_on_white_background",
+        "subject_matches_prompt_thematically",
+        "lines_thick_enough_for_adult_coloring",
+        "no_gibberish_text_in_image"
+      ],
+      "warning_rules": [
+        "composition_centered_with_white_space_margins",
+        "complexity_appropriate_for_adult_coloring",
+        "consistent_style_across_pages_in_book"
+      ],
+      "examples_of_unacceptable": [
+        "Page avec couleurs ou ombres (devrait être line art pur)",
+        "Sujet hors prompt (ex: '2 filles déguisées' au lieu de '2 champignons humanisés')",
+        "Traits trop fins pour être colorés à la main"
+      ]
+    },
+    "stl_parametric": {
+      "approach": "VIABLE_AS_IS",
+      "current_status": "100% géométrique, fiabilité parfaite. Pas d'audit visuel nécessaire — c'est du STL imprimable.",
+      "critical_rules": [
+        "stl_file_valid_3d_mesh",
+        "min_thickness_2mm_for_3d_printing"
+      ],
+      "warning_rules": [
+        "file_size_under_5mb"
+      ]
+    },
+    "svg_packs": {
+      "approach": "AUDIT_VECTOR_QUALITY",
+      "critical_rules": [
+        "svg_paths_clean_no_artifacts",
+        "compatible_with_cricut_silhouette"
+      ]
+    },
+    "cope_pack": {
+      "approach": "VIABLE_AS_IS",
+      "current_status": "Multi-format COPE — pas de texte généré, illustrations decorées. OK.",
+      "critical_rules": [
+        "no_gibberish_text"
+      ]
+    },
+    "chess_book": {
+      "approach": "VIABLE_AS_IS",
+      "current_status": "Texte généré par python-chess + ReportLab (pas IA). Position SVG via cairosvg. 100% fiable.",
+      "critical_rules": [
+        "all_puzzles_have_valid_FEN",
+        "solutions_match_puzzles"
+      ]
+    }
+  },
+  "gemini_vision_integration": {
+    "_note": "Quand GEMINI_API_KEY sera dispo, agent_gemini_quality_check.py utilisera Gemini 2.0 Flash Vision pour valider chaque image contre ces règles. Format du prompt :",
+    "prompt_template": "You are a strict quality control AI for a print-on-demand business. Audit this image against these critical rules: {rules}. Reply ONLY with valid JSON: {'verdict': 'approve'|'review'|'reject', 'issues': [...], 'rating_0_100': N, 'reasoning': '...'}.",
+    "approve_threshold": 75,
+    "review_threshold": 55
+  }
+}
