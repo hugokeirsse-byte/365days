@@ -1,0 +1,12 @@
+{
+  "deck_id": "peche",
+  "deck_name": "Cliché Maximum: Pêche Édition",
+  "tagline": "Le jeu pour ceux qui partent à 4h du matin un dimanche",
+  "total_cards": 50,
+  "questions": 20,
+  "answers": 30,
+  "card_format": "Poker 825x1125 (2.75x3.75 bleed)",
+  "platform_target": "The Game Crafter + BoardGamesMaker",
+  "price_suggested_eur": 19.99,
+  "production_method": "Pollinations bg + Pillow text overlay (gibberish-proof)"
+}

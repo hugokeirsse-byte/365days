@@ -1,0 +1,50 @@
+card_id,card_type,deck_name,text,image_file
+profs_question_001,question,Cliché Maximum: Profs de Lycée Edition,Le pire mot d'excuse parent que j'ai reçu : ____.,card_game/profs/question/card_001.png
+profs_question_002,question,Cliché Maximum: Profs de Lycée Edition,"Lors du conseil de classe, le plus gros débat concerne ____.",card_game/profs/question/card_002.png
+profs_question_003,question,Cliché Maximum: Profs de Lycée Edition,Mon élève le plus surprenant a rendu ____ pour son DM.,card_game/profs/question/card_003.png
+profs_question_004,question,Cliché Maximum: Profs de Lycée Edition,"Pour gérer une classe difficile, ma technique secrète est ____.",card_game/profs/question/card_004.png
+profs_question_005,question,Cliché Maximum: Profs de Lycée Edition,Le proviseur me convoque chaque trimestre pour ____.,card_game/profs/question/card_005.png
+profs_question_006,question,Cliché Maximum: Profs de Lycée Edition,"Pendant la pause, en salle des profs, on débat surtout de ____.",card_game/profs/question/card_006.png
+profs_question_007,question,Cliché Maximum: Profs de Lycée Edition,Les copies que je corrige le dimanche soir contiennent toujours ____.,card_game/profs/question/card_007.png
+profs_question_008,question,Cliché Maximum: Profs de Lycée Edition,Mon inspection académique a porté sur ____ et s'est terminée par ____.,card_game/profs/question/card_008.png
+profs_question_009,question,Cliché Maximum: Profs de Lycée Edition,Le sujet d'EPI qu'on m'a imposé cette année : ____.,card_game/profs/question/card_009.png
+profs_question_010,question,Cliché Maximum: Profs de Lycée Edition,Les parents d'élèves veulent absolument ____.,card_game/profs/question/card_010.png
+profs_question_011,question,Cliché Maximum: Profs de Lycée Edition,La photocopieuse de la salle des profs est fâchée avec ____.,card_game/profs/question/card_011.png
+profs_question_012,question,Cliché Maximum: Profs de Lycée Edition,Le délégué de classe a proposé ____ au conseil.,card_game/profs/question/card_012.png
+profs_question_013,question,Cliché Maximum: Profs de Lycée Edition,Un élève m'a expliqué que son devoir est manquant parce que ____.,card_game/profs/question/card_013.png
+profs_question_014,question,Cliché Maximum: Profs de Lycée Edition,L'AED s'est officiellement plainte de ____ ce matin.,card_game/profs/question/card_014.png
+profs_question_015,question,Cliché Maximum: Profs de Lycée Edition,Le sujet du bac que je redoute le plus est ____.,card_game/profs/question/card_015.png
+profs_question_016,question,Cliché Maximum: Profs de Lycée Edition,Mon prochain achat de fournitures perso : ____.,card_game/profs/question/card_016.png
+profs_question_017,question,Cliché Maximum: Profs de Lycée Edition,Le CPE m'a annoncé que ____ avait encore ____.,card_game/profs/question/card_017.png
+profs_question_018,question,Cliché Maximum: Profs de Lycée Edition,Les portes ouvertes ont été un succès uniquement grâce à ____.,card_game/profs/question/card_018.png
+profs_question_019,question,Cliché Maximum: Profs de Lycée Edition,L'IA Inspection a noté la classe parce que ____.,card_game/profs/question/card_019.png
+profs_question_020,question,Cliché Maximum: Profs de Lycée Edition,"Pendant les conseils de classe, ma phrase préférée est ____.",card_game/profs/question/card_020.png
+profs_answer_001,answer,Cliché Maximum: Profs de Lycée Edition,Mon élève s'est cassé un ongle,card_game/profs/answer/card_001.png
+profs_answer_002,answer,Cliché Maximum: Profs de Lycée Edition,Une photo de TikTok comme exposé,card_game/profs/answer/card_002.png
+profs_answer_003,answer,Cliché Maximum: Profs de Lycée Edition,Confisquer le téléphone définitivement,card_game/profs/answer/card_003.png
+profs_answer_004,answer,Cliché Maximum: Profs de Lycée Edition,Avoir manqué d'élèves,card_game/profs/answer/card_004.png
+profs_answer_005,answer,Cliché Maximum: Profs de Lycée Edition,Le café est cassé,card_game/profs/answer/card_005.png
+profs_answer_006,answer,Cliché Maximum: Profs de Lycée Edition,Le retraité absent depuis 3 ans,card_game/profs/answer/card_006.png
+profs_answer_007,answer,Cliché Maximum: Profs de Lycée Edition,Une faute de français du proviseur,card_game/profs/answer/card_007.png
+profs_answer_008,answer,Cliché Maximum: Profs de Lycée Edition,Distribuer trop de bonbons,card_game/profs/answer/card_008.png
+profs_answer_009,answer,Cliché Maximum: Profs de Lycée Edition,L'avenir incertain de la dictée,card_game/profs/answer/card_009.png
+profs_answer_010,answer,Cliché Maximum: Profs de Lycée Edition,Une réunion sans pause,card_game/profs/answer/card_010.png
+profs_answer_011,answer,Cliché Maximum: Profs de Lycée Edition,Un yaourt oublié dans le frigo,card_game/profs/answer/card_011.png
+profs_answer_012,answer,Cliché Maximum: Profs de Lycée Edition,Réformer l'orthographe,card_game/profs/answer/card_012.png
+profs_answer_013,answer,Cliché Maximum: Profs de Lycée Edition,Un pigeon a déchiré son cahier,card_game/profs/answer/card_013.png
+profs_answer_014,answer,Cliché Maximum: Profs de Lycée Edition,La photocopieuse du collège,card_game/profs/answer/card_014.png
+profs_answer_015,answer,Cliché Maximum: Profs de Lycée Edition,Un sujet sur Marcel Proust,card_game/profs/answer/card_015.png
+profs_answer_016,answer,Cliché Maximum: Profs de Lycée Edition,Des Post-it,card_game/profs/answer/card_016.png
+profs_answer_017,answer,Cliché Maximum: Profs de Lycée Edition,Le délégué,card_game/profs/answer/card_017.png
+profs_answer_018,answer,Cliché Maximum: Profs de Lycée Edition,écrasé ses lunettes,card_game/profs/answer/card_018.png
+profs_answer_019,answer,Cliché Maximum: Profs de Lycée Edition,Le baby-foot acheté en kermesse,card_game/profs/answer/card_019.png
+profs_answer_020,answer,Cliché Maximum: Profs de Lycée Edition,Personne ne savait répondre,card_game/profs/answer/card_020.png
+profs_answer_021,answer,Cliché Maximum: Profs de Lycée Edition,Élève brillant mais nonchalant,card_game/profs/answer/card_021.png
+profs_answer_022,answer,Cliché Maximum: Profs de Lycée Edition,ChatGPT a tout copié-collé,card_game/profs/answer/card_022.png
+profs_answer_023,answer,Cliché Maximum: Profs de Lycée Edition,La photocopieuse,card_game/profs/answer/card_023.png
+profs_answer_024,answer,Cliché Maximum: Profs de Lycée Edition,Mes propres feutres,card_game/profs/answer/card_024.png
+profs_answer_025,answer,Cliché Maximum: Profs de Lycée Edition,Le proviseur en short,card_game/profs/answer/card_025.png
+profs_answer_026,answer,Cliché Maximum: Profs de Lycée Edition,Une absence motivée,card_game/profs/answer/card_026.png
+profs_answer_027,answer,Cliché Maximum: Profs de Lycée Edition,Un tableau effaçable cassé,card_game/profs/answer/card_027.png
+profs_answer_028,answer,Cliché Maximum: Profs de Lycée Edition,Un mot d'excuse écrit par l'élève lui-même,card_game/profs/answer/card_028.png
+profs_answer_029,answer,Cliché Maximum: Profs de Lycée Edition,Trois minutes de retard généralisé,card_game/profs/answer/card_029.png

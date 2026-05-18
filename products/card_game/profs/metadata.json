@@ -1,0 +1,12 @@
+{
+  "deck_id": "profs",
+  "deck_name": "Cliché Maximum: Profs de Lycée Edition",
+  "tagline": "Le jeu pour ceux qui ont vu passer 30 ans d'élèves",
+  "total_cards": 49,
+  "questions": 20,
+  "answers": 29,
+  "card_format": "Poker 825x1125 (2.75x3.75 bleed)",
+  "platform_target": "The Game Crafter + BoardGamesMaker",
+  "price_suggested_eur": 19.99,
+  "production_method": "Pollinations bg + Pillow text overlay (gibberish-proof)"
+}
