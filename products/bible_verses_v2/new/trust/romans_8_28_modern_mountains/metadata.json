@@ -1,0 +1,16 @@
+{
+  "design_id": "bible_v2_romans_8_28_modern_mountains",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "reference": "Romans 8:28",
+  "verse_text": "All things work together for good",
+  "topic": "trust",
+  "testament": "new",
+  "style": "modern_mountains",
+  "title": "Romans 8:28 Bible Verse Print — Modern Mountains Christian Wall Art",
+  "tags_etsy": "romans 8:28, bible verse art, christian wall art, trust verse, scripture print, religious decor, faith print, christian gift, church decor, modern mountains, inspirational quote, prayer room art, baptism gift",
+  "price_etsy": 4.99,
+  "files_included": "etsy_preview.jpg, print_3000.png",
+  "bg_prompt_used": "modern minimalist mountain landscape silhouette soft sunrise palette peach lavender contemporary christian poster style ABSOLUTELY NO TEXT NO LETTERS NO WORDS decorative background only",
+  "seed": 154729
+}

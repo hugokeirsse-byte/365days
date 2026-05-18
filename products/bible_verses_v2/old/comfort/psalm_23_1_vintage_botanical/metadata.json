@@ -1,0 +1,16 @@
+{
+  "design_id": "bible_v2_psalm_23_1_vintage_botanical",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "reference": "Psalm 23:1",
+  "verse_text": "The Lord is my shepherd, I shall not want",
+  "topic": "comfort",
+  "testament": "old",
+  "style": "vintage_botanical",
+  "title": "Psalm 23:1 Bible Verse Print — Vintage Botanical Christian Wall Art",
+  "tags_etsy": "psalm 23:1, bible verse art, christian wall art, comfort verse, scripture print, religious decor, faith print, christian gift, church decor, vintage botanical, inspirational quote, prayer room art, baptism gift",
+  "price_etsy": 4.99,
+  "files_included": "etsy_preview.jpg, print_3000.png",
+  "bg_prompt_used": "vintage botanical illustration ferns olive branches scientific style sepia and forest green palette scholarly christian aesthetic ABSOLUTELY NO TEXT NO LETTERS NO WORDS decorative background only",
+  "seed": 224661
+}

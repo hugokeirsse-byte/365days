@@ -1,0 +1,16 @@
+{
+  "design_id": "bible_v2_matthew_6_33_modern_mountains",
+  "version": "v2",
+  "text_overlay_method": "pillow",
+  "reference": "Matthew 6:33",
+  "verse_text": "Seek first the kingdom of God",
+  "topic": "faith",
+  "testament": "new",
+  "style": "modern_mountains",
+  "title": "Matthew 6:33 Bible Verse Print — Modern Mountains Christian Wall Art",
+  "tags_etsy": "matthew 6:33, bible verse art, christian wall art, faith verse, scripture print, religious decor, faith print, christian gift, church decor, modern mountains, inspirational quote, prayer room art, baptism gift",
+  "price_etsy": 4.99,
+  "files_included": "etsy_preview.jpg, print_3000.png",
+  "bg_prompt_used": "modern minimalist mountain landscape silhouette soft sunrise palette peach lavender contemporary christian poster style ABSOLUTELY NO TEXT NO LETTERS NO WORDS decorative background only",
+  "seed": 361731
+}
