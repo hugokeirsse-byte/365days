@@ -213,8 +213,11 @@ def select_pipelines_to_trigger(candidates: list[dict],
             "last_run_age_days": round(age, 1),
         })
         pipelines_planned.add(pipeline)
-        if len(pipelines_planned) >= 3:
-            # On limite à 3 triggers par run pour pas surcharger Actions
+        # IMPORTANT : limite à 1 nouveau pipeline triggered par run.
+        # Source LECONS_DU_WEB.md : éviter le "content farm flag" d'Etsy.
+        # Uploader plus de 5 listings/jour avec structure similaire = ban auto.
+        # Le cadencement lent est crucial pour rester sous le radar.
+        if len(pipelines_planned) >= 1:
             break
 
     return decisions

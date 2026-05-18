@@ -275,6 +275,23 @@ def build_listing(metadata_path: Path) -> bool:
                               "tumbler_wraps", "svg_packs")
     description = vary_description(description, design_id, commercial)
 
+    # AI DISCLOSURE OBLIGATOIRE Etsy depuis juin 2025 (policy update).
+    # 17 000+ listings supprimés début 2025 pour non-disclosure.
+    # Source : LECONS_DU_WEB.md
+    ai_disclosure_variants = [
+        "\n\n🤖 ABOUT THIS WORK — This artwork was created using AI tools "
+        "based on my original prompts, curation, and creative direction. "
+        "Each design is carefully reviewed before listing.",
+        "\n\n🎨 CREATIVE PROCESS — I designed this piece using AI assistance "
+        "guided by my own prompts and creative direction. Each result is "
+        "curated and finished by hand.",
+        "\n\n✨ CREATED BY ME with AI tools as my brush — original prompts, "
+        "personal artistic direction, hand-finished post-processing. "
+        "Designed by me, generated with AI assistance.",
+    ]
+    rnd = deterministic_random(design_id + "_disclosure")
+    description = description + rnd.choice(ai_disclosure_variants)
+
     title = metadata.get("title", "Untitled")
     tags = metadata.get("tags_etsy", "")
     price = metadata.get("price_etsy", "")
@@ -284,6 +301,9 @@ def build_listing(metadata_path: Path) -> bool:
         "=" * 70 + "\n"
         "ETSY LISTING — copie-colle dans Add a Listing\n"
         + "=" * 70 + "\n\n"
+        "⚠ ITEM DETAILS Etsy : coche « Designed by » (PAS « Made by »).\n"
+        "   Production : « Designed and crafted by me »\n"
+        "   AI tools used : Yes (mentionné en description).\n\n"
         "TITRE (max 140 caractères Etsy) :\n"
         f"{title}\n\n"
         + "-" * 70 + "\n"
