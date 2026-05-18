@@ -48,6 +48,16 @@ except ImportError:
     print("ERREUR : reportlab non installé. pip install reportlab")
     sys.exit(2)
 
+
+# === PIPELINE EN PAUSE ===
+# Pollinations rend des résultats trop variables pour ce pipeline.
+# Réactiver dès que HF_API_KEY est dispo (script produce_iheart_hf.py).
+# Cf. STRATEGY.md section "Pipelines EN PAUSE".
+import os as _os
+if _os.environ.get('FORCE_RUN') != '1':
+    print('⏸ PAUSED until HF_API_KEY available. Set FORCE_RUN=1 to bypass.')
+    raise SystemExit(0)
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "products" / "coloring_books"
 USER_AGENT = "ColoringBookProducer/1.0"

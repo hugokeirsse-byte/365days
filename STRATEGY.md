@@ -145,8 +145,16 @@ Hugo entre ventes hebdo dans `data/sales_feedback.csv` → `winner_amplifier` �
 ### Limite Pollinations Flux (gratuit)
 - **Texte généré = gibberish** → on bypass avec overlay Pillow (V2/V3/V4)
 - Illustrations : mains tordues, anatomie approximative, sujets pas toujours fidèles au prompt
+- **Pollinations IGNORE souvent les contraintes négatives** : « no heart symbols » → met un cœur quand même
+- **Anatomie cassée fréquente** : double chien sur iheart_v4 my_dog, double cœur sur iheart_v3 fishing
 - 70% des designs sont vendables, 30% à filtrer via audit
-- **Solution réelle** : passer à HF SDXL + ControlNet (besoin clé HF gratuite)
+- **Solution réelle** : HF SDXL + ControlNet/InstantID/IP-Adapter (besoin clé HF gratuite)
+
+### Pipelines EN PAUSE (production bloquée jusqu'à inscriptions Hugo)
+- ⏸ `produce_iheart_v3` (cadre cœur + scène) — double cœur fréquent
+- ⏸ `produce_iheart_v4` (mask cœur) — anatomie sujet cassée
+- ⏸ `produce_coloring_book` — sujets off-topic, traits trop fins
+- **Réactivation** : dès que `HF_API_KEY` est dispo, on active `produce_iheart_hf.py` qui utilise SDXL + ControlNet pour vrai contrôle
 
 ### Limite QC heuristique (sans Gemini)
 - Détecte le texte gibberish, pas les défauts d'illustration
