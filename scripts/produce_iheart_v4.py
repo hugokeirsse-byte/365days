@@ -26,6 +26,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lib.design_composer import compose_design, get_layout, \
     DesignLayout, IllustrationPlacement, TextZone, DecorativeElement  # noqa: E402
 
+
+# === PIPELINE EN PAUSE ===
+# Pollinations rend des résultats trop variables pour ce pipeline.
+# Réactiver dès que HF_API_KEY est dispo (script produce_iheart_hf.py).
+# Cf. STRATEGY.md section "Pipelines EN PAUSE".
+import os as _os
+if _os.environ.get('FORCE_RUN') != '1':
+    print('⏸ PAUSED until HF_API_KEY available. Set FORCE_RUN=1 to bypass.')
+    raise SystemExit(0)
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "products" / "iheart_v4"
 USER_AGENT = "IHeartV4/1.0"
