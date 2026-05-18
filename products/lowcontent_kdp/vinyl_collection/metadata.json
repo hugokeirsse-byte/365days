@@ -1,0 +1,28 @@
+{
+  "book_id": "vinyl_collection",
+  "title": "The Vinyl Collector's Index",
+  "subtitle": "100 records cataloged — pressing, condition, story",
+  "author": "Daystone Press",
+  "pages_count": 102,
+  "kdp_keywords": [
+    "vinyl collection book",
+    "record collector journal",
+    "lp catalog notebook",
+    "vinyl tracker",
+    "music lover gift",
+    "audiophile journal"
+  ],
+  "categories": [
+    "Music",
+    "Collecting"
+  ],
+  "trim_size": "6 x 9 in",
+  "interior_type": "black and white",
+  "paper_type": "white paper",
+  "binding": "paperback",
+  "imprint": "Daystone Press",
+  "price_kdp_suggested": 7.99,
+  "price_etsy_digital": 5.99,
+  "production_method": "100% Python ReportLab + DejaVu fonts (no AI image)",
+  "generated_at": "2026-05-18T10:31:14.475602Z"
+}

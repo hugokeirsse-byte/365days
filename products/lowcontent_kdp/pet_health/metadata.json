@@ -1,0 +1,29 @@
+{
+  "book_id": "pet_health",
+  "title": "My Pet's Health Journal",
+  "subtitle": "Track vet visits, vaccinations, food, and milestones for one beloved companion",
+  "author": "Daystone Press",
+  "pages_count": 102,
+  "kdp_keywords": [
+    "pet health journal",
+    "dog vaccination record",
+    "cat medical book",
+    "veterinary log",
+    "pet care notebook",
+    "puppy first year"
+  ],
+  "categories": [
+    "Pets",
+    "Pet Care",
+    "Health"
+  ],
+  "trim_size": "6 x 9 in",
+  "interior_type": "black and white",
+  "paper_type": "white paper",
+  "binding": "paperback",
+  "imprint": "Daystone Press",
+  "price_kdp_suggested": 7.99,
+  "price_etsy_digital": 5.99,
+  "production_method": "100% Python ReportLab + DejaVu fonts (no AI image)",
+  "generated_at": "2026-05-18T10:31:13.984975Z"
+}
