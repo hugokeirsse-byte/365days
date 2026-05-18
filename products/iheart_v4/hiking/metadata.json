@@ -1,0 +1,15 @@
+{
+  "design_id": "iheart_v4_hiking",
+  "version": "v4",
+  "text_overlay_method": "pillow",
+  "concept": "illustration cropped INTO heart shape via Pillow mask",
+  "niche": "hiking",
+  "niche_label": "Hiking",
+  "audience": "hikers",
+  "title": "I Love Hiking Print — Heart-Shaped Scene Modern Gift for Hikers",
+  "tags_etsy": "i love hiking, hiking gift, hikers, heart shaped art, wall art print, tshirt design, modern minimalist, digital download, hiking lover, unique gift idea, scene in heart, redbubble pod, instant download",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg, print_3000.png, tshirt_2400x3000.png",
+  "illust_prompt_used": "silhouette of hiker on mountain peak watching sunrise, dramatic landscape, warm golden palette, square composition centered, high quality detailed illustration, ABSOLUTELY NO TEXT NO LETTERS NO HEART SYMBOLS in the image, vibrant colors, no border no frame",
+  "seed": 54681
+}
