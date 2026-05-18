@@ -1,0 +1,53 @@
+{
+  "_doc": "Template config pour un partenariat Château Local (B2B). Hugo remplit ce JSON avec les infos du château et le pipeline génère les 5 produits.",
+  "chateau_id": "chateau_example",
+  "chateau_name": "Château d'Exemple",
+  "village": "Mon-Village-sur-Loire",
+  "country": "France",
+  "annee_fondation": 1287,
+  "epoque_principale": "Médiéval (XIIIe siècle)",
+  "devise_latine": "Per aspera ad astra",
+  "gps_coords": "47.3214° N, 1.2547° E",
+  "altitude_m": 142,
+
+  "armoiries_description": "Écu d'azur à trois fleurs de lys d'or, surmonté d'une couronne comtale",
+  "armoiries_palette": ["azur", "or", "argent"],
+  "armoiries_style": "héraldique médiéval traditionnel",
+
+  "atmosphere_visuelle": "pierre calcaire claire, douves, tourelles pointues, vignes alentour",
+  "couleur_dominante_pierre": "calcaire ivoire",
+  "saison_signature": "automne doré",
+
+  "legendes_locales": [
+    {
+      "titre": "La Dame Blanche de la tour Nord",
+      "synopsis_court": "Apparaît les nuits de pleine lune sur les remparts",
+      "annee_premiere_apparition": 1462,
+      "prompt_illustration": "ghostly white lady silhouette on medieval castle tower at full moon, ethereal, atmospheric, vintage engraving style"
+    },
+    {
+      "titre": "Le trésor caché du Comte Henri",
+      "synopsis_court": "Caché lors du siège de 1592, jamais retrouvé",
+      "annee": 1592,
+      "prompt_illustration": "medieval count hiding treasure chest in castle dungeon at night, candlelight, vintage engraving style"
+    },
+    {
+      "titre": "Le puits sans fond",
+      "synopsis_court": "On dit qu'aucune pierre jetée dedans n'a jamais touché le fond",
+      "prompt_illustration": "ancient stone well in medieval castle courtyard, mysterious darkness, vintage engraving style"
+    }
+  ],
+
+  "boutique_partenaire": {
+    "nom_gerant": "M. Dubois",
+    "modele_partenariat": "POD (Print-on-Demand), 0 stock pour le château",
+    "split_revenue": "Château 30%, Hugo 70%",
+    "produits_actives": [
+      "codex_carnet",
+      "plans_anciens",
+      "mug_medieval",
+      "mini_livre_legendes",
+      "empreinte_plaque"
+    ]
+  }
+}
