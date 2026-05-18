@@ -1,0 +1,16 @@
+{
+  "design_id": "iheart_v3_hiking_watercolor_modern",
+  "version": "v3",
+  "text_overlay_method": "pillow",
+  "niche": "hiking",
+  "niche_label": "Hiking",
+  "audience": "hikers backpackers",
+  "style": "watercolor_modern",
+  "concept": "heart-shaped scene + Pillow text overlay (gibberish-proof)",
+  "title": "I Love Hiking Print — Watercolor Modern Gift for Hikers Backpackers",
+  "tags_etsy": "i love hiking, hiking gift, hikers backpackers, scene in heart, wall art print, tshirt design, watercolor modern, digital download, hiking lover, unique gift, modern art, redbubble pod, instant download",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg (1080x1080), print_3000.png (3000x3000), tshirt_2400x3000.png (Printful)",
+  "prompt_used": "soft watercolor illustration inside heart-shaped frame, gentle color washes, modern editorial style, white background, ABSOLUTELY NO TEXT NO LETTERS NO WORDS in the entire image, scene inside heart shape: silhouette of hiker on mountain peak watching sunrise, valley below, centered composition, professional commercial illustration",
+  "seed": 106707
+}

@@ -1,0 +1,16 @@
+{
+  "design_id": "iheart_v3_my_dog_vintage_engraving",
+  "version": "v3",
+  "text_overlay_method": "pillow",
+  "niche": "my_dog",
+  "niche_label": "My Dog",
+  "audience": "dog parents",
+  "style": "vintage_engraving",
+  "concept": "heart-shaped scene + Pillow text overlay (gibberish-proof)",
+  "title": "I Love My Dog Print — Vintage Engraving Gift for Dog Parents",
+  "tags_etsy": "i love my dog, my dog gift, dog parents, scene in heart, wall art print, tshirt design, vintage engraving, digital download, my dog lover, unique gift, modern art, redbubble pod, instant download",
+  "price_etsy": 4.5,
+  "files_included": "etsy_preview.jpg (1080x1080), print_3000.png (3000x3000), tshirt_2400x3000.png (Printful)",
+  "prompt_used": "vintage engraved illustration centered on heart-shaped frame, fine line work, warm sepia tones with red on heart outline, classic detailed etching aesthetic, ABSOLUTELY NO TEXT NO LETTERS NO WORDS in the entire image, scene inside heart shape: golden retriever sitting happily in meadow with sunlight, tail wagging, centered composition, professional commercial illustration",
+  "seed": 72421
+}

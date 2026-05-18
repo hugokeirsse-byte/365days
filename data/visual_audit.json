@@ -1,0 +1,2226 @@
+{
+  "audit_timestamp": "2026-05-18T05:39:54.482563Z",
+  "tesseract_available": false,
+  "auto_reject": false,
+  "total_audited": 121,
+  "totals_by_status": {
+    "review": 80,
+    "approve": 41
+  },
+  "by_pipeline": {
+    "bible_verses": {
+      "review": 20
+    },
+    "coloring_books": {
+      "approve": 1
+    },
+    "cultural_arbitrage": {
+      "review": 10
+    },
+    "iheart": {
+      "review": 10
+    },
+    "iheart_v2": {
+      "review": 10
+    },
+    "iheart_v3": {
+      "approve": 10
+    },
+    "literal_idioms": {
+      "review": 5
+    },
+    "tumbler_wraps": {
+      "approve": 25
+    },
+    "viral_formats": {
+      "review": 25
+    },
+    "witchy_cottagecore": {
+      "approve": 5
+    }
+  },
+  "audits": [
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1650.1,
+        "luminosity_avg": 213.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/faith/matthew_6_33_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/faith/matthew_6_33_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2730.8,
+        "luminosity_avg": 159.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/faith/matthew_6_33_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/faith/matthew_6_33_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4676.1,
+        "luminosity_avg": 115.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/strength/philippians_4_13_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/strength/philippians_4_13_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1902.6,
+        "luminosity_avg": 212.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/strength/philippians_4_13_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/strength/philippians_4_13_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1895.4,
+        "luminosity_avg": 213.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/trust/romans_8_28_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/trust/romans_8_28_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3243.9,
+        "luminosity_avg": 139.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/trust/romans_8_28_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/trust/romans_8_28_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1153.4,
+        "luminosity_avg": 214.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/john_3_16_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/john_3_16_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4260.9,
+        "luminosity_avg": 163.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/john_3_16_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/john_3_16_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3689.3,
+        "luminosity_avg": 139.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/1_corinthians_13_4_7_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1541.1,
+        "luminosity_avg": 216.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/new/love/1_corinthians_13_4_7_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1994.8,
+        "luminosity_avg": 214.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/comfort/psalm_23_1_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/old/comfort/psalm_23_1_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4410.3,
+        "luminosity_avg": 144.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/comfort/psalm_23_1_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/comfort/psalm_23_1_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1982.2,
+        "luminosity_avg": 209.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/joshua_1_9_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/joshua_1_9_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4303.7,
+        "luminosity_avg": 164.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/joshua_1_9_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/joshua_1_9_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2540.7,
+        "luminosity_avg": 208.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/isaiah_41_10_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/isaiah_41_10_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2649.4,
+        "luminosity_avg": 143.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/courage/isaiah_41_10_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/courage/isaiah_41_10_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1810.8,
+        "luminosity_avg": 209.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/hope/jeremiah_29_11_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/old/hope/jeremiah_29_11_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3318.3,
+        "luminosity_avg": 140.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/hope/jeremiah_29_11_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/hope/jeremiah_29_11_vintage_botanical"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1492.7,
+        "luminosity_avg": 216.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/trust/proverbs_3_5_6_soft_watercolor/etsy_preview.jpg",
+      "design_path": "bible_verses/old/trust/proverbs_3_5_6_soft_watercolor"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "bible_verses",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5016.5,
+        "luminosity_avg": 149.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "bible_verses/old/trust/proverbs_3_5_6_vintage_botanical/etsy_preview.jpg",
+      "design_path": "bible_verses/old/trust/proverbs_3_5_6_vintage_botanical"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "coloring_books",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4039.2,
+        "luminosity_avg": 157.3,
+        "dimensions": "2625x3375",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "coloring_books/mystical_mushrooms/cover_front.png",
+      "design_path": "coloring_books/mystical_mushrooms"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 719.4,
+        "luminosity_avg": 144.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/saudade/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/saudade/minimalist_typo"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1144.8,
+        "luminosity_avg": 135.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/saudade/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/saudade/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 46.0,
+      "visual_score": 70,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 70,
+        "variance_avg": 56.4,
+        "luminosity_avg": 188.4,
+        "dimensions": "1080x1080",
+        "issues": [
+          "composition très uniforme (peut être vide)"
+        ]
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/wabi_sabi/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/wabi_sabi/minimalist_typo"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 516.5,
+        "luminosity_avg": 173.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/wabi_sabi/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/wabi_sabi/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 46.0,
+      "visual_score": 70,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 70,
+        "variance_avg": 32.5,
+        "luminosity_avg": 184.6,
+        "dimensions": "1080x1080",
+        "issues": [
+          "composition très uniforme (peut être vide)"
+        ]
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/hygge/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/hygge/minimalist_typo"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 895.8,
+        "luminosity_avg": 179.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/hygge/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/hygge/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3720.8,
+        "luminosity_avg": 94.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/wanderlust/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/wanderlust/minimalist_typo"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1745.6,
+        "luminosity_avg": 141.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/wanderlust/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/wanderlust/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 515.6,
+        "luminosity_avg": 182.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/ikigai/minimalist_typo/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/ikigai/minimalist_typo"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "cultural_arbitrage",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1098.4,
+        "luminosity_avg": 169.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "cultural_arbitrage/ikigai/definition_dict/etsy_preview.jpg",
+      "design_path": "cultural_arbitrage/ikigai/definition_dict"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2290.8,
+        "luminosity_avg": 217.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/reading/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/reading/watercolor_pastel"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2800.9,
+        "luminosity_avg": 133.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/reading/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/reading/vintage_bold"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1755.1,
+        "luminosity_avg": 231.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/embroidery/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/embroidery/watercolor_pastel"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1815.2,
+        "luminosity_avg": 98.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/embroidery/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/embroidery/vintage_bold"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1846.3,
+        "luminosity_avg": 226.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/gardening/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/gardening/watercolor_pastel"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2758.1,
+        "luminosity_avg": 148.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/gardening/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/gardening/vintage_bold"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 986.2,
+        "luminosity_avg": 221.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/crochet/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/crochet/watercolor_pastel"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4181.1,
+        "luminosity_avg": 131.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/crochet/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/crochet/vintage_bold"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1940.4,
+        "luminosity_avg": 221.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/knitting/watercolor_pastel/etsy_preview.jpg",
+      "design_path": "iheart/knitting/watercolor_pastel"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3214.3,
+        "luminosity_avg": 151.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart/knitting/vintage_bold/etsy_preview.jpg",
+      "design_path": "iheart/knitting/vintage_bold"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3235.7,
+        "luminosity_avg": 181.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_cat/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_cat/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2722.9,
+        "luminosity_avg": 142.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_cat/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_cat/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4641.0,
+        "luminosity_avg": 191.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/reading/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/reading/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4014.4,
+        "luminosity_avg": 148.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/reading/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/reading/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4378.9,
+        "luminosity_avg": 194.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/fishing/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/fishing/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1994.1,
+        "luminosity_avg": 134.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/fishing/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/fishing/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5364.9,
+        "luminosity_avg": 196.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/hiking/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/hiking/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4401.5,
+        "luminosity_avg": 111.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/hiking/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/hiking/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3067.7,
+        "luminosity_avg": 209.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_dog/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_dog/watercolor_modern"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "iheart_v2",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1285.9,
+        "luminosity_avg": 141.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "iheart_v2/my_dog/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v2/my_dog/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2644.6,
+        "luminosity_avg": 226.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_cat/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_cat/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4754.9,
+        "luminosity_avg": 182.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_cat/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_cat/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2620.7,
+        "luminosity_avg": 227.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/reading/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/reading/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 6915.3,
+        "luminosity_avg": 162.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/reading/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/reading/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3329.8,
+        "luminosity_avg": 222.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/fishing/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/fishing/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5470.9,
+        "luminosity_avg": 174.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/fishing/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/fishing/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2643.6,
+        "luminosity_avg": 225.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/hiking/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/hiking/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5980.9,
+        "luminosity_avg": 174.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/hiking/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/hiking/vintage_engraving"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2264.9,
+        "luminosity_avg": 229.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_dog/watercolor_modern/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_dog/watercolor_modern"
+    },
+    {
+      "status": "approve",
+      "composite_score": 100.0,
+      "visual_score": 100,
+      "text_score": 100,
+      "uses_overlay": true,
+      "pipeline": "iheart_v3",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4907.3,
+        "luminosity_avg": 180.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(pillow overlay, texte garanti correct)",
+      "image_audited": "iheart_v3/my_dog/vintage_engraving/etsy_preview.jpg",
+      "design_path": "iheart_v3/my_dog/vintage_engraving"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "literal_idioms",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2900.9,
+        "luminosity_avg": 178.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/french/to_have_the_cockroach/etsy_preview.jpg",
+      "design_path": "literal_idioms/french/to_have_the_cockroach"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "literal_idioms",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2718.9,
+        "luminosity_avg": 187.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/french/to_put_a_rabbit_on_someone/etsy_preview.jpg",
+      "design_path": "literal_idioms/french/to_put_a_rabbit_on_someone"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "literal_idioms",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4629.0,
+        "luminosity_avg": 156.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/german/i_only_understand_train_station/etsy_preview.jpg",
+      "design_path": "literal_idioms/german/i_only_understand_train_station"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "literal_idioms",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2958.9,
+        "luminosity_avg": 186.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/german/to_have_tomatoes_on_your_eyes/etsy_preview.jpg",
+      "design_path": "literal_idioms/german/to_have_tomatoes_on_your_eyes"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "literal_idioms",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3245.8,
+        "luminosity_avg": 188.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "literal_idioms/german/the_bear_is_dancing_there/etsy_preview.jpg",
+      "design_path": "literal_idioms/german/the_bear_is_dancing_there"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2208.7,
+        "luminosity_avg": 61.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_05/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_05"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3620.3,
+        "luminosity_avg": 83.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2629.5,
+        "luminosity_avg": 61.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3718.8,
+        "luminosity_avg": 140.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_03/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3999.8,
+        "luminosity_avg": 79.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/witchy_cottagecore/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/witchy_cottagecore/design_01"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5095.3,
+        "luminosity_avg": 132.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/coffee_humor/design_05/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_05"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5497.7,
+        "luminosity_avg": 154.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/coffee_humor/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5372.1,
+        "luminosity_avg": 95.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/coffee_humor/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3233.3,
+        "luminosity_avg": 217.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/coffee_humor/design_03/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3276.8,
+        "luminosity_avg": 156.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/coffee_humor/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/coffee_humor/design_01"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5558.7,
+        "luminosity_avg": 120.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_05/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_05"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4814.5,
+        "luminosity_avg": 197.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3920.8,
+        "luminosity_avg": 159.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3425.5,
+        "luminosity_avg": 160.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_03/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3616.2,
+        "luminosity_avg": 197.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/summer_beach/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/summer_beach/design_01"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4390.1,
+        "luminosity_avg": 161.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/fathers_day/design_05/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_05"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4969.0,
+        "luminosity_avg": 154.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/fathers_day/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2726.6,
+        "luminosity_avg": 186.9,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/fathers_day/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 6417.0,
+        "luminosity_avg": 172.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/fathers_day/design_03/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3981.4,
+        "luminosity_avg": 160.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/fathers_day/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/fathers_day/design_01"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2624.8,
+        "luminosity_avg": 199.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_05/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_05"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3922.5,
+        "luminosity_avg": 167.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_04/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 7661.2,
+        "luminosity_avg": 161.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_02/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2631.0,
+        "luminosity_avg": 211.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_03/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "tumbler_wraps",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3465.4,
+        "luminosity_avg": 199.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "tumbler_wraps/pride_celebration/design_01/etsy_preview.jpg",
+      "design_path": "tumbler_wraps/pride_celebration/design_01"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2468.4,
+        "luminosity_avg": 206.5,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1508.8,
+        "luminosity_avg": 188.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2932.7,
+        "luminosity_avg": 209.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2819.9,
+        "luminosity_avg": 204.0,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3080.1,
+        "luminosity_avg": 215.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/cheaper_than_therapy/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/cheaper_than_therapy/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4246.1,
+        "luminosity_avg": 155.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4525.9,
+        "luminosity_avg": 146.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4041.2,
+        "luminosity_avg": 144.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2411.2,
+        "luminosity_avg": 175.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4225.2,
+        "luminosity_avg": 192.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/diagnosed_terminal/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/diagnosed_terminal/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5694.1,
+        "luminosity_avg": 125.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 8273.3,
+        "luminosity_avg": 157.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5264.4,
+        "luminosity_avg": 119.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 7586.8,
+        "luminosity_avg": 166.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 6406.6,
+        "luminosity_avg": 157.8,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/blood_level_warning/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/blood_level_warning/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4320.7,
+        "luminosity_avg": 198.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5468.5,
+        "luminosity_avg": 143.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4694.1,
+        "luminosity_avg": 140.2,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5602.3,
+        "luminosity_avg": 115.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2646.1,
+        "luminosity_avg": 134.7,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/allergic_humans/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/allergic_humans/knitting/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2775.6,
+        "luminosity_avg": 184.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/reading/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/reading/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 5116.3,
+        "luminosity_avg": 213.3,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/embroidery/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/embroidery/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4769.4,
+        "luminosity_avg": 188.4,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/gardening/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/gardening/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3757.0,
+        "luminosity_avg": 185.6,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/crochet/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/crochet/v0"
+    },
+    {
+      "status": "review",
+      "composite_score": 58.0,
+      "visual_score": 100,
+      "text_score": 30,
+      "uses_overlay": false,
+      "pipeline": "viral_formats",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 4179.5,
+        "luminosity_avg": 190.1,
+        "dimensions": "1080x1080",
+        "issues": []
+      },
+      "text_extracted": "(Flux text rendering = unreliable, no overlay → suspected gibberish)",
+      "image_audited": "viral_formats/medical/strict_prescription/knitting/v0/etsy_preview.jpg",
+      "design_path": "viral_formats/medical/strict_prescription/knitting/v0"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2293.0,
+        "luminosity_avg": 67.7,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_05/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_05"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1803.4,
+        "luminosity_avg": 84.5,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_04/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_04"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 3330.8,
+        "luminosity_avg": 64.3,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_02/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_02"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 1770.3,
+        "luminosity_avg": 73.1,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_03/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_03"
+    },
+    {
+      "status": "approve",
+      "composite_score": 88.0,
+      "visual_score": 100,
+      "text_score": 80,
+      "uses_overlay": false,
+      "pipeline": "witchy_cottagecore",
+      "visual_details": {
+        "score": 100,
+        "variance_avg": 2557.7,
+        "luminosity_avg": 76.8,
+        "dimensions": "2000x2500",
+        "issues": []
+      },
+      "text_extracted": "(no text expected in this pipeline)",
+      "image_audited": "witchy_cottagecore/design_01/etsy_preview.jpg",
+      "design_path": "witchy_cottagecore/design_01"
+    }
+  ]
+}
