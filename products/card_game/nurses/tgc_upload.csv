@@ -1,0 +1,46 @@
+card_id,card_type,deck_name,text,image_file
+nurses_question_001,question,Cliché Maximum: Nurses Edition,The patient in Room 12 today asked me about ____.,card_game/nurses/question/card_001.png
+nurses_question_002,question,Cliché Maximum: Nurses Edition,Night shift discovery : ____ in the supply closet.,card_game/nurses/question/card_002.png
+nurses_question_003,question,Cliché Maximum: Nurses Edition,My pager went off 17 times because of ____.,card_game/nurses/question/card_003.png
+nurses_question_004,question,Cliché Maximum: Nurses Edition,The senior nurse warned me about ____ on my first day.,card_game/nurses/question/card_004.png
+nurses_question_005,question,Cliché Maximum: Nurses Edition,Doctor's handwriting interpreted as ____.,card_game/nurses/question/card_005.png
+nurses_question_006,question,Cliché Maximum: Nurses Edition,Cafeteria food at 3 AM tastes like ____.,card_game/nurses/question/card_006.png
+nurses_question_007,question,Cliché Maximum: Nurses Edition,The newbie just learned that ____ is NOT optional.,card_game/nurses/question/card_007.png
+nurses_question_008,question,Cliché Maximum: Nurses Edition,Family member arguing at the bedside about ____.,card_game/nurses/question/card_008.png
+nurses_question_009,question,Cliché Maximum: Nurses Edition,Best stress relief after a 12h shift : ____.,card_game/nurses/question/card_009.png
+nurses_question_010,question,Cliché Maximum: Nurses Edition,Charting at midnight reads suspiciously like ____.,card_game/nurses/question/card_010.png
+nurses_question_011,question,Cliché Maximum: Nurses Edition,The morning huddle started with ____.,card_game/nurses/question/card_011.png
+nurses_question_012,question,Cliché Maximum: Nurses Edition,Patient said « I'm allergic to » followed by ____.,card_game/nurses/question/card_012.png
+nurses_question_013,question,Cliché Maximum: Nurses Edition,The pharmacy ran out of ____ again.,card_game/nurses/question/card_013.png
+nurses_question_014,question,Cliché Maximum: Nurses Edition,My favorite drug to draw up is ____.,card_game/nurses/question/card_014.png
+nurses_question_015,question,Cliché Maximum: Nurses Edition,Hospital cafeteria mystery meat resembles ____.,card_game/nurses/question/card_015.png
+nurses_question_016,question,Cliché Maximum: Nurses Edition,Most common question from family : ____.,card_game/nurses/question/card_016.png
+nurses_question_017,question,Cliché Maximum: Nurses Edition,Code blue at 2 AM caused by ____.,card_game/nurses/question/card_017.png
+nurses_question_018,question,Cliché Maximum: Nurses Edition,Best gift for a nurse : ____.,card_game/nurses/question/card_018.png
+nurses_question_019,question,Cliché Maximum: Nurses Edition,Patient discharge plan written as ____.,card_game/nurses/question/card_019.png
+nurses_question_020,question,Cliché Maximum: Nurses Edition,What nurses actually need : ____.,card_game/nurses/question/card_020.png
+nurses_answer_001,answer,Cliché Maximum: Nurses Edition,A 95-year-old patient's TikTok account,card_game/nurses/answer/card_001.png
+nurses_answer_002,answer,Cliché Maximum: Nurses Edition,Three expired Snickers,card_game/nurses/answer/card_002.png
+nurses_answer_003,answer,Cliché Maximum: Nurses Edition,Someone's spilled coffee in the meds room,card_game/nurses/answer/card_003.png
+nurses_answer_004,answer,Cliché Maximum: Nurses Edition,A patient hiding their meds in their socks,card_game/nurses/answer/card_004.png
+nurses_answer_005,answer,Cliché Maximum: Nurses Edition,Doctor wrote « stat » then went to lunch,card_game/nurses/answer/card_005.png
+nurses_answer_006,answer,Cliché Maximum: Nurses Edition,Cardboard with mayonnaise,card_game/nurses/answer/card_006.png
+nurses_answer_007,answer,Cliché Maximum: Nurses Edition,The patient's emotional support iguana,card_game/nurses/answer/card_007.png
+nurses_answer_008,answer,Cliché Maximum: Nurses Edition,The Wi-Fi password,card_game/nurses/answer/card_008.png
+nurses_answer_009,answer,Cliché Maximum: Nurses Edition,A 30-minute nap in the supply closet,card_game/nurses/answer/card_009.png
+nurses_answer_010,answer,Cliché Maximum: Nurses Edition,A novel written by Stephen King,card_game/nurses/answer/card_010.png
+nurses_answer_011,answer,Cliché Maximum: Nurses Edition,Someone forgot to bring donuts,card_game/nurses/answer/card_011.png
+nurses_answer_012,answer,Cliché Maximum: Nurses Edition,Oxygen,card_game/nurses/answer/card_012.png
+nurses_answer_013,answer,Cliché Maximum: Nurses Edition,Coffee,card_game/nurses/answer/card_013.png
+nurses_answer_014,answer,Cliché Maximum: Nurses Edition,Saline,card_game/nurses/answer/card_014.png
+nurses_answer_015,answer,Cliché Maximum: Nurses Edition,Old leather,card_game/nurses/answer/card_015.png
+nurses_answer_016,answer,Cliché Maximum: Nurses Edition,When is the doctor coming ?,card_game/nurses/answer/card_016.png
+nurses_answer_017,answer,Cliché Maximum: Nurses Edition,A patient trying to escape,card_game/nurses/answer/card_017.png
+nurses_answer_018,answer,Cliché Maximum: Nurses Edition,More coffee and a raise,card_game/nurses/answer/card_018.png
+nurses_answer_019,answer,Cliché Maximum: Nurses Edition,Take 2 of literally everything,card_game/nurses/answer/card_019.png
+nurses_answer_020,answer,Cliché Maximum: Nurses Edition,"Coffee, snacks, and a magic eraser",card_game/nurses/answer/card_020.png
+nurses_answer_021,answer,Cliché Maximum: Nurses Edition,Three more nurses,card_game/nurses/answer/card_021.png
+nurses_answer_022,answer,Cliché Maximum: Nurses Edition,A handwritten note nobody can read,card_game/nurses/answer/card_022.png
+nurses_answer_023,answer,Cliché Maximum: Nurses Edition,The night shift miracle,card_game/nurses/answer/card_023.png
+nurses_answer_024,answer,Cliché Maximum: Nurses Edition,A code brown at the worst time,card_game/nurses/answer/card_024.png
+nurses_answer_025,answer,Cliché Maximum: Nurses Edition,An IV pole that's missing wheels,card_game/nurses/answer/card_025.png
