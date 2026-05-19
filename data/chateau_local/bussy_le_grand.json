@@ -1,0 +1,65 @@
+{
+  "_doc": "Château de Bussy-Rabutin (Bussy-le-Grand, Côte-d'Or). Géré par le Centre des Monuments Nationaux. Hugo : adapte les noms si tu vises un partenaire différent (boutique, mairie, association).",
+  "chateau_id": "bussy_le_grand",
+  "chateau_name": "Château de Bussy-Rabutin",
+  "village": "Bussy-le-Grand",
+  "country": "France",
+  "region": "Côte-d'Or, Bourgogne",
+  "annee_fondation": 1520,
+  "epoque_principale": "Renaissance (XVIe siècle), remanié XVIIe",
+  "personnage_emblematique": "Roger de Rabutin, comte de Bussy (1618-1693), écrivain libertin et cousin de Madame de Sévigné",
+  "devise_latine": "Bellator dum vivit",
+  "gps_coords": "47.5667° N, 4.5181° E",
+  "altitude_m": 373,
+
+  "armoiries_description": "D'argent à la fasce d'azur chargée de trois losanges d'or",
+  "armoiries_palette": ["azur", "or", "argent"],
+  "armoiries_style": "héraldique français renaissance",
+
+  "atmosphere_visuelle": "château renaissance en pierre claire avec tours et lucarnes, jardins à la française, douves, intérieur orné de peintures satiriques de la cour de Louis XIV",
+  "couleur_dominante_pierre": "pierre calcaire bourguignonne claire",
+  "saison_signature": "été des jardins à la française",
+
+  "specificites_uniques": [
+    "Galerie des Hommes de Guerre (portraits des grands capitaines)",
+    "Galerie des Rois (portraits des rois de France)",
+    "Cabinet du comte de Bussy (peintures satiriques, exilé par Louis XIV)",
+    "Jardins à la française dessinés par André Le Nôtre",
+    "Vue panoramique sur la vallée de Bourgogne"
+  ],
+
+  "legendes_locales": [
+    {
+      "titre": "L'exil du comte libertin",
+      "synopsis_court": "Pour avoir moqué la cour de Louis XIV dans son Histoire amoureuse des Gaules, le comte de Bussy fut exilé dans son château 17 années durant — où il transforma son humiliation en chef-d'œuvre.",
+      "annee": 1665,
+      "prompt_illustration": "17th century French nobleman in exile writing in candle-lit renaissance castle library, dramatic chiaroscuro, vintage engraving style, no text"
+    },
+    {
+      "titre": "La galerie des rivaux",
+      "synopsis_court": "Dans la Tour Dorée, Bussy-Rabutin fit peindre les portraits de ses ennemis cachés derrière des allégories. Une vengeance par l'art que les visiteurs apprennent encore à décoder.",
+      "annee": 1675,
+      "prompt_illustration": "ornate 17th century chateau gallery interior with allegorical paintings on walls, candlelight ambiance, vintage engraving style, no text"
+    },
+    {
+      "titre": "Le bûcher des lettres",
+      "synopsis_court": "Une nuit d'orage, Bussy aurait brûlé une malle entière de correspondances compromettantes échangées avec sa cousine Madame de Sévigné. Cendres jetées dans les douves.",
+      "annee": 1687,
+      "prompt_illustration": "old letters burning in stone fireplace at night with stormy window, atmospheric, vintage engraving style, no text"
+    }
+  ],
+
+  "boutique_partenaire": {
+    "nom_gerant": "Boutique du Château / Centre des Monuments Nationaux",
+    "modele_partenariat": "POD Print-on-Demand, 0 stock pour la boutique, fabrication à la commande",
+    "split_revenue": "Château 30%, Hugo 70% (négociable selon volume)",
+    "produits_actives": [
+      "codex_carnet",
+      "plans_anciens",
+      "mug_medieval",
+      "mini_livre_legendes",
+      "empreinte_plaque"
+    ],
+    "argument_cle": "L'unique château renaissance bourguignon avec une histoire libertine. Audience cible : visiteurs cultivés 35-65 ans, achats souvenirs premium 15-40 €."
+  }
+}

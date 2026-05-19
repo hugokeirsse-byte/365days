@@ -28,7 +28,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       matrix:
-        agent: [trends, tools, optimization, niches]
+        agent: [money_maker, trends_realtime, system_optimizer, tools_scout, niches_explorer]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
