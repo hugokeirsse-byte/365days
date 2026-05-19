@@ -1,0 +1,26 @@
+AUDIT VISUEL — 2026-05-19T10:52:01.219122Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « | ce
+fwigeu -
+i fed oY
+BN folurertiere | pulew a wa
+| Vv) Coreen < f A pe
+be > wy at soe fou hank « ~ id
+¥ | = ee
+: 4 a4 99 4 + , u
+Ss / SIN , LS,
+) Y ys | “
+RY NANG Riad \ \; ge, oe:
+YS Vey iy | Kige »
+
+→ OK à uploader.

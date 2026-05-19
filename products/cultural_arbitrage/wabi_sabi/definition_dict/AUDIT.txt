@@ -1,0 +1,38 @@
+AUDIT VISUEL — 2026-05-19T10:52:06.927821Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « : as a eR! PTs oak + a RS
+meee AS ¢ se, — a ae
+ipaeke = ~
+, ae ar de
+. A ee {
+“> e©@
+\ 4
+Sema ) &
+Be %, bea
+Ee j ;&
+ie — F
+oe x
+%, A i)
+3
+4 .
+>
+: eee
+n a
+a =
+* Bien,
+" =
+5 en {
+hae too 5 eI
+~ antares  »
+
+→ OK à uploader.

@@ -1,0 +1,29 @@
+AUDIT VISUEL — 2026-05-19T10:52:14.319633Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « eee, Ey is ‘
+} == } 2 ss, > ;
+= vy J om
+A pe (i : A
+| ), | A
+. Zz = : 3
+ia 2 m= TF, i
+. SO
+—.lU
+J : — aS ee oo eg
+; ~ ="
+» al SESZ = 7
+. oe r nl — a
+
+# See GFT See a , »
+
+→ OK à uploader.

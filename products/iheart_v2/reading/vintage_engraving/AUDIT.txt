@@ -1,0 +1,23 @@
+AUDIT VISUEL — 2026-05-19T10:52:19.543139Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « \\ Regie Genin
+xa a Sais: “WY me ze. Ss , i
+q wecaliumoll | yt
+y pe Mee mat Sty
+, \ 3 PSK | } Wi
+AG 4 Ne y
+™ Sere San . ¥ =Cagoos”
+mene fT SS Oe
+etl »
+
+→ OK à uploader.

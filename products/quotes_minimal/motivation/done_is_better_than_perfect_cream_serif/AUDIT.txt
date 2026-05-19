@@ -1,0 +1,15 @@
+AUDIT VISUEL — 2026-05-19T10:52:25.302690Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 100.0/100
+  - Visual : 100/100
+  - Text   : 100/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « (pillow overlay, texte garanti correct) »
+
+→ OK à uploader.

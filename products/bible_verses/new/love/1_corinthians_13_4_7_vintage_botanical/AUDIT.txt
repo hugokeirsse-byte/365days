@@ -1,0 +1,26 @@
+AUDIT VISUEL — 2026-05-19T10:51:52.186556Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « XN “ oo» Ved Am (Wis
+pent Wh ARS
+Ruf, "a
+oe Sa Ne
+Va = love Cal
+Oe aq
+Yeu ; i hon
+my is patce <2
+=~ - gh ee AM
+ye ~ Ihe HeYhE AOS. Bie rites & a \
+I} 1000 On20.c0 pa GORDIE at Ry A
+2 vv F | Prather Ro »
+
+→ OK à uploader.

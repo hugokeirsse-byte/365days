@@ -1,0 +1,35 @@
+AUDIT VISUEL — 2026-05-19T10:52:04.679456Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « = ese te : P ii BI aaa ee
+ae ee + ; q
+7 Ben WPS eit an3) re
+=e pee a
+q a
+eee : sf ae
+q ie d x re
+mt ‘ x Ree a
+_. om
+(, vere ‘ }
+52 gr Eas
+o_o oe 3 | Bee
+‘ wie 3 i
+Zo * ‘ oy
+oe
+=
+%
+: .
+YF
+‘
+t 1ARB Opel »
+
+→ OK à uploader.

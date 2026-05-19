@@ -1,0 +1,25 @@
+AUDIT VISUEL — 2026-05-19T10:51:56.765983Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « A ay
+Te ON ‘
+jw fCCQU, .
+oe Oy lict oat
+“\
+| wil (ve Wes
+/ Teal hia un ns
+WAH IVolYU) t he:
+BALA of
+: SZ wi ex Vy
+ett) x << .. aw »
+
+→ OK à uploader.

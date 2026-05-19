@@ -1,0 +1,26 @@
+AUDIT VISUEL — 2026-05-19T10:52:15.512652Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « =e = oS Co Foak 3 BI
+Snaee 5,
+j t : 2 : 23
+& * : Bs yF . 4 3 Z o
+a ‘ Ves amet a
+BR ice [cae —- Se 33 . "3 :
+* o Pe «| % ae ;
+ee. ~~ 0k oS tea : 1 e8
+ee. ? Bie | a ae et 3 ;
+ry Bi ea
+ae ‘ =e {ae ers >
+ »
+
+→ OK à uploader.

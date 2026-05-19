@@ -1,0 +1,22 @@
+AUDIT VISUEL — 2026-05-19T10:52:30.116287Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « di ; ii : ll
++ ay ji = = a, sf :
+
+j q rate | as
+3 g ) E ~ I Ex ;
+AQ | S225. yi \
+: Fra —— 4 ‘
+Dsnily briotyy obe reins ; »
+
+→ OK à uploader.

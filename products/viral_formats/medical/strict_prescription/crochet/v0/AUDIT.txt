@@ -1,0 +1,20 @@
+AUDIT VISUEL — 2026-05-19T10:52:29.402741Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « 7 ——
+Sfrictt |
+‘Ba
+: PIS SSE | Ww
+% Dhiecea
+K — »
+
+→ OK à uploader.

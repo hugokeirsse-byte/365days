@@ -1,0 +1,28 @@
+AUDIT VISUEL — 2026-05-19T10:52:17.807392Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 94.0/100
+  - Visual : 100/100
+  - Text   : 90/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « 1S |
+a
+a i
+; a i
+) ) s : / Ar Ss
+| 3 yl
+| Be AW
+i} ZR y ad DN
+We Fr ee ees
+* Ne” SRE a
+|) Pe \ as 2 Wee, I i Sr zak ‘Qe
+|) ESR Ze WT a ie
+El Yatyy Dog. 3
+os aes Ss eee »
+
+→ OK à uploader.

@@ -1,0 +1,25 @@
+AUDIT VISUEL — 2026-05-19T10:52:21.686406Z
+============================================================
+
+VERDICT : APPROVE
+Score composite : 82.0/100
+  - Visual : 100/100
+  - Text   : 70/100
+
+Détails visuels :
+  aucun problème
+
+Texte OCR extrait :
+  « . a ae
+: i \
+£ < @. '
+o> r .
+ay
+{ ae
+|
+i]
+den ba haen
+Foomécint Ores oF i bier Rhnw 69 h06.he. mredbeia bts 6k ballast or6hd a6 rar obinial
+i po eee or OW IGE GHEE WET ALSHCLWGR Gate 8 01 BIO MLR AK G »
+
+→ OK à uploader.
