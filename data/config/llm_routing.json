@@ -1,0 +1,180 @@
+{
+  "_doc": "Routage des tâches LLM par priorité de coût. Voir AUTOMATION_BLUEPRINT.md §2.",
+  "_doctrine": "Cascade par coût. Claude appelé en dernier recours seulement.",
+  "_last_update": "2026-05-19",
+
+  "tasks": {
+    "summarize_short": {
+      "description": "Résumé court (1-2 paragraphes)",
+      "primary": { "provider": "mistral", "model": "mistral-small-latest", "max_tokens": 800 },
+      "fallback_chain": [
+        { "provider": "groq", "model": "llama-3.1-8b-instant" },
+        { "provider": "gemini", "model": "gemini-2.0-flash" }
+      ],
+      "never_use_claude": true
+    },
+    "summarize_long": {
+      "description": "Résumé long (résumé d'études, threads Reddit longs)",
+      "primary": { "provider": "gemini", "model": "gemini-2.0-flash", "max_tokens": 4000 },
+      "fallback_chain": [
+        { "provider": "groq", "model": "llama-3.1-70b-versatile" },
+        { "provider": "cohere", "model": "command-r" }
+      ],
+      "never_use_claude": true
+    },
+    "brainstorm_ideas": {
+      "description": "Brainstorming d'idées en masse (200 idées)",
+      "primary": { "provider": "gemini", "model": "gemini-2.0-flash", "max_tokens": 8000 },
+      "fallback_chain": [
+        { "provider": "groq", "model": "llama-3.1-70b-versatile" }
+      ],
+      "never_use_claude": true
+    },
+    "write_chapter_book": {
+      "description": "Rédaction itérative chapitre par chapitre (Module K)",
+      "primary": { "provider": "groq", "model": "llama-3.1-70b-versatile", "max_tokens": 6000 },
+      "fallback_chain": [
+        { "provider": "gemini", "model": "gemini-2.0-flash" },
+        { "provider": "mistral", "model": "mistral-large-latest" }
+      ],
+      "context_carry": "previous_chapter_summary",
+      "never_use_claude": true
+    },
+    "translate": {
+      "description": "Traduction FR↔EN (et autres langues)",
+      "primary": { "provider": "mistral", "model": "mistral-small-latest" },
+      "fallback_chain": [
+        { "provider": "gemini", "model": "gemini-2.0-flash" }
+      ],
+      "never_use_claude": true,
+      "note": "Pour zh/ja : passer phase 2 (validation native), pas avant cash flow > 1000€/mois"
+    },
+    "translate_long_multi_lang": {
+      "description": "Traduction multi-langue d'un produit (description × 10 langues)",
+      "primary": { "provider": "gemini", "model": "gemini-2.0-flash", "max_tokens": 8000 },
+      "fallback_chain": [
+        { "provider": "mistral", "model": "mistral-large-latest" }
+      ],
+      "never_use_claude": true
+    },
+    "seo_keywords": {
+      "description": "Extraction de keywords SEO depuis bestsellers",
+      "primary": { "provider": "cohere", "model": "command-r" },
+      "fallback_chain": [
+        { "provider": "mistral", "model": "mistral-small-latest" },
+        { "provider": "gemini", "model": "gemini-2.0-flash" }
+      ],
+      "never_use_claude": true
+    },
+    "image_generation_stylized": {
+      "description": "Génération image artistique (mockup, illustration coloring)",
+      "primary": { "provider": "huggingface", "model": "stabilityai/stable-diffusion-xl-base-1.0", "endpoint": "inference" },
+      "fallback_chain": [
+        { "provider": "replicate", "model": "black-forest-labs/flux-schnell" }
+      ],
+      "never_use_claude": true
+    },
+    "image_lineart_coloring": {
+      "description": "Line-art coloring book (ControlNet)",
+      "primary": { "provider": "huggingface", "model": "controlnet-lineart-with-sdxl", "endpoint": "inference" },
+      "fallback_chain": [
+        { "provider": "replicate", "model": "fofr/sdxl-emoji" }
+      ],
+      "never_use_claude": true
+    },
+    "image_upscale_4k": {
+      "description": "Upscaling 4K (Real-ESRGAN)",
+      "primary": { "provider": "replicate", "model": "xinntao/realesrgan" },
+      "fallback_chain": [
+        { "provider": "huggingface", "model": "ai-forever/Real-ESRGAN" }
+      ],
+      "never_use_claude": true
+    },
+    "image_colorize_bw": {
+      "description": "Colorisation noir & blanc → couleur (DeOldify)",
+      "primary": { "provider": "replicate", "model": "jantic/deoldify" },
+      "fallback_chain": [],
+      "never_use_claude": true
+    },
+    "image_rembg": {
+      "description": "Détourage automatique (Rembg)",
+      "primary": { "provider": "local", "model": "rembg-python", "note": "Tourne localement Termux ou GitHub Actions" },
+      "fallback_chain": [
+        { "provider": "replicate", "model": "cjwbw/rembg" }
+      ],
+      "never_use_claude": true
+    },
+    "anti_slop_critic_vision": {
+      "description": "Relecture critique visuelle d'un asset (mains à 6 doigts, texte gibberish, layout cassé)",
+      "primary": { "provider": "gemini", "model": "gemini-2.0-flash-exp-vision", "max_tokens": 2000 },
+      "fallback_chain": [
+        { "provider": "claude", "model": "claude-haiku-4-5-20251001", "note": "Seulement si Gemini Vision down ET asset à haute valeur" }
+      ],
+      "claude_threshold": "asset_value_eur > 50"
+    },
+    "anti_slop_critic_text": {
+      "description": "Relecture critique textuelle (ChatGPT-isms, métadonnées, descriptions)",
+      "primary": { "provider": "mistral", "model": "mistral-small-latest" },
+      "fallback_chain": [
+        { "provider": "gemini", "model": "gemini-2.0-flash" }
+      ],
+      "never_use_claude": true
+    },
+    "web_search_trends": {
+      "description": "Veille web ciblée (top articles sur sujet X)",
+      "primary": { "provider": "perplexity", "model": "sonar-medium-online" },
+      "fallback_chain": [
+        { "provider": "openrouter", "model": "perplexity/llama-3.1-sonar-small-128k-online" }
+      ],
+      "never_use_claude": true
+    },
+    "code_python_simple": {
+      "description": "Patch Python trivial (modif config, fix typo, ajout d'une fonction utilitaire)",
+      "primary": { "provider": "mistral", "model": "codestral-latest", "fallback_provider": "mistral-large-latest" },
+      "fallback_chain": [
+        { "provider": "gemini", "model": "gemini-2.0-flash" },
+        { "provider": "groq", "model": "llama-3.1-70b-versatile" }
+      ],
+      "never_use_claude": true
+    },
+    "code_python_complex_architecture": {
+      "description": "Architecture multi-fichiers, refactoring complexe",
+      "primary": { "provider": "claude", "model": "claude-opus-4-7" },
+      "fallback_chain": [],
+      "claude_used": true,
+      "note": "Tâche réservée à Claude par construction"
+    },
+    "debug_github_actions_failure": {
+      "description": "Diagnostiquer un workflow GitHub Actions échoué",
+      "primary": { "provider": "gemini", "model": "gemini-2.0-flash", "max_tokens": 4000 },
+      "fallback_chain": [
+        { "provider": "groq", "model": "llama-3.1-70b-versatile" },
+        { "provider": "claude", "model": "claude-opus-4-7", "note": "Seulement si Gemini & Groq échouent 3× chacun" }
+      ],
+      "claude_threshold": "consecutive_failures >= 3"
+    },
+    "strategic_decision_cross_modules": {
+      "description": "Décision stratégique nécessitant compréhension de plusieurs modules",
+      "primary": { "provider": "claude", "model": "claude-opus-4-7" },
+      "fallback_chain": [],
+      "claude_used": true,
+      "note": "Seul Claude a la compréhension architecturale"
+    }
+  },
+
+  "rate_limits_strict": {
+    "gemini": { "rpm": 15, "rpd": 1500, "tpm": 1000000 },
+    "groq": { "rpm": 30, "rpd": null, "tpm": 30000 },
+    "mistral": { "rpm": 5, "rpd": null, "tpm": 30000 },
+    "cohere": { "rpm": 100, "rpd": null, "tpm": null },
+    "huggingface": { "rpm": 30, "rpd": null, "monthly_credits": 30000 },
+    "replicate": { "rpm": 100, "rpd": null, "credits_total": "5_USD_trial" },
+    "perplexity": { "rpm": 60, "rpd": null, "credits_total": "5_USD_trial" },
+    "claude": { "rpm": "depend_du_plan", "doctrine": "appelé seulement si tous les autres échouent OU si la tâche est explicitement réservée Claude" }
+  },
+
+  "cost_tracking": {
+    "doc": "Compteur token mensuel par provider, mis à jour par chaque appel via Termux notify.py",
+    "store_in": "data/runtime/llm_usage_<YYYY-MM>.json"
+  }
+}

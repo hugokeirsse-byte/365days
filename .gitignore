@@ -1,8 +1,57 @@
+# Python
 __pycache__/
 *.pyc
 *.pyo
+*.swp
+/__pycache__/
+
+# OS
 .DS_Store
 
-/__pycache__/
-*.swp
-.DS_Store
+# 🔐 SECRETS — NE JAMAIS COMMIT (cf. SECURITE_ET_LEGAL.md §5)
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+secrets/
+api_keys.env
+**/secrets/
+**/api_keys.env
+
+# 🏠 TERMUX LOCAL — privé, jamais push (cf. AUTOMATION_BLUEPRINT.md §5)
+stage_local/
+empire_local/
+**/stage_local/
+.stage_local_*
+
+# 📥 Assets HD bruts téléchargés (musées, archives)
+raw_assets/
+**/raw_assets/
+
+# 🧪 Caches de scraping (signaux concurrentiels potentiellement sensibles)
+.scrape_cache/
+**/.scrape_cache/
+
+# 📦 Builds locaux (APK, EPUB intermédiaires)
+build/
+dist/
+*.apk
+*.aab
+*.epub.tmp
+
+# 🪵 Logs
+*.log
+logs/
+
+# 🧰 Outils de dev
+.venv/
+venv/
+.idea/
+.vscode/
+node_modules/
+
+# 🔐 Exports Bitwarden — NE JAMAIS COMMIT
+*.bitwarden_export
+*.json.export

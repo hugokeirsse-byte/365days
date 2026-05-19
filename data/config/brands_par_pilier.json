@@ -1,0 +1,95 @@
+{
+  "_doc": "Brand book par pilier — éviter la dilution cross-canal. Voir MODULES_TRIAGE.md §6.4 amélioration #2.",
+  "_last_update": "2026-05-19",
+
+  "brands": [
+    {
+      "id": "heritage_coloring",
+      "name_public": "Heritage Coloring Studio",
+      "tagline": "Forgotten masterpieces, reborn page by page.",
+      "modules_alimentes": ["U", "P", "D"],
+      "style_visuel": {
+        "palette": ["sepia clair #f4e5cf", "encre #1a1a1a", "or vieilli #c4a464", "papier ivoire #faf4e8"],
+        "typo_titre": "Cormorant Garamond Bold",
+        "typo_corps": "Crimson Text",
+        "decor": "filets fins, vignettes botaniques, sceaux de bibliothèque"
+      },
+      "tone_of_voice": "érudit chaleureux, comme un libraire passionné",
+      "niches_cibles": ["plantes médicinales", "anatomie renaissance", "oiseaux Audubon", "estampes japonaises", "cartes anciennes"],
+      "plateformes_priorite": ["Amazon KDP", "Etsy (à terme)", "Redbubble (posters)", "Society6 (art prints)"],
+      "compte_social_dédié": {
+        "pinterest": "à créer — heritage_coloring_studio",
+        "instagram": "à créer — heritageColoringStudio",
+        "newsletter": "Beehiiv — heritage-coloring.beehiiv.com"
+      }
+    },
+    {
+      "id": "iconic_offspring",
+      "name_public": "Iconic Offspring",
+      "tagline": "What if the icons of yesterday raised cute little heirs?",
+      "modules_alimentes": ["W"],
+      "style_visuel": {
+        "palette": ["pastels doux : rose poudré #f8d5e5, menthe #c7ead8, jaune crème #fef5d3", "noir doux #2a2a2a"],
+        "typo_titre": "Fredoka One ou Quicksand Bold",
+        "typo_corps": "Quicksand",
+        "decor": "rondeurs cute, contours épais, kawaii"
+      },
+      "tone_of_voice": "tendre, ludique, complice — comme un grand frère qui présente des bébés",
+      "niches_cibles": ["super-héros Golden Age PD bébé crossover", "Sherlock-Golem bébé", "Dracula-Carmilla bébé", "Cthulhu cute"],
+      "plateformes_priorite": ["Redbubble", "TeePublic", "Amazon Merch", "KDP coloring", "Gumroad sticker packs"],
+      "compte_social_dédié": {
+        "pinterest": "à créer — iconic_offspring",
+        "tiktok": "à créer — @iconicOffspring",
+        "instagram": "à créer — @iconic.offspring",
+        "ar_filter_creator": "Effect House + Spark AR"
+      }
+    },
+    {
+      "id": "pocket_decks",
+      "name_public": "Pocket Decks",
+      "tagline": "Tiny card games for big inside-jokes.",
+      "modules_alimentes": ["A"],
+      "style_visuel": {
+        "palette": ["palette par deck — sobre, 3 couleurs max", "fond beige carton #f0e8d8"],
+        "typo_titre": "Bebas Neue ou Oswald",
+        "typo_corps": "Inter",
+        "decor": "icônes flat, contours marqués"
+      },
+      "tone_of_voice": "humour pro de métier, complicité de corps de métier (DevOps, pompiers, profs, infirmiers, pêcheurs)",
+      "niches_cibles": ["DevOps", "Pompiers", "Profs", "Pêche", "Nurses", "futur : chefs, mécanos, paysans, marins"],
+      "plateformes_priorite": ["The Game Crafter", "BoardGamesMaker", "Gumroad (versions print-and-play)", "Amazon (long terme)"],
+      "compte_social_dédié": {
+        "instagram": "à créer — @pocket.decks",
+        "tiktok": "à créer — @pocketdecks_humor",
+        "reddit": "post natif dans chaque sub métier (r/devops, r/firefighting, r/teachers, etc.)"
+      }
+    },
+    {
+      "id": "modern_cozy",
+      "name_public": "Modern Cozy Lab",
+      "tagline": "Wholesome aesthetics for everyday rituals.",
+      "modules_alimentes": ["L", "B", "K"],
+      "style_visuel": {
+        "palette": ["palette cottagecore : sauge #b7c9a8, terracotta #c47d5a, beige lait #f0e6d2"],
+        "typo_titre": "Playfair Display",
+        "typo_corps": "Lora",
+        "decor": "fleurs séchées, papier kraft, tâches d'aquarelle"
+      },
+      "tone_of_voice": "doux, sensoriel, slow-living",
+      "niches_cibles": ["mystical mushrooms", "cottagecore witch", "dark academia stationery", "tea rituals", "moon phases"],
+      "plateformes_priorite": ["Amazon KDP", "Etsy", "Redbubble", "Pinterest", "Society6"],
+      "compte_social_dédié": {
+        "pinterest": "à créer — modern_cozy_lab",
+        "instagram": "à créer — @modern.cozy.lab",
+        "newsletter": "Beehiiv — modern-cozy.beehiiv.com"
+      }
+    }
+  ],
+
+  "regles_transversales": [
+    "Aucun produit ne sort sans étiquetage par brand_id dans son metadata.json",
+    "Pas de cross-posting entre comptes de marques (Pinterest Heritage ne reposte pas Iconic Offspring)",
+    "Chaque marque a sa propre newsletter Beehiiv (compartimentation SEO)",
+    "Mentions affiliation/IA conformes (DGCCRF + FTC) sur tous les comptes"
+  ]
+}

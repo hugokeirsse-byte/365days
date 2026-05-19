@@ -1,0 +1,125 @@
+{
+  "_doc": "Matrice de scoring pour valider une niche/opportunité avant production. Seuil : score ≥ 15/20 = validé pour entrer en pipeline.",
+  "_doctrine": "Aucune production ne démarre sur une niche dont l'opportunity_score est en-deçà du seuil. Voir AUTOMATION_BLUEPRINT.md §9.",
+  "_version": "1.0",
+  "_last_update": "2026-05-19",
+
+  "criteres": [
+    {
+      "id": "demande",
+      "label": "Volume de recherche / demande mesurée",
+      "poids": 4,
+      "echelle": {
+        "0": "aucune trace de demande",
+        "1": "demande symbolique (<100 recherches/mois)",
+        "2": "demande modeste (100-1000)",
+        "3": "demande solide (1000-10000)",
+        "4": "demande forte (>10000) confirmée multi-sources"
+      },
+      "sources_de_mesure": ["Google Trends", "Amazon autocomplete", "Etsy filter by sold", "Pinterest Trends"]
+    },
+    {
+      "id": "concurrence_inversee",
+      "label": "Faiblesse / saturation INVERSE de la concurrence (4 = peu de concurrents)",
+      "poids": 4,
+      "echelle": {
+        "0": "saturé, top 100 ultra-pros",
+        "1": "saturé, top 100 corrects",
+        "2": "tier moyen accessible",
+        "3": "peu de concurrents, qualité moyenne",
+        "4": "vide / mal exploité / opportunité claire"
+      },
+      "sources_de_mesure": ["Amazon BSR de la catégorie", "Etsy nombre de listings actifs", "Redbubble fillrate"]
+    },
+    {
+      "id": "marge_par_unite",
+      "label": "Marge nette estimée par vente (€)",
+      "poids": 3,
+      "echelle": {
+        "0": "<1€",
+        "1": "1-3€",
+        "2": "3-7€",
+        "3": "7-15€",
+        "4": ">15€"
+      }
+    },
+    {
+      "id": "legalite",
+      "label": "Sécurité légale (copyright, marques, plateforme rules)",
+      "poids": 3,
+      "echelle": {
+        "0": "risque ban quasi-certain",
+        "1": "zone grise risquée",
+        "2": "zone grise défendable",
+        "3": "safe sauf cas particulier",
+        "4": "100% safe (PD strict + métadonnées propres)"
+      }
+    },
+    {
+      "id": "effort_production",
+      "label": "Effort inverse (4 = facile à produire en chaîne)",
+      "poids": 3,
+      "echelle": {
+        "0": "demande artisanat humain coûteux",
+        "1": "produit lourd avec QC très exigeant",
+        "2": "produit standard avec QC modéré",
+        "3": "produit facilement reproductible",
+        "4": "produit auto-générable en pipeline existant"
+      }
+    },
+    {
+      "id": "levier_cross_canal",
+      "label": "Capacité à décliner sur N supports",
+      "poids": 3,
+      "echelle": {
+        "0": "1 support seulement",
+        "1": "2 supports",
+        "2": "3-4 supports",
+        "3": "5-6 supports",
+        "4": "7+ supports avec pollinisation forte"
+      }
+    }
+  ],
+
+  "_score_max_theorique": 80,
+  "_seuil_validation": 60,
+  "_doc_score": "Score normalisé sur 100 = (total / 80) × 100. Validé si ≥ 75 (équivalent ~15/20 sur la matrice originale).",
+
+  "exemples_niches_evaluees": [
+    {
+      "niche": "Mystical Mushrooms Coloring Book",
+      "scores": { "demande": 4, "concurrence_inversee": 3, "marge_par_unite": 3, "legalite": 4, "effort_production": 4, "levier_cross_canal": 4 },
+      "score_total": 73,
+      "score_normalise": 91,
+      "verdict": "VALIDE — priorité 1"
+    },
+    {
+      "niche": "Bébé crossover super-héros Golden Age PD",
+      "scores": { "demande": 3, "concurrence_inversee": 4, "marge_par_unite": 3, "legalite": 3, "effort_production": 3, "levier_cross_canal": 4 },
+      "score_total": 64,
+      "score_normalise": 80,
+      "verdict": "VALIDE — pilote Module W"
+    },
+    {
+      "niche": "Köhler Medicinal Plants Coloring Book",
+      "scores": { "demande": 3, "concurrence_inversee": 3, "marge_par_unite": 3, "legalite": 4, "effort_production": 4, "levier_cross_canal": 4 },
+      "score_total": 67,
+      "score_normalise": 84,
+      "verdict": "VALIDE — pilote Module U"
+    },
+    {
+      "niche": "Mickey Mouse coloring book moderne",
+      "scores": { "demande": 4, "concurrence_inversee": 1, "marge_par_unite": 3, "legalite": 0, "effort_production": 4, "levier_cross_canal": 4 },
+      "score_total": 41,
+      "score_normalise": 51,
+      "verdict": "REJETÉ — légalité fatale, ban Disney assuré"
+    },
+    {
+      "niche": "AI Music sample pack",
+      "scores": { "demande": 2, "concurrence_inversee": 2, "marge_par_unite": 2, "legalite": 3, "effort_production": 2, "levier_cross_canal": 1 },
+      "score_total": 39,
+      "score_normalise": 49,
+      "verdict": "REJETÉ — marché saturé + AI music en déclin 2026"
+    }
+  ]
+}

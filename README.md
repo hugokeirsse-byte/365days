@@ -51,9 +51,21 @@
 
 ## 📂 Documents stratégiques (lecture obligatoire)
 
+### 🆕 Fondations Empire Perpétuel (19/05/2026)
 | Fichier | Quand le lire |
 |---|---|
-| `INSCRIPTIONS_HUGO.md` | DEMAIN — séquence J1 d'inscription (30 min) |
+| `INSCRIPTIONS_HUGO.md` | **MAINTENANT** — 8 vagues d'inscriptions (Termux, LLM-minions, POD, affiliation…) |
+| `AUTOMATION_BLUEPRINT.md` | qui fait quoi quand — matrice routage LLM-minions / Claude |
+| `SECURITE_ET_LEGAL.md` | 5 risques majeurs, copyright safe-zone, Progeny Engine |
+| `REVERSE_ENGINEERING_BESTSELLERS.md` | méthodologie recopier-en-mieux + cross-pollinisation |
+| `MODULES_TRIAGE.md` | scoring A→W, ordre d'attaque, ma critique honnête |
+| `SECRETS_GITHUB.md` | tuto ajout des clés API (vague 2 LLM-minions) |
+
+### 📋 Stratégie historique (à conserver)
+| Fichier | Quand le lire |
+|---|---|
+| `STRATEGY.md` | document consolidé stratégie |
+| `BRIEFING_18MAI.md` | analyse honnête idées 17/05 |
 | `UPLOAD_GUIDE.md` | Quand un compte Etsy/KDP est validé |
 | `EMPIRE_HUGO.md` | Vue d'ensemble opérationnelle |
 | `BRAND_IDENTITY.md` | Recherche format viral propriétaire (15 candidats) |
@@ -62,6 +74,18 @@
 | `NOUVELLES_IDEES.md` | 8 nouveaux gisements + 20 plateformes additionnelles |
 | `TARGETS_2026.md` | Recherche niches 2026 |
 | `CULTURAL_ARBITRAGE_MERCH.md` | Bibliothèque 80 expressions intraduisibles |
+
+### 🗃️ Données et configuration
+| Fichier | Rôle |
+|---|---|
+| `data/whitelists/whitelist_pd.json` | œuvres du domaine public utilisables (super-héros Golden Age, plantes Köhler, Audubon…) |
+| `data/whitelists/blacklist_copyright.json` | patterns interdits (Disney, Marvel, DC, Pokémon…) |
+| `data/config/brands_par_pilier.json` | 4 marques transversales (Heritage / Iconic Offspring / Pocket Decks / Modern Cozy) |
+| `data/config/scoring_matrix.json` | grille 6 critères /80, seuil validation ≥ 60 |
+| `data/config/llm_routing.json` | cascade Gemini → Groq → Mistral → … → Claude (en dernier) |
+| `data/schemas/opportunity.schema.json` | contrat JSON détection → production |
+| `data/schemas/asset.schema.json` | contrat JSON production → validation Telegram |
+| `staging/README.md` | doctrine du dossier de validation manuelle |
 
 ---
 

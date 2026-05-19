@@ -1,0 +1,76 @@
+{
+  "_doc": "Liste blanche du domaine public — utilisable par les Modules U, V, W, P, M.",
+  "_doctrine": "Double barrière : publication < 1929 (US ET UE) + personnage non modernisé par titulaire récent. Voir SECURITE_ET_LEGAL.md §3.",
+  "_last_review": "2026-05-19",
+  "_next_review": "2027-01-01 (date pivot annuelle pour les nouvelles entrées PD)",
+
+  "literature": [
+    { "id": "dracula_stoker", "title": "Dracula", "author": "Bram Stoker", "year": 1897, "us_pd": true, "eu_pd": true, "notes": "100% safe, exploitable intégralement" },
+    { "id": "phantom_opera_leroux", "title": "Le Fantôme de l'Opéra", "author": "Gaston Leroux", "year": 1910, "us_pd": true, "eu_pd": true, "notes": "100% safe" },
+    { "id": "tarzan_burroughs_books_pre_1929", "title": "Tarzan (livres pré-1929)", "author": "E. R. Burroughs", "year_range": "1912-1928", "us_pd": true, "eu_pd": true, "notes": "Livres antérieurs à 1929 uniquement" },
+    { "id": "sherlock_canon", "title": "Sherlock Holmes (canon)", "author": "A. C. Doyle", "year_range": "1887-1927", "us_pd": "partiel_jusqu_2027", "eu_pd": true, "notes": "EU: PD depuis 2000. US: 4 dernières nouvelles tombent en 2027." },
+    { "id": "lovecraft_pre_1929", "title": "Lovecraft (œuvres pré-1929)", "author": "H. P. Lovecraft", "year_range": "1917-1928", "us_pd": true, "eu_pd": true, "notes": "EU: PD depuis 2008. US: les œuvres < 1929 sont PD." },
+    { "id": "alice_carroll", "title": "Alice au pays des merveilles", "author": "Lewis Carroll", "year": 1865, "us_pd": true, "eu_pd": true },
+    { "id": "wizard_of_oz_baum", "title": "Le Magicien d'Oz (premiers tomes)", "author": "L. Frank Baum", "year_range": "1900-1919", "us_pd": true, "eu_pd": true, "notes": "Attention : versions Disney sous copyright" },
+    { "id": "peter_pan_barrie", "title": "Peter Pan (texte 1911)", "author": "J. M. Barrie", "year": 1911, "us_pd": true, "eu_pd": "depuis 2008 (sauf UK : legs perpétuel à GOSH)", "notes": "UK : revenus collectés par Great Ormond Street Hospital, vérifier marché UK" },
+    { "id": "winnie_pooh_1926", "title": "Winnie l'Ourson (1926)", "author": "A. A. Milne", "year": 1926, "us_pd": true, "eu_pd": true, "notes": "Tigger arrive en 2028 US, Disney version NON utilisable" },
+    { "id": "old_man_sea_pre_1929_novels", "title": "Hemingway pré-1929 (Soleil se lève)", "author": "Hemingway", "year_range": "1926-1928", "us_pd": true, "eu_pd": "depuis 2032 (mort 1961+70)", "notes": "US ok, EU pas encore" },
+    { "id": "great_gatsby", "title": "The Great Gatsby", "author": "F. S. Fitzgerald", "year": 1925, "us_pd": true, "eu_pd": "depuis 2011 (mort 1940+70)", "notes": "Safe" }
+  ],
+
+  "art_visual": [
+    { "id": "audubon_birds_america", "title": "The Birds of America", "author": "John James Audubon", "year_range": "1827-1838", "us_pd": true, "eu_pd": true, "source_hd": "NYPL Digital Collections, BHL", "notes": "Coloring + posters Module U pilote #5" },
+    { "id": "kohler_medicinal_plants", "title": "Köhler's Medizinal-Pflanzen", "author": "Hermann Adolph Köhler", "year": 1887, "us_pd": true, "eu_pd": true, "source_hd": "BHL, Wikipedia Commons", "notes": "Module U pilote #3" },
+    { "id": "vesalius_anatomy", "title": "De Humani Corporis Fabrica", "author": "Andreas Vesalius", "year": 1543, "us_pd": true, "eu_pd": true, "source_hd": "Internet Archive, Wellcome Collection", "notes": "Module U pilote #4" },
+    { "id": "hokusai_estampes_pre_1925", "title": "Estampes Hokusai et école Edo", "author": "Hokusai et al.", "year_range": "pre-1900", "us_pd": true, "eu_pd": true, "source_hd": "Met Museum Open Access (CC0), Rijksmuseum", "notes": "Module U pilote #7" },
+    { "id": "durer_engravings", "title": "Gravures de Dürer", "author": "Albrecht Dürer", "year_range": "1495-1528", "us_pd": true, "eu_pd": true, "source_hd": "Met Open Access" },
+    { "id": "haeckel_artforms_nature", "title": "Kunstformen der Natur", "author": "Ernst Haeckel", "year_range": "1899-1904", "us_pd": true, "eu_pd": true, "source_hd": "BHL, Wikipedia Commons", "notes": "Excellent pour coloring + posters" },
+    { "id": "old_maps_loc", "title": "Cartes anciennes / portulans", "author": "divers", "year_range": "pre-1900", "us_pd": true, "eu_pd": true, "source_hd": "Library of Congress, NYPL" },
+    { "id": "japanese_ema_prints", "title": "Prints japonais Edo et Meiji", "author": "divers", "year_range": "pre-1912", "us_pd": true, "eu_pd": true }
+  ],
+
+  "superheroes_golden_age_pd": [
+    { "id": "stardust_super_wizard", "name": "Stardust the Super Wizard", "publisher": "Fox Feature Syndicate", "first_appearance": 1939, "us_pd": true, "eu_pd": true, "source": "publicdomainsuperheroes.com", "verified": true, "notes": "Cosmique. Idéal pour Progeny pack #1 (avec Phantom Lady)." },
+    { "id": "captain_wonder", "name": "Captain Wonder", "publisher": "Holyoke", "first_appearance": 1942, "us_pd": true, "eu_pd": true, "verified": true, "notes": "Force prodigieuse. Module W pilote #2." },
+    { "id": "black_owl", "name": "The Black Owl", "publisher": "Prize Publications", "first_appearance": 1940, "us_pd": true, "eu_pd": true, "verified": true },
+    { "id": "the_eye", "name": "The Eye", "publisher": "Centaur", "first_appearance": 1939, "us_pd": true, "eu_pd": true, "verified": true, "notes": "Œil flottant mystique." },
+    { "id": "phantom_lady_quality", "name": "Phantom Lady (Quality version)", "publisher": "Quality Comics", "first_appearance": 1941, "us_pd": "partiel", "eu_pd": true, "verified": "à confirmer", "notes": "Mixte selon édition. Version pré-1948 PD." },
+    { "id": "the_heap", "name": "The Heap", "publisher": "Hillman", "first_appearance": 1942, "us_pd": true, "eu_pd": true, "verified": true, "notes": "Monstre marécageux. Module W pilote #2 (avec Captain Wonder)." },
+    { "id": "amazing_man", "name": "Amazing-Man", "publisher": "Centaur", "first_appearance": 1939, "us_pd": true, "eu_pd": true, "verified": true },
+    { "id": "black_terror", "name": "Black Terror", "publisher": "Nedor", "first_appearance": 1941, "us_pd": true, "eu_pd": true, "verified": true, "notes": "Module W pilote #3 (avec Miss Masque)." },
+    { "id": "fighting_yank", "name": "The Fighting Yank", "publisher": "Nedor", "first_appearance": 1941, "us_pd": true, "eu_pd": true, "verified": true },
+    { "id": "miss_masque", "name": "Miss Masque", "publisher": "Nedor", "first_appearance": 1946, "us_pd": true, "eu_pd": true, "verified": true },
+    { "id": "yankee_doodle_jones", "name": "Yankee Doodle Jones", "publisher": "Dynamic Publications", "first_appearance": 1941, "us_pd": true, "eu_pd": true, "verified": true },
+    { "id": "skyman", "name": "Skyman", "publisher": "Columbia / Big Shot", "first_appearance": 1940, "us_pd": true, "eu_pd": true, "verified": true },
+    { "id": "daredevil_lev_gleason", "name": "Daredevil (Lev Gleason, PAS Marvel)", "publisher": "Lev Gleason", "first_appearance": 1940, "us_pd": true, "eu_pd": true, "verified": true, "notes": "ATTENTION : Marvel a un Daredevil sous copyright. C'est l'autre, pré-Marvel." },
+    { "id": "mr_justice", "name": "Mr. Justice", "publisher": "MLJ (now Archie)", "first_appearance": 1940, "us_pd": "à vérifier", "eu_pd": true, "verified": "à confirmer", "notes": "Archie a continué la licence, vérifier si renouvellement copyright." },
+    { "id": "green_lama", "name": "The Green Lama", "publisher": "Prize Publications", "first_appearance": 1940, "us_pd": true, "eu_pd": true, "verified": true, "notes": "Mystique tibétain. Module W pilote #4 (avec The Eye)." },
+    { "id": "cat_man_holyoke", "name": "Cat-Man (Holyoke version)", "publisher": "Holyoke", "first_appearance": 1941, "us_pd": true, "eu_pd": true, "verified": true },
+    { "id": "silver_streak", "name": "Silver Streak", "publisher": "Lev Gleason", "first_appearance": 1939, "us_pd": true, "eu_pd": true, "verified": true, "notes": "Vitesse. Module W pilote #5 (avec Bulletman / Stardust)." }
+  ],
+
+  "progeny_pilots_recommended": [
+    { "id": "progeny_001", "parents": ["stardust_super_wizard", "phantom_lady_quality"], "name_concept": "Bébé Cosmic Detective", "style": "cute baby cottagecore", "outputs": ["sticker_pack", "coloring_book", "t_shirt_collection", "mini_book_kdp"] },
+    { "id": "progeny_002", "parents": ["captain_wonder", "the_heap"], "name_concept": "Bébé Wild Strong", "style": "cute baby nature warrior", "outputs": ["sticker_pack", "coloring_book", "mug", "ar_filter"] },
+    { "id": "progeny_003", "parents": ["black_terror", "miss_masque"], "name_concept": "Bébé Justice Duo", "style": "cute baby retro pulp", "outputs": ["coloring_book", "poster_set", "t_shirt"] },
+    { "id": "progeny_004", "parents": ["the_eye", "green_lama"], "name_concept": "Bébé Mystic Babies", "style": "cute baby occult cozy", "outputs": ["sticker_pack", "coloring_book", "tarot_inspired_card_deck"] },
+    { "id": "progeny_005", "parents": ["stardust_super_wizard", "silver_streak"], "name_concept": "Bébé Speed Cosmic", "style": "cute baby retrofuturist", "outputs": ["t_shirt_collection", "mini_book", "ar_filter"] }
+  ],
+
+  "ATTENTION_DO_NOT_USE": [
+    { "id": "superman", "reason": "DC, sous copyright jusqu'en 2034 environ (US)" },
+    { "id": "batman", "reason": "DC, sous copyright" },
+    { "id": "wonder_woman", "reason": "DC, sous copyright" },
+    { "id": "captain_america", "reason": "Marvel, sous copyright" },
+    { "id": "spider_man", "reason": "Marvel, sous copyright" },
+    { "id": "mickey_mouse_modern", "reason": "Disney modernisations toujours sous copyright (seule la version 1928 Steamboat Willie est PD)" },
+    { "id": "harry_potter", "reason": "JK Rowling, sous copyright" },
+    { "id": "star_wars", "reason": "Disney/Lucasfilm" },
+    { "id": "pokemon", "reason": "Nintendo/The Pokemon Company" },
+    { "id": "nintendo_characters", "reason": "Mario, Zelda, etc. sous copyright" },
+    { "id": "one_piece_naruto_anime_modern", "reason": "manga récents, sous copyright" },
+    { "id": "astro_boy", "reason": "Tezuka Productions, sous copyright" },
+    { "id": "shazam_captain_marvel_fawcett", "reason": "Fawcett racheté par DC, complexité juridique - éviter" },
+    { "id": "tarzan_post_1929_films", "reason": "les films Tarzan sont sous copyright même si les livres pré-1929 sont PD" }
+  ]
+}

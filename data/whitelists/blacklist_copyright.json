@@ -1,0 +1,101 @@
+{
+  "_doc": "Blacklist alimentée par les refus de plateformes et les détections internes. Tout module producteur DOIT vérifier cette liste avant génération.",
+  "_doctrine": "Une seule entrée ici = aucune génération future ne peut sortir avec ces mots-clés / personnages / niches. Voir SECURITE_ET_LEGAL.md §7.2.",
+  "_last_update": "2026-05-19",
+
+  "by_platform_rejection": [],
+
+  "by_keyword_pattern": [
+    {
+      "pattern": "disney",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19",
+      "reason": "Disney défend agressivement même les noms approchants"
+    },
+    {
+      "pattern": "marvel|spider[\\s-]?man|iron[\\s-]?man|hulk|thor",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19",
+      "reason": "Marvel/Disney copyrights actifs"
+    },
+    {
+      "pattern": "dc[\\s-]?comics|superman|batman|wonder[\\s-]?woman|joker",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19",
+      "reason": "DC Comics copyrights actifs"
+    },
+    {
+      "pattern": "harry[\\s-]?potter|hogwarts|gryffindor|hufflepuff|slytherin|ravenclaw",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19",
+      "reason": "Warner Bros. + J.K. Rowling"
+    },
+    {
+      "pattern": "star[\\s-]?wars|jedi|sith|yoda|mandalorian",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19"
+    },
+    {
+      "pattern": "pokemon|pikachu|bulbasaur|charmander|squirtle",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19"
+    },
+    {
+      "pattern": "nintendo|mario|zelda|kirby|metroid|pokemon",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19"
+    },
+    {
+      "pattern": "anime modern (one piece|naruto|attack on titan|demon slayer|jujutsu kaisen|my hero)",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19"
+    },
+    {
+      "pattern": "olympics|olympic[\\s-]?games|olympiade",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19",
+      "reason": "CIO défend agressivement, ban Etsy/Redbubble assuré"
+    },
+    {
+      "pattern": "nba|nfl|mlb|nhl|fifa|uefa|premier[\\s-]?league|ligue 1",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19",
+      "reason": "Ligues sportives, marques déposées strictes"
+    },
+    {
+      "pattern": "rolex|chanel|gucci|louis[\\s-]?vuitton|hermes|prada",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19",
+      "reason": "Marques luxe, défense agressive"
+    },
+    {
+      "pattern": "apple inc|google llc|microsoft windows|sony[\\s-]?playstation|xbox",
+      "rule": "ban_strict",
+      "scope": "tous modules",
+      "added": "2026-05-19"
+    }
+  ],
+
+  "by_niche": [],
+
+  "by_image_hash": {
+    "_doc": "Hashes perceptuels (pHash) d'images dont la génération a été rejetée — pour éviter de re-générer la même chose",
+    "rejected_hashes": []
+  },
+
+  "by_seller_account_flag": {
+    "_doc": "Flags reçus sur des comptes vendeurs (warnings, suspensions temporaires)",
+    "entries": []
+  }
+}
