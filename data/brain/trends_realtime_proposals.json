@@ -1,6 +1,6 @@
 {
   "agent": "trends_realtime",
-  "timestamp": "2026-05-19T11:43:53.342017Z",
+  "timestamp": "2026-05-19T18:28:51.665822Z",
   "status": "PAUSED — waiting for GEMINI_API_KEY secret",
   "mission": "You scan TIME-SENSITIVE trends across social platforms (TikTok, Reddit, Pinterest, Etsy) and identify niches, sub-niches and keywords gaining momentum RIGHT NOW (last 14 days).",
   "note": "Add GEMINI_API_KEY to GitHub secrets to activate this brain."
