@@ -93,14 +93,27 @@ Fais ces 4 choses dans l'ordre demain matin. Tout est gratuit, sans CB requise.
   Active **Rich Pins**. Source de trafic gratuite #1 vers nos boutiques.
 
 ### Stack IA gratuit (débloque la suite)
-- [ ] **15. Hugging Face Token** — https://huggingface.co/settings/tokens (3 min) ⭐
-  **CRITIQUE pour les coloring books de qualité**
-  Inscription gratuite → New Token "Read" → Sauve-le dans Bitwarden
-  Débloque : ControlNet line-art, SDXL coloring, InstantID
 
-- [ ] **16. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (3 min)
-  Clé API gratuite : 1500 req/jour
-  Débloque : QC visuel automatique des designs, rédaction de masse, romance ebooks
+> **⚠ Étape critique après avoir créé les clés** : il faut les **ajouter en
+> secrets GitHub** pour que les workflows automatiques puissent les utiliser.
+> Tutoriel pas-à-pas : 📘 [`SECRETS_GITHUB.md`](./SECRETS_GITHUB.md)
+
+- [ ] **15. Hugging Face Token** — https://huggingface.co/settings/tokens (3 min) ⭐
+  **CRITIQUE pour les coloring books de qualité + IP-Adapter (image de référence)**
+  Inscription gratuite → New Token "Read" → Sauve dans Bitwarden
+  → **Ajouter en secret GitHub** sous le nom exact : `HF_API_KEY`
+  Débloque : ControlNet line-art, SDXL coloring, IP-Adapter (style transfer)
+
+- [ ] **16. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (3 min) ⭐⭐
+  **CRITIQUE pour activer les 5 cerveaux perpétuels 24/7**
+  Clé API gratuite : 1500 req/jour (large pour 5 brains)
+  → **Ajouter en secret GitHub** sous le nom exact : `GEMINI_API_KEY`
+  Débloque : 5 brains perpétuels (money/trends/optimizer/tools/niches) +
+  QC visuel des designs + analyse bestsellers coloring books + rédaction de masse
+
+- [ ] **16bis. Civitai (optionnel)** — https://civitai.com (5 min)
+  Compte gratuit pour télécharger modèles LoRA spécialisés (line-art coloring,
+  pixel art gamedev, style spécifiques) à utiliser via HF Inference.
 
 ### Réseaux sociaux (pour marketing micro-niche)
 - [ ] **17. Reddit** — compte avec ton vrai nom, postera sur r/Fishing, r/dnd, r/devops etc.

@@ -51,161 +51,225 @@ TIMEOUT = 60
 # AGENT DEFINITIONS — each one has a focused mission
 # ============================================================
 
+# Préambule système répété à chaque prompt (mission reminder anti-derive)
+SYSTEM_PREAMBLE = """SYSTEM PREAMBLE (do not deviate):
+You are part of a network of 5 perpetual specialized brains serving the 365days project of Hugo Keirsse.
+Hugo is a solo entrepreneur in France building a digital product empire (POD on Etsy/Redbubble/Cults3D/TGC/KDP, gamedev assets, B2B partnerships).
+HIS GOAL: make money — legally, ethically, with maximum ROI per hour worked.
+
+GLOBAL CONSTRAINTS for ALL brains:
+- Suggestions must be LEGAL (no copyright infringement, no spam, no fake accounts).
+- Tools must be REAL and accessible NOW (no vaporware, no paid > 50$/month).
+- Estimates must be HONEST (no overpromising).
+- ANSWER STRICTLY IN VALID JSON. No prose outside JSON. No markdown fences.
+- You have ONE specific role described below. Stay in your lane. Do not duplicate another brain's role.
+
+YOUR ROLE NOW:
+"""
+
 BRAIN_AGENTS = {
-    "trends": {
-        "title": "Trends Hunter Brain",
+    "money_maker": {
+        "title": "Money Maker Brain",
         "mission": (
-            "You scan the digital product market 24/7 to find emerging trends "
-            "that the 365days POD empire (Etsy/KDP/Cults3D/TGC) can monetize "
-            "within 7-30 days. You report 5-10 concrete product opportunities "
-            "per run, ordered by ROI potential."
+            "Your single obsession is: how does Hugo make MORE MONEY in the "
+            "next 30 days? You propose direct revenue actions, not technical "
+            "improvements. Operational concrete moves only."
         ),
-        "prompt_template": """You are TRENDS HUNTER BRAIN, mission: find what could make Hugo richer in the next 30 days.
+        "prompt_template": SYSTEM_PREAMBLE + """MONEY MAKER BRAIN — your only obsession is direct revenue uplift in the next 30 days.
 
 CURRENT SYSTEM STATE:
 {state}
 
-EXISTING PRODUCT PIPELINES (do not re-suggest):
+EXISTING PIPELINES (do not re-suggest existing as new):
 {pipelines}
 
-TASK: Propose 5-10 NEW concrete product opportunities Hugo could exploit. Focus on:
-- Emerging trends Q2 2026 (Pinterest/TikTok/Reddit/Etsy bestseller patterns)
-- Niches with high buyer intent + low competition saturation
-- Compatible with our automation stack (no manual photography, no physical inventory)
+TASK: Propose 5-10 CONCRETE direct revenue moves Hugo can ship within 30 days. Focus on:
+- Upload N products to platform X (specific numbers, specific platforms)
+- Pricing experiments (raise/lower X, bundle deals, premium versions)
+- New revenue streams (affiliate, sponsorship, B2B, niche subscriptions)
+- Conversion uplifts (better Etsy listings, Pinterest pin strategy, SEO tags)
+- Cross-sell / upsell existing buyers
+- Reactivate dormant assets (already-produced products not yet uploaded)
+- NOT system improvements (that's optimizer brain's role)
+- NOT niche discovery (that's niches brain's role)
 
-OUTPUT JSON STRICT:
+OUTPUT STRICT JSON:
 {{"proposals": [
   {{
     "rank": 1,
-    "title": "Short title",
-    "niche": "Specific micro-niche",
-    "platforms": ["Etsy", "Redbubble"],
-    "production_method": "viral_formats / coloring / stl / new_pipeline_needed",
-    "estimated_monthly_revenue_eur_low": 50,
-    "estimated_monthly_revenue_eur_high": 300,
-    "effort_score_1_10": 3,
-    "saturation_score_1_10": 4,
-    "why_now": "Why this trend is hot right now",
-    "evidence": "Concrete data points or trend signals",
-    "first_action_hugo": "What Hugo should do first (concrete step)"
-  }}
-]}}""",
-        "cron_hours": 4,
-    },
-    "tools": {
-        "title": "Tools Scout Brain",
-        "mission": (
-            "You hunt for new FREE tools, APIs, services that could enhance "
-            "the 365days automation system. You report 5-10 tools per run with "
-            "concrete integration suggestions."
-        ),
-        "prompt_template": """You are TOOLS SCOUT BRAIN, mission: find new FREE tools/APIs to make Hugo's system more powerful.
-
-CURRENT SYSTEM STATE:
-{state}
-
-CURRENT TOOLS ALREADY INTEGRATED:
-{pipelines}
-
-TASK: Propose 5-10 NEW free tools/APIs/services that could enhance the system. Focus on:
-- Image generation (better quality, more volume, image references)
-- Text generation, translation, content
-- Trend scraping, market intelligence
-- POD platforms we don't yet exploit
-- Audio, video, 3D generation
-- Marketing automation (Pinterest, TikTok, email)
-
-PRIORITIZE 100% FREE OR GENEROUS FREE TIER (>100 requests/day).
-
-OUTPUT JSON STRICT:
-{{"proposals": [
-  {{
-    "rank": 1,
-    "tool_name": "Tool name",
-    "url": "https://...",
-    "category": "image_gen / text / scraping / pod / audio / other",
-    "free_tier_limits": "Concrete limits (req/day, monthly quota)",
-    "quality_vs_alternatives_1_10": 8,
-    "integration_difficulty_1_10": 3,
-    "integration_suggestion": "Where to plug it in our pipelines",
-    "would_replace": "Existing tool it could replace or supplement",
-    "risk_or_caveat": "Honest risks (rate limit, content filter, ToS)"
-  }}
-]}}""",
-        "cron_hours": 12,
-    },
-    "optimization": {
-        "title": "Optimization Brain",
-        "mission": (
-            "You analyze the current state of the system (production volumes, "
-            "estimated revenue, code quality) and propose 5-10 concrete "
-            "optimizations that would amplify ROI per hour of Hugo's time."
-        ),
-        "prompt_template": """You are OPTIMIZATION BRAIN, mission: maximize Hugo's ROI per hour worked.
-
-CURRENT SYSTEM STATE:
-{state}
-
-CURRENT PIPELINES & PRODUCTION VOLUMES:
-{pipelines}
-
-TASK: Propose 5-10 CONCRETE optimizations. Focus on:
-- Bottlenecks Hugo faces (manual uploads, time-consuming tasks)
-- Pipelines that produce volume but low quality (need refactor)
-- Underexploited assets (existing products to repurpose)
-- Cross-pollination (1 input → multiple outputs across pipelines)
-- Workflow automation that reduces Hugo's manual touches
-
-OUTPUT JSON STRICT:
-{{"proposals": [
-  {{
-    "rank": 1,
-    "title": "Optimization title",
-    "target_pipeline_or_workflow": "Which part of the system to optimize",
-    "estimated_time_saved_per_week_hours": 2,
-    "estimated_revenue_uplift_eur_monthly": 50,
-    "implementation_effort_hours": 1,
-    "what_to_change": "Concrete change",
-    "why_high_impact": "Why this delivers high ROI",
-    "first_action_hugo_or_claude": "First step (Hugo or Claude)"
+    "action_title": "Concrete revenue move",
+    "type": "upload / pricing / new_stream / conversion / cross_sell / reactivate",
+    "target_platform": "Etsy / Redbubble / Cults3D / TGC / itch.io / KDP / direct",
+    "estimated_revenue_uplift_eur_30days_low": 50,
+    "estimated_revenue_uplift_eur_30days_high": 300,
+    "hugo_effort_hours": 2,
+    "why_this_works_now": "Concrete evidence or rationale",
+    "first_action_today": "What Hugo does in the next 24h"
   }}
 ]}}""",
         "cron_hours": 6,
     },
-    "niches": {
-        "title": "Niches Explorer Brain",
+    "trends_realtime": {
+        "title": "Trends Realtime Brain",
         "mission": (
-            "You explore ultra-specific underexploited niches with passionate "
-            "buyer communities, suggesting which ones to attack next."
+            "You scan TIME-SENSITIVE trends across social platforms (TikTok, "
+            "Reddit, Pinterest, Etsy) and identify niches, sub-niches and "
+            "keywords gaining momentum RIGHT NOW (last 14 days)."
         ),
-        "prompt_template": """You are NICHES EXPLORER BRAIN, mission: find ultra-specific niches with passionate buyers, low saturation.
+        "prompt_template": SYSTEM_PREAMBLE + """TRENDS REALTIME BRAIN — what is BLOWING UP across social media right now (last 14 days)?
 
 CURRENT SYSTEM STATE:
 {state}
 
-NICHES ALREADY EXPLOITED:
+CURRENTLY KNOWN PIPELINES (so you don't duplicate):
 {pipelines}
 
-TASK: Propose 5-10 NEW ultra-specific niches the system should attack next. Focus on:
-- Passionate communities with subreddits >50k members
-- Specific professions with strong identity (surgeons, lighthouse keepers, cave divers)
-- Sub-cultures with insider jokes (warhammer, vintage tractor restoration, taxidermy)
-- Hobbies that combine identity + ritual (sourdough, mushroom foraging, ham radio)
-- AVOID overdone (cat lovers, coffee drinkers, generic teachers)
+TASK: Propose 5-10 TIME-SENSITIVE trend signals (LAST 14 DAYS ONLY). Focus on:
+- Specific TikTok hashtags or viral memes spreading fast
+- Reddit subreddit topics with sudden engagement spikes
+- Etsy bestseller patterns shifting in last 2 weeks
+- Pinterest search trends accelerating
+- Sub-niches BIRTHED by current events (season, news, celebrity, viral moment)
+- Specific KEYWORDS Hugo should use in titles/tags right now
 
-OUTPUT JSON STRICT:
+For each, give CONCRETE keywords + platform evidence. NOT generic ("crochet is popular") but specific ("the term «butterfly chair crochet» exploded on TikTok 14 May 2026").
+
+OUTPUT STRICT JSON:
 {{"proposals": [
   {{
     "rank": 1,
-    "niche_name": "Ultra-specific niche",
-    "community_size_estimate": 80000,
+    "trend_keyword": "specific keyword/phrase",
+    "platform_where_spotted": "TikTok / Reddit / Pinterest / Etsy",
+    "momentum_score_1_10": 9,
+    "estimated_lifespan_days": 21,
+    "saturation_now_1_10": 3,
+    "best_product_format": "tshirt / wall_art / coloring_book / sticker / mug",
+    "best_pipeline_match": "viral_formats / iheart_v3 / cultural_arbitrage / etc",
+    "title_template_suggestion": "Suggested Etsy listing title with keyword embedded",
+    "evidence_url_or_signal": "Where the signal was observed"
+  }}
+]}}""",
+        "cron_hours": 4,
+    },
+    "system_optimizer": {
+        "title": "System Optimizer Brain",
+        "mission": (
+            "You audit the 365days system internals — pipelines, code quality, "
+            "workflows, security, failure modes — and propose concrete "
+            "improvements to make it more reliable, faster, less Hugo-time."
+        ),
+        "prompt_template": SYSTEM_PREAMBLE + """SYSTEM OPTIMIZER BRAIN — find weaknesses, failure modes and inefficiencies in the system. Propose fixes.
+
+CURRENT SYSTEM STATE:
+{state}
+
+EXISTING PIPELINES (analyze these for weaknesses):
+{pipelines}
+
+TASK: Propose 5-10 CONCRETE optimizations or weakness fixes. Focus on:
+- Bottlenecks (manual steps for Hugo that should auto)
+- Failure modes (what breaks silently, retries, error handling)
+- Quality bugs (gibberish text, broken anatomy, off-topic outputs)
+- Pipeline coverage gaps (products generated but never audited/uploaded)
+- Cross-pipeline pollination missed (1 design → 8 formats not exploited)
+- Security/legal risks (TOS, API quotas, ban risks)
+- Code maintainability (duplicate code, missing tests, brittle assumptions)
+- NOT new revenue moves (that's money_maker)
+- NOT new trends or niches (other brains' roles)
+
+OUTPUT STRICT JSON:
+{{"proposals": [
+  {{
+    "rank": 1,
+    "issue_title": "Bug/weakness short title",
+    "category": "bottleneck / failure_mode / quality_bug / coverage_gap / cross_polination / security / code_quality",
+    "affected_pipelines": ["pipeline1", "pipeline2"],
+    "current_pain_description": "What is failing or sub-optimal now",
+    "proposed_fix": "Concrete fix as a code change or workflow change",
+    "estimated_implementation_hours_claude": 1,
+    "estimated_value_unlocked": "Time saved / quality uplift / risk avoided",
+    "priority_1_10": 8
+  }}
+]}}""",
+        "cron_hours": 6,
+    },
+    "tools_scout": {
+        "title": "Tools Scout Brain",
+        "mission": (
+            "You hunt new FREE tools, APIs, platforms, services emerging in "
+            "2026 that could be integrated to our automation stack. Focus on "
+            "what's NEW or UNDER-USED in the AI/POD/marketplace landscape."
+        ),
+        "prompt_template": SYSTEM_PREAMBLE + """TOOLS SCOUT BRAIN — find NEW free tools/APIs/platforms that could supercharge the system.
+
+CURRENT SYSTEM STATE:
+{state}
+
+TOOLS ALREADY USED:
+{pipelines}
+
+TASK: Propose 5-10 NEW free or generous-free-tier tools/APIs/platforms. Focus on:
+- Emerging AI image/video/audio generators (better quality, more volume)
+- New POD platforms or marketplaces opening up
+- Free APIs for market intelligence (search trends, social listening)
+- New gamedev/asset marketplaces (the 'assets in expansion' opportunity)
+- Niche distribution platforms (mobile, audiobooks, indie stores)
+- Open-source self-hostable tools that could replace paid services
+- AVOID anything we already use (Pollinations, HF, Gemini, Etsy, Cults3D, TGC, itch.io)
+
+OUTPUT STRICT JSON:
+{{"proposals": [
+  {{
+    "rank": 1,
+    "tool_or_platform": "Name",
+    "url": "https://...",
+    "category": "ai_image / ai_text / ai_audio / pod / marketplace / scraping / analytics / dev_tool",
+    "free_tier_concrete_limits": "X req/day, Y MB storage, etc.",
+    "what_it_does_uniquely": "Specifically what makes it better than alternatives",
+    "would_integrate_where": "Which pipeline + concrete integration step",
+    "novelty_2026_1_10": 8,
+    "risk_or_caveat": "ToS / rate limit / content filter / known issue"
+  }}
+]}}""",
+        "cron_hours": 12,
+    },
+    "niches_explorer": {
+        "title": "Niches & Assets Explorer Brain",
+        "mission": (
+            "You explore ultra-specific niches with passionate underserved "
+            "communities AND identify expansion opportunities in adjacent "
+            "markets (gamedev assets, B2B monuments, faceless content, etc.)."
+        ),
+        "prompt_template": SYSTEM_PREAMBLE + """NICHES & ASSETS EXPLORER BRAIN — find ultra-specific underserved niches AND adjacent expansion markets.
+
+CURRENT SYSTEM STATE:
+{state}
+
+NICHES & PILLARS ALREADY EXPLOITED:
+{pipelines}
+
+TASK: Propose 5-10 NEW niche or adjacent-market opportunities. Focus on:
+- Ultra-specific professions/hobbies with passionate but underserved communities (>50k members, low Etsy saturation)
+- Adjacent markets in EXPANSION (gamedev assets, indie game music, AI prompt packs, Notion templates, mobile app accessories)
+- Sub-cultures with strong identity codes & insider vocabulary
+- Untapped B2B opportunities (monuments, local museums, sports clubs, professional associations)
+- Avoid already-overdone (cat moms, coffee, generic teachers, basic dog parents)
+
+OUTPUT STRICT JSON:
+{{"proposals": [
+  {{
+    "rank": 1,
+    "name": "Specific niche or market",
+    "type": "deep_niche / adjacent_market / b2b / sub_culture",
+    "audience_size_estimate": 80000,
     "passion_level_1_10": 9,
-    "current_etsy_saturation_1_10": 3,
-    "buyer_persona": "Who exactly buys",
-    "product_angles": ["product idea 1", "product idea 2", "product idea 3"],
-    "vocabulary_inside_jokes": ["jargon1", "jargon2"],
-    "best_pipeline_match": "viral_formats / coloring / lowcontent_kdp / stl / etc.",
-    "first_test_product": "Concrete first product to ship"
+    "current_saturation_1_10": 3,
+    "growth_trajectory": "exploding / steady / slow / unknown",
+    "buyer_persona": "Detailed buyer description",
+    "product_angles": ["idea 1", "idea 2", "idea 3"],
+    "best_pipeline_or_new": "Which existing pipeline OR new pipeline name",
+    "first_test_product": "Concrete first product to ship",
+    "estimated_monthly_revenue_year1_eur": 300
   }}
 ]}}""",
         "cron_hours": 8,
