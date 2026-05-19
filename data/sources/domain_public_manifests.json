@@ -1,0 +1,244 @@
+{
+  "_doc": "Manifest des sources HD du domaine public utilisées par Module U (Coloriste Heritage), Module P (Restaurateur Vintage) et Module W (Engendreur Progeny).",
+  "_doctrine": "Toutes ces sources sont CC0 ou domaine public certifié. Téléchargement local Termux (stage_local/domain_public/), upscale + traitement, puis génération produit. Les URLs HD sont des points d'entrée stables, mais vérifier la disponibilité avant chaque batch.",
+  "_last_verified": "2026-05-19",
+  "_safety_note": "Tous les liens pointent vers des collections muséales ou bibliothèques publiques dont la licence CC0/PD est explicitement mentionnée sur la page source. Conserver capture d'écran de la mention licence à chaque batch.",
+
+  "sources": {
+    "kohler_medicinal_plants_1887": {
+      "title": "Köhler's Medizinal-Pflanzen",
+      "author": "Hermann Adolph Köhler",
+      "year": 1887,
+      "type": "botanical_illustrations",
+      "license": "Public Domain (US + UE confirmed pre-1929)",
+      "primary_source_pages": [
+        "https://www.biodiversitylibrary.org/bibliography/237 (Biodiversity Heritage Library)",
+        "https://commons.wikimedia.org/wiki/Category:Köhler%27s_Medizinal-Pflanzen"
+      ],
+      "approx_plate_count": 283,
+      "image_quality": "HD scans 2000-4000px disponibles sur BHL + Wikimedia Commons",
+      "downloader_strategy": "BHL fournit JPG individuels par planche ; Wikimedia Commons a un dump des images haute résolution",
+      "rights_label_to_attach": "After Hermann Adolph Köhler (1887). Public Domain.",
+      "modules_compatibles": ["U_coloring_heritage", "B_merch_botanique", "D_kdp_low_content"]
+    },
+    "audubon_birds_america_1827": {
+      "title": "The Birds of America",
+      "author": "John James Audubon",
+      "year_range": "1827-1838",
+      "type": "ornithological_illustrations",
+      "license": "Public Domain",
+      "primary_source_pages": [
+        "https://digitalcollections.nypl.org/collections/audubons-birds-of-america (NYPL Digital Collections)",
+        "https://www.biodiversitylibrary.org/bibliography/120565 (BHL)",
+        "https://www.audubon.org/birds-of-america (Audubon Society viewer)"
+      ],
+      "approx_plate_count": 435,
+      "image_quality": "TIFF haute résolution disponible sur NYPL (>6000px sur certaines planches)",
+      "downloader_strategy": "NYPL Digital Collections expose une API JSON, télécharger via params 'format=tiff' ou 'format=jpeg' large",
+      "rights_label_to_attach": "After John James Audubon, Birds of America (1827-1838). Public Domain.",
+      "modules_compatibles": ["U_coloring_heritage", "B_merch_poster", "D_kdp_collector"]
+    },
+    "vesalius_anatomy_1543": {
+      "title": "De Humani Corporis Fabrica",
+      "author": "Andreas Vesalius",
+      "year": 1543,
+      "type": "anatomical_illustrations_renaissance",
+      "license": "Public Domain",
+      "primary_source_pages": [
+        "https://archive.org/details/bub_gb_jBE_2yQTUVoC (Internet Archive)",
+        "https://wellcomecollection.org/works?query=vesalius (Wellcome Collection)",
+        "https://www.nlm.nih.gov/exhibition/historicalanatomies/vesalius_home.html (US NLM)"
+      ],
+      "approx_plate_count": 200,
+      "image_quality": "scans HD disponibles sur Wellcome + Internet Archive",
+      "downloader_strategy": "Wellcome Collection IIIF API (zoom+download)",
+      "rights_label_to_attach": "After Andreas Vesalius, De Fabrica (1543). Public Domain.",
+      "modules_compatibles": ["U_coloring_heritage", "B_merch_anatomique", "D_kdp_collector", "V_mashups"]
+    },
+    "haeckel_kunstformen_natur_1899": {
+      "title": "Kunstformen der Natur",
+      "author": "Ernst Haeckel",
+      "year_range": "1899-1904",
+      "type": "biological_illustrations_art_nouveau",
+      "license": "Public Domain",
+      "primary_source_pages": [
+        "https://commons.wikimedia.org/wiki/Category:Kunstformen_der_Natur",
+        "https://www.biodiversitylibrary.org/bibliography/127913"
+      ],
+      "approx_plate_count": 100,
+      "image_quality": "scans 4000px+ sur Wikimedia Commons",
+      "downloader_strategy": "Wikimedia Commons dump JPG ou via API",
+      "rights_label_to_attach": "After Ernst Haeckel, Kunstformen der Natur (1899-1904). Public Domain.",
+      "modules_compatibles": ["U_coloring_heritage", "B_merch_poster", "V_mashups_marine_botanique"]
+    },
+    "hokusai_estampes_pre_1900": {
+      "title": "Estampes de Hokusai et école Edo",
+      "author": "Katsushika Hokusai et al.",
+      "year_range": "pre-1900",
+      "type": "japanese_woodblock_prints",
+      "license": "Public Domain",
+      "primary_source_pages": [
+        "https://www.metmuseum.org/art/collection/search#!?q=hokusai (Met Open Access, CC0)",
+        "https://www.rijksmuseum.nl/en/search/objects?q=hokusai (Rijksmuseum)",
+        "https://collections.mfa.org/collections/search?searchterm=hokusai (MFA Boston)"
+      ],
+      "approx_plate_count": "Met seul : 200+ estampes",
+      "image_quality": "Met fournit du TIFF haute résolution gratuit via API Open Access",
+      "downloader_strategy": "Met API Open Access (gratuit, CC0) : https://metmuseum.github.io/",
+      "rights_label_to_attach": "After Katsushika Hokusai (Edo period). Public Domain. Source: The Metropolitan Museum of Art, Open Access.",
+      "modules_compatibles": ["U_coloring_heritage", "B_merch_japonisant", "V_mashups", "W_progeny_compatible"]
+    },
+    "old_maps_loc": {
+      "title": "Cartes anciennes et portulans (Library of Congress)",
+      "author": "divers",
+      "year_range": "pre-1900",
+      "type": "historical_maps",
+      "license": "Public Domain (sauf mention contraire)",
+      "primary_source_pages": [
+        "https://www.loc.gov/maps/ (Library of Congress)",
+        "https://www.davidrumsey.com/ (David Rumsey Map Collection, CC-BY-NC-SA pour HD mais PD pour œuvres antérieures à 1929)"
+      ],
+      "image_quality": "TIFF haute résolution",
+      "downloader_strategy": "LoC API JSON par item",
+      "rights_label_to_attach": "From the Library of Congress, public domain.",
+      "modules_compatibles": ["U_coloring_heritage", "B_merch_voyage", "D_kdp_collector"]
+    },
+    "durer_engravings": {
+      "title": "Gravures d'Albrecht Dürer",
+      "author": "Albrecht Dürer",
+      "year_range": "1495-1528",
+      "type": "renaissance_engravings",
+      "license": "Public Domain",
+      "primary_source_pages": [
+        "https://www.metmuseum.org/art/collection/search#!?q=durer&searchField=All (Met Open Access)",
+        "https://commons.wikimedia.org/wiki/Category:Engravings_by_Albrecht_Dürer"
+      ],
+      "image_quality": "TIFF haute résolution Met",
+      "downloader_strategy": "Met API Open Access",
+      "rights_label_to_attach": "After Albrecht Dürer. Public Domain. Source: The Metropolitan Museum of Art.",
+      "modules_compatibles": ["U_coloring_heritage", "B_merch_gothique"]
+    },
+    "rijksmuseum_dutch_masters_pre_1900": {
+      "title": "Maîtres hollandais (Rijksmuseum)",
+      "author": "Rembrandt, Vermeer, etc. (oeuvres entrées dans PD)",
+      "year_range": "pre-1900",
+      "type": "paintings_engravings",
+      "license": "Public Domain (Rijksstudio, CC0)",
+      "primary_source_pages": [
+        "https://www.rijksmuseum.nl/en/rijksstudio"
+      ],
+      "image_quality": "TIFF haute résolution disponible via Rijksstudio download",
+      "downloader_strategy": "Rijksmuseum API (https://www.rijksmuseum.nl/en/data)",
+      "rights_label_to_attach": "Source: Rijksmuseum, Amsterdam. Public Domain.",
+      "modules_compatibles": ["U_coloring_heritage", "P_restoration", "V_mashups"]
+    },
+    "smithsonian_open_access": {
+      "title": "Smithsonian Open Access (CC0)",
+      "year_range": "varied (pre-1929 strict + CC0 explicit)",
+      "type": "varied_collections",
+      "license": "CC0",
+      "primary_source_pages": [
+        "https://www.si.edu/openaccess",
+        "https://collections.si.edu/search/results.htm?view=&q=&fq=online_media_type%3A%22Images%22&fq=usage.access%3A%22CC0%22"
+      ],
+      "image_quality": "JPG haute résolution",
+      "downloader_strategy": "Smithsonian Open Access API (https://api.si.edu/openaccess/)",
+      "rights_label_to_attach": "Source: Smithsonian Open Access (CC0).",
+      "modules_compatibles": ["U", "P", "V", "W"]
+    },
+    "internet_archive_books": {
+      "title": "Internet Archive Books (pre-1929)",
+      "year_range": "pre-1929 strict",
+      "type": "books_illustrated_textual",
+      "license": "Public Domain (filtre pre-1929)",
+      "primary_source_pages": [
+        "https://archive.org/details/texts (filtre 'date < 1929')"
+      ],
+      "image_quality": "PDF + JPG par page",
+      "downloader_strategy": "Internet Archive API + IIIF",
+      "rights_label_to_attach": "Source: Internet Archive. Public Domain.",
+      "modules_compatibles": ["U", "K_fiction_courte_basée_sur_texte_PD", "D"]
+    },
+    "gutenberg_texts": {
+      "title": "Project Gutenberg (textes seuls)",
+      "year_range": "pre-1929",
+      "type": "textual",
+      "license": "Public Domain US (vérifier UE au cas par cas)",
+      "primary_source_pages": [
+        "https://www.gutenberg.org/"
+      ],
+      "downloader_strategy": "Gutenberg mirror + RDF metadata",
+      "rights_label_to_attach": "Source: Project Gutenberg. Public Domain US.",
+      "modules_compatibles": ["K_fiction_courte", "D_kdp_collector"]
+    },
+    "public_domain_super_heroes": {
+      "title": "Super-héros Golden Age dans le domaine public",
+      "year_range": "1939-1946",
+      "type": "comic_book_characters_golden_age",
+      "license": "Public Domain (case-by-case, voir whitelist_pd.json)",
+      "primary_source_pages": [
+        "https://pdsh.fandom.com/wiki/Public_Domain_Super_Heroes_Wiki",
+        "https://en.wikipedia.org/wiki/List_of_public_domain_superheroes",
+        "https://digitalcomicmuseum.com/ (scans complets Golden Age)"
+      ],
+      "image_quality": "JPG haute résolution sur Digital Comic Museum",
+      "downloader_strategy": "Digital Comic Museum download par numéro, extraction case par case",
+      "rights_label_to_attach": "After [character_name] (publisher, year). Public Domain. Source: Digital Comic Museum.",
+      "modules_compatibles": ["W_progeny_engine", "B_merch_baby_crossover"],
+      "characters_whitelisted": "Cf. data/whitelists/whitelist_pd.json > superheroes_golden_age_pd"
+    },
+    "freesound_cc0": {
+      "title": "Freesound (CC0 only)",
+      "type": "audio_samples",
+      "license": "CC0 (filtrer)",
+      "primary_source_pages": [
+        "https://freesound.org/search/?f=license%3A%22Creative+Commons+0%22"
+      ],
+      "downloader_strategy": "Freesound API (clé gratuite, vague 2 audio)",
+      "modules_compatibles": ["C_videos_faceless", "I_audio_packs", "S_jeux_mobiles_sound_fx"]
+    },
+    "kenney_nl_game_assets": {
+      "title": "Kenney.nl Game Assets",
+      "type": "game_sprites_audio_3d",
+      "license": "CC0",
+      "primary_source_pages": [
+        "https://kenney.nl/assets"
+      ],
+      "downloader_strategy": "Téléchargement ZIP direct par pack",
+      "rights_label_to_attach": "Game assets by Kenney (kenney.nl), CC0",
+      "modules_compatibles": ["S_jeux_mobiles"],
+      "note_module_s": "Pilier visuel du Module S (Auto-Studio jeux mobiles). Kenney offre 60+ packs CC0 directement utilisables."
+    },
+    "opengameart_cc0": {
+      "title": "OpenGameArt.org (filtre CC0)",
+      "type": "game_assets_varied",
+      "license": "CC0 (filtre obligatoire)",
+      "primary_source_pages": [
+        "https://opengameart.org/art-search-advanced?keys=&field_art_tags_tid_op=or&field_art_tags_tid=&sort_by=count&sort_order=DESC&items_per_page=144&Collection=&field_art_licenses_tid%5B%5D=4"
+      ],
+      "downloader_strategy": "Scrape pages par tags + filter license CC0",
+      "modules_compatibles": ["S_jeux_mobiles", "C_videos_faceless"]
+    }
+  },
+
+  "module_s_specific": {
+    "_doc": "Sources spécifiques au Module S (Auto-Studio jeux mobiles). Squelettes GitHub + assets CC0.",
+    "engine_skeletons": [
+      { "engine": "Godot 4", "source": "https://github.com/godotengine/godot-demo-projects", "license": "MIT" },
+      { "engine": "Phaser 3", "source": "https://github.com/photonstorm/phaser3-examples", "license": "MIT" },
+      { "engine": "LibGDX", "source": "https://github.com/libgdx/libgdx", "license": "Apache-2.0" },
+      { "engine": "Defold", "source": "https://github.com/defold/defold-examples", "license": "varied" }
+    ],
+    "awesome_lists": [
+      "https://github.com/Calinou/awesome-godot",
+      "https://github.com/Raiondesu/awesome-phaser3"
+    ],
+    "casual_game_genres_to_target": [
+      "match-3 (cozy), idle clicker, hyper-casual one-button, color sort, jigsaw puzzle, hidden object, word search"
+    ],
+    "monetization": {
+      "ads_provider": "AdMob (Google) ou Unity Ads",
+      "store_priority": ["Amazon Appstore (gratuit)", "F-Droid (gratuit, code source ouvert obligatoire — donc seulement pour les jeux qu'on accepte d'open-sourcer)", "itch.io (gratuit, web build possible)", "Google Play Store (25$ une fois, reporté)"]
+    }
+  }
+}

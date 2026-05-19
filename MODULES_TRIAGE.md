@@ -44,7 +44,7 @@ lesquels **abandonner** ou repenser.
 | **P** | Restoration vintage (DeOldify+RealESRGAN) | 4 | 4 | 5 | 5 | 5 | **38.0** | ✅✅ priorité absolue |
 | **Q** | AR filters TikTok/Spark | 3 | 4 | 4 | 4 | 3 | **27.5** | ✅ priorité moyenne |
 | **R** | Synthèse rapports sci (Gumroad) | 3 | 3 | 4 | 3 | 2 | **23.0** | 🟡 niche pro, B2B-ish |
-| **S** | Auto-Studio jeux mobiles | 3 | 2 | 4 | 1 | 4 | **22.0** | 🟡 chantier majeur, attendre revenu |
+| **S** | Auto-Studio jeux mobiles (squelettes GitHub + Kenney/OpenGameArt) | 4 | 3 | 4 | 3 | 4 | **30.0** | ✅ priorité moyenne (révisé 19/05) |
 | **T** | Data-loop cross-modules | 4 | n/a | 5 | 4 | 5 | **33.0** | ✅ infrastructure (orchestrateur) |
 | **U** | Coloriages historiques vintage line-art | 5 | 4 | 5 | 5 | 5 | **40.0** | ✅✅✅ maximum théorique |
 | **V** | Mashups culturels (Rembg+ImageMagick) | 4 | 3 | 4 | 4 | 5 | **32.5** | ✅ priorité haute |
@@ -95,7 +95,7 @@ Ordre exact d'allumage, avec dépendances :
 | **J — Open data wrappers** | Trafic gratuit non garanti, AdSense gèle facile. Niche faible. Mieux : intégrer dans Module F éventuellement | reporter |
 | **N — Auto-build APK générique** | Faux problème : c'est Module S qui en a besoin. Pas un module à part | **fusionner dans S** |
 | **O — ChatDev multi-agents** | Trop ambitieux, trop de tokens, risque de produire du logiciel "presque bon" qui ne se vend pas. Une IA qui code une app vendable n'existe pas encore | **abandonner** en l'état |
-| **S — Auto-Studio jeux mobiles** | Sur le papier excellent, en pratique 80% des jeux mobiles indé ne ramènent rien. Et **chaque jeu = des heures de tuning**. À reporter quand on aura du cash flow pour acheter du temps de tester humain | reporter mois 4-6 |
+| ~~**S — Auto-Studio jeux mobiles**~~ | **RÉVISÉ 19/05/2026** : avec squelettes GitHub publics (Godot demo-projects, Phaser examples, LibGDX templates), packs sprites CC0 (Kenney.nl, OpenGameArt), audio (Freesound, BandLab), le coût marginal d'un jeu chute fortement. On peut produire 1 jeu casual par semaine en assemblage. À garder dans le top middle tier. | **garder, activer Vague 5** |
 | **R — Synthèse rapports scientifiques** | B2B est lent, demande crédibilité, niches étroites. Pas mauvais, mais ne se range pas dans un système 100% auto sans crédibilité d'auteur | reporter ou pivot |
 
 ---
@@ -115,7 +115,7 @@ Ordre exact d'allumage, avec dépendances :
 ### 6.2 Ce qui me semble trop ambitieux ou peu rentable
 
 - **Module O (ChatDev)** : on n'est pas encore au stade où une IA peut livrer un logiciel vendable autonome. Tu vas brûler 10× plus de tokens que ce que ça rapporte. Skip.
-- **Module S (Auto-Studio jeux mobiles)** : sur le papier sexy, mais (a) un jeu mobile rentable demande du **vrai** game design, pas de la génération, et (b) Play Console = 25$ + cycles de review longs. Reporter à mois 6.
+- ~~Module S (Auto-Studio jeux mobiles)~~ → **révisé** : avec squelettes GitHub publics + assets CC0, le coût marginal s'effondre. Premier déploiement sur Amazon Appstore (gratuit) avant Play Console.
 - **Module G (extensions navigateur)** : le marché AdCode est mort. Skip.
 - **Module F (sites SEO statiques AdSense)** : Google a tué le AI-content SEO. Skip ou reporter.
 - **Module N (auto-build APK)** : ce n'est pas un module, c'est un sous-composant de S. Fusionner.

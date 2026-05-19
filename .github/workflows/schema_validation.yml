@@ -1,0 +1,28 @@
+name: Validateur Schéma (CI sur PR)
+
+on:
+  pull_request:
+    paths:
+      - "data/**/*.json"
+      - "staging/**/metadata.json"
+      - "scripts/lib/validate_schemas.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install jsonschema
+        run: pip install jsonschema
+
+      - name: Validate all JSON
+        run: python -m scripts.lib.validate_schemas

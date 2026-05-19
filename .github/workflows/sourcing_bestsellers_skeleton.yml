@@ -1,0 +1,68 @@
+name: Éclaireur Bestsellers (squelette)
+
+# Module 1 — Éclaireur Bestsellers
+# Scrape les top-ventes sur les plateformes publiques.
+# AUCUNE clé API requise (pages publiques, JSON publics).
+# Voir AUTOMATION_BLUEPRINT.md §4.
+
+on:
+  schedule:
+    # Daily 1h UTC (cf. MAP_BUSINESS_ET_AGENTS.md cadence hebdomadaire)
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: "Plateforme à scraper (kdp/etsy/redbubble/cults3d/all)"
+        required: false
+        default: "all"
+
+permissions:
+  contents: write
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    env:
+      PLATFORM: ${{ inputs.platform || 'all' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 lxml fake-useragent
+
+      - name: Run scout (placeholder)
+        run: |
+          set -euo pipefail
+          mkdir -p data/bestsellers
+          echo "Plateforme(s) à scraper : ${PLATFORM}"
+          # TODO: brancher scripts/agents/scout_bestsellers.py
+          # En attendant, on touche un fichier vide pour rendre le workflow vert.
+          if [ "${PLATFORM}" = "all" ] || [ "${PLATFORM}" = "kdp" ]; then
+            echo "{\"_placeholder\": true, \"date\": \"$(date -u +%Y-%m-%d)\"}" \
+              > "data/bestsellers/kdp_$(date -u +%Y-%m-%d).json"
+          fi
+          if [ "${PLATFORM}" = "all" ] || [ "${PLATFORM}" = "etsy" ]; then
+            echo "{\"_placeholder\": true, \"date\": \"$(date -u +%Y-%m-%d)\"}" \
+              > "data/bestsellers/etsy_$(date -u +%Y-%m-%d).json"
+          fi
+          if [ "${PLATFORM}" = "all" ] || [ "${PLATFORM}" = "redbubble" ]; then
+            echo "{\"_placeholder\": true, \"date\": \"$(date -u +%Y-%m-%d)\"}" \
+              > "data/bestsellers/redbubble_$(date -u +%Y-%m-%d).json"
+          fi
+
+      - name: Commit data
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/bestsellers/
+            git commit -m "Éclaireur Bestsellers : daily run $(date -u +%Y-%m-%d) (${PLATFORM})"
+            git push
+          else
+            echo "Aucune donnée nouvelle."
+          fi

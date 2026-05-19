@@ -1,0 +1,37 @@
+name: Archiviste Backup (mirror Codeberg trimestriel)
+
+on:
+  schedule:
+    # 1er jour des trimestres à 3h UTC
+    - cron: "0 3 1 1,4,7,10 *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    if: ${{ env.CODEBERG_MIRROR_URL != '' }}
+    env:
+      CODEBERG_MIRROR_URL: ${{ secrets.CODEBERG_MIRROR_URL }}
+      CODEBERG_TOKEN: ${{ secrets.CODEBERG_TOKEN }}
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push mirror to Codeberg
+        run: |
+          set -euo pipefail
+          if [ -z "${CODEBERG_MIRROR_URL}" ] || [ -z "${CODEBERG_TOKEN}" ]; then
+            echo "::warning::CODEBERG_MIRROR_URL ou CODEBERG_TOKEN absent, mirror skippé."
+            exit 0
+          fi
+          # Format attendu : https://codeberg.org/<user>/<repo>.git
+          # Injection du token via URL pour push HTTPS authentifié.
+          AUTH_URL=$(echo "$CODEBERG_MIRROR_URL" | sed "s#https://#https://oauth2:${CODEBERG_TOKEN}@#")
+          git remote add codeberg "$AUTH_URL"
+          git push --mirror codeberg
+          echo "Mirror Codeberg OK"

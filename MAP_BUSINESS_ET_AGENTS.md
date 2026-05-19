@@ -1,0 +1,275 @@
+# 🗺️ MAP — Business × Agents IA perpétuels
+
+**Date** : 2026-05-19
+**Doctrine** : *« Aucune IA ne tourne en continu. Tout est en cron espacé pour rester sous quotas gratuits. »*
+
+Ce document est la **carte mentale unique** : quels business on lance, quels agents les alimentent, à quelle fréquence, avec quel LLM.
+
+---
+
+## 📜 PRINCIPE DE LA CASCADE TEMPORELLE
+
+Au lieu d'IA en continu (impossible à 0€), on **espace les appels** dans le temps pour rester sous les quotas gratuits qui se renouvellent :
+
+```
+Gemini   : 1500 req/jour gratuit → on cible 50-200 req/jour pour tout le système
+Groq     : ~30 req/min          → on plafonne à 10/min volontairement
+Mistral  : ~5 req/min           → on cible 200 req/jour
+Cohere   : 1000 req/mois free   → 30/jour
+HuggingFace : 30k req/mois free → 1000/jour
+Replicate : 5$ trial            → utilisé sporadiquement pour upscale/colorisation
+Perplexity : 5$ trial           → veille hebdo ciblée
+```
+
+**Effet** : chaque rôle d'agent dort entre 2 réveils. Le système est *perpétuel* dans le sens où il **tourne pour toujours**, pas dans le sens où il est *continu*.
+
+**À éviter** : créer plusieurs comptes chez un même provider → ban assuré.
+**Solution propre** : multi-provider en rotation via `llm_routing.json`.
+
+---
+
+## 🏢 PARTIE 1 — LES 13 BUSINESS À LANCER
+
+### 🟢 Top 8 (à allumer dès Vagues 0+1+2 finies)
+
+| # | Business | Brand | Plateformes | Module(s) | Score /40 |
+|---|---|---|---|---|---|
+| 1 | **Coloriages historiques vintage** (Köhler, Audubon, Vésale, Haeckel) | Heritage Coloring | KDP, Redbubble (posters), Gumroad | U + D | **40/40** |
+| 2 | **Merch cross-canal** (1 design × 7 supports) | toutes brands | Redbubble, TeePublic, Zazzle, Society6, Spring, Amazon Merch | B | 38.5 |
+| 3 | **Coloriages stylés modernes** (cottagecore, mushrooms, witch) | Modern Cozy | KDP, Gumroad | L | 37.5 |
+| 4 | **Restauration vintage** (upscale + colorisation archives) | Heritage Coloring | Redbubble posters, KDP collector | P | 38.0 |
+| 5 | **Jeux de cartes humour métier** (DevOps, Pompiers, Profs, Nurses, Pêche) | Pocket Decks | TGC, BGM, Gumroad print-and-play | A | 31.0 |
+| 6 | **Bébés crossover super-héros PD** (Stardust×Phantom, Heap×Captain Wonder…) | Iconic Offspring | Redbubble stickers, KDP coloring, mini-books | W | 30.5 |
+| 7 | **Mashups culturels** (expressions intraduisibles + visuel) | Modern Cozy | Redbubble, KDP, mug | V | 32.5 |
+| 8 | **Coloring KDP low-content** (journaux, planners, gratitude) | Modern Cozy | KDP exclusif | D | 35.0 |
+
+### 🟡 Middle tier (Vague 3+)
+
+| # | Business | Quand | Module |
+|---|---|---|---|
+| 9 | **Fictions courtes KDP** (contes cozy, dark academia) | Vague 2+3 | K |
+| 10 | **AR filters TikTok/Spark** (cape héros, transition vintage) | Vague 4 | Q |
+| 11 | **Vidéos faceless YouTube** (process coloring, lore PD) | Vague 4 | C |
+| 12 | **STL paramétriques** (Cults3D, Printables, MyMiniFactory) | Vague 5 | M2 |
+| 13 | **Jeux mobiles casual** (squelettes Godot/Phaser GitHub + assets Kenney/OpenGameArt) | Vague 5 | S |
+| 14 | **Affiliation 15 marchés M1→M15** | Vague 6 | dédié |
+
+### 🔴 Reportés (revenus lents)
+- Micro-services API (E), Synthèses rapports (R), Mods (H), Audio packs (I), Open data (J)
+
+### ❌ Abandonnés
+- Sites SEO AdSense (F), Extensions navigateur (G), ChatDev multi-agents (O)
+
+---
+
+## 🤖 PARTIE 2 — LES 27 RÔLES D'IA PERPÉTUELS
+
+### 🔭 Antennes (détection) — 6 rôles
+
+| # | Rôle | Fréquence | LLM utilisé | Coût |
+|---|---|---|---|---|
+| 1 | **Éclaireur Bestsellers** — scrape top-ventes KDP/Etsy/Redbubble/Cults3D | daily 1h UTC | Python pur (HTTP) | 0 |
+| 2 | **Critique de Plaintes** — extrait pain points reviews 1-3★ | daily 2h | Mistral small | gratuit |
+| 3 | **Tendanceur** — veille TikTok/Pinterest/Google Trends | 4×/jour (toutes 6h) | Gemini Flash | gratuit (~30 req/j) |
+| 4 | **Saisonnier** — events calendaires 12 semaines à l'avance | weekly lundi | Python pur | 0 |
+| 5 | **Archéologue PD** — refresh Smithsonian, Met, Rijks, BHL, NYPL | weekly samedi | Python pur | 0 |
+| 6 | **Affiliate Hunter** — scan X/Reddit pour intentions d'achat | 2×/jour | Mistral small | gratuit |
+
+### 🧠 Cerveaux (synthèse) — 5 rôles
+
+| # | Rôle | Fréquence | LLM utilisé |
+|---|---|---|---|
+| 7 | **Synthétiseur** — fusion bestsellers + pain points + trends → winning_formula.json | daily 3h | Gemini Flash |
+| 8 | **Opportunist** — applique scoring_matrix.json, trie les niches | daily 3h30 | Python + Mistral |
+| 9 | **Brainstormer** — 200 idées/semaine sur niches non servies | weekly | Gemini Flash (1 grosse req) |
+| 10 | **Arbitragiste Cross-canal** — décide cascade modules quand signal arrive | event-driven | Python + Mistral |
+| 11 | **Méta-Critique hebdo** — audit modules profitables vs gouffres | weekly dim 22h | Gemini Flash |
+
+### 🎨 Producteurs (création) — 8 rôles
+
+| # | Rôle | Fréquence | LLM utilisé |
+|---|---|---|---|
+| 12 | **Coloriste Heritage** — line-art coloring depuis PD HD | lundi 4h | HF SDXL+ControlNet |
+| 13 | **Engendreur Progeny** — fusion 2 parents PD → bébé crossover | jeudi 4h | HF FLUX + Gemini prompts |
+| 14 | **Marchandiseur Cross-canal** — décline 1 design en 7 supports | event-driven | Python pur (resize/mockup) |
+| 15 | **Restaurateur Vintage** — upscale + colorisation + nettoyage | vendredi 4h | Replicate Real-ESRGAN+DeOldify |
+| 16 | **Card Game Designer** — decks thématiques humour métier | mardi 4h | Gemini + Pollinations |
+| 17 | **Conteur Cozy** — fictions courtes branded | mercredi 4h | Groq Llama 70B |
+| 18 | **Vidéaste Faceless** — shorts YouTube/TikTok | dimanche 4h | Groq + Gemini Vision |
+| 18b | **Game Builder Auto** — fork squelette Godot/Phaser + swap assets Kenney/OpenGameArt + build APK | samedi 5h (weekly) | Gemini code-patch + Mistral codestral |
+
+### 🛡️ Filtres (qualité) — 4 rôles
+
+| # | Rôle | Quand | LLM utilisé |
+|---|---|---|---|
+| 19 | **Censeur Copyright** — check blacklist/whitelist sur chaque output | inline | Python regex |
+| 20 | **Anti-Slop Textuel** — détecte ChatGPT-isms | inline | Python pur |
+| 21 | **Anti-Slop Visuel** — relecture critique | inline | Gemini Vision |
+| 22 | **Validateur Schéma** — conformité JSON contracts | CI sur PR | Python jsonschema |
+
+### 📱 Interface humaine — 2 rôles
+
+| # | Rôle | Quand | Tech |
+|---|---|---|---|
+| 23 | **Messager Telegram** — notifs avec boutons inline, reçoit verdict | event-driven | Python + Telegram Bot API |
+| 24 | **Rapporteur Hebdo** — résumé dimanche : produits/validés/rejetés/revenu projeté | weekly dim 23h | Python + Gemini Flash |
+
+### 🔒 Garde-fous (sécurité) — 3 rôles
+
+| # | Rôle | Quand | Tech |
+|---|---|---|---|
+| 25 | **Vigile Secrets** — truffleHog scan fuites clés | monthly | GitHub Action |
+| 26 | **Archiviste Backup** — mirror Codeberg + carte SD Termux | quarterly | git mirror |
+| 27 | **Comptable Quota** — tracke consommation tokens par provider + alerte | continu (sur chaque appel) | Python + JSON local |
+
+---
+
+## 🔗 PARTIE 3 — QUEL AGENT NOURRIT QUEL BUSINESS
+
+```
+                ┌─────────────────────────────────────────┐
+                │  ANTENNES (1-6)                          │
+                │  signaux marché bruts                    │
+                └─────────────┬───────────────────────────┘
+                              ↓
+                ┌─────────────────────────────────────────┐
+                │  CERVEAUX (7-11)                         │
+                │  synthèse → winning_formula.json         │
+                └─────────────┬───────────────────────────┘
+                              ↓
+       ┌──────────────────────┼──────────────────────┐
+       ↓                      ↓                      ↓
+ ┌──────────┐         ┌──────────┐            ┌──────────┐
+ │ Producteurs│        │ Producteurs│           │ Producteurs│
+ │ heritage   │        │ iconic_off │           │ modern_cozy│
+ │ (12, 15)   │        │ (13)       │           │ (14, 16,17)│
+ └─────┬──────┘        └─────┬──────┘           └─────┬──────┘
+       │                     │                        │
+       └─────────────────────┼────────────────────────┘
+                             ↓
+                ┌─────────────────────────────────────────┐
+                │  FILTRES (19-22)                         │
+                │  Copyright + Anti-Slop + Schémas         │
+                └─────────────┬───────────────────────────┘
+                              ↓
+                ┌─────────────────────────────────────────┐
+                │  INTERFACE (23)                          │
+                │  Telegram avec preview + boutons         │
+                └─────────────┬───────────────────────────┘
+                              ↓
+                ┌─────────────────────────────────────────┐
+                │  HUGO valide en 1 clic                   │
+                └─────────────────────────────────────────┘
+```
+
+### Mapping business → agents producteurs
+
+| Business | Agents producteurs | Agents filtres |
+|---|---|---|
+| **Coloriages historiques (B1)** | Coloriste Heritage (12) + Archéologue PD (5) | 19, 20, 21, 22 |
+| **Merch cross-canal (B2)** | Marchandiseur Cross-canal (14) | 19, 20, 21, 22 |
+| **Coloriages stylés modernes (B3)** | Coloriste Heritage (12, mais autres prompts) | tous filtres |
+| **Restauration vintage (B4)** | Restaurateur Vintage (15) + Archéologue PD (5) | tous filtres |
+| **Jeux de cartes (B5)** | Card Game Designer (16) | 19, 20, 22 |
+| **Bébés super-héros PD (B6)** | Engendreur Progeny (13) | 19, 20, 21, 22 |
+| **Mashups culturels (B7)** | Coloriste + Marchandiseur (12, 14) | tous filtres |
+| **Coloring KDP low-content (B8)** | Coloriste Heritage (12) avec mode "minimal" | 20, 22 |
+| **Fictions courtes (B9)** | Conteur Cozy (17) | 19, 20, 22 |
+| **AR filters (B10)** | Marchandiseur + assets visuels (14) | 19, 21 |
+| **Vidéos faceless (B11)** | Vidéaste Faceless (18) | 19, 20, 21 |
+| **STL paramétriques (B12)** | (à coder) | 19, 22 |
+| **Affiliation (B13)** | Affiliate Hunter (6) + Conteur Cozy (17 pour content) | 19, 20 |
+
+### Mapping business → garde-fous communs
+- Tous les business utilisent **Vigile Secrets (25)**, **Comptable Quota (27)** et **Archiviste Backup (26)** par défaut.
+
+---
+
+## 📊 PARTIE 4 — CADENCE GLOBALE HEBDOMADAIRE
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ LUNDI                                                            │
+│  01h  Éclaireur Bestsellers (#1)                                 │
+│  02h  Critique de Plaintes (#2)                                  │
+│  03h  Synthétiseur (#7) + Opportunist (#8)                       │
+│  04h  Coloriste Heritage (#12) — pipeline coloriages historiques │
+│  06h  Saisonnier (#4)                                            │
+│                                                                  │
+│ MARDI                                                            │
+│  01h  Éclaireur Bestsellers (#1)                                 │
+│  02h  Critique de Plaintes (#2)                                  │
+│  03h  Synthétiseur + Opportunist                                 │
+│  04h  Card Game Designer (#16)                                   │
+│  Tendanceur (#3) toutes les 6h                                   │
+│                                                                  │
+│ MERCREDI                                                         │
+│  01h  Éclaireur + Critique                                       │
+│  04h  Conteur Cozy (#17) — fictions                              │
+│  Affiliate Hunter (#6) ×2                                        │
+│                                                                  │
+│ JEUDI                                                            │
+│  01h  Éclaireur + Critique                                       │
+│  04h  Engendreur Progeny (#13) — bébés crossover                 │
+│                                                                  │
+│ VENDREDI                                                         │
+│  01h  Éclaireur + Critique                                       │
+│  04h  Restaurateur Vintage (#15)                                 │
+│  Brainstormer (#9) hebdo                                         │
+│                                                                  │
+│ SAMEDI                                                           │
+│  03h  Archéologue PD (#5) — refresh musées                       │
+│  04h  Marchandiseur Cross-canal (#14) — gros batch merch         │
+│                                                                  │
+│ DIMANCHE                                                         │
+│  04h  Vidéaste Faceless (#18)                                    │
+│  22h  Méta-Critique hebdo (#11)                                  │
+│  23h  Rapporteur Hebdo (#24) → Telegram                          │
+└─────────────────────────────────────────────────────────────────┘
+
+PERMANENT (event-driven, à chaque génération) :
+  Censeur Copyright (#19), Anti-Slop Textuel (#20),
+  Anti-Slop Visuel (#21), Validateur Schéma (#22),
+  Messager Telegram (#23), Comptable Quota (#27)
+
+MENSUEL :
+  Vigile Secrets (#25) — 1er jour du mois 2h UTC
+
+TRIMESTRIEL :
+  Archiviste Backup (#26) — 1er jour des trimestres
+```
+
+---
+
+## 📈 PARTIE 5 — BUDGET TOKENS / JOUR PROJETÉ
+
+| Provider | Tokens/jour | Tokens/mois | Sous quota gratuit ? |
+|---|---|---|---|
+| Gemini Flash | ~150 req × 2000 tk avg = 300k tokens | ~9M | Oui (1500 req/j = limite) |
+| Groq Llama 70B | ~50 req × 3000 tk = 150k | ~4.5M | Oui (large marge) |
+| Mistral small | ~100 req × 800 tk = 80k | ~2.4M | Oui |
+| Cohere command-r | ~20 req × 1000 tk = 20k | ~600k | Oui (1000/mois) |
+| HF Inference (images) | ~30 générations | ~900 | Oui (30k/mois) |
+| Replicate | ~5 générations | ~150 | Oui (5$ trial étalé ~3 mois) |
+| **Claude (moi)** | **~5k tokens** | **~150k** | Plan Pro mensuel ≈ 18€ |
+
+**Total IA / mois : ~17M tokens cumulés, 0€ sauf Claude qui devient rentable à partir de ~50€/mois de revenu.**
+
+---
+
+## ✅ PARTIE 6 — STATUT ACTUEL DES 27 RÔLES
+
+| Statut | Quantité | Détails |
+|---|---|---|
+| 🟢 Déjà codé partiellement | 5 | Tendanceur (≈ trend_explosion), Opportunist (≈ opportunity_hunter), Saisonnier (seasonal_calendar), Brainstormer (ideator_offline), Méta-Critique (winner_amplifier) |
+| 🟡 Skeleton à coder | 22 | Reste, à coder en sprints Vague 2+ |
+
+→ Cf. `EMPIRE_HUGO.md` pour les agents existants à brancher dans cette map.
+
+---
+
+## 🎯 RÉCAPITULATIF EN 3 PHRASES
+
+1. **13 business** (8 top + 5 middle tier) qui couvrent POD physique, KDP digital, jeux, AR, vidéo, affiliation.
+2. **27 agents IA perpétuels** (6 antennes + 5 cerveaux + 7 producteurs + 4 filtres + 2 interface + 3 garde-fous), tous en cron espacé pour rester gratuit.
+3. **1 humain (toi)** qui valide en 1 clic Telegram, branché à un système qui pleut de partout grâce à la cross-pollinisation.

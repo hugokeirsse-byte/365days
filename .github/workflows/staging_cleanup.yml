@@ -1,0 +1,48 @@
+name: Staging Cleanup (hebdo)
+
+on:
+  schedule:
+    # Dimanche 23h UTC (cf. staging/README.md §6 nettoyage automatique)
+    - cron: "0 23 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Archive staging > 30 jours
+        run: |
+          set -euo pipefail
+          mkdir -p archive/auto_cleaned
+          today=$(date +%s)
+          archived=0
+          for dir in staging/*/*/; do
+            [ -d "$dir" ] || continue
+            mtime=$(stat -c %Y "$dir")
+            age_days=$(( (today - mtime) / 86400 ))
+            if [ "$age_days" -gt 30 ]; then
+              echo "Archive (>30j) : $dir"
+              mkdir -p "archive/auto_cleaned/$(date +%Y-%m-%d)"
+              mv "$dir" "archive/auto_cleaned/$(date +%Y-%m-%d)/"
+              archived=$((archived + 1))
+            fi
+          done
+          echo "Total archivés : $archived"
+          echo "ARCHIVED=$archived" >> "$GITHUB_ENV"
+
+      - name: Commit and push if changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "staging cleanup: ${ARCHIVED} asset(s) archivé(s) après 30j"
+            git push
+          else
+            echo "Aucun changement."
+          fi
