@@ -1,256 +1,542 @@
-# 📋 INSCRIPTIONS HUGO — version 18/05/2026 (100% GRATUIT)
+# 📋 INSCRIPTIONS HUGO — version 19/05/2026 (Empire Perpétuel, 100% gratuit à l'inscription)
 
-**Mise à jour majeure** : pivot total vers plateformes 0€ à l'inscription (cf. BRIEFING_18MAI.md).
-Etsy reporté quand cash flow positif (payant 0,20$/listing).
+**Refonte majeure** : intègre tous les flux ajoutés depuis le 18/05
+(Modules A→W, Progeny Engine, arbitrage cross-canal, 15 marchés d'affiliation,
+LLM-minions anti-tokens, sécurité Termux/GitHub hybride, bot de validation).
 
-**Email** : utilise toujours ton email KDP partout (cohérence reset password)
-**Mots de passe** : tous dans **Bitwarden** (à installer en J1)
-**2FA** : actif partout où possible
+**Règles transversales** :
+- 📧 **Email unique** : utilise toujours ton email KDP partout (cohérence reset password)
+- 🔐 **Mots de passe** : tous dans **Bitwarden** (vague 0)
+- 🛡️ **2FA** : actif partout où possible (priorité : KDP, Google, GitHub, banques)
+- 💳 **Aucune CB requise** pour les vagues 0 → 5 (toutes les plateformes payantes
+  sont reportées en bas de fichier, section 🔴)
+- ⚖️ **Légal** : URSSAF auto-entrepreneur **obligatoire avant 1ère vente**
+  (sinon impossible d'encaisser légalement). Coût = 0€ tant que tu ne vends rien.
 
 ---
 
-## ⚡ JOUR 1 — la séquence indispensable en 15 min
+## 🗺️ CARTE DES VAGUES (ordre exact)
 
-Fais ces 4 choses dans l'ordre demain matin. Tout est gratuit, sans CB requise.
+| Vague | Quand | Quoi | Pourquoi |
+|---|---|---|---|
+| **0** | J-0 (immédiat) | Coffre-fort : Bitwarden + Termux + 2FA | rien ne se fait sans |
+| **1** | J+1 (15 min) | Légal + 3 premières ventes possibles | URSSAF, Cults3D, Redbubble |
+| **2** | J+1 → J+3 | **Stack LLM-minions gratuit** ⭐ | économise 90% de mes tokens |
+| **3** | Semaine 1 | POD multi-canal + KDP + Digital direct | saturation revenus passifs |
+| **4** | Semaine 1-2 | Trafic organique (Pinterest, TikTok, YT, Reddit) | acquisition gratuite |
+| **5** | Semaine 2 | Mobile / Game Dev / API monetization | piliers long terme |
+| **6** | Semaine 2-3 | **Affiliation 15 marchés** (sourcing robot) | revenus complémentaires |
+| **7** | Semaine 3+ | Domaine public + archives + datasets | matière première gratuite |
+| **8** | Semaine 3+ | Bot validation + alertes + dashboards | délégation décision |
+| 🔴 | Cash flow ≥ 200€/mois | Payant (Etsy, Printful Pro, Play Console, etc.) | seulement quand ça rentre |
 
-### 1. Bitwarden (3 min) — gestionnaire mots de passe
+---
+
+# 🧱 VAGUE 0 — LE COFFRE-FORT (J-0, 20 min)
+
+> Avant toute autre inscription. Sans ces 4 outils, le reste fuite ou se perd.
+
+### 0.1 Bitwarden — gestionnaire mots de passe (3 min) ⭐
 🔗 https://bitwarden.com
 - Inscription gratuite illimitée
-- Installe l'app Android **avant** les autres inscriptions
-- Tu y sauvegardes chaque login que tu crées ensuite
+- Installe l'app Android **avant** toutes les autres inscriptions
+- Sauve chaque login que tu crées ensuite
 
-### 2. URSSAF Auto-entrepreneur (10 min) — légal
+### 0.2 Aegis Authenticator (2FA via F-Droid) (3 min) ⭐
+🔗 https://github.com/beemdevelopment/Aegis (via F-Droid, pas le Play Store)
+- 2FA local, exportable, chiffré
+- Évite Google Authenticator (lié à un seul compte, perte = catastrophe)
+- Alternative : **Ente Auth** (cloud chiffré, gratuit)
+
+### 0.3 Termux + F-Droid (10 min) ⭐⭐ — TON COFFRE-FORT PRIVÉ
+🔗 https://f-droid.org/packages/com.termux/ (jamais la version Play Store, obsolète)
+- Installe via F-Droid (pas le Play Store : la version Play est figée)
+- Packages à installer (`pkg install <nom>`) :
+  - `openssh` (push GitHub sécurisé), `git`, `python`, `nodejs-lts`
+  - `imagemagick`, `ffmpeg` (traitement images / vidéos local)
+  - `termux-api` (notifications Android natives, sans bot tiers)
+  - `cronie` ou `at` (planification locale)
+  - `tmux` (sessions persistantes, ne perd rien si écran tué)
+- **Ce qui RESTE dans Termux (privé) :**
+  - Clés API maîtresses (jamais dans le repo)
+  - Prompts stratégiques (notre "sauce")
+  - Bases SQLite des opportunités détectées
+  - Images HD brutes
+  - Algorithmes Progeny Engine
+- **Ce qui SORT vers GitHub (public) :**
+  - Code générique (moteurs de jeux, assemblage PDF)
+  - Workflows GitHub Actions
+  - Secrets injectés au build (jamais en clair dans le code)
+
+### 0.4 GitHub Mobile + clé SSH Termux (4 min)
+🔗 https://github.com/mobile
+- Génère une clé SSH dans Termux : `ssh-keygen -t ed25519`
+- Ajoute la clé publique sur https://github.com/settings/keys
+- Permet le push depuis Termux **sans entrer ton mot de passe** à chaque fois
+
+---
+
+# ⚖️ VAGUE 1 — LÉGAL + 3 PREMIÈRES VENTES (J+1, 25 min)
+
+### 1.1 URSSAF Auto-entrepreneur (10 min) ⭐⭐ INDISPENSABLE
 🔗 https://autoentrepreneur.urssaf.fr
 - Inscription gratuite
 - Activité : **« Vente de produits digitaux et imprimés à la demande »**
 - BIC : commerce électronique
-- 0€ tant que tu n'as pas vendu → aucun risque
-- **Indispensable pour encaisser légalement**
+- 0€ de cotisation tant que tu n'as pas vendu
+- **Indispensable pour encaisser légalement** (sinon Amazon/Redbubble/Stripe peuvent geler les fonds)
 
-### 3. Cults3D (3 min) — STL 3D 80% royalties
+### 1.2 Cults3D — STL 3D 80% royalties (3 min)
 🔗 https://cults3d.com
-- Inscription gratuite
-- Onglet vendeur dans paramètres
-- Tu uploades tes STL paramétriques (déjà 50+ produits prêts dans `products/stl_parametric/`)
+- Inscription gratuite, onglet vendeur
+- 50+ produits STL paramétriques déjà prêts dans `products/stl_parametric/`
 
-### 4. Redbubble (3 min) — POD t-shirts/posters/stickers
+### 1.3 Redbubble — POD t-shirts/posters/stickers (3 min)
 🔗 https://www.redbubble.com
 - Inscription gratuite (créateur)
-- Tu uploades nos designs viral_formats / iheart_v3 / quotes_minimal
 - Marge fixée par toi (20-40%)
 
-**🎯 Après ces 4 étapes** : tu peux UPLOADER ce soir même tes premiers designs sur Cults3D et Redbubble. Aucun frais. Le système fonctionne.
+### 1.4 W-8BEN (formulaire fiscal US, fait en ligne lors de l'inscription KDP/Redbubble)
+- À remplir dès le premier compte US (Amazon KDP, Gumroad si > 10$/mois)
+- Évite la retenue à la source US de 30% sur tes royalties
+- France ↔ US = convention fiscale : 0% retenue avec W-8BEN correctement rempli
 
 ---
 
-## 🟢 SEMAINE 1 — tout le reste GRATUIT (12 inscriptions, ~50 min total)
+# 🧠 VAGUE 2 — STACK LLM-MINIONS GRATUIT (J+1 → J+3, 30 min) ⭐⭐⭐
 
-À faire entre lundi et vendredi, dans l'ordre suggéré.
+> **OBJECTIF #1** : que **90% du travail rédactionnel / scripts / analyses** soit fait
+> par des LLM gratuits, et que je n'intervienne qu'en chef d'orchestre. Inscris-toi
+> à TOUS ceux-ci — chacun a un quota distinct, on les fait tourner en rotation.
 
-### POD physique gratuit (compléter Redbubble)
-- [ ] **5. TeePublic** — https://www.teepublic.com (5 min)
-  Alternative Redbubble. Upload mêmes designs = double exposition. 0€.
+### 2.1 Google AI Studio (Gemini) ⭐⭐ CRITIQUE
+🔗 https://aistudio.google.com/app/apikey
+- Gratuit : **1500 requêtes/jour** sur Gemini 2.x (et accès Gemini 3 Flash quand dispo)
+- Active : 5 brains perpétuels, QC visuel, rédaction de masse, vision multimodale
+- → Secret GitHub : `GEMINI_API_KEY`
 
-- [ ] **6. Zazzle Designer** — https://www.zazzle.com/sell (5 min)
-  Multi-objets (mugs, magnets, marque-pages, wraps de gourdes). Royalty 5-99%.
+### 2.2 Groq Cloud ⭐ (le plus rapide du marché)
+🔗 https://console.groq.com
+- Gratuit, quota généreux, **latence < 1s** sur Llama 3.x, Mixtral, Gemma
+- Idéal pour : rédaction itérative de chapitres (Module K), critique anti-slop
+- → Secret GitHub : `GROQ_API_KEY`
 
-- [ ] **7. Society6 Artist** — https://society6.com/create-store (5 min)
-  Premium art prints (posters HD, art mural). 10% sur prints.
+### 2.3 Mistral La Plateforme ⭐
+🔗 https://console.mistral.ai
+- Tier gratuit "Experiment" : suffisant pour scraping/résumé/traduction FR↔EN
+- Modèles `mistral-small-latest` et `open-mixtral-8x7b` performants
+- → Secret GitHub : `MISTRAL_API_KEY`
 
-- [ ] **7bis. Printify** — https://printify.com (5 min)
-  Alternative Printful, énorme catalogue, marges souvent meilleures.
-  Gratuit base, Premium 24$/mois (à reporter cash flow).
+### 2.4 Together AI
+🔗 https://api.together.xyz
+- 1$ de crédit gratuit à l'inscription + tier "Lite" pour modèles open
+- Accès Llama 3.x, Qwen, DeepSeek, FLUX image gen
+- → Secret GitHub : `TOGETHER_API_KEY`
 
-- [ ] **7ter. Prodigi** — https://www.prodigi.com (5 min)
-  POD UK premium : wall art encadré, photo books, **gravure laser**
-  (utile pour Château Local). Gratuit.
+### 2.5 OpenRouter (méta-routeur)
+🔗 https://openrouter.ai
+- 1$ de crédit gratuit + modèles "free" routés (Llama 3, Gemma, Mistral free)
+- Permet de **basculer automatiquement** entre providers quand un quota tombe
+- → Secret GitHub : `OPENROUTER_API_KEY`
 
-### Jeux POD (ta meilleure idée)
-- [ ] **8. The Game Crafter (TGC)** — https://www.thegamecrafter.com (5 min)
-  POD jeux de société. Tu uploadeas notre futur `produce_card_game.py`.
-  100% gratuit, ils fabriquent à la commande.
+### 2.6 Cohere Trial
+🔗 https://dashboard.cohere.com
+- Trial gratuit, modèles `command-r` excellents pour résumés/RAG/SEO
+- → Secret GitHub : `COHERE_API_KEY`
 
-- [ ] **9. BoardGamesMaker (BGM)** — https://www.boardgamesmaker.com (5 min)
-  Alternative TGC. Mêmes designs = double exposition.
+### 2.7 Hugging Face Token ⭐ (images + line-art)
+🔗 https://huggingface.co/settings/tokens (type "Read")
+- Inference API gratuite sur SDXL, FLUX, ControlNet, IP-Adapter, Real-ESRGAN
+- Indispensable pour : coloring books, mashups, Progeny Engine, restoration
+- → Secret GitHub : `HF_API_KEY`
 
-### Livres KDP (low-content + coloring quand HF dispo)
-- [ ] **10. Amazon KDP** — https://kdp.amazon.com (10 min)
-  Inscription gratuite. Configure W-8BEN (fiscalité US). Tu publieras nos
-  Fishing Log Book + autres journals + coloring book Mystical Mushrooms.
+### 2.8 Civitai (optionnel mais utile)
+🔗 https://civitai.com
+- Compte gratuit pour télécharger LoRA spécialisés (line-art, pixel art, styles vintage)
+- À combiner avec HF Inference
+
+### 2.9 Replicate (image/vidéo, micro-pay-as-you-go)
+🔗 https://replicate.com
+- Compte gratuit, 5$ d'essai en s'inscrivant via GitHub
+- Accès DeOldify, Real-ESRGAN, Rembg, FLUX, ControlNet hébergés
+- Permet de tester un pipeline lourd sans serveur perso
+- → Secret GitHub : `REPLICATE_API_TOKEN`
+
+### 2.10 Perplexity Sonar API (essai)
+🔗 https://docs.perplexity.ai
+- 5$ de crédit free, idéal pour le **scraping intelligent de tendances** (web + sources)
+- → Secret GitHub : `PERPLEXITY_API_KEY`
+
+> 📘 **Tuto pour les secrets GitHub** : voir [`SECRETS_GITHUB.md`](./SECRETS_GITHUB.md)
+> Toutes les clés vont dans `Settings → Secrets and variables → Actions → New secret`
+> Ne JAMAIS coller une clé en clair dans le code (toujours via `os.environ[...]`).
+
+**🎯 Effet de cette vague** : on a 8-10 cerveaux gratuits en parallèle.
+Stratégie de routage : tâches lourdes → Gemini/Groq ; tâches courtes/rapides → Mistral ;
+images → HF/Replicate ; veille web → Perplexity. Moi (Claude Code) je ne suis appelé que
+pour assembler / arbitrer / corriger les pannes.
+
+---
+
+# 🏭 VAGUE 3 — POD MULTI-CANAL + KDP + DIGITAL (Semaine 1, ~50 min)
+
+### POD physique (compléter Redbubble)
+- [ ] **3.1 TeePublic** — https://www.teepublic.com (5 min) — mêmes designs, double expo
+- [ ] **3.2 Zazzle Designer** — https://www.zazzle.com/sell (5 min) — multi-objets, royalty 5-99%
+- [ ] **3.3 Society6 Artist** — https://society6.com/create-store (5 min) — art prints premium
+- [ ] **3.4 Printify** — https://printify.com (5 min) — catalogue énorme, marges souvent meilleures
+- [ ] **3.5 Prodigi** — https://www.prodigi.com (5 min) — UK premium, gravure laser (utile Château Local)
+- [ ] **3.6 Spring (ex-Teespring)** — https://www.spring.shop/sell (5 min) — POD US, paie en €
+- [ ] **3.7 Displate** — https://displate.com/displateartist (5 min) — posters métal, niche pop-culture
+
+### Jeux POD (forte marge, vrai pilier)
+- [ ] **3.8 The Game Crafter (TGC)** — https://www.thegamecrafter.com (5 min)
+- [ ] **3.9 BoardGamesMaker (BGM)** — https://www.boardgamesmaker.com (5 min)
+- [ ] **3.10 MakePlayingCards (MPC)** — https://www.makeplayingcards.com (5 min) — paquets pros
+
+### Livres KDP + distribution étendue
+- [ ] **3.11 Amazon KDP** — https://kdp.amazon.com (10 min) — W-8BEN à remplir
+- [ ] **3.12 Lulu** — https://www.lulu.com (5 min) — hardcover/couverture rigide premium
+- [ ] **3.13 IngramSpark** (gratuit depuis 2023) — https://www.ingramspark.com (10 min)
+      — distribution physique libraires + bibliothèques mondiales
+- [ ] **3.14 Draft2Digital** — https://www.draft2digital.com (10 min) — Apple Books, Kobo, B&N
+- [ ] **3.15 Smashwords** — https://www.smashwords.com (5 min) — alt D2D
 
 ### Digital direct (sans commission ou minime)
-- [ ] **11. Gumroad** — https://gumroad.com (5 min)
-  Vendre PDF/STL/templates direct. 10% commission.
+- [ ] **3.16 Gumroad** — https://gumroad.com (5 min) — 10% commission, parfait MVP
+- [ ] **3.17 Payhip** — https://payhip.com (5 min) — 5% commission, mieux pour gros prix
+- [ ] **3.18 Ko-fi** — https://ko-fi.com (5 min) — 0% commission + tip jar
+- [ ] **3.19 Sellfy** — https://sellfy.com (5 min) — alt directe, free tier
 
-- [ ] **12. Payhip** — https://payhip.com (5 min)
-  Alternative Gumroad. 5% commission, plus avantageux pour gros prix.
+### Assets créatifs / SVG / Templates
+- [ ] **3.20 Creative Market** — https://creativemarket.com/sell (10 min) — 70% royalty
+- [ ] **3.21 CreativeFabrica** — https://www.creativefabrica.com (5 min) — SVG, 70%
+- [ ] **3.22 DesignBundles** — https://www.designbundles.net (10 min) — alt CreativeFabrica
+- [ ] **3.23 Etsy ⏸️** — **REPORTÉ** (0,20$/listing, voir section 🔴)
 
-- [ ] **13. Ko-fi** — https://ko-fi.com (5 min)
-  0% commission. Idéal pour digital + tip jar.
-
-### Trafic gratuit (essentiel mois 2-3)
-- [ ] **14. Pinterest Business** — https://business.pinterest.com (5 min)
-  Active **Rich Pins**. Source de trafic gratuite #1 vers nos boutiques.
-
-### Stack IA gratuit (débloque la suite)
-
-> **⚠ Étape critique après avoir créé les clés** : il faut les **ajouter en
-> secrets GitHub** pour que les workflows automatiques puissent les utiliser.
-> Tutoriel pas-à-pas : 📘 [`SECRETS_GITHUB.md`](./SECRETS_GITHUB.md)
-
-- [ ] **15. Hugging Face Token** — https://huggingface.co/settings/tokens (3 min) ⭐
-  **CRITIQUE pour les coloring books de qualité + IP-Adapter (image de référence)**
-  Inscription gratuite → New Token "Read" → Sauve dans Bitwarden
-  → **Ajouter en secret GitHub** sous le nom exact : `HF_API_KEY`
-  Débloque : ControlNet line-art, SDXL coloring, IP-Adapter (style transfer)
-
-- [ ] **16. Google AI Studio (Gemini)** — https://aistudio.google.com/app/apikey (3 min) ⭐⭐
-  **CRITIQUE pour activer les 5 cerveaux perpétuels 24/7**
-  Clé API gratuite : 1500 req/jour (large pour 5 brains)
-  → **Ajouter en secret GitHub** sous le nom exact : `GEMINI_API_KEY`
-  Débloque : 5 brains perpétuels (money/trends/optimizer/tools/niches) +
-  QC visuel des designs + analyse bestsellers coloring books + rédaction de masse
-
-- [ ] **16bis. Civitai (optionnel)** — https://civitai.com (5 min)
-  Compte gratuit pour télécharger modèles LoRA spécialisés (line-art coloring,
-  pixel art gamedev, style spécifiques) à utiliser via HF Inference.
-
-### Réseaux sociaux (pour marketing micro-niche)
-- [ ] **17. Reddit** — compte avec ton vrai nom, postera sur r/Fishing, r/dnd, r/devops etc.
-- [ ] **18. TikTok Creator** — https://www.tiktok.com (5 min)
-- [ ] **19. Instagram Business** — https://business.instagram.com (5 min)
+### 3D / STL étendu
+- [ ] **3.24 Printables (Prusa)** — https://www.printables.com (5 min) — gros trafic
+- [ ] **3.25 MyMiniFactory** — https://www.myminifactory.com (5 min) — premium STL
+- [ ] **3.26 Thangs** — https://thangs.com (5 min) — moteur recherche STL + monétisation
 
 ---
 
-## 🟡 SEMAINE 2 — extension (12 inscriptions, ~30 min)
+# 📣 VAGUE 4 — TRAFIC ORGANIQUE (Semaine 1-2, ~40 min)
 
-À faire seulement après avoir uploadé tes premiers produits Semaine 1.
+> Le trafic = l'oxygène. Sans audience, pas de ventes même avec 1000 produits uploadés.
 
-### Distribution ebook étendue (mois 2+)
-- [ ] **20. Draft2Digital** — https://www.draft2digital.com (10 min)
-  Distribution ebook vers Apple Books, Kobo, B&N (1 upload → 30+ stores)
+### Pinterest (priorité absolue — meilleur ROI organique 2026)
+- [ ] **4.1 Pinterest Business** — https://business.pinterest.com (5 min)
+  - Active **Rich Pins**
+  - Lie au site/Gumroad/Redbubble (vérification domaine)
+- [ ] **4.2 Pinterest Developer Platform** — https://developers.pinterest.com (15 min)
+  - Token pour auto-publication (Sprint Pinterest Bot)
 
-- [ ] **21. Smashwords** — https://www.smashwords.com (5 min)
-  Alternative D2D
+### TikTok (filtres AR + Reels)
+- [ ] **4.3 TikTok Creator** — https://www.tiktok.com (5 min)
+- [ ] **4.4 TikTok Effect House** — https://effecthouse.tiktok.com (10 min)
+  — création de filtres AR gratuite ; programme créateur rémunère les filtres viraux
+- [ ] **4.5 TikTok Shop** ⏸️ (réservé EU/US selon disponibilité)
 
-- [ ] **22. ACX (Audible)** — https://www.acx.com (10 min)
-  Audiobooks royalty-share. Pour quand on aura un ebook qui vend.
+### Instagram + Meta
+- [ ] **4.6 Instagram Business** — https://business.instagram.com (5 min)
+- [ ] **4.7 Meta Spark AR / Meta Effects** — https://spark.meta.com (10 min)
+  — filtres AR Instagram/Facebook
 
-### Plateformes spécialisées
-- [ ] **23. Printables (Prusa)** — https://www.printables.com (5 min)
-  Marketplace STL alternative à Cults3D, gros trafic.
+### YouTube (faceless videos)
+- [ ] **4.8 YouTube Studio** (compte Google) — https://studio.youtube.com (5 min)
+  — chaîne dédiée par niche
+- [ ] **4.9 YouTube Data API** — https://console.cloud.google.com (15 min)
+  — uploads automatisés en mode "private" puis tu valides
 
-- [ ] **24. Creative Market** — https://creativemarket.com/sell (10 min)
-  Bundle designs/templates premium. 70% royalty.
+### Reddit
+- [ ] **4.10 Reddit** — compte avec ton vrai pseudo (vraies subreddits ciblées)
+- [ ] **4.11 Reddit Developer** — https://www.reddit.com/prefs/apps (5 min)
+  — PRAW pour scraping légal des frustrations utilisateurs
 
-- [ ] **25. CreativeFabrica** — https://www.creativefabrica.com (5 min)
-  Marketplace SVG + commercial license. 70% royalty.
+### Newsletter / propre liste email
+- [ ] **4.12 Beehiiv** — https://beehiiv.com (5 min) — free 2500 abos
+- [ ] **4.13 Substack** — https://substack.com (5 min) — alt Beehiiv
+- [ ] **4.14 MailerLite** — https://mailerlite.com (5 min) — free 1000 abos + auto
 
-### Apps gratuites essentielles
-- [ ] **26. BoardGameGeek (BGG)** — https://boardgamegeek.com (3 min)
-  Compte gratuit pour scraper l'API publique trending games.
-
-- [ ] **27. Substack** — https://substack.com (5 min)
-  Newsletter gratuite. Si on extend en mois 3+ (cf. LECONS_DU_WEB.md).
-
-- [ ] **28. Beehiiv** — https://beehiiv.com (5 min)
-  Alternative Substack, free tier 2500 abos.
-
-### Newsletter / Marketing email
-- [ ] **29. Mailerlite** — https://mailerlite.com (5 min)
-  Gratuit jusqu'à 1000 abonnés. Pour mailing list quand tu as des clients.
-
-### API stack (à activer plus tard)
-- [ ] **30. Pinterest Developer** — https://developers.pinterest.com (15 min)
-  Pour l'auto-publisher Pinterest (Sprint 3).
-
-- [ ] **31. Reddit Dev** — https://www.reddit.com/prefs/apps (5 min)
-  API gratuite pour scraping améliorés.
-
-### 🎮 GameDev Asset Marketplaces (nouveau pilier — assets pour créateurs de jeux)
-- [ ] **32. itch.io** — https://itch.io/register (5 min)
-  Marketplace assets indie. Gratuit total, communauté massive.
-  Vente sprites, sons, musique, kits, packs complets. Revenu share ajustable.
-
-- [ ] **33. Unity Publisher** — https://publisher.unity.com (15 min)
-  Unity Asset Store. Gratuit à l'inscription. 30% commission.
-  Marché premium pour assets pros (sprites 2D, tilesets, SFX).
-
-- [ ] **34. Fab Marketplace** (Epic Games) — https://www.fab.com (10 min)
-  Nouveau marketplace unifié Epic. Successeur Unreal Marketplace + Sketchfab.
-  Commission 12% (la meilleure du marché). Gratuit.
-
-- [ ] **35. GameDev Market** — https://www.gamedevmarket.net (5 min)
-  Marketplace assets gamedev gratuit à l'inscription.
-
-- [ ] **36. OpenGameArt** — https://opengameart.org (5 min)
-  Plateforme gratuite assets CC. Pas de revenu direct mais build
-  réputation et lien vers stores payants.
+### Image stock gratuites (pour vidéos faceless + visuels)
+- [ ] **4.15 Pexels API** — https://www.pexels.com/api (3 min) — clés gratuites
+- [ ] **4.16 Pixabay API** — https://pixabay.com/api/docs (3 min)
+- [ ] **4.17 Unsplash Developers** — https://unsplash.com/developers (3 min)
 
 ---
 
-## 🔴 À REPORTER quand cash flow positif (≥ 200€/mois)
+# 🎮 VAGUE 5 — MOBILE / GAMEDEV / API MONETIZATION (Semaine 2, ~60 min)
 
-Ne fais PAS ces inscriptions tant que tu n'as pas de cash flow. Tu n'en as pas besoin pour démarrer.
+### Game Asset Marketplaces (Module H, Module S retombées)
+- [ ] **5.1 itch.io** — https://itch.io/register (5 min) ⭐ — assets indie, communauté massive
+- [ ] **5.2 Unity Publisher** — https://publisher.unity.com (15 min) — 30% commission
+- [ ] **5.3 Fab Marketplace (Epic)** — https://www.fab.com (10 min) — **12% commission, meilleur du marché**
+- [ ] **5.4 GameDev Market** — https://www.gamedevmarket.net (5 min)
+- [ ] **5.5 OpenGameArt** — https://opengameart.org (5 min) — CC, build réputation
+- [ ] **5.6 GitHub Pages + Gumroad** pour vente directe assets ZIP (déjà couvert)
 
-- ❌ **Etsy Seller** — 0,20$/listing × 200 listings = ~40$ initial
-  À faire en mois 2-3 quand tu as 200€/mois de revenus solides
-- ❌ **Printful Pro** — 25$/mois
-  Le tier gratuit suffit largement pour démarrer
-- ❌ **eRank Etsy SEO** — 10$/mois
-  Inutile sans boutique Etsy active
-- ❌ **Canva Pro** — 12€/mois
-  Photopea gratuit suffit
-- ❌ **DistroKid** — 19$/an (Spotify music distribution)
-  Cf. LECONS_DU_WEB.md : AI Music = mauvaise idée 2026
-- ❌ **TuneCore** — pareil
+### Modding (Module H)
+- [ ] **5.7 CurseForge** — https://www.curseforge.com (10 min) — Minecraft/WoW/Sims, partage revenus pub
+- [ ] **5.8 Modrinth** — https://modrinth.com (5 min) — alt CurseForge, communauté Minecraft
+- [ ] **5.9 NexusMods Author** — https://www.nexusmods.com (5 min) — Skyrim/FO4/jeux PC majeurs
+
+### Mobile / Android (Module N, Module S)
+- [ ] **5.10 Google Play Console** ⏸️ — **REPORTÉ** (25$ one-time, voir 🔴)
+- [ ] **5.11 Amazon Appstore Developer** — https://developer.amazon.com (10 min)
+      — **GRATUIT** (alternative à Play Store le temps que cash flow rentre)
+- [ ] **5.12 F-Droid Repo** — https://f-droid.org/docs/Submitting_to_F-Droid (15 min)
+      — distribution open-source gratuite, audience tech
+- [ ] **5.13 Google AdMob** — https://admob.google.com (10 min)
+      — gratuit, monétisation pub dans apps Android
+- [ ] **5.14 AppLovin MAX** — https://www.applovin.com (10 min)
+      — alt AdMob, eCPM souvent supérieur
+
+### API monetization (Module E, Module J)
+- [ ] **5.15 RapidAPI Provider** — https://rapidapi.com/provider (15 min)
+      — publication d'APIs payantes, RapidAPI gère facturation
+- [ ] **5.16 Render** — https://render.com (5 min) — free tier, héberge tes APIs FastAPI
+- [ ] **5.17 Vercel** — https://vercel.com (5 min) — free tier serverless
+- [ ] **5.18 Netlify** — https://www.netlify.com (5 min) — free static hosting
+- [ ] **5.19 Cloudflare Workers** — https://workers.cloudflare.com (10 min)
+      — free tier 100k req/jour, idéal proxy/scraping/CDN
+
+### Audio packs (Module I, Module Q ASMR)
+- [ ] **5.20 BandLab Sounds Marketplace** — https://www.bandlab.com (10 min) — gratuit
+- [ ] **5.21 LANDR Samples** — https://samples.landr.com (10 min)
+- [ ] **5.22 Pond5 Contributor** — https://www.pond5.com (15 min) — premium SFX/music
+- [ ] **5.23 AudioJungle (Envato)** ⏸️ — frais d'auteur (reporté)
 
 ---
 
-## 📊 RÉCAP : ce que tu débloques en SEMAINE 1
+# 💰 VAGUE 6 — AFFILIATION 15 MARCHÉS (Semaine 2-3, ~90 min)
 
-À la fin de la semaine 1, tu auras 19 plateformes actives qui couvrent :
+> Cf. ta matrice M1→M15. Inscris-toi aux **programmes d'affiliation** correspondants.
+> Le script génère le lien, tu valides et postes manuellement (anti-ban).
 
-| Catégorie | Plateformes |
+| # | Programme | Lien | Commission typique | Activation |
+|---|---|---|---|---|
+| M1a | **Amazon Associates FR** | https://partenaires.amazon.fr | 1–10% | 3 ventes en 180j sinon coupé |
+| M1b | **Amazon Associates US** | https://affiliate-program.amazon.com | 1–10% | idem |
+| M1c | **eBay Partner Network** | https://partnernetwork.ebay.com | 1–6% | gratuit |
+| M2a | **Hostinger Affiliate** | https://www.hostinger.com/affiliates | 60% / vente | gros prix |
+| M2b | **Shopify Affiliate** | https://www.shopify.com/affiliates | 100$ par parrainage | sélectif |
+| M2c | **Brevo Partner** | https://www.brevo.com/partners | 5€/lead + 25%/vente | facile |
+| M3 | **Awin** (régie globale) | https://www.awin.com (5$ frais déposés, remboursés à 1ère vente) | varie | accès Booking/Skyscanner/etc. |
+| M3b | **CJ Affiliate** | https://www.cj.com | varie | accès grosses marques |
+| M3c | **Impact** | https://impact.com | varie | accès Envato/Canva/AirBnB |
+| M3d | **TimeOne / Effiliation** (FR) | https://www.timeonegroup.com | varie | accès FNAC/Cdiscount/SNCF |
+| M4 | **ThemeForest/Envato** (via Impact) | https://elements.envato.com/affiliate | 30% | via Impact |
+| M5 | (couvert par Amazon Associates) | — | — | — |
+| M6 | (scraping interne, pas d'inscription) | — | — | — |
+| M7a | **KDP** (déjà fait) + **Udemy Affiliate** | https://www.udemy.com/affiliate | 15% | via Impact |
+| M7b | **Coursera Partner** | https://www.coursera.org/about/partners | 20–45% | via Impact |
+| M8 | **Amazon Business** | — | — | via Amazon Associates |
+| M9a | **MyProtein Affiliate** | https://www.myprotein.com/affiliate.list | 8% | via Awin |
+| M9b | **Bulk Affiliate** | https://www.bulk.com/affiliates | 8% | direct |
+| M10a | **Booking.com Affiliate** | https://www.booking.com/affiliate-program | 25–40% du fee | via Awin |
+| M10b | **Skyscanner Partners** | https://www.partners.skyscanner.net | variable | via Awin/direct |
+| M10c | **GetYourGuide Partner** | https://partner.getyourguide.com | 8% | direct |
+| M11 | (couvert eBay + Amazon) | — | — | — |
+| M12a | **BoursoBank parrainage** | (app perso, lien unique) | 80€/parrainage | dans l'app |
+| M12b | **Revolut parrainage** | (app perso) | 10–50€ | dans l'app |
+| M12c | **N26 parrainage** | (app perso) | variable | dans l'app |
+| M13 | (couvert Amazon) | — | — | — |
+| M14a | **HeyGen Affiliate** | https://www.heygen.com/affiliate | 30% récurrent | direct |
+| M14b | **ElevenLabs Affiliate** | https://elevenlabs.io/affiliates | 25% | direct |
+| M14c | **Jasper, Notion, etc.** | via Impact/Partnerstack | varie | recurring |
+| M15a | **NordVPN Affiliate** | https://nordvpn.com/affiliate | 30–100% | via CJ |
+| M15b | **CyberGhost Affiliate** | https://www.cyberghostvpn.com/affiliates | 100% 1ère vente | via Awin |
+| M15c | **Surfshark Affiliate** | https://surfshark.com/affiliates | 40–100% | direct |
+
+**⚖️ Légal obligatoire** : chaque post / commentaire affilié doit inclure
+la mention `"En tant que partenaire, je touche une commission..."` ou équivalent
+(directive ARPP/DGCCRF en France, FTC aux USA).
+
+---
+
+# 📚 VAGUE 7 — SOURCES DU DOMAINE PUBLIC (Semaine 3+, 0 à 30 min)
+
+> La plupart **ne demandent pas d'inscription** (juste un compte API parfois).
+> Matière première gratuite pour Modules U, V, M, M2, P, W (Progeny).
+
+### Texte (Module K, M)
+- [ ] **7.1 Project Gutenberg** — https://www.gutenberg.org — pas d'inscription, scraping libre
+- [ ] **7.2 Internet Archive** — https://archive.org/account/signup — compte gratuit pour uploads/téléch.
+- [ ] **7.3 Wikisource** — pas d'inscription pour lire ; API libre
+- [ ] **7.4 HathiTrust** — accès limité hors UE, alternative Internet Archive
+
+### Image / Art (Modules U, V, W)
+- [ ] **7.5 Smithsonian Open Access** — https://www.si.edu/openaccess — CC0, 4.5M assets
+- [ ] **7.6 Met Museum Open Access** — https://www.metmuseum.org/art/collection/open-access — CC0
+- [ ] **7.7 Rijksmuseum API** — https://data.rijksmuseum.nl (clé API gratuite)
+- [ ] **7.8 New York Public Library Digital Collections** — https://digitalcollections.nypl.org
+- [ ] **7.9 Library of Congress** — https://www.loc.gov — API publique
+- [ ] **7.10 British Library Flickr** — https://www.flickr.com/photos/britishlibrary — CC0
+- [ ] **7.11 Europeana** — https://pro.europeana.eu/page/apis (clé API gratuite)
+- [ ] **7.12 BHL (Biodiversity Heritage Library)** — https://www.biodiversitylibrary.org/api2/docs
+
+### Audio (Module I, Q)
+- [ ] **7.13 Freesound** — https://freesound.org/apiv2/apply (clé API gratuite, CC/CC0)
+- [ ] **7.14 Free Music Archive** — https://freemusicarchive.org
+- [ ] **7.15 Musopen** — https://musopen.org (classique domaine public)
+
+### Code / Datasets (Module M2, J)
+- [ ] **7.16 GitHub Search API** (déjà accès via token GitHub) — `stale-repos`, license MIT scanning
+- [ ] **7.17 data.gouv.fr** — pas d'inscription pour la plupart
+- [ ] **7.18 Kaggle Datasets** — https://www.kaggle.com (compte gratuit, API)
+- [ ] **7.19 Hugging Face Datasets** — déjà couvert (compte HF)
+
+**⚖️ Vigilance copyright** :
+- "Domaine public" varie par pays. Steamboat Willie : public US depuis 2024,
+  mais **les versions modernes de Mickey restent sous copyright**.
+- Sherlock Holmes : public US (4 dernières nouvelles tombent en 2027).
+  En UE, déjà public depuis 2000.
+- Règle interne : **filtrer par date < 1929 (US) + < 1924 (UE)** pour être safe.
+- Le **Progeny Engine** (Module W) crée une œuvre dérivée nouvelle = PI propre
+  → sortie du périmètre de Disney/Doyle Estate, à condition que la composition
+  hybride soit substantiellement transformative (jurisprudence "transformative use").
+
+---
+
+# 🤖 VAGUE 8 — BOT VALIDATION + ALERTES + DASHBOARDS (Semaine 3+, 30 min)
+
+> Délégation de la décision : tu valides en 1 clic depuis ton téléphone, pas en codant.
+
+### 8.1 Telegram Bot (5 min) ⭐
+🔗 https://t.me/BotFather — `/newbot`
+- Gratuit, instantané, pas d'inscription tierce
+- Sauve le `BOT_TOKEN` dans Bitwarden + secret GitHub `TELEGRAM_BOT_TOKEN`
+- Crée un canal privé "Empire Control" → ajoute le bot admin
+- Récupère `chat_id` → secret GitHub `TELEGRAM_CHAT_ID`
+- Le bot t'envoie : aperçus de produits, alertes de tendances, boutons OUI/NON
+
+### 8.2 Discord Webhook (3 min)
+🔗 Serveur Discord perso → channel → Webhook
+- Plus visuel que Telegram pour les rapports de prod (embeds, images)
+- URL secret GitHub `DISCORD_WEBHOOK_URL`
+
+### 8.3 ntfy.sh (0 min, sans inscription)
+🔗 https://ntfy.sh
+- Notifs push Android sur un topic privé (ex: `ntfy.sh/empire-hugo-XXXX`)
+- Aucune inscription, aucun token, parfait pour alertes simples (CI fail, vente, etc.)
+
+### 8.4 Termux:API (déjà installé en vague 0)
+- Notifications Android natives sans serveur tiers
+- Commande : `termux-notification --title "..." --content "..."`
+
+### 8.5 GitHub Issues comme "centre de commande" (0 inscription)
+- Le robot crée des Issues étiquetées `validation-required`, `opportunity`, `bug`
+- Tu valides en commentant `/approve` ou `/reject` → un workflow réagit
+- Avantage : audit log permanent, accessible depuis l'app GitHub mobile
+
+### 8.6 UptimeRobot (5 min) — monitoring gratuit
+🔗 https://uptimerobot.com
+- 50 monitors gratuits, alerte si une API perso (Render/Vercel) tombe
+
+---
+
+# 🔴 REPORTÉS (cash flow ≥ 200€/mois)
+
+| Plateforme | Coût | Quand activer |
+|---|---|---|
+| **Etsy Seller** | 0,20$/listing × 200 = 40$ initial | mois 2-3 |
+| **Google Play Console** | 25$ one-time | dès qu'un APK est prêt + 200€/mois |
+| **Printful Pro** | 25$/mois | inutile, free tier OK |
+| **eRank Etsy SEO** | 10$/mois | seulement si Etsy actif |
+| **Canva Pro** | 12€/mois | Photopea/GIMP/Krita gratuits suffisent |
+| **DistroKid / TuneCore** | 19$/an | AI Music = mauvaise idée 2026 (cf. LECONS_DU_WEB.md) |
+| **AudioJungle (Envato)** | frais auteur | seulement si pack audio rentable validé |
+| **Apple Developer** | 99$/an | iOS uniquement quand revenu Android prouvé |
+| **GitHub Pro** | 4$/mois | **inutile** : Actions illimitées sur repo public |
+| **Termux:Boot premium** | 2,99€ | utile pour startup auto, à voir |
+| **Claude Pro / Max** | 18€ → 200€+/mois | **upgrade quand tu génères au moins 3× le coût** |
+
+---
+
+# 📊 RÉCAP : ce qu'on débloque à fin de Semaine 2
+
+| Domaine | Plateformes actives |
 |---|---|
-| **Légal** | URSSAF |
-| **Sécurité** | Bitwarden |
-| **POD physique** | Redbubble + TeePublic + Zazzle + Society6 |
-| **POD jeux** | The Game Crafter + BoardGamesMaker |
-| **STL 3D** | Cults3D |
-| **Livres** | KDP |
-| **Digital direct** | Gumroad + Payhip + Ko-fi |
-| **Trafic** | Pinterest + TikTok + Instagram + Reddit |
-| **IA stack** | Hugging Face + Gemini |
+| **Coffre-fort** | Bitwarden, Aegis, Termux, GitHub SSH |
+| **Légal** | URSSAF, W-8BEN |
+| **LLM minions** | Gemini, Groq, Mistral, Together, OpenRouter, Cohere, HF, Civitai, Replicate, Perplexity (10) |
+| **POD physique** | Redbubble, TeePublic, Zazzle, Society6, Printify, Prodigi, Spring, Displate (8) |
+| **POD jeux** | TGC, BGM, MPC (3) |
+| **STL 3D** | Cults3D, Printables, MyMiniFactory, Thangs (4) |
+| **Livres** | KDP, Lulu, IngramSpark, D2D, Smashwords (5) |
+| **Digital direct** | Gumroad, Payhip, Ko-fi, Sellfy (4) |
+| **Assets créatifs** | Creative Market, CreativeFabrica, DesignBundles (3) |
+| **Game/Mod** | itch.io, Unity, Fab, GameDev Market, OpenGameArt, CurseForge, Modrinth, NexusMods (8) |
+| **Mobile/API** | Amazon Appstore, F-Droid Repo, AdMob, AppLovin, RapidAPI, Render, Vercel, Netlify, Cloudflare (9) |
+| **Trafic** | Pinterest + Dev, TikTok + EffectHouse, Instagram + Spark, YouTube + API, Reddit + Dev, Beehiiv, Substack, MailerLite (12) |
+| **Stock libre** | Pexels, Pixabay, Unsplash, Freesound, FMA, Musopen (6) |
+| **Domaine public** | Gutenberg, Archive.org, Smithsonian, Met, Rijksmuseum, NYPL, LoC, BL, Europeana, BHL, Kaggle (11) |
+| **Affiliation** | 15 marchés (M1–M15), majorité via Awin/CJ/Impact (≈25 programmes) |
+| **Notif/contrôle** | Telegram Bot, Discord Webhook, ntfy.sh, Termux:API, UptimeRobot |
 
-**Total dépensé** : 0,00€
-**Capacité de vente** : tous types de produits, 8 catégories différentes
+**Total à dépenser** : 0,00 € (Awin nécessite 5$ déposés, remboursés à la 1ère vente).
 
 ---
 
-## 🎯 PROCHAINE ACTION HUGO
+# 🎯 PROCHAINE ACTION HUGO (à faire avant qu'on continue)
 
-Demain matin, 15 minutes :
+**Aujourd'hui (J-0, 20 min)** :
 1. Bitwarden ✓
-2. URSSAF ✓
-3. Cults3D ✓
-4. Redbubble ✓
+2. Aegis (F-Droid) ✓
+3. Termux (F-Droid) + packages + clé SSH ✓
+4. GitHub Mobile ✓
 
-Puis pingue-moi « J1 ok » et je :
-- Lance la production de 50 STL paramétriques nichés (Cults3D)
-- Génère les `redbubble_listing.txt` pour tous nos designs vendables existants
-- Code `produce_card_game.py` pour mardi (TGC)
+**Demain matin (J+1, 25 min)** :
+5. URSSAF ✓
+6. Cults3D ✓
+7. Redbubble ✓
+
+**Demain soir → mercredi (J+1 → J+3, 30 min)** :
+8–17. Les 10 LLM-minions de la vague 2 ⭐ **C'EST CETTE VAGUE QUI SAUVE MES TOKENS**
+
+Quand tu as fini les 17 premières inscriptions, pingue-moi **"Vague 0+1+2 ok"** et
+on enchaîne avec la priorité 2 (sécurité + cadre légal) puis priorité 3 (automatisation).
 
 ---
 
-## ⚙️ SECRETS GITHUB à configurer une fois inscrit
+# 🔐 SECRETS GITHUB À CONFIGURER (au fil des inscriptions)
 
-Pour que les workflows IA marchent, ajoute ces secrets :
 🔗 https://github.com/hugokeirsse-byte/365days/settings/secrets/actions
 
-| Secret | Source | Workflow qui l'utilise |
+| Secret | Source | Utilisé par |
 |---|---|---|
-| `GEMINI_API_KEY` | Google AI Studio (étape 16) | `agent_gemini_quality_check`, futur `agent_ideator_llm` |
-| `HF_API_KEY` | Hugging Face (étape 15) | futur `produce_coloring_book_hf` (SDXL line-art) |
+| `GEMINI_API_KEY` | Google AI Studio | 5 brains + QC + rédaction de masse |
+| `GROQ_API_KEY` | Groq Console | rédaction itérative rapide |
+| `MISTRAL_API_KEY` | Mistral Console | traduction FR↔EN, résumés |
+| `TOGETHER_API_KEY` | Together AI | Llama/FLUX |
+| `OPENROUTER_API_KEY` | OpenRouter | fallback multi-LLM |
+| `COHERE_API_KEY` | Cohere | résumé/RAG/SEO |
+| `HF_API_KEY` | Hugging Face | SDXL, ControlNet, IP-Adapter, Real-ESRGAN |
+| `REPLICATE_API_TOKEN` | Replicate | DeOldify, Rembg, FLUX |
+| `PERPLEXITY_API_KEY` | Perplexity | scraping intelligent tendances |
+| `PINTEREST_API_KEY` | Pinterest Dev | auto-publication pins |
+| `REDDIT_CLIENT_ID` + `REDDIT_CLIENT_SECRET` | Reddit Dev | PRAW scraping |
+| `YOUTUBE_API_KEY` + OAuth | Google Cloud | upload faceless videos |
+| `PEXELS_API_KEY` / `PIXABAY_API_KEY` / `UNSPLASH_API_KEY` | (idem) | stock images |
+| `RAPIDAPI_PROVIDER_KEY` | RapidAPI | publication APIs |
+| `ADMOB_APP_ID` | AdMob | injection SDK dans APKs |
+| `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID` | BotFather | bot validation |
+| `DISCORD_WEBHOOK_URL` | Discord channel | rapports prod |
+| `AMAZON_ASSOCIATES_TAG_FR` / `_US` | Associates | affiliation M1 |
+| `AWIN_API_TOKEN` | Awin | accès Booking/MyProtein/etc. |
 
-Pas urgent — tu peux les ajouter quand tu veux.
+📘 Tuto détaillé : [`SECRETS_GITHUB.md`](./SECRETS_GITHUB.md)
+
+---
+
+# 🆘 EN CAS DE BLOCAGE
+
+| Symptôme | Cause probable | Action |
+|---|---|---|
+| « Compte Amazon Associates suspendu après 180j » | pas atteint 3 ventes | recréer, revenir avec trafic Pinterest |
+| « KDP refuse W-8BEN » | identité non validée | scan passeport via dashboard KDP |
+| « Awin demande 5$ pour ouvrir » | normal | dépôt remboursé à la 1ère commission |
+| « Quota Gemini épuisé » | 1500/jour dépassé | router vers Groq/Mistral via OpenRouter |
+| « GitHub Actions 2000 min/mois épuisées » | repo passé en privé ? | **garder le repo public** : minutes illimitées |
+| « TikTok rejette mon filtre AR » | review manuelle requise | normal, 24-48h d'attente |
