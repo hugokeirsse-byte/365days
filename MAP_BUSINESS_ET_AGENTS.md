@@ -423,11 +423,23 @@ coloriage** par ex. :
 - **Métadonnées de listing** (titre/description/tags) prêtes à coller.
 → Chaque type de produit a sa propre check-list « clé en main » (dans `data/quality_rules.json`).
 
+### Le CHOIX EN AMONT = liberté décisionnelle du Stratège (Hugo 20/05)
+**Pour tous les projets** (pas que les livres), avant de produire, le **Stratège (B1)** choisit
+**la meilleure opportunité à l'instant T** (potentiel × faisabilité × fraîcheur) — c'est son
+**idée personnelle**, ce qu'il juge le plus prometteur. Il dispose de 4 **stratégies** :
+1. **Mono-trend** : exploiter **une seule** trend forte telle quelle.
+2. **Cross-trend** : **croiser** 2+ trends qui marchent en ce moment (ex. cute × super-héros).
+3. **Original** : sa **propre idée** innovante — parfois c'est nous qui **créons** la trend.
+4. **Refonte/amélioration** : reprendre un produit **qui a bien vendu mais marche mal**
+   (bestseller mal noté) et corriger ses défauts.
+Il enchaîne : après un produit, il **rebascule** sur une autre trend, un autre cross, un original
+ou une refonte — selon ce qui est le plus prometteur à ce moment-là.
+
 ### Le BRIEF PRODUIT = contrat anti-dérive (Hugo 20/05)
-Avant toute production, le **Stratège (B1)** génère un **Brief Produit précis** à partir des
-trends → contrat : `data/schemas/product_brief.schema.json`. Exemple : *« coloring type
-Coco-Wyo × super-héros monte → produire ça, style cadré par images de référence HF, format
-KDP, ton line-art, signature maison, pensé en collection »*.
+Une fois l'opportunité choisie, le **Stratège (B1)** génère un **Brief Produit précis**
+→ contrat : `data/schemas/product_brief.schema.json` (avec la stratégie retenue et le pourquoi).
+Exemple : *« coloring type Coco-Wyo × super-héros monte → produire ça, style cadré par images
+de référence HF, format KDP, ton line-art, signature maison, pensé en collection »*.
 - L'**Auditrice (E1)** a ce brief « dans ses données » et audite le produit **POINT PAR
   POINT** contre lui : cohérence stylistique entre toutes les pages, format KDP sans erreur,
   ton de couleur, zéro parasite, couverture, complétude clé-en-main. Chaque critère est

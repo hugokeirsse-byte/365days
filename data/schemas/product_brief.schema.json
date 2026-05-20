@@ -21,9 +21,18 @@
       "type": "string",
       "enum": ["coloring_book", "low_content_book", "novel", "game", "merch_design", "card_deck", "video", "stl_3d", "other"]
     },
+    "generation_strategy": {
+      "type": "string",
+      "enum": ["mono_trend", "cross_trend", "original", "rework_improve"],
+      "description": "choix amont du Stratege : exploiter UNE trend / CROISER plusieurs trends / idee ORIGINALE (parfois on cree la trend) / REFONTE d'un bestseller mal note"
+    },
+    "opportunity_rationale": {
+      "type": "string",
+      "description": "pourquoi c'est la meilleure opportunite a l'instant t (potentiel x faisabilite x fraicheur)"
+    },
     "trends_source": {
       "type": "string",
-      "description": "d'ou vient la cible : quel signal/trend l'a motivee",
+      "description": "d'ou vient la cible : quel(s) signal/trend l'a motivee (1 ou plusieurs si cross)",
       "examples": ["Tendanceur: coloring 'cute Coco-Wyo style' + 'superheroes' en hausse cette semaine"]
     },
     "target": {
