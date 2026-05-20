@@ -175,3 +175,35 @@ Si une plateforme tombe → 75% des revenus continuent.
 3. **Apprendre par les ventes réelles, pas par les hypothèses** : data > intuition
 4. **Construire un MOAT** : notre format propriétaire (BRAND_IDENTITY.md) + notre librairie de 80 expressions culturelles = barrière à l'entrée
 5. **Automatiser tout ce qui peut l'être** : Hugo doit pouvoir partir 1 mois sans que le système s'arrête
+
+---
+
+## 🆕 IDÉES AJOUTÉES 20/05 (directives Hugo)
+
+### 9. **Tracker "bestseller mal noté → repris & corrigé"** ⭐ (pépite)
+- Concept : repérer produits (livres, jeux, objets, inventions) qui **vendent énormément MAIS sont mal notés**, surtout quand le défaut est **simple à corriger** (pas refait par flemme / parce que ça vendait déjà).
+- Action 1 : reprendre le concept en **corrigeant le pourquoi de la mauvaise note** → notre version meilleure.
+- Action 2 (méta-business) : **vendre un "plan de correction"** au créateur du produit d'origine.
+- Pipeline : Éclaireur élargi (#1) + Critique de Plaintes (#2) → filtre "volume haut × note basse × fix simple".
+
+### 10. **Jeux & apps narratifs / textuels** (mine d'or simple)
+- Jeux mobiles à base d'**écriture/scénario** : bel enrobage + beau scénario = produit simple à usiner.
+- On ne fait pas QUE des jeux : aussi des **applications**.
+- À lancer **après** les 2 premiers jeux (horreur point&click + zoo idle), en analysant ce qui marche dans le genre (visual novels, choose-your-own-adventure, idle textuels).
+- Dépend du **Scénariste Maître (#31)** : fil conducteur, anti-répétition, auto-correction, anti-pattern-IA.
+
+### 11. **Modèles 3D — Cults3D / Printables / MyMiniFactory**
+- 2 modèles de revenu : (a) vendre le **fichier 3D (STL)** pour impression maison ; (b) **print-on-demand** de l'objet physique.
+- Sourcer des modèles 3D **libres de droits**, les ajuster à notre sauce. (déjà module M2 / business B12.)
+
+### 12. **Plateformes nationales (non mondiales)**
+- Repérer des sites qui font **un tabac dans UN pays** (France, Inde…) même s'ils sont inconnus mondialement → s'y inscrire en plus des plateformes mondiales.
+
+### 13. **Squelettes d'IA perpétuels open-source**
+- Avant de coder nos agents de zéro, chercher des **frameworks d'agents perpétuels** déjà bien conçus (wshobson/agents, ECC, etc.) et les **adapter** (doctrine Skeleton Scout appliquée à l'orchestration elle-même).
+
+### 14. **Jeux textuels / RPG mobile + apps "assemblées"** (bon ratio, ≠ jeux complexes)
+- Nuance Hugo 20/05 : les jeux **complexes** = pas fiables à produire, MAIS les jeux **qui ne sont que des scripts** (RPG textuel mobile, narratif, choix multiples, idle textuel) = **faciles** : bonne interface + bannière pub + bon texte = lancé.
+- **Applications** : ne pas chercher UN outil parfait → **assembler plusieurs outils gratuits clé en main** qui, combinés, donnent l'app voulue. C'est la doctrine MIX appliquée aux app-builders.
+- → Charge le **Scout Technique** de chercher des outils/app-builders gratuits **par domaine d'activité** (pas qu'un produit), à combiner.
+- Dépend du **Scénariste Maître (#31)** pour le contenu narratif et du **Juge Qualité (E1)** pour la boucle d'audit.

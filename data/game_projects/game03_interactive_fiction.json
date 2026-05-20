@@ -1,0 +1,38 @@
+{
+  "id": "game03_interactive_fiction",
+  "title_working": "1er jeu de script — fiction interactive à choix",
+  "status": "CONCEPT (Hugo 20/05) — premier VRAI jeu cible : simple, narratif, basé sur les trends de l'instant t",
+  "decided_by_hugo": "2026-05-20",
+  "pivot_note": "On met de côté game01 (point&click horreur) et game02 (zoo idle cryptides). Objectif : faire d'abord créer UN jeu SIMPLE de script.",
+  "type": "fiction interactive / visual novel léger à choix (choose-your-own-adventure)",
+  "why_this_type": {
+    "trend_evidence": [
+      "Interactive story games très porteurs sur mobile 2026 (MeChat, Tears of Themis) — large public",
+      "Tendance 'narratif court, curé, émotionnel' (Mixtape, parmi les mieux notés de l'année)",
+      "Hype fantasy / dragons / RPG à choix confirmée",
+      "Faisabilité : un jeu de script = texte + interface simple + visuels d'ambiance, PAS de moteur de jeu complexe"
+    ],
+    "ratio": "faisabilité haute (script + UI) × rentabilité (bannière pub + volume) = bon premier jeu"
+  },
+  "concept_v0": {
+    "theme_candidate": "fantasy / dragon — récit à choix court et rejouable (plusieurs fins)",
+    "loop": "lire un passage → faire un choix → conséquence → ... → une des fins",
+    "length": "court (15-30 nœuds), rejouable, multiple endings",
+    "monetisation": "bannière pub (AdMob/Unity Ads) + option 'retirer les pubs' payante plus tard",
+    "signature": "écriture soignée par le Scénariste Maître (#31) : fil conducteur, zéro répétition, anti-slop ; auditée point par point (Brief Produit)"
+  },
+  "tech_plan": {
+    "engine_choice": "à trancher par Scout Technique (#28) : mini-moteur maison (histoire JSON → HTML/mobile) OU base open-source (Twine/Ink) — vérifier licence commerciale",
+    "story_format": "graphe de nœuds { texte, choix[] → nœud_suivant } en JSON",
+    "visuals": "images d'ambiance générées via HF (cadrées par image de référence), 1 par scène clé",
+    "buildable_without_keys": ["moteur narratif (graphe de choix)", "interface", "structure de l'histoire"],
+    "blocked_on": ["HF_API_KEY (visuels d'ambiance)", "réseau ouvert (Scout Technique pour choix moteur)"]
+  },
+  "production_rule": "JEU = SÉQUENTIEL : un seul à la fois, poussé jusqu'au clé-en-main ; si blocage → dire à Hugo ce qui cloche ; gate Hugo (cf. MAP_BUSINESS_ET_AGENTS.md > EXCEPTION JEUX).",
+  "next_steps": [
+    "Scout Technique : valider un moteur IF libre de droits commercial (Twine/Ink/maison)",
+    "Stratège : figer le thème via les trends à l'instant t (dragon/fantasy = candidat)",
+    "Scénariste Maître : écrire l'histoire à embranchements (boucle + Juge Qualité)",
+    "Game Builder : interface + intégration visuels HF + bannière pub"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "brief_id": "brief_2026-05-20_game02_idle",
+  "candidates": [
+    {
+      "repo": "TinyTakinTeller/GodotProjectZero",
+      "license": "MIT",
+      "license_ok_commercial": true,
+      "stars": 177,
+      "last_pushed": "2026-04-05",
+      "engine_or_stack": "Godot 4.4",
+      "what_it_provides": "idle incremental complet : ressources, generation passive, upgrades, save, localisation",
+      "scores": {
+        "license": 3,
+        "maintenance": 3,
+        "popularite": 1,
+        "qualite_code": 3,
+        "fit_besoin": 3,
+        "legerete_deps": 3
+      },
+      "score_total": 16,
+      "recommended_integration_mode": "fork",
+      "verdict": "ADOPT",
+      "risks": []
+    },
+    {
+      "repo": "LucasMcClean/godot-game-template",
+      "license": "MIT",
+      "license_ok_commercial": true,
+      "stars": 8,
+      "last_pushed": "2025-09-01",
+      "engine_or_stack": "Godot 4",
+      "what_it_provides": "base structurelle : save chiffre, scene transitions, settings, audio, state machine",
+      "scores": {
+        "license": 3,
+        "maintenance": 2,
+        "popularite": 0,
+        "qualite_code": 1,
+        "fit_besoin": 2,
+        "legerete_deps": 3
+      },
+      "score_total": 11,
+      "recommended_integration_mode": "inspire",
+      "verdict": "INSPIRE_ONLY",
+      "risks": [
+        "Pas de tests visibles"
+      ]
+    },
+    {
+      "repo": "scottpetrovic/godot-4-idleclicker",
+      "license": "MIT",
+      "license_ok_commercial": true,
+      "stars": 1,
+      "last_pushed": "2025-01-01",
+      "engine_or_stack": "Godot 4",
+      "what_it_provides": "petit exemple pedagogique systeme upgrade idle",
+      "scores": {
+        "license": 3,
+        "maintenance": 1,
+        "popularite": 0,
+        "qualite_code": 0,
+        "fit_besoin": 2,
+        "legerete_deps": 3
+      },
+      "score_total": 9,
+      "recommended_integration_mode": "inspire",
+      "verdict": "INSPIRE_ONLY",
+      "risks": [
+        "Pas de tests visibles"
+      ]
+    }
+  ],
+  "needs_hugo_decision": true
+}
