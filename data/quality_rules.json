@@ -186,21 +186,36 @@
       ]
     },
     "fiction_novel": {
-      "approach": "PLUME_LOOP",
-      "current_status": "Écrit par le Scénariste Maître (#31) avec boucle d'auto-correction + Juge de Sortie.",
+      "approach": "PLUME_LOOP_HUMAN_CENTRIC",
+      "current_status": "Écrit par le Scénariste Maître (#31) en MICRO-BLOCS (300-500 mots) avec mémoire de contexte, boucle d'auto-correction multi-passes + Juge de Sortie. Objectif : INDÉTECTABLE comme IA.",
+      "production_method": "micro_blocs_300_500_mots_avec_resume_de_contexte_entre_blocs (jamais un chapitre entier d'un coup)",
+      "style_guide": {
+        "blacklist_mots": ["plongez", "au cœur de", "révolutionnaire", "tapestry", "dive into", "unleash", "in conclusion", "moreover"],
+        "rythme": "ALTERNER la longueur des phrases (l'IA fait des phrases de taille identique). Phrase courte. Très courte. Puis une phrase longue qui apporte une nuance complexe.",
+        "ton": "registre émotionnel précis par scène (jamais le ton neutre-encyclopédique)",
+        "imperfection_controlee": "questions rhétoriques, digressions, opinions subjectives, métaphores du champ lexical du thème (pas génériques)"
+      },
+      "audit_passes": [
+        "P1 structure : cohérence globale, anti-répétition, respect de la trame",
+        "P2 rythme : forcer l'alternance des longueurs de phrases",
+        "P3 humanisation : supprimer le jargon IA, ajouter marqueurs conversationnels + détails sensoriels concrets",
+        "P4 (warning) test de l'oreille : TTS + un LLM 'critique littéraire sévère' note Ennuyeux/Robotique/Vivant/Captivant ; si Robotique -> rejet"
+      ],
       "guideline": {
-        "indispensable": "fil conducteur clair, cohérence des personnages, ZÉRO répétition, anti-slop (pas de tics d'IA), longueur conforme au format",
-        "inacceptable": "incohérences narratives, répétitions, tournures ChatGPT ('tapestry', 'dive into', 'unleash'...), fin bâclée"
+        "indispensable": "fil conducteur clair, cohérence des personnages, ZÉRO répétition, anti-slop, rythme de phrases varié, longueur conforme",
+        "inacceptable": "incohérences, répétitions, tournures ChatGPT, phrases toutes de même longueur, ton encyclopédique, fin bâclée"
       },
       "critical_rules": [
         "coherent_throughline",
         "character_consistency",
         "no_repetition",
-        "no_ai_slop_phrasing"
+        "no_ai_slop_phrasing",
+        "varied_sentence_rhythm"
       ],
       "warning_rules": [
         "pacing_appropriate",
-        "emotional_payoff_present"
+        "emotional_payoff_present",
+        "passes_ear_test_not_robotic"
       ]
     },
     "interactive_fiction_game": {

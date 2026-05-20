@@ -2,7 +2,8 @@
 
 > ## ✅ ÉTAT AU 20/05/2026 (déclaré par Hugo)
 > Hugo a rempli les inscriptions **jusqu'à la clé Hugging Face**.
-> - **FAIT** : Redbubble · KDP (+ W-8BEN) · les LLM-minions de la Vague 2 **jusqu'à `HF_API_KEY`** (Gemini, Groq, Mistral, Together, OpenRouter, Cohere, HF) · l'essentiel des Vagues 0-2.
+> - **FAIT** : Redbubble · KDP (+ W-8BEN) · clés LLM **gratuites** : Gemini, Groq, Mistral, OpenRouter, Cohere, HF, **Civitai** (`CIVITAI_API_KEY`).
+> - **SKIPPÉ volontairement** (payant ou crédit limité — on veut du **100 % gratuit durable**) : Together (2.4), Replicate (2.9), Perplexity (2.10). Couverts par les gratuits + **Pollinations** (génération images **sans clé**) + post-traitement local sans clé.
 > - **PAS ENCORE FAIT (priorité)** : **URSSAF** (obligatoire avant la 1ère vente) · **Bitwarden** (Hugo utilise déjà le gestionnaire de mots de passe intégré de son téléphone) · **tout le reste des Vagues 3 → 8**.
 > - **Priorité convenue** : les **clés API** d'abord (fait jusqu'à HF). Action débloquante = poser `HF_API_KEY` + `GEMINI_API_KEY` dans les **GitHub Secrets** → ça lance la production.
 > - ⚠️ *Les lignes individuelles ci-dessous ne sont pas toutes confirmées une par une : si une case est cochée à tort, signale-le.*
@@ -499,9 +500,10 @@ la mention `"En tant que partenaire, je touche une commission..."` ou équivalen
 6. Cults3D — à confirmer
 7. Redbubble ✅
 
-**LLM-minions (Vague 2) — faits jusqu'à HF** :
-8–14. Gemini ✅ · Groq ✅ · Mistral ✅ · Together ✅ · OpenRouter ✅ · Cohere ✅ · HF ✅
-15–17. Civitai / Replicate / Perplexity — à confirmer (situés après HF)
+**LLM-minions (Vague 2)** :
+8–13. Gemini ✅ · Groq ✅ · Mistral ✅ · OpenRouter ✅ · Cohere ✅ · HF ✅
+14. Civitai ✅ (`CIVITAI_API_KEY`)
+❌ **Skippés (payants / crédit limité)** : Together (2.4) · Replicate (2.9) · Perplexity (2.10) → remplacés par les gratuits + Pollinations (sans clé)
 \+ **KDP** ✅ (Vague 3.11, fait en avance) · **W-8BEN** ✅
 
 **RESTE À FAIRE** : URSSAF · Bitwarden (optionnel) · Vagues 3 → 8.

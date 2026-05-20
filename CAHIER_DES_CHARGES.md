@@ -290,4 +290,67 @@ Audit globalement positif. Décisions retenues :
 
 ---
 
+---
+
+## 15. ÉVOLUTIONS & DIRECTIVES COMPLÉMENTAIRES (20/05, soir)
+
+### 15.1 Production par ÉLÉMENTS / micro-blocs (compositing) ⭐
+Quand générer un produit fini « d'un coup » est trop dur, on **génère des unités fiables** puis on
+les **assemble** — même logique que « visuel sans texte + texte en overlay Pillow » :
+- **Coloriage** : générer plein d'**éléments uniques** (créatures, objets, potions…) puis les
+  **placer sur la page via des patrons d'emplacements** (comme on insère des sprites dans un jeu —
+  en plus simple, car statique). Un élément raté = on regénère **juste l'élément**, pas la page.
+- **Livres** : écrire par **micro-blocs (300-500 mots)** cohérents entre eux (mémoire de contexte),
+  pas des chapitres entiers → concentration maximale, moins de répétition.
+- Avantage : fiabilité, réparation locale, parallélisation.
+
+### 15.2 Édition CIBLÉE plutôt que régénération totale
+Sur un défaut **localisé**, ne pas tout refaire : modifier/supprimer **uniquement l'élément
+problématique** via **inpainting** (`IOPaint`, Apache-2.0) ou retouche `opencv` — un « Photoshop
+piloté par le code ». Combiné au compositing (15.1), on remplace juste l'unité fautive.
+
+### 15.3 Génération multi-source (gratuit, illimité)
+- **Pollinations** (sans clé, illimité) pour le **volume** / les éléments / les brouillons.
+- **HF** (clé Hugo) pour la **qualité finale** + l'upscale.
+- Post-traitement **local sans clé** (opencv, rembg, Pillow, Real-ESRGAN).
+- *Skippés volontairement* (payants/crédit limité) : Together, Replicate, Perplexity.
+
+### 15.4 Coloriages « intelligents » — 11 systèmes de valeur (catalogue)
+Au lieu d'images aléatoires, structurer les coloring books par **logique de valeur** :
+enquête à énigmes · pixel-art par numéro · architecture/plans · anatomie didactique · cartes de
+mondes · typographie/calligraphie · illusions de perspective (Escher) · journaling visuel ·
+mode/stylisme · blackout (réserve blanche) · tessellation/pavage. Règle d'or : **sobriété, clarté
+des tracés, utilité réelle** (relaxation/apprentissage). → Se combine avec les produits mixtes (§3).
+
+### 15.5 Livres « indétectables » (human-centric)
+Doctrine intégrée dans `data/quality_rules.json > fiction_novel` : `style_guide` (blacklist de mots
+IA, rythme de phrases alterné, ton émotionnel, imperfection contrôlée) + **3 passes d'audit**
+(structure / rythme / humanisation) + **test de l'oreille** (TTS + LLM « critique sévère »). La force
+n'est pas le modèle, c'est la **sévérité de la boucle d'audit**.
+
+### 15.6 Nouvel agent #35 — Chasseur de Viral
+Cherche **le hit** (potentiel viral/explosif) dans chaque domaine, en boucle (cf. MAP).
+
+### 15.7 Trajectoire d'évolution (vision long terme)
+| Étape | Mode | Rôle d'Hugo |
+|---|---|---|
+| **1. Artisanat automatisé** *(actuel)* | B2C : on produit & publie (KDP/Redbubble) | opérateur + validateur |
+| **2. Agence de prestation** | B2B : vendre le **service** (assets sur mesure, ghostwriting…) | chef de projet / commercial |
+| **3. Plateforme SaaS** | le client utilise notre interface, le système génère pour lui | gestionnaire produit |
+| **4. Écosystème de marque** | univers propres → audience, pub, dérivés | directeur artistique |
+| **5. Infrastructure de données** | revendre la **prédiction de tendances** / licences du moteur | stratège |
+
+> **On reste focalisé sur l'Étape 1** (prouver la chaîne sur les coloriages). Les étapes 2-5 sont
+> le cap, pas le présent.
+
+### 15.8 Business B2B « services » (Étape 2, plus tard)
+Quand un domaine atteint l'**excellence**, vendre la **production sur mesure** (ex. « je vous
+produis 100 assets de jeu dans telle ambiance », ghostwriting, couvertures KDP pour autres auteurs,
+restauration de photos…). Client décrit → la machine produit → Hugo traite le mail + livre le
+dossier fini. **Clé** : on vend l'**output fini** (valeur livrée), pas une recette (≠ packs de
+prompts, qui échouent car trop faciles à reproduire soi-même). À déclencher **après** la preuve
+de qualité, pas avant.
+
+---
+
 *Ce cahier des charges est vivant : il est mis à jour à chaque décision structurante.*
