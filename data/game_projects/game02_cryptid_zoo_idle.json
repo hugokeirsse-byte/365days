@@ -4,7 +4,7 @@
   "codename": "Cryptid Cove (provisoire)",
   "type": "idle / incremental tycoon — gestion de zoo de cryptides",
   "reference": "Idle Zoo Tycoon, Adventure Capitalist, Egg Inc.",
-  "status": "TYPE + SQUELETTE + STYLE choisis · base = GodotProjectZero + MIX save · prêt pour implémentation (attend env Godot)",
+  "status": "⏸ MIS DE CÔTÉ (Hugo 20/05) — on repousse les 2 premiers jeux, priorité au 1er jeu de fiction interactive (game03). Base GodotProjectZero conservée pour reprise ultérieure.",
   "decided_by_hugo": "2026-05-20",
   "decisions": {
     "skeleton_base": "TinyTakinTeller/GodotProjectZero (idle incremental complet Godot 4.4, MIT, 16/18) — ADOPT comme base",

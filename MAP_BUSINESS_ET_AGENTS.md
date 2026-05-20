@@ -404,9 +404,14 @@ Juge Qualité (E1) AUDITE selon critères PROPRES AU TYPE de produit
   **se corrige** jusqu'à la **version qu'elle juge la plus aboutie possible** avec notre
   système actuel. Quand c'est abouti → **mise en STOCK automatique** → elle **passe au produit
   suivant** sans attendre. « Elle fait au mieux qu'elle peut et quand c'est fait, boom, terminé. »
-- **Production SIMULTANÉE** : plusieurs produits / plusieurs business **en parallèle** (ex. un
-  livre de coloriage + un roman + une ébauche de jeu en même temps). À terme : **plusieurs
-  produits d'un même business simultanément**. (Borné par l'ordonnanceur F1 pour les quotas.)
+- **Production SIMULTANÉE (produits légers)** : les produits légers (coloring, low-content,
+  romans, merch…) se produisent **en parallèle**, y compris **plusieurs du MÊME business en
+  même temps** (ex. 5 coloring books simultanés). Dès qu'un produit est clé en main → stock →
+  elle ne « reste pas sans rien faire », elle repart aussitôt. (Borné par l'ordonnanceur F1.)
+- **EXCEPTION JEUX (séquentiel)** : un jeu est **lourd** → on en produit **UN SEUL à la fois**,
+  jamais en parallèle. La machine le pousse jusqu'au **clé en main**, OU s'arrête et **dit à
+  Hugo ce qui cloche** pour l'avoir clé en main. **Hugo juge** : bon → on passe à autre chose ;
+  sinon → correction. Le jeu a donc un **gate Hugo dédié** (en plus du gate amont du Game Builder).
 - **Hugo = validation du STOCK fini** : il ne voit que des produits **auto-jugés aboutis**,
   classés par priorité, et tranche OK → publier / NON → repart. (Il peut aussi injecter une
   commande prioritaire : « tiens, lance ça ».)
