@@ -4,11 +4,13 @@
   "codename": "Hollow Hours (provisoire)",
   "type": "point-and-click / escape-room / horreur atmosphérique",
   "reference": "Rusty Lake / Cube Escape, The Birdcase, Samsara Room",
-  "status": "TYPE + SQUELETTE validés · prêt pour game design",
+  "status": "TYPE + SQUELETTE choisis · base = Popochiu · prêt pour implémentation (attend env Godot)",
   "decided_by_hugo": "2026-05-20",
   "decisions": {
-    "skeleton": "godot_scratch_minimal (Godot 4, MIT) — base from scratch, mais MIX autorisé : piocher des morceaux MIT/Apache (système d'inventaire, hotspots, save) à valider par WebSearch",
+    "skeleton": "carenalgas/popochiu (framework point-and-click Godot 4.6, MIT, 16/18) — ADOPT comme base/fork",
+    "skeleton_report": "data/game_projects/skeleton_candidates_game01.json",
     "mix_allowed": true,
+    "mix_note": "Popochiu fournit déjà Rooms/Hotspots/Inventory/Dialogue. Pas de MIX nécessaire au départ. expressobits/inventory-system disponible si besoin d'inventaire/crafting plus riche plus tard.",
     "theme": "A_standalone — univers horreur autonome, PAS de cryptides (jeux indépendants)",
     "shared_universe": false
   },

@@ -4,11 +4,14 @@
   "codename": "Cryptid Cove (provisoire)",
   "type": "idle / incremental tycoon — gestion de zoo de cryptides",
   "reference": "Idle Zoo Tycoon, Adventure Capitalist, Egg Inc.",
-  "status": "TYPE + SQUELETTE + STYLE validés · prêt pour game design",
+  "status": "TYPE + SQUELETTE + STYLE choisis · base = GodotProjectZero + MIX save · prêt pour implémentation (attend env Godot)",
   "decided_by_hugo": "2026-05-20",
   "decisions": {
-    "skeleton": "godot_scratch_idle (Godot 4, MIT) — base from scratch, mais MIX autorisé : piocher des morceaux de templates idle MIT/Apache (offline-earnings, save/load, UI upgrades) à valider par WebSearch",
+    "skeleton_base": "TinyTakinTeller/GodotProjectZero (idle incremental complet Godot 4.4, MIT, 16/18) — ADOPT comme base",
+    "skeleton_mix": "LucasMcClean/godot-game-template (MIT) — piocher le save chiffré + scene transitions",
+    "skeleton_report": "data/game_projects/skeleton_candidates_game02.json",
     "mix_allowed": true,
+    "mix_note": "Base idle = GodotProjectZero. MIX du save chiffré de godot-game-template. Les 2 MIT + Godot 4 = combo propre (license OK, moteur cohérent).",
     "art_style": "cryptides MIGNONS (cute / kawaii), pas réalistes — chibi, gros yeux, rondeurs, palette douce",
     "shared_universe": false,
     "art_reference": "esprit Bugsnax / Ooblets / Cryptid Café — créatures attachantes et collectionnables"
