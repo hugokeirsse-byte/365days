@@ -1,0 +1,25 @@
+# Dépendances de production — empilées par groupe.
+# Installer : pip install -r requirements.txt
+# Les libs lourdes (diffusers, torch) sont volontairement EXCLUES ici :
+# elles tournent côté HF Inference / Replicate (cloud), pas en local.
+# Cf. LIBRARIES_AND_REPOS.md pour le détail par module.
+
+# --- Infrastructure transversale (tous modules) ---
+httpx>=0.27           # client HTTP/2 moderne
+tenacity>=8.2         # retry avec backoff exponentiel
+jsonschema>=4.21      # validation des contrats JSON (data/schemas/)
+pydantic>=2.6         # validation de données typée
+
+# --- Génération d'images / layout (déterministe, local) ---
+Pillow>=10.2          # composition, overlay, mockups
+reportlab>=4.1        # génération PDF (livres, planches de cartes)
+
+# --- Scraping / sourcing (Module 1, 5) ---
+beautifulsoup4>=4.12  # parsing HTML
+lxml>=5.1             # parser rapide
+fake-useragent>=1.5   # rotation UA (scraping public uniquement)
+
+# --- Traitement d'image avancé (Module 12, 14, 15) ---
+# opencv-python et rembg sont optionnels (lourds) — décommenter si besoin local
+# opencv-python-headless>=4.9
+# rembg>=2.0

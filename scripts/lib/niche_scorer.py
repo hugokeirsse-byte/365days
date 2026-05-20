@@ -58,6 +58,7 @@ def score_niche(niche: str, scores_raw: dict[str, int]) -> NicheScore:
     notes: list[str] = []
     total_pondere = 0.0
     max_theorique = 0.0
+    clamped_scores: dict[str, int] = {}
 
     for key in CRITERIA_KEYS:
         if key not in scores_raw:
@@ -68,6 +69,7 @@ def score_niche(niche: str, scores_raw: dict[str, int]) -> NicheScore:
             if score_val < 0 or score_val > 4:
                 notes.append(f"Score hors plage pour {key} : {score_val} — clampé")
                 score_val = max(0, min(4, score_val))
+        clamped_scores[key] = score_val
         weight = criteria_by_id[key]["poids"]
         total_pondere += score_val * weight
         max_theorique += 4 * weight
@@ -83,13 +85,13 @@ def score_niche(niche: str, scores_raw: dict[str, int]) -> NicheScore:
         verdict = "REJETE"
 
     # Veto légal : si legalite == 0, automatiquement REJETE
-    if scores_raw.get("legalite", 0) == 0:
+    if clamped_scores.get("legalite", 0) == 0:
         verdict = "REJETE — VETO LEGAL"
         notes.append("Veto légal absolu : la niche ne peut pas être produite")
 
     return NicheScore(
         niche=niche,
-        scores_raw={k: int(scores_raw.get(k, 0)) for k in CRITERIA_KEYS},
+        scores_raw=clamped_scores,
         total_pondere=total_pondere,
         score_normalise_100=score_norm,
         verdict=verdict,

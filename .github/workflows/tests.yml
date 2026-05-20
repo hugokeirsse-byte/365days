@@ -1,0 +1,33 @@
+name: Tests (pytest)
+
+on:
+  push:
+    paths:
+      - "scripts/**/*.py"
+      - "tests/**/*.py"
+      - "data/**/*.json"
+      - "requirements*.txt"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run pytest
+        run: python -m pytest tests/ -v
+
+      - name: Validate JSON schemas
+        run: python -m scripts.lib.validate_schemas

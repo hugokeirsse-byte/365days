@@ -7,11 +7,11 @@
 
   "by_keyword_pattern": [
     {
-      "pattern": "disney",
+      "pattern": "disney|mickey\\s*mouse|minnie\\s*mouse|donald\\s*duck|goofy|pluto\\s*dog|frozen\\s*elsa|elsa|olaf|moana|encanto|mirabel|simba|lion\\s*king|aladdin|jasmine|ariel|little\\s*mermaid|cinderella|snow\\s*white|rapunzel|tangled|toy\\s*story|buzz\\s*lightyear|woody|lightning\\s*mcqueen|nemo|stitch|lilo|winnie\\s*the\\s*pooh|tigger|dumbo|bambi",
       "rule": "ban_strict",
       "scope": "tous modules",
       "added": "2026-05-19",
-      "reason": "Disney défend agressivement même les noms approchants"
+      "reason": "Disney défend agressivement même les noms approchants (personnages modernes sous copyright)"
     },
     {
       "pattern": "marvel|spider[\\s-]?man|iron[\\s-]?man|hulk|thor",
