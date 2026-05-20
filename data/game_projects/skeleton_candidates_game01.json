@@ -1,0 +1,69 @@
+{
+  "brief_id": "brief_2026-05-20_game01_pointclick",
+  "candidates": [
+    {
+      "repo": "carenalgas/popochiu",
+      "license": "MIT",
+      "license_ok_commercial": true,
+      "stars": 320,
+      "last_pushed": "2026-03-15",
+      "engine_or_stack": "Godot 4",
+      "what_it_provides": "framework point-and-click complet : Rooms, Characters, Props, Hotspots, Inventory, Dialogue",
+      "scores": {
+        "license": 3,
+        "maintenance": 3,
+        "popularite": 1,
+        "qualite_code": 3,
+        "fit_besoin": 3,
+        "legerete_deps": 3
+      },
+      "score_total": 16,
+      "recommended_integration_mode": "fork",
+      "verdict": "ADOPT",
+      "risks": []
+    },
+    {
+      "repo": "expressobits/inventory-system",
+      "license": "MIT",
+      "license_ok_commercial": true,
+      "stars": 716,
+      "last_pushed": "2026-03-21",
+      "engine_or_stack": "Godot 4",
+      "what_it_provides": "systeme inventaire modulaire + crafting (C++ GDExtension)",
+      "scores": {
+        "license": 3,
+        "maintenance": 3,
+        "popularite": 1,
+        "qualite_code": 3,
+        "fit_besoin": 2,
+        "legerete_deps": 1
+      },
+      "score_total": 13,
+      "recommended_integration_mode": "fork",
+      "verdict": "ADOPT",
+      "risks": []
+    },
+    {
+      "repo": "deep-entertainment/escoria",
+      "license": "MIT",
+      "license_ok_commercial": true,
+      "stars": 300,
+      "last_pushed": "2025-06-01",
+      "engine_or_stack": "Godot 3/4",
+      "what_it_provides": "framework point-and-click (Godot 3 surtout, v4 en dev)",
+      "scores": {
+        "license": 3,
+        "maintenance": 2,
+        "popularite": 1,
+        "qualite_code": 2,
+        "fit_besoin": 2,
+        "legerete_deps": 3
+      },
+      "score_total": 13,
+      "recommended_integration_mode": "fork",
+      "verdict": "ADOPT",
+      "risks": []
+    }
+  ],
+  "needs_hugo_decision": true
+}
