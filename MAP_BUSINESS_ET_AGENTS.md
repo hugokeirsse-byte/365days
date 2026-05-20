@@ -353,3 +353,72 @@ C1-C5, C2, D1 = **projet à la demande** (boucle bornée + Juge Qualité comme c
 
 **À renforcer** : F1 doit intégrer un vrai **ordonnanceur** (throttle/queue) pour le cas où
 plusieurs agents-projet tournent en même temps → garantit qu'on reste sous les quotas.
+
+---
+
+## 🏭 LA BOUCLE PRODUIT AUTONOME — vision cible (Hugo 20/05)
+
+**Objectif final** : une **usine** qui produit seule des **produits finis triés par priorité**,
+Hugo ne fait que la **validation finale** (ok / ça repart). « Que tout se lance comme une
+grosse machine, me donne des produits finis, et j'ai juste à dire ok ou non. »
+
+```
+Stratège (B1) choisit quoi produire (rentabilité × demande × saison)
+        ↓
+Producteur (C1-C5) génère le produit
+        ↓
+Juge Qualité (E1) AUDITE selon critères PROPRES AU TYPE de produit
+   ex. coloring book : qualité du dessin, COHÉRENCE de la série,
+       line-art fermé, zéro texte parasite, lisibilité
+   ex. livre/script : fil conducteur, zéro répétition, anti-slop
+   ex. merch : lisibilité du design sur le support, marges
+        ↓
+   ┌── PAS BON → diagnostic ("problèmes : X, Y, Z") → RELANCE AUTO la prod
+   │                                                   avec corrections ciblées
+   │        ↑________________ (boucle bornée) _________________↓
+   └── BON → entre dans la FILE DE PRODUITS FINIS, classée par priorité de publication
+        ↓
+   HUGO valide en haut de pile : OK → publie / NON → repart en correction
+```
+
+### Implications concrètes
+- **E1 Juge Qualité = "Auditeur Produit"** : grilles de critères **par type de produit**
+  (étendre `data/quality_rules.json` par catégorie). C'est lui qui déclenche la régénération.
+- **File priorisée** : F1/B1 maintiennent un **backlog de produits finis** trié (le plus
+  rentable/demandé en haut). Hugo dépile.
+- **Boucle bornée** : limite d'itérations / seuil de qualité pour ne pas tourner à l'infini
+  (cf. doctrine 2 régimes). En attendant la clé HF, l'audit tournera en mode dégradé
+  (Pollinations) — la vraie qualité viendra avec HF.
+- **Injection manuelle** : Hugo peut aussi pousser sa propre idée/produit dans la file
+  (« tiens, lance ça »), traitée comme une commande prioritaire.
+- **Couverture** : la boucle doit s'appliquer à **TOUS les business**, y compris ceux en
+  pause (à brancher au moment de leur réactivation).
+
+### Cadence & verdicts (modèle opérationnel — Hugo 20/05)
+- **Quota hebdomadaire paramétrable** : on fixe une commande par semaine (ex. « 100 coloriages
+  + 100 livres low-content + 3 romans + 1 ébauche de jeu »). La machine produit **au maximum
+  de ses capacités** sous ce quota.
+- **Boucle d'aboutissement AUTONOME (correction Hugo 20/05)** : la machine ne renvoie PAS
+  des brouillons à trier. Pour CHAQUE produit, elle **boucle seule** (générer → Juge Qualité
+  #33 compare à la description cible : trends du moment + signature idéale + bon format) et
+  **se corrige** jusqu'à la **version qu'elle juge la plus aboutie possible** avec notre
+  système actuel. Quand c'est abouti → **mise en STOCK automatique** → elle **passe au produit
+  suivant** sans attendre. « Elle fait au mieux qu'elle peut et quand c'est fait, boom, terminé. »
+- **Production SIMULTANÉE** : plusieurs produits / plusieurs business **en parallèle** (ex. un
+  livre de coloriage + un roman + une ébauche de jeu en même temps). À terme : **plusieurs
+  produits d'un même business simultanément**. (Borné par l'ordonnanceur F1 pour les quotas.)
+- **Hugo = validation du STOCK fini** : il ne voit que des produits **auto-jugés aboutis**,
+  classés par priorité, et tranche OK → publier / NON → repart. (Il peut aussi injecter une
+  commande prioritaire : « tiens, lance ça ».)
+- **Scaling** : plus le système se perfectionne (meilleurs prompts, filtres, clé HF), plus le
+  **quota hebdomadaire augmente** — montée en volume **À QUALITÉ CONSTANTE**.
+
+### Définition d'un produit « CLÉ EN MAIN » (Hugo 20/05)
+Un produit en stock doit être **100 % publiable**, rien à retoucher. Pour un **livre de
+coloriage** par ex. :
+- **Titre + sous-titre** accrocheurs, pensés **comme une collection** (Vol. 1…) ;
+- **Déclinaison préparée** : si le produit explose, la suite de la collection est déjà cadrée ;
+- **Couverture** générée ;
+- **Mise en page complète au format KDP sans erreur** (trim 8.5×11, bleed 0.125", gutter 0.75", PDF/X) ;
+- **Métadonnées de listing** (titre/description/tags) prêtes à coller.
+→ Chaque type de produit a sa propre check-list « clé en main » (dans `data/quality_rules.json`).

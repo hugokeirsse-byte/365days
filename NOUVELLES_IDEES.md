@@ -201,3 +201,9 @@ Si une plateforme tombe → 75% des revenus continuent.
 
 ### 13. **Squelettes d'IA perpétuels open-source**
 - Avant de coder nos agents de zéro, chercher des **frameworks d'agents perpétuels** déjà bien conçus (wshobson/agents, ECC, etc.) et les **adapter** (doctrine Skeleton Scout appliquée à l'orchestration elle-même).
+
+### 14. **Jeux textuels / RPG mobile + apps "assemblées"** (bon ratio, ≠ jeux complexes)
+- Nuance Hugo 20/05 : les jeux **complexes** = pas fiables à produire, MAIS les jeux **qui ne sont que des scripts** (RPG textuel mobile, narratif, choix multiples, idle textuel) = **faciles** : bonne interface + bannière pub + bon texte = lancé.
+- **Applications** : ne pas chercher UN outil parfait → **assembler plusieurs outils gratuits clé en main** qui, combinés, donnent l'app voulue. C'est la doctrine MIX appliquée aux app-builders.
+- → Charge le **Scout Technique** de chercher des outils/app-builders gratuits **par domaine d'activité** (pas qu'un produit), à combiner.
+- Dépend du **Scénariste Maître (#31)** pour le contenu narratif et du **Juge Qualité (E1)** pour la boucle d'audit.
