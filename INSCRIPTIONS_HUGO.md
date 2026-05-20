@@ -1,4 +1,11 @@
-# 📋 INSCRIPTIONS HUGO — version 19/05/2026 (Empire Perpétuel, 100% gratuit à l'inscription)
+# 📋 INSCRIPTIONS HUGO — version 20/05/2026 (Empire Perpétuel, 100% gratuit à l'inscription)
+
+> ## ✅ ÉTAT AU 20/05/2026 (déclaré par Hugo)
+> Hugo a rempli les inscriptions **jusqu'à la clé Hugging Face**.
+> - **FAIT** : Redbubble · KDP (+ W-8BEN) · les LLM-minions de la Vague 2 **jusqu'à `HF_API_KEY`** (Gemini, Groq, Mistral, Together, OpenRouter, Cohere, HF) · l'essentiel des Vagues 0-2.
+> - **PAS ENCORE FAIT (priorité)** : **URSSAF** (obligatoire avant la 1ère vente) · **Bitwarden** (Hugo utilise déjà le gestionnaire de mots de passe intégré de son téléphone) · **tout le reste des Vagues 3 → 8**.
+> - **Priorité convenue** : les **clés API** d'abord (fait jusqu'à HF). Action débloquante = poser `HF_API_KEY` + `GEMINI_API_KEY` dans les **GitHub Secrets** → ça lance la production.
+> - ⚠️ *Les lignes individuelles ci-dessous ne sont pas toutes confirmées une par une : si une case est cochée à tort, signale-le.*
 
 **Refonte majeure** : intègre tous les flux ajoutés depuis le 18/05
 (Modules A→W, Progeny Engine, arbitrage cross-canal, 15 marchés d'affiliation,
@@ -481,22 +488,24 @@ la mention `"En tant que partenaire, je touche une commission..."` ou équivalen
 
 # 🎯 PROCHAINE ACTION HUGO (à faire avant qu'on continue)
 
-**Aujourd'hui (J-0, 20 min)** :
-1. Bitwarden ✓
-2. Aegis (F-Droid) ✓
-3. Termux (F-Droid) + packages + clé SSH ✓
-4. GitHub Mobile ✓
+**Coffre-fort (Vague 0)** :
+1. Bitwarden ❌ PAS FAIT (Hugo utilise le gestionnaire de mdp intégré du téléphone)
+2. Aegis (F-Droid) — à confirmer
+3. Termux (F-Droid) — installé mais **pas encore utilisé** (utilité expliquée par Claude ; pas indispensable tant qu'on tourne via GitHub Actions)
+4. GitHub Mobile ✅
 
-**Demain matin (J+1, 25 min)** :
-5. URSSAF ✓
-6. Cults3D ✓
-7. Redbubble ✓
+**Légal + 1ères ventes (Vague 1)** :
+5. URSSAF ❌ PAS FAIT — **à faire avant la 1ère vente**
+6. Cults3D — à confirmer
+7. Redbubble ✅
 
-**Demain soir → mercredi (J+1 → J+3, 30 min)** :
-8–17. Les 10 LLM-minions de la vague 2 ⭐ **C'EST CETTE VAGUE QUI SAUVE MES TOKENS**
+**LLM-minions (Vague 2) — faits jusqu'à HF** :
+8–14. Gemini ✅ · Groq ✅ · Mistral ✅ · Together ✅ · OpenRouter ✅ · Cohere ✅ · HF ✅
+15–17. Civitai / Replicate / Perplexity — à confirmer (situés après HF)
+\+ **KDP** ✅ (Vague 3.11, fait en avance) · **W-8BEN** ✅
 
-Quand tu as fini les 17 premières inscriptions, pingue-moi **"Vague 0+1+2 ok"** et
-on enchaîne avec la priorité 2 (sécurité + cadre légal) puis priorité 3 (automatisation).
+**RESTE À FAIRE** : URSSAF · Bitwarden (optionnel) · Vagues 3 → 8.
+**ACTION DÉBLOQUANTE** : poser `HF_API_KEY` + `GEMINI_API_KEY` dans les GitHub Secrets → lance la production.
 
 ---
 

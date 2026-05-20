@@ -466,5 +466,12 @@ de référence HF, format KDP, ton line-art, signature maison, pensé en collect
   échoue plusieurs fois → tenter un **contournement** (autre approche/outil) ; si **insoluble**
   malgré tout → **STOP la production + ALERTER Hugo** (ne jamais tourner en boucle sur une
   erreur irrésolvable — ex. un blocage récurrent sur une ébauche de jeu).
+- **Réparation ciblée (≠ simple rejet) — Hugo 20/05** : sur un défaut **corrigeable**,
+  l'auditrice ne jette pas le produit, elle **diagnostique précisément** (« manque de texture »,
+  « lignes pas droites », « résolution trop basse », « artefacts ») et **route vers le bon outil
+  de réparation** (upscale, fermeture de lignes, texture, redressement, inpainting…), puis
+  **re-audite**. Beaucoup d'images « invendables » deviennent bonnes après post-traitement.
+  → Toolbox d'amélioration d'image documentée dans `LIBRARIES_AND_REPOS.md`. Le Scout Technique
+  (#29) en cherche en **continu** de nouveaux (gratuits).
 - **Applicable à TOUS les produits** (coloring, romans, jeux, merch, 3D…), pas seulement les
   coloring books — l'exemple ci-dessus est générique.
