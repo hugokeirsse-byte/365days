@@ -440,6 +440,17 @@ coloriage** par ex. :
 Il enchaîne : après un produit, il **rebascule** sur une autre trend, un autre cross, un original
 ou une refonte — selon ce qui est le plus prometteur à ce moment-là.
 
+#### Déclinaisons multiples & allocation proportionnelle (Hugo 20/05)
+- **Jamais un seul pari par trend** : pour une trend détectée (ex. « dragon »), le Stratège
+  commande **plusieurs déclinaisons** afin de **maximiser les chances qu'une touche** — un seul
+  produit risque de passer à côté de la trend.
+  - **Merch/designs** (t-shirt, mug…) : N **variations visuelles** du même thème.
+  - **Livres** : pas le même livre, mais des variations qui reprennent les **mots hypés** du
+    moment et/ou les **croisent** avec un autre mot qui marche (cross).
+- **Allocation proportionnelle à la force de la trend** : si une trend est jugée **nettement
+  supérieure** aux autres, on lui consacre **beaucoup plus de produits**. Le budget de
+  production suit le potentiel (`variations_target` + `trend_strength` dans le Brief Produit).
+
 ### Le BRIEF PRODUIT = contrat anti-dérive (Hugo 20/05)
 Une fois l'opportunité choisie, le **Stratège (B1)** génère un **Brief Produit précis**
 → contrat : `data/schemas/product_brief.schema.json` (avec la stratégie retenue et le pourquoi).

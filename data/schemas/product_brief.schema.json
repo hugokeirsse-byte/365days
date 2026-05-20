@@ -30,6 +30,16 @@
       "type": "string",
       "description": "pourquoi c'est la meilleure opportunite a l'instant t (potentiel x faisabilite x fraicheur)"
     },
+    "variations_target": {
+      "type": "integer",
+      "default": 1,
+      "description": "nb de declinaisons a produire pour ce brief (>1 pour maximiser les chances qu'une touche la trend ; ex. plusieurs designs dragon, ou plusieurs livres reprenant/croisant les mots hypes)"
+    },
+    "trend_strength": {
+      "type": "string",
+      "enum": ["dominant", "strong", "moderate"],
+      "description": "force relative de la trend -> si 'dominant', surponderer (allouer beaucoup plus de produits/declinaisons)"
+    },
     "trends_source": {
       "type": "string",
       "description": "d'ou vient la cible : quel(s) signal/trend l'a motivee (1 ou plusieurs si cross)",
