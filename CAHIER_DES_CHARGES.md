@@ -261,4 +261,33 @@ le temps consacré et le mix. Démarrage volontairement bas (calibrage qualité)
 
 ---
 
+---
+
+## 14. AJUSTEMENTS SUITE À L'AUDIT EXTERNE (Gemini, 20/05)
+
+Audit globalement positif. Décisions retenues :
+
+- ✅ **Boucle de rétroaction ventes (data-driven)** — ADOPTÉ. Un `data/sales_feedback.csv`
+  (déjà amorcé) + un futur `data/analytics.json` alimentent le **Stratège (B1)** : la production
+  **dérive vers ce qui se vend réellement**, pas seulement vers les trends. C'est le signal aval
+  qui manquait (les trends = signal amont).
+- ✅ **Étalement SEO des publications** — ADOPTÉ. L'**ordonnanceur (F1)** prépare un **calendrier
+  de publication étalé** (régularité quotidienne), pas un dump hebdomadaire. KDP/Redbubble
+  récompensent la régularité ; bonus : ça lisse aussi la charge de validation de Hugo.
+- 🟡 **Mémoire de style / signature** — ADOPTÉ AVEC GARDE-FOU. Une **bibliothèque de styles-
+  signature** réutilisables (cohérence de marque) MAIS sans cloner : la variété du sujet/contenu
+  reste imposée (cf. déclinaisons non-clones). Signature reconnaissable ≠ produits identiques.
+- 🟡 **Robustesse des forks** — ADOPTÉ. On **vendorise/épingle** les repos forkés (version figée),
+  pour qu'une mise à jour upstream ne casse pas une chaîne.
+- 🟡 **Arrêt impitoyable des boucles** — RENFORCÉ. En plus de `loop_policy`, un **budget d'appels
+  API par produit** (dépassé → stop + alerte Hugo).
+- ❌ **Mode dégradé via modèle local sur Termux** — REJETÉ (irréaliste : un téléphone ne peut pas
+  faire tourner un modèle d'image type SDXL/FLUX). On garde l'**objectif** (résilience) mais le
+  **failsafe réaliste** = **Pollinations** en secours (gratuit, sans clé) + rotation multi-provider
+  + **cache** des générations réussies.
+- ✅ **Déployer 1 seul produit d'abord** — CONFIRMÉ : coloriages d'abord, chaîne bout-en-bout
+  validée, puis scaling.
+
+---
+
 *Ce cahier des charges est vivant : il est mis à jour à chaque décision structurante.*
