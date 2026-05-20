@@ -1,0 +1,34 @@
+{
+  "_doc": "Cryptides et créatures folkloriques du domaine public. Le folklore traditionnel n'est protégé par aucun copyright (créatures populaires anciennes). ATTENTION : les DESIGNS spécifiques de jeux/films récents (ex: le Mothman de tel jeu) peuvent l'être — on crée nos propres designs originaux à partir de la description folklorique.",
+  "_doctrine": "On s'inspire de la légende folklorique (PD), jamais d'un design propriétaire récent. Voir SECURITE_ET_LEGAL.md §3.",
+  "_last_update": "2026-05-20",
+  "_usage": "Bestiaire partagé entre game01 (point-and-click horreur) et game02 (zoo idle tycoon). Réutilisable aussi en coloring/merch (cross-canal).",
+
+  "cryptids": [
+    { "id": "bigfoot", "name": "Bigfoot / Sasquatch", "origin": "North America", "vibe": "elusive forest giant", "horror_use": "shadow at the treeline", "zoo_use": "gentle giant enclosure", "rarity": "common" },
+    { "id": "mothman", "name": "Mothman", "origin": "West Virginia, USA", "vibe": "ominous winged harbinger, glowing red eyes", "horror_use": "omen before disaster", "zoo_use": "nocturnal aviary", "rarity": "rare" },
+    { "id": "nessie", "name": "Loch Ness Monster", "origin": "Scotland", "vibe": "ancient lake serpent", "horror_use": "something moves under the water", "zoo_use": "deep lagoon tank", "rarity": "rare" },
+    { "id": "chupacabra", "name": "Chupacabra", "origin": "Latin America", "vibe": "spined nocturnal predator", "horror_use": "drained livestock found at dawn", "zoo_use": "arid scrub enclosure", "rarity": "uncommon" },
+    { "id": "wendigo", "name": "Wendigo", "origin": "Algonquian folklore", "vibe": "gaunt antlered famine spirit", "horror_use": "the thing that mimics voices in the snow", "zoo_use": "frozen tundra habitat (high danger)", "rarity": "legendary", "note": "Traiter avec respect culturel : créature de folklore autochtone. Pas de caricature." },
+    { "id": "jackalope", "name": "Jackalope", "origin": "American West", "vibe": "antlered rabbit, mischievous", "horror_use": "comic relief / false scare", "zoo_use": "petting zoo star", "rarity": "common" },
+    { "id": "kraken", "name": "Kraken", "origin": "Nordic legend", "vibe": "colossal deep-sea cephalopod", "horror_use": "tentacle against the porthole", "zoo_use": "giant ocean tank (endgame)", "rarity": "legendary" },
+    { "id": "thunderbird", "name": "Thunderbird", "origin": "Native American folklore", "vibe": "storm-summoning giant bird", "horror_use": "wings blot out the sun", "zoo_use": "open-sky sanctuary", "rarity": "rare", "note": "Folklore autochtone : représenter avec dignité." },
+    { "id": "jersey_devil", "name": "Jersey Devil", "origin": "New Jersey, USA", "vibe": "winged hoofed cryptid", "horror_use": "hoofprints on the roof", "zoo_use": "pine barrens enclosure", "rarity": "uncommon" },
+    { "id": "yeti", "name": "Yeti / Abominable Snowman", "origin": "Himalayas", "vibe": "white mountain ape", "horror_use": "footprints leading nowhere", "zoo_use": "snow peak habitat", "rarity": "uncommon" },
+    { "id": "kelpie", "name": "Kelpie", "origin": "Scottish folklore", "vibe": "shapeshifting water horse", "horror_use": "lures you to the water's edge", "zoo_use": "enchanted pond", "rarity": "rare" },
+    { "id": "ahool", "name": "Ahool", "origin": "Java, Indonesia", "vibe": "giant bat", "horror_use": "leathery wings in the dark", "zoo_use": "tropical cave", "rarity": "uncommon" },
+    { "id": "mokele_mbembe", "name": "Mokele-mbembe", "origin": "Congo Basin", "vibe": "living sauropod legend", "horror_use": "massive shape in the river mist", "zoo_use": "swamp lagoon", "rarity": "rare" },
+    { "id": "ogopogo", "name": "Ogopogo", "origin": "Canada (Okanagan)", "vibe": "lake serpent", "horror_use": "wake with no boat", "zoo_use": "freshwater lagoon", "rarity": "uncommon" },
+    { "id": "dover_demon", "name": "Dover Demon", "origin": "Massachusetts, USA", "vibe": "big-eyed small humanoid", "horror_use": "watching from the stone wall", "zoo_use": "small nocturnal vivarium", "rarity": "rare" },
+    { "id": "flatwoods_monster", "name": "Flatwoods Monster", "origin": "West Virginia, USA", "vibe": "tall hooded figure, glowing", "horror_use": "the visitor in the fog", "zoo_use": "containment dome (sci-fi tier)", "rarity": "legendary" }
+  ],
+
+  "shared_universe_pitch": "Les deux jeux peuvent partager ce bestiaire : game01 (point-and-click horreur) = un enquêteur découvre/documente ces cryptides dans une ambiance pesante ; game02 (zoo idle) = on collectionne et gère ces mêmes cryptides dans un parc. Assets partagés = synergie de production + cross-marketing. À VALIDER par Hugo.",
+
+  "cross_canal_potential": [
+    "coloring book 'Cryptid Field Guide' (Module U/L)",
+    "sticker pack cryptides cute (brand iconic_offspring ou modern_cozy)",
+    "poster 'Cryptids of the World' (Module B)",
+    "t-shirt collection par cryptide (Module B)"
+  ]
+}

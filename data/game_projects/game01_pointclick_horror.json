@@ -1,0 +1,75 @@
+{
+  "_doc": "Fiche projet — Jeu mobile #1. Décision de TYPE validée par Hugo (20/05). Choix du SQUELETTE en attente (2e gate Hugo).",
+  "id": "game01",
+  "codename": "Hollow Hours (provisoire)",
+  "type": "point-and-click / escape-room / horreur atmosphérique",
+  "reference": "Rusty Lake / Cube Escape, The Birdcase, Samsara Room",
+  "status": "TYPE validé · squelette à choisir",
+  "decided_by_hugo": "2026-05-20",
+
+  "vision": {
+    "pitch": "Un point-and-click à ambiance pesante : scènes fixes richement détaillées, énigmes d'objets, narration cryptique distillée par l'environnement. Pas de jumpscares cheap — un malaise lent, une atmosphère qui colle à la peau.",
+    "tone": "mystérieux, presque horreur, onirique et dérangeant",
+    "session_length": "5-15 min par chapitre, format mobile",
+    "monetization": "premium light : 1er chapitre gratuit, chapitres suivants via pub récompensée OU achat unique à petit prix"
+  },
+
+  "core_loop": [
+    "Observer une scène fixe (tap pour zoomer sur les détails)",
+    "Collecter des objets dans l'inventaire",
+    "Résoudre des énigmes en combinant objets / manipulant la scène",
+    "Débloquer la scène suivante, la tension monte",
+    "Révélation narrative cryptique à la fin du chapitre"
+  ],
+
+  "theme_options": {
+    "A_standalone": "Univers original autonome (maison hantée, rituel, manoir)",
+    "B_cryptid_shared": "Univers cryptide partagé avec game02 : un enquêteur documente des cryptides (cf. cryptids_public_domain.json). Synergie assets + cross-marketing. RECOMMANDÉ.",
+    "_to_validate": "Hugo choisit A ou B"
+  },
+
+  "skeleton_candidates": [
+    {
+      "id": "escoria",
+      "repo": "escoria-framework/escoria-core",
+      "engine": "Godot 4",
+      "license": "MIT",
+      "pros": "Framework point-and-click complet (inventaire, dialogues, hotspots, sauvegarde). Conçu exactement pour ce genre.",
+      "cons": "Courbe d'apprentissage, peut être surdimensionné pour un jeu à scènes fixes simples.",
+      "fit_score_estime": "haut"
+    },
+    {
+      "id": "godot_scratch_minimal",
+      "repo": "godotengine/godot (from scratch)",
+      "engine": "Godot 4",
+      "license": "MIT",
+      "pros": "Contrôle total. Pour des scènes fixes, des Area2D cliquables + un inventaire simple suffisent. Léger, APK petit.",
+      "cons": "Plus de code à écrire au départ (mais assistable par Gemini code-patch).",
+      "fit_score_estime": "haut"
+    },
+    {
+      "id": "godot_pointclick_template",
+      "repo": "à confirmer par WebSearch (templates 'godot point and click' récents)",
+      "engine": "Godot 4",
+      "license": "à vérifier (exiger MIT/Apache)",
+      "pros": "Démarrage rapide si un template récent et propre existe.",
+      "cons": "Qualité/maintenance variable, à auditer.",
+      "fit_score_estime": "à évaluer"
+    }
+  ],
+
+  "assets_needed": {
+    "art": "Scènes fixes détaillées (générées via FLUX/SDXL puis retouche), style cohérent sombre",
+    "audio": "Ambiances sonores (Freesound CC0), drones, bruitages discrets",
+    "sources_cc0": "Kenney (UI), Freesound (ambiances), OpenGameArt (props)"
+  },
+
+  "next_steps_after_skeleton_choice": [
+    "Fork/init le squelette choisi",
+    "Définir le chapitre 1 (3-5 scènes, 4-6 énigmes)",
+    "Générer les scènes via pipeline image + retouche",
+    "Implémenter le core loop (assistance Gemini code-patch)",
+    "Build APK Godot → test Amazon Appstore",
+    "Validation Hugo avant publication"
+  ]
+}

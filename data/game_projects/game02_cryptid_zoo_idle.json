@@ -1,0 +1,86 @@
+{
+  "_doc": "Fiche projet — Jeu mobile #2. Décision de TYPE validée par Hugo (20/05). Choix du SQUELETTE en attente (2e gate Hugo).",
+  "id": "game02",
+  "codename": "Cryptid Cove (provisoire)",
+  "type": "idle / incremental tycoon — gestion de zoo de cryptides",
+  "reference": "Idle Zoo Tycoon, Adventure Capitalist, Egg Inc.",
+  "status": "TYPE validé · squelette à choisir",
+  "decided_by_hugo": "2026-05-20",
+
+  "vision": {
+    "pitch": "Un idle tycoon où l'on bâtit et gère un zoo de cryptides du folklore mondial (cf. cryptids_public_domain.json). On capture, héberge, fait évoluer ses créatures, attire des visiteurs, génère des revenus passifs même hors-ligne.",
+    "tone": "mignon-mystérieux, cozy avec une touche de mystère, accessible",
+    "session_length": "checks courts répétés (idle), revenus offline",
+    "monetization": "F2P : pub récompensée (boost x2, débloquer cryptide), achats optionnels de monnaie premium"
+  },
+
+  "core_loop": [
+    "Les enclos génèrent de la monnaie passivement (même hors-ligne)",
+    "Réinvestir pour améliorer enclos / attirer plus de visiteurs",
+    "Débloquer de nouveaux cryptides (common → legendary)",
+    "Missions d'expédition pour 'capturer' de nouveaux cryptides",
+    "Mécaniques de prestige (recommencer avec bonus permanents)"
+  ],
+
+  "content_from_whitelist": {
+    "source": "data/whitelists/cryptids_public_domain.json",
+    "tiers": {
+      "common": ["bigfoot", "jackalope"],
+      "uncommon": ["chupacabra", "jersey_devil", "yeti", "ahool", "ogopogo"],
+      "rare": ["mothman", "nessie", "thunderbird", "kelpie", "mokele_mbembe", "dover_demon"],
+      "legendary": ["wendigo", "kraken", "flatwoods_monster"]
+    },
+    "note": "Chaque cryptide a un 'zoo_use' déjà défini dans le fichier whitelist (type d'enclos)."
+  },
+
+  "skeleton_candidates": [
+    {
+      "id": "godot_idle_template",
+      "repo": "à confirmer par WebSearch (templates 'godot idle incremental' récents)",
+      "engine": "Godot 4",
+      "license": "à vérifier (exiger MIT/Apache)",
+      "pros": "Idle = surtout de la logique (timers, currency BigNumber, upgrades). Un template gère le boilerplate offline-earnings.",
+      "cons": "Qualité variable, à auditer.",
+      "fit_score_estime": "à évaluer"
+    },
+    {
+      "id": "godot_scratch_idle",
+      "repo": "godotengine/godot (from scratch)",
+      "engine": "Godot 4",
+      "license": "MIT",
+      "pros": "Idle est simple structurellement : un système de monnaie + générateurs + UI. Contrôle total, APK léger, export Android natif.",
+      "cons": "Implémenter le calcul offline-earnings et big-numbers soi-même (assistable Gemini).",
+      "fit_score_estime": "haut"
+    },
+    {
+      "id": "phaser_idle_capacitor",
+      "repo": "photonstorm/phaser3 + Capacitor (web→APK)",
+      "engine": "Phaser 3 (web)",
+      "license": "MIT",
+      "pros": "Énorme écosystème de tutos idle web. Build web puis wrap APK via Capacitor.",
+      "cons": "Performance/UX mobile parfois inférieure au natif Godot. AdMob via plugin Capacitor.",
+      "fit_score_estime": "moyen-haut"
+    }
+  ],
+
+  "assets_needed": {
+    "art": "Sprites cryptides (style cute-mystérieux), enclos, UI tycoon — génération FLUX/SDXL + retouche, OU base Kenney CC0",
+    "audio": "Musique cozy loop (BandLab/Freesound CC0), SFX (Kenney audio)",
+    "sources_cc0": "Kenney (UI tycoon, sons), OpenGameArt (tilesets nature)"
+  },
+
+  "monetization_detail": {
+    "ads": "AdMob (rewarded video pour boosts) ou Unity Ads",
+    "stores": ["Amazon Appstore (gratuit, priorité)", "itch.io (web build)", "Google Play (25$, reporté)"]
+  },
+
+  "next_steps_after_skeleton_choice": [
+    "Fork/init le squelette choisi",
+    "Implémenter currency + générateurs + offline earnings",
+    "Brancher le bestiaire depuis cryptids_public_domain.json",
+    "Générer sprites cryptides via pipeline image",
+    "Intégrer AdMob (rewarded)",
+    "Build APK → test Amazon Appstore",
+    "Validation Hugo avant publication"
+  ]
+}
