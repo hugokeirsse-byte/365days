@@ -695,6 +695,34 @@ NICHE_DECKS = {
 }
 
 
+# ============================================================
+# Chargement de decks externes (data/specs_decks/*.cliche.json)
+# Additif et non-destructif : si un fichier de stock existe, ses decks
+# enrichissent ou remplacent ceux en dur (clés identiques = override).
+# Permet d'ajouter du stock sans toucher au code. Format attendu :
+# { "decks": { "<key>": {name, tagline, language, bg_prompt, mature,
+#                         questions:[...], answers:[...]} } }
+# ============================================================
+def _load_external_decks() -> None:
+    ext_dir = Path(__file__).resolve().parents[1] / "data" / "specs_decks"
+    if not ext_dir.is_dir():
+        return
+    for path in sorted(ext_dir.glob("*.cliche.json")):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"  ⚠ deck externe ignoré ({path.name}) : {exc}")
+            continue
+        for key, deck in payload.get("decks", {}).items():
+            if {"questions", "answers", "name"} <= deck.keys():
+                NICHE_DECKS[key] = deck
+            else:
+                print(f"  ⚠ deck '{key}' incomplet dans {path.name}, ignoré")
+
+
+_load_external_decks()
+
+
 def pollinations_url(prompt: str, seed: int, w: int = 1024, h: int = 1280) -> str:
     encoded = urllib.parse.quote(prompt, safe="")
     return (f"https://image.pollinations.ai/prompt/{encoded}"
