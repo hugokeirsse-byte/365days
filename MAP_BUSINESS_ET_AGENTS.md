@@ -298,6 +298,7 @@ TRIMESTRIEL :
 | **30** | **Architecte Auto-Amélioration** | Réfléchit **en boucle** au système global : failles, points faibles, comment l'améliorer/perfectionner/étoffer. Va plus loin que la Méta-Critique (#11, qui audite la *rentabilité* des modules) : lui audite l'**architecture** elle-même. Propose à Hugo. | à coder |
 | **31** | **Scénariste Maître** (moteur narratif) | Écrit des **scripts/récits entiers** à partir d'un sujet (jeux narratifs, livres, fictions) : fil conducteur solide, belle écriture, **zéro répétition**, boucle d'**auto-correction → re-correction**, suppression des **patterns d'IA** (anti-slop renforcé). Montée en puissance du Conteur Cozy (#17) couplé à l'Anti-Slop Textuel (#20). | à coder |
 | **32** | **Analyste Marché Jeux** | Pour une catégorie donnée : top 10 des jeux qui marchent, leurs **forces** (à garder), **faiblesses** (à corriger), **demandes récurrentes des joueurs**, et **fonctionnement général**. Alimente la décision Hugo + le Skeleton Scout pour le MIX. Équivalent de l'Éclaireur/Critique appliqué aux jeux. | à coder |
+| **33** | **Juge de Sortie** (analyste-qualité) | **Évalue l'output** d'un agent-en-boucle (script, design, chapitre…) selon des critères, et décide : **re-corriger** ou **stop, c'est bon**. C'est le **critère d'arrêt** des boucles d'auto-correction (notamment Scénariste #31). « Peut-être même créer une IA d'analyse » — Hugo 20/05. | à coder |
 
 ### Extensions de rôles existants
 
@@ -308,6 +309,10 @@ TRIMESTRIEL :
 
 ### Doctrine renforcée
 
+- **DEUX RÉGIMES D'EXÉCUTION (précision Hugo 20/05)** — « perpétuel » ≠ « en continu » :
+  1. **Agents de fond** (Antennes, Cerveaux, certains Producteurs comme designs/coloriages) : utiles en permanence → **cron espacé** (cascade temporelle), tournent tranquillement en arrière-plan.
+  2. **Agents-projet** (Scénariste #31, Game Builder #18b, Analyste Jeux #32…) : **déclenchés à la demande** quand un projet précis démarre. Ils tournent en **boucle intensive bornée** (minuterie / nombre d'itérations / seuil de qualité) **le temps de livrer**, puis **s'arrêtent**. On ne fait PAS mouliner le moteur narratif s'il n'y a rien à écrire à l'instant T.
+  - **Mécanisme minuterie** : la skill Claude Code **`/loop`** (relance un prompt/commande à intervalle, ou en auto-pacing) sert exactement de minuterie de déclenchement. Boucle = générer → **Juge de Sortie (#33)** analyse → re-corriger → … → stop quand le seuil est atteint.
 - **Anti-dérive (fiabilité)** : chaque agent doit recevoir des **rappels permanents de son rôle** dans son system-prompt (ancrage répété) pour ne pas dériver. Objectif : le système le plus fiable possible.
 - **Qualité > volume** : beaucoup de produits, mais **chacun fini et soigné** (certains en qualité supérieure). Aucune plateforme ne doit nous voir comme « 2000 merdes ». Les filtres Anti-Slop (#20/#21) sont bloquants.
 - **Diffusion semi-manuelle (anti-ban)** : pas d'upload 100 % auto pour l'instant. Modèle cible = le bot **pré-remplit** la fiche produit et envoie le lien à Hugo, **Hugo sélectionne et publie** (copier-coller). Automatisation seulement sur ce qui est *léger, contrôlable, indétectable*.
