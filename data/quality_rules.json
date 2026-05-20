@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "description": "Règles de viabilité par pipeline. Un design qui viole une règle 'critical' est automatiquement rejected. Les règles 'warning' déclenchent une review manuelle.",
-    "last_updated": "2026-05-17"
+    "description": "Règles de viabilité par pipeline = lignes directrices par produit. 'critical' = INDISPENSABLE (un design qui en viole une est rejected automatiquement). 'warning' = review manuelle. 'examples_of_unacceptable' = INACCEPTABLE. Le Juge Qualité (E1) audite chaque produit POINT PAR POINT contre ces règles.",
+    "last_updated": "2026-05-20"
   },
   "global_critical_rules": {
     "no_gibberish_text": {
@@ -26,6 +26,11 @@
     "no_nsfw": {
       "description": "Aucun contenu NSFW généré accidentellement.",
       "check_method": "gemini_vision_when_available"
+    },
+    "visual_required": {
+      "description": "Un produit 'juste du texte' ne vend pas. Tout produit visuel (merch, couverture, design) DOIT avoir un visuel soigné (fond/illustration) OU une écriture vraiment marrante/piquante. Pas d'écriture basique seule sur fond uni.",
+      "check_method": "gemini_vision_when_available",
+      "exception": "écriture humoristique/percutante validée pour t-shirt/mug (mais le ton doit être fort)"
     }
   },
   "pipelines": {
@@ -133,21 +138,106 @@
     "coloring_books": {
       "approach": "NEEDS_HF_DEDICATED_MODEL",
       "current_status": "Pollinations 70% bon, 30% off-topic ou traits trop fins. À améliorer avec ControlNet line-art via HF (besoin clé HF).",
+      "guideline": {
+        "indispensable": "traits noirs épais et bien délimités, lignes fermées, fond blanc pur, cohérence stylistique sur TOUTES les pages du livre, couverture, mise en page KDP sans erreur",
+        "inacceptable": "couleurs ou ombres, ZONES GRISES, détails infimes inimprimables, lignes ouvertes, incohérence de génération IA entre les pages, sujet hors-thème, texte/watermark parasite"
+      },
       "critical_rules": [
         "pure_black_lines_on_white_background",
-        "subject_matches_prompt_thematically",
+        "no_gray_zones_no_shading",
+        "closed_line_paths_fillable",
         "lines_thick_enough_for_adult_coloring",
+        "no_tiny_unprintable_details",
+        "subject_matches_prompt_thematically",
+        "consistent_style_across_all_pages",
         "no_gibberish_text_in_image"
       ],
       "warning_rules": [
         "composition_centered_with_white_space_margins",
-        "complexity_appropriate_for_adult_coloring",
-        "consistent_style_across_pages_in_book"
+        "complexity_appropriate_for_adult_coloring"
       ],
       "examples_of_unacceptable": [
-        "Page avec couleurs ou ombres (devrait être line art pur)",
+        "Page avec couleurs, ombres ou aplats gris (devrait être line art pur)",
         "Sujet hors prompt (ex: '2 filles déguisées' au lieu de '2 champignons humanisés')",
-        "Traits trop fins pour être colorés à la main"
+        "Traits trop fins ou détails minuscules impossibles à colorier",
+        "Page 4 dans un style différent des pages 1-3 (incohérence de série)"
+      ],
+      "examples_of_acceptable": [
+        "Line art noir épais, lignes fermées, fond blanc, sujet conforme",
+        "Toutes les pages partagent la même patte graphique",
+        "Marges et espace blanc suffisants"
+      ]
+    },
+    "low_content_book": {
+      "approach": "VIABLE_AS_IS",
+      "current_status": "Journaux/planners/trackers = layout PDF (ReportLab/Pillow), peu ou pas d'images IA. Très fiable.",
+      "guideline": {
+        "indispensable": "mise en page KDP sans erreur (trim/bleed/gutter), structure cohérente et utilisable, intérieur lisible, titre+couverture",
+        "inacceptable": "pages mal alignées, marges KDP non respectées, contenu répétitif sans valeur, fautes"
+      },
+      "critical_rules": [
+        "kdp_layout_valid_no_error",
+        "interior_structure_coherent_and_usable",
+        "cover_present"
+      ],
+      "warning_rules": [
+        "visual_accent_or_illustration_present",
+        "page_count_matches_market_norm"
+      ]
+    },
+    "fiction_novel": {
+      "approach": "PLUME_LOOP",
+      "current_status": "Écrit par le Scénariste Maître (#31) avec boucle d'auto-correction + Juge de Sortie.",
+      "guideline": {
+        "indispensable": "fil conducteur clair, cohérence des personnages, ZÉRO répétition, anti-slop (pas de tics d'IA), longueur conforme au format",
+        "inacceptable": "incohérences narratives, répétitions, tournures ChatGPT ('tapestry', 'dive into', 'unleash'...), fin bâclée"
+      },
+      "critical_rules": [
+        "coherent_throughline",
+        "character_consistency",
+        "no_repetition",
+        "no_ai_slop_phrasing"
+      ],
+      "warning_rules": [
+        "pacing_appropriate",
+        "emotional_payoff_present"
+      ]
+    },
+    "interactive_fiction_game": {
+      "approach": "GAME_SEQUENTIAL_GATE_HUGO",
+      "current_status": "game03 : fiction interactive à choix. Moteur narratif + UI + visuels d'ambiance HF.",
+      "guideline": {
+        "indispensable": "fil narratif cohérent, choix qui ont des conséquences, au moins quelques fins, interface lisible/jouable, visuels d'ambiance soignés, zéro impasse/lien mort",
+        "inacceptable": "choix sans effet, branches mortes, texte répétitif, fin unique non rejouable, UI illisible, visuels bâclés"
+      },
+      "critical_rules": [
+        "all_choices_lead_somewhere_no_dead_ends",
+        "coherent_branching_narrative",
+        "multiple_endings",
+        "playable_readable_ui",
+        "no_ai_slop_phrasing"
+      ],
+      "warning_rules": [
+        "ambient_visuals_present_and_consistent",
+        "replayability"
+      ]
+    },
+    "merch_design": {
+      "approach": "VISUAL_PLUS_OVERLAY_TEXT",
+      "current_status": "Design = visuel HF (sans texte) + texte overlay Pillow si besoin. Visuel obligatoire.",
+      "guideline": {
+        "indispensable": "un visuel soigné OU une écriture vraiment marrante/piquante ; lisible sur le support ; marges/safe-zone respectées ; déclinaisons variées (non-clones)",
+        "inacceptable": "écriture basique seule sur fond uni, design illisible/petit sur le support, clones quasi-identiques entre déclinaisons"
+      },
+      "critical_rules": [
+        "visual_required",
+        "no_gibberish_text",
+        "readable_on_target_support",
+        "safe_zone_respected"
+      ],
+      "warning_rules": [
+        "variations_are_distinct_not_clones",
+        "style_consistent_with_signature_library"
       ]
     },
     "stl_parametric": {
