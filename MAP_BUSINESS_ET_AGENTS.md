@@ -96,7 +96,7 @@ Perplexity : 5$ trial           → veille hebdo ciblée
 | 16 | **Card Game Designer** — decks thématiques humour métier | mardi 4h | Gemini + Pollinations |
 | 17 | **Conteur Cozy** — fictions courtes branded | mercredi 4h | Groq Llama 70B |
 | 18 | **Vidéaste Faceless** — shorts YouTube/TikTok | dimanche 4h | Groq + Gemini Vision |
-| 18b | **Game Builder Auto** — fork squelette Godot/Phaser + swap assets Kenney/OpenGameArt + build APK | samedi 5h (weekly) | Gemini code-patch + Mistral codestral |
+| 18b | **Game Builder (semi-auto)** — fork squelette + swap assets Kenney/OpenGameArt + build APK. ⚠️ GATE DÉCISION HUGO EN AMONT : les bots proposent type+squelette, Hugo choisit, PUIS build | déclenché par décision Hugo (pas cron auto) | Gemini code-patch + Mistral codestral |
 
 ### 🛡️ Filtres (qualité) — 4 rôles
 
