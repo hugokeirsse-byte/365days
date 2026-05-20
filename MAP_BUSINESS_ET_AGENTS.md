@@ -285,3 +285,31 @@ TRIMESTRIEL :
 1. **13 business** (8 top + 5 middle tier) qui couvrent POD physique, KDP digital, jeux, AR, vidéo, affiliation.
 2. **27 agents IA perpétuels** (6 antennes + 5 cerveaux + 7 producteurs + 4 filtres + 2 interface + 3 garde-fous), tous en cron espacé pour rester gratuit.
 3. **1 humain (toi)** qui valide en 1 clic Telegram, branché à un système qui pleut de partout grâce à la cross-pollinisation.
+
+---
+
+## 🆕 AJUSTEMENTS & NOUVEAUX RÔLES — directives Hugo 20/05
+
+### Nouveaux agents à formaliser
+
+| # | Rôle | Mission | Statut |
+|---|---|---|---|
+| **29** | **Veilleur d'Outils Gratuits** | Recherche perpétuelle d'outils/repos/APIs **gratuits** utilisables (libres de droits commercial) pour servir nos business. Extension du Skeleton Scout (#28) mais orientée *outillage* et pas seulement squelettes de code. Vérifie aussi que nos outils restent maintenus/à jour. | à coder |
+| **30** | **Architecte Auto-Amélioration** | Réfléchit **en boucle** au système global : failles, points faibles, comment l'améliorer/perfectionner/étoffer. Va plus loin que la Méta-Critique (#11, qui audite la *rentabilité* des modules) : lui audite l'**architecture** elle-même. Propose à Hugo. | à coder |
+| **31** | **Scénariste Maître** (moteur narratif) | Écrit des **scripts/récits entiers** à partir d'un sujet (jeux narratifs, livres, fictions) : fil conducteur solide, belle écriture, **zéro répétition**, boucle d'**auto-correction → re-correction**, suppression des **patterns d'IA** (anti-slop renforcé). Montée en puissance du Conteur Cozy (#17) couplé à l'Anti-Slop Textuel (#20). | à coder |
+| **32** | **Analyste Marché Jeux** | Pour une catégorie donnée : top 10 des jeux qui marchent, leurs **forces** (à garder), **faiblesses** (à corriger), **demandes récurrentes des joueurs**, et **fonctionnement général**. Alimente la décision Hugo + le Skeleton Scout pour le MIX. Équivalent de l'Éclaireur/Critique appliqué aux jeux. | à coder |
+
+### Extensions de rôles existants
+
+- **#1 Éclaireur Bestsellers — ÉLARGI** : ne plus se limiter aux coloring books. Couvrir **tous les business** (jeux de société, vêtements/merch, livres, jeux mobiles, 3D…) et **segmenter par catégorie** : « dans telle catégorie, ce qui explose c'est X ». Sortir un classement par domaine + le top toutes catégories.
+- **#2 Critique de Plaintes → + détecteur "bestseller mal noté"** : repérer les produits à **fort volume de ventes MAIS mauvaise note**, surtout quand le défaut est **simple à corriger** (fait par flemme / pas refait car ça vendait déjà). = opportunités en or. Cf. nouvelle idée business (NOUVELLES_IDEES.md).
+- **#6 Affiliate Hunter — workflow précisé** : sort des **leads** (gens en recherche active d'un produit) + un **message pré-rédigé** + le **lien d'affiliation**, le tout poussé à Hugo via Telegram. **Hugo envoie lui-même** (jamais d'envoi auto → anti-ban).
+- **#28 Skeleton Scout — MIX par fonction confirmé** : assembler des morceaux de plusieurs repos commerciaux par *fonctionnalité* (ex. zoo : « terrain+emplacement » d'un repo, « capture de bêtes » d'un autre, « boutique de skins » d'un 3e, « régie pub » d'un 4e). Pas besoin d'un squelette parfait unique. Chercher aussi des **squelettes d'agents/IA perpétuels** existants (cf. wshobson/agents, ECC) à adapter plutôt que tout recoder.
+
+### Doctrine renforcée
+
+- **Anti-dérive (fiabilité)** : chaque agent doit recevoir des **rappels permanents de son rôle** dans son system-prompt (ancrage répété) pour ne pas dériver. Objectif : le système le plus fiable possible.
+- **Qualité > volume** : beaucoup de produits, mais **chacun fini et soigné** (certains en qualité supérieure). Aucune plateforme ne doit nous voir comme « 2000 merdes ». Les filtres Anti-Slop (#20/#21) sont bloquants.
+- **Diffusion semi-manuelle (anti-ban)** : pas d'upload 100 % auto pour l'instant. Modèle cible = le bot **pré-remplit** la fiche produit et envoie le lien à Hugo, **Hugo sélectionne et publie** (copier-coller). Automatisation seulement sur ce qui est *léger, contrôlable, indétectable*.
+
+> Ces ajustements sont datés ; intégration fine dans les parties 1-6 au prochain tri d'architecture.
