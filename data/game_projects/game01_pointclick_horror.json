@@ -4,8 +4,14 @@
   "codename": "Hollow Hours (provisoire)",
   "type": "point-and-click / escape-room / horreur atmosphérique",
   "reference": "Rusty Lake / Cube Escape, The Birdcase, Samsara Room",
-  "status": "TYPE validé · squelette à choisir",
+  "status": "TYPE + SQUELETTE validés · prêt pour game design",
   "decided_by_hugo": "2026-05-20",
+  "decisions": {
+    "skeleton": "godot_scratch_minimal (Godot 4, MIT) — base from scratch, mais MIX autorisé : piocher des morceaux MIT/Apache (système d'inventaire, hotspots, save) à valider par WebSearch",
+    "mix_allowed": true,
+    "theme": "A_standalone — univers horreur autonome, PAS de cryptides (jeux indépendants)",
+    "shared_universe": false
+  },
 
   "vision": {
     "pitch": "Un point-and-click à ambiance pesante : scènes fixes richement détaillées, énigmes d'objets, narration cryptique distillée par l'environnement. Pas de jumpscares cheap — un malaise lent, une atmosphère qui colle à la peau.",

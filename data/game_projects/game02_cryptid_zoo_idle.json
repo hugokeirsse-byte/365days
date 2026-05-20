@@ -4,12 +4,19 @@
   "codename": "Cryptid Cove (provisoire)",
   "type": "idle / incremental tycoon — gestion de zoo de cryptides",
   "reference": "Idle Zoo Tycoon, Adventure Capitalist, Egg Inc.",
-  "status": "TYPE validé · squelette à choisir",
+  "status": "TYPE + SQUELETTE + STYLE validés · prêt pour game design",
   "decided_by_hugo": "2026-05-20",
+  "decisions": {
+    "skeleton": "godot_scratch_idle (Godot 4, MIT) — base from scratch, mais MIX autorisé : piocher des morceaux de templates idle MIT/Apache (offline-earnings, save/load, UI upgrades) à valider par WebSearch",
+    "mix_allowed": true,
+    "art_style": "cryptides MIGNONS (cute / kawaii), pas réalistes — chibi, gros yeux, rondeurs, palette douce",
+    "shared_universe": false,
+    "art_reference": "esprit Bugsnax / Ooblets / Cryptid Café — créatures attachantes et collectionnables"
+  },
 
   "vision": {
-    "pitch": "Un idle tycoon où l'on bâtit et gère un zoo de cryptides du folklore mondial (cf. cryptids_public_domain.json). On capture, héberge, fait évoluer ses créatures, attire des visiteurs, génère des revenus passifs même hors-ligne.",
-    "tone": "mignon-mystérieux, cozy avec une touche de mystère, accessible",
+    "pitch": "Un idle tycoon où l'on bâtit et gère un zoo de cryptides MIGNONS du folklore mondial (cf. cryptids_public_domain.json). Versions chibi/kawaii adorables de Bigfoot, Mothman, Nessie & co. On capture, héberge, fait évoluer ses créatures, attire des visiteurs, génère des revenus passifs même hors-ligne.",
+    "tone": "mignon avant tout (cute/kawaii), cozy, une pointe de mystère, accessible et attachant",
     "session_length": "checks courts répétés (idle), revenus offline",
     "monetization": "F2P : pub récompensée (boost x2, débloquer cryptide), achats optionnels de monnaie premium"
   },
@@ -64,8 +71,8 @@
   ],
 
   "assets_needed": {
-    "art": "Sprites cryptides (style cute-mystérieux), enclos, UI tycoon — génération FLUX/SDXL + retouche, OU base Kenney CC0",
-    "audio": "Musique cozy loop (BandLab/Freesound CC0), SFX (Kenney audio)",
+    "art": "Sprites cryptides MIGNONS (chibi, gros yeux, rondeurs, palette douce pastel), enclos cozy, UI tycoon arrondie — génération FLUX/SDXL avec prompts 'cute kawaii chibi' + retouche, OU base Kenney CC0",
+    "audio": "Musique cozy loop (BandLab/Freesound CC0), SFX doux (Kenney audio)",
     "sources_cc0": "Kenney (UI tycoon, sons), OpenGameArt (tilesets nature)"
   },
 

@@ -20,9 +20,33 @@ Pour tout nouveau besoin technique, dérouler ces 5 étapes :
     - "license:mit stars:>500 pushed:>2025-01-01 <besoin>"
     - awesome-lists du domaine
 [3] Évaluer chaque candidat sur 6 critères (grille ci-dessous)
-[4] Décider le mode d'intégration : depend / vendor / fork / inspire
+[4] Décider le mode d'intégration : depend / vendor / fork / inspire / MIX
 [5] Documenter le choix dans ce fichier (entrée nouvelle)
 ```
+
+### 🔀 Mode MIX — combiner plusieurs squelettes (directive Hugo 20/05)
+
+> *« Si on trouve plusieurs codes squelettes utiles, on peut les mixer. »*
+
+C'est le reverse-engineering appliqué au code : prendre **la meilleure partie de
+chaque repo** plutôt qu'un seul. Exemple pour un idle game :
+- la logique **offline-earnings** du repo A
+- le système de **save/load** du repo B
+- l'**UI de boutique/upgrades** du repo C
+
+**Règles du MIX (pour éviter le chaos)** :
+1. **Compatibilité license** : tous les morceaux mixés doivent être combinables.
+   MIT+Apache+BSD = OK. Un seul morceau GPL/AGPL contamine TOUT → exclu.
+2. **Compatibilité moteur** : ne pas mixer du Godot avec du Phaser dans un même
+   projet. Choisir 1 moteur cible, puis ne piocher que des morceaux compatibles
+   (ou réécrire la logique inspirée plutôt que copier).
+3. **Attribution** : conserver les notices de copyright de chaque source dans un
+   fichier `THIRD_PARTY_LICENSES.md` du projet.
+4. **Cohérence** : préférer réécrire (s'inspirer de) plutôt que coller des bouts
+   hétérogènes qui ne partagent ni style ni conventions. Le mix doit produire UN
+   codebase cohérent, pas un patchwork.
+
+→ Mode MIX documenté par projet (cf. `data/game_projects/*.json > skeleton_candidates`).
 
 ### Grille d'évaluation (6 critères, /18)
 
