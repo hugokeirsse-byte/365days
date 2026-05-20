@@ -422,3 +422,21 @@ coloriage** par ex. :
 - **Mise en page complète au format KDP sans erreur** (trim 8.5×11, bleed 0.125", gutter 0.75", PDF/X) ;
 - **Métadonnées de listing** (titre/description/tags) prêtes à coller.
 → Chaque type de produit a sa propre check-list « clé en main » (dans `data/quality_rules.json`).
+
+### Le BRIEF PRODUIT = contrat anti-dérive (Hugo 20/05)
+Avant toute production, le **Stratège (B1)** génère un **Brief Produit précis** à partir des
+trends → contrat : `data/schemas/product_brief.schema.json`. Exemple : *« coloring type
+Coco-Wyo × super-héros monte → produire ça, style cadré par images de référence HF, format
+KDP, ton line-art, signature maison, pensé en collection »*.
+- L'**Auditrice (E1)** a ce brief « dans ses données » et audite le produit **POINT PAR
+  POINT** contre lui : cohérence stylistique entre toutes les pages, format KDP sans erreur,
+  ton de couleur, zéro parasite, couverture, complétude clé-en-main. Chaque critère est
+  **bloquant ou non** → un produit n'est « abouti » que si **tous les bloquants passent**.
+- **Ligne de conduite ultra précise = ce brief + la grille de critères** → empêche la dérive
+  (« pas de truc à moitié fait qui passe »).
+- **Garde-fou anti-boucle-infinie** (`loop_policy`) : `max_iterations` ; si le **même critère**
+  échoue plusieurs fois → tenter un **contournement** (autre approche/outil) ; si **insoluble**
+  malgré tout → **STOP la production + ALERTER Hugo** (ne jamais tourner en boucle sur une
+  erreur irrésolvable — ex. un blocage récurrent sur une ébauche de jeu).
+- **Applicable à TOUS les produits** (coloring, romans, jeux, merch, 3D…), pas seulement les
+  coloring books — l'exemple ci-dessus est générique.

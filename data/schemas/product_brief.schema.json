@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/hugokeirsse-byte/365days/blob/main/data/schemas/product_brief.schema.json",
+  "title": "ProductBrief",
+  "description": "Fiche CIBLE d'un produit, generee par le Stratege (B1) a partir des trends. C'est le CONTRAT que le Juge Qualite (E1) utilise pour auditer le produit POINT PAR POINT (anti-derive). L'auditrice ne valide 'abouti' que si tous les criteres bloquants passent. Voir MAP_BUSINESS_ET_AGENTS.md > BOUCLE PRODUIT AUTONOME.",
+  "type": "object",
+  "required": ["id", "product_type", "target", "audit_criteria", "loop_policy"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^brief_\\d{4}-\\d{2}-\\d{2}_[a-z0-9_]+$",
+      "examples": ["brief_2026-05-20_coloring_cocowyo_superheroes"]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "business": {
+      "type": "string",
+      "description": "business/module concerne",
+      "examples": ["B1_coloriages_historiques", "S_jeux_mobiles", "K_fiction_courte"]
+    },
+    "product_type": {
+      "type": "string",
+      "enum": ["coloring_book", "low_content_book", "novel", "game", "merch_design", "card_deck", "video", "stl_3d", "other"]
+    },
+    "trends_source": {
+      "type": "string",
+      "description": "d'ou vient la cible : quel signal/trend l'a motivee",
+      "examples": ["Tendanceur: coloring 'cute Coco-Wyo style' + 'superheroes' en hausse cette semaine"]
+    },
+    "target": {
+      "type": "object",
+      "description": "La cible PRECISE a atteindre (ce que l'auditrice compare au produit)",
+      "required": ["description"],
+      "properties": {
+        "description": { "type": "string", "description": "resume en langage naturel de ce qu'on veut" },
+        "style_reference": {
+          "type": "object",
+          "description": "style a respecter + images de reference a passer a HF pour cadrer le style",
+          "properties": {
+            "style_keywords": { "type": "array", "items": { "type": "string" }, "examples": [["cute", "kawaii", "Coco-Wyo-like", "superhero"]] },
+            "reference_image_urls": { "type": "array", "items": { "type": "string" }, "description": "images de reference pour IP-Adapter / img2img HF (cadrage du style)" },
+            "negative": { "type": "array", "items": { "type": "string" }, "description": "ce qu'on ne veut PAS (anti-derive visuel)" }
+          }
+        },
+        "format": {
+          "type": "object",
+          "description": "specs techniques exactes (varie selon product_type)",
+          "examples": [{ "trim": "8.5x11in", "bleed": "0.125in", "gutter": "0.75in", "pages": 30, "export": "PDF/X-1a" }]
+        },
+        "color_tone": { "type": "string", "examples": ["line-art noir epais sur blanc pur", "palette douce pastel"] },
+        "signature": { "type": "string", "description": "notre marque/ton impose (cf. BRAND_IDENTITY.md)" },
+        "collection": {
+          "type": "object",
+          "description": "pense comme une COLLECTION (exigence cle-en-main)",
+          "properties": {
+            "title": { "type": "string" },
+            "volume": { "type": "integer", "default": 1 },
+            "decline_if_success": { "type": "boolean", "default": true },
+            "next_volumes_hint": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "audit_criteria": {
+      "type": "array",
+      "description": "Grille POINT PAR POINT verifiee par l'auditrice (E1). C'est la ligne de conduite anti-derive.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["criterion", "blocking"],
+        "properties": {
+          "criterion": {
+            "type": "string",
+            "examples": [
+              "coherence stylistique entre TOUTES les pages",
+              "format KDP sans erreur (trim/bleed/gutter)",
+              "ton de couleur respecte",
+              "zero texte/watermark parasite",
+              "couverture presente et conforme",
+              "completude cle-en-main (titre+collection+metadata)"
+            ]
+          },
+          "how_to_check": { "type": "string", "description": "methode de verification (visuelle Gemini Vision, regex, dimensions, etc.)" },
+          "blocking": { "type": "boolean", "description": "true = produit NON 'abouti' tant que ce critere echoue" }
+        }
+      }
+    },
+    "loop_policy": {
+      "type": "object",
+      "description": "Bornage de la boucle d'auto-correction = garde-fou anti-boucle-infinie.",
+      "required": ["max_iterations"],
+      "properties": {
+        "max_iterations": { "type": "integer", "default": 5, "description": "nb max de cycles generer -> auditer -> corriger" },
+        "stop_on_repeated_failure": { "type": "integer", "default": 2, "description": "si le MEME critere echoue N fois -> tenter un contournement (autre approche/outil)" },
+        "escalate_to_human": { "type": "boolean", "default": true, "description": "si insoluble meme apres contournements -> STOP la production + ALERTER Hugo (ne jamais tourner en boucle sur une erreur irresolvable)" }
+      }
+    },
+    "requested_by": { "type": "string", "examples": ["strategist_auto", "hugo_manual"] }
+  }
+}
