@@ -122,6 +122,18 @@ Perplexity : 5$ trial           → veille hebdo ciblée
 | 26 | **Archiviste Backup** — mirror Codeberg + carte SD Termux | quarterly | git mirror |
 | 27 | **Comptable Quota** — tracke consommation tokens par provider + alerte | continu (sur chaque appel) | Python + JSON local |
 
+### 🛠️ Méta-outils dev — 1 rôle
+
+| # | Rôle | Quand | Tech |
+|---|---|---|---|
+| 28 | **Skeleton Scout** — on lui donne un cahier des charges (type de projet OU fonction à améliorer), il recherche/évalue/propose des repos GitHub squelettes selon la grille /18, recommande le mode (fork/mix/inspire) et le combo MIX. Pour Module S : présente à Hugo pour décision. | event-driven (sur CodeSearchBrief) | GitHub Search API + WebSearch + scoring déterministe (`scripts/lib/skeleton_scout.py`) |
+
+> L'agent #28 implémente la vision Hugo (20/05) : *« on paramètre une IA qui
+> recherche les codes squelettes selon les infos qu'on lui rend ; elle cherche
+> aussi pour améliorer juste certaines fonctions. On lui entre le type de jeu et
+> ce qu'on veut exactement. »* Contrats : `code_search_brief.schema.json` (entrée)
+> et `skeleton_candidate.schema.json` (sortie).
+
 ---
 
 ## 🔗 PARTIE 3 — QUEL AGENT NOURRIT QUEL BUSINESS

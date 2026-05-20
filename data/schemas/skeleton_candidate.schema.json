@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/hugokeirsse-byte/365days/blob/main/data/schemas/skeleton_candidate.schema.json",
+  "title": "SkeletonCandidateReport",
+  "description": "Sortie de l'Agent #28 Skeleton Scout : liste de candidats évalués pour un CodeSearchBrief, prêts à présenter à Hugo pour décision (gate Module S et autres). Voir LIBRARIES_AND_REPOS.md.",
+  "type": "object",
+  "required": ["brief_id", "candidates"],
+  "properties": {
+    "brief_id": { "type": "string", "description": "ID du CodeSearchBrief parent" },
+    "searched_at": { "type": "string", "format": "date-time" },
+    "search_sources_used": {
+      "type": "array",
+      "items": { "type": "string" },
+      "examples": [["github_search_repositories", "github_search_code", "websearch", "awesome_lists"]]
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["repo", "license", "score_total"],
+        "properties": {
+          "repo": { "type": "string", "examples": ["owner/name"] },
+          "url": { "type": "string", "format": "uri" },
+          "what_it_provides": { "type": "string", "description": "Ce que ce repo apporte au besoin" },
+          "license": { "type": "string" },
+          "license_ok_commercial": { "type": "boolean" },
+          "stars": { "type": "integer" },
+          "last_pushed": { "type": "string", "format": "date" },
+          "engine_or_stack": { "type": "string" },
+          "scores": {
+            "type": "object",
+            "description": "Grille 6 critères /18 (cf. LIBRARIES_AND_REPOS.md §grille)",
+            "properties": {
+              "license": { "type": "integer", "minimum": 0, "maximum": 3 },
+              "maintenance": { "type": "integer", "minimum": 0, "maximum": 3 },
+              "popularite": { "type": "integer", "minimum": 0, "maximum": 3 },
+              "qualite_code": { "type": "integer", "minimum": 0, "maximum": 3 },
+              "fit_besoin": { "type": "integer", "minimum": 0, "maximum": 3 },
+              "legerete_deps": { "type": "integer", "minimum": 0, "maximum": 3 }
+            }
+          },
+          "score_total": { "type": "integer", "minimum": 0, "maximum": 18 },
+          "recommended_integration_mode": {
+            "type": "string",
+            "enum": ["depend", "vendor", "fork", "inspire", "mix"]
+          },
+          "mix_role": {
+            "type": "string",
+            "description": "Si mode=mix : quelle partie on prend de ce repo",
+            "examples": ["offline-earnings logic only", "save/load system only", "UI shop screen only"]
+          },
+          "risks": { "type": "array", "items": { "type": "string" } },
+          "verdict": {
+            "type": "string",
+            "enum": ["ADOPT", "ADOPT_AS_MIX_PART", "INSPIRE_ONLY", "REJECT"],
+            "description": "ADOPT si score>=12 ; REJECT si license blocklist ou score<12"
+          }
+        }
+      }
+    },
+    "recommended_combo": {
+      "type": "object",
+      "description": "Si plusieurs candidats sont à mixer, le combo recommandé (directive MIX Hugo)",
+      "properties": {
+        "base_repo": { "type": "string" },
+        "mix_parts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "repo": { "type": "string" },
+              "part": { "type": "string" }
+            }
+          }
+        },
+        "license_compatibility_ok": { "type": "boolean" },
+        "engine_consistent": { "type": "boolean" }
+      }
+    },
+    "needs_hugo_decision": {
+      "type": "boolean",
+      "description": "true pour Module S (jeux) où Hugo choisit toujours ; false pour modules à décision auto"
+    }
+  }
+}

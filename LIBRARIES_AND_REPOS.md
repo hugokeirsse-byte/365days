@@ -10,6 +10,40 @@ C'est l'application de la doctrine reverse-engineering au **code lui-même**.
 
 ---
 
+## 🤖 L'AGENT #28 SKELETON SCOUT — la recherche automatisée
+
+À terme, ce protocole de sélection n'est pas exécuté à la main : c'est l'**Agent #28
+Skeleton Scout** qui le fait. Vision Hugo (20/05) :
+
+> *« On paramètre une IA qui recherche ces codes squelettes selon les infos qu'on
+> lui rend. Elle cherche aussi des squelettes pour améliorer juste certaines
+> fonctions. On lui entre le type de jeu et ce qu'on veut exactement. »*
+
+**Fonctionnement** :
+```
+[Entrée] CodeSearchBrief (data/schemas/code_search_brief.schema.json)
+  - intent : full_skeleton | improve_function | find_assets | find_library
+  - target : type de projet / fonction à améliorer / description / mots-clés
+  - constraints : licences allow/block, min_stars, pushed_after, max_candidats
+        ↓
+[Recherche] GitHub Search API (repositories + code) + WebSearch + awesome-lists
+        ↓
+[Évaluation] grille 6 critères /18 (déterministe, scripts/lib/skeleton_scout.py)
+  - rejette automatiquement les licences bloquées (GPL/AGPL/CC-BY-NC)
+  - score, trie, recommande mode (fork/mix/inspire/depend)
+  - si plusieurs morceaux compatibles → propose un combo MIX
+        ↓
+[Sortie] SkeletonCandidateReport (data/schemas/skeleton_candidate.schema.json)
+  - pour Module S (jeux) : needs_hugo_decision=true → présenté à Hugo
+  - pour modules à décision auto : adopté directement si score ≥ 12/18
+```
+
+Le scoring est déjà implémenté et testé (`scripts/lib/skeleton_scout.py`,
+`tests/test_skeleton_scout.py`). La couche de recherche GitHub réelle est déférée
+jusqu'à présence du token (comme `llm_router.py`).
+
+---
+
 ## 🔬 PROTOCOLE DE SÉLECTION — avant de coder quoi que ce soit
 
 Pour tout nouveau besoin technique, dérouler ces 5 étapes :

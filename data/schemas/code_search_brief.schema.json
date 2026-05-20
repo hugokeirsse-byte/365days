@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/hugokeirsse-byte/365days/blob/main/data/schemas/code_search_brief.schema.json",
+  "title": "CodeSearchBrief",
+  "description": "Cahier des charges donné à l'Agent #28 Skeleton Scout. On décrit ce qu'on veut (type de projet OU fonction à améliorer), il recherche/évalue/propose des repos. Voir LIBRARIES_AND_REPOS.md.",
+  "type": "object",
+  "required": ["id", "intent", "target"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^brief_\\d{4}-\\d{2}-\\d{2}_[a-z0-9_]+$",
+      "examples": ["brief_2026-05-20_idle_offline_earnings"]
+    },
+    "intent": {
+      "type": "string",
+      "enum": ["full_skeleton", "improve_function", "find_assets", "find_library"],
+      "description": "full_skeleton = projet complet à forker ; improve_function = morceau pour améliorer UNE fonction ; find_assets = packs d'assets ; find_library = lib utilitaire"
+    },
+    "target": {
+      "type": "object",
+      "description": "Ce qu'on veut exactement",
+      "required": ["description"],
+      "properties": {
+        "project_type": {
+          "type": "string",
+          "examples": ["idle incremental game", "point-and-click adventure", "coloring book generator", "telegram bot"]
+        },
+        "engine_or_stack": {
+          "type": "string",
+          "description": "Contrainte de moteur/stack (pour compatibilité MIX)",
+          "examples": ["Godot 4", "Phaser 3", "Python 3.11", "any"]
+        },
+        "function_to_improve": {
+          "type": "string",
+          "description": "Si intent=improve_function : la fonction précise recherchée",
+          "examples": ["offline earnings calculation", "big number formatting", "save/load system", "inventory system", "ad rewarded integration"]
+        },
+        "description": {
+          "type": "string",
+          "description": "Description libre de ce qu'on cherche, en langage naturel"
+        },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Mots-clés de recherche GitHub/web"
+        }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Garde-fous de sélection (cf. grille LIBRARIES_AND_REPOS.md)",
+      "properties": {
+        "license_allowlist": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["MIT", "Apache-2.0", "BSD-3-Clause", "BSD-2-Clause", "CC0-1.0", "Unlicense"],
+          "description": "Licences acceptées pour usage commercial"
+        },
+        "license_blocklist": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["GPL-3.0", "GPL-2.0", "AGPL-3.0", "CC-BY-NC-4.0"],
+          "description": "Licences interdites (contaminantes ou non-commerciales)"
+        },
+        "min_stars": { "type": "integer", "default": 100 },
+        "pushed_after": { "type": "string", "format": "date", "description": "Dernier commit après cette date (maintenance)" },
+        "max_candidates": { "type": "integer", "default": 5 }
+      }
+    },
+    "context": {
+      "type": "string",
+      "description": "Contexte projet (ex: 'pour game02 zoo cryptides idle, cf. data/game_projects/game02')"
+    },
+    "requested_by": { "type": "string", "examples": ["hugo_decision", "agent_orchestrator"] },
+    "created_at": { "type": "string", "format": "date-time" }
+  }
+}
