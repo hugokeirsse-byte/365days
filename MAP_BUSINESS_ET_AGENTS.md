@@ -299,6 +299,7 @@ TRIMESTRIEL :
 | **31** | **Scénariste Maître** (moteur narratif) | Écrit des **scripts/récits entiers** à partir d'un sujet (jeux narratifs, livres, fictions) : fil conducteur solide, belle écriture, **zéro répétition**, boucle d'**auto-correction → re-correction**, suppression des **patterns d'IA** (anti-slop renforcé). Montée en puissance du Conteur Cozy (#17) couplé à l'Anti-Slop Textuel (#20). | à coder |
 | **32** | **Analyste Marché Jeux** | Pour une catégorie donnée : top 10 des jeux qui marchent, leurs **forces** (à garder), **faiblesses** (à corriger), **demandes récurrentes des joueurs**, et **fonctionnement général**. Alimente la décision Hugo + le Skeleton Scout pour le MIX. Équivalent de l'Éclaireur/Critique appliqué aux jeux. | à coder |
 | **33** | **Juge de Sortie** (analyste-qualité) | **Évalue l'output** d'un agent-en-boucle (script, design, chapitre…) selon des critères, et décide : **re-corriger** ou **stop, c'est bon**. C'est le **critère d'arrêt** des boucles d'auto-correction (notamment Scénariste #31). « Peut-être même créer une IA d'analyse » — Hugo 20/05. | à coder |
+| **34** | **Prospecteur d'Émergence** | Recherche **constante** de **business/marchés en émergence**, MÊME hors de nos domaines actuels, dès lors qu'ils sont **applicables à notre usine** (production automatisée, faible coût, scalable). Distinct du Scout Marché (#1, qui creuse nos niches connues) : lui scanne LARGE (macro-tendances, nouveaux formats, plateformes naissantes) et évalue l'**applicabilité à notre système**. « une IA à la recherche constante d'un business en émergence » — Hugo 20/05. | à coder |
 
 ### Extensions de rôles existants
 
@@ -334,7 +335,7 @@ d'appels API dupliqués (donc plus loin des limites). Les 33 fonctions subsisten
 | Agent consolidé | Cluster | Regroupe (rôles d'origine) |
 |---|---|---|
 | **A1 · Scout Marché** | détection | #1 Éclaireur + #2 Critique de Plaintes + #32 Analyste Marché Jeux (+ détecteur "bestseller mal noté") |
-| **A2 · Radar Tendances & Sources** | détection | #3 Tendanceur + #4 Saisonnier + #5 Archéologue PD |
+| **A2 · Radar Tendances, Sources & Émergence** | détection | #3 Tendanceur + #4 Saisonnier + #5 Archéologue PD + #34 Prospecteur d'Émergence (veille macro de business naissants applicables à l'usine) |
 | **A3 · Affiliate Hunter** | détection | #6 |
 | **B1 · Stratège** | cerveau | #7 Synthétiseur + #8 Opportunist + #9 Brainstormer + #10 Arbitragiste |
 | **B2 · Auditeur** | cerveau | #11 Méta-Critique + #30 Architecte Auto-Amélioration |
@@ -343,7 +344,7 @@ d'appels API dupliqués (donc plus loin des limites). Les 33 fonctions subsisten
 | **C3 · Card Designer** | production | #16 |
 | **C4 · Vidéaste Faceless** | production | #18 |
 | **C5 · Game Builder** | production | #18b (gate décision Hugo en amont) |
-| **D1 · Scout Technique** | méta | #28 Skeleton Scout + #29 Veilleur d'Outils Gratuits |
+| **D1 · Scout Technique** | méta | #28 Skeleton Scout + #29 Veilleur d'Outils Gratuits — **portée = l'usine entière** (outils GitHub libres pour l'infra/le fonctionnement général, pas seulement par produit). Alimente B2 Auditeur en pistes d'amélioration du système. |
 | **E1 · Juge Qualité** | qualité | #19 Copyright + #20 Anti-Slop Textuel + #21 Anti-Slop Visuel + #22 Schéma + #33 Juge de Sortie |
 | **F1 · Ops & Interface** | infra | #23 Telegram + #24 Rapporteur + #25 Vigile Secrets + #26 Backup + #27 Comptable Quota |
 
