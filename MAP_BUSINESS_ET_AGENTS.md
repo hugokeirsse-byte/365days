@@ -318,3 +318,37 @@ TRIMESTRIEL :
 - **Diffusion semi-manuelle (anti-ban)** : pas d'upload 100 % auto pour l'instant. Modèle cible = le bot **pré-remplit** la fiche produit et envoie le lien à Hugo, **Hugo sélectionne et publie** (copier-coller). Automatisation seulement sur ce qui est *léger, contrôlable, indétectable*.
 
 > Ces ajustements sont datés ; intégration fine dans les parties 1-6 au prochain tri d'architecture.
+
+---
+
+## 🧬 CONSOLIDATION — 33 rôles → 13 agents (directive Hugo 20/05)
+
+**Pourquoi** : 33 rôles, c'est éclaté et redondant. Regrouper = plus clair **et** moins
+d'appels API dupliqués (donc plus loin des limites). Les 33 fonctions subsistent comme
+**sous-modes** de 13 agents.
+
+> ⚠️ Rappel quota : le nombre d'agents n'impacte PAS les limites. Seul compte le **nombre
+> d'appels/jour**, déjà bridé par cascade temporelle + multi-provider (`llm_routing.json`)
+> + Comptable Quota. La consolidation réduit surtout les appels **redondants**.
+
+| Agent consolidé | Cluster | Regroupe (rôles d'origine) |
+|---|---|---|
+| **A1 · Scout Marché** | détection | #1 Éclaireur + #2 Critique de Plaintes + #32 Analyste Marché Jeux (+ détecteur "bestseller mal noté") |
+| **A2 · Radar Tendances & Sources** | détection | #3 Tendanceur + #4 Saisonnier + #5 Archéologue PD |
+| **A3 · Affiliate Hunter** | détection | #6 |
+| **B1 · Stratège** | cerveau | #7 Synthétiseur + #8 Opportunist + #9 Brainstormer + #10 Arbitragiste |
+| **B2 · Auditeur** | cerveau | #11 Méta-Critique + #30 Architecte Auto-Amélioration |
+| **C1 · Atelier Image** | production | #12 Coloriste + #13 Engendreur Progeny + #14 Marchandiseur + #15 Restaurateur |
+| **C2 · Plume (narratif)** | production | #17 Conteur Cozy + #31 Scénariste Maître |
+| **C3 · Card Designer** | production | #16 |
+| **C4 · Vidéaste Faceless** | production | #18 |
+| **C5 · Game Builder** | production | #18b (gate décision Hugo en amont) |
+| **D1 · Scout Technique** | méta | #28 Skeleton Scout + #29 Veilleur d'Outils Gratuits |
+| **E1 · Juge Qualité** | qualité | #19 Copyright + #20 Anti-Slop Textuel + #21 Anti-Slop Visuel + #22 Schéma + #33 Juge de Sortie |
+| **F1 · Ops & Interface** | infra | #23 Telegram + #24 Rapporteur + #25 Vigile Secrets + #26 Backup + #27 Comptable Quota |
+
+**Régime d'exécution** (cf. doctrine ci-dessus) : A1/A2/B1/E1/F1 = **fond** (cron espacé) ;
+C1-C5, C2, D1 = **projet à la demande** (boucle bornée + Juge Qualité comme critère d'arrêt).
+
+**À renforcer** : F1 doit intégrer un vrai **ordonnanceur** (throttle/queue) pour le cas où
+plusieurs agents-projet tournent en même temps → garantit qu'on reste sous les quotas.
