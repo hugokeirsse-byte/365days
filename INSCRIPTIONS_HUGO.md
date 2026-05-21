@@ -8,6 +8,14 @@
 > - **Priorité convenue** : les **clés API** d'abord (fait jusqu'à HF). Action débloquante = poser `HF_API_KEY` + `GEMINI_API_KEY` dans les **GitHub Secrets** → ça lance la production.
 > - ⚠️ *Les lignes individuelles ci-dessous ne sont pas toutes confirmées une par une : si une case est cochée à tort, signale-le.*
 
+> ## 🎨 GÉNÉRATEURS D'IMAGES — RÉALITÉ AU 21/05 (priorité actuelle)
+> Le free tier image a beaucoup changé en 2025-2026. État réel testé :
+> - ❌ **Hugging Face** : ne sert **plus** FLUX/SDXL gratuitement (CPU-only depuis mi-2025). Inutile pour l'image.
+> - ❌ **Gemini 2.5 Flash Image (Nano Banana)** : testé → **HTTP 429** (le modèle image n'est pas dans le free tier, nécessite facturation activée). Génial mais pas gratuit.
+> - 🏆 **Cloudflare Workers AI** — **À FAIRE (priorité)** : `https://dash.cloudflare.com` → AI → Workers AI → créer un **API Token** + récupérer l'**Account ID**. Gratuit **10 000 neurons/jour** (~200-1000 images/j, FLUX-1-schnell). Secrets GitHub : `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`.
+> - ✅ **AI Horde** — gratuit, **sans inscription** (clé anonyme `0000000000`) ; compte gratuit sur `https://aihorde.net` pour la priorité (clé → secret `AIHORDE_API_KEY`). Lent (file d'attente) mais img2img/ControlNet. Backup.
+> - 🟡 **Pollinations** : gratuit illimité, sans clé, mais brut (dépannage/volume).
+
 **Refonte majeure** : intègre tous les flux ajoutés depuis le 18/05
 (Modules A→W, Progeny Engine, arbitrage cross-canal, 15 marchés d'affiliation,
 LLM-minions anti-tokens, sécurité Termux/GitHub hybride, bot de validation).
