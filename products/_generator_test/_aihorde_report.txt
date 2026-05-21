@@ -1,0 +1,4 @@
+AI Horde test (cle: perso)
+==================================================
+❌ text2img : submit HTTP 403 error code: 1010
+❌ img2img : submit HTTP 403 error code: 1010
