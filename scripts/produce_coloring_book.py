@@ -66,11 +66,14 @@ TIMEOUT = 240
 # Style de base = cute kawaii line art (sans copier coco wyo : adultes,
 # pas pour enfants, traits épais propres, fond pur blanc)
 STYLE_BASE = (
-    "coloring book page line art illustration, thick clean black ink "
-    "outlines on pure white background, no shading no fill no gray tones, "
+    "adult coloring book page, clean BOLD black outline line art ONLY, "
+    "uniform thick vector-style outlines on pure white background, "
+    "closed simple shapes ready to color, flat clean cartoon style, "
+    "absolutely NO shading, NO grey, NO hatching, NO crosshatching, "
+    "NO sketch lines, NO pencil texture, NO fill, NO color, "
     "cute kawaii style with rounded shapes and large expressive eyes, "
-    "minimalist composition with generous white space, professional adult "
-    "coloring book quality, single subject centered, no text no watermark"
+    "with simple whimsical decorative background scenery around the subject, "
+    "professional coloring book quality, no text no watermark"
 )
 
 # Niches à fort potentiel KDP, classées par marché identifié
