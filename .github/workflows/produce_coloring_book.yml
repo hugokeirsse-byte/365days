@@ -51,19 +51,27 @@ jobs:
           HF_API_KEY: ${{ secrets.HF_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          # Si déclenché via workflow_dispatch : on lance la niche choisie.
-          # Si déclenché via push .triggers/coloring_book : on produit
-          # automatiquement les 3 niches en batch (mushrooms si pas déjà,
-          # creatures, cottages) pour que Hugo ait un catalogue varié.
+          # workflow_dispatch : niche choisie. push .triggers/coloring_book :
+          # le fichier trigger peut porter un quota optionnel :
+          #   niche=mystical_creatures
+          #   pages=6
+          # Si absent -> batch des 3 niches (catalogue varié).
           if [ "${{ github.event_name }}" = "push" ]; then
-            for niche in mystical_mushrooms mystical_creatures fairy_cottages; do
-              if [ ! -f "products/coloring_books/${niche}/${niche}.pdf" ]; then
-                echo "→ Production : $niche"
-                NICHE=$niche python scripts/produce_coloring_book.py || true
-              else
-                echo "⊝ $niche déjà produit, skip"
-              fi
-            done
+            T_NICHE=$(grep -oP '^niche=\K.*' .triggers/coloring_book 2>/dev/null | head -1)
+            T_PAGES=$(grep -oP '^pages=\K.*' .triggers/coloring_book 2>/dev/null | head -1)
+            if [ -n "$T_NICHE" ]; then
+              echo "→ Run cadré (trigger) : $T_NICHE / ${T_PAGES:-30} pages"
+              NICHE="$T_NICHE" PAGES="${T_PAGES:-30}" python scripts/produce_coloring_book.py || true
+            else
+              for niche in mystical_mushrooms mystical_creatures fairy_cottages; do
+                if [ ! -f "products/coloring_books/${niche}/${niche}.pdf" ]; then
+                  echo "→ Production : $niche"
+                  NICHE=$niche python scripts/produce_coloring_book.py || true
+                else
+                  echo "⊝ $niche déjà produit, skip"
+                fi
+              done
+            fi
           else
             python scripts/produce_coloring_book.py
           fi
