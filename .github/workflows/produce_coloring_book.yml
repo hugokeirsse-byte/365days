@@ -48,6 +48,8 @@ jobs:
           NICHE:     ${{ inputs.niche || 'mystical_mushrooms' }}
           PAGES:     ${{ inputs.pages || '30' }}
           EVENT_KEY: ${{ inputs.event_key }}
+          HF_API_KEY: ${{ secrets.HF_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           # Si déclenché via workflow_dispatch : on lance la niche choisie.
           # Si déclenché via push .triggers/coloring_book : on produit

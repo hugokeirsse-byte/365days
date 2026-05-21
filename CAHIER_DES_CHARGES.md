@@ -353,4 +353,19 @@ de qualité, pas avant.
 
 ---
 
+### 15.9 Scaling spécifique sur un HIT (Hugo 21/05)
+Deux niveaux de scaling :
+- **Niveau domaine** (branches principales) : on scale globalement (plus de business, plus de volume).
+- **Niveau produit, DANS un domaine** : dès qu'un produit **explose** (signal `sales_feedback`), on
+  **ne stoppe pas** la production diverse normale (exploration), mais on lance **EN PLUS** une
+  **vague de scaling ciblée** sur le gagnant (exploitation) :
+  - **Tomes** : Vol. 2, 3, 4… de la collection ;
+  - **Dérivés** : variations un peu différentes (sous-thèmes, cross avec d'autres trends/niches) ;
+  - **Version améliorée** : corrige ses faiblesses (issues des reviews).
+- Donc production = **base diverse** (on cherche le hit) **+ sur-pondération massive du hit** (on
+  l'exploite). C'est l'allocation proportionnelle (§4) **déclenchée par le signal ventes** (§14),
+  appliquée au niveau **collection**.
+
+---
+
 *Ce cahier des charges est vivant : il est mis à jour à chaque décision structurante.*
