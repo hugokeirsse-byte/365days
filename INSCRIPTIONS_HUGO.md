@@ -9,11 +9,13 @@
 > - ⚠️ *Les lignes individuelles ci-dessous ne sont pas toutes confirmées une par une : si une case est cochée à tort, signale-le.*
 
 > ## 🎨 GÉNÉRATEURS D'IMAGES — RÉALITÉ AU 21/05 (priorité actuelle)
-> Le free tier image a beaucoup changé en 2025-2026. État réel testé :
+> État **réel testé depuis GitHub Actions** (c'est notre infra : un service qui marche sur ton tél ne marche pas forcément sur un serveur datacenter).
 > - ❌ **Hugging Face** : ne sert **plus** FLUX/SDXL gratuitement (CPU-only depuis mi-2025). Inutile pour l'image.
-> - ❌ **Gemini 2.5 Flash Image (Nano Banana)** : testé → **HTTP 429** (le modèle image n'est pas dans le free tier, nécessite facturation activée). Génial mais pas gratuit.
-> - 🏆 **Cloudflare Workers AI** — **À FAIRE (priorité)** : `https://dash.cloudflare.com` → AI → Workers AI → créer un **API Token** + récupérer l'**Account ID**. Gratuit **10 000 neurons/jour** (~200-1000 images/j, FLUX-1-schnell). Secrets GitHub : `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`.
-> - ✅ **AI Horde** — gratuit, **sans inscription** (clé anonyme `0000000000`) ; compte gratuit sur `https://aihorde.net` pour la priorité (clé → secret `AIHORDE_API_KEY`). Lent (file d'attente) mais img2img/ControlNet. Backup.
+> - ❌ **Gemini** : **texte uniquement** sur notre clé (le modèle image renvoie HTTP 429 / facturation requise). Gemini reste notre **cerveau texte** (décision, prompts, SEO) — PAS un générateur d'image.
+> - ❌ **AI Horde** : testé → **HTTP 403** (derrière Cloudflare anti-bot, qui bloque les IP des serveurs GitHub Actions). Inutilisable depuis notre infra.
+> - 🏆 **Together AI** — **À FAIRE (priorité #1, GRATUIT)** : `https://api.together.xyz` → compte → **API key**. **$25 de crédits offerts** + endpoint **FLUX-schnell gratuit** (60 req/min) + **img2img**. Secret GitHub : `TOGETHER_API_KEY`.
+> - 🏆 **Cloudflare Workers AI** — **À FAIRE (priorité #2, GRATUIT)** : `https://dash.cloudflare.com` → AI → Workers AI → **API Token** + **Account ID**. Gratuit **10 000 neurons/jour** (~centaines d'images/j, FLUX-schnell + SD img2img). Secrets : `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`.
+> - 💶 **Backup ≤10€/mois** (si on veut + de volume ou la « référence de style ») : **Runware** (FLUX **$0.0006/img** → ~16 000 imgs/mois pour 10€ → `RUNWARE_API_KEY`) · **SiliconFlow** (FLUX **Kontext** = édition guidée par image de référence, **$0.015/img** → `SILICONFLOW_API_KEY`).
 > - 🟡 **Pollinations** : gratuit illimité, sans clé, mais brut (dépannage/volume).
 
 **Refonte majeure** : intègre tous les flux ajoutés depuis le 18/05
