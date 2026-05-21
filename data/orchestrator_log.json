@@ -1,0 +1,12 @@
+{
+  "runs": [
+    {
+      "timestamp": "2026-05-21T16:50:04.783221Z",
+      "candidates_analyzed": 10,
+      "triggered_pipelines": [],
+      "skipped_count": 10,
+      "dry_run": false
+    }
+  ],
+  "last_triggered": {}
+}
