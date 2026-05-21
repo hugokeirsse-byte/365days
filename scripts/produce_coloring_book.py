@@ -54,8 +54,8 @@ except ImportError:
 # Réactiver dès que HF_API_KEY est dispo (script produce_iheart_hf.py).
 # Cf. STRATEGY.md section "Pipelines EN PAUSE".
 import os as _os
-if _os.environ.get('FORCE_RUN') != '1':
-    print('⏸ PAUSED until HF_API_KEY available. Set FORCE_RUN=1 to bypass.')
+if not (_os.environ.get('HF_API_KEY') or _os.environ.get('FORCE_RUN') == '1'):
+    print('⏸ PAUSED : ni HF_API_KEY ni FORCE_RUN=1. Configure HF_API_KEY pour produire en qualité HF.')
     raise SystemExit(0)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -284,12 +284,27 @@ def produce_page(niche_key: str, niche: dict, subject: str, page_num: int,
     if event_overlay:
         prompt += f", {event_overlay}"
     seed = page_num * 10037 + random.randint(0, 9999)
-    url = pollinations_url(prompt, seed)
 
     print(f"  [{page_num:>2}] {subject[:55]}")
-    if not http_get(url, raw):
-        print(f"        echec Pollinations")
-        return None
+    # Qualité d'abord : HF Inference (SDXL, + style ref si dispo).
+    # Fallback Pollinations automatique si HF_API_KEY absent ou échec.
+    neg = "color, shading, grayscale, gray tones, text, watermark, signature, blurry, deformed"
+    img_bytes = None
+    try:
+        from lib.hf_image_generator import get_image_for_pipeline
+        img_bytes = get_image_for_pipeline(
+            prompt, "coloring_books", niche_key,
+            width=1280, height=1664, negative_prompt=neg)
+    except Exception as exc:  # noqa: BLE001
+        print(f"        HF indisponible ({exc}) -> fallback Pollinations")
+    if img_bytes:
+        raw.write_bytes(img_bytes)
+        print("        ✓ HF")
+    else:
+        url = pollinations_url(prompt, seed)
+        if not http_get(url, raw):
+            print("        echec Pollinations")
+            return None
     try:
         clean_line_art(raw, clean)
     except Exception as exc:  # noqa: BLE001
