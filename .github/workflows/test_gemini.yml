@@ -1,0 +1,48 @@
+name: Test Gemini Image (Nano Banana)
+
+# Teste la generation/edition d'image via Gemini 2.5 Flash Image (cle deja posee).
+# Declenche par workflow_dispatch OU ecriture de .triggers/test_gemini.
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .triggers/test_gemini
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Run Gemini image test
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/test_gemini_image.py
+      - name: Commit results
+        if: always()
+        run: |
+          git add products/_generator_test/ 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "rien a commit"
+          else
+            git commit -m "Test Gemini image (Nano Banana) : text2img + img2img"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
