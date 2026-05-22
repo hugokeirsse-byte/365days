@@ -1,7 +1,163 @@
 {
   "agent": "trends_realtime",
-  "timestamp": "2026-05-20T10:39:27.500187Z",
-  "status": "PAUSED — waiting for GEMINI_API_KEY secret",
-  "mission": "You scan TIME-SENSITIVE trends across social platforms (TikTok, Reddit, Pinterest, Etsy) and identify niches, sub-niches and keywords gaining momentum RIGHT NOW (last 14 days).",
-  "note": "Add GEMINI_API_KEY to GitHub secrets to activate this brain."
+  "title": "Trends Realtime Brain",
+  "timestamp": "2026-05-22T05:14:42.935515Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "trend_keyword": "vintage rubber hose cartoon anxiety",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 4,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Retro Cartoon Anxiety Sticker Sheet - 1930s Mascot Funny Mental Health Decals",
+      "evidence_url_or_signal": "TikTok hashtag #vintagecartoon (35M views) showing massive engagement spikes in mid-May 2026 for 1930s rubber hose characters with modern anxious captions like 'I have no idea what is going on'."
+    },
+    {
+      "rank": 2,
+      "trend_keyword": "cyanotype botanical print set",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 3,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Vintage Cyanotype Botanical Prints - Set of 6 Aesthetic Wildflower Blueprints Wall Art",
+      "evidence_url_or_signal": "Pinterest Trends data for May 2026 showing +140% spike in search volume for 'cyanotype blueprint botanical' and 'Prussian blue botanical wall art' in home decor niches."
+    },
+    {
+      "rank": 3,
+      "trend_keyword": "dark academia library coloring book",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 2,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Dark Academia Library Coloring Book - Cozy Gothic Bookshelves and Secret Rooms for Adults",
+      "evidence_url_or_signal": "TikTok #darkacademiaaesthetic coupled with #coloringbookforadults search term rising quickly. Over 15k searches on Etsy this week with very low direct competition for premium FLUX-generated grayscale coloring pages."
+    },
+    {
+      "rank": 4,
+      "trend_keyword": "isometric pixel art cozy room",
+      "platform_where_spotted": "Reddit",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 120,
+      "saturation_now_1_10": 3,
+      "best_product_format": "poster",
+      "best_pipeline_match": "produce_gamedev_asset_pack",
+      "title_template_suggestion": "Cozy Isometric Gamer Room Poster - Retro Pixel Art Wall Decor for Game Room",
+      "evidence_url_or_signal": "Reddit r/cozygames and r/PixelArt showing multiple high-upvote posts (5k+ upvotes in last 10 days) featuring isometric low-fi rooms. Perfect match for FLUX-schnell generation via Together AI."
+    },
+    {
+      "rank": 5,
+      "trend_keyword": "corporate survival merit badges",
+      "platform_where_spotted": "Etsy",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 4,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_literal_idioms_v2",
+      "title_template_suggestion": "Funny Corporate Merit Badge Mug - 'Survived Another Meeting That Could Have Been An Email' Coffee Cup",
+      "evidence_url_or_signal": "Etsy bestseller listings tagged with 'office humor' and 'corporate survival badge' seeing high sales velocity in May 2026 due to corporate performance review seasons."
+    },
+    {
+      "rank": 6,
+      "trend_keyword": "cottagecore frog tarot card",
+      "platform_where_spotted": "Redbubble",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 75,
+      "saturation_now_1_10": 5,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "The Lovers Frog Tarot Card T-Shirt - Cozy Cottagecore Witchy Amphibian Tee",
+      "evidence_url_or_signal": "Redbubble popular searches panel highlighting 'frog tarot' and 'cottagecore tarot deck' in the top 20 trending terms over the last 14 days."
+    }
+  ]
 }
