@@ -1,7 +1,184 @@
 {
   "agent": "system_optimizer",
-  "timestamp": "2026-05-20T10:39:20.370217Z",
-  "status": "PAUSED — waiting for GEMINI_API_KEY secret",
-  "mission": "You audit the 365days system internals — pipelines, code quality, workflows, security, failure modes — and propose concrete improvements to make it more reliable, faster, less Hugo-time.",
-  "note": "Add GEMINI_API_KEY to GitHub secrets to activate this brain."
+  "title": "System Optimizer Brain",
+  "timestamp": "2026-05-22T05:14:47.496969Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "issue_title": "Fragile Image Generation & Silent GHA Failures",
+      "category": "failure_mode",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_kdp_cover",
+        "produce_tumbler_wraps",
+        "produce_literal_idioms_v2"
+      ],
+      "current_pain_description": "IP blocks (403 on AI Horde from GHA), Gemini 429 errors, and low-quality Pollinations outputs cause workflows to crash or generate unusable assets, wasting GHA runtime and manual review time.",
+      "proposed_fix": "Implement a centralized 'ImageRouter' Python module with strict fallback logic: 1) Together AI (FLUX-schnell, free tier), 2) Cloudflare Workers AI (10k free daily neurons), 3) Runware (PAYG, capped at $0.0016/img), 4) Pollinations (last resort, with high-contrast prompt modifiers for line art). Include automatic retry decorators with exponential backoff on HTTP 429/500.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Eliminates 90% of workflow interruptions; guarantees high-quality FLUX outputs without manual retries.",
+      "priority_1_10": 10
+    },
+    {
+      "rank": 2,
+      "issue_title": "Android Upload Bottleneck (Termux)",
+      "category": "bottleneck",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_svg_pack",
+        "produce_tumbler_wraps"
+      ],
+      "current_pain_description": "Hugo only has an Android phone. Manually downloading large raw assets from GitHub, extracting them, and uploading them to Redbubble/KDP/Cults3D via a mobile browser is extremely slow, tedious, and prone to browser crashes.",
+      "proposed_fix": "Create a 'MobileStaging' step at the end of every pipeline. This step: 1) Compresses assets into lightweight, mobile-optimized ZIPs (using WebP instead of heavy PNGs where possible for previews), 2) Generates a single, lightweight HTML or Markdown 'Copy-Paste Dashboard' containing optimized titles, descriptions, and tags, 3) Uploads these directly to a private Telegram channel via Bot API or a lightweight index page hosted on GitHub Pages, allowing Hugo to copy-paste metadata and download files with 1-tap on his phone.",
+      "estimated_implementation_hours_claude": 3.0,
+      "estimated_value_unlocked": "Reduces manual listing time on mobile from 15 minutes per product to under 3 minutes, maximizing Hugo's 10h/week constraint.",
+      "priority_1_10": 9
+    },
+    {
+      "rank": 3,
+      "issue_title": "Runware Budget Exhaustion & API Overspending Risk",
+      "category": "security",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_kdp_cover",
+        "produce_tumbler_wraps"
+      ],
+      "current_pain_description": "Using Runware PAYG without guardrails inside GitHub Actions loops can easily consume the entire €20 monthly budget in a single run if a loop gets stuck or if a pipeline is triggered repeatedly by automated cron jobs.",
+      "proposed_fix": "Implement an automated budget guardrail state file stored in the repository (`.github/budget_state.json`). Every API call to Runware must log its cost. If the cumulative monthly cost exceeds €18, the script automatically self-terminates, alerts Hugo via Telegram/GitHub Issue, and downgrades all active pipelines to the free Cloudflare/Together AI fallbacks.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Prevents accidental overbilling on Hugo's credit card while maintaining unsupervised automation.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 4,
+      "issue_title": "Unsanitized SVG Outputs & Broken Paths",
+      "category": "quality_bug",
+      "affected_pipelines": [
+        "produce_svg_pack",
+        "produce_stl_parametric"
+      ],
+      "current_pain_description": "AI-generated SVGs or automated bitmap-to-SVG tracings often contain millions of redundant nodes, overlapping paths, or unclosed loops. This results in rejected uploads on microstock platforms and broken files for laser-cutting/Cricut buyers, leading to bad reviews.",
+      "proposed_fix": "Integrate `svgo` (SVG Optimizer) and a Python-based path-simplification utility (using `svgpathtools`) in the SVG pipeline. Automatically reject SVGs with path complexities above a specific threshold, or automatically run them through a headless vector-cleanup script before packaging.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Ensures 100% commercial-grade vector files that pass automated platform audits and prevent buyer refunds.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 5,
+      "issue_title": "Silent Trademark Infringement in AI Metadata",
+      "category": "security",
+      "affected_pipelines": [
+        "produce_quotes_minimal",
+        "produce_chateau_local",
+        "produce_viral_formats",
+        "produce_iheart_v4"
+      ],
+      "current_pain_description": "Generating hundreds of titles, tags, and quotes via LLMs (Gemini) carries a high risk of listing trademarked terms (e.g., Disney characters, brand names, famous quotes), which can lead to immediate store bans on KDP and Redbubble.",
+      "proposed_fix": "Add an offline validation step utilizing a Python-based trademark dictionary (e.g., using a compiled JSON blacklist of common high-risk words like 'Super Bowl', 'Harry Potter', etc.) combined with a free, lightweight check against the USPTO/TESS API or a scraped public database before metadata is written to the staging files.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Protects seller accounts from permanent bans, securing the long-term equity of Hugo's business.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 6,
+      "issue_title": "Lack of Cross-Pollination (Single Design -> Multi-Format)",
+      "category": "cross_polination",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_svg_pack",
+        "produce_tumbler_wraps",
+        "produce_kdp_cover"
+      ],
+      "current_pain_description": "Pipelines run in complete isolation. High-quality assets created for a coloring book are never reused for SVG packs, digital stickers, or physical POD apparel, missing out on 5x additional revenue streams per generated asset.",
+      "proposed_fix": "Establish a post-generation 'AssetDistributor' script. When a high-resolution coloring page or illustration is successfully generated and approved, this script automatically: 1) Saves it as a high-res PNG (for KDP), 2) Vectorizes it to SVG (for Etsy/SVG pack), 3) Centers it on transparent backgrounds for apparel (Redbubble), 4) Bundles it into a 'printable PDF' package. All formats are zipped and staged in one single mobile-friendly manifest.",
+      "estimated_implementation_hours_claude": 3.5,
+      "estimated_value_unlocked": "Multiplies listings and revenue channels per hour worked by reusing the exact same AI outputs.",
+      "priority_1_10": 6
+    }
+  ]
 }
