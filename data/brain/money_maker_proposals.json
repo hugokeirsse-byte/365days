@@ -1,11 +1,146 @@
 {
   "agent": "money_maker",
-  "timestamp": "2026-05-22T05:14:09.814502Z",
-  "status": "ERROR — Gemini call failed",
-  "error": "gemini-flash-latest: HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
-  "models_tried": [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-flash-latest"
+  "title": "Money Maker Brain",
+  "timestamp": "2026-05-22T10:39:39.088314Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "action_title": "Publish first 3 Coloring Books on Amazon KDP using Together AI (FLUX-schnell)",
+      "type": "upload",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 120,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "The 'produce_coloring_book' pipeline is ready. Together AI offers a free tier for FLUX-schnell which generates high-quality black and white outlines. KDP has no listing fees, meaning 100% net margin on organic sales.",
+      "first_action_today": "Run the 'produce_coloring_book' pipeline using TOGETHER_API_KEY on GitHub Actions to generate 30 coloring pages on a trending niche (e.g., 'cozy hygge rooms' or 'simple mandalas')."
+    },
+    {
+      "rank": 2,
+      "action_title": "Bulk-upload 100 Minimalist Typography Designs to Redbubble",
+      "type": "upload",
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Bypasses the current AI image generation bottleneck entirely. Text-based designs (funny quotes, local idioms, niche professions) sell exceptionally well on t-shirts and mugs, require zero GPU budget, and can be bulk-generated using simple Python scripts on Termux.",
+      "first_action_today": "Write a 20-line Python script in Termux to generate 100 transparent PNG text designs using PIL (Pillow) with trendy free-commercial-use fonts."
+    },
+    {
+      "rank": 3,
+      "action_title": "Launch 5 Parametric OpenSCAD 3D Models on Cults3D",
+      "type": "upload",
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 40,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Cults3D is registered but empty. Functional, parametric 3D models (e.g., custom drawer organizers, cable clips, gridfinity modules) have high search volume and conversion rates from 3D printing enthusiasts who value utility over aesthetics.",
+      "first_action_today": "Upload 3 existing parametric STL files generated via the 'produce_stl_parametric' pipeline, pricing them at a competitive €1.99 to €2.99."
+    },
+    {
+      "rank": 4,
+      "action_title": "Publish 5 Niche 2D Game Asset Packs on itch.io (Pay-What-You-Want)",
+      "type": "upload",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Game developers constantly search itch.io for prototyping assets. By offering UI kits, seamless textures, or 2D sprites under a Pay-What-You-Want model with a suggested price of $2.00, you capture both free traffic and generous backers.",
+      "first_action_today": "Package 5 sets of UI buttons or pattern backgrounds generated via the 'produce_gamedev_asset_pack' pipeline into zip files and create your itch.io seller profile."
+    },
+    {
+      "rank": 5,
+      "action_title": "Implement 'Loss-Leader' Launch Pricing on first KDP Low-Content Books",
+      "type": "pricing",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 30,
+      "hugo_effort_hours": 1,
+      "why_this_works_now": "New KDP listings have zero organic rank. Pricing your initial books at the absolute printing minimum (e.g., €4.49 for a notebook, yielding ~€0.05 royalty) triggers the Amazon A9 algorithm through early conversions, paving the way to raise prices to €6.99 later.",
+      "first_action_today": "Adjust the metadata and pricing of your pending low-content book drafts to the minimum allowed price on the KDP dashboard."
+    }
   ]
 }
