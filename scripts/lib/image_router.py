@@ -5,7 +5,7 @@ en cas d'échec (clé absente, erreur HTTP, timeout, réponse vide). Conçu pour
 tourner sur GitHub Actions et ne JAMAIS bloquer un pipeline : Pollinations
 (sans clé) est le filet de sécurité final.
 
-Ordre par défaut : together -> cloudflare -> segmind -> pollinations.
+Ordre par défaut : runware -> together -> cloudflare -> segmind -> pollinations.
 Surchargeable via la variable d'env IMAGE_PROVIDERS="cloudflare,pollinations"
 ou l'argument providers=[...].
 
@@ -13,6 +13,7 @@ Retourne des bytes (PNG/JPEG) ou, si dest est fourni, écrit le fichier et
 retourne son Path. Retourne None si TOUS les fournisseurs échouent.
 
 Clés (toutes optionnelles — un fournisseur sans clé est simplement sauté) :
+  RUNWARE_API_KEY (FLUX.1 schnell, licence Apache-2.0 = usage commercial OK)
   TOGETHER_API_KEY
   CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID
   SEGMIND_API_KEY
@@ -27,9 +28,10 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import uuid
 from pathlib import Path
 
-DEFAULT_ORDER = ["together", "cloudflare", "segmind", "pollinations"]
+DEFAULT_ORDER = ["runware", "together", "cloudflare", "segmind", "pollinations"]
 UA = "365days-ImageRouter/1.0"
 
 
@@ -145,7 +147,46 @@ def _try_pollinations(prompt, w, h, seed, timeout):
     return None, "echec"
 
 
+def _try_runware(prompt, w, h, seed, timeout):
+    key = os.environ.get("RUNWARE_API_KEY", "").strip()
+    if not key:
+        return None, "skip (pas de RUNWARE_API_KEY)"
+    model = os.environ.get("RUNWARE_IMAGE_MODEL", "runware:100@1")  # FLUX.1 schnell
+    steps = int(os.environ.get("RUNWARE_STEPS", "4"))
+    task = {
+        "taskType": "imageInference",
+        "taskUUID": str(uuid.uuid4()),
+        "model": model,
+        "positivePrompt": prompt,
+        "width": w,
+        "height": h,
+        "steps": steps,
+        "numberResults": 1,
+        "outputType": "base64Data",
+        "outputFormat": "PNG",
+    }
+    if seed is not None:
+        task["seed"] = seed
+    try:
+        _, body = _post_json("https://api.runware.ai/v1", [task],
+                             {"Authorization": f"Bearer {key}"}, timeout)
+        data = json.loads(body)
+        for it in (data.get("data") or []):
+            b64 = it.get("imageBase64Data") or it.get("base64Data")
+            if b64:
+                return base64.b64decode(b64), "ok"
+            if it.get("imageURL"):
+                with urllib.request.urlopen(it["imageURL"], timeout=timeout) as r:
+                    return r.read(), "ok"
+        return None, f"reponse inattendue: {json.dumps(data)[:140]}"
+    except urllib.error.HTTPError as exc:
+        return None, _http_err(exc)
+    except Exception as exc:  # noqa: BLE001
+        return None, f"{type(exc).__name__} {exc}"
+
+
 _PROVIDERS = {
+    "runware": _try_runware,
     "together": _try_together,
     "cloudflare": _try_cloudflare,
     "segmind": _try_segmind,
