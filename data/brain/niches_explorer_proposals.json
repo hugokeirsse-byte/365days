@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-22T10:39:43.498830Z",
+  "timestamp": "2026-05-22T18:23:13.933215Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -80,6 +80,7 @@
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -89,110 +90,110 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "HEMA (Historical European Martial Arts) Practitioners",
+      "name": "Rope Access & Wind Turbine Technicians",
+      "type": "sub_culture",
+      "audience_size_estimate": 150000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Industrial climbers, wind turbine technicians, and riggers who take immense pride in working at extreme heights. They love showing off their niche gear (harnesses, descenders) and insider slang on stickers, t-shirts, and social media.",
+      "product_angles": [
+        "Vector SVG packs of high-quality industrial rigging gear (carabiners, descenders, rope setups) for DIY stickers.",
+        "Daily Rigging & Hours Logbook on Amazon KDP (essential for maintaining professional IRATA/SPRAT certifications).",
+        "Redbubble sticker designs featuring rope access humor ('Gravity is just a habit', 'Certified Knot Tier')."
+      ],
+      "best_pipeline_or_new": "new_rope_access_assets",
+      "first_test_product": "IRATA/SPRAT Hours Logbook with a technical, rugged cover design on Amazon KDP",
+      "estimated_monthly_revenue_year1_eur": 150
+    },
+    {
+      "rank": 2,
+      "name": "Cyberpunk & Sci-Fi Virtual Tabletop (VTT) Assets",
+      "type": "adjacent_market",
+      "audience_size_estimate": 350000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Game Masters (GMs) running Cyberpunk RED, Shadowrun, or Starfinder on Roll20, Foundry VTT, or Owlbear Arena who are tired of the saturated generic high-fantasy assets and need clean, neon-styled futuristic props.",
+      "product_angles": [
+        "PNG token packs for futuristic terminals, cyberware crates, and holographic interfaces.",
+        "Modular grid-aligned floor plan vectors (SVGs) for quick sci-fi corridor generation.",
+        "KDP Sci-Fi Campaign planner with custom hex grids and faction tracking sheets."
+      ],
+      "best_pipeline_or_new": "new_vtt_scifi_assets",
+      "first_test_product": "Cyberpunk Terminal & Prop PNG Token Pack (50+ assets) for Roll20/Foundry",
+      "estimated_monthly_revenue_year1_eur": 250
+    },
+    {
+      "rank": 3,
+      "name": "Historical European Martial Arts (HEMA) Practitioners",
       "type": "sub_culture",
       "audience_size_estimate": 120000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "An active HEMA fencer who trains weekly with longswords or rapiers, loves medieval history treatises (Liechtenauer, Fiore dei Liberi), and wants to show off their niche sport through apparel, gear stickers, and training logs.",
+      "buyer_persona": "HEMA sword fighters and history enthusiasts who obsess over medieval combat manuals (Liechtenauer, Fiore dei Liberi, Joachim Meyer). They reject standard fantasy 'mall ninja' tropes and want historical accuracy paired with modern humor.",
       "product_angles": [
-        "Sarcastic diagrams of historical sword guards (e.g., 'Alber' or 'vom Tag') on Redbubble stickers",
-        "KDP Training Logbook specifically formatted for HEMA bouts, technique tracking, and tournament drills",
-        "3D printable sword hangers or custom pommel weight replicas on Cults3D"
+        "Minimalist vector illustrations (SVGs) of actual historical guard postures (e.g., Vom Tag, Pflug, Alber).",
+        "HEMA Sparring & Tournament Logbook on Amazon KDP to track fights, techniques, and weapon maintenance.",
+        "Inside joke merchandise on Redbubble emphasizing historical fencing terms ('Zwerchhau solves everything')."
       ],
-      "best_pipeline_or_new": "new_hema_fencer_pack",
-      "first_test_product": "A KDP 'HEMA Combat & Sparring Logbook' with a vintage treatise-style cover generated via Flux (Together AI)",
+      "best_pipeline_or_new": "new_hema_niche",
+      "first_test_product": "HEMA Sparring Logbook and Combat Tracker on Amazon KDP",
       "estimated_monthly_revenue_year1_eur": 120
     },
     {
-      "rank": 2,
-      "name": "Ham Radio Operators & Shortwave Listeners (SWL)",
-      "type": "deep_niche",
-      "audience_size_estimate": 750000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Tech-savvy hobbyists (often older or engineer-minded) who build antennas, collect 'QSL cards' from long-distance contacts, and communicate globally. They love technical insider jokes (Q-codes like QRM, QRT) and vintage radio aesthetics.",
-      "product_angles": [
-        "KDP Amateur Radio Operator Logbook (mandatory for many to log contacts, but standard ones are boring)",
-        "Redbubble retro-style stickers featuring radio vacuum tubes, Morse code keys, and '73' (best regards) typography",
-        "Printable QSL card templates (digital download on Etsy or physical layouts on KDP)"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "A high-quality 'Amateur Radio Contact Logbook' with a clean, grid-based layout and a vintage schematics-style cover",
-      "estimated_monthly_revenue_year1_eur": 180
-    },
-    {
-      "rank": 3,
-      "name": "Retro PS1-Style Low-Poly Textures for Indie Game Devs",
-      "type": "adjacent_market",
-      "audience_size_estimate": 300000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers building retro-horror or nostalgic 90s style games on Unity, Unreal, or Godot. They need seamless, pixelated dithered textures (brick, rust, sci-fi panels) to match the PSX aesthetic.",
-      "product_angles": [
-        "Asset packs of 64x64 or 128x128 pixelated seamless textures generated via Together AI/Cloudflare and downscaled with Python scripts",
-        "Low-poly 3D models of retro environmental props (e.g., CRT monitors, industrial trash cans) on Cults3D or Itch.io",
-        "UI sprite sheets for retro-horror inventory systems"
-      ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "A pack of 50 seamless '90s Retro Industrial & Horror' textures hosted on Itch.io/Cults3D",
-      "estimated_monthly_revenue_year1_eur": 150
-    },
-    {
       "rank": 4,
-      "name": "Solo Board Gamers (Print & Play / Automa)",
-      "type": "sub_culture",
+      "name": "Amicales de Sapeurs-Pompiers (Local French Firefighters)",
+      "type": "b2b",
       "audience_size_estimate": 250000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Board game enthusiasts who prefer playing solo campaigns, tracking complex campaign states (e.g., Gloomhaven, Mage Knight, Arkham Horror LCG), and printing custom player aids, deck holders, or token organizers.",
+      "growth_trajectory": "steady",
+      "buyer_persona": "French volunteer and professional firefighters managing their local 'Amicale' (association). They design and distribute local calendars, event flyers, and station-branded gifts every year on a tight budget.",
       "product_angles": [
-        "KDP Solo Campaign Campaign Journals with trackers for custom scenarios, health, and card upgrades",
-        "3D printable minimalist card holders and token trays designed specifically for solo table layouts on Cults3D",
-        "Print-and-Play (P&P) custom solo dice/card game assets"
+        "Customizable SVG vector calendar templates tailored specifically to French fire station layouts.",
+        "High-quality vector graphics of French fire trucks (FPT, VSAV, EPA) for local customization.",
+        "Ready-to-print funny firefighter quote packages for internal station mugs and apparel."
       ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "A universal 3D printable 'Solo Board Game Deck & Token Dash' optimized for small tables, published on Cults3D",
-      "estimated_monthly_revenue_year1_eur": 110
+      "best_pipeline_or_new": "new_pompiers_b2b",
+      "first_test_product": "French Firefighter SVG Vector Asset Pack (Trucks, emblems, and customizable text fields)",
+      "estimated_monthly_revenue_year1_eur": 300
     },
     {
       "rank": 5,
-      "name": "French GR Hiking Trails (GR20, GR34, Saint-Jacques)",
-      "type": "b2b",
-      "audience_size_estimate": 400000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "French and European hikers obsessed with finishing iconic long-distance trails (like the GR34 in Brittany or the rugged GR20 in Corsica). They buy memorabilia, badges, elevation-profile stickers, and specialized trail journals.",
-      "product_angles": [
-        "KDP Hiking Logbook tailored specifically for one GR trail (e.g., 'Mon GR34' with custom stage trackers, packing lists, and elevation checkmarks)",
-        "Redbubble minimalist line-art stickers of iconic trail landmarks (e.g., Corsican peaks or Breton lighthouses)",
-        "B2B partnership: local gîtes or tourism offices buying customized physical logbooks to sell to passing hikers"
-      ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "A KDP 'Carnet de Randonnée - GR34' with custom interior templates detailing French hiking safety and progress tracking",
-      "estimated_monthly_revenue_year1_eur": 140
-    },
-    {
-      "rank": 6,
-      "name": "Sci-Fi & Cyberpunk Virtual Tabletop (VTT) Battlemaps",
-      "type": "adjacent_market",
-      "audience_size_estimate": 500000,
+      "name": "Mycology & Wild Mushroom Foraging",
+      "type": "deep_niche",
+      "audience_size_estimate": 600000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 4,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Game Masters running online tabletop RPGs like Cyberpunk Red, Shadowrun, or Mothership on Roll20/Foundry VTT. They struggle to find high-quality futuristic/cyberpunk maps compared to the over-saturated fantasy genre.",
+      "buyer_persona": "Citizen scientists, amateur mycologists, and wild food foragers who spend weekends looking for Chanterelles, Morels, or studying spore prints. They value scientific accuracy and practical field tools.",
       "product_angles": [
-        "Grid/Gridless 4K battlemaps of futuristic locations (e.g., neon alleyways, spaceship corridors, corporate boardrooms) generated via Flux",
-        "Digital token packs for cyberpunk characters and drone assets",
-        "KDP grid notebooks themed as 'Hacker/Netrunner' deck logs"
+        "Mushroom Spore Print Logbook on Amazon KDP with dedicated black-backed pages to capture and document white spore prints.",
+        "Highly detailed botanical SVG vector packs of regional edible and toxic mushrooms for educational stickers.",
+        "Foraging pocket cards / cheat sheets downloadable as printable PDFs."
       ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "A VTT Battlemap pack containing 10 high-resolution neon cyberpunk street grids, distributed digitally via Etsy/Itch.io",
+      "best_pipeline_or_new": "new_mycology_forager",
+      "first_test_product": "The Spore Print Collector's Logbook (KDP format with alternate dark pages)",
+      "estimated_monthly_revenue_year1_eur": 180
+    },
+    {
+      "rank": 6,
+      "name": "Zero-Cost Solopreneur Automation Templates (Termux & GitHub Actions)",
+      "type": "adjacent_market",
+      "audience_size_estimate": 80000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie hackers, solo creators, and developers from emerging countries who have no budget for expensive SaaS tools and want to run their entire digital empire using free tiers like Termux and GitHub Actions.",
+      "product_angles": [
+        "Pre-configured GitHub Actions workflow templates for automated social media posting and asset generation.",
+        "Termux shell scripts for local batch processing of images and metadata on Android devices.",
+        "Markdown-based inventory databases compatible with GitHub and Obsidian."
+      ],
+      "best_pipeline_or_new": "new_bootstrap_dev_assets",
+      "first_test_product": "GitHub Actions Auto-Publisher Template Pack (Workflow files + setup guide in markdown)",
       "estimated_monthly_revenue_year1_eur": 200
     }
   ]
