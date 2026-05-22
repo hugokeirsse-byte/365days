@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-22T10:40:15.385326Z",
+  "timestamp": "2026-05-22T18:23:03.373590Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -80,6 +80,7 @@
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -89,95 +90,97 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Silent Image Generation Failures & Lack of Standardized Fallback Cascade",
+      "issue_title": "Fragile Image Generation Pipelines lacking Fallback Orchestration",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_lowcontent_kdp",
-        "produce_tumblr_wraps"
+        "produce_literal_idioms",
+        "produce_tumbler_wraps",
+        "produce_viral_formats"
       ],
-      "current_pain_description": "Pipelines directly call individual APIs (Pollinations, Gemini, Together, etc.). If an API returns a 429, 403, or 500, the entire GitHub Actions run crashes midway, wasting computation time and leaving incomplete assets without a clean retry state.",
-      "proposed_fix": "Create a unified `image_generator_gateway.py` class. Implement a strict cascading fallback logic: 1. Together AI (Free Flux-Schnell) -> 2. Cloudflare Workers AI (Free) -> 3. Pollinations (Free Fallback) -> 4. Runware (Pay-As-You-Go, capped at $0.005/image). Wrap every API call in a backoff-retry loop (3 attempts) and log detailed error JSONs to Git artifacts for debugging.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Eliminates pipeline crashes, optimizes free tier usage before touching the 20€ budget, ensures 100% completion rate of runs.",
+      "current_pain_description": "Pipelines hardcode specific image APIs (Horde, Gemini, Pollinations). When one API rate-limits (429), bans GitHub IPs (403), or degrades in quality, the entire GHA workflow crashes, wasting compute time and producing zero assets.",
+      "proposed_fix": "Implement a unified `UnifiedImageGenerator` Python module with a strict tier-based fallback logic: Tier 1 (Together AI - FLUX-schnell if token available) -> Tier 2 (Cloudflare Workers AI - free 10k neurons) -> Tier 3 (Runware PAYG if funded) -> Tier 4 (Pollinations.ai as absolute fallback). Wrap all calls in exponential backoff retries (using `tenacity` or a lightweight loop) to handle transient 429/503 errors.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Eliminates 90% of silent pipeline generation failures and maximizes free API tier utilization.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "GitHub Repository Bloat & LFS Bandwidth Limits for Binary Assets",
+      "issue_title": "Mobile Bottleneck: Heavy Artifacts Transfer to Android Phone",
       "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_gamedev_asset_pack",
-        "produce_stl_parametric",
-        "produce_svg_pack"
+        "produce_lowcontent_kdp",
+        "produce_svg_pack",
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Generating PDFs, high-res ZIPs, and PNGs directly inside GitHub Actions and pushing them back to the Git repo will quickly exceed GitHub's 1GB/5GB recommended repository size limit and trigger Git LFS bandwidth limits.",
-      "proposed_fix": "Configure a free Cloudflare R2 bucket (10GB free storage, $0 egress fees). Update the GHA workflows to use `boto3` to upload final compiled products directly to R2, keeping only lightweight metadata JSONs in the Git repository. Delete local binary files before the GHA run completes.",
+      "current_pain_description": "Hugo operates solely from an Android phone (Termux). Downloading multi-megabyte ZIP artifacts from the GitHub UI on a mobile browser is tedious and slow, hindering rapid publishing to KDP/Redbubble.",
+      "proposed_fix": "Add a GHA step that automatically uploads optimized final product ZIPs to a free, temp-hosting API (like transfer.sh or pixeldrain) and prints a clean, direct-download URL along with a console-generated QR code (using `python-qrcode` in GHA logs) so Hugo can scan and download files directly to his phone's downloads folder in 1 tap.",
       "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Prevents repository ban/throttling, saves Hugo's mobile data when downloading assets, provides permanent direct download URLs.",
+      "estimated_value_unlocked": "Saves 10-15 minutes per publishing cycle; bypasses painful mobile GitHub UI navigation.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Manual Metadata & SEO Description Writing for Publishing",
-      "category": "bottleneck",
+      "issue_title": "Lack of Multi-Modal Quality Gatekeeping for AI Artifacts",
+      "category": "quality_bug",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_gamedev_asset_pack",
-        "produce_svg_pack"
+        "produce_kdp_cover",
+        "produce_viral_formats"
       ],
-      "current_pain_description": "While assets are generated automatically, Hugo must manually write titles, descriptions, tags, and category selections for KDP, Redbubble, or Cults3D on his phone, which is extremely slow and prone to poor SEO.",
-      "proposed_fix": "Add a mandatory final step to every production pipeline that calls Gemini 2.5 Flash to generate a `listing_metadata.json` file. This file must contain: 1. Optimized Title (under 140 chars), 2. Description (Markdown formatted, including features, dimensions, usage terms), 3. 13 Etsy tags / 7 KDP keywords, 4. Recommended price point based on competitors.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Reduces Hugo's manual work per upload from 15 minutes to 1 minute (simple copy-paste from Termux/R2).",
+      "current_pain_description": "Pollinations or quick FLUX models sometimes output broken anatomy, incomplete borders, or blurry text. Uploading these to Amazon KDP or Redbubble risks account suspensions or 1-star reviews.",
+      "proposed_fix": "Leverage the free Gemini 2.5 Flash multi-modal capabilities in `agent_gemini_quality_check` or `agent_visual_audit`. Before saving any generated image to the final artifact, send the image to Gemini with a strict system prompt: 'Analyze this coloring book page/cover. Rate 1-10 on border completion, line clarity, and anatomy. Return JSON.' If score < 7, auto-reject and trigger one regeneration step.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Ensures only high-quality, sellable assets are presented to Hugo, preserving brand reputation on KDP/Redbubble.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Visual Quality Control Blindspot for AI-Generated Artifacts",
-      "category": "quality_bug",
+      "issue_title": "Silent GHA Failures due to Missing Mobile Notifications",
+      "category": "failure_mode",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_kdp_cover"
+        "agent_orchestrator",
+        "agent_auto_regen",
+        "produce_coloring_book"
       ],
-      "current_pain_description": "Coloring books and SVGs generated via Flux or Pollinations can contain text gibberish, broken anatomy, double borders, or gray grayscale shading instead of pure black and white line art, making them unsellable.",
-      "proposed_fix": "Integrate `agent_gemini_quality_check` directly into the generation loop. Before saving an image, send it to Gemini 2.5 Flash (which is multimodal and free) with a strict grading prompt (e.g., 'Check if this coloring page has gray shading, overlapping lines, or text artifacts. Grade 1-10. If <8, reject'). Automate regeneration up to 3 times before giving up.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Ensures 100% of generated coloring book pages are actually of printable/sellable quality without Hugo needing to inspect each one manually.",
+      "current_pain_description": "Because Hugo operates on mobile, he has to manually check GitHub Actions runs to see if a pipeline succeeded, failed, or ran out of API credits. This leads to slow response times and idle days.",
+      "proposed_fix": "Set up a free Telegram Bot. Write a lightweight bash utility in the GHA workflows that curls a simple message to the Telegram Bot API on success/failure, containing the run URL, generated product count, and any error logs. Hugo gets instant, native notifications on his phone.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Zero latency in knowing when assets are ready to publish or when APIs are broken.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Lack of Multi-Format Cross-Pollination for Generated Designs",
+      "issue_title": "Missed Cross-Pollination: Single-Use Design Assets",
       "category": "cross_polination",
       "affected_pipelines": [
-        "produce_quotes_minimal",
-        "produce_bible_verses_v2",
-        "produce_literal_idioms_v2"
+        "produce_coloring_book",
+        "produce_svg_pack",
+        "produce_tumbler_wraps",
+        "produce_quotes_minimal"
       ],
-      "current_pain_description": "When the system creates a high-quality quote or design, it only outputs it in one format (e.g., a simple graphic). It misses the opportunity to turn a single design into multiple digital products.",
-      "proposed_fix": "Build a `cross_pollinate.py` utility. When a design asset is approved by the quality check, automatically spawn multiple formats: 1. PNG wrapper for Redbubble mugs/t-shirts, 2. 1:1 format for Instagram/Pinterest viral promo, 3. SVG vector package, 4. KDP interior page compilation. Store all outputs in the same R2 product folder.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Multiplies inventory volume by 4x for the exact same image generation cost and time.",
+      "current_pain_description": "A vector graphic generated for `produce_svg_pack` or a design for a coloring book is only used once. Hugo is missing out on multiplying his listings with zero extra generation cost.",
+      "proposed_fix": "Build a 'Cross-Pollination router' step at the end of successful asset generations. For example, if a high-quality SVG is generated for `produce_svg_pack`, automatically pass it to: 1) A wrapper to generate a transparent PNG sticker for Redbubble, 2) An overlay script to create a pattern background for a KDP notebook cover, and 3) A mockup generator for Etsy listing images.",
+      "estimated_implementation_hours_claude": 4,
+      "estimated_value_unlocked": "Triples the number of digital products generated per compute-hour and API token spent.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Termux Mobile Notification & Delivery Gap",
-      "category": "bottleneck",
+      "issue_title": "GitHub Shared IP Rate-Limiting and Blockades",
+      "category": "security",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auditor"
+        "produce_iheart_hf",
+        "agent_opportunity_hunter",
+        "agent_trendhunter"
       ],
-      "current_pain_description": "Because Hugo operates solely on an Android phone via Termux, he has to manually check GitHub Actions runs to see if a product is ready, check for errors, or download files, leading to friction and delayed uploads.",
-      "proposed_fix": "Implement a free Telegram or Discord bot webhook notification inside the `agent_orchestrator`. When a GHA run finishes successfully, send a push notification to Hugo's phone containing: 1. Name of the generated product, 2. Direct download links to the PDF/ZIP on R2, 3. The generated SEO copy text for easy mobile copying, 4. A low-res preview image.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Transforms a clumsy mobile workflow into a seamless push-button publishing experience directly from the phone's notification shade.",
-      "priority_1_10": 7
+      "current_pain_description": "GitHub Actions runners share public IP ranges that are heavily flag-blocked or rate-limited by cloud providers (like AI Horde 403, and Gemini/Together when scraped without proper headers).",
+      "proposed_fix": "Standardize all GHA API requests to include unique, non-generic User-Agent headers (e.g., matching common mobile/desktop browsers) and add random delays (jitter) between sequential API calls to prevent triggering automated cloud firewalls.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Reduces HTTP 403 and 429 blocks from third-party APIs during concurrent pipeline runs.",
+      "priority_1_10": 6
     }
   ]
 }
