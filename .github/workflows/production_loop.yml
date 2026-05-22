@@ -1,0 +1,74 @@
+name: Production Loop (no image gen)
+
+on:
+  workflow_dispatch:
+    inputs:
+      brief_id:
+        description: "Brief approuve a produire"
+        required: false
+        default: "brief_2026-05-22_coloring_kawaii_mushroom_hollow"
+  push:
+    paths:
+      - .triggers/production_loop
+
+concurrency:
+  group: production-loop-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Resolve BRIEF_ID
+        id: brief
+        run: |
+          BID="${{ inputs.brief_id }}"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            T=$(grep -oP '^brief_id=\K.*' .triggers/production_loop 2>/dev/null | head -1)
+            BID="${T:-brief_2026-05-22_coloring_kawaii_mushroom_hollow}"
+          fi
+          echo "bid=$BID" >> "$GITHUB_OUTPUT"
+          echo "Brief = $BID"
+      - name: "Brique 2 — Producteur (ecrit les prompts, AUCUNE image)"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+        run: python scripts/produce_from_brief.py
+      - name: "Brique 3 — Auditeur (point par point vs cahier des charges)"
+        env:
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+        run: python scripts/agent_brief_auditor.py "${{ steps.brief.outputs.bid }}"
+      - name: "Brique 4 — GATE 2 (presente si abouti, sinon refuse)"
+        env:
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+        run: python scripts/agent_gate2.py "${{ steps.brief.outputs.bid }}"
+      - name: Commit artefacts (plan + audit + gate2)
+        if: always()
+        run: |
+          git add products/coloring_books/_gate1/ data/briefs/ 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun artefact nouveau."
+          else
+            git commit -m "Production loop (sans generation): plan + audit + gate2"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep 2
+            done
+          fi
