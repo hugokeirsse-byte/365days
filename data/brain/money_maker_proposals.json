@@ -1,7 +1,11 @@
 {
   "agent": "money_maker",
-  "timestamp": "2026-05-20T10:39:45.722339Z",
-  "status": "PAUSED — waiting for GEMINI_API_KEY secret",
-  "mission": "Your single obsession is: how does Hugo make MORE MONEY in the next 30 days? You propose direct revenue actions, not technical improvements. Operational concrete moves only.",
-  "note": "Add GEMINI_API_KEY to GitHub secrets to activate this brain."
+  "timestamp": "2026-05-22T05:14:09.814502Z",
+  "status": "ERROR — Gemini call failed",
+  "error": "gemini-flash-latest: HTTP 503 {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.\",\n    \"status\": \"UNAVAILABLE\"\n  }\n}\n",
+  "models_tried": [
+    "gemini-2.5-flash",
+    "gemini-2.0-flash",
+    "gemini-flash-latest"
+  ]
 }
