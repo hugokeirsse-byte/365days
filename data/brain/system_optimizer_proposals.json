@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-22T18:23:03.373590Z",
+  "timestamp": "2026-05-22T21:05:24.757056Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,96 +90,93 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Fragile Image Generation Pipelines lacking Fallback Orchestration",
+      "issue_title": "Silent Failures in Image Generation Pipelines via GitHub Actions",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_literal_idioms",
         "produce_tumbler_wraps",
-        "produce_viral_formats"
+        "produce_lowcontent_kdp"
       ],
-      "current_pain_description": "Pipelines hardcode specific image APIs (Horde, Gemini, Pollinations). When one API rate-limits (429), bans GitHub IPs (403), or degrades in quality, the entire GHA workflow crashes, wasting compute time and producing zero assets.",
-      "proposed_fix": "Implement a unified `UnifiedImageGenerator` Python module with a strict tier-based fallback logic: Tier 1 (Together AI - FLUX-schnell if token available) -> Tier 2 (Cloudflare Workers AI - free 10k neurons) -> Tier 3 (Runware PAYG if funded) -> Tier 4 (Pollinations.ai as absolute fallback). Wrap all calls in exponential backoff retries (using `tenacity` or a lightweight loop) to handle transient 429/503 errors.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Eliminates 90% of silent pipeline generation failures and maximizes free API tier utilization.",
-      "priority_1_10": 10
+      "current_pain_description": "When image APIs (Pollinations, Together, Runware) return 429, 500, or empty responses, workflows continue and generate corrupted/blank PDFs or packages, wasting GitHub Actions execution time and causing silent failures that Hugo only discovers after manual inspection on his phone.",
+      "proposed_fix": "Implement a centralized Python helper `image_validator.py` that verifies: 1) HTTP status code, 2) magic bytes/mime-type of the downloaded payload, 3) minimum file size (e.g., >20KB), and 4) executes automatic retries with exponential backoff before failing the GHA step explicitly.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Eliminates empty/corrupt outputs, saves manual mobile verification time, and optimizes GHA compute cycles.",
+      "priority_1_10": 9
     },
     {
       "rank": 2,
-      "issue_title": "Mobile Bottleneck: Heavy Artifacts Transfer to Android Phone",
+      "issue_title": "Termux Copy-Paste Bottleneck for Mobile Uploads",
       "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_lowcontent_kdp",
         "produce_svg_pack",
-        "produce_gamedev_asset_pack"
+        "produce_quotes_minimal"
       ],
-      "current_pain_description": "Hugo operates solely from an Android phone (Termux). Downloading multi-megabyte ZIP artifacts from the GitHub UI on a mobile browser is tedious and slow, hindering rapid publishing to KDP/Redbubble.",
-      "proposed_fix": "Add a GHA step that automatically uploads optimized final product ZIPs to a free, temp-hosting API (like transfer.sh or pixeldrain) and prints a clean, direct-download URL along with a console-generated QR code (using `python-qrcode` in GHA logs) so Hugo can scan and download files directly to his phone's downloads folder in 1 tap.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Saves 10-15 minutes per publishing cycle; bypasses painful mobile GitHub UI navigation.",
+      "current_pain_description": "Hugo operates 100% from an Android phone. Extracting generated titles, tags, descriptions, and file URLs from raw GitHub run logs or complex JSON files to paste them into KDP/Redbubble forms on a mobile browser is highly tedious and error-prone.",
+      "proposed_fix": "Add a GHA step that compiles all metadata into a single, clean HTML dashboard index.html deployed to a private/password-protected GitHub Pages site. The site will feature 'Click-to-Copy' buttons for titles, tags, and description fields, plus direct download links for the assets, optimized for mobile screens.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Reduces manual listing time on mobile by 50%, maximizing the ROI of Hugo's 10 hours/week limit.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Lack of Multi-Modal Quality Gatekeeping for AI Artifacts",
-      "category": "quality_bug",
+      "issue_title": "Runware PAYG Budget Overrun Risk",
+      "category": "security",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_viral_formats"
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Pollinations or quick FLUX models sometimes output broken anatomy, incomplete borders, or blurry text. Uploading these to Amazon KDP or Redbubble risks account suspensions or 1-star reviews.",
-      "proposed_fix": "Leverage the free Gemini 2.5 Flash multi-modal capabilities in `agent_gemini_quality_check` or `agent_visual_audit`. Before saving any generated image to the final artifact, send the image to Gemini with a strict system prompt: 'Analyze this coloring book page/cover. Rate 1-10 on border completion, line clarity, and anatomy. Return JSON.' If score < 7, auto-reject and trigger one regeneration step.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Ensures only high-quality, sellable assets are presented to Hugo, preserving brand reputation on KDP/Redbubble.",
+      "current_pain_description": "If a GHA workflow gets stuck in an infinite loop or parallel cron runs trigger simultaneously, the €20 Runware credit can be entirely consumed in a single night without Hugo's knowledge.",
+      "proposed_fix": "Create a lightweight budget tracking file (`.runware_spend.json`) committed back to the repository (or stored in GHA Cache). Every API call logs its cost. The wrapper script must instantly block further API requests if the daily spend exceeds €1.00 or monthly spend exceeds €18.00.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Absolute protection against unexpected financial losses on Hugo's strict €20/month budget.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Silent GHA Failures due to Missing Mobile Notifications",
-      "category": "failure_mode",
-      "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auto_regen",
-        "produce_coloring_book"
-      ],
-      "current_pain_description": "Because Hugo operates on mobile, he has to manually check GitHub Actions runs to see if a pipeline succeeded, failed, or ran out of API credits. This leads to slow response times and idle days.",
-      "proposed_fix": "Set up a free Telegram Bot. Write a lightweight bash utility in the GHA workflows that curls a simple message to the Telegram Bot API on success/failure, containing the run URL, generated product count, and any error logs. Hugo gets instant, native notifications on his phone.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Zero latency in knowing when assets are ready to publish or when APIs are broken.",
-      "priority_1_10": 8
-    },
-    {
-      "rank": 5,
-      "issue_title": "Missed Cross-Pollination: Single-Use Design Assets",
+      "issue_title": "Missing Cross-Pollination of Coloring Book Vectors to Digital SVG Packs",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_tumbler_wraps",
-        "produce_quotes_minimal"
+        "produce_svg_pack"
       ],
-      "current_pain_description": "A vector graphic generated for `produce_svg_pack` or a design for a coloring book is only used once. Hugo is missing out on multiplying his listings with zero extra generation cost.",
-      "proposed_fix": "Build a 'Cross-Pollination router' step at the end of successful asset generations. For example, if a high-quality SVG is generated for `produce_svg_pack`, automatically pass it to: 1) A wrapper to generate a transparent PNG sticker for Redbubble, 2) An overlay script to create a pattern background for a KDP notebook cover, and 3) A mockup generator for Etsy listing images.",
-      "estimated_implementation_hours_claude": 4,
-      "estimated_value_unlocked": "Triples the number of digital products generated per compute-hour and API token spent.",
+      "current_pain_description": "High-quality line art created for coloring books (KDP) is currently only packaged as PDF pages. This represents a lost opportunity to sell the same assets as SVG/PNG design cuts for Cricut/Silhouette users on Etsy/Cults3D.",
+      "proposed_fix": "Modify the coloring book post-processing step. When vector-like line art is successfully generated, automatically output a parallel ZIP file of individual high-resolution PNGs (with transparent backgrounds) and SVGs, labeled and tagged for digital craft marketplaces.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Doubles the product output per hour worked by generating two distinct product types (KDP paperback + digital SVG pack) from a single generation run.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 5,
+      "issue_title": "Brittle API Client Implementations and Hardcoded Models",
+      "category": "code_quality",
+      "affected_pipelines": [
+        "agent_orchestrator",
+        "agent_ideator_offline",
+        "agent_trend_explosion",
+        "produce_iheart_v4"
+      ],
+      "current_pain_description": "Pipelines rely on hardcoded model strings (like deprecated Gemini experimental models) and disparate API client implementations, making the codebase fragile when providers update their APIs or deprecate models.",
+      "proposed_fix": "Consolidate all LLM and image calls into a unified, lightweight wrapper class `client_factory.py`. This class will read provider priority from a configuration file and dynamically fallback (e.g., if Together AI fails, try Cloudflare Workers AI, then fallback to Pollinations).",
+      "estimated_implementation_hours_claude": 3.0,
+      "estimated_value_unlocked": "Guarantees pipeline resilience against API outages, deprecations, and credentials expiration without editing dozens of pipeline scripts.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "GitHub Shared IP Rate-Limiting and Blockades",
-      "category": "security",
+      "issue_title": "Lack of Automated Quality Auditing for AI-Generated SVG Geometries",
+      "category": "quality_bug",
       "affected_pipelines": [
-        "produce_iheart_hf",
-        "agent_opportunity_hunter",
-        "agent_trendhunter"
+        "produce_svg_pack",
+        "produce_stl_parametric"
       ],
-      "current_pain_description": "GitHub Actions runners share public IP ranges that are heavily flag-blocked or rate-limited by cloud providers (like AI Horde 403, and Gemini/Together when scraped without proper headers).",
-      "proposed_fix": "Standardize all GHA API requests to include unique, non-generic User-Agent headers (e.g., matching common mobile/desktop browsers) and add random delays (jitter) between sequential API calls to prevent triggering automated cloud firewalls.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Reduces HTTP 403 and 429 blocks from third-party APIs during concurrent pipeline runs.",
+      "current_pain_description": "AI-generated SVGs often contain unclosed paths, overlapping invisible elements, or excessive nodes that crash cutting machines or 3D rendering engines, leading to potential bad customer reviews on Etsy/Cults3D.",
+      "proposed_fix": "Integrate a lightweight Python-based SVG sanitizer (using `scour` or `lxml`) in the GHA workflow to automatically clean up unnecessary metadata, merge paths, check for minimum dimensions, and discard files with distorted aspect ratios.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Ensures commercial grade quality of digital assets and prevents store bans due to defective files.",
       "priority_1_10": 6
     }
   ]
