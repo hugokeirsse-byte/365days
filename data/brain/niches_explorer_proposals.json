@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-22T05:14:27.679189Z",
+  "timestamp": "2026-05-22T10:39:43.498830Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -89,110 +89,110 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Amateur Radio & DXing (Ham Radio) Operators",
-      "type": "sub_culture",
-      "audience_size_estimate": 750000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Older, tech-oriented hobbyists who communicate globally via radio waves. They collect physical 'QSL cards' to confirm contacts, love vintage schematics, and pride themselves on technical jargon.",
-      "product_angles": [
-        "Printable QSL card templates (digital downloads for DIY printing)",
-        "Radio logbook journals with structured tables for frequency, power, and signal reports (KDP)",
-        "Patent art posters of historic radio keys and vacuum tubes (Redbubble)"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Minimalist amateur radio contact logbook with a high-quality blueprint cover generated via Together AI (FLUX)",
-      "estimated_monthly_revenue_year1_eur": 150
-    },
-    {
-      "rank": 2,
-      "name": "Fantasy Console (PICO-8 / TIC-80) Game Developers",
-      "type": "adjacent_market",
-      "audience_size_estimate": 60000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers building retro 8-bit games within strict virtual hardware constraints. They love physical cheat-sheets, pixel art, and clean code optimization.",
-      "product_angles": [
-        "1-page API cheat-sheet posters and desk mats (Redbubble/Etsy)",
-        "8x8 pixel art asset packs, tilemaps, and sprite sheets (Itch.io/Etsy/Gamedev)",
-        "Physical game design notebooks with grid structures optimized for 128x128 resolution planning (KDP)"
-      ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "Retro-themed PICO-8 physical development planner with 16x16 sprite drafting grids",
-      "estimated_monthly_revenue_year1_eur": 120
-    },
-    {
-      "rank": 3,
-      "name": "Speleology & Cave Exploration (Cavers)",
-      "type": "deep_niche",
-      "audience_size_estimate": 90000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Extreme outdoor enthusiasts who map and explore underground caves. They use highly specialized gear (SRT - Single Rope Technique) and have a strong insider culture distinct from climbers.",
-      "product_angles": [
-        "Cave survey logbooks and sketchbooks with waterproof-style cover graphics (KDP)",
-        "Insider humor t-shirts featuring caving terms like 'Squeeze', 'Sump', 'Karst', or 'SRT' (Redbubble)",
-        "Vector SVG packs of cave topography symbols and mapping icons for digital cartography (Etsy)"
-      ],
-      "best_pipeline_or_new": "produce_quotes_minimal",
-      "first_test_product": "Cave Survey & Expedition Logbook with specialized grids for depth, azimuth, and inclination mapping",
-      "estimated_monthly_revenue_year1_eur": 80
-    },
-    {
-      "rank": 4,
-      "name": "Traditional Bowyers & Historical Archery Guilds",
+      "name": "HEMA (Historical European Martial Arts) Practitioners",
       "type": "sub_culture",
       "audience_size_estimate": 120000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
+      "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Craftsmen who build wooden longbows/recurve bows by hand and participate in traditional target or 3D field archery. They appreciate medieval history, wood grain aesthetics, and precise tuning.",
+      "buyer_persona": "An active HEMA fencer who trains weekly with longswords or rapiers, loves medieval history treatises (Liechtenauer, Fiore dei Liberi), and wants to show off their niche sport through apparel, gear stickers, and training logs.",
       "product_angles": [
-        "Bow-building (tillering) progress tracking journals (KDP)",
-        "Target scoring logbooks for traditional archery meets (KDP)",
-        "Detailed vector SVG designs of historical archers, crestings, and medieval guild seals (Etsy)"
+        "Sarcastic diagrams of historical sword guards (e.g., 'Alber' or 'vom Tag') on Redbubble stickers",
+        "KDP Training Logbook specifically formatted for HEMA bouts, technique tracking, and tournament drills",
+        "3D printable sword hangers or custom pommel weight replicas on Cults3D"
       ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "Historical Bowyer's Tillering Journal containing wood specification sheets and draw-weight curves",
+      "best_pipeline_or_new": "new_hema_fencer_pack",
+      "first_test_product": "A KDP 'HEMA Combat & Sparring Logbook' with a vintage treatise-style cover generated via Flux (Together AI)",
+      "estimated_monthly_revenue_year1_eur": 120
+    },
+    {
+      "rank": 2,
+      "name": "Ham Radio Operators & Shortwave Listeners (SWL)",
+      "type": "deep_niche",
+      "audience_size_estimate": 750000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Tech-savvy hobbyists (often older or engineer-minded) who build antennas, collect 'QSL cards' from long-distance contacts, and communicate globally. They love technical insider jokes (Q-codes like QRM, QRT) and vintage radio aesthetics.",
+      "product_angles": [
+        "KDP Amateur Radio Operator Logbook (mandatory for many to log contacts, but standard ones are boring)",
+        "Redbubble retro-style stickers featuring radio vacuum tubes, Morse code keys, and '73' (best regards) typography",
+        "Printable QSL card templates (digital download on Etsy or physical layouts on KDP)"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "A high-quality 'Amateur Radio Contact Logbook' with a clean, grid-based layout and a vintage schematics-style cover",
+      "estimated_monthly_revenue_year1_eur": 180
+    },
+    {
+      "rank": 3,
+      "name": "Retro PS1-Style Low-Poly Textures for Indie Game Devs",
+      "type": "adjacent_market",
+      "audience_size_estimate": 300000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie game developers building retro-horror or nostalgic 90s style games on Unity, Unreal, or Godot. They need seamless, pixelated dithered textures (brick, rust, sci-fi panels) to match the PSX aesthetic.",
+      "product_angles": [
+        "Asset packs of 64x64 or 128x128 pixelated seamless textures generated via Together AI/Cloudflare and downscaled with Python scripts",
+        "Low-poly 3D models of retro environmental props (e.g., CRT monitors, industrial trash cans) on Cults3D or Itch.io",
+        "UI sprite sheets for retro-horror inventory systems"
+      ],
+      "best_pipeline_or_new": "produce_gamedev_asset_pack",
+      "first_test_product": "A pack of 50 seamless '90s Retro Industrial & Horror' textures hosted on Itch.io/Cults3D",
+      "estimated_monthly_revenue_year1_eur": 150
+    },
+    {
+      "rank": 4,
+      "name": "Solo Board Gamers (Print & Play / Automa)",
+      "type": "sub_culture",
+      "audience_size_estimate": 250000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Board game enthusiasts who prefer playing solo campaigns, tracking complex campaign states (e.g., Gloomhaven, Mage Knight, Arkham Horror LCG), and printing custom player aids, deck holders, or token organizers.",
+      "product_angles": [
+        "KDP Solo Campaign Campaign Journals with trackers for custom scenarios, health, and card upgrades",
+        "3D printable minimalist card holders and token trays designed specifically for solo table layouts on Cults3D",
+        "Print-and-Play (P&P) custom solo dice/card game assets"
+      ],
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "A universal 3D printable 'Solo Board Game Deck & Token Dash' optimized for small tables, published on Cults3D",
       "estimated_monthly_revenue_year1_eur": 110
     },
     {
       "rank": 5,
-      "name": "Hydroponic & Aquaponic Urban Micro-Farmers",
-      "type": "deep_niche",
-      "audience_size_estimate": 250000,
+      "name": "French GR Hiking Trails (GR20, GR34, Saint-Jacques)",
+      "type": "b2b",
+      "audience_size_estimate": 400000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Tech-savvy indoor gardeners using water-based systems to grow food in tight spaces. They track water pH, EC levels, nutrient ratios, and pump schedules religiously.",
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "French and European hikers obsessed with finishing iconic long-distance trails (like the GR34 in Brittany or the rugged GR20 in Corsica). They buy memorabilia, badges, elevation-profile stickers, and specialized trail journals.",
       "product_angles": [
-        "System layout blueprints and vector SVGs of plumbing loops for DIY builders (Etsy)",
-        "3D printable modular net pots, pipe clips, and water manifold fittings (Cults3D)",
-        "Daily water chemistry and nutrient dosing logbooks (KDP)"
+        "KDP Hiking Logbook tailored specifically for one GR trail (e.g., 'Mon GR34' with custom stage trackers, packing lists, and elevation checkmarks)",
+        "Redbubble minimalist line-art stickers of iconic trail landmarks (e.g., Corsican peaks or Breton lighthouses)",
+        "B2B partnership: local gîtes or tourism offices buying customized physical logbooks to sell to passing hikers"
       ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "Parametric 3D printable spacer rings and net-pot adapters optimized for standard PVC pipe sizing",
+      "best_pipeline_or_new": "produce_chateau_local",
+      "first_test_product": "A KDP 'Carnet de Randonnée - GR34' with custom interior templates detailing French hiking safety and progress tracking",
       "estimated_monthly_revenue_year1_eur": 140
     },
     {
       "rank": 6,
-      "name": "Local French 'Chambres d'Hôtes' (B&Bs) & Tiny Houses",
-      "type": "b2b",
-      "audience_size_estimate": 55000,
-      "passion_level_1_10": 7,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Micro-hospitality owners in rural France looking to offer premium, local experiences to tourists. They need elegant, cheap physical assets to brand their properties.",
+      "name": "Sci-Fi & Cyberpunk Virtual Tabletop (VTT) Battlemaps",
+      "type": "adjacent_market",
+      "audience_size_estimate": 500000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Game Masters running online tabletop RPGs like Cyberpunk Red, Shadowrun, or Mothership on Roll20/Foundry VTT. They struggle to find high-quality futuristic/cyberpunk maps compared to the over-saturated fantasy genre.",
       "product_angles": [
-        "Bespoke regional coloring booklets for children of guests (B2B digital license or physical KDP)",
-        "Customizable guest welcome book templates with local hiking trails and maps (Etsy/Digital)",
-        "Minimalist local monument art posters for wall decoration in guest rooms (Redbubble)"
+        "Grid/Gridless 4K battlemaps of futuristic locations (e.g., neon alleyways, spaceship corridors, corporate boardrooms) generated via Flux",
+        "Digital token packs for cyberpunk characters and drone assets",
+        "KDP grid notebooks themed as 'Hacker/Netrunner' deck logs"
       ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "A regional coloring book template of Dordogne/Provence heritage sites, licensable to local B&B owners",
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "A VTT Battlemap pack containing 10 high-resolution neon cyberpunk street grids, distributed digitally via Etsy/Itch.io",
       "estimated_monthly_revenue_year1_eur": 200
     }
   ]
