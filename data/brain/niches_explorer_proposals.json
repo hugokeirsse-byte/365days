@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-22T18:23:13.933215Z",
+  "timestamp": "2026-05-22T21:05:23.200655Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Rope Access & Wind Turbine Technicians",
+      "name": "Eurorack Modular Synth Builders & Electronic Musicians",
       "type": "sub_culture",
       "audience_size_estimate": 150000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Industrial climbers, wind turbine technicians, and riggers who take immense pride in working at extreme heights. They love showing off their niche gear (harnesses, descenders) and insider slang on stickers, t-shirts, and social media.",
+      "buyer_persona": "Electronic music producers, hardware geeks, and DIY Eurorack builders who spend thousands on modules and love showing off their studio setups on Instagram/Reddit.",
       "product_angles": [
-        "Vector SVG packs of high-quality industrial rigging gear (carabiners, descenders, rope setups) for DIY stickers.",
-        "Daily Rigging & Hours Logbook on Amazon KDP (essential for maintaining professional IRATA/SPRAT certifications).",
-        "Redbubble sticker designs featuring rope access humor ('Gravity is just a habit', 'Certified Knot Tier')."
+        "3D printable Eurorack blank panels with intricate geometric/esoteric designs (Cults3D)",
+        "Synthesizer signal-flow cheat sheets and patch-logging notebooks (KDP)",
+        "Patent art posters of legendary vintage synthesizers (Redbubble POD)"
       ],
-      "best_pipeline_or_new": "new_rope_access_assets",
-      "first_test_product": "IRATA/SPRAT Hours Logbook with a technical, rugged cover design on Amazon KDP",
+      "best_pipeline_or_new": "produce_stl_parametric / produce_lowcontent_kdp",
+      "first_test_product": "A set of 5 customizable 3D-printable Eurorack blank panels (1U and 3U, various HP widths) with cyberpunk vector engravings.",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 2,
-      "name": "Cyberpunk & Sci-Fi Virtual Tabletop (VTT) Assets",
-      "type": "adjacent_market",
-      "audience_size_estimate": 350000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Game Masters (GMs) running Cyberpunk RED, Shadowrun, or Starfinder on Roll20, Foundry VTT, or Owlbear Arena who are tired of the saturated generic high-fantasy assets and need clean, neon-styled futuristic props.",
+      "name": "Amicales des Sapeurs-Pompiers (French Local Firefighter Associations)",
+      "type": "b2b",
+      "audience_size_estimate": 250000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "French volunteer and professional firefighters managing their local 'Amicale' budget, looking for unique, modern merchandise to sell during annual calendar drives and local open days.",
       "product_angles": [
-        "PNG token packs for futuristic terminals, cyberware crates, and holographic interfaces.",
-        "Modular grid-aligned floor plan vectors (SVGs) for quick sci-fi corridor generation.",
-        "KDP Sci-Fi Campaign planner with custom hex grids and faction tracking sheets."
+        "Customizable vector coat-of-arms templates for specific regional barracks (SVG packs)",
+        "Premium, hyper-local coloring books featuring regional fire stations, historical French fire engines, and rescue scenes (KDP)",
+        "3D-printed personalized helmet-shaped keychains with station numbers (Cults3D)"
       ],
-      "best_pipeline_or_new": "new_vtt_scifi_assets",
-      "first_test_product": "Cyberpunk Terminal & Prop PNG Token Pack (50+ assets) for Roll20/Foundry",
-      "estimated_monthly_revenue_year1_eur": 250
+      "best_pipeline_or_new": "produce_coloring_book / produce_svg_pack",
+      "first_test_product": "A high-quality, 24-page French Firefighter & Rescue vehicle coloring book optimized for local barracks to buy in bulk via KDP.",
+      "estimated_monthly_revenue_year1_eur": 350
     },
     {
       "rank": 3,
-      "name": "Historical European Martial Arts (HEMA) Practitioners",
-      "type": "sub_culture",
-      "audience_size_estimate": 120000,
-      "passion_level_1_10": 9,
+      "name": "Godot Engine Indie Game Developers",
+      "type": "adjacent_market",
+      "audience_size_estimate": 300000,
+      "passion_level_1_10": 8,
       "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "HEMA sword fighters and history enthusiasts who obsess over medieval combat manuals (Liechtenauer, Fiore dei Liberi, Joachim Meyer). They reject standard fantasy 'mall ninja' tropes and want historical accuracy paired with modern humor.",
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie game developers migrating from Unity to Godot who take pride in using open-source tools and love highly specific programming humor.",
       "product_angles": [
-        "Minimalist vector illustrations (SVGs) of actual historical guard postures (e.g., Vom Tag, Pflug, Alber).",
-        "HEMA Sparring & Tournament Logbook on Amazon KDP to track fights, techniques, and weapon maintenance.",
-        "Inside joke merchandise on Redbubble emphasizing historical fencing terms ('Zwerchhau solves everything')."
+        "GDScript quick-reference mugs and posters (Redbubble POD)",
+        "2D pixel-art UI kit templates optimized for Godot's control nodes (Gamedev assets)",
+        "Game design document (GDD) fillable workbooks specifically structured for Godot scene-tree architectures (KDP)"
       ],
-      "best_pipeline_or_new": "new_hema_niche",
-      "first_test_product": "HEMA Sparring Logbook and Combat Tracker on Amazon KDP",
-      "estimated_monthly_revenue_year1_eur": 120
+      "best_pipeline_or_new": "produce_gamedev_asset_pack / produce_quotes_minimal",
+      "first_test_product": "GDScript 'Cheat Sheet' minimalist desk mat design and companion physical spiral notebook.",
+      "estimated_monthly_revenue_year1_eur": 200
     },
     {
       "rank": 4,
-      "name": "Amicales de Sapeurs-Pompiers (Local French Firefighters)",
-      "type": "b2b",
-      "audience_size_estimate": 250000,
+      "name": "Spearfishing & Freediving (Chasse Sous-Marine)",
+      "type": "deep_niche",
+      "audience_size_estimate": 120000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 3,
       "growth_trajectory": "steady",
-      "buyer_persona": "French volunteer and professional firefighters managing their local 'Amicale' (association). They design and distribute local calendars, event flyers, and station-branded gifts every year on a tight budget.",
+      "buyer_persona": "Coastal outdoor enthusiasts who practice selective, eco-friendly hunting under water. They respect marine biology and love technical gear.",
       "product_angles": [
-        "Customizable SVG vector calendar templates tailored specifically to French fire station layouts.",
-        "High-quality vector graphics of French fire trucks (FPT, VSAV, EPA) for local customization.",
-        "Ready-to-print funny firefighter quote packages for internal station mugs and apparel."
+        "Fish species identification and size-limit vinyl stickers for boats/coolers (Redbubble)",
+        "Freediving depth and breath-hold training logbooks (KDP)",
+        "3D-printed action camera mounts for specific speargun brands (Cults3D)"
       ],
-      "best_pipeline_or_new": "new_pompiers_b2b",
-      "first_test_product": "French Firefighter SVG Vector Asset Pack (Trucks, emblems, and customizable text fields)",
-      "estimated_monthly_revenue_year1_eur": 300
+      "best_pipeline_or_new": "produce_lowcontent_kdp / produce_stl_parametric",
+      "first_test_product": "The 'Freediver & Spearo Daily Logbook' featuring dive tables, catch tracking, and weather condition templates.",
+      "estimated_monthly_revenue_year1_eur": 120
     },
     {
       "rank": 5,
-      "name": "Mycology & Wild Mushroom Foraging",
+      "name": "Actuaries & Quantitative Risk Analysts",
       "type": "deep_niche",
-      "audience_size_estimate": 600000,
+      "audience_size_estimate": 90000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Citizen scientists, amateur mycologists, and wild food foragers who spend weekends looking for Chanterelles, Morels, or studying spore prints. They value scientific accuracy and practical field tools.",
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "High-earning, highly educated finance professionals who calculate insurance risks. They appreciate dry, mathematical humor and minimal, high-end desk accessories.",
       "product_angles": [
-        "Mushroom Spore Print Logbook on Amazon KDP with dedicated black-backed pages to capture and document white spore prints.",
-        "Highly detailed botanical SVG vector packs of regional edible and toxic mushrooms for educational stickers.",
-        "Foraging pocket cards / cheat sheets downloadable as printable PDFs."
+        "Normal distribution and probability curve minimal wall art (Redbubble POD)",
+        "Actuarial exam study trackers and specialized formula notebooks (KDP)",
+        "Sarcastic actuarial definition mugs ('Actuary: someone who found accounting too exciting') (Redbubble POD)"
       ],
-      "best_pipeline_or_new": "new_mycology_forager",
-      "first_test_product": "The Spore Print Collector's Logbook (KDP format with alternate dark pages)",
+      "best_pipeline_or_new": "produce_quotes_minimal / produce_lowcontent_kdp",
+      "first_test_product": "A premium minimalist math-art poster series depicting famous statistical probability distributions.",
       "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 6,
-      "name": "Zero-Cost Solopreneur Automation Templates (Termux & GitHub Actions)",
+      "name": "Handheld Retro Emulation Enthusiasts (SBC Gaming)",
       "type": "adjacent_market",
-      "audience_size_estimate": 80000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 1,
+      "audience_size_estimate": 200000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 3,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Indie hackers, solo creators, and developers from emerging countries who have no budget for expensive SaaS tools and want to run their entire digital empire using free tiers like Termux and GitHub Actions.",
+      "buyer_persona": "Nostalgic gamers who buy cheap single-board computer handhelds (Miyoo Mini, Anbernic) and spend hours customizing their software, hardware, and aesthetics.",
       "product_angles": [
-        "Pre-configured GitHub Actions workflow templates for automated social media posting and asset generation.",
-        "Termux shell scripts for local batch processing of images and metadata on Android devices.",
-        "Markdown-based inventory databases compatible with GitHub and Obsidian."
+        "3D-printed snap-on screen protectors and ergonomic grip cases (Cults3D)",
+        "Retro console-inspired SVG decals and skin layouts (SVG pack)",
+        "Pixel-art UI theme packs for custom launchers like OnionOS or GarlicOS (Gamedev assets)"
       ],
-      "best_pipeline_or_new": "new_bootstrap_dev_assets",
-      "first_test_product": "GitHub Actions Auto-Publisher Template Pack (Workflow files + setup guide in markdown)",
-      "estimated_monthly_revenue_year1_eur": 200
+      "best_pipeline_or_new": "produce_stl_parametric / produce_svg_pack",
+      "first_test_product": "An ergonomic, low-profile 3D-printable slide-in case for the Miyoo Mini Plus that doubles as a horizontal stand.",
+      "estimated_monthly_revenue_year1_eur": 250
     }
   ]
 }
