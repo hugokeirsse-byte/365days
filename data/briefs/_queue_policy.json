@@ -1,0 +1,9 @@
+{
+  "description": "Politique de FILE des cahiers des charges (anti-boucle-a-vide + anti-emballement images). Le GATE 1 (approbation humaine du brief avant toute production) permet aux IA de preparer des projets d'avance SANS rien produire ; mais chaque brief en attente genere ses images de reference candidates, donc on plafonne la file.",
+  "max_pending_ai_original_briefs": 10,
+  "stabilize_at": 10,
+  "human_idea_briefs": "en SUPPLEMENT (hors quota des 10) ; les idees de Hugo s'ajoutent par-dessus",
+  "candidates_per_brief_note": "borne par image_budget.reference_candidates_budget de chaque brief (defaut 6)",
+  "gate_model": "GATE1 (approbation cahier des charges) -> production 100% autonome -> GATE2 (validation produit fini cle-en-main avant commercialisation)",
+  "rule": "Tant que la file de briefs AI-original en attente d'approbation atteint 10, le Stratege ARRETE d'en produire de nouveaux (et donc d'engendrer de nouvelles images de reference). Il reprend des qu'un brief est approuve (part en prod) ou rejete (libere une place)."
+}
