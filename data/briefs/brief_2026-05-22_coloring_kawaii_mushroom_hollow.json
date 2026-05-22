@@ -98,8 +98,8 @@
     "mode": "generate_candidates",
     "candidates_count": 6,
     "candidates_provider": "pollinations",
-    "status": "pending_human_pick",
-    "chosen_reference_path": "",
+    "status": "locked",
+    "chosen_reference_path": "products/coloring_books/_gate1/brief_2026-05-22_coloring_kawaii_mushroom_hollow/ref_candidates/cand_4.png",
     "character_model_sheets": []
   },
   "loop_policy": {
@@ -108,7 +108,8 @@
     "escalate_to_human": true
   },
   "human_gates": {
-    "gate_start": "pending",
+    "gate_start": "approved",
+    "gate_start_note": "Hugo a choisi cand_4 comme reference (2026-05-22). Reserve : titre + nom d'auteur encore a verifier comme uniques (etape autonome a venir).",
     "gate_end": "not_reached"
   },
   "requested_by": "strategist_auto"
