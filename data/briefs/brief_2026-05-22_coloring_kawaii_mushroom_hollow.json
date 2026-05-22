@@ -1,0 +1,115 @@
+{
+  "id": "brief_2026-05-22_coloring_kawaii_mushroom_hollow",
+  "created_at": "2026-05-22T00:00:00Z",
+  "business": "B1_coloriages",
+  "product_type": "coloring_book",
+  "generation_strategy": "mono_trend",
+  "opportunity_rationale": "Trend 'kawaii cute' (score 550) croisee a l'esthetique cottagecore (evergreen fort sur Etsy/KDP). L'opportunite coloring_books cute/cottagecore est notee 88.5 (ROI estime 70-350 EUR/mois, marche Etsy + KDP). Choisi comme PREMIER projet de preuve : faible risque (pas de texte interieur), style deja eprouve par le pipeline, demande stable toute l'annee.",
+  "variations_target": 1,
+  "trend_strength": "strong",
+  "trends_source": "data/opportunities.json (2026-05-17) : 'kawaii cute' x 'Cottagecore' / 'Cute Kawaii Line Art (Coco-Wyo-like generic)', categorie coloring_books.",
+  "target": {
+    "description": "Livre de coloriage adulte 'cute kawaii cottagecore' : un village de champignons enchante (maisonnettes-champignons, fees, petits animaux). Trait noir epais et net sur blanc pur, formes fermees pretes a colorier, ambiance douce et mignonne. Coherence stylistique stricte sur les 30 pages.",
+    "style_reference": {
+      "style_keywords": ["cute kawaii", "bold clean black line art", "cottagecore", "whimsical", "Coco-Wyo-like generic", "rounded shapes", "large expressive eyes"],
+      "reference_image_urls": [],
+      "reference_status_note": "A CHOISIR par Hugo parmi les candidates generees (voir reference_selection). Une fois choisie, son chemin remplace cette liste vide et verrouille le style.",
+      "negative": ["color", "shading", "grayscale", "gray tones", "hatching", "crosshatching", "sketch lines", "pencil texture", "fill", "text", "letters", "watermark", "signature", "blurry", "deformed", "tiny unconnected details", "open broken outlines"]
+    },
+    "format": {
+      "trim": "8.5x11in",
+      "bleed": "0.125in",
+      "gutter": "0.75in",
+      "margins": "0.5in",
+      "pages_interior": 30,
+      "page_recto_verso_rotation": true,
+      "export": "PDF/X-1a (interieur N&B) + couverture separee"
+    },
+    "color_tone": "line-art noir epais sur blanc pur (aucune couleur, aucun gris)",
+    "signature": "Douceur kawaii cottagecore, lisible et apaisant ; complexite moyenne (ni trop vide, ni surcharge), adapte au coloriage adulte detente.",
+    "cover": {
+      "title_text": "Mushroom Hollow",
+      "subtitle_text": "30 Cute Cottagecore Mushroom Coloring Pages for Relaxation",
+      "author_byline": "Maple Briarwood",
+      "layout_note": "Couverture COULEUR (contrairement a l'interieur) : une scene phare du village-champignon coloree facon pastel doux, titre en haut bien lisible en vignette, nom d'auteur en bas. Doit ressortir en miniature Amazon/Etsy.",
+      "reference_image_path": ""
+    },
+    "collection": {
+      "title": "Mushroom Hollow",
+      "title_uniqueness_checked": false,
+      "author": "Maple Briarwood",
+      "author_uniqueness_checked": false,
+      "volume": 1,
+      "decline_if_success": true,
+      "next_volumes_hint": ["Vol. 2: Fairy Cottages", "Vol. 3: Cozy Forest Animals", "Vol. 4: Mystical Mushrooms (darker/intricate)"]
+    },
+    "page_subjects": [
+      "fly agaric mushroom with stars and moons floating around",
+      "fairy ring of mushrooms with small fairy door",
+      "tiny mushroom cottage with smoking chimney",
+      "stacked mushrooms forming a tower",
+      "mushroom holding an umbrella in the rain",
+      "mushroom couple having tea together",
+      "owl perched on giant mushroom",
+      "snail with mushroom hat on its shell",
+      "mushroom wearing witch hat",
+      "mushroom garden with bees and butterflies",
+      "mushroom carrying lantern at night",
+      "mushroom reading book by candlelight",
+      "giant mushroom with tiny door and windows like a fairy house",
+      "mushroom dancing with leaves",
+      "mushroom riding tiny snail",
+      "mushroom with ladybug friend",
+      "field of mushrooms with crescent moon above",
+      "mushroom inside crystal ball",
+      "mushroom with butterfly wings",
+      "mushroom sleeping under leaf blanket",
+      "mushroom with constellation pattern on cap",
+      "old wise mushroom with beard and walking stick",
+      "mushroom baker with apron and bread",
+      "mushroom holding ornate magic key",
+      "mushroom with sunflower companion",
+      "kitten curled up between mushrooms",
+      "frog sitting on mushroom playing tiny flute",
+      "mushroom with vines and grapes climbing on it",
+      "winter mushroom in snow with pine cones",
+      "mushroom emerging from book pages"
+    ]
+  },
+  "audit_criteria": [
+    { "criterion": "Trait noir PUR (#000000) uniquement, aucune couleur ni gris ni ombrage sur l'interieur", "how_to_check": "analyse pixels (variance/teintes) + Gemini Vision", "blocking": true },
+    { "criterion": "Coherence stylistique entre TOUTES les pages (meme epaisseur de trait, meme niveau de detail, meme registre kawaii)", "how_to_check": "Gemini Vision comparaison page-a-page vs image de reference verrouillee", "blocking": true },
+    { "criterion": "Formes fermees coloriables (pas de contours ouverts/casses, pas de micro-details inutilisables)", "how_to_check": "Gemini Vision + heuristique contours", "blocking": true },
+    { "criterion": "Le sujet de chaque page correspond au page_subject demande", "how_to_check": "Gemini Vision description vs page_subjects", "blocking": true },
+    { "criterion": "Zero texte / lettre / watermark parasite dans les images", "how_to_check": "OCR + Gemini Vision", "blocking": true },
+    { "criterion": "Format KDP conforme (trim 8.5x11, bleed, gutter 0.75, rotation recto/verso)", "how_to_check": "controle dimensions PDF programmatique", "blocking": true },
+    { "criterion": "Couverture presente, en COULEUR, titre + nom d'auteur lisibles en miniature", "how_to_check": "Gemini Vision + OCR sur la couverture", "blocking": true },
+    { "criterion": "Completude cle-en-main : titre + sous-titre + nom d'auteur + metadata KDP (keywords, categories, prix)", "how_to_check": "presence des champs dans metadata.json", "blocking": true },
+    { "criterion": "Titre et nom d'auteur verifies comme NON deja utilises", "how_to_check": "recherche Amazon/Etsy (manuelle ou web) avant publication", "blocking": true },
+    { "criterion": "Composition equilibree et centree, agreable a colorier", "how_to_check": "Gemini Vision (esthetique)", "blocking": false }
+  ],
+  "image_budget": {
+    "max_images_total": 50,
+    "ideal_one_gen_one_use": true,
+    "regen_allowance_per_asset": 1,
+    "reference_candidates_budget": 6
+  },
+  "reference_selection": {
+    "mode": "generate_candidates",
+    "candidates_count": 6,
+    "candidates_provider": "pollinations",
+    "status": "pending_human_pick",
+    "chosen_reference_path": "",
+    "character_model_sheets": []
+  },
+  "loop_policy": {
+    "max_iterations": 5,
+    "stop_on_repeated_failure": 2,
+    "escalate_to_human": true
+  },
+  "human_gates": {
+    "gate_start": "pending",
+    "gate_end": "not_reached"
+  },
+  "requested_by": "strategist_auto"
+}

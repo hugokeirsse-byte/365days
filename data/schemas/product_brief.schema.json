@@ -67,11 +67,25 @@
         },
         "color_tone": { "type": "string", "examples": ["line-art noir epais sur blanc pur", "palette douce pastel"] },
         "signature": { "type": "string", "description": "notre marque/ton impose (cf. BRAND_IDENTITY.md)" },
+        "cover": {
+          "type": "object",
+          "description": "specs de la COUVERTURE (cle-en-main) : generee a part avec titre + nom d'auteur + sous-titre",
+          "properties": {
+            "title_text": { "type": "string" },
+            "subtitle_text": { "type": "string" },
+            "author_byline": { "type": "string", "description": "nom de plume affiche sur la couverture (= collection.author)" },
+            "layout_note": { "type": "string", "description": "consignes de mise en page (placement titre/auteur, ambiance, lisibilite vignette)" },
+            "reference_image_path": { "type": "string", "description": "visuel de couverture retenu (optionnel)" }
+          }
+        },
         "collection": {
           "type": "object",
           "description": "pense comme une COLLECTION (exigence cle-en-main)",
           "properties": {
             "title": { "type": "string" },
+            "title_uniqueness_checked": { "type": "boolean", "default": false, "description": "titre verifie comme NON deja utilise (Amazon/Etsy) avant publication" },
+            "author": { "type": "string", "description": "nom de plume DIFFERENT a chaque livre (anti-monoculture : un flop avec de mauvaises reviews ne contamine pas le reste du catalogue). A verifier comme non deja utilise." },
+            "author_uniqueness_checked": { "type": "boolean", "default": false },
             "volume": { "type": "integer", "default": 1 },
             "decline_if_success": { "type": "boolean", "default": true },
             "next_volumes_hint": { "type": "array", "items": { "type": "string" } }
@@ -111,6 +125,67 @@
         "max_iterations": { "type": "integer", "default": 5, "description": "nb max de cycles generer -> auditer -> corriger" },
         "stop_on_repeated_failure": { "type": "integer", "default": 2, "description": "si le MEME critere echoue N fois -> tenter un contournement (autre approche/outil)" },
         "escalate_to_human": { "type": "boolean", "default": true, "description": "si insoluble meme apres contournements -> STOP la production + ALERTER Hugo (ne jamais tourner en boucle sur une erreur irresolvable)" }
+      }
+    },
+    "image_budget": {
+      "type": "object",
+      "description": "Garde-fou anti-emballement : on PAIE la generation (Runware), donc on borne le nombre d'images et on vise l'optimum '1 image generee = 1 image integree'.",
+      "required": ["max_images_total"],
+      "properties": {
+        "max_images_total": { "type": "integer", "description": "plafond DUR d'images generees pour ce brief (candidates de reference + pages + couverture + regenerations comprises). Au-dela -> STOP + alerte." },
+        "ideal_one_gen_one_use": { "type": "boolean", "default": true, "description": "objectif : prompts/negatifs/reference si precis qu'une image generee est directement integrable, sans regen" },
+        "regen_allowance_per_asset": { "type": "integer", "default": 1, "description": "nb de regenerations tolerees par page/asset avant de marquer 'a revoir'" },
+        "reference_candidates_budget": { "type": "integer", "default": 10, "description": "nb d'images candidates-reference generables pour le choix humain (mode generate_candidates)" }
+      }
+    },
+    "reference_selection": {
+      "type": "object",
+      "description": "Comment on obtient l'IMAGE DE REFERENCE qui verrouille le style (et, pour les genres a personnages, les MODEL SHEETS).",
+      "required": ["mode", "status"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["direct_known_style", "generate_candidates"],
+          "description": "direct_known_style = la trend a un style precis connu (ex. Coco-Wyo) -> on part d'une reference directe de ce style. generate_candidates = projet original/melange -> l'IA genere N candidates et Hugo en choisit une."
+        },
+        "candidates_count": { "type": "integer", "default": 8, "description": "nb de candidates a soumettre a Hugo (mode generate_candidates), typiquement 5-10" },
+        "candidates_provider": { "type": "string", "default": "pollinations", "description": "fournisseur pour les candidates (gratuit Pollinations conseille pour ne pas entamer le budget Runware)" },
+        "status": {
+          "type": "string",
+          "enum": ["pending_human_pick", "locked"],
+          "description": "pending_human_pick = en attente du choix de Hugo ; locked = reference choisie, la production peut demarrer"
+        },
+        "chosen_reference_path": { "type": "string", "description": "chemin de la candidate retenue par Hugo (une fois status=locked)" },
+        "character_model_sheets": {
+          "type": "array",
+          "description": "pour manga/BD/livres a personnages : fiches perso (face/profil/dos) figees pour la coherence. Memes regles : candidates generees -> choix Hugo -> verrouillage.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "character": { "type": "string" },
+              "status": { "type": "string", "enum": ["pending_human_pick", "locked"] },
+              "chosen_sheet_path": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "human_gates": {
+      "type": "object",
+      "description": "Hugo intervient UNIQUEMENT en debut et en fin de chaine ; tout le milieu est autonome.",
+      "properties": {
+        "gate_start": {
+          "type": "string",
+          "enum": ["pending", "approved", "changes_requested"],
+          "default": "pending",
+          "description": "GATE 1 : Hugo lit le cahier des charges COMPLET (idee, style, reference(s) candidate(s) a choisir, model sheets, nom d'auteur, titre, format) et approuve / choisit / corrige. RIEN ne part en production avant 'approved'."
+        },
+        "gate_end": {
+          "type": "string",
+          "enum": ["not_reached", "pending", "approved", "rejected"],
+          "default": "not_reached",
+          "description": "GATE 2 : le produit FINI est presente a Hugo, qui decide du lancement et de la publication."
+        }
       }
     },
     "requested_by": { "type": "string", "examples": ["strategist_auto", "hugo_manual"] }
