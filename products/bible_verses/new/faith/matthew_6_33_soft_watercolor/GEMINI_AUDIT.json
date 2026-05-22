@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-22T10:37:59.711330Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 5,
+  "reasoning": "The image is rejected due to critical violations. The expected verse 'Seek first the kingdom of God' is replaced by AI-generated gibberish text such as 'Sesk', 'TH Q THE', and 'Gisd', failing the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Additionally, the Bible reference 'Matthew 6:33' is also rendered as unreadable gibberish ('Matuthela Oies'), violating the 'reference_format_correct' rule. The presence of AI-generated text makes the product unusable and inappropriate for the Christian market."
+}

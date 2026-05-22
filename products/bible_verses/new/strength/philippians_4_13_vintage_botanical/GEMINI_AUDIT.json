@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-22T10:39:34.064477Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 5,
+  "reasoning": "The image displays AI-generated gibberish text instead of the expected Bible verse, 'I can do all things through Christ who strengthens me' (Philippians 4:13). This violates critical rules requiring the verse text to be exactly correct, the absence of AI-generated text, and the correct reference format. The text is completely unreadable and does not convey the intended message, rendering the image unacceptable for the 'bible_verses' pipeline."
+}

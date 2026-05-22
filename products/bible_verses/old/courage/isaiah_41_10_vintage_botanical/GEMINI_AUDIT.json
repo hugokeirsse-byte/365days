@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-22T10:40:37.888050Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 5,
+  "reasoning": "The image fails to display the expected verse 'Fear not, for I am with you' (Isaiah 41:10). Instead, it contains AI-generated gibberish text such as 'eear iat hu vail You' and other unreadable characters, which violates the 'no_gibberish_text' critical rule. Consequently, the 'verse_text_exactly_correct_no_typo' rule is also violated as the text is completely incorrect. Furthermore, there is no recognizable or correctly formatted biblical reference, failing the 'reference_format_correct' critical rule. These multiple critical violations necessitate a 'reject' verdict."
+}

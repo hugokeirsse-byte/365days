@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-22T10:39:42.549469Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 0,
+  "reasoning": "The image contains AI-generated gibberish text instead of the expected Bible verse \"All things work together for good\" (Romans 8:28). This violates the critical rules for exact verse text, absence of gibberish, and correct reference format. The text is not an overlay and is clearly part of the AI generation, making it completely unsuitable for the pipeline."
+}

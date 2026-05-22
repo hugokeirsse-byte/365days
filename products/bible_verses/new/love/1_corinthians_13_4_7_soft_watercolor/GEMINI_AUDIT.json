@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-22T10:38:19.599553Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 5,
+  "reasoning": "The image critically fails on multiple rules. The verse text displayed, 'llove is bastive fking', is completely incorrect and unreadable gibberish, violating the 'verse_text_exactly_correct_no_typo' rule. Furthermore, both the main verse text and the biblical reference appear to be AI-generated gibberish, which directly violates the 'no_gibberish_text' rule that explicitly states text must be a Pillow overlay. Consequently, the 'reference_format_correct' rule is also violated as the reference is unreadable. These are all critical failures leading to an immediate rejection."
+}

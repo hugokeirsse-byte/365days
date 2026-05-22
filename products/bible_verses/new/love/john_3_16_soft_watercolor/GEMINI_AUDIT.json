@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-22T10:38:58.846330Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 5,
+  "reasoning": "The image critically fails on multiple rules. The expected verse 'For God so loved the world' is replaced with AI-generated gibberish text like 'fonl loluvves World' and other unreadable characters, violating the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Furthermore, the required Bible reference (John 3:16) is completely absent and replaced by more gibberish, failing the 'reference_format_correct' rule. These are all critical violations, leading to an immediate rejection."
+}

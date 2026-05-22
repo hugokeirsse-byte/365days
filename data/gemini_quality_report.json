@@ -1,13 +1,179 @@
 {
-  "audited_at": "2026-05-21T12:09:28.576374Z",
-  "model": "gemini-2.0-flash-exp",
+  "audited_at": "2026-05-22T10:47:14.433548Z",
+  "model": "gemini-2.5-flash",
   "total_processed": 30,
   "counters": {
-    "approve": 0,
+    "approve": 1,
     "review": 0,
-    "reject": 0,
+    "reject": 13,
     "skip": 0,
-    "error": 30
+    "error": 16
   },
-  "audits": []
+  "audits": [
+    {
+      "design_path": "bible_verses/new/faith/matthew_6_33_soft_watercolor",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image is rejected due to critical violations. The expected verse 'Seek first the kingdom of God' is replaced by AI-generated gibberish text such as 'Sesk', 'TH Q THE', and 'Gisd', failing the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Additionally, the Bible reference 'Matthew 6:33' is also rendered as unreadable gibberish ('Matuthela Oies'), violating the 'reference_format_correct' rule. The presence of AI-generated text makes the product unusable and inappropriate for the Christian market."
+    },
+    {
+      "design_path": "bible_verses/new/faith/matthew_6_33_vintage_botanical",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image critically fails on multiple rules. The verse text is not exactly correct, displaying 'Seek the Hissim God' instead of 'Seek first the kingdom of God', which is a significant deviation and includes gibberish. Furthermore, the image contains extensive AI-generated gibberish text, particularly in place of the expected verse reference and other areas, violating the 'no_gibberish_text' rule. The reference format is also completely incorrect and unreadable, failing the 'reference_format_correct' rule. These are all critical violations, leading to an immediate rejection."
+    },
+    {
+      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_soft_watercolor",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image critically fails on multiple rules. The verse text displayed, 'llove is bastive fking', is completely incorrect and unreadable gibberish, violating the 'verse_text_exactly_correct_no_typo' rule. Furthermore, both the main verse text and the biblical reference appear to be AI-generated gibberish, which directly violates the 'no_gibberish_text' rule that explicitly states text must be a Pillow overlay. Consequently, the 'reference_format_correct' rule is also violated as the reference is unreadable. These are all critical failures leading to an immediate rejection."
+    },
+    {
+      "design_path": "bible_verses/new/love/john_3_16_soft_watercolor",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image critically fails on multiple rules. The expected verse 'For God so loved the world' is replaced with AI-generated gibberish text like 'fonl loluvves World' and other unreadable characters, violating the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Furthermore, the required Bible reference (John 3:16) is completely absent and replaced by more gibberish, failing the 'reference_format_correct' rule. These are all critical violations, leading to an immediate rejection."
+    },
+    {
+      "design_path": "bible_verses/new/love/john_3_16_vintage_botanical",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct",
+        "tone_respectful_appropriate_for_christian_market"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image contains significant AI-generated gibberish text instead of the expected Bible verse and reference. The verse 'For God so loved the world' is completely distorted into unreadable text like 'For Coved ovvoes wjew volld', and the reference '(John 3:16)' is also replaced by gibberish. This violates critical rules regarding text accuracy, the presence of AI-generated text, and correct reference formatting. Consequently, the image is unsuitable for the 'bible_verses' pipeline and is disrespectful to the intended Christian market."
+    },
+    {
+      "design_path": "bible_verses/new/strength/philippians_4_13_soft_watercolor",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "Verse text is incorrect and illegible gibberish.",
+        "AI-generated text is present, violating the 'Pillow overlay only' rule.",
+        "Bible reference is incorrect and illegible gibberish."
+      ],
+      "rating_0_100": 0,
+      "reasoning": "The image contains AI-generated text that is completely illegible gibberish, failing to display the expected Bible verse 'I can do all things through Christ who strengthens me' (Philippians 4:13) or its reference correctly. This violates all critical rules: 'verse_text_exactly_correct_no_typo' as the text is not the expected verse, 'no_gibberish_text' as AI-generated text is visible instead of a Pillow overlay, and 'reference_format_correct' as the reference is also gibberish. Therefore, the image must be rejected."
+    },
+    {
+      "design_path": "bible_verses/new/strength/philippians_4_13_vintage_botanical",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image displays AI-generated gibberish text instead of the expected Bible verse, 'I can do all things through Christ who strengthens me' (Philippians 4:13). This violates critical rules requiring the verse text to be exactly correct, the absence of AI-generated text, and the correct reference format. The text is completely unreadable and does not convey the intended message, rendering the image unacceptable for the 'bible_verses' pipeline."
+    },
+    {
+      "design_path": "bible_verses/new/trust/romans_8_28_soft_watercolor",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 0,
+      "reasoning": "The image contains AI-generated gibberish text instead of the expected Bible verse \"All things work together for good\" (Romans 8:28). This violates the critical rules for exact verse text, absence of gibberish, and correct reference format. The text is not an overlay and is clearly part of the AI generation, making it completely unsuitable for the pipeline."
+    },
+    {
+      "design_path": "bible_verses/new/trust/romans_8_28_vintage_botanical",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 0,
+      "reasoning": "The image displays AI-generated gibberish text such as \"Alrigs Tinn Hngs\" and other unreadable characters, which is a direct violation of the 'no_gibberish_text' critical rule. The expected verse \"All things work together for good\" (Romans 8:28) is completely absent, violating the 'verse_text_exactly_correct_no_typo' rule. Furthermore, there is no correctly formatted biblical reference, violating the 'reference_format_correct' rule. Due to multiple critical rule violations, the image is rejected."
+    },
+    {
+      "design_path": "bible_verses/old/comfort/psalm_23_1_soft_watercolor",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image displays AI-generated gibberish text instead of the expected Bible verse, 'The Lord is my shepherd, I shall not want', and lacks the correct reference 'Psalm 23:1'. This violates critical rules regarding text accuracy, the presence of AI-generated text, and proper reference formatting, making the output completely unacceptable for the 'bible_verses' pipeline."
+    },
+    {
+      "design_path": "bible_verses/old/comfort/psalm_23_1_vintage_botanical",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 0,
+      "reasoning": "The image displays AI-generated gibberish text instead of the expected Bible verse 'The Lord is my shepherd, I shall not want'. This violates the critical rules for text accuracy (verse_text_exactly_correct_no_typo) and the prohibition of AI-generated text (no_gibberish_text). Furthermore, there is no correctly formatted verse reference (Psalm 23:1) present, violating the reference_format_correct rule. These critical failures necessitate a 'reject' verdict."
+    },
+    {
+      "design_path": "bible_verses/old/courage/isaiah_41_10_soft_watercolor",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 0,
+      "reasoning": "The image contains severe critical violations. The verse text is completely incorrect and appears as AI-generated gibberish (\"Feear n' Not, wtt lvo\" and other unreadable text) instead of the expected \"Fear not, for I am with you\". This directly violates the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Furthermore, the biblical reference is incorrect and incomplete, showing \"ISAI 4\" instead of \"Isaiah 41:10\", violating the 'reference_format_correct' rule. Due to these multiple critical failures, the image is entirely unacceptable and must be rejected."
+    },
+    {
+      "design_path": "bible_verses/old/courage/isaiah_41_10_vintage_botanical",
+      "pipeline": "bible_verses",
+      "verdict": "reject",
+      "issues": [
+        "verse_text_exactly_correct_no_typo",
+        "no_gibberish_text",
+        "reference_format_correct"
+      ],
+      "rating_0_100": 5,
+      "reasoning": "The image fails to display the expected verse 'Fear not, for I am with you' (Isaiah 41:10). Instead, it contains AI-generated gibberish text such as 'eear iat hu vail You' and other unreadable characters, which violates the 'no_gibberish_text' critical rule. Consequently, the 'verse_text_exactly_correct_no_typo' rule is also violated as the text is completely incorrect. Furthermore, there is no recognizable or correctly formatted biblical reference, failing the 'reference_format_correct' critical rule. These multiple critical violations necessitate a 'reject' verdict."
+    },
+    {
+      "design_path": "bible_verses_v2/new/anxiety/1_peter_5_7_minimalist_gold",
+      "pipeline": "bible_verses_v2",
+      "verdict": "approve",
+      "issues": [],
+      "rating_0_100": 98,
+      "reasoning": "The image displays excellent legibility with clear, well-contrasted text against a subtle, light background. The composition is balanced, with the verse and reference centered, and the decorative lines enhance the overall aesthetic without distracting from the message. There are no visible defects such as blurriness, pixelation, or alignment issues, making it suitable for print-on-demand without any concerns."
+    }
+  ]
 }
