@@ -1,0 +1,233 @@
+{
+  "brief_id": "brief_2026-05-22_coloring_kawaii_mushroom_hollow",
+  "created_at": "2026-05-22T21:26:01.765108Z",
+  "title": "Mushroom Hollow",
+  "author": "Maple Briarwood",
+  "reference_image": "products/coloring_books/_gate1/brief_2026-05-22_coloring_kawaii_mushroom_hollow/ref_candidates/cand_4.png",
+  "coherence": "tous les prompts partagent STYLE_BASE + style_keywords + la MEME reference verrouillee (img2img/IP-Adapter a la generation)",
+  "style_base": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality",
+  "negative_terms": [
+    "color",
+    "shading",
+    "grayscale",
+    "gray tones",
+    "hatching",
+    "crosshatching",
+    "sketch lines",
+    "pencil texture",
+    "fill",
+    "text",
+    "letters",
+    "watermark",
+    "signature",
+    "blurry",
+    "deformed",
+    "tiny unconnected details",
+    "open broken outlines"
+  ],
+  "prompt_source": "deterministe (1 prompt distinct par sujet, base de style partagee)",
+  "front_matter_typeset": [
+    "title_page",
+    "copyright",
+    "belongs_to",
+    "welcome"
+  ],
+  "pages": [
+    {
+      "index": 1,
+      "subject": "fly agaric mushroom with stars and moons floating around",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, fly agaric mushroom with stars and moons floating around, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 7
+    },
+    {
+      "index": 2,
+      "subject": "fairy ring of mushrooms with small fairy door",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, fairy ring of mushrooms with small fairy door, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 14
+    },
+    {
+      "index": 3,
+      "subject": "tiny mushroom cottage with smoking chimney",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, tiny mushroom cottage with smoking chimney, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 21
+    },
+    {
+      "index": 4,
+      "subject": "stacked mushrooms forming a tower",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, stacked mushrooms forming a tower, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 28
+    },
+    {
+      "index": 5,
+      "subject": "mushroom holding an umbrella in the rain",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom holding an umbrella in the rain, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 35
+    },
+    {
+      "index": 6,
+      "subject": "mushroom couple having tea together",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom couple having tea together, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 42
+    },
+    {
+      "index": 7,
+      "subject": "owl perched on giant mushroom",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, owl perched on giant mushroom, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 49
+    },
+    {
+      "index": 8,
+      "subject": "snail with mushroom hat on its shell",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, snail with mushroom hat on its shell, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 56
+    },
+    {
+      "index": 9,
+      "subject": "mushroom wearing witch hat",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom wearing witch hat, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 63
+    },
+    {
+      "index": 10,
+      "subject": "mushroom garden with bees and butterflies",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom garden with bees and butterflies, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 70
+    },
+    {
+      "index": 11,
+      "subject": "mushroom carrying lantern at night",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom carrying lantern at night, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 77
+    },
+    {
+      "index": 12,
+      "subject": "mushroom reading book by candlelight",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom reading book by candlelight, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 84
+    },
+    {
+      "index": 13,
+      "subject": "giant mushroom with tiny door and windows like a fairy house",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, giant mushroom with tiny door and windows like a fairy house, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 91
+    },
+    {
+      "index": 14,
+      "subject": "mushroom dancing with leaves",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom dancing with leaves, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 98
+    },
+    {
+      "index": 15,
+      "subject": "mushroom riding tiny snail",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom riding tiny snail, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 105
+    },
+    {
+      "index": 16,
+      "subject": "mushroom with ladybug friend",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom with ladybug friend, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 112
+    },
+    {
+      "index": 17,
+      "subject": "field of mushrooms with crescent moon above",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, field of mushrooms with crescent moon above, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 119
+    },
+    {
+      "index": 18,
+      "subject": "mushroom inside crystal ball",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom inside crystal ball, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 126
+    },
+    {
+      "index": 19,
+      "subject": "mushroom with butterfly wings",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom with butterfly wings, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 133
+    },
+    {
+      "index": 20,
+      "subject": "mushroom sleeping under leaf blanket",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom sleeping under leaf blanket, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 140
+    },
+    {
+      "index": 21,
+      "subject": "mushroom with constellation pattern on cap",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom with constellation pattern on cap, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 147
+    },
+    {
+      "index": 22,
+      "subject": "old wise mushroom with beard and walking stick",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, old wise mushroom with beard and walking stick, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 154
+    },
+    {
+      "index": 23,
+      "subject": "mushroom baker with apron and bread",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom baker with apron and bread, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 161
+    },
+    {
+      "index": 24,
+      "subject": "mushroom holding ornate magic key",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom holding ornate magic key, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 168
+    },
+    {
+      "index": 25,
+      "subject": "mushroom with sunflower companion",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom with sunflower companion, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 175
+    },
+    {
+      "index": 26,
+      "subject": "kitten curled up between mushrooms",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, kitten curled up between mushrooms, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 182
+    },
+    {
+      "index": 27,
+      "subject": "frog sitting on mushroom playing tiny flute",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, frog sitting on mushroom playing tiny flute, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 189
+    },
+    {
+      "index": 28,
+      "subject": "mushroom with vines and grapes climbing on it",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom with vines and grapes climbing on it, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 196
+    },
+    {
+      "index": 29,
+      "subject": "winter mushroom in snow with pine cones",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, winter mushroom in snow with pine cones, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 203
+    },
+    {
+      "index": 30,
+      "subject": "mushroom emerging from book pages",
+      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, mushroom emerging from book pages, no color, no shading, no grayscale, no gray tones, no hatching, no crosshatching, no sketch lines, no pencil texture, no fill, no text, no letters, no watermark, no signature, no blurry, no deformed, no tiny unconnected details, no open broken outlines",
+      "seed": 210
+    }
+  ],
+  "covers": {
+    "front": {
+      "prompt": "book cover illustration, COLOR, soft pastel cottagecore scene, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, Mushroom Hollow theme, cute and inviting, vertical book cover, no text",
+      "seed": 999,
+      "note": "Couverture COULEUR : scene phare du village colorée pastel doux, titre en haut bien lisible en miniature, nom d'auteur en bas. Doit ressortir en vignette Amazon/Etsy."
+    },
+    "back": {
+      "prompt": "back cover background, COLOR, soft pastel cottagecore pattern, cute kawaii, bold clean black line art, cottagecore, whimsical, Coco-Wyo-like generic, rounded shapes, large expressive eyes, gentle and uncluttered, space for text and barcode, no text",
+      "seed": 998,
+      "note": "Fond cottagecore doux assorti a la couv avant ; blurb lisible ; zone code-barres laissee vide."
+    }
+  },
+  "images_planned": 32,
+  "image_budget_max": 50,
+  "within_budget": true,
+  "status": "PLAN PRET — aucune image generee. Lancer la generation = etape suivante (CI / image_router)."
+}

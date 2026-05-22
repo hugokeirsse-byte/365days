@@ -328,7 +328,13 @@ def main():
 
     creative = gemini_creative(opp) if GEMINI_API_KEY else None
     if creative is None:
-        print("  (Gemini indisponible -> mode deterministe)")
+        if os.environ.get("ALLOW_FALLBACK_BRIEF") != "1":
+            print("⊝ Gemini indisponible -> AUCUN brief ecrit.")
+            print("   Le contenu d'un cahier des charges doit etre ECRIT PAR L'IA (Gemini), pas par un gabarit.")
+            print("   -> Lance en CI avec GEMINI_API_KEY pour un vrai brief autonome.")
+            print("   (ALLOW_FALLBACK_BRIEF=1 force un BROUILLON deterministe, uniquement pour tester le cablage.)")
+            return 0
+        print("  (mode deterministe FORCE -> BROUILLON de test, NON ecrit par l'IA)")
         creative = fallback_creative(opp)
     print(f"  Source creative : {creative['_source']}")
 
