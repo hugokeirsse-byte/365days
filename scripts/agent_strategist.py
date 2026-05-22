@@ -215,7 +215,7 @@ def coloring_audit_criteria():
 
 def build_brief(opp, c):
     today = date.today().isoformat()
-    bid = f"brief_{today}_coloring_{c['theme_slug']}"
+    bid = f"brief_{today}_coloring_{slugify(c['theme_slug'])}"
     author = c["author_pen_name"]
     title = c["title_en"]
     return {
