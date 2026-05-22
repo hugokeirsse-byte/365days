@@ -47,7 +47,7 @@ except ImportError:
     print("AVERTISSEMENT : prompts.py absent. On notera sans contexte de prompt.")
 
 API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
-MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash-exp")
+MODEL_NAME = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 TARGET_DIR_ARG = os.environ.get("TARGET_DIR", "generated_images")
 TARGET_DIR = os.path.join(ROOT, TARGET_DIR_ARG)
 DELAY_SECONDS = float(os.environ.get("SCORE_DELAY", "1.0"))
