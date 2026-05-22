@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-22T18:23:47.814300Z",
+  "timestamp": "2026-05-22T21:05:57.822662Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,70 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "SiliconFlow",
-      "url": "https://siliconflow.cn/en/",
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Generous free trial credits upon registration, with free daily credits. Extremely low pricing thereafter (e.g., $0.00015 per image for FLUX.1-schnell).",
-      "what_it_does_uniquely": "Provides stable, high-speed API endpoints for FLUX.1-schnell, SDXL, and various LLMs with OpenAI-compatible headers. It does not block GitHub Actions runner IPs, making it a highly reliable replacement for huggingface/horde.",
-      "would_integrate_where": "GitHub Actions image generation workflows (e.g., `produce_coloring_book`, `produce_kdp_cover`) as the primary fast API generator.",
+      "free_tier_concrete_limits": "Around $10 free credits on registration (no card required initially). Low-cost pricing ($0.003/image for FLUX-schnell).",
+      "what_it_does_uniquely": "Provides lightning-fast inference for FLUX-schnell, FLUX-dev, and highly optimized SDXL models with clean, easy-to-use SDKs and HTTP APIs.",
+      "would_integrate_where": "GitHub Actions image generation step in 'produce_coloring_book' and 'produce_kdp_cover' pipelines as a direct replacement/fallback for Pollinations.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires phone/email verification; documentation is sometimes bilingual (Chinese/English) but the API itself uses standard OpenAI schemas."
+      "risk_or_caveat": "Credits expire eventually; requires monitoring usage to stay within free credits or transition to extremely low-cost PAYG."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Unlimited free uploads of 3D models. Standard commission on paid downloads or designer memberships.",
-      "what_it_does_uniquely": "A massive, fast-growing 3D model community with a powerful geometric search engine. It drives significant organic traffic to 3D designers compared to older, crowded platforms.",
-      "would_integrate_where": "3D/STL asset pipeline (like parametric STL designs) to cross-list items alongside Cults3D.",
+      "tool_or_platform": "Jina Reader API",
+      "url": "https://jina.ai/reader/",
+      "category": "scraping",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month.",
+      "what_it_does_uniquely": "Converts any URL (including search results and product pages) into clean, LLM-friendly markdown, bypassing basic anti-scraping walls.",
+      "would_integrate_where": "Used in 'agent_trendhunter' and 'agent_opportunity_hunter' to extract trending topics directly from Etsy search result URLs or web articles.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "High competition in basic 3D prints; requires clean file geometry (STL/OBJ) to rank well in search."
+      "risk_or_caveat": "Heavy anti-bot sites like Amazon or Cloudflare-protected domains may still occasionally block requests."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Segmind",
-      "url": "https://www.segmind.com/",
+      "tool_or_platform": "Leonardo.ai API",
+      "url": "https://leonardo.ai/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24 hours).",
-      "what_it_does_uniquely": "Offers specialized APIs for image generation models including SDXL, ControlNet, and FLUX, with dedicated workflows for line art, vector conversion, and image-to-image.",
-      "would_integrate_where": "Coloring book pipeline (`produce_coloring_book`) to apply ControlNet line-art extraction on raw generated images.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Strict rate limits on the free tier (typically 1 request per second)."
+      "free_tier_concrete_limits": "150 daily tokens (generates approximately 15-30 high-quality images daily for free).",
+      "what_it_does_uniquely": "Offers specialized models tuned for game assets, isometric items, and highly stylized illustration styles far superior to raw SDXL/Flux.",
+      "would_integrate_where": "Integrated into 'produce_gamedev_asset_pack' and 'produce_coloring_book' to generate high-value vectorizable templates.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Free tier API access requires registering on their developer portal and has lower concurrency limits."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Booth.pm",
-      "url": "https://booth.pm/en",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list digital products. 5.6% + transaction fee only upon successful sale.",
-      "what_it_does_uniquely": "The primary marketplace for Japanese, indie, and anime-style digital assets (3D avatars, game textures, low-poly assets, music loops). Massive organic global traffic for creators.",
-      "would_integrate_where": "Game development asset pipeline (`produce_gamedev_asset_pack`) to tap into the high-paying VTuber and VRChat creator economy.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "The interface is primarily Japanese/English hybrid; assets must appeal to the anime, game, or VR communities to convert."
+      "tool_or_platform": "Meshy.ai",
+      "url": "https://www.meshy.ai/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "200 credits per month free (enough for ~20 text-to-3D or image-to-3D generations).",
+      "what_it_does_uniquely": "Generates high-quality textured 3D meshes (.obj / .gltf) directly from text prompts or 2D image inputs.",
+      "would_integrate_where": "In 'produce_gamedev_asset_pack' or a new 3D model delivery pipeline, uploading the outputs directly to Cults3D or Thangs.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Generated meshes might require manual decimation or cleanup for production-ready game development."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Wikimedia Commons API",
-      "url": "https://commons.wikimedia.org/w/api.php",
-      "category": "scraping",
-      "free_tier_concrete_limits": "100% free, no registration required. High rate limits if a descriptive User-Agent header is provided.",
-      "what_it_does_uniquely": "Allows programmatically searching and downloading millions of high-resolution, verified public domain historical drawings, botanical illustrations, and vintage patterns.",
-      "would_integrate_where": "Cultural arbitrage pipelines (`produce_cultural_arbitrage_v2`) to download genuine vintage assets, which can then be vectorized or packaged for POD without AI generation limits.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "Must strictly filter search results by license type (Public Domain / CC0) via API parameters to ensure 100% commercial safety."
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to upload, list, and monetize 3D files with direct designer program integration.",
+      "what_it_does_uniquely": "A massive, fast-growing 3D model search engine and marketplace that actively indexes and drives organic traffic to creators' models.",
+      "would_integrate_where": "An automated distribution pipeline alongside Cults3D to upload STL files produced by 'produce_stl_parametric'.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Requires STL files to be genuinely printable or functional to gain traction and positive reviews."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Printify Pop-Up Store",
-      "url": "https://printify.com/pop-up-store/",
-      "category": "pod",
-      "free_tier_concrete_limits": "100% free to create and host. Printify takes their base product price on sale; you keep 100% of the markup. No monthly fees.",
-      "thought": "This allows Hugo to sell POD items directly via a link without paying for Shopify or Etsy listing fees.",
-      "what_it_does_uniquely": "Provides a fully hosted, free e-commerce storefront linked directly to Printify's catalog. No external website, domain, or hosting setup is required.",
-      "would_integrate_where": "Viral formats and social media pipelines; allows Hugo to link directly to a purchase page from his Android phone or automated posts.",
+      "tool_or_platform": "OpenRouter API",
+      "url": "https://openrouter.ai/",
+      "category": "ai_text",
+      "free_tier_concrete_limits": "Unlimited access to a rotating selection of free models (e.g., Llama 3.1 8B, Gemma 2 9B) with no credit card required.",
+      "what_it_does_uniquely": "Acts as a unified interface for dozens of LLM providers, making it incredibly easy to swap models if one provider goes down.",
+      "would_integrate_where": "The base LLM call layer in 'agent_orchestrator' as a redundant fallback for Gemini text generation.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Limited custom branding options compared to a dedicated Shopify store, and traffic must be driven manually."
+      "risk_or_caveat": "Free models can experience high latency or temporary rate-limiting during peak global usage times."
     }
   ]
 }
