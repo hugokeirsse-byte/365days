@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-22T10:39:57.506404Z",
+  "timestamp": "2026-05-22T18:23:47.814300Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -80,6 +80,7 @@
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -89,69 +90,70 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Jina AI Reader API",
-      "url": "https://r.jina.ai/",
-      "category": "scraping",
-      "free_tier_concrete_limits": "Unlimited free requests (rate-limited to 200 requests per minute per IP).",
-      "what_it_does_uniquely": "Converts any URL into clean, LLM-ready Markdown text while automatically bypassing common anti-bot/Cloudflare protections.",
-      "would_integrate_where": "Integrate directly into 'agent_trendhunter' and 'agent_niche_gap' via GitHub Actions to safely scrape Etsy, Amazon, or Reddit trends without paying for proxy networks.",
+      "tool_or_platform": "SiliconFlow",
+      "url": "https://siliconflow.cn/en/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous free trial credits upon registration, with free daily credits. Extremely low pricing thereafter (e.g., $0.00015 per image for FLUX.1-schnell).",
+      "what_it_does_uniquely": "Provides stable, high-speed API endpoints for FLUX.1-schnell, SDXL, and various LLMs with OpenAI-compatible headers. It does not block GitHub Actions runner IPs, making it a highly reliable replacement for huggingface/horde.",
+      "would_integrate_where": "GitHub Actions image generation workflows (e.g., `produce_coloring_book`, `produce_kdp_cover`) as the primary fast API generator.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "High volume scraping may require adding a free Jina API key to increase rate limits, though basic usage requires no key at all."
+      "risk_or_caveat": "Requires phone/email verification; documentation is sometimes bilingual (Chinese/English) but the API itself uses standard OpenAI schemas."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Segmind",
-      "url": "https://www.segmind.com/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "100 free credits daily (resetting every 24 hours), enough for ~100 SDXL or 50 FLUX images.",
-      "what_it_does_uniquely": "Provides incredibly fast serverless APIs for advanced model architectures, including specialized ControlNet, SDXL, and IP-Adapter setups perfect for structured lines (coloring books).",
-      "would_integrate_where": "Replace Pollinations in 'produce_coloring_book' and 'produce_kdp_cover' pipelines to generate high-resolution, perfectly-framed vector-style illustrations.",
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Unlimited free uploads of 3D models. Standard commission on paid downloads or designer memberships.",
+      "what_it_does_uniquely": "A massive, fast-growing 3D model community with a powerful geometric search engine. It drives significant organic traffic to 3D designers compared to older, crowded platforms.",
+      "would_integrate_where": "3D/STL asset pipeline (like parametric STL designs) to cross-list items alongside Cults3D.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Free tier API keys may occasionally experience queue delays during peak hours."
+      "risk_or_caveat": "High competition in basic 3D prints; requires clean file geometry (STL/OBJ) to rank well in search."
     },
     {
       "rank": 3,
-      "tool_or_platform": "OpenRouter",
-      "url": "https://openrouter.ai/",
-      "category": "ai_text",
-      "free_tier_concrete_limits": "Unlimited free access to multiple state-of-the-art open models (like Llama 3 8B, Mistral 7B, Phi-3) marked as $0.00/M tokens.",
-      "what_it_does_uniquely": "Aggregates hundreds of LLMs into a single OpenAI-compatible API format, enabling seamless fallback to zero-cost models if Gemini hits quota limits.",
-      "would_integrate_where": "Used in the 'agent_orchestrator' multi-model fallback routine to ensure the perpetual brains never stall when Gemini APIs rate-limit or fail.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Free models can sometimes suffer from higher latency during periods of extreme global demand."
+      "tool_or_platform": "Segmind",
+      "url": "https://www.segmind.com/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24 hours).",
+      "what_it_does_uniquely": "Offers specialized APIs for image generation models including SDXL, ControlNet, and FLUX, with dedicated workflows for line art, vector conversion, and image-to-image.",
+      "would_integrate_where": "Coloring book pipeline (`produce_coloring_book`) to apply ControlNet line-art extraction on raw generated images.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Strict rate limits on the free tier (typically 1 request per second)."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com/",
+      "tool_or_platform": "Booth.pm",
+      "url": "https://booth.pm/en",
       "category": "marketplace",
-      "free_tier_concrete_limits": "No monthly fee. Zero cost to host unlimited digital files. Only takes a 5% + $0.50 transaction fee on successful sales.",
-      "what_it_does_uniquely": "Acts as a Merchant of Record, meaning they completely handle global sales tax and EU VAT compliance automatically. Essential for a solo founder based in France.",
-      "would_integrate_where": "Host and distribute digital game asset packs, parametric STL files, and PDF coloring book packs directly, bypassing Etsy listing fees.",
+      "free_tier_concrete_limits": "Free to list digital products. 5.6% + transaction fee only upon successful sale.",
+      "what_it_does_uniquely": "The primary marketplace for Japanese, indie, and anime-style digital assets (3D avatars, game textures, low-poly assets, music loops). Massive organic global traffic for creators.",
+      "would_integrate_where": "Game development asset pipeline (`produce_gamedev_asset_pack`) to tap into the high-paying VTuber and VRChat creator economy.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Payouts require reaching a minimum threshold ($10) and are processed on a weekly schedule."
+      "risk_or_caveat": "The interface is primarily Japanese/English hybrid; assets must appeal to the anime, game, or VR communities to convert."
     },
     {
       "rank": 5,
-      "tool_or_platform": "DeepInfra",
-      "url": "https://deepinfra.com/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "$1.80 free sign-up credit. FLUX.1-schnell costs only $0.0008 per image, translating to ~2,250 free high-quality images.",
-      "what_it_does_uniquely": "Offers the absolute lowest market pricing for FLUX.1-schnell and SDXL models with a fully compatible OpenAI/Diffusers API wrapper.",
-      "would_integrate_where": "Main image production engine in 'produce_gamedev_asset_pack' and 'produce_tumbler_wraps' pipelines to get professional-grade, commercial-use graphics.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Once the initial $1.80 credit is exhausted, requires a credit card to top up (though $5 will buy over 6,000 additional images)."
+      "tool_or_platform": "Wikimedia Commons API",
+      "url": "https://commons.wikimedia.org/w/api.php",
+      "category": "scraping",
+      "free_tier_concrete_limits": "100% free, no registration required. High rate limits if a descriptive User-Agent header is provided.",
+      "what_it_does_uniquely": "Allows programmatically searching and downloading millions of high-resolution, verified public domain historical drawings, botanical illustrations, and vintage patterns.",
+      "would_integrate_where": "Cultural arbitrage pipelines (`produce_cultural_arbitrage_v2`) to download genuine vintage assets, which can then be vectorized or packaged for POD without AI generation limits.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "Must strictly filter search results by license type (Public Domain / CC0) via API parameters to ensure 100% commercial safety."
     },
     {
       "rank": 6,
-      "tool_or_platform": "DuckDuckGo Search Python Library",
-      "url": "https://pypi.org/project/duckduckgo-search/",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100% free with no API keys, no registration, and highly relaxed rate limits.",
-      "what_it_does_uniquely": "Programmatic search engine scraping directly through Python. Allows retrieving live search results, news, and images directly within terminal environments.",
-      "would_integrate_where": "Integrate into 'agent_trend_explosion' and 'agent_opportunity_hunter' to cross-reference hot keywords with actual live search popularity directly from Termux or GitHub Actions.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Aggressive, concurrent multi-threading from the same GitHub Actions IP block can trigger temporary rate limits (HTTP 429)."
+      "tool_or_platform": "Printify Pop-Up Store",
+      "url": "https://printify.com/pop-up-store/",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free to create and host. Printify takes their base product price on sale; you keep 100% of the markup. No monthly fees.",
+      "thought": "This allows Hugo to sell POD items directly via a link without paying for Shopify or Etsy listing fees.",
+      "what_it_does_uniquely": "Provides a fully hosted, free e-commerce storefront linked directly to Printify's catalog. No external website, domain, or hosting setup is required.",
+      "would_integrate_where": "Viral formats and social media pipelines; allows Hugo to link directly to a purchase page from his Android phone or automated posts.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Limited custom branding options compared to a dedicated Shopify store, and traffic must be driven manually."
     }
   ]
 }
