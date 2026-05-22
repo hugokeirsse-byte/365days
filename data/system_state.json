@@ -1,0 +1,35 @@
+{
+  "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+  "last_updated": "2026-05-22T05:10:00Z",
+  "phase": "amorçage — aucun produit publie, aucune vente encore",
+  "monthly_revenue_eur": 0,
+  "active_platforms": [],
+  "registered_not_live": ["Redbubble", "Amazon KDP", "Cults3D (prevu)"],
+  "hugo_available_hours_per_week": 10,
+  "hugo_budget_eur_per_month": 20,
+  "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+  "current_priorities": [
+    "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+    "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+    "Produire et publier le premier coloring book abouti (qualite vendable)"
+  ],
+  "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+  "open_issues": [
+    "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+    "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+    "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+  ],
+  "image_generation_status": {
+    "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+    "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+    "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+    "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+    "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+  },
+  "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+  "constraints": [
+    "100% gratuit privilegie; budget image max 20€/mois accepte",
+    "Tout doit tourner sans PC, via GitHub Actions",
+    "Legal et ethique uniquement (pas de copyright, pas de spam)"
+  ]
+}

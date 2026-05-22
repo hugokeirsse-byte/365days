@@ -28,6 +28,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime
@@ -40,7 +41,10 @@ BRAIN_DIR = DATA_DIR / "brain"
 STATE_PATH = DATA_DIR / "system_state.json"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash-exp")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# Modèles essayés dans l'ordre : si l'un est déprécié (404), on passe au suivant.
+# Rend les cerveaux résilients aux retraits de modèles par Google (cause du blocage initial).
+GEMINI_FALLBACKS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest"]
 API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 USER_AGENT = "365days-BrainMeta/1.0"
@@ -319,34 +323,57 @@ def list_pipelines() -> list[str]:
 # GEMINI API CALL
 # ============================================================
 
-def call_gemini(prompt: str, retries: int = 3) -> dict | None:
-    """Appelle Gemini avec response JSON strict."""
+def _models_to_try() -> list[str]:
+    """Modèle principal puis fallbacks (sans doublon)."""
+    seq = [GEMINI_MODEL]
+    for m in GEMINI_FALLBACKS:
+        if m not in seq:
+            seq.append(m)
+    return seq
+
+
+def call_gemini(prompt: str, retries: int = 3) -> tuple[dict | None, str]:
+    """Appelle Gemini (JSON strict). Retourne (resultat, info).
+
+    info = nom du modèle qui a répondu, ou message d'erreur explicite (pour
+    diagnostic). Essaie chaque modèle de _models_to_try() ; sur 404 (modèle
+    déprécié) passe au suivant, sur 429 (quota) applique un backoff.
+    """
     if not GEMINI_API_KEY:
-        return None
-    url = f"{API_BASE}/{GEMINI_MODEL}:generateContent?key={GEMINI_API_KEY}"
-    body = {
+        return None, "GEMINI_API_KEY absent"
+    body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "temperature": 0.8,
             "responseMimeType": "application/json",
             "maxOutputTokens": 4096,
         },
-    }
-    data = json.dumps(body).encode("utf-8")
-    req = urllib.request.Request(
-        url, data=data,
-        headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
-    )
-    for attempt in range(retries):
-        try:
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-                resp_data = json.loads(resp.read())
-            text = resp_data["candidates"][0]["content"]["parts"][0]["text"]
-            return json.loads(text)
-        except Exception as exc:  # noqa: BLE001
-            print(f"    retry {attempt+1}/{retries} : {type(exc).__name__}")
-            time.sleep(4 + attempt * 4)
-    return None
+    }).encode("utf-8")
+    last_err = "inconnu"
+    for model in _models_to_try():
+        url = f"{API_BASE}/{model}:generateContent?key={GEMINI_API_KEY}"
+        for attempt in range(retries):
+            req = urllib.request.Request(
+                url, data=body,
+                headers={"Content-Type": "application/json", "User-Agent": USER_AGENT},
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+                    resp_data = json.loads(resp.read())
+                text = resp_data["candidates"][0]["content"]["parts"][0]["text"]
+                return json.loads(text), model
+            except urllib.error.HTTPError as exc:
+                detail = exc.read()[:200].decode(errors="ignore")
+                last_err = f"{model}: HTTP {exc.code} {detail}"
+                print(f"    {last_err}")
+                if exc.code == 404:
+                    break  # modèle inexistant/déprécié -> modèle suivant
+                time.sleep((8 if exc.code == 429 else 3) + attempt * 4)
+            except Exception as exc:  # noqa: BLE001
+                last_err = f"{model}: {type(exc).__name__} {exc}"
+                print(f"    {last_err}")
+                time.sleep(3 + attempt * 3)
+    return None, last_err
 
 
 # ============================================================
@@ -391,10 +418,18 @@ def run_brain(agent_key: str) -> int:
         pipelines=pipelines_str,
     )
     print(f"\n→ Calling Gemini {GEMINI_MODEL}...")
-    result = call_gemini(prompt)
+    result, info = call_gemini(prompt)
 
     if not result:
-        print("✗ Gemini call failed")
+        print(f"✗ Gemini call failed : {info}")
+        # Rapport d'erreur explicite (pas de silence) pour diagnostic via Actions.
+        (BRAIN_DIR / f"{agent_key}_proposals.json").write_text(json.dumps({
+            "agent": agent_key,
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "status": "ERROR — Gemini call failed",
+            "error": info,
+            "models_tried": _models_to_try(),
+        }, indent=2, ensure_ascii=False))
         return 1
 
     # Format report
@@ -402,7 +437,7 @@ def run_brain(agent_key: str) -> int:
         "agent": agent_key,
         "title": agent["title"],
         "timestamp": datetime.utcnow().isoformat() + "Z",
-        "model": GEMINI_MODEL,
+        "model": info,
         "system_state_snapshot": state,
         "pipelines_known": pipelines,
         **result,
