@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-22T10:39:39.088314Z",
+  "timestamp": "2026-05-22T18:22:56.307880Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -80,6 +80,7 @@
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -89,58 +90,80 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Publish first 3 Coloring Books on Amazon KDP using Together AI (FLUX-schnell)",
+      "action_title": "Publish First KDP Coloring Book via Runware PAYG",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 15,
       "estimated_revenue_uplift_eur_30days_high": 120,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "The 'produce_coloring_book' pipeline is ready. Together AI offers a free tier for FLUX-schnell which generates high-quality black and white outlines. KDP has no listing fees, meaning 100% net margin on organic sales.",
-      "first_action_today": "Run the 'produce_coloring_book' pipeline using TOGETHER_API_KEY on GitHub Actions to generate 30 coloring pages on a trending niche (e.g., 'cozy hygge rooms' or 'simple mandalas')."
+      "hugo_effort_hours": 6,
+      "why_this_works_now": "The system is ready to produce but blocked by image generation. Spending 5€ on Runware PAYG unlocks 8,000+ FLUX-schnell images. A completed coloring book in a specific sub-niche (e.g., 'Steampunk Animals Coloring Book for Adults') can start selling organically on Amazon within 72 hours of approval.",
+      "first_action_today": "Activate a Runware account, fund it with 5€, grab the API key, and configure the GHA pipeline to generate 40 high-definition coloring book pages."
     },
     {
       "rank": 2,
-      "action_title": "Bulk-upload 100 Minimalist Typography Designs to Redbubble",
+      "action_title": "Programmatic Blank Comic/Story Book Generation for KDP",
       "type": "upload",
-      "target_platform": "Redbubble",
+      "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 60,
+      "estimated_revenue_uplift_eur_30days_high": 75,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Bypasses the current AI image generation bottleneck entirely. Text-based designs (funny quotes, local idioms, niche professions) sell exceptionally well on t-shirts and mugs, require zero GPU budget, and can be bulk-generated using simple Python scripts on Termux.",
-      "first_action_today": "Write a 20-line Python script in Termux to generate 100 transparent PNG text designs using PIL (Pillow) with trendy free-commercial-use fonts."
+      "why_this_works_now": "Requires zero AI image budget. By using a Python script with ReportLab on Termux, Hugo can generate PDFs with blank comic panels, storyboards, or music manuscript sheets. These low-content books sell consistently to parents and creators.",
+      "first_action_today": "Write a 50-line Python script on Termux to output a 110-page 8.5x11 PDF of blank comic book templates with alternating panel layouts."
     },
     {
       "rank": 3,
-      "action_title": "Launch 5 Parametric OpenSCAD 3D Models on Cults3D",
+      "action_title": "Redbubble Sticker Packs (Niche Text/Minimalist Vector)",
       "type": "upload",
-      "target_platform": "Cults3D",
+      "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Cults3D is registered but empty. Functional, parametric 3D models (e.g., custom drawer organizers, cable clips, gridfinity modules) have high search volume and conversion rates from 3D printing enthusiasts who value utility over aesthetics.",
-      "first_action_today": "Upload 3 existing parametric STL files generated via the 'produce_stl_parametric' pipeline, pricing them at a competitive €1.99 to €2.99."
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "Sticker packs are the highest-converting items on Redbubble. By grouping 5-10 transparent-background text/minimalist designs (e.g., funny developer/Termux jokes, niche hobby slogans) onto a single canvas, buyers feel they get high value. No complex image gen needed, simple SVG or PIL-generated text is enough.",
+      "first_action_today": "Generate 10 transparent PNG sticker sheets of funny developer quotes using a PIL Python script in Termux and upload them to Redbubble."
     },
     {
       "rank": 4,
-      "action_title": "Publish 5 Niche 2D Game Asset Packs on itch.io (Pay-What-You-Want)",
+      "action_title": "Launch Cults3D with Parametric OpenSCAD 3D Prints",
       "type": "upload",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Game developers constantly search itch.io for prototyping assets. By offering UI kits, seamless textures, or 2D sprites under a Pay-What-You-Want model with a suggested price of $2.00, you capture both free traffic and generous backers.",
-      "first_action_today": "Package 5 sets of UI buttons or pattern backgrounds generated via the 'produce_gamedev_asset_pack' pipeline into zip files and create your itch.io seller profile."
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 5,
+      "why_this_works_now": "Cults3D has a highly motivated buying audience looking for functional prints. Writing simple OpenSCAD scripts (e.g., customizable SD card holders, gridfinity organizers, or cable management clips) allows Hugo to compile STL files directly on his phone/GHA and list them for 1.50€ to 3.00€.",
+      "first_action_today": "Write a parametric OpenSCAD script for a modular battery organizer, render the STL, and list it on Cults3D as a paid file."
     },
     {
       "rank": 5,
-      "action_title": "Implement 'Loss-Leader' Launch Pricing on first KDP Low-Content Books",
-      "type": "pricing",
+      "action_title": "KDP Title & Keyword Optimization (SEO Lift)",
+      "type": "conversion",
       "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 40,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Organic reach on KDP depends entirely on the 7 backend search keywords and subtitle. Instead of generic terms, targeting long-tail keywords with low competition (e.g., 'gothic horror coloring book for seniors' instead of 'coloring book') ensures immediate page-1 visibility.",
+      "first_action_today": "Use Amazon's search bar incognito on the phone to find 7 autofill long-tail keywords for the first book's metadata."
+    },
+    {
+      "rank": 6,
+      "action_title": "Dual-Target Book Covers (Re-skinning Book Interior)",
+      "type": "reactivate",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 80,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Once a high-quality interior (like a mandala or pattern coloring book) is ready, it can be marketed to two entirely different audiences. By keeping the interior identical but changing the cover title and styling (e.g., 'Mandala Coloring Book for Stress Relief' vs 'Mindful Mandalas for Teens'), Hugo doubles his sales opportunities with zero extra interior design effort.",
+      "first_action_today": "Prepare two distinct cover layouts (one minimalist/pastel, one high-contrast/bold) for the first coloring book interior."
+    },
+    {
+      "rank": 7,
+      "action_title": "Gamedev UI Asset Pack Launch on itch.io",
+      "type": "upload",
+      "target_platform": "itch.io",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 30,
-      "hugo_effort_hours": 1,
-      "why_this_works_now": "New KDP listings have zero organic rank. Pricing your initial books at the absolute printing minimum (e.g., €4.49 for a notebook, yielding ~€0.05 royalty) triggers the Amazon A9 algorithm through early conversions, paving the way to raise prices to €6.99 later.",
-      "first_action_today": "Adjust the metadata and pricing of your pending low-content book drafts to the minimum allowed price on the KDP dashboard."
+      "estimated_revenue_uplift_eur_30days_high": 45,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "Indie gamedevs are constantly looking for affordable UI assets (buttons, icons, panels). Using Cloudflare Workers AI or Together AI (FLUX-schnell) to generate fantasy, sci-fi, or retro pixel-art UI buttons and slicing them programmatically allows Hugo to upload a cohesive asset pack to itch.io for $3.00.",
+      "first_action_today": "Use Together AI to generate a sheet of 32 fantasy RPG potion icons, crop them using Python's PIL, and create the draft listing on itch.io."
     }
   ]
 }
