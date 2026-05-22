@@ -17,7 +17,7 @@ heuristique du agent_visual_audit qui marche sans clé).
 
 Variables d'env :
   GEMINI_API_KEY            clé Google AI Studio (gratuit 1500 req/jour)
-  GEMINI_MODEL              défaut: gemini-2.0-flash-exp
+  GEMINI_MODEL              défaut: gemini-2.5-flash
   AUTO_REJECT=1             déplace les rejected vers _rejected/
   MAX_IMAGES=50             limite par run (économie de quota API)
   RECHECK_DAYS=30           re-vérifie un design si > N jours
@@ -40,7 +40,7 @@ REJECTED_DIR = PRODUCTS_DIR / "_rejected"
 RULES_PATH = DATA_DIR / "quality_rules.json"
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash-exp")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 AUTO_REJECT = os.environ.get("AUTO_REJECT") == "1"
