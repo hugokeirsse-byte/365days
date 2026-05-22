@@ -1,7 +1,168 @@
 {
   "agent": "tools_scout",
-  "timestamp": "2026-05-20T10:39:21.298511Z",
-  "status": "PAUSED — waiting for GEMINI_API_KEY secret",
-  "mission": "You hunt new FREE tools, APIs, platforms, services emerging in 2026 that could be integrated to our automation stack. Focus on what's NEW or UNDER-USED in the AI/POD/marketplace landscape.",
-  "note": "Add GEMINI_API_KEY to GitHub secrets to activate this brain."
+  "title": "Tools Scout Brain",
+  "timestamp": "2026-05-22T05:14:25.826120Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "$10 free trial credits upon account creation (equivalent to ~3,300 images generated using FLUX.1-schnell at $0.003/image). No monthly fee.",
+      "what_it_does_uniquely": "Extremely fast inference speeds optimized for developers. It serves state-of-the-art models like FLUX.1-schnell, FLUX.1-dev, and SD3.5 with highly stable, well-documented REST APIs that run flawlessly from GitHub Actions without IP blocking.",
+      "would_integrate_where": "Integrates directly into the `produce_coloring_book` and `produce_kdp_cover` pipelines inside GitHub Actions as the primary high-quality image generator, replacing the rate-limited Pollinations and Gemini image APIs.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires registration to get the API key; once the $10 free credits run out, it transitions to a very cheap pay-as-you-go model (can be capped under Hugo's €20 budget)."
+    },
+    {
+      "rank": 2,
+      "tool_or_platform": "Segmind",
+      "url": "https://www.segmind.com",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "100 free credits daily, resetting every 24 hours. FLUX.1-schnell costs 1.5 credits per generation (~66 free high-quality images per day).",
+      "what_it_does_uniquely": "Provides a consistent daily free tier with zero upkeep. It hosts a wide array of models including specialized Vector/SVG generators, line art models, and standard SDXL/FLUX.1 pipelines.",
+      "would_integrate_where": "Can act as a daily-renewing secondary image API for `produce_coloring_book` or `produce_svg_pack` to completely avoid spending any budget on image generation.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Rate limits on concurrent requests on the free tier might require adding simple retry-on-429 logic in the Python generation scripts."
+    },
+    {
+      "rank": 3,
+      "tool_or_platform": "Lemon Squeezy",
+      "url": "https://www.lemonsqueezy.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "0$ per month. No setup fees. They charge a transaction fee of 5% + $0.50 only when a sale is made.",
+      "what_it_does_uniquely": "Acts as a Merchant of Record (MoR). This is critical for Hugo in France because Lemon Squeezy automatically handles EU/French VAT calculations, collection, and filing, removing all tax administration overhead for digital downloads.",
+      "would_integrate_where": "Serving as the direct-to-consumer store for high-margin assets (PDF coloring books, complete game dev asset packs, STL files) linked from social media or GitHub landing pages.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Payouts have a minimum threshold and security reserve period, but it remains the safest way to sell globally from France without VAT headaches."
+    },
+    {
+      "rank": 4,
+      "tool_or_platform": "ScaleSerp",
+      "url": "https://scaleserp.com",
+      "category": "analytics",
+      "free_tier_concrete_limits": "125 free search API requests per month. No credit card required.",
+      "what_it_does_uniquely": "Provides fully parsed, clean JSON search results from Google Search, Google Shopping, and Google Trends without scraping blocks or IP bans.",
+      "would_integrate_where": "Integrates into the trend hunter agents (`agent_trendhunter`, `agent_niche_gap`) to verify search volumes, identify breakout keywords, and check what products are currently ranking on Google Shopping for specific niches.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "125 requests/month is low, meaning the agent must run selectively (e.g., once a week to scout niches rather than on every single commit)."
+    },
+    {
+      "rank": 5,
+      "tool_or_platform": "TeePublic",
+      "url": "https://www.teepublic.com",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free to sign up and upload. No listing fees.",
+      "what_it_does_uniquely": "Owned by Redbubble but operates as a separate marketplace with its own search engine, organic traffic, and customer demographic (heavy focus on pop culture, retro, and niche humor).",
+      "would_integrate_where": "Can be targeted alongside Redbubble in a synchronized POD upload script. Since TeePublic's upload structure is simpler than Redbubble's, automation via headless APIs or form submitters is highly viable.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "TeePublic recently introduced account categories (Apprentice vs. Artisan) which can affect organic visibility if the account is flagged as low-effort spam. Designs must be high quality."
+    },
+    {
+      "rank": 6,
+      "tool_or_platform": "ElevenLabs API",
+      "url": "https://elevenlabs.io",
+      "category": "ai_audio",
+      "free_tier_concrete_limits": "10,000 characters per month free. Access to high-quality pre-made voices.",
+      "what_it_does_uniquely": "The absolute industry standard for realistic text-to-speech. Unmatched quality for short audio assets, game voiceovers, or promotional audio clips.",
+      "would_integrate_where": "Integrates into a new pipeline for generating audio assets (e.g., 'produce_gamedev_audio_pack' containing NPC voice lines, spell incantations, or narrator prompts for indie game developers) to be sold on itch.io, Unity Asset Store, or Unreal Engine Marketplace.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Commercial attribution is required on the free tier ('Speech synthesis by ElevenLabs')."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "MyMiniFactory",
+      "url": "https://www.myminifactory.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to upload and share free 3D models. Store hosting for paid files has a subscription, but starting with free models to build a brand is 100% free.",
+      "what_it_does_uniquely": "The premier curated marketplace for 3D printing, especially tabletop gaming, miniatures, and functional prints. Highly targeted audience willing to pay premium prices compared to Cults3D.",
+      "would_integrate_where": "Complements the `produce_stl_parametric` pipeline. Hugo can upload basic parametric models or STL variations for free to drive traffic to his profile, then upsell complex packs.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Opening a premium seller store requires a monthly subscription, so the initial strategy must rely on free distribution with links to his Lemon Squeezy store for paid items."
+    }
+  ]
 }
