@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-22T21:05:57.822662Z",
+  "timestamp": "2026-05-23T02:05:41.053274Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Fal.ai",
-      "url": "https://fal.ai/",
+      "tool_or_platform": "Segmind API",
+      "url": "https://www.segmind.com/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Around $10 free credits on registration (no card required initially). Low-cost pricing ($0.003/image for FLUX-schnell).",
-      "what_it_does_uniquely": "Provides lightning-fast inference for FLUX-schnell, FLUX-dev, and highly optimized SDXL models with clean, easy-to-use SDKs and HTTP APIs.",
-      "would_integrate_where": "GitHub Actions image generation step in 'produce_coloring_book' and 'produce_kdp_cover' pipelines as a direct replacement/fallback for Pollinations.",
+      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24 hours). FLUX.schnell costs ~0.03 credits per image, meaning ~3000 free images per month.",
+      "what_it_does_uniquely": "Provides stable, fast, API-based access to FLUX.schnell, SDXL, and ControlNet models. Highly reliable and bypasses GitHub Actions IP blocks unlike AI Horde.",
+      "would_integrate_where": "Replace Pollinations in the image generation pipeline (`produce_coloring_book` or `produce_kdp_cover`). A simple curl POST request with an API key from GitHub Secrets.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Credits expire eventually; requires monitoring usage to stay within free credits or transition to extremely low-cost PAYG."
+      "risk_or_caveat": "Requires API key rotation or strict daily budget management if multiple workflows run simultaneously."
     },
     {
       "rank": 2,
       "tool_or_platform": "Jina Reader API",
-      "url": "https://jina.ai/reader/",
+      "url": "https://r.jina.ai/",
       "category": "scraping",
-      "free_tier_concrete_limits": "1,000,000 free tokens per month.",
-      "what_it_does_uniquely": "Converts any URL (including search results and product pages) into clean, LLM-friendly markdown, bypassing basic anti-scraping walls.",
-      "would_integrate_where": "Used in 'agent_trendhunter' and 'agent_opportunity_hunter' to extract trending topics directly from Etsy search result URLs or web articles.",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month. No authentication required for basic usage, but a free API key increases rate limits.",
+      "what_it_does_uniquely": "Converts any web page URL into clean, LLM-friendly Markdown. Perfect for scraping trend sites, Etsy search pages, or blog posts without writing complex parsers.",
+      "would_integrate_where": "Integrates into `agent_trendhunter` or `agent_opportunity_hunter` to scrape target websites directly within GitHub Actions and feed clean text to Gemini.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Heavy anti-bot sites like Amazon or Cloudflare-protected domains may still occasionally block requests."
+      "risk_or_caveat": "Websites with heavy Cloudflare protection might still block the Jina proxy."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Leonardo.ai API",
-      "url": "https://leonardo.ai/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "150 daily tokens (generates approximately 15-30 high-quality images daily for free).",
-      "what_it_does_uniquely": "Offers specialized models tuned for game assets, isometric items, and highly stylized illustration styles far superior to raw SDXL/Flux.",
-      "would_integrate_where": "Integrated into 'produce_gamedev_asset_pack' and 'produce_coloring_book' to generate high-value vectorizable templates.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Free tier API access requires registering on their developer portal and has lower concurrency limits."
+      "tool_or_platform": "Printify API",
+      "url": "https://developers.printify.com/",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free to use the API. No monthly fees. Personal Access Tokens generated instantly.",
+      "what_it_does_uniquely": "Allows programmatic creation of POD products, mockups, and automatic publishing to connected stores (Etsy, Pop-up store, etc.) without manual UI clicking.",
+      "would_integrate_where": "Post-processing pipeline. Once an image is validated by `agent_gemini_quality_check`, a GitHub Actions script can automatically create a product draft (e.g., Mug, T-shirt) on Printify.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Requires initial manual setup of the store connection and shipping profiles."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Meshy.ai",
-      "url": "https://www.meshy.ai/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "200 credits per month free (enough for ~20 text-to-3D or image-to-3D generations).",
-      "what_it_does_uniquely": "Generates high-quality textured 3D meshes (.obj / .gltf) directly from text prompts or 2D image inputs.",
-      "would_integrate_where": "In 'produce_gamedev_asset_pack' or a new 3D model delivery pipeline, uploading the outputs directly to Cults3D or Thangs.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Generated meshes might require manual decimation or cleanup for production-ready game development."
+      "tool_or_platform": "Gumroad API",
+      "url": "https://gumroad.com/api",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to create products and use the API. Gumroad only takes a flat 10% fee on successful sales.",
+      "what_it_does_uniquely": "Allows programmatic creation, file uploading, and metadata updates of digital products (coloring book PDFs, 3D assets, card games) via simple HTTP POST requests.",
+      "would_integrate_where": "A new automated release pipeline. Once a digital asset (KDP PDF or Game Asset Pack) is compiled in GitHub Actions, it can be pushed directly to Hugo's Gumroad store as a live product.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "High transaction fee (10%) compared to self-hosted Stripe, but completely free of fixed monthly costs."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to upload, list, and monetize 3D files with direct designer program integration.",
-      "what_it_does_uniquely": "A massive, fast-growing 3D model search engine and marketplace that actively indexes and drives organic traffic to creators' models.",
-      "would_integrate_where": "An automated distribution pipeline alongside Cults3D to upload STL files produced by 'produce_stl_parametric'.",
+      "tool_or_platform": "API-Ninjas",
+      "url": "https://api-ninjas.com/",
+      "category": "analytics",
+      "free_tier_concrete_limits": "10,000 free API calls per month across dozens of specialized APIs.",
+      "what_it_does_uniquely": "Provides clean, JSON-formatted data for trivia, quotes, dictionary definitions, historical events, and thesaurus searches.",
+      "would_integrate_where": "Used inside text-content generation scripts like `produce_quotes_minimal`, `produce_card_game`, or educational low-content KDP books to fetch raw, high-quality factual data.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires STL files to be genuinely printable or functional to gain traction and positive reviews."
+      "risk_or_caveat": "Data is static and factual; cannot replace creative writing but serves as excellent scaffolding."
     },
     {
       "rank": 6,
-      "tool_or_platform": "OpenRouter API",
-      "url": "https://openrouter.ai/",
-      "category": "ai_text",
-      "free_tier_concrete_limits": "Unlimited access to a rotating selection of free models (e.g., Llama 3.1 8B, Gemma 2 9B) with no credit card required.",
-      "what_it_does_uniquely": "Acts as a unified interface for dozens of LLM providers, making it incredibly easy to swap models if one provider goes down.",
-      "would_integrate_where": "The base LLM call layer in 'agent_orchestrator' as a redundant fallback for Gemini text generation.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Free models can experience high latency or temporary rate-limiting during peak global usage times."
+      "tool_or_platform": "Fab (by Epic Games)",
+      "url": "https://www.fab.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list assets. Creator revenue share is 88%, which is highly competitive.",
+      "what_it_does_uniquely": "The unified marketplace replacing Unreal Engine Marketplace, Sketchfab, and Quixel. Crucial distribution hub for 2D/3D gamedev assets, UI packs, and textures.",
+      "would_integrate_where": "Distribution stage for `produce_gamedev_asset_pack`. Packaged ZIP files generated via GitHub Actions can be staged for manual/semi-automated upload to Fab.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "No public API for automated product uploads yet; requires manual listing upload, but the market reach is massive."
     }
   ]
 }
