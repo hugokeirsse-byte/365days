@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-23T13:01:54.668696Z",
+  "timestamp": "2026-05-23T16:53:36.610163Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch First Amazon KDP Coloring Book in a High-Intent Micro-Niche",
+      "action_title": "Launch First 3 Niche Coloring Books on KDP using Runware PAYG",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 120,
+      "estimated_revenue_uplift_eur_30days_low": 20,
+      "estimated_revenue_uplift_eur_30days_high": 150,
       "hugo_effort_hours": 6,
-      "why_this_works_now": "The 'produce_coloring_book' pipeline is ready. By spending under 5 EUR on Runware PAYG, Hugo can bypass GitHub Action IP bans and generate 40 ultra-clean FLUX-schnell vector-style coloring pages. KDP has no listing fees, providing immediate organic reach.",
-      "first_action_today": "Deposit 5 EUR into Runware to get the API key, configure the KDP coloring book pipeline with a specific micro-niche (e.g., 'Cottagecore Animals' or 'Steampunk Vehicles'), and trigger the GitHub Action run."
+      "why_this_works_now": "You have the 'produce_coloring_book' pipeline ready. Spending just 5 EUR on Runware unlocks ~8,000 FLUX-schnell images, instantly solving your image generation bottleneck. Publishing 3 highly targeted books (e.g., 'Retro Future Sci-Fi' or 'Cute Gothic Chibi') gets you in front of organic Amazon buyers immediately.",
+      "first_action_today": "Fund Runware with 5 EUR, get your API key, configure it in GitHub Actions, and run 'produce_coloring_book' to generate 40 high-resolution pages."
     },
     {
       "rank": 2,
-      "action_title": "Double-Dip: Sell the KDP Coloring Book Pages as a Digital PDF Bundle on Etsy",
+      "action_title": "Bulk Upload 50 Text-Based & Vector Designs to Redbubble",
       "type": "upload",
-      "target_platform": "Etsy",
+      "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 10,
       "estimated_revenue_uplift_eur_30days_high": 80,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Etsy buyers actively search for printable PDF coloring books to print at home. Since the assets are already generated for the KDP book, packaging them as a single high-res PDF bundle costs nothing extra and targets a completely different audience.",
-      "first_action_today": "Register an Etsy shop using a referral link (to get 40 free listings), combine the generated coloring book pages into one PDF using a Termux command-line tool (like pdftk or python-pdf), and create the listing."
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "Minimalist text designs, funny developer quotes, and simple vectors do not require complex AI image generation. Using your 'produce_quotes_minimal' or 'produce_svg_pack' scripts via Termux, you can generate 50 clean PNGs and upload them to Redbubble to capture high-intent search traffic with zero ad spend.",
+      "first_action_today": "Select 10 trending developer/tech jokes, write a fast Python script in Termux to render them as white text on transparent PNG, and manually upload them to Redbubble."
     },
     {
       "rank": 3,
-      "action_title": "Publish 5 Parametric OpenSCAD 3D Printing Models on Cults3D",
+      "action_title": "Publish 3 Parametric 3D Printing STL Files on Cults3D",
       "type": "upload",
       "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "Cults3D users love utility prints (cable organizers, custom brackets). Gemini can easily write flawless, highly customizable OpenSCAD (.scad) scripts. These scripts do not require complex 3D modeling software, meaning they can be generated entirely via Termux and run on GitHub Actions.",
-      "first_action_today": "Use Gemini 2.5 Flash to generate 3 parametric utility designs (e.g., a modular honeycomb wall peg, an adjustable battery organizer), render preview images using OpenSCAD CLI in GitHub Actions, and list them on Cults3D for 1.99 EUR each."
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 100,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Cults3D is a highly transactional platform where buyers search for functional, printable items. Using your 'produce_stl_parametric' pipeline, you can generate customizable desk organizers, SD card holders, or gridfinity modules. These require zero image AI and sell purely on utility.",
+      "first_action_today": "Generate 3 variations of a parametric desk storage system using OpenSCAD via Termux/GitHub Actions, and create listings on Cults3D with rendered previews."
     },
     {
       "rank": 4,
-      "action_title": "Bulk Upload 50 Sticker Designs to Redbubble using Pollinations/TogetherAI",
+      "action_title": "Package and Sell 2D Game Asset Packs on itch.io",
       "type": "upload",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 5,
-      "why_this_works_now": "Redbubble is free to upload and handles printing, shipping, and customer service. By targeting highly specific, text-heavy, or simple illustration niches (such as coding inside jokes, local French regional humor, or specific hobbies), Hugo can capture long-tail organic search traffic.",
-      "first_action_today": "Identify 5 specific niche communities on Reddit/Twitter, use the existing 'produce_svg_pack' or text-image pipeline to generate 50 transparent PNG sticker designs, and upload them to Redbubble from Termux/mobile browser."
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Game developers are constantly looking for affordable UI assets, icons, and tilemaps. Your 'produce_gamedev_asset_pack' can output sprite sheets. By using Pollinations or Together AI (which is free/cheap) to generate pixel art or UI icons, you can package these into ZIP files and list them for $2.99 on itch.io.",
+      "first_action_today": "Run the gamedev asset pipeline to generate a pack of '50 Retro Sci-Fi UI Buttons and Icons', zip them, and create a free/paid-tier page on itch.io."
     },
     {
       "rank": 5,
-      "action_title": "Deploy a 2D Fantasy RPG Icon Asset Pack on itch.io",
-      "type": "upload",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 0,
-      "estimated_revenue_uplift_eur_30days_high": 30,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Indie game developers constantly buy cheap UI and 2D item assets (potions, weapons, skill icons). Together AI's free tier (FLUX-schnell) can generate high-quality icon grids. Packaging these into a single zip with transparent backgrounds provides instant value with zero listing fees.",
-      "first_action_today": "Run a image-generation prompt for '50 2D RPG Magic Potion Icons, flat vector, white background', use a simple Python script in Termux to batch-crop and remove backgrounds, and post the pack on itch.io for 2.99 USD."
-    },
-    {
-      "rank": 6,
-      "action_title": "Launch 10 Ultra-Targeted KDP Lined Notebooks with High-Impact AI Covers",
+      "action_title": "Publish 10 Niche No-Content Journals on KDP",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 60,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "Low-content lined journals require almost zero interior layout work (just a repeating lined page PDF). The single selling point is the cover. By using FLUX-schnell to generate striking, professional-grade artistic covers for specific professions or hobbies, Hugo can stand out immediately.",
-      "first_action_today": "Create a reusable 120-page lined interior PDF using Python, generate 10 unique, niche-specific cover designs (e.g., 'Sourdough Baker's Logbook' or 'Beekeeper Journal') using Together AI, and upload them to KDP."
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "No-content books (lined notebooks, dot grids, logbooks) bypass the image generation issue entirely. You can use 'produce_lowcontent_kdp' to generate PDF interiors in seconds. Designing striking, typography-only covers (e.g., 'Termux Command Logbook' or 'Solo Dev Daily Planner') requires zero AI images and captures hyper-focused search terms.",
+      "first_action_today": "Generate a standard 120-page lined interior PDF, design a text-based cover for a 'Rust Developer's Notebook', and upload it to KDP."
     }
   ]
 }
