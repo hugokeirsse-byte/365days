@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-23T09:45:17.088154Z",
+  "timestamp": "2026-05-23T13:02:16.941941Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Nebius AI Studio",
-      "url": "https://nebius.com/services/ai-studio",
+      "tool_or_platform": "DeepInfra",
+      "url": "https://deepinfra.com",
       "category": "ai_image",
-      "free_tier_concrete_limits": "$10 free trial credits upon registration. FLUX.1-schnell costs $0.003 per image (approx. 3,300 free images, then extremely cheap PAYG).",
-      "what_it_does_uniquely": "Provides lightning-fast, ultra-reliable API access to FLUX.1-schnell/dev and SDXL. It bypasses GitHub Actions IP bans (unlike AI Horde) and produces superior image quality compared to Pollinations.",
-      "would_integrate_where": "Replace Pollinations in the 'produce_coloring_book' and 'produce_kdp_cover' pipelines inside GitHub Actions using a standard OpenAI-compatible Python SDK.",
+      "free_tier_concrete_limits": "$1.80 free credit on signup. FLUX.1-schnell costs $0.0018 per megapixel (~$0.0012/image), yielding ~1,500 free high-quality images.",
+      "what_it_does_uniquely": "Provides lightning-fast, production-grade API endpoints for FLUX.1-schnell, FLUX.1-dev, and SDXL with no cold starts and the absolute lowest pay-as-you-go pricing on the market once credits run out.",
+      "would_integrate_where": "Replace Pollinations in the image generation pipeline (e.g., `produce_coloring_book` or `produce_kdp_cover`) with direct curl/requests calls from GitHub Actions.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires card verification to unlock the trial credits to prevent bot abuse. Strictly enforce credit limits in code."
+      "risk_or_caveat": "Requires setting up a free account to get the token. Credit card not required for the initial free tier, but needed to top up once the $1.80 is exhausted."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Serper.dev",
-      "url": "https://serper.dev",
-      "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free search queries upon signup. No credit card required.",
-      "what_it_does_uniquely": "Extremely fast and cheap Google Search, Google Images, and Google Shopping scraper API. Essential for programmatic SEO and micro-niche trend validation before production.",
-      "would_integrate_where": "Integrate into 'agent_opportunity_hunter' to automate search volume checks and competitor price scraping on Google Shopping.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Rate limits on the free tier can block rapid parallel requests. Must implement a sleep delay in GitHub Actions scripts."
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "$10.00 free credit upon signing up with a GitHub account. FLUX.1-schnell is priced at $0.001 per image, yielding up to 10,000 free generations.",
+      "what_it_does_uniquely": "Incredible developer-first playground and API. Offers optimized pipelines for FLUX (including Schnell, Dev, and LoRA integration) and ultra-fast upscalers (AuraSR, ESRGAN) in a single API call.",
+      "would_integrate_where": "Image generation and high-resolution upscaling step in `produce_coloring_book` or `produce_tumbler_wraps` via GitHub Actions workflow.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Strict rate limits on the free tier to prevent abuse, but highly reliable for scheduled cron runs on GitHub Actions."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to list and sell 3D printable designs (STL/OBJ). Takes a low platform fee on sales instead of monthly listing fees.",
-      "what_it_does_uniquely": "It is the fastest-growing search engine and marketplace for 3D printing. It has native membership options and less creator saturation than Cults3D for programmatic parametric models.",
-      "would_integrate_where": "Add as a secondary distribution target in 'produce_stl_parametric' alongside Cults3D to double the organic reach for 3D printing niches.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires high-quality renders of the STL files to gain organic traction. Code must render the generated STLs automatically."
+      "tool_or_platform": "Serper.dev",
+      "url": "https://serper.dev",
+      "category": "analytics",
+      "free_tier_concrete_limits": "2,500 free Google Search / Google Shopping / Google Images queries upon registration. No credit card required.",
+      "what_it_does_uniquely": "Bypasses Google CAPTCHAs entirely from headless server environments like GitHub Actions. Returns structured JSON of organic search results, shopping prices, and related questions.",
+      "would_integrate_where": "Integrate into `agent_trendhunter` or `agent_opportunity_hunter` to programmatically scrape high-volume, low-competition search terms and price points for POD.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "API key required. 2,500 queries is a lifetime allotment per free account; requires rotation or transitioning to their low-cost paid tier ($1 per 1,000 queries) for heavy usage."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Draft2Digital",
-      "url": "https://www.draft2digital.com",
-      "category": "pod",
-      "free_tier_concrete_limits": "100% free to publish. They take a 10% cut of the retail price per sale.",
-      "what_it_does_uniquely": "Distributes ebooks and low-content paperbacks to Apple Books, Kobo, Barnes & Noble, and Tolino simultaneously. Bypasses KDP's exclusivity rules and reaches non-Amazon global markets automatically.",
-      "would_integrate_where": "Integrate as an automated publishing destination for KDP coloring books and low-content planners after initial validation on Amazon KDP.",
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to upload, host, and sell 3D models. 0% platform fees on digital sales (payment processing fees apply).",
+      "what_it_does_uniquely": "A rapidly growing 3D printing search engine and marketplace that rivals Cults3D. It utilizes geometric search algorithms, meaning models are discovered based on their physical shape and compatibility, not just keyword SEO.",
+      "would_integrate_where": "Publishing pipeline for parametric 3D assets generated in `produce_stl_parametric` to diversify away from Cults3D.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Stringent formatting guidelines for automated PDF uploads. Layout templates must be mathematically precise."
+      "risk_or_caveat": "The audience is highly technical; uploaded models must be 3D-printable without errors (non-manifold geometry will be downranked)."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to set up. Act as a Merchant of Record. Fees are 5% + $0.50 per transaction.",
-      "what_it_does_uniquely": "Handles global sales tax (VAT/TVA in France) automatically. Provides a robust API to generate discount codes, check licenses, and host digital downloads (gamedev assets, PDFs, SVG packs).",
-      "would_integrate_where": "Use as the direct-to-consumer checkout backend for Hugo's portfolio, allowing programmatic delivery of 'produce_gamedev_asset_pack' bundles via simple API webhooks.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "High transaction fees on very low-priced items (under $2). Best suited for bundled digital asset packs ($5 to $15)."
+      "tool_or_platform": "Potrace + SVGO (via GitHub Actions CLI)",
+      "url": "https://potrace.sourceforge.net",
+      "category": "dev_tool",
+      "free_tier_concrete_limits": "100% free, open-source, and unlimited. Runs locally on the GitHub Actions runner CPU.",
+      "what_it_does_uniquely": "Converts black-and-white raster images (BMP/PNG) into highly scalable, clean SVG vector graphics, then optimizes them by removing redundant metadata to minimize file size.",
+      "would_integrate_where": "Post-processing step in `produce_svg_pack` and `produce_coloring_book` to convert AI-generated line art into infinitely scalable vector files for professional POD printing.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Only works effectively on high-contrast, black-and-white line art. Color vectorization requires multi-pass processing which is highly complex to automate via CLI."
     },
     {
       "rank": 6,
-      "tool_or_platform": "ElevenLabs API (Sound Effects Generation)",
-      "url": "https://elevenlabs.io",
-      "category": "ai_audio",
-      "free_tier_concrete_limits": "10,000 free characters per month. Access to Text-to-SFX generation API.",
-      "what_it_does_uniquely": "Generates cinema-quality, unique sound effects and short audio clips from simple text prompts. Excellent for creating retro/indie gamedev audio asset packs.",
-      "would_integrate_where": "Create a new pipeline 'produce_gamedev_sfx_pack' that generates themed audio packs (e.g., UI clicks, retro explosions) to sell on itch.io and Unity Asset Store.",
+      "tool_or_platform": "Gumroad API",
+      "url": "https://gumroad.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "No setup or monthly fees. Flat 10% fee on successful sales. Unlimited file hosting and digital product creation.",
+      "what_it_does_uniquely": "Provides a robust, developer-friendly REST API to programmatically create products, upload digital files (PDF books, ZIP game assets, STL files), and generate direct checkout links.",
+      "would_integrate_where": "Automated deployment step in GitHub Actions. Once a coloring book PDF or a gamedev asset pack is compiled, the system can automatically create a new product on Hugo's Gumroad store and return the purchase link.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Monthly character limit resets strictly. Audio output must be converted programmatically to standard .wav/.ogg formats before packaging."
+      "risk_or_caveat": "Gumroad's 10% flat fee is relatively high for high-volume sales, but perfect for a 0-budget bootstrap phase."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "OpenAlex API",
+      "url": "https://openalex.org",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100,000 requests per day completely free without an API key (simply include an email address in the request header for the 'polite pool').",
+      "what_it_does_uniquely": "A massive, fully open index of over 250 million scientific papers, historical documents, and academic concepts. Far more structured and accessible than Wikipedia or Google Scholar APIs.",
+      "would_integrate_where": "Used by `agent_ideator_offline` to extract obscure historical facts, public domain concepts, or niche scientific diagrams to generate highly educational KDP books, specialized card games, or trivia packs.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Data is highly academic and raw; requires LLM parsing (via Gemini) to translate into consumer-friendly product ideas."
     }
   ]
 }
