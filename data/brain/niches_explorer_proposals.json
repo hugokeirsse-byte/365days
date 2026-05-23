@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-23T16:53:20.969729Z",
+  "timestamp": "2026-05-23T20:41:37.930442Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,110 +90,110 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "HEMA (Historical European Martial Arts) Practitioners",
-      "type": "deep_niche",
-      "audience_size_estimate": 120000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Adults (20-45) practicing historical fencing, obsessed with historical manuals (Fiore de' Liberi, Lichtenauer), looking for apparel and training accessories that reflect their specific weapon or school.",
-      "product_angles": [
-        "Minimalist vector apparel featuring specific guards (e.g., 'Posta di Donna')",
-        "KDP Training Logs designed specifically for HEMA sparring and tournament tracking",
-        "Humorous tees playing on historical fencing insider jokes vs modern Olympic fencing"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp (adapted) or produce_quotes_minimal",
-      "first_test_product": "HEMA Sparring Logbook & Technique Tracker on Amazon KDP",
-      "estimated_monthly_revenue_year1_eur": 150
-    },
-    {
-      "rank": 2,
-      "name": "French GR (Grande Randonnee) Hikers",
-      "type": "b2b / deep_niche",
-      "audience_size_estimate": 250000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Outdoor enthusiasts hiking famous French trails (GR20, GR34, GR5). They love tracking their progress, collecting memorabilia, and showing off their completed trails.",
-      "product_angles": [
-        "KDP Hiking Journals dedicated to one specific GR trail with elevation maps outline",
-        "Redbubble stickers and patches with the exact trail topology and landmark coordinates",
-        "Printable PDF checklists and packing lists for specific French climates"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "GR34 (Sentier des Douaniers) Personal Hiking Journal & Logbook on KDP",
-      "estimated_monthly_revenue_year1_eur": 200
-    },
-    {
-      "rank": 3,
-      "name": "Solo Board Gamers (Print & Play / PnP)",
+      "name": "TTRPG Game Master Printable Props & Handouts",
       "type": "adjacent_market",
-      "audience_size_estimate": 150000,
-      "passion_level_1_10": 10,
+      "audience_size_estimate": 500000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Gamers who play board games alone, frequently downloading Print & Play files, looking for high-quality, low-cost asset upgrades (tokens, campaign trackers, modular card decks).",
+      "growth_trajectory": "steady",
+      "buyer_persona": "Tabletop RPG Game Masters (D&D, Call of Cthulhu, Cyberpunk) who want to increase table immersion by giving players physical, realistic clues, letters, and documents without spending hours designing them.",
       "product_angles": [
-        "Modular 3D-printable tokens and card holders on Cults3D",
-        "Printable PDF campaign logs and custom score sheets",
-        "Aesthetic minimalist custom deck of generic solo-gaming AI enemy triggers"
+        "Vintage 1920s newspaper clipping templates for Lovecraftian horror games",
+        "Sci-fi hacker terminal log printouts and spaceship blueprints",
+        "Aged fantasy tavern menus and royal bounty board letters"
       ],
-      "best_pipeline_or_new": "produce_card_game",
-      "first_test_product": "Universal Solo Board Game Campaign Tracker & Logbook on KDP",
+      "best_pipeline_or_new": "new_produce_ttrpg_props",
+      "first_test_product": "1920s New England Investigator Handout Pack (PDF printable with editable fields)",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
-      "rank": 4,
-      "name": "Solarpunk Aesthetic Enthusiasts",
-      "type": "sub_culture",
-      "audience_size_estimate": 180000,
+      "rank": 2,
+      "name": "CNC Machinists & Toolmakers Technical Humor & Reference",
+      "type": "deep_niche",
+      "audience_size_estimate": 150000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 2,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Eco-conscious tech-optimists who love the fusion of green nature, stained glass, art nouveau, and futuristic clean energy. They dislike cyberpunk dystopia and crave beautiful positive imagery.",
+      "growth_trajectory": "steady",
+      "buyer_persona": "CNC Mill/Lathe operators, manual machinists, and toolmakers who take extreme pride in mechanical precision (sub-micron level) and love insider shop floor humor and blueprints.",
       "product_angles": [
-        "Intricate Solarpunk architecture coloring books on KDP",
-        "Solarpunk stained-glass window design stickers on Redbubble",
-        "Digital wallpaper packs for vertical mobile screens (Etsy/Gumroad)"
+        "G-Code quick reference desk mats and posters",
+        "Technical patent art prints of vintage micrometers and calipers",
+        "Machinist humor sticker packs for toolboxes ('Keep Your Hands Off My Calipers')"
       ],
-      "best_pipeline_or_new": "produce_coloring_book",
-      "first_test_product": "Solarpunk Cities: An Eco-Futurist Stained Glass Coloring Book on KDP",
+      "best_pipeline_or_new": "new_produce_machinist_merch",
+      "first_test_product": "G-Code CNC Cheat Sheet Desk Mat Design (POD via Redbubble/Etsy)",
       "estimated_monthly_revenue_year1_eur": 180
     },
     {
+      "rank": 3,
+      "name": "Eurorack & Modular Synthesizer Enthusiasts",
+      "type": "sub_culture",
+      "audience_size_estimate": 120000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Electronic music producers obsessed with modular hardware synths. They have high disposable income, love technical signal-flow diagrams, and constantly need to document their complex patch cables.",
+      "product_angles": [
+        "Blank modular synth patch sheet design notebooks",
+        "Eurorack module signal-flow schematics as minimalist posters",
+        "Inside joke stickers about 'GAS' (Gear Acquisition Syndrome) and patch cables"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "60HP / 84HP Modular Synth Patch Diary & Logbook (KDP Paperback)",
+      "estimated_monthly_revenue_year1_eur": 200
+    },
+    {
+      "rank": 4,
+      "name": "Custom Assets for French Micro-Breweries",
+      "type": "b2b",
+      "audience_size_estimate": 2500,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Independent craft brewers in France who need professional, localized, and vintage-style graphic assets for their beer bottles, coasters, and event posters on a tight budget.",
+      "product_angles": [
+        "Vintage regional French beer label vector templates",
+        "Customizable craft beer coaster design sets",
+        "Social media launch templates for micro-breweries"
+      ],
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "10 Customizable Vintage French Beer Label Vector Templates (SVG/EPS)",
+      "estimated_monthly_revenue_year1_eur": 350
+    },
+    {
       "rank": 5,
-      "name": "Retro PSX / Low-Poly Horror Gamedevs",
-      "type": "adjacent_market",
-      "audience_size_estimate": 60000,
+      "name": "Aquascaping & High-Tech Planted Aquarium Hobbyists",
+      "type": "deep_niche",
+      "audience_size_estimate": 300000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 3,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers on itch.io and Unity/Unreal marketplaces building retro survival horror games inspired by Resident Evil 1, Silent Hill, and modern retro publishers like DreadXP.",
+      "buyer_persona": "Dedicated hobbyists who design underwater nature landscapes using live plants, hardscapes (rocks/wood), and precise CO2/fertilizer dosing. They appreciate Japanese minimalist aesthetics (Iwagumi).",
       "product_angles": [
-        "Low-poly 3D models of 90s household items and medical supplies on Cults3D/Itch",
-        "Dithered PSX-style UI/UX button and icon packs (PNG/SVG formats)",
-        "Retro texture seamless packs (grunge concrete, old wood, CRT monitor effect overlays)"
+        "Aquascaping layout planning sketchbooks with grid lines",
+        "Water parameter tracking logs and fertilizer dosing planners",
+        "Minimalist Iwagumi style aquarium t-shirt and sticker designs"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "PSX Retro Horror UI & Icon Asset Pack (PNG/SVG) on Itch/Etsy",
-      "estimated_monthly_revenue_year1_eur": 300
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Aquascapers Layout Design Notebook & Parameter Log (KDP)",
+      "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 6,
-      "name": "Compagnons du Devoir & French Artisans",
-      "type": "b2b / sub_culture",
-      "audience_size_estimate": 50000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Highly skilled French apprentices and master artisans (carpenters, stone masons, roofers, bakers) who have a deep pride in their manual brotherhood, traditional tools, and regional masterworks.",
+      "name": "Amateur Radio (Ham Radio) Operators",
+      "type": "sub_culture",
+      "audience_size_estimate": 750000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "slow",
+      "buyer_persona": "Highly technical, licensed amateur radio operators who track global signal contacts, build antennas, and exchange collectible physical postcards called 'QSL Cards'.",
       "product_angles": [
-        "Highly accurate vector graphic designs of historical tools (e.g., L'Équerre et le Compas) on apparel",
-        "Workplace-safe custom sticker packs for toolboxes",
-        "Notebooks with technical isometric grids specifically designed for wood/stone sketching"
+        "Printable retro QSL Card design templates",
+        "Ham Radio Log Books for tracking signal contacts (ITU Zones, signal strength)",
+        "Phonetic alphabet and radio frequency spectrum reference posters"
       ],
       "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Carnet de Croquis de Menuiserie / Charpente (Isometric Grid Notebook) on KDP",
+      "first_test_product": "Customizable Retro QSL Card Canva & SVG Template Pack",
       "estimated_monthly_revenue_year1_eur": 120
     }
   ]
