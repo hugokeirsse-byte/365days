@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-23T13:02:45.150466Z",
+  "timestamp": "2026-05-23T16:53:20.969729Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Historical European Martial Arts (HEMA) Practitioners",
-      "type": "sub_culture",
+      "name": "HEMA (Historical European Martial Arts) Practitioners",
+      "type": "deep_niche",
       "audience_size_estimate": 120000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Adults (20-45) practicing historical sword fighting. They read ancient manuals (fechtbuchs), respect historical accuracy, and spend heavily on protective gear and swords.",
+      "buyer_persona": "Adults (20-45) practicing historical fencing, obsessed with historical manuals (Fiore de' Liberi, Lichtenauer), looking for apparel and training accessories that reflect their specific weapon or school.",
       "product_angles": [
-        "Highly accurate vector graphic apparel featuring manual illustrations (Meyer, Talhoffer) with clean modern typography",
-        "KDP Training Logbooks specifically formatted for sparring notes, weapon maintenance, and tournament tracking",
-        "Stickers with insider HEMA jokes ('Right of Way is for cowards', 'Zwerchhau solves everything')"
+        "Minimalist vector apparel featuring specific guards (e.g., 'Posta di Donna')",
+        "KDP Training Logs designed specifically for HEMA sparring and tournament tracking",
+        "Humorous tees playing on historical fencing insider jokes vs modern Olympic fencing"
       ],
-      "best_pipeline_or_new": "produce_svg_pack / produce_lowcontent_kdp",
+      "best_pipeline_or_new": "produce_lowcontent_kdp (adapted) or produce_quotes_minimal",
       "first_test_product": "HEMA Sparring Logbook & Technique Tracker on Amazon KDP",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 2,
-      "name": "Retro PS1-Style (PSX) Indie Game Developers",
-      "type": "adjacent_market",
-      "audience_size_estimate": 95000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Solo indie game developers building low-poly retro horror or boomer shooter games. They hang out on Itch.io, Reddit (r/retrodev), and Twitter/X.",
-      "product_angles": [
-        "64x64 and 128x128 pixelated/dithered seamless texture packs (grunge metal, old brick, sci-fi panels)",
-        "Low-poly UI asset packs (retro health bars, pixel fonts, memory card icons)",
-        "Sound effect packs generated or processed to mimic 16-bit / early CD-ROM audio limitations"
-      ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "PSX Retro Horror Seamless Texture Pack (64 textures) on Itch.io",
-      "estimated_monthly_revenue_year1_eur": 250
-    },
-    {
-      "rank": 3,
-      "name": "Geotechnical Engineers & Soil Mechanics Professionals",
-      "type": "deep_niche",
-      "audience_size_estimate": 150000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Civil engineers specializing in foundations, dirt, rock, and drilling. They love hyper-specific technical humor regarding Karl Terzaghi, shear strength, SPT blow counts, and mud.",
-      "product_angles": [
-        "Redbubble apparel with technical soil mechanics Mohr's circle diagrams turned into jokes",
-        "Engineering graph paper notebooks with customized geotechnical reference sheets on the inside covers",
-        "Stickers for hard hats featuring industry-specific humor ('Trust me, I know my dirt')"
-      ],
-      "best_pipeline_or_new": "produce_quotes_minimal",
-      "first_test_product": "Geotechnical Hard Hat Sticker Pack on Redbubble",
-      "estimated_monthly_revenue_year1_eur": 120
-    },
-    {
-      "rank": 4,
-      "name": "TTRPG Fantasy Cartographers (Wonderdraft/Inkarnate Users)",
-      "type": "adjacent_market",
+      "name": "French GR (Grande Randonnee) Hikers",
+      "type": "b2b / deep_niche",
       "audience_size_estimate": 250000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Dungeon Masters and fantasy authors who design custom maps for their worlds. They buy custom asset brushes (mountains, trees, castles) to use in mapping software.",
+      "growth_trajectory": "steady",
+      "buyer_persona": "Outdoor enthusiasts hiking famous French trails (GR20, GR34, GR5). They love tracking their progress, collecting memorabilia, and showing off their completed trails.",
       "product_angles": [
-        "Custom transparent PNG asset packs of hand-drawn style fantasy medieval buildings and castles",
-        "Seamless paper and parchment texture packs for map backgrounds",
-        "Pre-made vector map labels, banners, and compass roses"
+        "KDP Hiking Journals dedicated to one specific GR trail with elevation maps outline",
+        "Redbubble stickers and patches with the exact trail topology and landmark coordinates",
+        "Printable PDF checklists and packing lists for specific French climates"
       ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "Hand-drawn Medieval Settlement Asset Pack (transparent PNGs) on Etsy & Itch.io",
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "GR34 (Sentier des Douaniers) Personal Hiking Journal & Logbook on KDP",
       "estimated_monthly_revenue_year1_eur": 200
     },
     {
-      "rank": 5,
-      "name": "Amateur Radio (Ham Radio) Operators",
-      "type": "sub_culture",
-      "audience_size_estimate": 300000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Mostly older tech-savvy hobbyists obsessed with radio frequencies, antennas, Morse code, and international contacts. They take pride in their callsigns and log every contact.",
+      "rank": 3,
+      "name": "Solo Board Gamers (Print & Play / PnP)",
+      "type": "adjacent_market",
+      "audience_size_estimate": 150000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Gamers who play board games alone, frequently downloading Print & Play files, looking for high-quality, low-cost asset upgrades (tokens, campaign trackers, modular card decks).",
       "product_angles": [
-        "Highly structured KDP Ham Radio Logbooks (UTC, Frequency, Mode, Power, RST columns)",
-        "Apparel with Morse code patterns of famous phrases or technical jokes about SWR (Standing Wave Ratio)",
-        "Customizable QSL card templates (cards sent to confirm radio contact) sold as digital downloads"
+        "Modular 3D-printable tokens and card holders on Cults3D",
+        "Printable PDF campaign logs and custom score sheets",
+        "Aesthetic minimalist custom deck of generic solo-gaming AI enemy triggers"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Premium amateur radio operator logbook on Amazon KDP",
+      "best_pipeline_or_new": "produce_card_game",
+      "first_test_product": "Universal Solo Board Game Campaign Tracker & Logbook on KDP",
+      "estimated_monthly_revenue_year1_eur": 250
+    },
+    {
+      "rank": 4,
+      "name": "Solarpunk Aesthetic Enthusiasts",
+      "type": "sub_culture",
+      "audience_size_estimate": 180000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Eco-conscious tech-optimists who love the fusion of green nature, stained glass, art nouveau, and futuristic clean energy. They dislike cyberpunk dystopia and crave beautiful positive imagery.",
+      "product_angles": [
+        "Intricate Solarpunk architecture coloring books on KDP",
+        "Solarpunk stained-glass window design stickers on Redbubble",
+        "Digital wallpaper packs for vertical mobile screens (Etsy/Gumroad)"
+      ],
+      "best_pipeline_or_new": "produce_coloring_book",
+      "first_test_product": "Solarpunk Cities: An Eco-Futurist Stained Glass Coloring Book on KDP",
       "estimated_monthly_revenue_year1_eur": 180
     },
     {
-      "rank": 6,
-      "name": "Local Craft Breweries (French Micro-brasseries)",
-      "type": "b2b",
+      "rank": 5,
+      "name": "Retro PSX / Low-Poly Horror Gamedevs",
+      "type": "adjacent_market",
       "audience_size_estimate": 60000,
-      "passion_level_1_10": 7,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Independent craft brewers in France who lack in-house graphic designers. They need professional, legally-compliant label templates and localized merchandise designs.",
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie game developers on itch.io and Unity/Unreal marketplaces building retro survival horror games inspired by Resident Evil 1, Silent Hill, and modern retro publishers like DreadXP.",
       "product_angles": [
-        "Beer label templates formatted for standard bottles/cans, editable in free Canva accounts",
-        "Localized merchandise graphics (t-shirts, coasters) combining regional heritage with craft beer culture",
-        "Social media post templates designed specifically for craft beer announcements and taprooms"
+        "Low-poly 3D models of 90s household items and medical supplies on Cults3D/Itch",
+        "Dithered PSX-style UI/UX button and icon packs (PNG/SVG formats)",
+        "Retro texture seamless packs (grunge concrete, old wood, CRT monitor effect overlays)"
       ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "Pack of 5 Editable Craft Beer Label Templates (Canva link) sold on Etsy",
-      "estimated_monthly_revenue_year1_eur": 140
+      "best_pipeline_or_new": "produce_gamedev_asset_pack",
+      "first_test_product": "PSX Retro Horror UI & Icon Asset Pack (PNG/SVG) on Itch/Etsy",
+      "estimated_monthly_revenue_year1_eur": 300
+    },
+    {
+      "rank": 6,
+      "name": "Compagnons du Devoir & French Artisans",
+      "type": "b2b / sub_culture",
+      "audience_size_estimate": 50000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Highly skilled French apprentices and master artisans (carpenters, stone masons, roofers, bakers) who have a deep pride in their manual brotherhood, traditional tools, and regional masterworks.",
+      "product_angles": [
+        "Highly accurate vector graphic designs of historical tools (e.g., L'Équerre et le Compas) on apparel",
+        "Workplace-safe custom sticker packs for toolboxes",
+        "Notebooks with technical isometric grids specifically designed for wood/stone sketching"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Carnet de Croquis de Menuiserie / Charpente (Isometric Grid Notebook) on KDP",
+      "estimated_monthly_revenue_year1_eur": 120
     }
   ]
 }
