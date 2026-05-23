@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-23T16:53:07.488605Z",
+  "timestamp": "2026-05-23T20:41:03.853452Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,39 +90,70 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Brittle Image API Fallback & Rate Limiting on Shared GitHub Actions IPs",
+      "issue_title": "Lack of Robust Multi-Provider Image Generation Router with Budget Safeguards",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_literal_idioms_v2",
-        "produce_viral_formats_v2"
+        "produce_lowcontent_kdp",
+        "produce_svg_pack",
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Shared GitHub Actions runner IPs trigger frequent rate limits (HTTP 429) and blocks (HTTP 403 on AI Horde, 429 on Gemini). Currently, pipelines fail silently or crash, losing execution time and wasting Hugo's 10 hours/week on manual restarts.",
-      "proposed_fix": "Create a centralized Python utility module `libs/image_generator.py` with a strict circuit-breaker pattern. It must try APIs in order of cost/quality: 1) Together AI (FLUX-schnell), 2) Cloudflare Workers AI, 3) Runware (PAYG fallback, capped at 0.006$ per image), 4) Pollinations (last resort). Implement exponential backoff with jitter specifically designed for shared CI runner environments.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Eliminates 90% of silent pipeline crashes; ensures reliable daily image generation without manual intervention.",
+      "current_pain_description": "Currently, if Gemini or HF fails, the system falls back to Pollinations (low/unpredictable quality) or hits a hard 429 block. There is no automated, tiered fallback logic to test free quotas (Cloudflare Workers AI, Together AI) before dipping into the paid Runware PAYG budget, posing a risk of silent failures or unexpected API billing spikes.",
+      "proposed_fix": "Implement a central `ImageGeneratorRouter` class in Python. It should evaluate API health, check free quotas first (Cloudflare Workers AI -> Together AI -> Runware PAYG up to a hardcoded monthly cap stored in a state file -> Pollinations as a last resort). Store remaining monthly budget in a `.github/state/budget.json` file committed back by the workflow.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Prevents pipeline crashes, guarantees the highest possible image quality for free, and strictly caps monthly spending to < 20 EUR automatically.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Lack of Trademark Filter Leading to Account Suspension Risks",
-      "category": "security",
+      "issue_title": "Silent Failures in Multi-Hour GitHub Actions Runs Without Mobile Notifications",
+      "category": "bottleneck",
       "affected_pipelines": [
-        "produce_iheart_v4",
-        "produce_quotes_minimal",
-        "produce_cultural_arbitrage_v2",
-        "produce_lowcontent_kdp"
+        "agent_orchestrator",
+        "agent_auditor",
+        "agent_auto_regen",
+        "produce_coloring_book"
       ],
-      "current_pain_description": "Automated trend scrapers and LLM prompt generators can easily output copyrighted or trademarked phrases (e.g., Disney quotes, brand names, trademarked slogans). Publishing these on Redbubble/KDP will lead to instant, irreversible account bans.",
-      "proposed_fix": "Implement a pre-generation prompt sanitizer script. It should run the generated titles and prompts against a lightweight, offline JSON list of high-risk POD trademarks (e.g., 'Velcro', 'Super Bowl', 'Harry Potter') and use a regex-based blocklist before sending requests to the image generators or metadata compilers.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Protects newly registered Redbubble and Amazon KDP accounts from lifetime bans during the bootstrapping phase.",
+      "current_pain_description": "Hugo only works via a phone (Termux) and has 10 hours/week. Checking raw GitHub Actions logs on a 6-inch screen to see if a 40-page coloring book generation succeeded or crashed is a major friction point and wastes precious cognitive time.",
+      "proposed_fix": "Integrate a lightweight notification step at the end of every GHA workflow using a free Telegram Bot API or Discord Webhook. Send a structured, single-screen-readable markdown summary to Hugo's phone detailing: run status (SUCCESS/FAIL), number of assets generated, API costs incurred, and direct download links to the generated artifacts.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Saves 1-2 hours of tedious log-scrolling per week, allowing rapid iteration directly from a mobile device.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Manual Metadata & File Management Bottleneck on Mobile (Termux)",
+      "issue_title": "No Resume Mechanism for Multi-Page PDF Generation on GHA Runner Failures",
+      "category": "failure_mode",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_chess_book"
+      ],
+      "current_pain_description": "Generating a 50-page coloring book requires 50 separate image API calls. If a rate limit or transient network error occurs at page 45, the entire GitHub Action fails, discarding all generated assets and requiring a full, costly restart from page 1.",
+      "proposed_fix": "Implement an incremental checkpoint system. Save successfully generated images to a temporary branch or a GitHub Actions Cache after every 5 pages. If a workflow is restarted, the script should scan the cache/directory, identify existing valid images, and only generate the missing pages.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Eliminates wasted API budget on retries, prevents GHA timeouts, and makes multi-page book generation extremely resilient.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 4,
+      "issue_title": "Lack of Automated Post-Generation Image Quality Gate (Anatomy & Corruption Check)",
+      "category": "quality_bug",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_kdp_cover",
+        "produce_viral_formats"
+      ],
+      "current_pain_description": "AI image models occasionally output corrupted files, blank/black images, or horrific anatomical deformities (extra fingers, double heads). Currently, these are packaged unchecked, leading to poor quality products that will get rejected or receive 1-star reviews.",
+      "proposed_fix": "Use the highly efficient, free `gemini-2.5-flash` multimodal API as a visual gatekeeper. Pass each generated image to Gemini with a strict system prompt: 'Is this image corrupted, physically nonsensical, or containing clear anatomical errors? Answer strictly with VALID/INVALID and a short reason.' Automatically trigger a single-try regeneration if marked INVALID.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Guarantees a baseline of commercial viability for all published visual products without manual review.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 5,
+      "issue_title": "Manual Metadata & Listing Upload Friction for Mobile-Only Operations",
       "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
@@ -130,66 +161,27 @@
         "produce_svg_pack",
         "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Hugo only has a mobile phone. Downloading raw images from GitHub Actions run artifacts, organizing them, and manually entering titles, descriptions, and tags on Redbubble/KDP is extremely tedious and error-prone on a small screen.",
-      "proposed_fix": "Modify pipelines to auto-generate a standardized upload package for each run. This includes: 1) A formatted `.csv` file matching Redbubble's bulk upload format exactly. 2) A `.zip` containing optimized, correctly named, and upscaled assets. 3) Auto-committing these packages to a private 'distribution' branch or releasing them as GitHub Release Assets so Hugo can download them with 1 click.",
-      "estimated_implementation_hours_claude": 4,
-      "estimated_value_unlocked": "Reduces manual listing time on mobile from 15 minutes per design to under 2 minutes.",
-      "priority_1_10": 8
-    },
-    {
-      "rank": 4,
-      "issue_title": "Gray/Low-Contrast Vector Outputs in Coloring Book Pipeline",
-      "category": "quality_bug",
-      "affected_pipelines": [
-        "produce_coloring_book"
-      ],
-      "current_pain_description": "FLUX-schnell and Pollinations often output grayscale shading, sketchy lines, or dark gray backgrounds instead of clean black-and-white line art. This makes coloring books look cheap and unprofessional.",
-      "proposed_fix": "Integrate a lightweight Python post-processing step using `Pillow` and `opencv-python-headless` in the GitHub Actions workflow. The script must: 1) Convert images to grayscale. 2) Apply adaptive thresholding (Gaussian) to force pixels to absolute black (#000000) or absolute white (#FFFFFF). 3) Run a bilateral filter to smooth out jagged lines before exporting.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Ensures 100% sellable, high-contrast, professional-looking coloring book pages without manual editing.",
-      "priority_1_10": 8
-    },
-    {
-      "rank": 5,
-      "issue_title": "High GitHub Actions Cache Misses and Slow Run Times",
-      "category": "code_quality",
-      "affected_pipelines": [
-        "all"
-      ],
-      "current_pain_description": "Every pipeline run currently reinstalls heavy dependencies (like `opencv-python-headless`, `Pillow`, and various API SDKs) from scratch. This wastes valuable GitHub Actions free tier minutes (2000 min/month) and makes runs take 5-10 minutes instead of 1-2 minutes.",
-      "proposed_fix": "Implement strict dependency caching in all `.github/workflows/*.yml` files using `actions/cache@v3` keyed on `requirements.txt` or `pyproject.toml`. Group common dependencies into a single base requirements file to maximize cache hits.",
+      "current_pain_description": "Even if GHA generates high-quality files, Hugo must manually draft titles, tags, descriptions, and keywords for Etsy, KDP, and Cults3D on his phone, which is extremely tedious and prone to formatting errors.",
+      "proposed_fix": "For every generated asset, automatically run an LLM metadata generator step. Output a standardized `listing_metadata.json` and a formatted, copy-pasteable text file alongside the product. Additionally, aggregate these into a master CSV compatible with bulk-upload tools for Etsy/Redbubble.",
       "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Cuts pipeline execution time by up to 70%, preserving free tier minutes and accelerating the iteration loop.",
+      "estimated_value_unlocked": "Reduces listing creation time on mobile from 15 minutes per product to under 2 minutes via simple copy-pasting.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Missing Cross-Pollination of Assets (Single Asset, Multi-Platform)",
+      "issue_title": "Missed Cross-Pollination: Single Visual Assets are Not Multi-Purposed",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_tumbler_wraps",
-        "produce_literal_idioms_v2"
+        "produce_literal_idioms",
+        "produce_quotes_minimal",
+        "produce_svg_pack"
       ],
-      "current_pain_description": "Assets are generated in silos. A high-quality graphic made for a coloring book or a sticker is never reused for other high-margin formats like tumbler wraps, SVG packs, or KDP low-content covers, missing out on free multi-platform exposure.",
-      "proposed_fix": "Implement a 'Global Asset Router' workflow. When an asset is marked as 'approved' or 'high_quality' by the `agent_gemini_quality_check`, it automatically triggers sub-workflows to resize, adjust aspect ratios, and package that same graphic into: 1) A PNG sticker (Redbubble), 2) A seamless pattern (Tumbler Wraps), 3) A vector SVG (Etsy/Cults3D).",
-      "estimated_implementation_hours_claude": 5,
-      "estimated_value_unlocked": "Multiplies inventory volume across platforms by 3x with zero extra design generation cost.",
+      "current_pain_description": "A high-quality vector or illustration created for a coloring book or SVG pack is only used once. It is not reformatted for other high-margin platforms (e.g., POD stickers, t-shirts, or KDP covers).",
+      "proposed_fix": "Create a `cross_pollinate_asset` post-processing script. When an exceptional visual asset is generated, automatically: 1) Extract its line art (for coloring book), 2) Convert/trace to high-res SVG (for Etsy vector packs), 3) Place it on a dark/light background with typography (for Redbubble apparel), and 4) Compile multiple assets into a themed compilation book.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Increases product output per hour worked by 300% by deriving multiple income streams from a single AI generation cost.",
       "priority_1_10": 7
-    },
-    {
-      "rank": 7,
-      "issue_title": "Silent Failures of Workflows on Mobile Monitoring",
-      "category": "failure_mode",
-      "affected_pipelines": [
-        "all"
-      ],
-      "current_pain_description": "If a GitHub Actions workflow fails due to API errors or run limits, Hugo only finds out if he manually opens GitHub on his phone or checks his emails. There is no real-time push notification, leading to wasted days where nothing ran.",
-      "proposed_fix": "Add a lightweight, conditional step at the end of every workflow using a `if: failure()` block. This step will send a simplified, actionable failure payload (Workflow name, error snippet, run link) to a free Telegram channel or Discord webhook directly readable on Hugo's phone.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Provides instant, real-time debugging awareness on mobile, reducing system downtime to minutes.",
-      "priority_1_10": 6
     }
   ]
 }
