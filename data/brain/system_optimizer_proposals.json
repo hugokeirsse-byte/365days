@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-23T02:05:14.755524Z",
+  "timestamp": "2026-05-23T06:30:05.807637Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,93 +90,96 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Runaway API Spending & Daily Budget Exhaustion",
-      "category": "security",
+      "issue_title": "Silent GHA Workflow Failures and Mobile Monitoring Blindspot",
+      "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_kdp_cover",
-        "produce_lowcontent_kdp"
+        "produce_lowcontent_kdp",
+        "produce_tumbler_wraps",
+        "agent_orchestrator"
       ],
-      "current_pain_description": "With automatic CRON triggers on GitHub Actions and paid APIs like Runware (PAYG) or Together AI (after free credits), a bug/infinite loop in a script could consume Hugo's entire 20€ monthly budget in minutes.",
-      "proposed_fix": "Implement a central Python state file ('state_billing.json') saved back to the repo via git. Every pipeline calling a paid API must check this file, estimate the call cost, increment the daily spend, and instantly abort (circuit-breaker) if the daily limit (e.g., 0.50€) is exceeded.",
+      "current_pain_description": "Workflows run on GitHub Actions. When APIs hit rate limits (429), fail, or tokens expire, the failures are silent. Since Hugo works exclusively on an Android phone, checking raw GHA logs is tedious and slow, leading to wasted days before realizing a pipeline is broken.",
+      "proposed_fix": "Create a unified `utils/notifier.py` script that hooks into GHA's `always()` post-actions. It must send structured, actionable error alerts (including pipeline name, error snippet, and a direct link to the GHA run) to a free Telegram bot channel. This fits mobile-first monitoring perfectly.",
       "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Prevents financial loss and keeps the solo-biz strictly within the 20€/month hard ceiling.",
+      "estimated_value_unlocked": "Reduces MTTR (Mean Time to Resolution) from days to minutes; saves Hugo from manually checking GHA on a small mobile screen.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Silent Failures and Corrupted Image Generation in GHA",
-      "category": "failure_mode",
+      "issue_title": "Monolithic and Duplicate Image Generation Logic",
+      "category": "code_quality",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_iheart_v4",
-        "produce_literal_idioms_v2"
+        "produce_kdp_cover",
+        "produce_tumbler_wraps",
+        "produce_literal_idioms",
+        "produce_viral_formats"
       ],
-      "current_pain_description": "When image APIs (Pollinations, Together, Runware) return 500, 429, or cloud-flare challenge pages, scripts often save the HTML error or a 0-byte file as an image. This silently pollutes the output artifacts and breaks downstream PDF/KDP compilation.",
-      "proposed_fix": "Add a mandatory post-generation validation step using the Python 'Pillow' library. Attempt to open the image and verify size > 10KB. If invalid, trigger an automated retry with a fallback provider (e.g., Together AI -> Runware -> Pollinations as absolute fallback).",
-      "estimated_implementation_hours_claude": 1.0,
-      "estimated_value_unlocked": "Eliminates empty/corrupt outputs, saving manual check time on Hugo's phone.",
+      "current_pain_description": "Every pipeline independently implements its own HTTP requests, error handling, and API calls to image generators (Pollinations, Together AI, Runware). If an API endpoint changes, or when transitioning to Runware PAYG, Hugo must manually modify dozens of scripts.",
+      "proposed_fix": "Refactor all image generation logic into a single, robust helper module: `utils/image_generator.py`. This module will manage API authentication, implement automatic retries (exponential backoff), handle fallback routing (Together AI -> Cloudflare -> Runware -> Pollinations), and enforce image aspect ratios.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Drastically reduces code duplication, simplifies adding new image APIs, and guarantees system resilience if one API fails.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "No-PC Blindness: Monitoring GitHub Actions on Mobile is Painful",
-      "category": "bottleneck",
+      "issue_title": "Unfiltered Grayscale and Broken Line Art in Coloring Books",
+      "category": "quality_bug",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auditor"
+        "produce_coloring_book",
+        "agent_coloring_intel"
       ],
-      "current_pain_description": "Hugo only has an Android phone. Navigating the desktop-oriented GitHub Actions UI via mobile browser to see if a pipeline succeeded or why it failed is slow, frustrating, and wastes his 10h/week.",
-      "proposed_fix": "Integrate a lightweight Telegram Bot or Discord Webhook notifier. At the end of every GHA workflow run, send a formatted message to Hugo's private chat with: run status, number of generated assets, direct download links to artifacts, and preview images.",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Saves 1-2 hours per week of manual log-checking; enables 1-tap mobile monitoring.",
-      "priority_1_10": 9
+      "current_pain_description": "Raw AI generations from FLUX-schnell often include gray shading, gradients, fuzzy artifacts, or double lines. On KDP, this looks highly unprofessional and results in bad reviews or refunds.",
+      "proposed_fix": "Add an automated Python post-processing step using Pillow and OpenCV. Apply adaptive thresholding (Otsu's binarization) to force pixels into pure black and white, run a morphological 'opening' pass to clear up speckles, and save as high-contrast, clean-line PDFs ready for print.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Ensures consistent, commercial-grade quality for KDP books without requiring manual editing on Hugo's Android phone.",
+      "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Duplicate API Integration Code across 15+ Pipelines",
-      "category": "code_quality",
+      "issue_title": "Runware Pay-As-You-Go Budget Runaway Risk",
+      "category": "security",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_quotes_minimal",
-        "produce_lowcontent_kdp",
-        "produce_literal_idioms_v2"
+        "produce_kdp_cover",
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Each pipeline currently handles its own API calls, error handling, rate limiting, and output formatting. If Together AI updates its API format, Hugo has to manually update dozens of python scripts on Termux.",
-      "proposed_fix": "Refactor all image and LLM calls into a single, shared Python module ('src/utils/api_client.py'). Pipelines should import 'generate_image(prompt, engine)' and 'generate_text(prompt)'. This module handles API-key rotation, fallback logic, and budget limits in one place.",
-      "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Massive maintenance relief. Single point of failure fixed. Easy to switch provider endpoints.",
+      "current_pain_description": "If Hugo switches to Runware PAYG (with a €20/month limit) to solve the image quality bottleneck, a bug in a looping GHA cron job could trigger thousands of API calls, exhausting his entire monthly budget in a single night.",
+      "proposed_fix": "Implement a local JSON-based rate-limiter/budget-guard file (`.budget_state.json`) stored in the repository or a persistent GitHub Cache. Every image-generation run must query this file, check the timestamp, and block execution if the daily spending cap (e.g., €0.66/day) is exceeded.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Guarantees Hugo never exceeds his hard €20/month budget limit due to runaway loops or automated retries.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Garbled Text Rendered by FLUX/SDXL on Book Covers",
-      "category": "quality_bug",
+      "issue_title": "Manual File Transfer Bottleneck from GHA to Android",
+      "category": "bottleneck",
       "affected_pipelines": [
-        "produce_kdp_cover",
-        "produce_chess_book",
-        "produce_coloring_book"
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_gamedev_asset_pack",
+        "produce_stl_parametric"
       ],
-      "current_pain_description": "AI models (even FLUX-schnell) frequently generate misspelt, warped, or gibberish text when requested to put titles on book covers or quotes on posters, looking highly unprofessional and unsellable.",
-      "proposed_fix": "Enforce a strict separation of concerns: prompt the AI to generate *only* background art (negative prompt: 'text, words, letters, watermark'). Use Python's 'Pillow' (PIL) library to programmatically overlay crisp, perfectly aligned vector fonts (using free Google Fonts loaded in the repo) for titles and subtitles.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "100% perfect text spelling on every cover, ensuring immediate professional retail quality.",
+      "current_pain_description": "Once GHA builds a book PDF, a zip of tumbler wraps, or STL files, Hugo must log into GitHub on his phone, download the run artifact, extract it, and prepare it for upload. This manual path is highly friction-intensive on mobile.",
+      "proposed_fix": "Integrate an automated upload step at the end of successful production runs. Use the free Google Drive API or Dropbox API to upload the final distribution-ready zip directly to a specific folder, then send a direct download link via the Telegram alert bot.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Saves 10-15 minutes of clunky mobile UI navigation per product generated, freeing up Hugo's limited 10 hours/week.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Missing Cross-Pollination: Single-Format Asset Isolation",
+      "issue_title": "Missed Cross-Pollination of Generated Vector/Line Art",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_svg_pack",
-        "produce_tumbler_wraps"
+        "produce_wedding_stationery"
       ],
-      "current_pain_description": "Assets generated for a coloring book (black and white line art) are only used for Amazon KDP. This misses easy revenue from other platforms already on Hugo's list.",
-      "proposed_fix": "Add an automated packaging sub-step. When 'produce_coloring_book' runs, it should also export: 1) Individual high-res PNGs packaged as a ZIP for Etsy digital downloads. 2) A Redbubble pack of individual sticker designs. This multiplies output catalog size with zero extra AI costs.",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Triples the surface area of distribution (KDP + Etsy + Redbubble) for the exact same generation budget.",
-      "priority_1_10": 7
+      "current_pain_description": "High-quality vector line art generated for 'Coloring Books' is only packaged as a PDF. The exact same assets are highly valuable on Etsy as SVG sticker packs, embroidery patterns, or laser cutting files, but they are currently discarded.",
+      "proposed_fix": "Create a `produce_cross_format_pack` post-processor. When a high-quality line-art image is generated, save the raw high-res PNG, auto-vectorize it to SVG using `potrace` (compiled in Termux or run via GHA Ubuntu environment), and package it as an Etsy-ready digital download pack.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Multiplies the revenue potential of a single generated asset across multiple platforms (Etsy SVG packs + KDP Coloring Books) with zero extra API cost.",
+      "priority_1_10": 6
     }
   ]
 }
