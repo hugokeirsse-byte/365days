@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-23T13:02:16.941941Z",
+  "timestamp": "2026-05-23T16:52:50.509852Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,80 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "DeepInfra",
-      "url": "https://deepinfra.com",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "$1.80 free credit on signup. FLUX.1-schnell costs $0.0018 per megapixel (~$0.0012/image), yielding ~1,500 free high-quality images.",
-      "what_it_does_uniquely": "Provides lightning-fast, production-grade API endpoints for FLUX.1-schnell, FLUX.1-dev, and SDXL with no cold starts and the absolute lowest pay-as-you-go pricing on the market once credits run out.",
-      "would_integrate_where": "Replace Pollinations in the image generation pipeline (e.g., `produce_coloring_book` or `produce_kdp_cover`) with direct curl/requests calls from GitHub Actions.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires setting up a free account to get the token. Credit card not required for the initial free tier, but needed to top up once the $1.80 is exhausted."
-    },
-    {
-      "rank": 2,
       "tool_or_platform": "Fal.ai",
       "url": "https://fal.ai",
       "category": "ai_image",
-      "free_tier_concrete_limits": "$10.00 free credit upon signing up with a GitHub account. FLUX.1-schnell is priced at $0.001 per image, yielding up to 10,000 free generations.",
-      "what_it_does_uniquely": "Incredible developer-first playground and API. Offers optimized pipelines for FLUX (including Schnell, Dev, and LoRA integration) and ultra-fast upscalers (AuraSR, ESRGAN) in a single API call.",
-      "would_integrate_where": "Image generation and high-resolution upscaling step in `produce_coloring_book` or `produce_tumbler_wraps` via GitHub Actions workflow.",
+      "free_tier_concrete_limits": "Generous initial free credits (~$10-15) upon signing up via GitHub; FLUX.1-schnell costs only $0.003 per image, meaning thousands of free generations.",
+      "what_it_does_uniquely": "Provides lightning-fast, highly reliable API endpoints for state-of-the-art models like FLUX.1 (schnell/dev) and SDXL. It is significantly faster than Together AI and has robust GitHub Actions compatibility without IP blocking.",
+      "would_integrate_where": "Replace the broken Pollinations/Gemini image generation step in 'produce_coloring_book' and 'produce_kdp_cover' pipelines via curl/Python requests.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Strict rate limits on the free tier to prevent abuse, but highly reliable for scheduled cron runs on GitHub Actions."
+      "risk_or_caveat": "Requires a credit card or GitHub login to activate free credits; eventually becomes pay-as-you-go, though extremely cheap."
+    },
+    {
+      "rank": 2,
+      "tool_or_platform": "Fab (by Epic Games)",
+      "url": "https://www.fab.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to register and list assets. No listing fees. Standard 88/12 revenue split.",
+      "what_it_does_uniquely": "Epic Games' unified marketplace (merging Unreal Engine Marketplace, Sketchfab, and Quixel). It represents a massive, highly active audience of gamedevs looking for 3D models, 2D textures, UI kits, and audio packs.",
+      "would_integrate_where": "Target distribution channel for 'produce_gamedev_asset_pack' pipeline to publish 2D textures, UI assets, and low-poly models.",
+      "novelty_2026_1_10": 10,
+      "risk_or_caveat": "Strict curation standards for technical quality; asset metadata must be clean."
     },
     {
       "rank": 3,
       "tool_or_platform": "Serper.dev",
       "url": "https://serper.dev",
       "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free Google Search / Google Shopping / Google Images queries upon registration. No credit card required.",
-      "what_it_does_uniquely": "Bypasses Google CAPTCHAs entirely from headless server environments like GitHub Actions. Returns structured JSON of organic search results, shopping prices, and related questions.",
-      "would_integrate_where": "Integrate into `agent_trendhunter` or `agent_opportunity_hunter` to programmatically scrape high-volume, low-competition search terms and price points for POD.",
+      "free_tier_concrete_limits": "2,500 free search queries upon signup. No credit card required.",
+      "what_it_does_uniquely": "Provides super fast, structured JSON data of Google Search, Google Images, Google Shopping, and Autocomplete. This completely bypasses Google's strict anti-scraping blocks on GitHub Actions runners.",
+      "would_integrate_where": "Integrate into 'agent_opportunity_hunter' and 'agent_trendhunter' to fetch real-time search volumes and high-demand keywords without getting rate-limited.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "API key required. 2,500 queries is a lifetime allotment per free account; requires rotation or transitioning to their low-cost paid tier ($1 per 1,000 queries) for heavy usage."
+      "risk_or_caveat": "Once the 2,500 free queries are exhausted, requires manual registration of a new account or a cheap paid plan ($1 per 1,000 queries)."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to upload, host, and sell 3D models. 0% platform fees on digital sales (payment processing fees apply).",
-      "what_it_does_uniquely": "A rapidly growing 3D printing search engine and marketplace that rivals Cults3D. It utilizes geometric search algorithms, meaning models are discovered based on their physical shape and compatibility, not just keyword SEO.",
-      "would_integrate_where": "Publishing pipeline for parametric 3D assets generated in `produce_stl_parametric` to diversify away from Cults3D.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "The audience is highly technical; uploaded models must be 3D-printable without errors (non-manifold geometry will be downranked)."
+      "tool_or_platform": "Glif API",
+      "url": "https://glif.app",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous daily free tokens to run community or custom-built 'glifs' (workflows) via API.",
+      "what_it_does_uniquely": "Allows chaining of multiple AI steps (e.g., LLM prompt expansion -> FLUX image generation -> image vectorization/upscaling) into a single API call.",
+      "would_integrate_where": "Can be used in 'produce_coloring_book' to run a specialized 'comic-to-vector' or 'coloring-lineart' Glif, delivering perfect black-and-white lines directly.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "API parameters can be complex to map initially; workflows built by others can occasionally go offline or change."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Potrace + SVGO (via GitHub Actions CLI)",
-      "url": "https://potrace.sourceforge.net",
+      "tool_or_platform": "Supabase (Free Tier)",
+      "url": "https://supabase.com",
       "category": "dev_tool",
-      "free_tier_concrete_limits": "100% free, open-source, and unlimited. Runs locally on the GitHub Actions runner CPU.",
-      "what_it_does_uniquely": "Converts black-and-white raster images (BMP/PNG) into highly scalable, clean SVG vector graphics, then optimizes them by removing redundant metadata to minimize file size.",
-      "would_integrate_where": "Post-processing step in `produce_svg_pack` and `produce_coloring_book` to convert AI-generated line art into infinitely scalable vector files for professional POD printing.",
+      "free_tier_concrete_limits": "2 free databases, 500MB database space, 5GB file storage, 50,000 monthly active users.",
+      "what_it_does_uniquely": "Provides a hosted PostgreSQL database with an instant REST API. Perfect for maintaining state, tracking generated assets, and logging sales from GitHub Actions without polluting git history with constant commits.",
+      "would_integrate_where": "Use as the central state repository for 'agent_brain_meta' to dynamically read/write project status, avoiding git merge conflicts between runners.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Only works effectively on high-contrast, black-and-white line art. Color vectorization requires multi-pass processing which is highly complex to automate via CLI."
+      "risk_or_caveat": "Free projects are paused after 1 week of inactivity (easily kept alive with a scheduled GitHub Action ping)."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Gumroad API",
-      "url": "https://gumroad.com",
+      "tool_or_platform": "Creative Fabrica Seller Account",
+      "url": "https://www.creativefabrica.com/designer-application/",
       "category": "marketplace",
-      "free_tier_concrete_limits": "No setup or monthly fees. Flat 10% fee on successful sales. Unlimited file hosting and digital product creation.",
-      "what_it_does_uniquely": "Provides a robust, developer-friendly REST API to programmatically create products, upload digital files (PDF books, ZIP game assets, STL files), and generate direct checkout links.",
-      "would_integrate_where": "Automated deployment step in GitHub Actions. Once a coloring book PDF or a gamedev asset pack is compiled, the system can automatically create a new product on Hugo's Gumroad store and return the purchase link.",
+      "free_tier_concrete_limits": "100% free to open a shop and list products. No listing fees.",
+      "what_it_does_uniquely": "One of the largest subscription-based marketplaces for crafters, KDP publishers, and teachers. Sellers are paid per download from the subscription pool, generating passive income much faster than traditional marketplaces.",
+      "would_integrate_where": "Perfect secondary marketplace for SVG packs from 'produce_svg_pack' and book interiors from 'produce_coloring_book' or 'produce_lowcontent_kdp'.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Gumroad's 10% flat fee is relatively high for high-volume sales, but perfect for a 0-budget bootstrap phase."
-    },
-    {
-      "rank": 7,
-      "tool_or_platform": "OpenAlex API",
-      "url": "https://openalex.org",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100,000 requests per day completely free without an API key (simply include an email address in the request header for the 'polite pool').",
-      "what_it_does_uniquely": "A massive, fully open index of over 250 million scientific papers, historical documents, and academic concepts. Far more structured and accessible than Wikipedia or Google Scholar APIs.",
-      "would_integrate_where": "Used by `agent_ideator_offline` to extract obscure historical facts, public domain concepts, or niche scientific diagrams to generate highly educational KDP books, specialized card games, or trivia packs.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Data is highly academic and raw; requires LLM parsing (via Gemini) to translate into consumer-friendly product ideas."
+      "risk_or_caveat": "Requires passing a simple designer application portfolio check (can use generated high-quality mockups to pass)."
     }
   ]
 }
