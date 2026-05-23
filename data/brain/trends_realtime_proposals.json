@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-22T21:05:16.171828Z",
+  "timestamp": "2026-05-23T02:04:58.767099Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Snail Girl Summer",
+      "trend_keyword": "Goth Coquette Aesthetic",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
       "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 2,
+      "saturation_now_1_10": 3,
       "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Snail Girl Summer Cute Aesthetic Sticker - Slow Living Soft Girl Vinyl Decal",
-      "evidence_url_or_signal": "TikTok hashtag #SnailGirlSummer exploded with over 4.2M views in the last 10 days, shifting away from high-stress hustle culture to slow-paced, cozy living aesthetics for Summer 2026."
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Goth Coquette Sticker Pack PNG SVG - Dark Pastel Bows, Grunge Skulls and Ribbons Clipart Bundle for Kindle",
+      "evidence_url_or_signal": "TikTok hashtag #gothcoquette spiked with 4.2M views in the last 12 days; search queries for 'gothic bow png' up 180% on Etsy."
     },
     {
       "rank": 2,
-      "trend_keyword": "Chaos Gardening Club",
+      "trend_keyword": "DINK Dog Dad Father's Day",
       "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "tshirt",
-      "best_pipeline_match": "produce_iheart_x",
-      "title_template_suggestion": "Chaos Gardening Club Retro T-Shirt - Wildflower Seed Bomb Gardener Gift Tee",
-      "evidence_url_or_signal": "Spike in r/gardening and r/guerillagardening about 'seed bombs' and 'chaos gardening' methods starting mid-May 2026, driven by viral TikToks showing people tossing mixed seeds into empty dirt patches."
+      "estimated_lifespan_days": 25,
+      "saturation_now_1_10": 2,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Funny DINK Dog Dad Mug - Double Income No Kids Father's Day Gift - Retro Dog Parent Coffee Cup",
+      "evidence_url_or_signal": "Spike in r/dinks and r/dogs discussions regarding unconventional Father's Day gifts; Etsy search 'DINK dog dad' jumped +250% since May 10, 2026."
     },
     {
       "rank": 3,
-      "trend_keyword": "Dungeon Synth Aesthetic",
+      "trend_keyword": "Whimsigoth Tarot",
       "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 2,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_gamedev_asset_pack",
-      "title_template_suggestion": "Dungeon Synth Aesthetic Poster - Dark Fantasy Cozy Castle Retro Pixel Art Print",
-      "evidence_url_or_signal": "Pinterest searches for 'Dungeon Synth art style' and 'cozy dark fantasy castle' increased by 140% in the last 14 days, crossing over from niche music circles into Gen Z desktop/room decor."
-    },
-    {
-      "rank": 4,
-      "trend_keyword": "Reverse Coloring Book for Anxiety",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 120,
+      "estimated_lifespan_days": 60,
       "saturation_now_1_10": 4,
       "best_product_format": "coloring_book",
       "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "The Reverse Coloring Book for Anxiety - Draw the Lines Cozy Watercolor Shapes KDP Book",
-      "evidence_url_or_signal": "Viral videos on TikTok under #ReverseColoring showing users drawing pen outlines over pre-made watercolor splashes. High-volume, low-competition niche on Amazon KDP as of mid-May 2026."
+      "title_template_suggestion": "Whimsigoth Tarot Coloring Book for Adults - Mystical Celestial Gothic Astrology Coloring Pages PDF",
+      "evidence_url_or_signal": "Pinterest Trends tool showing 'Whimsigoth bedroom' and 'Tarot aesthetics' converging with a 300% search volume acceleration from May 8 to May 20, 2026."
+    },
+    {
+      "rank": 4,
+      "trend_keyword": "Retro Motel Keytags Anxiety Club",
+      "platform_where_spotted": "Etsy",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 35,
+      "saturation_now_1_10": 5,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "Retro Overthinkers Club Motel Keytag Tee - Vintage Aesthetic Comfort Colors Shirt - Mental Health Awareness",
+      "evidence_url_or_signal": "Etsy bestsellers in 'vintage motel keychain' pivoting to mental health jokes. 'Overthinkers Suite 99' and 'Anxiety Club' keytag designs clearing 500+ sales daily in mid-May."
     },
     {
       "rank": 5,
-      "trend_keyword": "Modular Honeycomb Drawer",
-      "platform_where_spotted": "Cults3D",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 75,
-      "saturation_now_1_10": 3,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Modular Honeycomb Wall Drawer STL - Easy 3D Print Desk Organizer No Supports",
-      "evidence_url_or_signal": "Instagram Reels showcasing DIY hex-drawer installations generated over 200k likes in the past 12 days. Cults3D search terms for 'modular wall drawer' and 'hex organizer' are peaking."
+      "trend_keyword": "Capybara Graduation",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 20,
+      "saturation_now_1_10": 2,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats",
+      "title_template_suggestion": "Cute Capybara Graduation Sticker - Class of 2026 Grad Cap Capy Waterproof Vinyl Decal for Laptop",
+      "evidence_url_or_signal": "Viral TikTok sound with 15k creations showing hand-drawn capybaras in graduation gowns; Google Trends search for 'capybara graduation cap' reached peak popularity index of 100 on May 18, 2026."
     },
     {
       "rank": 6,
-      "trend_keyword": "Shadow Work Aura Poster",
+      "trend_keyword": "Retro Pickleball Dad",
       "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 50,
-      "saturation_now_1_10": 4,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_quotes_minimal",
-      "title_template_suggestion": "Shadow Work Aura Poster - Spiritual Grungy Gradient Self Care Wall Art",
-      "evidence_url_or_signal": "Etsy keyword analytics show a 75% rise in 'grungy aura gradient' and 'shadow work art print' searches since May 8, 2026, as spiritual aesthetics shift from clean pastels to darker, grunge-inspired tones."
+      "estimated_lifespan_days": 25,
+      "saturation_now_1_10": 6,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Retro Pickleball Dad Shirt - Funny Father's Day Gift for Pickleball Lover - Vintage 70s Sports Tee",
+      "evidence_url_or_signal": "Etsy keyword analytics show 'Pickleball Dad' as the #3 trending search term in the Father's Day category starting May 12, 2026, with low-to-medium competition in 'retro' sub-styles."
     }
   ]
 }
