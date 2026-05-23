@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-23T16:52:50.509852Z",
+  "timestamp": "2026-05-23T20:41:04.290805Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Fal.ai",
-      "url": "https://fal.ai",
+      "tool_or_platform": "DeepInfra",
+      "url": "https://deepinfra.com/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Generous initial free credits (~$10-15) upon signing up via GitHub; FLUX.1-schnell costs only $0.003 per image, meaning thousands of free generations.",
-      "what_it_does_uniquely": "Provides lightning-fast, highly reliable API endpoints for state-of-the-art models like FLUX.1 (schnell/dev) and SDXL. It is significantly faster than Together AI and has robust GitHub Actions compatibility without IP blocking.",
-      "would_integrate_where": "Replace the broken Pollinations/Gemini image generation step in 'produce_coloring_book' and 'produce_kdp_cover' pipelines via curl/Python requests.",
+      "free_tier_concrete_limits": "Starts with $1.80 free credits without credit card. FLUX-schnell costs $0.0015 per image, translating to 1,200 free high-quality images. No rate limits on free tier.",
+      "what_it_does_uniquely": "Provides the cheapest and most reliable API access to FLUX.1-schnell and SDXL on the market, completely bypassing GitHub Actions IP bans (unlike AI Horde).",
+      "would_integrate_where": "Replace the failing Pollinations/Gemini image generation step in 'produce_coloring_book' and 'produce_kdp_cover' pipelines inside GitHub Actions.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires a credit card or GitHub login to activate free credits; eventually becomes pay-as-you-go, though extremely cheap."
+      "risk_or_caveat": "Requires setting up a new API key. Once free credits expire, it requires pay-as-you-go, but at $0.0015/image, Hugo's €20 budget would yield over 13,000 images."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Fab (by Epic Games)",
-      "url": "https://www.fab.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to register and list assets. No listing fees. Standard 88/12 revenue split.",
-      "what_it_does_uniquely": "Epic Games' unified marketplace (merging Unreal Engine Marketplace, Sketchfab, and Quixel). It represents a massive, highly active audience of gamedevs looking for 3D models, 2D textures, UI kits, and audio packs.",
-      "would_integrate_where": "Target distribution channel for 'produce_gamedev_asset_pack' pipeline to publish 2D textures, UI assets, and low-poly models.",
-      "novelty_2026_1_10": 10,
-      "risk_or_caveat": "Strict curation standards for technical quality; asset metadata must be clean."
+      "tool_or_platform": "Jina AI Reader API",
+      "url": "https://jina.ai/reader/",
+      "category": "scraping",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month via a simple prefix API (https://r.jina.ai/URL).",
+      "what_it_does_uniquely": "Converts any web page (e.g., Etsy bestsellers, Cults3D trends, Kickstarter campaigns) into clean, LLM-friendly markdown. Solves scraping blocks from GitHub Actions runner IPs.",
+      "would_integrate_where": "Integrate into 'agent_trendhunter' and 'agent_opportunity_hunter' to feed real-time marketplace trend data directly into the Gemini-2.5-flash LLM.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Subject to the target website's Cloudflare protection, though Jina bypasses most standard blocks."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Serper.dev",
-      "url": "https://serper.dev",
-      "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free search queries upon signup. No credit card required.",
-      "what_it_does_uniquely": "Provides super fast, structured JSON data of Google Search, Google Images, Google Shopping, and Autocomplete. This completely bypasses Google's strict anti-scraping blocks on GitHub Actions runners.",
-      "would_integrate_where": "Integrate into 'agent_opportunity_hunter' and 'agent_trendhunter' to fetch real-time search volumes and high-demand keywords without getting rate-limited.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Once the 2,500 free queries are exhausted, requires manual registration of a new account or a cheap paid plan ($1 per 1,000 queries)."
+      "tool_or_platform": "Lemon Squeezy",
+      "url": "https://www.lemonsqueezy.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "No monthly fees. 100% free to list unlimited digital products. Fees are 5% + $0.50 per transaction.",
+      "what_it_does_uniquely": "Acts as the 'Merchant of Record'. It completely handles EU VAT compliance automatically, which is a major legal requirement and headache for Hugo operating from France.",
+      "would_integrate_where": "Acts as the direct sales checkout/landing page for digital asset bundles (gamedev assets, high-res coloring page PDFs) generated by the system.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Requires setting up a payout method (Stripe/Paypal). Payout thresholds apply."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Glif API",
-      "url": "https://glif.app",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous daily free tokens to run community or custom-built 'glifs' (workflows) via API.",
-      "what_it_does_uniquely": "Allows chaining of multiple AI steps (e.g., LLM prompt expansion -> FLUX image generation -> image vectorization/upscaling) into a single API call.",
-      "would_integrate_where": "Can be used in 'produce_coloring_book' to run a specialized 'comic-to-vector' or 'coloring-lineart' Glif, delivering perfect black-and-white lines directly.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "API parameters can be complex to map initially; workflows built by others can occasionally go offline or change."
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to upload unlimited 3D models. Standard marketplace revenue split on membership/sales.",
+      "what_it_does_uniquely": "A massive, rapidly growing 3D printing search engine and marketplace. It has an active designer program that allows monetization of 3D models (STLs) via subscriptions.",
+      "would_integrate_where": "Target marketplace for 'produce_stl_parametric' pipeline to supplement Cults3D distribution.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Requires high-quality renders/descriptions to stand out; relies on the parametric script quality."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Supabase (Free Tier)",
-      "url": "https://supabase.com",
-      "category": "dev_tool",
-      "free_tier_concrete_limits": "2 free databases, 500MB database space, 5GB file storage, 50,000 monthly active users.",
-      "what_it_does_uniquely": "Provides a hosted PostgreSQL database with an instant REST API. Perfect for maintaining state, tracking generated assets, and logging sales from GitHub Actions without polluting git history with constant commits.",
-      "would_integrate_where": "Use as the central state repository for 'agent_brain_meta' to dynamically read/write project status, avoiding git merge conflicts between runners.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Free projects are paused after 1 week of inactivity (easily kept alive with a scheduled GitHub Action ping)."
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Provides $10 free credits upon GitHub-linked registration (equivalent to ~2,000 FLUX-schnell generations).",
+      "what_it_does_uniquely": "Ultra-fast execution speeds for modern models (FLUX, SD3, AuraFlow) with optimized API endpoints specifically designed for developer pipelines.",
+      "would_integrate_where": "Alternative image generation pipeline fallback in GitHub Actions when Together AI or Cloudflare Workers hit rate limits.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Strict ToS regarding commercial use on free credits; must transition to paid tier (very cheap) for full commercial safety."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Creative Fabrica Seller Account",
-      "url": "https://www.creativefabrica.com/designer-application/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to open a shop and list products. No listing fees.",
-      "what_it_does_uniquely": "One of the largest subscription-based marketplaces for crafters, KDP publishers, and teachers. Sellers are paid per download from the subscription pool, generating passive income much faster than traditional marketplaces.",
-      "would_integrate_where": "Perfect secondary marketplace for SVG packs from 'produce_svg_pack' and book interiors from 'produce_coloring_book' or 'produce_lowcontent_kdp'.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Requires passing a simple designer application portfolio check (can use generated high-quality mockups to pass)."
+      "tool_or_platform": "SerpApi",
+      "url": "https://serpapi.com/",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100 free searches per month. Supports Google, eBay, Walmart, and YouTube searches.",
+      "what_it_does_uniquely": "Provides structured JSON search results, bypassing complex HTML scraping and CAPTCHAs. Excellent for tracking keyword popularity.",
+      "would_integrate_where": "Powering 'agent_niche_gap' and 'agent_external_trends' to identify what is currently trending on Google/eBay before generating books or card games.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "100 searches is low; must be used sparingly (e.g., once-a-week cron job in GitHub Actions to update trend files)."
     }
   ]
 }
