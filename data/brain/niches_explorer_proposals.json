@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-23T02:04:58.442174Z",
+  "timestamp": "2026-05-23T06:30:25.454946Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "POTA/SOTA (Parks/Summits on the Air) Ham Radio Operators",
+      "name": "Custom Mechanical Keyboard Enthusiasts",
       "type": "sub_culture",
-      "audience_size_estimate": 150000,
+      "audience_size_estimate": 350000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Radio amateurs who hike up mountains or visit state parks to set up portable antennas. Highly technical, extremely proud of their gear, love tracking contacts (QSOs) and displaying badges/stickers on their portable cases.",
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Tech-savvy professionals and gamers who spend thousands on custom aluminum keyboards, keycap sets, and desk setups. They love highly aesthetic, minimalist, or retro-themed workspaces.",
       "product_angles": [
-        "Highly optimized KDP logbooks designed specifically for SOTA/POTA field operations (weather, rig, antenna type, band, signal reports).",
-        "Redbubble rugged-style stickers featuring radio-insider jokes, Q-codes ('73', 'QRP'), and schematics of portable dipoles.",
-        "SVG vector pack of vintage radio dials, antenna configurations, and Morse code charts for DIY builders."
+        "Deskmats featuring keycap-matching vector colorways (Redbubble)",
+        "Sticker packs of exploded switch anatomy diagrams (Redbubble)",
+        "3D-printable custom keycap cases or switch lubing stations (Cults3D)"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "The Ultimate POTA Field Logbook (6x9, pocket-sized, weather-resistant layout design)",
+      "best_pipeline_or_new": "produce_svg_pack (for vectors) and produce_stl_parametric (for switch stations)",
+      "first_test_product": "A minimalist vector deskmat design matching the classic 'GMK Laser' or 'Retro 9009' color schemes for Redbubble.",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 2,
-      "name": "French Volunteer Firefighters (Amicales des Sapeurs-Pompiers)",
-      "type": "b2b",
-      "audience_size_estimate": 250000,
+      "name": "Solo Board Gamers & Print-and-Play (PnP) Players",
+      "type": "sub_culture",
+      "audience_size_estimate": 180000,
       "passion_level_1_10": 10,
       "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Volunteer and professional firefighters in France. Members of the 'Amicale' looking for unique, modern designs for their annual calendars, station t-shirts, and retirement gifts. They have strong pride and highly specific terminology (FPT, VSAV, Sainte-Barbe).",
-      "product_angles": [
-        "Customizable SVG vector templates for local fire station t-shirts and emblems (ready for local printing).",
-        "KDP Shift Calendars / Planners optimized for the specific 24/48 French firefighter shift patterns.",
-        "Redbubble apparel with minimalist, technical drawings of fire engines and rescue knots (not generic cartoon fire trucks)."
-      ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "Sapeurs-Pompiers Custom Emblem SVG Kit (Editable vector shields, axes, and vintage helmets)",
-      "estimated_monthly_revenue_year1_eur": 250
-    },
-    {
-      "rank": 3,
-      "name": "Gaslands & Post-Apocalyptic Car Combat Wargamers",
-      "type": "adjacent_market",
-      "audience_size_estimate": 75000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Tabletop gamers who buy cheap Hot Wheels/Matchbox toy cars and modify them with miniature weapons, armor, and engines to play Gaslands. They actively search Cults3D/Thingiverse for cheap accessories to print on domestic SLA/FDM printers.",
-      "product_angles": [
-        "STL parametric models of post-apoc vehicle weapons (mini-guns, flame throwers, ramming grills, armor plates) scaled to 1:64.",
-        "KDP Game Campaign Trackers and custom vehicle template sheets.",
-        "SVG rust and hazard stripe stencils for airbrushing miniature cars."
-      ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "1:64 Scale Post-Apocalyptic Vehicle Weapons Pack (10 STL files optimized for easy FDM printing)",
-      "estimated_monthly_revenue_year1_eur": 180
-    },
-    {
-      "rank": 4,
-      "name": "Arborists & Tree Surgeons (Élagueurs-Grimpeurs)",
-      "type": "deep_niche",
-      "audience_size_estimate": 90000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Professional tree climbers. High-risk, high-skill trade with deep pride in physical capability and safety systems. They identify strongly with climbing gear (carabiners, friction hitches, chainsaws) and specific tree species.",
-      "product_angles": [
-        "Redbubble designs illustrating technical rigging knots (e.g., Blake's Hitch, Distel) with clean, blueprint-style aesthetics.",
-        "KDP Daily Safety & Equipment Inspection Logbooks tailored strictly for arboricultural operations (chainsaw maintenance, rope logs).",
-        "High-quality SVG pack of highly detailed tree silhouettes (Oak, Pine, Birch, Willow) for local landscaping businesses' branding."
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Arborist Daily Safety & Rope Logbook (A5 format, rugged layout)",
-      "estimated_monthly_revenue_year1_eur": 120
-    },
-    {
-      "rank": 5,
-      "name": "Solo RPG & Journaling Boardgamers",
-      "type": "sub_culture",
-      "audience_size_estimate": 120000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Individuals who play tabletop role-playing games alone. They rely on writing, mapping, and journaling to play. They love aesthetic, immersive stationery, hex-grid layouts, and minimalist prompt cards to guide their stories.",
+      "buyer_persona": "Board game hobbyists who prefer playing alone or print their own indie games. They highly value organization, modularity, and physical game trackers.",
       "product_angles": [
-        "KDP Solo RPG Journal with custom dot-grid, hex-grid, and character tracking sections.",
-        "Print-and-Play (PnP) PDF oracle cards (system-neutral prompts for world-building) sold on Etsy or hosted as printables.",
-        "SVG icons and assets for players to print and make their own custom tokens."
+        "3D printable universal card holders and modular token organizers (Cults3D)",
+        "Solo campaign progress journal logs with tactile habit-tracker-style layouts (KDP)",
+        "Print-and-Play micro-game components and dice towers (Cults3D)"
       ],
-      "best_pipeline_or_new": "produce_chess_book",
-      "first_test_product": "The Wanderer's Chronicle: Solo RPG Journal (Hex-grid + lined world-building notebook)",
+      "best_pipeline_or_new": "produce_lowcontent_kdp (for trackers) and produce_stl_parametric (for organizers)",
+      "first_test_product": "A compact, 3D-printable travel card holder and token tray combination that fits inside a standard mint tin.",
       "estimated_monthly_revenue_year1_eur": 200
     },
     {
-      "rank": 6,
-      "name": "Retro Indie Gamedevs (1-Bit & PICO-8 Creators)",
+      "rank": 3,
+      "name": "Speech-Language Pathologists / Orthophonistes",
+      "type": "deep_niche",
+      "audience_size_estimate": 85000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Overworked professionals looking for engaging, non-boring materials to use with children or adults in therapy sessions, often buying with their own or company budgets.",
+      "product_angles": [
+        "Phoneme-specific minimalist coloring books for articulation therapy (KDP)",
+        "Orthophonie-themed humorous stickers and tote bags for practitioners (Redbubble)",
+        "Therapy session tracking notebooks and planners (KDP)"
+      ],
+      "best_pipeline_or_new": "produce_coloring_book (adapted for phonetics) and produce_lowcontent_kdp",
+      "first_test_product": "A French-focused coloring book containing illustrations containing specific target sounds (e.g., 'Le livre de coloriage du son [R]') for young patients.",
+      "estimated_monthly_revenue_year1_eur": 120
+    },
+    {
+      "rank": 4,
+      "name": "Retro Handheld Console Modders",
       "type": "adjacent_market",
-      "audience_size_estimate": 100000,
+      "audience_size_estimate": 250000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Owners of retro gaming devices (Miyoo Mini, Anbernic, Steam Deck) who love customizing their devices with aesthetic accessories, custom grips, and nostalgic decals.",
+      "product_angles": [
+        "3D printable ergonomic snap-on grips for Miyoo Mini / RG35XX (Cults3D)",
+        "Nostalgic 90s console aesthetic stickers and shell wrap SVG templates (Redbubble / Cults3D)",
+        "Retro gaming pixel-art themed carrying case inserts (Cults3D)"
+      ],
+      "best_pipeline_or_new": "produce_stl_parametric (for physical grips) and produce_svg_pack (for decals)",
+      "first_test_product": "A 3D-printable minimalist ergonomic grip/shield combo for the Miyoo Mini Plus.",
+      "estimated_monthly_revenue_year1_eur": 180
+    },
+    {
+      "rank": 5,
+      "name": "Urban Sketchers & Plein Air Painters",
+      "type": "sub_culture",
+      "audience_size_estimate": 150000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Artists who paint or draw outdoors in cities. They need highly portable, lightweight gear, tiny water containers, and compact watercolor palette solutions.",
+      "product_angles": [
+        "3D-printable magnetic palette clips that attach directly to sketchbooks (Cults3D)",
+        "Pocket-sized color-swatching journals with watercolor paper template pages (KDP)",
+        "Urban Sketching challenge prompt books with perspective grids (KDP)"
+      ],
+      "best_pipeline_or_new": "produce_stl_parametric (for palettes/clips) and produce_lowcontent_kdp (for grids/journals)",
+      "first_test_product": "A 3D-printable micro-watercolor palette (6 wells) with an integrated clip to attach to an A6 sketchbook.",
+      "estimated_monthly_revenue_year1_eur": 140
+    },
+    {
+      "rank": 6,
+      "name": "Local Micro-Breweries & Craft Beer Homebrewers",
+      "type": "b2b",
+      "audience_size_estimate": 90000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
       "growth_trajectory": "steady",
-      "buyer_persona": "Indie developers building game jam submissions or retro projects with strict constraints (e.g., Playdate console, PICO-8). They need ready-made, highly-cohesive 1-bit (black and white) tilemaps, UI buttons, and pixel fonts.",
+      "buyer_persona": "Homebrewers and independent micro-breweries who pride themselves on their craft recipes, requiring structured logs and professional-looking taproom accessories.",
       "product_angles": [
-        "Gamedev asset packs containing 8x8 or 16x16 1-bit pixel art tiles (sci-fi, fantasy, cyberpunk themes) generated or formatted via Python CLI tools.",
-        "KDP Game Design notebooks with pre-rendered 8x8 sprite grid templates and map layout grids.",
-        "SVG vector packs of retro-futuristic arcade interface elements."
+        "Comprehensive homebrew recipe formulation logbooks with gravity charts (KDP)",
+        "Customizable tap handle 3D print designs with chalk-paint inserts (Cults3D)",
+        "Humorous organic chemistry/brewing physics posters for taproom decoration (Redbubble)"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "1-Bit Retro UI & Icon Asset Pack (120+ micro-sprites for PICO-8 / Playdate)",
-      "estimated_monthly_revenue_year1_eur": 150
+      "best_pipeline_or_new": "produce_lowcontent_kdp (for recipe logs) and produce_quotes_minimal",
+      "first_test_product": "A detailed 'Homebrewer's Brew Day Logbook' containing batch sheets, water chemistry sections, and hop addition trackers.",
+      "estimated_monthly_revenue_year1_eur": 110
     }
   ]
 }
