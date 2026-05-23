@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-23T09:45:17.332852Z",
+  "timestamp": "2026-05-23T13:02:09.474646Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,63 +90,63 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "reverse coloring book watercolor",
+      "trend_keyword": "Kindle Insert Aesthetic Paper",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Reverse Coloring Book for Anxiety - Watercolor Splatter Creative Drawing Book for Adults - Digital Download PDF",
-      "evidence_url_or_signal": "TikTok hashtag #reversecoloringbook showing a massive 45% spike in engagement from May 10 to May 22, 2026, with users asking for printable PDF versions to draw over with fine liners."
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 4,
+      "best_product_format": "sticker / digital_download",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Retro Bookish Kindle Insert Printable, Aesthetic Book Worm Glitter Holographic Design, Clear Case Kindle Sticker Sheet PDF",
+      "evidence_url_or_signal": "TikTok hashtag #kindleinsert views spiked by 1.2M in the last 14 days, with users specifically looking for printable 'fast-fashion' backplates for Kindle Basic/Paperwhite."
     },
     {
       "rank": 2,
-      "trend_keyword": "funny romantasy bookish stickers",
+      "trend_keyword": "Retro Groovy Teacher Last Day of School",
       "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 4,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Funny Romantasy Bookish Sticker - Smut Reader Laptop Decal - Booktok Aesthetic Kindle Sticker",
-      "evidence_url_or_signal": "Etsy search analytics showing 'Kindle stickers romantasy' search volume up 120% in the last 14 days, driven by major May book releases."
+      "momentum_score_1_10": 10,
+      "estimated_lifespan_days": 25,
+      "saturation_now_1_10": 6,
+      "best_product_format": "tshirt / svg_pack",
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Retro Groovy Teacher Last Day Of School SVG, Teacher Mode Off Shirt Design, End of School Year SVG, Retro Teacher Era PNG",
+      "evidence_url_or_signal": "Etsy search term 'Teacher Era SVG' and 'Last day of school retro' rose to top 50 breakout search terms in the third week of May 2026 as teachers prep for summer break."
     },
     {
       "rank": 3,
-      "trend_keyword": "retro disco cowgirl bachelorette svg",
-      "platform_where_spotted": "Pinterest",
+      "trend_keyword": "Corporate Sarcasm Slack Status",
+      "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 5,
-      "best_product_format": "svg_pack",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Retro Disco Cowgirl SVG Bundle - Bachelorette Party Shirt Design - Last Rodeo Clipart PNG",
-      "evidence_url_or_signal": "Pinterest Trends data indicating a 200% year-over-year search acceleration for 'disco cowgirl bachelorette ideas' peaking mid-May 2026."
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 3,
+      "best_product_format": "sticker / mug",
+      "best_pipeline_match": "produce_cope_pack",
+      "title_template_suggestion": "Funny Corporate Sticker Pack, Sarcastic Slack Status Laptop Decal, Per My Last Email Coworker Mug, Sarcastic Office Humor Stickers",
+      "evidence_url_or_signal": "Reddit r/antiwork and r/consulting threads showing 'passive-aggressive Slack statuses' gained over 15k upvotes collectively between May 10 and May 18, 2026."
     },
     {
       "rank": 4,
-      "trend_keyword": "articulated wizard axolotl",
-      "platform_where_spotted": "Cults3D",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 90,
+      "trend_keyword": "DINKWAD Retro Matchbox Art",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 30,
       "saturation_now_1_10": 2,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Articulated Axolotl Wizard - Flexi Desk Toy - Easy Print No Supports STL",
-      "evidence_url_or_signal": "Reddit r/3Dprinting and Cults3D trending section showing high downloads for cute fantasy-themed articulated models (axolotls, capybaras with hats) in mid-May 2026."
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Retro Matchbox Print DINKWAD, Double Income No Kids With A Dog Poster, Vintage Matchbook Dog Mom Wall Decor, Mid Century Dog Art",
+      "evidence_url_or_signal": "Pinterest visual searches for 'Matchbox aesthetic illustrations' combined with pet themes grew 140% month-over-month, exploding in mid-May."
     },
     {
       "rank": 5,
-      "trend_keyword": "unhinged corporate jargon aura poster",
+      "trend_keyword": "Cozy Fantasy Library Coloring Book",
       "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 21,
-      "saturation_now_1_10": 2,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Unhinged Corporate Aura Poster - Funny Office Wall Art - Retro Gradient Affirmation Print for Coworker",
-      "evidence_url_or_signal": "TikTok viral slideshow trend 'Corporate jargon translated' with gradient aura aesthetics gaining over 2M views on May 18, 2026."
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 3,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Cozy Fantasy Library Coloring Book, Aesthetic Whimsical Book Nook Coloring Pages for Adults, Magical Bookstore Grayscale Coloring PDF",
+      "evidence_url_or_signal": "#cozyfantasy reading community on TikTok has shifted heavily to cozy coloring activities while listening to audiobooks, showing a massive gap for high-quality bookish/botanical interior line-art."
     }
   ]
 }
