@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-23T09:45:02.958052Z",
+  "timestamp": "2026-05-23T13:02:45.150466Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Retro Handheld OS Customizers (Miyoo, Anbernic, Steam Deck)",
-      "type": "adjacent_market",
-      "audience_size_estimate": 250000,
+      "name": "Historical European Martial Arts (HEMA) Practitioners",
+      "type": "sub_culture",
+      "audience_size_estimate": 120000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Tech-savvy retro gamers who spend hours customizing OnionOS, GarlicOS, or EmuELEC themes, seeking pixel-art icons, retro console-style custom SVG skins, and physical layout trackers.",
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Adults (20-45) practicing historical sword fighting. They read ancient manuals (fechtbuchs), respect historical accuracy, and spend heavily on protective gear and swords.",
       "product_angles": [
-        "Digital retro-pixel icon packs and UI asset sheets optimized for 640x480 screens",
-        "Printable SVG skin templates designed for precise fit on Miyoo Mini Plus / RG35XX",
-        "KDP Retro Gaming Achievement & Backlog Tracker journal"
+        "Highly accurate vector graphic apparel featuring manual illustrations (Meyer, Talhoffer) with clean modern typography",
+        "KDP Training Logbooks specifically formatted for sparring notes, weapon maintenance, and tournament tracking",
+        "Stickers with insider HEMA jokes ('Right of Way is for cowards', 'Zwerchhau solves everything')"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "OnionOS Pixel Art Theme Assets and SVG skin layouts",
+      "best_pipeline_or_new": "produce_svg_pack / produce_lowcontent_kdp",
+      "first_test_product": "HEMA Sparring Logbook & Technique Tracker on Amazon KDP",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 2,
-      "name": "Wind Turbine Technicians",
-      "type": "deep_niche",
-      "audience_size_estimate": 120000,
+      "name": "Retro PS1-Style (PSX) Indie Game Developers",
+      "type": "adjacent_market",
+      "audience_size_estimate": 95000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Industrial climbers and technicians working on offshore/onshore wind farms. They take pride in extreme working heights and have highly specialized tools and safety codes.",
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Solo indie game developers building low-poly retro horror or boomer shooter games. They hang out on Itch.io, Reddit (r/retrodev), and Twitter/X.",
       "product_angles": [
-        "Redbubble sticker packs with industry humor (e.g., 'Climbing 100 meters for a reset')",
-        "KDP Wind Turbine Maintenance, Inspection & Safety Logbook",
-        "High-contrast vector t-shirt designs featuring technical schematic art of turbine nacelles"
+        "64x64 and 128x128 pixelated/dithered seamless texture packs (grunge metal, old brick, sci-fi panels)",
+        "Low-poly UI asset packs (retro health bars, pixel fonts, memory card icons)",
+        "Sound effect packs generated or processed to mimic 16-bit / early CD-ROM audio limitations"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Wind Turbine Maintenance and Climb Logbook on KDP",
-      "estimated_monthly_revenue_year1_eur": 120
-    },
-    {
-      "rank": 3,
-      "name": "French Heritage Villages (Les Plus Beaux Villages de France) B2B",
-      "type": "b2b",
-      "audience_size_estimate": 170000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Local tourist offices and boutique owners in certified beautiful French villages looking for affordable, modern, localized souvenirs to sell to tourists.",
-      "product_angles": [
-        "Custom coloring books dedicated to the specific architectural heritage of a single village (e.g., Saint-Cirq-Lapopie)",
-        "High-end vector line-art posters of local historical monuments for digital download/licensing",
-        "SVG map elements and vector postcards ready for local laser-engraving shops"
-      ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "Coloring Book 'Coloriage Patrimoine: Les Plus Beaux Villages du Lot'",
+      "best_pipeline_or_new": "produce_gamedev_asset_pack",
+      "first_test_product": "PSX Retro Horror Seamless Texture Pack (64 textures) on Itch.io",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
-      "rank": 4,
-      "name": "Solo Board Game Players",
-      "type": "sub_culture",
+      "rank": 3,
+      "name": "Geotechnical Engineers & Soil Mechanics Professionals",
+      "type": "deep_niche",
       "audience_size_estimate": 150000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Enthusiastic hobbyists who play complex board games alone (r/soloboardgaming). They require session logs, custom card holders, and print-and-play components to manage heavy setups.",
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Civil engineers specializing in foundations, dirt, rock, and drilling. They love hyper-specific technical humor regarding Karl Terzaghi, shear strength, SPT blow counts, and mud.",
       "product_angles": [
-        "KDP Solo Board Game Session Journal (tracking wins, losses, AI behavior, and strategies)",
-        "3D printable STL card stands, resource token trays, and deck holders optimized for low-footprint play (Cults3D)",
-        "Print-and-Play (PnP) custom campaign tracking sheets and scorepads (PDF format on Etsy)"
+        "Redbubble apparel with technical soil mechanics Mohr's circle diagrams turned into jokes",
+        "Engineering graph paper notebooks with customized geotechnical reference sheets on the inside covers",
+        "Stickers for hard hats featuring industry-specific humor ('Trust me, I know my dirt')"
       ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "Solo Gamer Session Tracker & Campaign Journal on KDP",
-      "estimated_monthly_revenue_year1_eur": 180
+      "best_pipeline_or_new": "produce_quotes_minimal",
+      "first_test_product": "Geotechnical Hard Hat Sticker Pack on Redbubble",
+      "estimated_monthly_revenue_year1_eur": 120
+    },
+    {
+      "rank": 4,
+      "name": "TTRPG Fantasy Cartographers (Wonderdraft/Inkarnate Users)",
+      "type": "adjacent_market",
+      "audience_size_estimate": 250000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Dungeon Masters and fantasy authors who design custom maps for their worlds. They buy custom asset brushes (mountains, trees, castles) to use in mapping software.",
+      "product_angles": [
+        "Custom transparent PNG asset packs of hand-drawn style fantasy medieval buildings and castles",
+        "Seamless paper and parchment texture packs for map backgrounds",
+        "Pre-made vector map labels, banners, and compass roses"
+      ],
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "Hand-drawn Medieval Settlement Asset Pack (transparent PNGs) on Etsy & Itch.io",
+      "estimated_monthly_revenue_year1_eur": 200
     },
     {
       "rank": 5,
-      "name": "Extreme Cave Diving & Speleology",
-      "type": "deep_niche",
-      "audience_size_estimate": 60000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 1,
+      "name": "Amateur Radio (Ham Radio) Operators",
+      "type": "sub_culture",
+      "audience_size_estimate": 300000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 2,
       "growth_trajectory": "slow",
-      "buyer_persona": "Technical cave divers and speleologists with high disposable income. They are obsessed with safety protocols, gear configurations (sidemount), and specific line-marker iconography.",
+      "buyer_persona": "Mostly older tech-savvy hobbyists obsessed with radio frequencies, antennas, Morse code, and international contacts. They take pride in their callsigns and log every contact.",
       "product_angles": [
-        "KDP Cave Diving Logbook with technical gas-planning grids and safety checklists",
-        "Redbubble sticker designs featuring cave diving line arrows, cookies, and insider humor (e.g., 'Respect the Line')",
-        "Vector design packs of cave topography icons and mapping symbols for survey reports"
+        "Highly structured KDP Ham Radio Logbooks (UTC, Frequency, Mode, Power, RST columns)",
+        "Apparel with Morse code patterns of famous phrases or technical jokes about SWR (Standing Wave Ratio)",
+        "Customizable QSL card templates (cards sent to confirm radio contact) sold as digital downloads"
       ],
       "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Technical Cave Diving Logbook (Gas planning & Deco schedules)",
-      "estimated_monthly_revenue_year1_eur": 140
+      "first_test_product": "Premium amateur radio operator logbook on Amazon KDP",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 6,
-      "name": "Low-Poly Assets for Godot Engine Developers",
-      "type": "adjacent_market",
-      "audience_size_estimate": 400000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers building lightweight 3D games in Godot. They look for cohesive low-poly asset packs, modular dungeon sets, and UI layouts optimized for open-source workflows.",
+      "name": "Local Craft Breweries (French Micro-brasseries)",
+      "type": "b2b",
+      "audience_size_estimate": 60000,
+      "passion_level_1_10": 7,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Independent craft brewers in France who lack in-house graphic designers. They need professional, legally-compliant label templates and localized merchandise designs.",
       "product_angles": [
-        "Modular low-poly dungeon and interior tile kits (OBJ/GLTF format)",
-        "Godot-optimized UI theme assets (buttons, frames, progress bars as PNG/SVG slices)",
-        "Procedurally generated 3D rock/prop packs (Cults3D and itch.io)"
+        "Beer label templates formatted for standard bottles/cans, editable in free Canva accounts",
+        "Localized merchandise graphics (t-shirts, coasters) combining regional heritage with craft beer culture",
+        "Social media post templates designed specifically for craft beer announcements and taprooms"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "Low-Poly Modular Sci-Fi Corridor Assets (GLTF/OBJ)",
-      "estimated_monthly_revenue_year1_eur": 200
+      "best_pipeline_or_new": "produce_chateau_local",
+      "first_test_product": "Pack of 5 Editable Craft Beer Label Templates (Canva link) sold on Etsy",
+      "estimated_monthly_revenue_year1_eur": 140
     }
   ]
 }
