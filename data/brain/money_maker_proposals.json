@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-23T02:04:54.315241Z",
+  "timestamp": "2026-05-23T06:30:18.890864Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,58 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch the First KDP Coloring Book via Runware PAYG",
+      "action_title": "Launch 5 Niche Coloring Books on Amazon KDP",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 75,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "KDP organic traffic is highly active for specific coloring niches. By spending ~2€ of the 20€ budget on Runware PAYG, Hugo can generate 40 ultra-clean FLUX-schnell coloring pages, compile them to PDF on GitHub Actions, and bypass the image quality blocker immediately.",
-      "first_action_today": "Trigger the 'produce_coloring_book' pipeline on GitHub Actions using a 2€ Runware PAYG API key to generate 40 high-definition vector-style black & white coloring pages."
+      "estimated_revenue_uplift_eur_30days_high": 120,
+      "hugo_effort_hours": 6,
+      "why_this_works_now": "Coloring books have a proven transactional intent on Amazon. Utilizing the existing 'produce_coloring_book' pipeline with the Runware PAYG FLUX-schnell API (highly affordable at ~20€ budget) bypasses the current image generation blocker to deliver high-quality, sellable interiors immediately.",
+      "first_action_today": "Configure Runware API key in GitHub Actions secrets and run 'produce_coloring_book' for a specific high-intent niche (e.g., 'Cozy Hygge Life Coloring Book')."
     },
     {
       "rank": 2,
-      "action_title": "Redbubble 'Sticker Pack' Blitz (Gamedev & Termux Themes)",
+      "action_title": "Bulk Upload 100 Sticker Designs on Redbubble",
       "type": "upload",
       "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 45,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Sticker packs (multiple designs on one sheet) offer high perceived value. Creating niche designs for Linux/Termux enthusiasts and indie gamedevs allows Hugo to capture passionate audiences with zero ad spend.",
-      "first_action_today": "Generate 15 transparent PNG sticker assets using Together AI (FLUX-schnell) on GHA, package them into 3 thematic sticker sheets, and upload them via Termux/browser."
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "Redbubble is already registered. Stickers are low-cost impulse buys that require minimal formatting. Generating transparent PNG designs using the 'produce_literal_idioms' or 'produce_svg_pack' pipeline leverages native search traffic without active ad spend.",
+      "first_action_today": "Generate 20 transparent PNG sticker designs using Together AI (FLUX-schnell via GitHub Actions) and upload them to Redbubble using their batch uploader."
     },
     {
       "rank": 3,
-      "action_title": "Upload Paid Parametric STLs to Cults3D",
+      "action_title": "Launch 3 Parametric Functional 3D Models on Cults3D",
       "type": "upload",
       "target_platform": "Cults3D",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 35,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Cults3D is highly search-optimized. Functional 3D prints (like custom battery organizers, board game token trays, or cable management tools) sell consistently for 1.50€ to 3€ without needing complex marketing.",
-      "first_action_today": "Run 'produce_stl_parametric' on GHA to compile 3 variations of functional organizers, write a clear SEO-optimized description, and upload them to Cults3D."
+      "estimated_revenue_uplift_eur_30days_high": 40,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Cults3D is highly receptive to functional, parametric 3D prints (e.g., custom organizers, gridfinity accessories, or replacement parts). The 'produce_stl_parametric' pipeline can generate these programmatically with zero manual CAD labor.",
+      "first_action_today": "Generate 3 STL variations of a modular desk organizer using OpenSCAD/Python scripts on Termux and create the Cults3D listings priced at 1.99€."
     },
     {
       "rank": 4,
-      "action_title": "Publish No-Image 'Gamedev Project Planner' Logbook",
-      "type": "upload",
+      "action_title": "Introductory Pricing Strategy for New KDP Book Releases",
+      "type": "pricing",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 20,
-      "estimated_revenue_uplift_eur_30days_high": 100,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Bypasses the image generation bottleneck completely. Text-only interior layouts (grids, checklists, log sheets) are generated via python-reportlab on GHA. A clean, typographic cover attracts professional buyers looking for functional tools.",
-      "first_action_today": "Run 'produce_lowcontent_kdp' to generate a 120-page 'Indie Game Developer Milestones & Bug Tracker' interior and upload it to KDP."
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 30,
+      "hugo_effort_hours": 1,
+      "why_this_works_now": "An unreviewed book priced at $7.99 struggles to convert. Pricing the initial coloring books at the absolute minimum royalty floor ($4.99) for the first 14 days triggers early algorithmic sales velocity and reviews, before raising to standard pricing ($7.99).",
+      "first_action_today": "Set the retail price of the first generated coloring book to $4.99 upon submission to KDP."
     },
     {
       "rank": 5,
-      "action_title": "Launch a Premium itch.io 2D Pixel Art / UI Asset Pack",
+      "action_title": "Publish 3 Game Dev Asset Packs on itch.io",
       "type": "upload",
       "target_platform": "itch.io",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 60,
+      "estimated_revenue_uplift_eur_30days_high": 50,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "The indie gamedev community on itch.io constantly buys UI kits, seamless textures, and icon packs. Using 'produce_gamedev_asset_pack' with Together AI to generate retro UI buttons or RPG icons yields immediate digital inventory.",
-      "first_action_today": "Generate a bundle of 100 retro RPG item icons (potions, weapons, scrolls) on GHA, zip them with a markdown readme, and list the pack on itch.io for $2.99."
+      "why_this_works_now": "Game developers constantly buy 2D UI elements, pixel art assets, or seamless textures for game jams. Using the 'produce_gamedev_asset_pack' pipeline, Hugo can package generated visual elements into zip folders and list them as paid assets (with a small free sample tier to drive traffic).",
+      "first_action_today": "Package 50 seamless game textures generated via Together AI into a zip file, create an itch.io creator account, and publish the pack for $2.99."
+    },
+    {
+      "rank": 6,
+      "action_title": "Redbubble Title and Tag Optimization Sweep",
+      "type": "conversion",
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 25,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Redbubble relies heavily on precise tag matching. Using a standardized metadata format (15 highly relevant, low-competition tags, clear descriptive title, no spam) for all uploaded stickers maximizes organic search impressions from day one.",
+      "first_action_today": "Write a quick Python parser script in Termux that generates 15 optimized tags and a clean title based on the design's target niche keywords before uploading."
     }
   ]
 }
