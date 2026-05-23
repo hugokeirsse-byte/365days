@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-23T02:05:41.053274Z",
+  "timestamp": "2026-05-23T06:29:55.760342Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -93,66 +93,77 @@
       "tool_or_platform": "Segmind API",
       "url": "https://www.segmind.com/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24 hours). FLUX.schnell costs ~0.03 credits per image, meaning ~3000 free images per month.",
-      "what_it_does_uniquely": "Provides stable, fast, API-based access to FLUX.schnell, SDXL, and ControlNet models. Highly reliable and bypasses GitHub Actions IP blocks unlike AI Horde.",
-      "would_integrate_where": "Replace Pollinations in the image generation pipeline (`produce_coloring_book` or `produce_kdp_cover`). A simple curl POST request with an API key from GitHub Secrets.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires API key rotation or strict daily budget management if multiple workflows run simultaneously."
+      "free_tier_concrete_limits": "100 free credits daily (approx. 50-100 images per day depending on model resolution/type). No credit card required.",
+      "what_it_does_uniquely": "Provides API access to high-end models like FLUX.1-schnell, SDXL, and specialized controlnets with extremely fast inference speeds, bypassing GitHub Actions IP blocks that hit AI Horde.",
+      "would_integrate_where": "Replace Pollinations in the `produce_coloring_book` and `produce_kdp_cover` pipelines to achieve professional-grade vector-like outlines.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Strict rate limit of 1 request per second on the free tier. Scripts must handle 429 retries with backoff."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Jina Reader API",
-      "url": "https://r.jina.ai/",
-      "category": "scraping",
-      "free_tier_concrete_limits": "1,000,000 free tokens per month. No authentication required for basic usage, but a free API key increases rate limits.",
-      "what_it_does_uniquely": "Converts any web page URL into clean, LLM-friendly Markdown. Perfect for scraping trend sites, Etsy search pages, or blog posts without writing complex parsers.",
-      "would_integrate_where": "Integrates into `agent_trendhunter` or `agent_opportunity_hunter` to scrape target websites directly within GitHub Actions and feed clean text to Gemini.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Websites with heavy Cloudflare protection might still block the Jina proxy."
+      "tool_or_platform": "MakerWorld",
+      "url": "https://makerworld.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to upload. No listing fees. Points reward system for downloads.",
+      "what_it_does_uniquely": "Bambu Lab's native 3D model sharing platform. Highly active ecosystem with a rewards program where popular free designs earn points redeemable for physical 3D printers, accessories, or gift cards, offering a direct, non-cash monetization route for parametric STL files.",
+      "would_integrate_where": "Add as a primary distribution channel alongside Cults3D in parametric STL pipelines (`produce_stl_parametric`).",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Strict moderation on spammy or low-effort uploads. Designs must be functional, original, or highly creative."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Printify API",
-      "url": "https://developers.printify.com/",
-      "category": "pod",
-      "free_tier_concrete_limits": "100% free to use the API. No monthly fees. Personal Access Tokens generated instantly.",
-      "what_it_does_uniquely": "Allows programmatic creation of POD products, mockups, and automatic publishing to connected stores (Etsy, Pop-up store, etc.) without manual UI clicking.",
-      "would_integrate_where": "Post-processing pipeline. Once an image is validated by `agent_gemini_quality_check`, a GitHub Actions script can automatically create a product draft (e.g., Mug, T-shirt) on Printify.",
+      "tool_or_platform": "Lemon Squeezy API",
+      "url": "https://www.lemonsqueezy.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "No monthly fee. Pay-as-you-go model (5% + $0.50 per transaction). Full API access on free accounts.",
+      "what_it_does_uniquely": "Acts as the Merchant of Record. Handles global sales tax, VAT OSS calculations, and compliance automatically, which is a massive hurdle for a solo entrepreneur based in France selling digital goods.",
+      "would_integrate_where": "Automate digital delivery of coloring book PDFs, card games, and gamedev asset packs directly from a GitHub Actions build release.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires initial manual setup of the store connection and shipping profiles."
+      "risk_or_caveat": "Payout thresholds apply. Digital goods must comply with their strict ToS (no copyright-infringing content)."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Gumroad API",
-      "url": "https://gumroad.com/api",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to create products and use the API. Gumroad only takes a flat 10% fee on successful sales.",
-      "what_it_does_uniquely": "Allows programmatic creation, file uploading, and metadata updates of digital products (coloring book PDFs, 3D assets, card games) via simple HTTP POST requests.",
-      "would_integrate_where": "A new automated release pipeline. Once a digital asset (KDP PDF or Game Asset Pack) is compiled in GitHub Actions, it can be pushed directly to Hugo's Gumroad store as a live product.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "High transaction fee (10%) compared to self-hosted Stripe, but completely free of fixed monthly costs."
+      "tool_or_platform": "Glif API",
+      "url": "https://glif.app/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous daily token allowance (~100 runs per day) on the free tier.",
+      "what_it_does_uniquely": "Allows developers to build or use preset multi-step AI pipelines (e.g., text-to-image + comic layout + text rendering) and run them via a simple POST request. Can output complete card designs or stylized coloring pages in one step.",
+      "would_integrate_where": "Integrate into the `produce_card_game` and `produce_viral_formats` pipelines for complex multi-modal asset creation.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "API syntax can change rapidly as the platform evolves. Free tier outputs are public by default."
     },
     {
       "rank": 5,
-      "tool_or_platform": "API-Ninjas",
-      "url": "https://api-ninjas.com/",
+      "tool_or_platform": "Serpapi (Etsy & Google Trends Engines)",
+      "url": "https://serpapi.com/",
       "category": "analytics",
-      "free_tier_concrete_limits": "10,000 free API calls per month across dozens of specialized APIs.",
-      "what_it_does_uniquely": "Provides clean, JSON-formatted data for trivia, quotes, dictionary definitions, historical events, and thesaurus searches.",
-      "would_integrate_where": "Used inside text-content generation scripts like `produce_quotes_minimal`, `produce_card_game`, or educational low-content KDP books to fetch raw, high-quality factual data.",
+      "free_tier_concrete_limits": "100 successful search requests per month for free.",
+      "what_it_does_uniquely": "Provides structured JSON data scraped from search engines, including Etsy search results, autocomplete suggestions, and Google Trends, bypassing complex scraping protections.",
+      "would_integrate_where": "Power the `agent_opportunity_hunter` and `agent_niche_gap` scripts to identify trending, low-competition tags directly on Etsy.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Data is static and factual; cannot replace creative writing but serves as excellent scaffolding."
+      "risk_or_caveat": "Low monthly search limit on the free tier; demands highly targeted, cached queries."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Fab (by Epic Games)",
-      "url": "https://www.fab.com/",
+      "tool_or_platform": "ElevenLabs API",
+      "url": "https://elevenlabs.io/",
+      "category": "ai_audio",
+      "free_tier_concrete_limits": "10,000 characters per month free, access to high-quality pre-made voices.",
+      "what_it_does_uniquely": "Industry-standard text-to-speech with natural inflection. Useful for generating high-value audio assets (voice lines, narrator packs) for game developers.",
+      "would_integrate_where": "Launch a new product pipeline producing micro-voice-packs (e.g., RPG UI sounds, tactical voice barks) for itch.io and Unity/Unreal Asset Stores.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Commercial use attribution required on the free plan. Monthly character budget is tight; requires text-optimization heuristics."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com/",
       "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list assets. Creator revenue share is 88%, which is highly competitive.",
-      "what_it_does_uniquely": "The unified marketplace replacing Unreal Engine Marketplace, Sketchfab, and Quixel. Crucial distribution hub for 2D/3D gamedev assets, UI packs, and textures.",
-      "would_integrate_where": "Distribution stage for `produce_gamedev_asset_pack`. Packaged ZIP files generated via GitHub Actions can be staged for manual/semi-automated upload to Fab.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "No public API for automated product uploads yet; requires manual listing upload, but the market reach is massive."
+      "free_tier_concrete_limits": "Free unlimited uploads, free geometric search indexing.",
+      "what_it_does_uniquely": "A massive 3D model search engine and community marketplace. Features unique geometric search indexing, driving high organic traffic to uploaded models based on structural similarity.",
+      "would_integrate_where": "Upload parametric STL models generated by `produce_stl_parametric` to capture high-intent 3D printing search traffic.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "Fierce competition in generic categories; requires highly descriptive titles and tags for optimal search indexing."
     }
   ]
 }
