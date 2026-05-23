@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-23T07:59:40.423492Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 0,
+  "reasoning": "The image fails multiple critical rules. The expected verse \"Be strong and courageous\" is not present; instead, the image displays illegible and nonsensical AI-generated text, violating the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Additionally, the required Bible reference \"Joshua 1:9\" is completely missing, violating the 'reference_format_correct' rule. These severe text-related issues make the image entirely unacceptable for the 'bible_verses' pipeline."
+}

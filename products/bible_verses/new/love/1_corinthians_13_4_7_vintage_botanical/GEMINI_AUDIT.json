@@ -1,0 +1,13 @@
+{
+  "audited_at": "2026-05-23T07:59:18.423781Z",
+  "pipeline": "bible_verses",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "verse_text_exactly_correct_no_typo",
+    "no_gibberish_text",
+    "reference_format_correct"
+  ],
+  "rating_0_100": 5,
+  "reasoning": "The image fails multiple critical rules. The verse text is incorrect and contains significant typos, reading \"Love is patce lovio\" instead of \"Love is patient, love is kind.\" The text itself appears to be AI-generated gibberish rather than a clean overlay, violating the 'no_gibberish_text' rule. Additionally, there is no correctly formatted Bible reference visible on the image; all smaller text is also gibberish. These critical failures make the image unacceptable for the 'bible_verses' pipeline."
+}
