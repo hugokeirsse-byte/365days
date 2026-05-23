@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-22T21:05:31.814344Z",
+  "timestamp": "2026-05-23T02:04:54.315241Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,58 +90,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch First 40-Page Niche Coloring Book on Amazon KDP",
+      "action_title": "Launch the First KDP Coloring Book via Runware PAYG",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 60,
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 75,
       "hugo_effort_hours": 4,
-      "why_this_works_now": "KDP organic traffic for specific niches (e.g., 'Cozy Hygge Coloring Book' or 'Retro 80s Vaporwave') is high. Using the Together AI FLUX-schnell free tier via GitHub Actions allows generating 40 ultra-sharp vector-like black & white coloring pages without spending a cent.",
-      "first_action_today": "Run the existing 'produce_coloring_book' pipeline on GitHub Actions using the TOGETHER_API_KEY to generate 40 images for a selected micro-niche."
+      "why_this_works_now": "KDP organic traffic is highly active for specific coloring niches. By spending ~2€ of the 20€ budget on Runware PAYG, Hugo can generate 40 ultra-clean FLUX-schnell coloring pages, compile them to PDF on GitHub Actions, and bypass the image quality blocker immediately.",
+      "first_action_today": "Trigger the 'produce_coloring_book' pipeline on GitHub Actions using a 2€ Runware PAYG API key to generate 40 high-definition vector-style black & white coloring pages."
     },
     {
       "rank": 2,
-      "action_title": "Upload 50 Text-Only & Minimalist Humorous Designs to Redbubble",
+      "action_title": "Redbubble 'Sticker Pack' Blitz (Gamedev & Termux Themes)",
       "type": "upload",
       "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 35,
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 45,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Text-only designs (e.g., 'I Heart...' or niche profession jokes) bypass the image generation bottleneck completely. They require zero GPU resources, can be generated via Python PIL on Termux, and sell consistently on stickers and mugs.",
-      "first_action_today": "Generate 50 transparent PNG text designs using a Python script on Termux and batch upload them to Redbubble using a single pre-configured template."
+      "why_this_works_now": "Sticker packs (multiple designs on one sheet) offer high perceived value. Creating niche designs for Linux/Termux enthusiasts and indie gamedevs allows Hugo to capture passionate audiences with zero ad spend.",
+      "first_action_today": "Generate 15 transparent PNG sticker assets using Together AI (FLUX-schnell) on GHA, package them into 3 thematic sticker sheets, and upload them via Termux/browser."
     },
     {
       "rank": 3,
-      "action_title": "Publish 5 Functional Parametric 3D Models on Cults3D",
+      "action_title": "Upload Paid Parametric STLs to Cults3D",
       "type": "upload",
-      "target_platform": "Cults3D (prevu)",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 50,
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 35,
       "hugo_effort_hours": 2,
-      "why_this_works_now": "Functional 3D prints (cable organizers, battery dispensers, gridfinity modifications) sell repeatedly on Cults3D. OpenSCAD script generation on GitHub Actions can output flawless STL files with zero 3D modeling experience needed.",
-      "first_action_today": "Run the 'produce_stl_parametric' pipeline to compile STL files for a modular desk organizer, write a quick markdown description, and publish on Cults3D for 1.99 EUR each."
+      "why_this_works_now": "Cults3D is highly search-optimized. Functional 3D prints (like custom battery organizers, board game token trays, or cable management tools) sell consistently for 1.50€ to 3€ without needing complex marketing.",
+      "first_action_today": "Run 'produce_stl_parametric' on GHA to compile 3 variations of functional organizers, write a clear SEO-optimized description, and upload them to Cults3D."
     },
     {
       "rank": 4,
-      "action_title": "Launch 10 Niche Logbooks / Low-Content Journals on KDP",
+      "action_title": "Publish No-Image 'Gamedev Project Planner' Logbook",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Logbooks for specific hobbies (e.g., 'Beekeeping Log Book', 'Mushroom Foraging Tracker') have low competition and high search intent. The interiors are standardized grids, and the covers can be generated using a basic text/image layout.",
-      "first_action_today": "Generate a 100-page interior PDF using a basic python-reportlab script on Termux and upload it with 5 different niche-specific cover designs."
+      "estimated_revenue_uplift_eur_30days_low": 20,
+      "estimated_revenue_uplift_eur_30days_high": 100,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Bypasses the image generation bottleneck completely. Text-only interior layouts (grids, checklists, log sheets) are generated via python-reportlab on GHA. A clean, typographic cover attracts professional buyers looking for functional tools.",
+      "first_action_today": "Run 'produce_lowcontent_kdp' to generate a 120-page 'Indie Game Developer Milestones & Bug Tracker' interior and upload it to KDP."
     },
     {
       "rank": 5,
-      "action_title": "Create and Upload 5 Multi-Design 'Sticker Packs' on Redbubble",
+      "action_title": "Launch a Premium itch.io 2D Pixel Art / UI Asset Pack",
       "type": "upload",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 25,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Sticker packs offer massive perceived value on Redbubble because customers get 5 to 10 mini stickers on a single sheet for the price of one. Combining multiple generated transparent PNGs into a single canvas yields high click-through rates.",
-      "first_action_today": "Use a Python script to merge 6 small transparent niche icons (e.g., retro gaming items) onto a single canvas grid and upload it as a Redbubble sticker sheet."
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "The indie gamedev community on itch.io constantly buys UI kits, seamless textures, and icon packs. Using 'produce_gamedev_asset_pack' with Together AI to generate retro UI buttons or RPG icons yields immediate digital inventory.",
+      "first_action_today": "Generate a bundle of 100 retro RPG item icons (potions, weapons, scrolls) on GHA, zip them with a markdown readme, and list the pack on itch.io for $2.99."
     }
   ]
 }
