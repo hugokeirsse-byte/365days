@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-23T06:29:55.760342Z",
+  "timestamp": "2026-05-23T09:45:17.088154Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,80 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Segmind API",
-      "url": "https://www.segmind.com/",
+      "tool_or_platform": "Nebius AI Studio",
+      "url": "https://nebius.com/services/ai-studio",
       "category": "ai_image",
-      "free_tier_concrete_limits": "100 free credits daily (approx. 50-100 images per day depending on model resolution/type). No credit card required.",
-      "what_it_does_uniquely": "Provides API access to high-end models like FLUX.1-schnell, SDXL, and specialized controlnets with extremely fast inference speeds, bypassing GitHub Actions IP blocks that hit AI Horde.",
-      "would_integrate_where": "Replace Pollinations in the `produce_coloring_book` and `produce_kdp_cover` pipelines to achieve professional-grade vector-like outlines.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Strict rate limit of 1 request per second on the free tier. Scripts must handle 429 retries with backoff."
+      "free_tier_concrete_limits": "$10 free trial credits upon registration. FLUX.1-schnell costs $0.003 per image (approx. 3,300 free images, then extremely cheap PAYG).",
+      "what_it_does_uniquely": "Provides lightning-fast, ultra-reliable API access to FLUX.1-schnell/dev and SDXL. It bypasses GitHub Actions IP bans (unlike AI Horde) and produces superior image quality compared to Pollinations.",
+      "would_integrate_where": "Replace Pollinations in the 'produce_coloring_book' and 'produce_kdp_cover' pipelines inside GitHub Actions using a standard OpenAI-compatible Python SDK.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires card verification to unlock the trial credits to prevent bot abuse. Strictly enforce credit limits in code."
     },
     {
       "rank": 2,
-      "tool_or_platform": "MakerWorld",
-      "url": "https://makerworld.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to upload. No listing fees. Points reward system for downloads.",
-      "what_it_does_uniquely": "Bambu Lab's native 3D model sharing platform. Highly active ecosystem with a rewards program where popular free designs earn points redeemable for physical 3D printers, accessories, or gift cards, offering a direct, non-cash monetization route for parametric STL files.",
-      "would_integrate_where": "Add as a primary distribution channel alongside Cults3D in parametric STL pipelines (`produce_stl_parametric`).",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Strict moderation on spammy or low-effort uploads. Designs must be functional, original, or highly creative."
+      "tool_or_platform": "Serper.dev",
+      "url": "https://serper.dev",
+      "category": "analytics",
+      "free_tier_concrete_limits": "2,500 free search queries upon signup. No credit card required.",
+      "what_it_does_uniquely": "Extremely fast and cheap Google Search, Google Images, and Google Shopping scraper API. Essential for programmatic SEO and micro-niche trend validation before production.",
+      "would_integrate_where": "Integrate into 'agent_opportunity_hunter' to automate search volume checks and competitor price scraping on Google Shopping.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Rate limits on the free tier can block rapid parallel requests. Must implement a sleep delay in GitHub Actions scripts."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Lemon Squeezy API",
-      "url": "https://www.lemonsqueezy.com/",
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com",
       "category": "marketplace",
-      "free_tier_concrete_limits": "No monthly fee. Pay-as-you-go model (5% + $0.50 per transaction). Full API access on free accounts.",
-      "what_it_does_uniquely": "Acts as the Merchant of Record. Handles global sales tax, VAT OSS calculations, and compliance automatically, which is a massive hurdle for a solo entrepreneur based in France selling digital goods.",
-      "would_integrate_where": "Automate digital delivery of coloring book PDFs, card games, and gamedev asset packs directly from a GitHub Actions build release.",
+      "free_tier_concrete_limits": "100% free to list and sell 3D printable designs (STL/OBJ). Takes a low platform fee on sales instead of monthly listing fees.",
+      "what_it_does_uniquely": "It is the fastest-growing search engine and marketplace for 3D printing. It has native membership options and less creator saturation than Cults3D for programmatic parametric models.",
+      "would_integrate_where": "Add as a secondary distribution target in 'produce_stl_parametric' alongside Cults3D to double the organic reach for 3D printing niches.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Payout thresholds apply. Digital goods must comply with their strict ToS (no copyright-infringing content)."
+      "risk_or_caveat": "Requires high-quality renders of the STL files to gain organic traction. Code must render the generated STLs automatically."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Glif API",
-      "url": "https://glif.app/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous daily token allowance (~100 runs per day) on the free tier.",
-      "what_it_does_uniquely": "Allows developers to build or use preset multi-step AI pipelines (e.g., text-to-image + comic layout + text rendering) and run them via a simple POST request. Can output complete card designs or stylized coloring pages in one step.",
-      "would_integrate_where": "Integrate into the `produce_card_game` and `produce_viral_formats` pipelines for complex multi-modal asset creation.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "API syntax can change rapidly as the platform evolves. Free tier outputs are public by default."
+      "tool_or_platform": "Draft2Digital",
+      "url": "https://www.draft2digital.com",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free to publish. They take a 10% cut of the retail price per sale.",
+      "what_it_does_uniquely": "Distributes ebooks and low-content paperbacks to Apple Books, Kobo, Barnes & Noble, and Tolino simultaneously. Bypasses KDP's exclusivity rules and reaches non-Amazon global markets automatically.",
+      "would_integrate_where": "Integrate as an automated publishing destination for KDP coloring books and low-content planners after initial validation on Amazon KDP.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Stringent formatting guidelines for automated PDF uploads. Layout templates must be mathematically precise."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Serpapi (Etsy & Google Trends Engines)",
-      "url": "https://serpapi.com/",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100 successful search requests per month for free.",
-      "what_it_does_uniquely": "Provides structured JSON data scraped from search engines, including Etsy search results, autocomplete suggestions, and Google Trends, bypassing complex scraping protections.",
-      "would_integrate_where": "Power the `agent_opportunity_hunter` and `agent_niche_gap` scripts to identify trending, low-competition tags directly on Etsy.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Low monthly search limit on the free tier; demands highly targeted, cached queries."
+      "tool_or_platform": "Lemon Squeezy",
+      "url": "https://www.lemonsqueezy.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to set up. Act as a Merchant of Record. Fees are 5% + $0.50 per transaction.",
+      "what_it_does_uniquely": "Handles global sales tax (VAT/TVA in France) automatically. Provides a robust API to generate discount codes, check licenses, and host digital downloads (gamedev assets, PDFs, SVG packs).",
+      "would_integrate_where": "Use as the direct-to-consumer checkout backend for Hugo's portfolio, allowing programmatic delivery of 'produce_gamedev_asset_pack' bundles via simple API webhooks.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "High transaction fees on very low-priced items (under $2). Best suited for bundled digital asset packs ($5 to $15)."
     },
     {
       "rank": 6,
-      "tool_or_platform": "ElevenLabs API",
-      "url": "https://elevenlabs.io/",
+      "tool_or_platform": "ElevenLabs API (Sound Effects Generation)",
+      "url": "https://elevenlabs.io",
       "category": "ai_audio",
-      "free_tier_concrete_limits": "10,000 characters per month free, access to high-quality pre-made voices.",
-      "what_it_does_uniquely": "Industry-standard text-to-speech with natural inflection. Useful for generating high-value audio assets (voice lines, narrator packs) for game developers.",
-      "would_integrate_where": "Launch a new product pipeline producing micro-voice-packs (e.g., RPG UI sounds, tactical voice barks) for itch.io and Unity/Unreal Asset Stores.",
+      "free_tier_concrete_limits": "10,000 free characters per month. Access to Text-to-SFX generation API.",
+      "what_it_does_uniquely": "Generates cinema-quality, unique sound effects and short audio clips from simple text prompts. Excellent for creating retro/indie gamedev audio asset packs.",
+      "would_integrate_where": "Create a new pipeline 'produce_gamedev_sfx_pack' that generates themed audio packs (e.g., UI clicks, retro explosions) to sell on itch.io and Unity Asset Store.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Commercial use attribution required on the free plan. Monthly character budget is tight; requires text-optimization heuristics."
-    },
-    {
-      "rank": 7,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free unlimited uploads, free geometric search indexing.",
-      "what_it_does_uniquely": "A massive 3D model search engine and community marketplace. Features unique geometric search indexing, driving high organic traffic to uploaded models based on structural similarity.",
-      "would_integrate_where": "Upload parametric STL models generated by `produce_stl_parametric` to capture high-intent 3D printing search traffic.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "Fierce competition in generic categories; requires highly descriptive titles and tags for optimal search indexing."
+      "risk_or_caveat": "Monthly character limit resets strictly. Audio output must be converted programmatically to standard .wav/.ogg formats before packaging."
     }
   ]
 }
