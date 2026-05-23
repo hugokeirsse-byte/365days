@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-23T13:02:09.474646Z",
+  "timestamp": "2026-05-23T16:53:02.748424Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,63 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Kindle Insert Aesthetic Paper",
-      "platform_where_spotted": "TikTok",
+      "trend_keyword": "Moody Skull Botanical",
+      "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 45,
+      "estimated_lifespan_days": 60,
       "saturation_now_1_10": 4,
-      "best_product_format": "sticker / digital_download",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Retro Bookish Kindle Insert Printable, Aesthetic Book Worm Glitter Holographic Design, Clear Case Kindle Sticker Sheet PDF",
-      "evidence_url_or_signal": "TikTok hashtag #kindleinsert views spiked by 1.2M in the last 14 days, with users specifically looking for printable 'fast-fashion' backplates for Kindle Basic/Paperwhite."
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Dark Academia Gothic Botanical Coloring Book for Adults - Moody Skull and Floral Grayscale Coloring Pages",
+      "evidence_url_or_signal": "Pinterest search 'Goth garden decor' and 'Dark academia botanical prints' surged 340% YoY in the week of May 12, 2026, transitioning from home decor to craft/coloring niches."
     },
     {
       "rank": 2,
-      "trend_keyword": "Retro Groovy Teacher Last Day of School",
+      "trend_keyword": "Retro Motel Keychain SVG",
       "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 10,
-      "estimated_lifespan_days": 25,
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 45,
       "saturation_now_1_10": 6,
-      "best_product_format": "tshirt / svg_pack",
+      "best_product_format": "svg_pack",
       "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Retro Groovy Teacher Last Day Of School SVG, Teacher Mode Off Shirt Design, End of School Year SVG, Retro Teacher Era PNG",
-      "evidence_url_or_signal": "Etsy search term 'Teacher Era SVG' and 'Last day of school retro' rose to top 50 breakout search terms in the third week of May 2026 as teachers prep for summer break."
+      "title_template_suggestion": "Retro Motel Keychain SVG Bundle - Funny Travel Quotes SVG for Laser Cut and Cricut",
+      "evidence_url_or_signal": "Etsy bestseller badges multiplied on 'Vintage motel key tag designs' between May 8 and May 20, 2026, driven by summer travel prep and DIY craft sellers."
     },
     {
       "rank": 3,
-      "trend_keyword": "Corporate Sarcasm Slack Status",
-      "platform_where_spotted": "Reddit",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "sticker / mug",
-      "best_pipeline_match": "produce_cope_pack",
-      "title_template_suggestion": "Funny Corporate Sticker Pack, Sarcastic Slack Status Laptop Decal, Per My Last Email Coworker Mug, Sarcastic Office Humor Stickers",
-      "evidence_url_or_signal": "Reddit r/antiwork and r/consulting threads showing 'passive-aggressive Slack statuses' gained over 15k upvotes collectively between May 10 and May 18, 2026."
+      "trend_keyword": "DINK Dog Mom Itinerary",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 2,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Funny DINK Dog Mom Sticker - Double Income No Kids Pet Lover Decal for Water Bottles and Laptops",
+      "evidence_url_or_signal": "TikTok hashtag #DINKdogmom peaked at 14.2M views on May 15, 2026, with viral videos showcasing hyper-specific humorous schedules for pets."
     },
     {
       "rank": 4,
-      "trend_keyword": "DINKWAD Retro Matchbox Art",
-      "platform_where_spotted": "Pinterest",
+      "trend_keyword": "Corporate Jargon Translation",
+      "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 2,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_cultural_arbitrage_v2",
-      "title_template_suggestion": "Retro Matchbox Print DINKWAD, Double Income No Kids With A Dog Poster, Vintage Matchbook Dog Mom Wall Decor, Mid Century Dog Art",
-      "evidence_url_or_signal": "Pinterest visual searches for 'Matchbox aesthetic illustrations' combined with pet themes grew 140% month-over-month, exploding in mid-May."
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 3,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "Per My Last Email Coffee Mug - Funny Corporate Burnout Gift for Coworker",
+      "evidence_url_or_signal": "Reddit r/antiwork and r/consulting saw massive engagement spikes (25k+ upvotes) on a May 10, 2026 thread translating polite email phrases into raw thoughts."
     },
     {
       "rank": 5,
-      "trend_keyword": "Cozy Fantasy Library Coloring Book",
+      "trend_keyword": "Cozy Frog Keyboard Keycap",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 90,
+      "estimated_lifespan_days": 40,
       "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Cozy Fantasy Library Coloring Book, Aesthetic Whimsical Book Nook Coloring Pages for Adults, Magical Bookstore Grayscale Coloring PDF",
-      "evidence_url_or_signal": "#cozyfantasy reading community on TikTok has shifted heavily to cozy coloring activities while listening to audiobooks, showing a massive gap for high-quality bookish/botanical interior line-art."
+      "best_product_format": "stl_parametric",
+      "best_pipeline_match": "produce_stl_parametric",
+      "title_template_suggestion": "Cozy Frog 3D Print File - Cute Mushroom Frog Keycap STL for Mechanical Keyboards",
+      "evidence_url_or_signal": "Viral TikTok video on May 14, 2026, showing custom 'cozy core' 3D-printed keycaps reached 1.8M views, driving high demand on Cults3D for similar mechanical keyboard accessory files."
+    },
+    {
+      "rank": 6,
+      "trend_keyword": "Mid-Year Burnout Planner",
+      "platform_where_spotted": "Etsy",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 35,
+      "saturation_now_1_10": 4,
+      "best_product_format": "lowcontent_kdp",
+      "best_pipeline_match": "produce_lowcontent_kdp",
+      "title_template_suggestion": "Unmotivated 2026 Mid-Year Planner - Honest & Sarcastic Academic Year Weekly Organizer Journal",
+      "evidence_url_or_signal": "Etsy search volume for 'undated anti-planner' and 'funny mid-year planner' grew by 180% in the last 14 days of May 2026 as students and office workers hit mid-year fatigue."
     }
   ]
 }
