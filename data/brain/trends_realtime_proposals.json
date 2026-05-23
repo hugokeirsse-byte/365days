@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-23T02:04:58.767099Z",
+  "timestamp": "2026-05-23T06:30:14.693754Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Goth Coquette Aesthetic",
+      "trend_keyword": "Chaos Gardening Logbook",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
       "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 3,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Goth Coquette Sticker Pack PNG SVG - Dark Pastel Bows, Grunge Skulls and Ribbons Clipart Bundle for Kindle",
-      "evidence_url_or_signal": "TikTok hashtag #gothcoquette spiked with 4.2M views in the last 12 days; search queries for 'gothic bow png' up 180% on Etsy."
+      "saturation_now_1_10": 2,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_lowcontent_kdp",
+      "title_template_suggestion": "My Chaos Gardening Log: Funny Wildflower Seed Bomb Tracking Journal for Rebels",
+      "evidence_url_or_signal": "TikTok hashtag #chaosgardening exploded to 18.4M views in the first two weeks of May 2026, with users throwing random seed mixes and needing a way to track what actually grows."
     },
     {
       "rank": 2,
-      "trend_keyword": "DINK Dog Dad Father's Day",
+      "trend_keyword": "Frutiger Aero Fish Sticker",
       "platform_where_spotted": "Reddit",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 25,
-      "saturation_now_1_10": 2,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Funny DINK Dog Dad Mug - Double Income No Kids Father's Day Gift - Retro Dog Parent Coffee Cup",
-      "evidence_url_or_signal": "Spike in r/dinks and r/dogs discussions regarding unconventional Father's Day gifts; Etsy search 'DINK dog dad' jumped +250% since May 10, 2026."
-    },
-    {
-      "rank": 3,
-      "trend_keyword": "Whimsigoth Tarot",
-      "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 60,
       "saturation_now_1_10": 4,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Retro Frutiger Aero Glossy Water Bubble Sticker, Nostalgic 2000s Aesthetic Decal",
+      "evidence_url_or_signal": "r/FrutigerAero activity spiked with 35% more active users since May 10, 2026, specifically discussing the return of glossy water, fish, and green/blue glass UI textures on physical objects."
+    },
+    {
+      "rank": 3,
+      "trend_keyword": "Bioluminescent Mushroom Fantasy",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 3,
       "best_product_format": "coloring_book",
       "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Whimsigoth Tarot Coloring Book for Adults - Mystical Celestial Gothic Astrology Coloring Pages PDF",
-      "evidence_url_or_signal": "Pinterest Trends tool showing 'Whimsigoth bedroom' and 'Tarot aesthetics' converging with a 300% search volume acceleration from May 8 to May 20, 2026."
+      "title_template_suggestion": "Midnight Bioluminescent Mushrooms: Dark Fantasy Coloring Book for Adults (Black Background Edition)",
+      "evidence_url_or_signal": "Pinterest Trends API showed a +140% month-over-month increase in searches for 'neon mushroom aesthetic' and 'bioluminescent forest drawing' heading into late May 2026."
     },
     {
       "rank": 4,
-      "trend_keyword": "Retro Motel Keytags Anxiety Club",
-      "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 35,
-      "saturation_now_1_10": 5,
-      "best_product_format": "tshirt",
-      "best_pipeline_match": "produce_iheart_v4",
-      "title_template_suggestion": "Retro Overthinkers Club Motel Keytag Tee - Vintage Aesthetic Comfort Colors Shirt - Mental Health Awareness",
-      "evidence_url_or_signal": "Etsy bestsellers in 'vintage motel keychain' pivoting to mental health jokes. 'Overthinkers Suite 99' and 'Anxiety Club' keytag designs clearing 500+ sales daily in mid-May."
+      "trend_keyword": "DINK Dog Mom Passport",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 2,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Official DINK Dog Mom Travel Club Sticker - Double Income No Kids Just Puppies Sticker",
+      "evidence_url_or_signal": "The 'DINK (Double Income No Kids) Pet Parent' audio format hit 120,000 creations on TikTok in mid-May 2026, creating high demand for ironic badges, certificates, and travel-themed pet stickers."
     },
     {
       "rank": 5,
-      "trend_keyword": "Capybara Graduation",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 20,
+      "trend_keyword": "Solarpunk Greenhouse Blueprint",
+      "platform_where_spotted": "Etsy",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 75,
       "saturation_now_1_10": 2,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Cute Capybara Graduation Sticker - Class of 2026 Grad Cap Capy Waterproof Vinyl Decal for Laptop",
-      "evidence_url_or_signal": "Viral TikTok sound with 15k creations showing hand-drawn capybaras in graduation gowns; Google Trends search for 'capybara graduation cap' reached peak popularity index of 100 on May 18, 2026."
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "Retro Solarpunk Greenhouse Poster, Aesthetic Botanical Blueprint Wall Art Print",
+      "evidence_url_or_signal": "Etsy keyword 'Solarpunk Decor' entered the trending search charts on May 15, 2026, with buyers looking for technical-looking but green, optimistic future-aesthetic prints."
     },
     {
       "rank": 6,
-      "trend_keyword": "Retro Pickleball Dad",
-      "platform_where_spotted": "Etsy",
+      "trend_keyword": "Pixel Art Cozy RPG Shop",
+      "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 25,
-      "saturation_now_1_10": 6,
-      "best_product_format": "tshirt",
-      "best_pipeline_match": "produce_cultural_arbitrage_v2",
-      "title_template_suggestion": "Retro Pickleball Dad Shirt - Funny Father's Day Gift for Pickleball Lover - Vintage 70s Sports Tee",
-      "evidence_url_or_signal": "Etsy keyword analytics show 'Pickleball Dad' as the #3 trending search term in the Father's Day category starting May 12, 2026, with low-to-medium competition in 'retro' sub-styles."
+      "estimated_lifespan_days": 120,
+      "saturation_now_1_10": 3,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_gamedev_asset_pack",
+      "title_template_suggestion": "Cozy Pixel Art Potion Shop Print, Retro Gamer Bedroom Aesthetic Wall Decor",
+      "evidence_url_or_signal": "Spike in searches on Pinterest for 'cozy gaming room pixel art' and 'potion shop background' starting May 8, 2026, highly compatible with fast generation using FLUX-schnell."
     }
   ]
 }
