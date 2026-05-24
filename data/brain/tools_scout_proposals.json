@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-24T06:55:47.454628Z",
+  "timestamp": "2026-05-24T09:50:02.729816Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,80 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Potrace CLI",
-      "url": "https://potrace.sourceforge.net/",
-      "category": "dev_tool",
-      "free_tier_concrete_limits": "100% Free, open-source (GPL). Runs locally with zero limits.",
-      "what_it_does_uniquely": "Converts bitmap images (PNG/BMP) into high-quality vector graphics (SVG/EPS/PDF). Essential for scaling black-and-white coloring book pages or line art to infinite resolution without pixelation.",
-      "would_integrate_where": "Integrate directly into the 'produce_coloring_book' GitHub Actions workflow. After generating a page with Pollinations or Together AI, Potrace can instantly convert it to a crisp SVG/PDF for KDP submission.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Only works well on monochrome (black/white) high-contrast images. Requires binary installation via apt-get in GitHub Actions runner."
+      "tool_or_platform": "SiliconFlow",
+      "url": "https://siliconflow.cn/en/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous daily free credits (equivalent to ~300+ free FLUX.1-schnell or SDXL images per day via API).",
+      "what_it_does_uniquely": "Provides incredibly fast, free API access to top-tier open-source models including FLUX.1-schnell, SDXL, and various LLMs with high concurrency and no complex setup.",
+      "would_integrate_where": "GitHub Actions image generation workflow (`image_generation_status`), replacing or acting as a high-quality alternative to Pollinations and Together AI.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Based in China; ToS changes could restrict free tiers or require phone verification in the future. Needs a simple bearer token header."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Pytrends (Google Trends API wrapper)",
-      "url": "https://github.com/GeneralMills/pytrends",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100% Free, relies on scraping Google's public Trends pages.",
-      "what_it_does_uniquely": "Allows automated, programmatic extraction of Google Trends data (trending searches, related queries, interest by region) without needing a paid API key or official GCP credentials.",
-      "would_integrate_where": "Integrate into 'agent_trendhunter' or 'agent_opportunity_hunter' to automatically flag high-velocity keywords on Google and match them with POD niches.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "Google regularly changes its rate limits; can cause HTTP 429 errors if hit too hard from GitHub Actions IPs. Requires careful request throttling."
+      "tool_or_platform": "Fab (by Epic Games)",
+      "url": "https://www.fab.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list products. 88% revenue share for creators (Epic takes 12%).",
+      "what_it_does_uniquely": "Consolidates Unreal Engine Marketplace, Sketchfab, and Quixel into one massive, unified marketplace for 3D models, 2D drafts, game templates, and textures.",
+      "would_integrate_where": "Gamedev asset pack pipeline (`produce_gamedev_asset_pack`). The system can auto-package ZIPs and generate metadata templates ready for manual or semi-automated upload to Fab.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "High competition, assets must strictly meet Epic's quality standards, and manual curation is required during submission."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list digital 3D models. Standard marketplace revenue share model.",
-      "what_it_does_uniquely": "A fast-growing 3D model community and search engine with high-performance geometry search. Includes a built-in membership system for 3D printing designers.",
-      "would_integrate_where": "An excellent expansion platform alongside Cults3D for 'produce_stl_parametric' or any CAD/gamedev assets generated in Hugo's pipeline.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Highly competitive for generic models; success requires targeting functional, niche 3D prints (e.g., custom board game inserts, organizer parts)."
-    },
-    {
-      "rank": 4,
-      "tool_or_platform": "Cloudflare R2",
-      "url": "https://www.cloudflare.com/developer-platform/products/r2/",
-      "category": "dev_tool",
-      "free_tier_concrete_limits": "10 GB per month storage, 1 million Class A operations, 10 million Class B operations per month. $0 egress fees.",
-      "what_it_does_uniquely": "Completely free egress bandwidth. Perfect for hosting large generated files (PDF books, high-res ZIPs, 3D models) without getting hit with bills when users download them.",
-      "would_integrate_where": "Acts as the central asset storage bucket. GitHub Actions generates the files, uploads them to R2 using AWS S3 CLI compatible commands, and stores the public URL in the system state.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires setting up a Cloudflare account and linking a payment card for verification, though billing remains $0 under limits."
-    },
-    {
-      "rank": 5,
-      "tool_or_platform": "Glif API",
-      "url": "https://glif.app/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous daily free credits upon signup; API endpoints can be called programmatically.",
-      "what_it_does_uniquely": "Allows you to create and run complex multi-step AI pipelines (e.g., Text-to-Image -> OCR -> Vectorize -> Meme template) using FLUX, SD, and custom LLMs in a single API call.",
-      "would_integrate_where": "Can replace Pollinations/Together AI for complex design generation (like KDP covers with integrated text overlays or vintage typography styles).",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "API access occasionally requires applying for developer status or is subject to sudden changes in free-credit policies."
-    },
-    {
-      "rank": 6,
       "tool_or_platform": "Lemon Squeezy",
       "url": "https://www.lemonsqueezy.com/",
       "category": "marketplace",
-      "free_tier_concrete_limits": "No monthly fees. 5% + 50c per transaction on sales. Acts as Merchant of Record (handles global VAT/taxes).",
-      "what_it_does_uniquely": "Provides a clean, developer-friendly API to sell digital files, generate license keys, and handle subscriptions without worrying about complex EU VAT laws (which they handle automatically).",
-      "would_integrate_where": "Allows Hugo to spin up a direct-to-consumer storefront for asset packs, custom vectors, or PDFs. Can be programmatically updated using their REST API.",
+      "free_tier_concrete_limits": "No monthly fee. Pay-as-you-go model (5% + $0.50 per transaction).",
+      "what_it_does_uniquely": "Acts as a Merchant of Record (MoR), meaning they handle EU VAT (TVA), invoicing, and global compliance automatically. Perfect for a French solo entrepreneur selling digital PDF/ZIP assets.",
+      "would_integrate_where": "Can host checkout links for digital products (Coloring books, 3D parametric STL files, Gamedev packs) directly linked from free GitHub Pages sites.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Payout fees and transaction costs are slightly higher than bare Stripe, but saves dozens of hours on tax compliance."
+      "risk_or_caveat": "Payout thresholds and slightly higher transaction fees compared to Stripe, but saves dozens of hours of VAT administrative overhead."
     },
     {
-      "rank": 7,
-      "tool_or_platform": "Kokoro-82M (via HuggingFace Spaces API)",
-      "url": "https://huggingface.co/spaces/hexgrad/Kokoro-TTS",
-      "category": "ai_audio",
-      "free_tier_concrete_limits": "Free public HuggingFace Space API endpoints (no rate limits besides standard HF public API limits).",
-      "what_it_does_uniquely": "A highly lightweight (82M parameters) Text-to-Speech model that outperforms ElevenLabs in natural cadence while being small enough to run on basic CPUs or free cloud spaces.",
-      "would_integrate_where": "Can be utilized to generate audiobooks, guided meditations, or audio assets for gamedev bundles using simple Python requests inside GitHub Actions.",
-      "novelty_2026_1_10": 10,
-      "risk_or_caveat": "Public spaces can occasionally go down or experience high latency under heavy global load."
+      "rank": 4,
+      "tool_or_platform": "Serper.dev",
+      "url": "https://serper.dev/",
+      "category": "analytics",
+      "free_tier_concrete_limits": "2,500 free search queries upon registration. No credit card required.",
+      "what_it_does_uniquely": "Extremely fast and cheap Google Search, Images, and Shopping scraping API. Essential for getting real-time market trends without getting blocked by Google's anti-bot systems.",
+      "would_integrate_where": "Within `agent_trendhunter` and `agent_niche_gap` to automatically look up top-selling KDP niches or trending Etsy search queries directly from GitHub Actions.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Once the 2,500 credits run out, you must register a new email or pay (though paid tier is extremely cheap: $1 per 1,000 queries)."
+    },
+    {
+      "rank": 5,
+      "tool_or_platform": "Segmind",
+      "url": "https://www.segmind.com/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "100 free image generations per day via API.",
+      "what_it_does_uniquely": "Provides direct, reliable API endpoints for highly optimized models like SDXL, specialized LoRAs, and ControlNet, with excellent documentation.",
+      "would_integrate_where": "Fallback generator in GitHub Actions when Pollinations/Together AI fail or hit rate limits, specifically for generating highly styled coloring book pages.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Images generated on the free tier may have rate limits during peak hours; strict content filters apply."
+    },
+    {
+      "rank": 6,
+      "tool_or_platform": "Draft2Digital",
+      "url": "https://www.draft2digital.com/",
+      "category": "pod",
+      "free_tier_concrete_limits": "Free conversion and distribution. They take a 10% cut of the retail price upon actual sale.",
+      "what_it_does_uniquely": "Distributes ebooks and paperbacks to a massive network of stores (Barnes & Noble, Kobo, Apple Books, Scribd) from a single upload, bypassing the need to register on 10 different platforms.",
+      "would_integrate_where": "Low-content book and coloring book pipelines. Once a book is generated for Amazon KDP, the same PDF/EPUB can be pushed to Draft2Digital to maximize footprint.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "Formatting requirements are strict; print-on-demand distribution options have specific margin requirements that must be handled in the PDF generation script."
     }
   ]
 }
