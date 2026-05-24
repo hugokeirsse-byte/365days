@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-23T20:41:18.296400Z",
+  "timestamp": "2026-05-24T02:13:45.003563Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch First 30-Page KDP Coloring Book in a Micro-Niche",
+      "action_title": "Execute 'produce_coloring_book' and upload first 3 books to KDP",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 75,
+      "estimated_revenue_uplift_eur_30days_high": 120,
       "hugo_effort_hours": 4,
-      "why_this_works_now": "Leverages the existing produce_coloring_book pipeline. By utilizing the free Together AI FLUX-schnell or Cloudflare API, Hugo can generate highly detailed line art without upfront image costs, targeting a specific micro-niche (e.g., 'French Countryside Gardens' or 'Steampunk Animals') to bypass high-competition keywords.",
-      "first_action_today": "Configure TOGETHER_API_KEY in GitHub Actions, run the produce_coloring_book pipeline for 30 images, and compile them into a print-ready PDF using a simple Python script."
+      "why_this_works_now": "The KDP account is ready and the pipeline is already designed. Utilizing Together AI (free tier) or a tiny slice of Runware PAYG (~2 EUR) bypasses the image generation bottleneck immediately. Coloring books have proven Q2/Q3 evergreen traction.",
+      "first_action_today": "Run the `produce_coloring_book` workflow on GitHub Actions using Together AI (FLUX-schnell) to generate 35 clean line-art pages."
     },
     {
       "rank": 2,
-      "action_title": "Bulk Upload 20 Sticker Packs to Redbubble",
+      "action_title": "Bulk upload 50 transparent sticker designs to Redbubble",
       "type": "upload",
       "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 40,
+      "estimated_revenue_uplift_eur_30days_high": 75,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Redbubble organic traffic is highly receptive to sticker sheets/packs. By using produce_literal_idioms or produce_svg_pack, Hugo can generate transparent PNGs that require zero printing/shipping management. Packs offer higher perceived value than single stickers.",
-      "first_action_today": "Run produce_literal_idioms_v2 to generate 20 transparent PNG designs on GitHub Actions, download them to his Android phone, and upload them as sticker sheets."
+      "why_this_works_now": "Redbubble account is already registered but empty. Stickers require zero complex formatting, just a transparent PNG. Using the 'produce_literal_idioms' or 'produce_iheart_v4' pipeline allows rapid PNG packaging on GitHub Actions directly uploadable from a mobile browser.",
+      "first_action_today": "Generate 50 transparent PNGs via the 'produce_literal_idioms' pipeline and download them to your Android phone for quick batch uploading."
     },
     {
       "rank": 3,
-      "action_title": "Upload 5 Parametric Organizers on Cults3D",
+      "action_title": "Launch Cults3D account with 5 parametric utility STL models",
       "type": "upload",
       "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 30,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "3D printing hobbyists actively pay 1-3 EUR for functional, parametric STL files (boxes, grid wall hooks, cable organizers) that they can customize. The produce_stl_parametric pipeline generates these files programmatically with zero manual 3D modeling work required.",
-      "first_action_today": "Run the produce_stl_parametric pipeline, generate 5 variations of a highly functional desk organizer, and list them on Cults3D at 1.49 EUR each."
+      "estimated_revenue_uplift_eur_30days_low": 20,
+      "estimated_revenue_uplift_eur_30days_high": 150,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Cults3D is planned. The 'produce_stl_parametric' pipeline does not rely on fragile 2D image APIs; it generates robust 3D meshes (OpenSCAD/Python) programmatically. 3D printing hobbyists actively buy functional organizers, custom brackets, and gridfinity expansions.",
+      "first_action_today": "Complete the Cults3D registration, compile 5 functional STL files using the parametric pipeline, and list them at 2.99 EUR each."
     },
     {
       "rank": 4,
-      "action_title": "List 3 Premade KDP Covers on Etsy as Digital Downloads",
+      "action_title": "Publish 3 Game Assets Packs on Itch.io (Pay-What-You-Want)",
       "type": "new_stream",
-      "target_platform": "Etsy",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 60,
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 50,
       "hugo_effort_hours": 2,
-      "why_this_works_now": "Self-publishers on a budget search Etsy for cheap, premade high-quality book covers (priced 10-20 EUR). Using the produce_kdp_cover pipeline, Hugo can generate striking covers, add editable text layers (or offer to edit the text for the buyer), and list them as digital files.",
-      "first_action_today": "Generate 3 high-end sci-fi/thriller covers using the produce_kdp_cover pipeline, save them with placeholder text, and create Etsy digital listings."
+      "why_this_works_now": "Itch.io allows instant, free publishing with no approval delay. By using the 'produce_gamedev_asset_pack' pipeline with Together AI, Hugo can generate high-quality UI assets, 2D tilemaps, or texture packs that gamedevs buy daily.",
+      "first_action_today": "Create a free Itch.io creator profile and run the 'produce_gamedev_asset_pack' pipeline to generate a 'Retro Sci-Fi UI Buttons' pack."
     },
     {
       "rank": 5,
-      "action_title": "Publish 2 Niche Gamedev UI/Sprite Packs on Itch.io",
-      "type": "upload",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 35,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Game developers constantly need UI assets, button packs, or simple item icons. Itch.io has no listing fees, allows immediate publishing, and has a strong organic developer audience. Using produce_gamedev_asset_pack, Hugo can package simple assets into zip files.",
-      "first_action_today": "Run the produce_gamedev_asset_pack pipeline to create a 'Retro Pixel UI Asset Pack' and upload it to itch.io under a 'Pay What You Want' model with a 2.00 EUR minimum."
-    },
-    {
-      "rank": 6,
-      "action_title": "Local French Pride T-Shirt Series on Redbubble",
-      "type": "upload",
+      "action_title": "Optimize Redbubble titles and tags using hyper-targeted SEO templates",
+      "type": "conversion",
       "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "French regional pride (Brittany, Normandy, Savoy) generates highly targeted, passionate search traffic. By using the produce_chateau_local pipeline or simple text-based regional quotes, Hugo can capture hyper-local search intent with virtually zero competition.",
-      "first_action_today": "Identify 5 popular French regional expressions, generate clean minimalist typography files using Termux, and upload them to Redbubble targeting French buyers."
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 40,
+      "hugo_effort_hours": 1,
+      "why_this_works_now": "Organic search is the only traffic driver since Hugo has no advertising budget. Standardizing descriptive, long-tail tags (e.g., 'funny coding sticker for laptop', 'minimalist aesthetic plant decal') instead of single keywords dramatically increases search visibility.",
+      "first_action_today": "Draft a reusable metadata template in Termux containing 15 high-intent tags for the first batch of sticker uploads."
     }
   ]
 }
