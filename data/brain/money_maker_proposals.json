@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-24T09:49:49.564677Z",
+  "timestamp": "2026-05-24T13:02:04.697223Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Upload First 40-Page Coloring Book to Amazon KDP",
+      "action_title": "Launch 1st KDP Coloring Book (Niche: Bold & Easy Cozy Minimalist)",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 80,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "The 'produce_coloring_book' pipeline is ready. Using Runware PAYG (20€) or Together AI (free tier) allows generation of 40 high-quality FLUX-schnell black and white outlines. KDP allows zero-cost publishing with immediate global distribution.",
-      "first_action_today": "Trigger the 'produce_coloring_book' GitHub Actions workflow using Together AI to output a print-ready 40-page PDF."
+      "estimated_revenue_uplift_eur_30days_high": 120,
+      "hugo_effort_hours": 5,
+      "why_this_works_now": "The 'Bold & Easy' / 'Cozy' minimalist coloring book trend is exploding on TikTok and Amazon. Since it requires thick lines and simple shapes, it is perfectly suited for FLUX-schnell (via Together AI/Cloudflare) without needing complex prompt tuning or high-end upscaling.",
+      "first_action_today": "Run the existing produce_coloring_book pipeline configured with TOGETHER_API_KEY using the 'Bold and Easy Hygge Life' theme to generate 40 clean coloring pages."
     },
     {
       "rank": 2,
-      "action_title": "Bulk Upload 50 Minimalist Text Designs to Redbubble",
+      "action_title": "Cross-list KDP pages as a Printable Digital PDF Pack on Etsy",
+      "type": "cross_sell",
+      "target_platform": "Etsy",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 80,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Many customers prefer printing coloring pages at home on high-quality cardstock rather than using cheap Amazon paper. Listing the exact same assets generated for KDP as a digital PDF download on Etsy doubles the monetization of the asset with zero extra generation cost.",
+      "first_action_today": "Create a free Ko-fi or Etsy shop, bundle the 40 high-res PNGs from your first coloring book into a single PDF, and write a listing titled '40 Printable Bold & Easy Cozy Coloring Pages PDF'."
+    },
+    {
+      "rank": 3,
+      "action_title": "Bulk-upload 50 Minimalist Typography Stickers on Redbubble",
       "type": "upload",
       "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
       "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "Redbubble has high organic traffic for niche humor, quotes, and literal idioms. Using the 'produce_quotes_minimal' or 'produce_literal_idioms' pipeline, Hugo can generate 50 transparent PNGs via Python in Termux/GitHub Actions and upload them quickly using Redbubble's template system on his phone's browser.",
-      "first_action_today": "Generate 50 transparent PNG quote designs via Termux using a Python PIL script and save them to a GitHub Release."
-    },
-    {
-      "rank": 3,
-      "action_title": "Publish 5 Parametric 3D Printing STL Files on Cults3D",
-      "type": "upload",
-      "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Cults3D has a highly active audience looking for functional, printable items. Running the 'produce_stl_parametric' pipeline using Gemini to write OpenSCAD scripts for household fixes (drawer dividers, phone stands, custom hooks) provides immediate, non-copyrighted utility value.",
-      "first_action_today": "Generate 3 OpenSCAD designs via Gemini, convert them to STL files using GitHub Actions, and upload them to Cults3D priced at 1.50€ to 2.50€."
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Redbubble is already registered. Typography stickers require exactly 0 GPU rendering power. A simple Python script running in Termux using PIL (Pillow) can render white-bordered PNG text stickers based on trending funny/relatable quotes for specific niches (e.g., developers, introverts).",
+      "first_action_today": "Write a Python script on Termux to auto-generate 50 high-resolution transparent PNG typography stickers with clean white borders and upload them to Redbubble using their multi-product template."
     },
     {
       "rank": 4,
-      "action_title": "Launch 5 Aesthetic Grid Notebooks on KDP using Runware FLUX Covers",
+      "action_title": "Publish 5 Parametric 3D Models (Gridfinity / Organizers) using OpenSCAD",
       "type": "upload",
-      "target_platform": "Amazon KDP",
+      "target_platform": "Cults3D",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 35,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Low-content grid notebooks require minimal interior setup (simple repetitive PDF generated via Python). The differentiator is a stunning, niche-specific cover. Using FLUX-schnell via Runware (fractions of a cent per image) ensures eye-catching cover graphics.",
-      "first_action_today": "Generate a standard 120-page 6x9 graph paper interior PDF using a short Python script in Termux."
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "Cults3D is planned. OpenSCAD allows generating 3D printable STL files purely through code (highly compatible with Termux and GitHub Actions). Functional 3D prints (like customized storage, cable organizers, or Gridfinity modules) sell consistently for 1.50€ - 3.00€ to makers who want to save time modeling.",
+      "first_action_today": "Adapt an open-source parametric OpenSCAD script for a custom battery/SD card organizer, render 5 popular size configurations via GitHub Actions, and list them as paid STL files on Cults3D."
     },
     {
       "rank": 5,
-      "action_title": "List a Seamless Textures Asset Pack on itch.io",
+      "action_title": "Deploy 3 Niche-Specific Low-Content Logbooks (Zero-AI required)",
       "type": "upload",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 0,
-      "estimated_revenue_uplift_eur_30days_high": 25,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Game developers constantly search itch.io for affordable, high-quality seamless textures (sci-fi, fantasy, medieval). Using FLUX-schnell with 'seamless tiling' prompts yields high-quality 2D assets that can be sold as a pack for $2.99.",
-      "first_action_today": "Generate 20 seamless fantasy stone and wood textures using Together AI / Runware, package them into a zip, and create a free itch.io seller page."
-    },
-    {
-      "rank": 6,
-      "action_title": "Implement High-Intent Keyword Optimization for KDP Listings",
-      "type": "conversion",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 1,
-      "why_this_works_now": "With zero marketing budget, organic search is the only driver. Using the Amazon search bar auto-suggest (via mobile browser in desktop mode) to find long-tail keywords (e.g. 'mindful coloring book for teen girls') boosts organic rank overnight.",
-      "first_action_today": "Search Amazon for your book's primary niche, extract 7 highly specific search phrases, and insert them into the KDP backend keyword fields."
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "To bypass the AI image bottleneck entirely, launch low-content logbooks (e.g., Beekeeping Log Book, Daily Food & Symptom Tracker). The interiors are simple tables/grids generated programmatically, and covers are clean, high-contrast typography, making them fast to compile and publish.",
+      "first_action_today": "Trigger the produce_lowcontent_kdp pipeline for three highly targeted, non-fictional hobbies like 'Mushroom Foraging Log Book' or 'Sourdough Baking Journal'."
     }
   ]
 }
