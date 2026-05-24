@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-23T20:41:37.930442Z",
+  "timestamp": "2026-05-24T02:13:51.017464Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "TTRPG Game Master Printable Props & Handouts",
-      "type": "adjacent_market",
-      "audience_size_estimate": 500000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Tabletop RPG Game Masters (D&D, Call of Cthulhu, Cyberpunk) who want to increase table immersion by giving players physical, realistic clues, letters, and documents without spending hours designing them.",
-      "product_angles": [
-        "Vintage 1920s newspaper clipping templates for Lovecraftian horror games",
-        "Sci-fi hacker terminal log printouts and spaceship blueprints",
-        "Aged fantasy tavern menus and royal bounty board letters"
-      ],
-      "best_pipeline_or_new": "new_produce_ttrpg_props",
-      "first_test_product": "1920s New England Investigator Handout Pack (PDF printable with editable fields)",
-      "estimated_monthly_revenue_year1_eur": 250
-    },
-    {
-      "rank": 2,
-      "name": "CNC Machinists & Toolmakers Technical Humor & Reference",
-      "type": "deep_niche",
-      "audience_size_estimate": 150000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "CNC Mill/Lathe operators, manual machinists, and toolmakers who take extreme pride in mechanical precision (sub-micron level) and love insider shop floor humor and blueprints.",
-      "product_angles": [
-        "G-Code quick reference desk mats and posters",
-        "Technical patent art prints of vintage micrometers and calipers",
-        "Machinist humor sticker packs for toolboxes ('Keep Your Hands Off My Calipers')"
-      ],
-      "best_pipeline_or_new": "new_produce_machinist_merch",
-      "first_test_product": "G-Code CNC Cheat Sheet Desk Mat Design (POD via Redbubble/Etsy)",
-      "estimated_monthly_revenue_year1_eur": 180
-    },
-    {
-      "rank": 3,
-      "name": "Eurorack & Modular Synthesizer Enthusiasts",
+      "name": "Ham Radio (Amateur Radio) Operators",
       "type": "sub_culture",
-      "audience_size_estimate": 120000,
-      "passion_level_1_10": 10,
+      "audience_size_estimate": 150000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Electronic music producers obsessed with modular hardware synths. They have high disposable income, love technical signal-flow diagrams, and constantly need to document their complex patch cables.",
+      "buyer_persona": "Tech-savvy hobbyists, often older but highly active, who spend thousands on gear and take immense pride in their custom callsigns, QSL cards, and technical setups.",
       "product_angles": [
-        "Blank modular synth patch sheet design notebooks",
-        "Eurorack module signal-flow schematics as minimalist posters",
-        "Inside joke stickers about 'GAS' (Gear Acquisition Syndrome) and patch cables"
+        "Customizable QSL Card templates (Canva/SVG) for physical exchange",
+        "Highly specialized Ham Radio Operator Logbooks (Amazon KDP) with custom UTC/frequency/mode grid layouts",
+        "Patent-style schematic wall art of historic transmitters (POD Redbubble/Etsy)"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "60HP / 84HP Modular Synth Patch Diary & Logbook (KDP Paperback)",
-      "estimated_monthly_revenue_year1_eur": 200
-    },
-    {
-      "rank": 4,
-      "name": "Custom Assets for French Micro-Breweries",
-      "type": "b2b",
-      "audience_size_estimate": 2500,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Independent craft brewers in France who need professional, localized, and vintage-style graphic assets for their beer bottles, coasters, and event posters on a tight budget.",
-      "product_angles": [
-        "Vintage regional French beer label vector templates",
-        "Customizable craft beer coaster design sets",
-        "Social media launch templates for micro-breweries"
-      ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "10 Customizable Vintage French Beer Label Vector Templates (SVG/EPS)",
-      "estimated_monthly_revenue_year1_eur": 350
-    },
-    {
-      "rank": 5,
-      "name": "Aquascaping & High-Tech Planted Aquarium Hobbyists",
-      "type": "deep_niche",
-      "audience_size_estimate": 300000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Dedicated hobbyists who design underwater nature landscapes using live plants, hardscapes (rocks/wood), and precise CO2/fertilizer dosing. They appreciate Japanese minimalist aesthetics (Iwagumi).",
-      "product_angles": [
-        "Aquascaping layout planning sketchbooks with grid lines",
-        "Water parameter tracking logs and fertilizer dosing planners",
-        "Minimalist Iwagumi style aquarium t-shirt and sticker designs"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Aquascapers Layout Design Notebook & Parameter Log (KDP)",
+      "best_pipeline_or_new": "produce_ham_radio_logbooks (New KDP/SVG pipeline)",
+      "first_test_product": "A highly technical, sleekly designed 120-page amateur radio logbook with dedicated columns for signal reports (RST), power (W), and band/mode, optimized for KDP.",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
-      "rank": 6,
-      "name": "Amateur Radio (Ham Radio) Operators",
+      "rank": 2,
+      "name": "Godot Engine 4.x Visual Assets & Shaders",
+      "type": "adjacent_market",
+      "audience_size_estimate": 250000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie game developers migrating from Unity to Godot who need rapid visual prototyping tools, procedural shaders, and UI themes that fit the Godot 4 ecosystem.",
+      "product_angles": [
+        "Ready-to-use 2D particle effect sheets (fire, magic, smoke) with Godot scene files",
+        "Clean, minimalist sci-fi/fantasy UI kits pre-configured for Godot's control nodes",
+        "Handmade tileable pixel-art normal maps for dynamic 2D lighting"
+      ],
+      "best_pipeline_or_new": "produce_godot_ui_assets (New adjacent market pipeline)",
+      "first_test_product": "A pack of 15 modular retro-futuristic sci-fi UI panels and buttons optimized for Godot's UI system, distributed on itch.io and Cults3D/Etsy.",
+      "estimated_monthly_revenue_year1_eur": 250
+    },
+    {
+      "rank": 3,
+      "name": "Historical European Martial Arts (HEMA)",
       "type": "sub_culture",
-      "audience_size_estimate": 750000,
+      "audience_size_estimate": 65000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Martial artists studying historical fencing books (Fechtbücher). They love historical accuracy, vintage woodcuts, sword anatomy, and need tools to track their sparring and tournament training.",
+      "product_angles": [
+        "HEMA Sparring & Tournament Logbooks with fencing strip diagrams and technique trackers",
+        "Restored and upscaled high-resolution medieval fencing woodcut posters (Liechtenauer/Fiore systems)",
+        "Technical sword anatomy and guard diagrams for gym wall decor"
+      ],
+      "best_pipeline_or_new": "produce_hema_gear_art (New KDP/POD hybrid pipeline)",
+      "first_test_product": "A dedicated HEMA Fencing Journal featuring vintage 15th-century master woodcuts on the cover and structured pages for recording sparring sessions, weapon specs, and tournament progression.",
+      "estimated_monthly_revenue_year1_eur": 120
+    },
+    {
+      "rank": 4,
+      "name": "Specialty Coffee Microroasters B2B",
+      "type": "b2b",
+      "audience_size_estimate": 80000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Independent coffee roasters and specialty coffee shop owners who need aesthetic, modern branding materials, flavor wheels, and customer engagement merchandise on a budget.",
+      "product_angles": [
+        "Customizable minimalist coffee bag label templates (Canva links sold on Etsy)",
+        "Printable 'Coffee Tasting Journals' that cafes can custom-brand and sell to their retail customers",
+        "Modern educational flavor-wheel posters for coffee shop decor"
+      ],
+      "best_pipeline_or_new": "produce_roaster_branding_kits (New B2B digital asset pipeline)",
+      "first_test_product": "A bundle of 5 minimalist, editable Canva templates for specialty coffee bag labels (front & back with origin, altitude, process, and tasting notes grids).",
+      "estimated_monthly_revenue_year1_eur": 200
+    },
+    {
+      "rank": 5,
+      "name": "Soil Scientists, Geologists & Agronomists",
+      "type": "deep_niche",
+      "audience_size_estimate": 90000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Academic and field professionals working in soil science, geology, and agriculture. They have highly specific insider humor revolving around soil horizons (O, A, E, B, C), the Munsell color system, and sedimentology.",
+      "product_angles": [
+        "Humorous apparel referencing 'O-Horizon' or 'Munsell Soil Color Chart' color swatches",
+        "Technical geological stratigraphic column posters for laboratory and university office walls",
+        "Field notebook covers disguised as classic geological survey documents"
+      ],
+      "best_pipeline_or_new": "produce_soil_science_decor (New POD/KDP pipeline)",
+      "first_test_product": "A Munsell-inspired color chart parody poster or t-shirt substituting soil colors with humorous field-work descriptions, targeted at environmental science graduates.",
+      "estimated_monthly_revenue_year1_eur": 100
+    },
+    {
+      "rank": 6,
+      "name": "1-Bit Retro Handheld Console Assets (Playdate)",
+      "type": "adjacent_market",
+      "audience_size_estimate": 50000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Highly technical, licensed amateur radio operators who track global signal contacts, build antennas, and exchange collectible physical postcards called 'QSL Cards'.",
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie developers creating games for the Playdate console or retro systems that require strict 1-bit (black & white only, no transparency/gray) tilemaps, fonts, and UI assets.",
       "product_angles": [
-        "Printable retro QSL Card design templates",
-        "Ham Radio Log Books for tracking signal contacts (ITU Zones, signal strength)",
-        "Phonetic alphabet and radio frequency spectrum reference posters"
+        "1-Bit (black and white) dithered tilesets for side-scrollers or RPGs",
+        "Pixel-art font packs optimized for extremely low-resolution screens (e.g., 400x240)",
+        "1-bit animated sprite sheets for character actions (running, jumping, attacking)"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Customizable Retro QSL Card Canva & SVG Template Pack",
-      "estimated_monthly_revenue_year1_eur": 120
+      "best_pipeline_or_new": "produce_onebit_retro_assets (New gamedev asset pipeline)",
+      "first_test_product": "A comprehensive 16x16 pixel 1-bit dungeon tileset with dithered shading, perfectly optimized for the Playdate screen resolution and constraints.",
+      "estimated_monthly_revenue_year1_eur": 180
     }
   ]
 }
