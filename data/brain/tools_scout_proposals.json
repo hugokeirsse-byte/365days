@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-24T09:50:02.729816Z",
+  "timestamp": "2026-05-24T13:01:52.937244Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "SiliconFlow",
-      "url": "https://siliconflow.cn/en/",
+      "tool_or_platform": "DeepInfra",
+      "url": "https://deepinfra.com",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Generous daily free credits (equivalent to ~300+ free FLUX.1-schnell or SDXL images per day via API).",
-      "what_it_does_uniquely": "Provides incredibly fast, free API access to top-tier open-source models including FLUX.1-schnell, SDXL, and various LLMs with high concurrency and no complex setup.",
-      "would_integrate_where": "GitHub Actions image generation workflow (`image_generation_status`), replacing or acting as a high-quality alternative to Pollinations and Together AI.",
+      "free_tier_concrete_limits": "$1.80 free credits on signup. Flux-Schnell costs $0.0015 per image (~1200 free images). No credit card required.",
+      "what_it_does_uniquely": "Hosts state-of-the-art open-source image generators (Flux Schnell, SDXL) with incredibly low latency and the lowest pay-as-you-go pricing on the market once free tier is exhausted.",
+      "would_integrate_where": "Can replace Pollinations in 'produce_coloring_book' and 'produce_kdp_cover' pipelines via a simple HTTP POST request in GitHub Actions.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Based in China; ToS changes could restrict free tiers or require phone verification in the future. Needs a simple bearer token header."
+      "risk_or_caveat": "API keys must be rotated if multiple free accounts are used; ToS allows one account per person."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Fab (by Epic Games)",
-      "url": "https://www.fab.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list products. 88% revenue share for creators (Epic takes 12%).",
-      "what_it_does_uniquely": "Consolidates Unreal Engine Marketplace, Sketchfab, and Quixel into one massive, unified marketplace for 3D models, 2D drafts, game templates, and textures.",
-      "would_integrate_where": "Gamedev asset pack pipeline (`produce_gamedev_asset_pack`). The system can auto-package ZIPs and generate metadata templates ready for manual or semi-automated upload to Fab.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "High competition, assets must strictly meet Epic's quality standards, and manual curation is required during submission."
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "$10 free credits on signup. Flux-Schnell costs $0.003 per image (~3300 free images).",
+      "what_it_does_uniquely": "Incredibly fast inference times (sub-second for Schnell) and native support for advanced options like ControlNet, IP-Adapter, and image-to-image without complex setup.",
+      "would_integrate_where": "Integrates into 'produce_tumbler_wraps' or 'produce_gamedev_asset_pack' where precise control over composition (via ControlNet) is required.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Requires GitHub login. Rate limits apply to free tier under heavy platform load."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com/",
+      "tool_or_platform": "Printables",
+      "url": "https://www.printables.com",
       "category": "marketplace",
-      "free_tier_concrete_limits": "No monthly fee. Pay-as-you-go model (5% + $0.50 per transaction).",
-      "what_it_does_uniquely": "Acts as a Merchant of Record (MoR), meaning they handle EU VAT (TVA), invoicing, and global compliance automatically. Perfect for a French solo entrepreneur selling digital PDF/ZIP assets.",
-      "would_integrate_where": "Can host checkout links for digital products (Coloring books, 3D parametric STL files, Gamedev packs) directly linked from free GitHub Pages sites.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Payout thresholds and slightly higher transaction fees compared to Stripe, but saves dozens of hours of VAT administrative overhead."
+      "free_tier_concrete_limits": "100% free to upload. No listing fees. 'Printables Store' and 'Clubs' features allow direct monetization with a 10% platform fee.",
+      "what_it_does_uniquely": "The fastest-growing 3D printing community, heavily backed by Prusa. Has higher organic engagement and search traffic than Cults3D for functional and artistic STL/3D files.",
+      "would_integrate_where": "New distribution channel for 'produce_stl_parametric' or any 3D asset pipeline generated via OpenSCAD/Python.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Strict moderation on spammy/low-effort procedural uploads. Models must be functional or highly aesthetic."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Serper.dev",
-      "url": "https://serper.dev/",
-      "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free search queries upon registration. No credit card required.",
-      "what_it_does_uniquely": "Extremely fast and cheap Google Search, Images, and Shopping scraping API. Essential for getting real-time market trends without getting blocked by Google's anti-bot systems.",
-      "would_integrate_where": "Within `agent_trendhunter` and `agent_niche_gap` to automatically look up top-selling KDP niches or trending Etsy search queries directly from GitHub Actions.",
+      "tool_or_platform": "DriveThruRPG / WargameVault",
+      "url": "https://www.drivethrurpg.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list. No listing fees. Commission-based model (30% to 35% on exclusive listings, 45% on non-exclusive).",
+      "what_it_does_uniquely": "The absolute largest marketplace for PDF tabletop games, print-and-play assets, maps, and coloring pages aimed at fantasy/RPG geeks. Extremely high conversion rate for niche PDFs.",
+      "would_integrate_where": "Can host digital versions of 'produce_card_game', PDF coloring books, or paper miniatures generated in our pipelines.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Once the 2,500 credits run out, you must register a new email or pay (though paid tier is extremely cheap: $1 per 1,000 queries)."
+      "risk_or_caveat": "Requires manual account setup and initial product approval. Digital files must meet PDF/X print standards."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Segmind",
-      "url": "https://www.segmind.com/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "100 free image generations per day via API.",
-      "what_it_does_uniquely": "Provides direct, reliable API endpoints for highly optimized models like SDXL, specialized LoRAs, and ControlNet, with excellent documentation.",
-      "would_integrate_where": "Fallback generator in GitHub Actions when Pollinations/Together AI fail or hit rate limits, specifically for generating highly styled coloring book pages.",
+      "tool_or_platform": "Lemon Squeezy",
+      "url": "https://www.lemonsqueezy.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "$0/month. 5% + 50c per transaction. Unlimited products and file hosting up to 5GB.",
+      "what_it_does_uniquely": "Acts as a Merchant of Record (MoR), meaning they handle EU VAT/sales taxes automatically. Essential for a solo developer in France selling digital assets globally without tax nightmares.",
+      "would_integrate_where": "Acts as the unified checkout engine for selling gamedev assets, STL packs, and custom PDFs directly from Hugo's GitHub Pages or social media.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Images generated on the free tier may have rate limits during peak hours; strict content filters apply."
+      "risk_or_caveat": "Payout thresholds apply (minimum $50 or weekly schedules). Strict policy against copyright-infringing AI assets."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Draft2Digital",
-      "url": "https://www.draft2digital.com/",
-      "category": "pod",
-      "free_tier_concrete_limits": "Free conversion and distribution. They take a 10% cut of the retail price upon actual sale.",
-      "what_it_does_uniquely": "Distributes ebooks and paperbacks to a massive network of stores (Barnes & Noble, Kobo, Apple Books, Scribd) from a single upload, bypassing the need to register on 10 different platforms.",
-      "would_integrate_where": "Low-content book and coloring book pipelines. Once a book is generated for Amazon KDP, the same PDF/EPUB can be pushed to Draft2Digital to maximize footprint.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "Formatting requirements are strict; print-on-demand distribution options have specific margin requirements that must be handled in the PDF generation script."
+      "tool_or_platform": "Jina Reader API",
+      "url": "https://jina.ai/reader",
+      "category": "scraping",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month. No credit card required.",
+      "what_it_does_uniquely": "Converts any URL (even heavy JS-rendered pages) into clean, LLM-friendly Markdown with a simple `https://r.jina.ai/URL` prefix.",
+      "would_integrate_where": "Integrates into 'agent_trendhunter' and 'agent_opportunity_hunter' to scrape e-commerce trend blogs and competitor stores directly from GitHub Actions without writing complex parsers.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Some highly protected sites (like Cloudflare-protected competitor stores) might still block the request."
     }
   ]
 }
