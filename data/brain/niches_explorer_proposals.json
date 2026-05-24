@@ -1,8 +1,8 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-24T06:55:46.952111Z",
-  "model": "gemini-flash-latest",
+  "timestamp": "2026-05-24T09:49:05.429945Z",
+  "model": "gemini-2.5-flash",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -90,129 +90,93 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Sterile Processing Technicians (SPD / Central Sterile)",
+      "name": "Indie TTRPG (Tabletop Role-Playing Game) Creators & Players",
       "type": "deep_niche",
-      "audience_size_estimate": 120000,
+      "audience_size_estimate": 750000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Certified Registered Central Service Technicians (CRCST) who sterilize surgical instruments. They feel invisible compared to nurses, have strong insider humor about dirty bone mallets, bioburden, and autoclave cycles.",
-      "product_angles": [
-        "Sarcastic autoclave & decontamination-themed stickers for water bottles (Redbubble)",
-        "KDP CRCST exam study planners and daily instrument tracking logbooks",
-        "Funny SVG cutting files for badge reels and custom scrub jackets"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "The Ultimate Sterile Processing Technical Log & Shift Tracker (KDP)",
-      "estimated_monthly_revenue_year1_eur": 150
-    },
-    {
-      "rank": 2,
-      "name": "Retro PSX / Low-Poly Gamedev 3D Assets",
-      "type": "adjacent_market",
-      "audience_size_estimate": 350000,
-      "passion_level_1_10": 8,
       "current_saturation_1_10": 4,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers building horror or retro games mimicking 1990s PlayStation 1 aesthetics. They need hyper-optimized, low-texture-budget models and modular assets.",
+      "buyer_persona": "Creative indie game developers, Dungeon Masters, and players aged 18-45 who value unique, high-quality assets to enhance their games and stories. They are often budget-conscious but willing to pay for time-saving resources, and frequently use platforms like Itch.io, DriveThruRPG, and Reddit.",
       "product_angles": [
-        "Low-poly retro dungeon/corridor modular tilesets (OBJ/FBX format)",
-        "Y2K-era low-fidelity prop packs (CRT TVs, payphones, old computers)",
-        "Cults3D printable retro console shell replacements or miniature dioramas"
+        "Digital map tiles and assets (SVG/PNG) for virtual tabletops",
+        "Printable character sheets, rulebook inserts, and adventure journals (KDP low-content)",
+        "AI prompt packs for generating fantasy creatures, lore, or encounter ideas"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "PSX-Style Retro Mall Prop Pack (30 modular FBX assets + low-res textures)",
+      "best_pipeline_or_new": "produce_gamedev_asset_pack / produce_lowcontent_kdp / new_ttrpg_prompts",
+      "first_test_product": "Modular Fantasy Dungeon Map Tiles (SVG Pack) with basic creature tokens",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
-      "rank": 3,
-      "name": "Ham Radio (Amateur Radio) Operators",
-      "type": "sub_culture",
-      "audience_size_estimate": 750000,
-      "passion_level_1_10": 10,
+      "rank": 2,
+      "name": "Permaculture & Regenerative Agriculture Practitioners",
+      "type": "deep_niche",
+      "audience_size_estimate": 400000,
+      "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Highly technical hobbyists, often older but extremely passionate about global radio propagation, Morse code, and tracking their contacts (QSO). They love physical logs and custom equipment.",
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Environmentally conscious gardeners, small farmers, and homesteaders aged 25-60. They are dedicated to sustainable living, often DIY, and seek practical tools for planning, logging, and educating themselves about permaculture principles. Active in online forums, Facebook groups, and local workshops.",
       "product_angles": [
-        "Ham Radio Operator Log Book with specialized fields (Frequency, Mode, Power, RST, QSL)",
-        "Redbubble t-shirts with humor about antenna tuning, SWR, and Morse code",
-        "SVG vector designs of classic radio towers and patent drawings for custom shack signs"
+        "Permaculture garden design templates and zone mapping icons (SVG)",
+        "Garden planning journals and harvest logbooks (KDP low-content)",
+        "Educational coloring books for kids on edible landscapes and biodiversity"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Amateur Radio QSO Contact Log Book (KDP, custom interior grid)",
+      "best_pipeline_or_new": "produce_lowcontent_kdp / produce_svg_pack / produce_coloring_book",
+      "first_test_product": "My Permaculture Garden Planner & Logbook (KDP low-content)",
       "estimated_monthly_revenue_year1_eur": 180
     },
     {
-      "rank": 4,
-      "name": "French Regional GR Hiking Trails (Sentiers de Grande Randonnée)",
-      "type": "b2b",
-      "audience_size_estimate": 250000,
-      "passion_level_1_10": 8,
+      "rank": 3,
+      "name": "Urban Exploration (Urbex) Enthusiasts",
+      "type": "sub_culture",
+      "audience_size_estimate": 500000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Avid French hikers and international tourists completing specific routes (GR20, GR34, Saint-Jacques). They want memorabilia, planning journals, and local pride items.",
+      "buyer_persona": "Photographers, adventurers, and history enthusiasts aged 18-50 who are fascinated by abandoned places. They prioritize respect for locations, safety, and documenting beauty in decay. They are active on Instagram, Reddit, and dedicated Urbex forums, seeking unique ways to express their passion.",
       "product_angles": [
-        "Vintage travel poster style designs of iconic GR34 lighthouses (Redbubble / Displate style)",
-        "KDP Hiking journal tailored specifically to the GR20 with packing lists and stage logs",
-        "SVG designs of trail markers and regional pride slogans for local decors"
+        "Stylized coloring books of abandoned architecture and industrial ruins",
+        "Digital photo overlays and graphic elements for Urbex photography (SVG/PNG)",
+        "Logbooks or journals for documenting exploration trips and locations (KDP low-content)"
       ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "Carnet de Randonnée GR34 - Breton Coast Trail Planner & Logbook (KDP)",
-      "estimated_monthly_revenue_year1_eur": 120
+      "best_pipeline_or_new": "produce_coloring_book / produce_svg_pack / produce_lowcontent_kdp",
+      "first_test_product": "Abandoned Beauty: Urbex Coloring Book (stylized illustrations)",
+      "estimated_monthly_revenue_year1_eur": 150
+    },
+    {
+      "rank": 4,
+      "name": "Local Historical Reenactment Groups & Living History Museums",
+      "type": "b2b",
+      "audience_size_estimate": 100000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Organizers, educators, and volunteers of small historical societies, reenactment groups, and local museums. They need custom, authentic-looking digital assets for events, educational materials, and member engagement, often operating on limited budgets.",
+      "product_angles": [
+        "Customizable historical event posters and flyer templates (SVG)",
+        "Educational coloring books depicting specific historical periods or local heritage (B2B direct sales)",
+        "Digital asset packs for social media: historical patterns, crests, weapon silhouettes (SVG)"
+      ],
+      "best_pipeline_or_new": "produce_svg_pack / produce_coloring_book / new_b2b_custom_assets",
+      "first_test_product": "Medieval Faire Activity Coloring Pack (B2B, sold to local groups)",
+      "estimated_monthly_revenue_year1_eur": 300
     },
     {
       "rank": 5,
-      "name": "Solo Board Gamers (1-Player Board Games)",
-      "type": "sub_culture",
-      "audience_size_estimate": 90000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Enthusiasts who play complex tabletop games alone. They track high scores, campaign progressions, and require physical organization systems for small play spaces.",
-      "product_angles": [
-        "KDP Solo Board Game Campaign Journal & Session Log",
-        "Cults3D parametric card holders and universal token trays optimized for small desks",
-        "Redbubble apparel with insider jokes ('Autonomous AI Opponent Destroyer')"
-      ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "Modular Stackable Token Tray & Card Holder STL Pack (Cults3D)",
-      "estimated_monthly_revenue_year1_eur": 200
-    },
-    {
-      "rank": 6,
-      "name": "Land Surveyors (Géomètres)",
+      "name": "Amateur Astronomy & Astrophotography Enthusiasts",
       "type": "deep_niche",
-      "audience_size_estimate": 60000,
-      "passion_level_1_10": 9,
+      "audience_size_estimate": 600000,
+      "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
       "growth_trajectory": "steady",
-      "buyer_persona": "Outdoor professionals who combine precise mathematics, legal boundaries, and heavy equipment (theodolites, GPS). They take massive pride in mapping the physical world.",
+      "buyer_persona": "Individuals aged 25-65 with a deep passion for the cosmos, owning telescopes, and often engaging in astrophotography. They seek tools for planning observations, logging discoveries, and showcasing their interest. Active in astronomy clubs, forums, and online communities.",
       "product_angles": [
-        "Technical humor t-shirts ('Trust me, I'm a Land Surveyor' with transit level schematics)",
-        "KDP weatherproof style Field Book grid templates for site measurements",
-        "SVGs of classic surveying tools for custom laser-engraved gifts"
+        "Deep-sky object logbooks and observation journals (KDP low-content)",
+        "Stylized constellation maps and celestial event calendars (SVG)",
+        "Coloring books featuring nebulae, galaxies, and planetary scenes"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Professional Land Surveyor Field Notes Book (KDP, 5x5 grid left, ruled right)",
-      "estimated_monthly_revenue_year1_eur": 110
-    },
-    {
-      "rank": 7,
-      "name": "Model Miniature Painters (Warhammer/DnD Minis)",
-      "type": "deep_niche",
-      "audience_size_estimate": 500000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Hobbyists spending hours painting 28mm miniatures. They struggle with paint bottle organization (Vallejo vs Citadel sizes) and tracking color recipes/paint backlog.",
-      "product_angles": [
-        "Cults3D parametric wall-mounted modular paint racks (custom fits)",
-        "KDP Miniatures Paint Project Planner & Color Recipe Journal",
-        "Redbubble stickers mocking the 'Pile of Shame' (unpainted minis)"
-      ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "Miniature Painting Recipe & Project Logbook (KDP)",
-      "estimated_monthly_revenue_year1_eur": 220
+      "best_pipeline_or_new": "produce_lowcontent_kdp / produce_svg_pack / produce_coloring_book",
+      "first_test_product": "Deep Sky Object Observation Logbook (KDP low-content)",
+      "estimated_monthly_revenue_year1_eur": 200
     }
   ]
 }
