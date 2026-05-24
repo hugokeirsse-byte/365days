@@ -1,0 +1,9 @@
+{
+  "audited_at": "2026-05-24T01:55:04.889803Z",
+  "pipeline": "bible_verses_v2",
+  "model": "gemini-2.5-flash",
+  "verdict": "approve",
+  "issues": [],
+  "rating_0_100": 95,
+  "reasoning": "The image accurately displays the Bible verse 'By grace you have been saved through faith' which is correctly attributed to Ephesians 2:8-9. The text is clear, legible, and well-centered against a pleasant floral background. There are no visible typos, grammatical errors, or quality issues such as low resolution or artifacts. The overall design is clean and suitable for print-on-demand."
+}

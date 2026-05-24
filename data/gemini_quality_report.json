@@ -1,41 +1,17 @@
 {
-  "audited_at": "2026-05-23T08:07:40.010592Z",
+  "audited_at": "2026-05-24T02:06:16.739790Z",
   "model": "gemini-2.5-flash",
   "total_processed": 30,
   "counters": {
-    "approve": 12,
+    "approve": 4,
     "review": 0,
-    "reject": 7,
-    "skip": 14,
-    "error": 11
+    "reject": 1,
+    "skip": 33,
+    "error": 25
   },
   "audits": [
     {
-      "design_path": "bible_verses/new/love/1_corinthians_13_4_7_vintage_botanical",
-      "pipeline": "bible_verses",
-      "verdict": "reject",
-      "issues": [
-        "verse_text_exactly_correct_no_typo",
-        "no_gibberish_text",
-        "reference_format_correct"
-      ],
-      "rating_0_100": 5,
-      "reasoning": "The image fails multiple critical rules. The verse text is incorrect and contains significant typos, reading \"Love is patce lovio\" instead of \"Love is patient, love is kind.\" The text itself appears to be AI-generated gibberish rather than a clean overlay, violating the 'no_gibberish_text' rule. Additionally, there is no correctly formatted Bible reference visible on the image; all smaller text is also gibberish. These critical failures make the image unacceptable for the 'bible_verses' pipeline."
-    },
-    {
-      "design_path": "bible_verses/old/courage/joshua_1_9_soft_watercolor",
-      "pipeline": "bible_verses",
-      "verdict": "reject",
-      "issues": [
-        "verse_text_exactly_correct_no_typo",
-        "no_gibberish_text",
-        "reference_format_correct"
-      ],
-      "rating_0_100": 5,
-      "reasoning": "The image displays AI-generated gibberish text instead of the expected Bible verse \"Be strong and courageous\" and its reference \"Joshua 1:9\". This violates multiple critical rules: the verse text is not exactly correct, the image contains AI-generated text which is explicitly forbidden, and the reference format is incorrect and unreadable. The product is completely unusable as a print-on-demand item for bible verses due to these fundamental errors."
-    },
-    {
-      "design_path": "bible_verses/old/courage/joshua_1_9_vintage_botanical",
+      "design_path": "bible_verses/old/trust/proverbs_3_5_6_soft_watercolor",
       "pipeline": "bible_verses",
       "verdict": "reject",
       "issues": [
@@ -44,150 +20,39 @@
         "reference_format_correct"
       ],
       "rating_0_100": 0,
-      "reasoning": "The image fails multiple critical rules. The expected verse \"Be strong and courageous\" is not present; instead, the image displays illegible and nonsensical AI-generated text, violating the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Additionally, the required Bible reference \"Joshua 1:9\" is completely missing, violating the 'reference_format_correct' rule. These severe text-related issues make the image entirely unacceptable for the 'bible_verses' pipeline."
+      "reasoning": "The image contains AI-generated gibberish text instead of the expected Bible verse 'Trust in the Lord with all your heart'. The text is unreadable and does not match the required verse, violating the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' critical rules. Additionally, the required Bible reference 'Proverbs 3:5-6' is entirely missing from the image, violating the 'reference_format_correct' critical rule. These multiple critical failures necessitate a rejection."
     },
     {
-      "design_path": "bible_verses/old/hope/jeremiah_29_11_soft_watercolor",
-      "pipeline": "bible_verses",
-      "verdict": "reject",
-      "issues": [
-        "verse_text_exactly_correct_no_typo",
-        "no_gibberish_text",
-        "reference_format_correct"
-      ],
-      "rating_0_100": 5,
-      "reasoning": "The image critically fails on multiple rules. The visible text is AI-generated gibberish (\"For hiivus hoi gou lod\" and other illegible lines) and does not match the expected verse \"For I know the plans I have for you\", violating the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' rules. Additionally, the required Bible reference \"Jeremiah 29:11\" is completely absent or unreadable, violating the 'reference_format_correct' rule. These are all critical violations, leading to an immediate rejection."
-    },
-    {
-      "design_path": "bible_verses/old/hope/jeremiah_29_11_vintage_botanical",
-      "pipeline": "bible_verses",
-      "verdict": "reject",
-      "issues": [
-        "verse_text_exactly_correct_no_typo",
-        "no_gibberish_text",
-        "reference_format_correct",
-        "tone_respectful_appropriate_for_christian_market"
-      ],
-      "rating_0_100": 5,
-      "reasoning": "The image fails multiple critical rules. The text is entirely gibberish and does not contain the expected Bible verse or reference, directly violating 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text'. The reference format is also incorrect as it's missing and replaced by gibberish. Additionally, the presence of inverted crosses is highly inappropriate and disrespectful for the Christian market, violating the 'tone_respectful_appropriate_for_christian_market' warning rule. This image is completely unusable."
-    },
-    {
-      "design_path": "bible_verses/old/trust/proverbs_3_5_6_vintage_botanical",
-      "pipeline": "bible_verses",
-      "verdict": "reject",
-      "issues": [
-        "verse_text_exactly_correct_no_typo",
-        "no_gibberish_text",
-        "reference_format_correct"
-      ],
-      "rating_0_100": 5,
-      "reasoning": "The image is rejected due to multiple critical rule violations. The most significant issue is the presence of AI-generated gibberish text, which directly violates the 'no_gibberish_text' rule, as the text is clearly not a clean Pillow overlay. As a result, the expected verse 'Trust in the Lord with all your heart' is not accurately displayed, failing the 'verse_text_exactly_correct_no_typo' rule. Additionally, the required Bible reference (Proverbs 3:5-6) is either entirely missing or completely illegible, violating the 'reference_format_correct' rule. While the vintage botanical style is somewhat evident, the fundamental text content is critically flawed, rendering the image unacceptable for the 'bible_verses' pipeline."
-    },
-    {
-      "design_path": "bible_verses_v2/new/anxiety/1_peter_5_7_modern_mountains",
+      "design_path": "bible_verses_v2/new/grace/ephesians_2_8_9_soft_watercolor",
       "pipeline": "bible_verses_v2",
-      "verdict": "reject",
-      "issues": [
-        "Incomplete Bible verse text"
-      ],
-      "rating_0_100": 20,
-      "reasoning": "The image is rejected due to a critical violation of the 'Text Accuracy' rule. The provided Bible verse text, 'Cast all your anxiety on him', is an incomplete rendition of 1 Peter 5:7. The full verse, as commonly found in translations, continues with 'because he cares for you.' For the 'bible_verses_v2' pipeline, the text must be an exact match to the specified reference, and this omission makes the text inaccurate."
+      "verdict": "approve",
+      "issues": [],
+      "rating_0_100": 95,
+      "reasoning": "The image accurately displays the Bible verse 'By grace you have been saved through faith' which is correctly attributed to Ephesians 2:8-9. The text is clear, legible, and well-centered against a pleasant floral background. There are no visible typos, grammatical errors, or quality issues such as low resolution or artifacts. The overall design is clean and suitable for print-on-demand."
     },
     {
-      "design_path": "bible_verses_v2/new/anxiety/1_peter_5_7_soft_watercolor",
+      "design_path": "bible_verses_v2/new/grace/ephesians_2_8_9_vintage_botanical",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 100,
-      "reasoning": "No specific rules for the 'bible_verses_v2' pipeline were provided for auditing. Based on general aesthetic principles, the image presents a clear and legible Bible verse with a suitable, non-distracting background. The text is well-centered and the colors offer good contrast. Without explicit criteria to evaluate against, no issues or violations could be identified, leading to an approval."
+      "reasoning": "The image clearly presents a bible verse with its corresponding reference, 'Ephesians 2:8-9', and the text 'By grace you have been saved through faith'. The typography is clean and highly legible against the subtle, tasteful background pattern. The overall composition is balanced and aesthetically pleasing, making it suitable for the 'bible_verses_v2' pipeline without any apparent critical quality issues."
     },
     {
-      "design_path": "bible_verses_v2/new/anxiety/1_peter_5_7_vintage_botanical",
+      "design_path": "bible_verses_v2/new/joy/james_1_2_3_minimalist_gold",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 95,
-      "reasoning": "The image displays excellent legibility with dark, clear text against a light, subtly patterned background, ensuring high readability. The composition is well-balanced, with the verse and reference centered effectively. The content is appropriate for the 'bible_verses_v2' pipeline, and the overall aesthetic is clean and professional, suitable for print-on-demand products. No critical issues were identified."
+      "reasoning": "The image presents a bible verse with excellent legibility and a clean, appealing aesthetic. The text is well-centered, and the font choice is appropriate. The subtle background pattern adds visual interest without distracting from the main message. The bible reference is clearly visible and correctly formatted. Overall, the design is professional and suitable for print-on-demand, demonstrating high quality in composition and presentation."
     },
     {
-      "design_path": "bible_verses_v2/new/faith/hebrews_11_1_minimalist_gold",
+      "design_path": "bible_verses_v2/new/love/john_3_16_soft_watercolor",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 95,
-      "reasoning": "The image presents a bible verse, 'Faith is the substance of things hoped for' from Hebrews 11:1, which is appropriate for the 'bible_verses_v2' pipeline. The text is highly legible with excellent contrast against the subtle, light-colored background. The font choice is clear and professional, and the overall composition is well-balanced and aesthetically pleasing. There are no visible quality issues such as pixelation, blurriness, or cropping errors. The design is clean, professional, and ready for print."
-    },
-    {
-      "design_path": "bible_verses_v2/new/faith/hebrews_11_1_modern_mountains",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 92,
-      "reasoning": "The image clearly and legibly displays the bible verse 'Hebrews 11:1 Faith is the substance of things hoped for'. The text uses a clean, readable serif font with excellent contrast against the light background. The composition is well-balanced, with the verse centered and the reference appropriately placed above. The subtle mountain landscape background adds a pleasant aesthetic without distracting from the primary text. All elements appear sharp and high-resolution, indicating good print quality. There are no visible defects, misspellings, or design flaws that would warrant a rejection or review."
-    },
-    {
-      "design_path": "bible_verses_v2/new/faith/hebrews_11_1_soft_watercolor",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 98,
-      "reasoning": "The image presents a clear and legible bible verse, 'Faith is the substance of things hoped for' from Hebrews 11:1, with the reference prominently displayed. The text has excellent contrast against the soft, light floral background, ensuring high readability. The overall design is aesthetically pleasing, well-balanced, and appropriate for the 'bible_verses_v2' pipeline. There are no visible defects such as blurriness, pixelation, or inappropriate content, and all elements are correctly aligned and proportioned."
-    },
-    {
-      "design_path": "bible_verses_v2/new/faith/hebrews_11_1_vintage_botanical",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 95,
-      "reasoning": "The image demonstrates excellent quality control for the 'bible_verses_v2' pipeline. The text is highly legible with strong contrast against the subtle, aesthetically pleasing background. The font choice and sizing are appropriate, ensuring readability. The composition is well-balanced, with the verse and reference clearly presented without being too close to the edges. The overall design is clean, professional, and aligns well with the expected style for a print-on-demand product featuring Bible verses."
-    },
-    {
-      "design_path": "bible_verses_v2/new/faith/matthew_6_33_minimalist_gold",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 100,
-      "reasoning": "The image demonstrates excellent quality, with clear and highly legible text against a subtle, elegant background. The composition is well-balanced, and the verse and reference are accurately presented. There are no visible issues with resolution, contrast, or design elements, making it perfectly suitable for the 'bible_verses_v2' pipeline."
-    },
-    {
-      "design_path": "bible_verses_v2/new/faith/matthew_6_33_modern_mountains",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 98,
-      "reasoning": "The image displays excellent legibility with clear, well-contrasted text against a subtle, appropriate background. The font choice and overall layout are aesthetically pleasing and professional, aligning well with a spiritual theme. The Bible verse and reference are accurately presented, and the design appears ready for print without any visible flaws such as pixelation, cropping issues, or poor composition. The design adheres to high-quality standards for the 'bible_verses_v2' pipeline."
-    },
-    {
-      "design_path": "bible_verses_v2/new/faith/matthew_6_33_soft_watercolor",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 95,
-      "reasoning": "The image presents a clear and legible bible verse with its reference, 'Matthew 6:33', against a subtle and aesthetically pleasing floral background. The text is well-centered, uses an appropriate font, and has good contrast with the background, ensuring excellent readability. There are no visible quality issues such as pixelation, blurriness, or artifacts, and the overall design is clean and professional, making it suitable for print-on-demand products in the 'bible_verses_v2' pipeline."
-    },
-    {
-      "design_path": "bible_verses_v2/new/faith/matthew_6_33_vintage_botanical",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 95,
-      "reasoning": "The image presents a clear and legible bible verse with its reference, 'Matthew 6:33 - Seek first the kingdom of God'. The font choice is appropriate and easy to read, and the text is well-centered on a subtle, tasteful background pattern. There are no visible quality issues such as pixelation or blurriness, and the overall composition is professional and suitable for the 'bible_verses_v2' pipeline. No critical rules appear to be violated."
-    },
-    {
-      "design_path": "bible_verses_v2/new/grace/ephesians_2_8_9_minimalist_gold",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 98,
-      "reasoning": "The image demonstrates excellent adherence to critical quality standards for the 'bible_verses_v2' pipeline. The text is perfectly legible with strong contrast against the background, and the verse reference 'Ephesians 2:8-9' accurately corresponds to the quoted text 'By grace you have been saved through faith'. The composition is well-balanced, centered, and features appropriate margins, ensuring no text is cut off. The overall clarity and resolution of the image are high, presenting a professional and appealing design suitable for print-on-demand."
-    },
-    {
-      "design_path": "bible_verses_v2/new/grace/ephesians_2_8_9_modern_mountains",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 95,
-      "reasoning": "The image clearly and legibly presents the bible verse 'By grace you have been saved through faith' along with its reference 'Ephesians 2:8-9'. The text is well-contrasted against the serene mountain landscape background, ensuring excellent readability. The overall composition is balanced and aesthetically pleasing, making it suitable for print-on-demand. No critical issues such as blurriness, incorrect text, or poor design elements were identified."
+      "reasoning": "The image presents a clear and legible Bible verse ('For God so loved the world' from John 3:16) with appropriate attribution. The design is aesthetically pleasing with a soft floral background and well-chosen fonts and colors, making it suitable for a 'bible_verses_v2' pipeline. There are no visible quality issues such as pixelation, text cut-off, or design flaws, ensuring it meets high print-on-demand standards."
     }
   ]
 }
