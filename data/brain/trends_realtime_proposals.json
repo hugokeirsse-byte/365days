@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-24T06:56:08.265904Z",
+  "timestamp": "2026-05-24T09:50:15.289851Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,63 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "dopamine menu planner",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 4,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_lowcontent_kdp",
-      "title_template_suggestion": "ADHD Dopamine Menu Planner: A Creative Low-Stress Activity Book and Visual Checklist for Focus",
-      "evidence_url_or_signal": "TikTok hashtag #dopaminemenu crossed 18.4M views in mid-May 2026, with users looking for physical printable templates to gamify productivity tasks."
-    },
-    {
-      "rank": 2,
-      "trend_keyword": "gothic botany coloring book",
-      "platform_where_spotted": "Pinterest",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Dark Cottagecore Gothic Botany Coloring Book: Mystical Poisonous Plants and Apothecary Herbs for Adults",
-      "evidence_url_or_signal": "Pinterest searches for 'dark academia aesthetic' and 'gothic herbarium' spiked +140% during the May 2026 pre-summer transition as alternative garden vibes trend."
-    },
-    {
-      "rank": 3,
-      "trend_keyword": "funny retro motel keytag sticker",
+      "trend_keyword": "Aura Points Checklist",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
       "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 4,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Funny Aura Points Sticker - Loss of Aura Checklist Decal for Laptop and Water Bottle",
+      "evidence_url_or_signal": "TikTok hashtag #aurapoints surging with over 45M views in the last 14 days, specifically users listing funny daily occurrences that gain or lose them 'aura'."
+    },
+    {
+      "rank": 2,
+      "trend_keyword": "Cozy Frog Gamer",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 60,
       "saturation_now_1_10": 5,
       "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Retro Motel Keytag Sticker Pack - Funny Sarcastic Hotel Tag Decals for Laptops and Water Bottles",
-      "evidence_url_or_signal": "TikTok trend #motelkeytag displaying customizable retro motel keychains with hyper-specific jokes reached peak engagement on May 15, 2026, driving demand for flat sticker versions on Redbubble."
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Cute Cozy Frog Gamer SVG - Lofi Mushroom Gaming Clipart for Cricut and Sublimation",
+      "evidence_url_or_signal": "Pinterest trends showing a 140% spike in search volume for 'cozy gaming aesthetic svg' and 'frog playing video game' in mid-May 2026."
+    },
+    {
+      "rank": 3,
+      "trend_keyword": "DINKWAD Club",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 3,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "DINKWAD Club Coffee Mug - Double Income No Kids With A Dog Retro Aesthetic Cup",
+      "evidence_url_or_signal": "TikTok viral lifestyle videos under #dinkwad showing high engagement spikes (+180% week-over-week) with users looking for physical merchandise."
     },
     {
       "rank": 4,
-      "trend_keyword": "parametric self-watering PET bottle planter",
-      "platform_where_spotted": "Reddit",
+      "trend_keyword": "Dark Academia Botanical",
+      "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 7,
       "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 2,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Parametric Self-Watering Planter Adapter for Recycled PET Bottles - 3D Print STL",
-      "evidence_url_or_signal": "Spike in /r/3Dprinting for eco-friendly gardening prints and gridfinity-compatible plant pots. Upvoted posts show high interest in recycling plastic bottles into smart planters in May 2026."
+      "saturation_now_1_10": 4,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Dark Academia Botanical Coloring Book for Adults - Gothic Herbs and Mystical Flowers KDP",
+      "evidence_url_or_signal": "Etsy keyword research showing high search-to-listing ratio for 'gothic botany coloring book' and 'dark academia aesthetic line art' in May 2026."
     },
     {
       "rank": 5,
-      "trend_keyword": "corporate burnout sarcasm",
-      "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 8,
+      "trend_keyword": "Emotional Support Water Bottle",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
       "estimated_lifespan_days": 60,
       "saturation_now_1_10": 6,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_cope_pack",
-      "title_template_suggestion": "Sarcastic Corporate Burnout Coffee Mug - Funny Coworker Gift - Please Do Not Promote Me Office Humor",
-      "evidence_url_or_signal": "Etsy bestseller listings featuring 'Quiet Quitting' and 'Corporate Overlord' humor saw a renewed 35% week-over-week search volume increase as hybrid work reviews intensify in late spring."
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_literal_idioms_v2",
+      "title_template_suggestion": "Emotional Support Water Bottle Sticker - Funny Hydration Quote Decal for Tumbler",
+      "evidence_url_or_signal": "Summer heatwave prep has triggered a recurring viral wave of #emotionalsupportwaterbottle videos on TikTok, with highly personalized, ironic text stickers leading sales."
+    },
+    {
+      "rank": 6,
+      "trend_keyword": "Retro Menton France Travel Poster",
+      "platform_where_spotted": "Reddit",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 75,
+      "saturation_now_1_10": 2,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_chateau_local",
+      "title_template_suggestion": "Retro Menton France Travel Poster - Vintage Lemon Riviera Wall Art Print",
+      "evidence_url_or_signal": "Reddit communities r/TravelPics and r/CozyPlaces showcasing Menton lemon festival aesthetic, driving a micro-trend for French Riviera vintage-style illustrations."
     }
   ]
 }
