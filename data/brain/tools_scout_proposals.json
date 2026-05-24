@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-24T13:01:52.937244Z",
+  "timestamp": "2026-05-24T16:54:18.048113Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "DeepInfra",
-      "url": "https://deepinfra.com",
+      "tool_or_platform": "SiliconFlow API",
+      "url": "https://siliconflow.cn/en/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "$1.80 free credits on signup. Flux-Schnell costs $0.0015 per image (~1200 free images). No credit card required.",
-      "what_it_does_uniquely": "Hosts state-of-the-art open-source image generators (Flux Schnell, SDXL) with incredibly low latency and the lowest pay-as-you-go pricing on the market once free tier is exhausted.",
-      "would_integrate_where": "Can replace Pollinations in 'produce_coloring_book' and 'produce_kdp_cover' pipelines via a simple HTTP POST request in GitHub Actions.",
+      "free_tier_concrete_limits": "14 Safe points daily upon log-in (~100 to 200 free FLUX.1-schnell or SDXL images generated daily).",
+      "what_it_does_uniquely": "Provides high-speed, stable OpenAI-compatible API endpoints for open-source models like FLUX.1-schnell, SD3, and Stable Diffusion XL without cold starts or IP blocks from GitHub Actions.",
+      "would_integrate_where": "Replace the broken Pollinations/Horde image generation step in 'produce_coloring_book' and 'produce_kdp_cover' pipelines.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "API keys must be rotated if multiple free accounts are used; ToS allows one account per person."
+      "risk_or_caveat": "Registration requires phone verification; documentation is occasionally translated from Chinese but API standard is strictly OpenAI-compliant."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Fal.ai",
-      "url": "https://fal.ai",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "$10 free credits on signup. Flux-Schnell costs $0.003 per image (~3300 free images).",
-      "what_it_does_uniquely": "Incredibly fast inference times (sub-second for Schnell) and native support for advanced options like ControlNet, IP-Adapter, and image-to-image without complex setup.",
-      "would_integrate_where": "Integrates into 'produce_tumbler_wraps' or 'produce_gamedev_asset_pack' where precise control over composition (via ControlNet) is required.",
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to upload unlimited 3D models. Standard marketplace fee on sales (no monthly listing cost).",
+      "what_it_does_uniquely": "Fastest growing 3D search engine and marketplace for STL/3D files. Features a highly active community of 3D printing enthusiasts looking for functional/parametric models.",
+      "would_integrate_where": "Target platform for 'produce_stl_parametric' pipeline. Run python scripts in GitHub Actions to output STL files, then manually or semi-automatically upload to Thangs.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Requires GitHub login. Rate limits apply to free tier under heavy platform load."
+      "risk_or_caveat": "Heavy focus on 3D printable models; purely artistic models perform worse than functional or pop-culture/tabletop gaming assets."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Printables",
-      "url": "https://www.printables.com",
+      "tool_or_platform": "DriveThruRPG / WargameVault",
+      "url": "https://www.drivethrurpg.com/",
       "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to upload. No listing fees. 'Printables Store' and 'Clubs' features allow direct monetization with a 10% platform fee.",
-      "what_it_does_uniquely": "The fastest-growing 3D printing community, heavily backed by Prusa. Has higher organic engagement and search traffic than Cults3D for functional and artistic STL/3D files.",
-      "would_integrate_where": "New distribution channel for 'produce_stl_parametric' or any 3D asset pipeline generated via OpenSCAD/Python.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Strict moderation on spammy/low-effort procedural uploads. Models must be functional or highly aesthetic."
+      "free_tier_concrete_limits": "Free to set up a publisher account. No listing fees. Takes commission on sales (30% to 35% standard).",
+      "what_it_does_uniquely": "The absolute gold standard marketplace for tabletop RPGs, map packs, paper minis, and rulebooks. Customers are highly accustomed to buying PDFs and digital-only print-and-play assets.",
+      "would_integrate_where": "Target platform for 'produce_card_game' and 'produce_coloring_book' (re-packaged as RPG fantasy maps or dungeon tiles).",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Strict formatting rules for PDF uploads; community is highly sensitive to low-quality AI art, requiring careful curation of outputs."
     },
     {
       "rank": 4,
-      "tool_or_platform": "DriveThruRPG / WargameVault",
-      "url": "https://www.drivethrurpg.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list. No listing fees. Commission-based model (30% to 35% on exclusive listings, 45% on non-exclusive).",
-      "what_it_does_uniquely": "The absolute largest marketplace for PDF tabletop games, print-and-play assets, maps, and coloring pages aimed at fantasy/RPG geeks. Extremely high conversion rate for niche PDFs.",
-      "would_integrate_where": "Can host digital versions of 'produce_card_game', PDF coloring books, or paper miniatures generated in our pipelines.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires manual account setup and initial product approval. Digital files must meet PDF/X print standards."
+      "tool_or_platform": "Freesound API",
+      "url": "https://freesound.org/docs/api/",
+      "category": "scraping",
+      "free_tier_concrete_limits": "2,000 requests per day for search and download of audio files.",
+      "what_it_does_uniquely": "Provides programmatically searchable access to millions of user-submitted sound effects, many under CC0 (Creative Commons Zero) or Public Domain licenses.",
+      "would_integrate_where": "A new pipeline 'produce_gamedev_audio_pack'. Query CC0 UI sounds, ambient loops, or retro laser effects, bundle them with Python's pydub library, and sell them as asset packs on itch.io or Unity Asset Store.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Must strictly filter search results to 'license:\"Creative Commons 0\"' to ensure complete legality for commercial resale."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "$0/month. 5% + 50c per transaction. Unlimited products and file hosting up to 5GB.",
-      "what_it_does_uniquely": "Acts as a Merchant of Record (MoR), meaning they handle EU VAT/sales taxes automatically. Essential for a solo developer in France selling digital assets globally without tax nightmares.",
-      "would_integrate_where": "Acts as the unified checkout engine for selling gamedev assets, STL packs, and custom PDFs directly from Hugo's GitHub Pages or social media.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Payout thresholds apply (minimum $50 or weekly schedules). Strict policy against copyright-infringing AI assets."
+      "tool_or_platform": "Wikimedia Commons API",
+      "url": "https://commons.wikimedia.org/wiki/Commons:API",
+      "category": "scraping",
+      "free_tier_concrete_limits": "Completely free, no registration required for standard read requests. Rate limit is based on polite user-agent header.",
+      "what_it_does_uniquely": "Unlocks millions of high-resolution, public-domain historical illustrations, botanical drawings, and vintage maps perfect for commercial reconstruction.",
+      "would_integrate_where": "Integration into 'produce_cultural_arbitrage' or 'produce_svg_pack'. Automatic downloading of vintage line drawings, vectorizing via potrace in GitHub Actions, and uploading to Redbubble or Etsy.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Requires robust metadata parsing to confirm the source file is strictly 'PD-Old' or 'CC0' and not restricted by country-specific copyright laws."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Jina Reader API",
-      "url": "https://jina.ai/reader",
-      "category": "scraping",
-      "free_tier_concrete_limits": "1,000,000 free tokens per month. No credit card required.",
-      "what_it_does_uniquely": "Converts any URL (even heavy JS-rendered pages) into clean, LLM-friendly Markdown with a simple `https://r.jina.ai/URL` prefix.",
-      "would_integrate_where": "Integrates into 'agent_trendhunter' and 'agent_opportunity_hunter' to scrape e-commerce trend blogs and competitor stores directly from GitHub Actions without writing complex parsers.",
+      "tool_or_platform": "Nebius AI Studio",
+      "url": "https://nebius.com/services/ai-studio",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous free signup credits (often $10 to $20) with ultra-low PAYG pricing (~$0.0015 per FLUX.1-schnell image).",
+      "what_it_does_uniquely": "An enterprise-grade cloud provider serving open-source AI models at near-cost prices. Highly reliable endpoint availability with zero rate-limit blocks for GitHub Actions.",
+      "would_integrate_where": "High-quality, reliable backup to 'together_ai' and 'cloudflare' in the image generation stack.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Some highly protected sites (like Cloudflare-protected competitor stores) might still block the request."
+      "risk_or_caveat": "Requires credit card verification on signup to prevent abuse, even when using free trial credits."
     }
   ]
 }
