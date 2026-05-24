@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-24T09:50:16.555815Z",
+  "timestamp": "2026-05-24T13:01:47.127650Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,96 +90,106 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Silent API failures and IP blocking on GitHub Actions for image generation",
+      "issue_title": "Silent Failures and Empty Files in Image Generation Pipelines",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
+        "produce_iheart_v4",
         "produce_kdp_cover",
-        "produce_tumbler_wraps",
         "produce_literal_idioms_v2"
       ],
-      "current_pain_description": "GitHub Actions shared runner IPs are frequently rate-limited or blocked (403/429) by image APIs like Hugging Face, AI Horde, and Gemini. Fallback to Pollinations results in low-quality images, causing silent pipeline failures or unusable assets.",
-      "proposed_fix": "Create a unified `image_gen_router.py` utility. It must implement exponential backoff retry for HTTP 429, mask requests using a free Cloudflare Worker reverse proxy to bypass GitHub IP bans, and strictly route through a prioritized hierarchy: 1) Together AI (FLUX-schnell), 2) Cloudflare Workers AI (10k free daily neurons), 3) Runware (PAYG capped at €20), and 4) Pollinations (only as a flagged debug fallback).",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Eliminates 90% of silent workflow crashes; guarantees high-quality FLUX-schnell outputs without manual intervention.",
+      "current_pain_description": "When Pollinations, Together AI, or Cloudflare returns a timeout, 429, or empty 0KB payload, the GitHub Actions runner saves empty files or crashes silently. This wastes Hugo's 10-hour weekly window on debugging empty runs.",
+      "proposed_fix": "Implement a standardized shell wrapper script (`safe_download.sh`) in the workflow. This script must: 1. Verify HTTP response is 200; 2. Check that the output file size is > 5KB; 3. Use `file` utility to confirm it is a valid PNG/JPEG; 4. Automatically retry up to 3 times with exponential backoff before falling back to a secondary API (e.g., fall back to Pollinations if Cloudflare fails).",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Eliminates empty assets in repository, reduces workflow runs failure rate by 90%, and saves Hugo ~2 hours/week of manual triage.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Manual upload bottleneck on mobile phone",
-      "category": "bottleneck",
+      "issue_title": "GitHub Actions Runner IP Rate-Limiting and Blocks",
+      "category": "security",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_svg_pack",
-        "produce_gamedev_asset_pack"
+        "produce_iheart_hf",
+        "agent_trendhunter"
       ],
-      "current_pain_description": "Hugo operates exclusively from an Android phone (Termux) and GitHub Actions. Downloading large PDFs/ZIPs from GH artifacts and manually uploading them to KDP, Redbubble, and Cults3D is highly inefficient and prone to mobile browser crashes.",
-      "proposed_fix": "Integrate a GitHub Actions step that automatically uploads successful build artifacts to a free tier Cloudflare R2 bucket or Google Drive, and sends a single Telegram message to Hugo via Telegram Bot API containing: 1) Direct download links, 2) Ready-to-copy-paste metadata (Title, Description, Tags) optimized for the target platform.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Saves 30 minutes per product upload; allows Hugo to manage his entire digital pipeline directly from his phone's chat interface.",
+      "current_pain_description": "Shared IPs of GitHub Actions runners are heavily blacklisted or rate-limited by free/cheap API providers (like AI Horde, Gemini free tier, and sometimes Pollinations) resulting in frequent 403 and 429 errors.",
+      "proposed_fix": "Route all API requests from GitHub Actions through a lightweight, self-hosted Cloudflare Worker acting as a proxy. This worker rotates User-Agents, injects API tokens securely from Cloudflare secrets, and uses Cloudflare's massive IP pool to bypass runner-specific blocks. Cloudflare Workers have a free tier of 100k requests/day.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Bypasses IP blocks completely, ensuring 100% reliable execution of automated cron jobs without paying for dedicated proxy servers.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Unmarketable coloring book line art quality (shading, grays, and broken lines)",
-      "category": "quality_bug",
+      "issue_title": "Extreme Friction in Manual Asset Download and Upload on Android (Termux)",
+      "category": "bottleneck",
       "affected_pipelines": [
-        "produce_coloring_book"
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Raw AI outputs (even from FLUX) often contain gray gradients, complex shading, or broken outlines. These are rejected by buyers expecting clean, pure black-and-white lines for coloring.",
-      "proposed_fix": "Add an automated OpenCV/Pillow post-processing script (`clean_line_art.py`) in the coloring book pipeline. The script must: 1) Convert to grayscale, 2) Apply adaptive thresholding to force pixels to absolute black or absolute white, 3) Run a bilateral filter to smooth out jagged lines, and 4) Auto-reject images where the white-to-black pixel ratio is outside standard boundaries (indicating solid black or empty pages).",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Guarantees 100% print-ready, high-contrast coloring book pages; avoids negative customer reviews on KDP/Etsy.",
+      "current_pain_description": "Hugo must manually navigate GitHub repositories or download Actions artifacts to his Android phone, then upload them to Redbubble, KDP, and Cults3D. This is highly tedious on a small mobile screen.",
+      "proposed_fix": "Create a GitHub Actions step that automatically pushes successful runs to a private `gh-pages` branch. This branch hosts a minimal, mobile-friendly HTML index page with one-click zip download links for optimized packages, and QR codes/direct download links for individual designs. Hugo can easily manage this via his phone's native browser.",
+      "estimated_implementation_hours_claude": 3.0,
+      "estimated_value_unlocked": "Reduces asset retrieval time on mobile from 15 minutes to 30 seconds per batch, leaving Hugo more energy for the actual listing creation.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Severe code duplication across 'iheart' and 'cultural_arbitrage' pipelines",
-      "category": "code_quality",
+      "issue_title": "Pixelated Print Quality for Coloring Books (Raster Outputs)",
+      "category": "quality_bug",
       "affected_pipelines": [
-        "produce_iheart_hf",
-        "produce_iheart_v2",
-        "produce_iheart_v3",
-        "produce_iheart_v4",
-        "produce_iheart_x",
-        "produce_cultural_arbitrage",
-        "produce_cultural_arbitrage_v2"
+        "produce_coloring_book"
       ],
-      "current_pain_description": "Multiple redundant pipeline variants exist (v1 to x). If a shared dependency, API endpoint, or prompt generation logic changes, Hugo must manually update up to 7 separate scripts, leading to code drift and broken pipelines.",
-      "proposed_fix": "Refactor all variants into a single, highly modular `produce_iheart_core.py` script. Use a structured JSON configuration file (`iheart_configs.json`) to control variations (e.g., source niches, text overlays, design ratios, API engines). Delete the deprecated duplicate scripts.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Reduces codebase footprint by ~1500 lines; slashes future maintenance time and prevents out-of-sync API bugs.",
-      "priority_1_10": 7
+      "current_pain_description": "FLUX-schnell and SDXL generate raster images (PNG/JPG). When scaled to KDP standard printing dimensions (8.5x11 inches at 300 DPI), these images suffer from pixelation and fuzzy black lines, rendering them unprofessional for KDP books.",
+      "proposed_fix": "Add a vectorization step inside the GitHub Actions workflow using `potrace` and `imagemagick`. The script will auto-threshold the image to pure black/white, run `potrace -s` to convert it to a scalable SVG, and then export it back to a high-resolution 300 DPI PNG. This guarantees razor-sharp edges.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Ensures physical print-quality standard for Amazon KDP, eliminating negative reviews for pixelated interiors.",
+      "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Missed cross-pipeline asset exploitation (No multi-format repurposing)",
-      "category": "cross_polination",
+      "issue_title": "Runware Budget Runaway Risk",
+      "category": "security",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_quotes_minimal",
-        "produce_tumbler_wraps"
+        "produce_kdp_cover"
       ],
-      "current_pain_description": "A high-quality asset generated for one specific pipeline (e.g., a floral vector illustration for a coloring book) remains locked in that single format. It is never automatically repackaged for other lucrative formats like Redbubble stickers, SVG laser-cutting files, or tumbler wraps.",
-      "proposed_fix": "Create a `cross_pollination_dispatcher.py` workflow step. When `agent_gemini_quality_check` marks an asset as 'A-grade', this script automatically: 1) Copies the asset to the SVG pack compiler, 2) Formats it to standard Redbubble sticker dimensions (adding a white stroke), and 3) Generates KDP-ready patterns. All metadata is generated in parallel.",
-      "estimated_implementation_hours_claude": 4,
-      "estimated_value_unlocked": "Multiplies inventory output by 3x per hour worked; maximizes the financial ROI of every single AI generation credit spent.",
+      "current_pain_description": "If Hugo implements Runware PAYG (budget capped at 20€/month) and a GitHub Actions workflow gets stuck in an infinite loop or runs too frequently on a misconfigured cron schedule, it could drain his entire monthly budget in a single afternoon.",
+      "proposed_fix": "Store a daily and monthly consumption counter in a local JSON state file inside the GitHub repository (e.g., `state/api_usage.json`). Before initiating any image generation script, the workflow must read this file, verify that the current billing cycle spend is below 15€, and abort immediately if the cap is reached.",
+      "estimated_implementation_hours_claude": 1.0,
+      "estimated_value_unlocked": "Hard limits financial exposure, protecting Hugo's tight 20€/month budget from software bugs.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Absence of a centralized API quota and error monitoring dashboard",
-      "category": "security",
+      "issue_title": "Missed Cross-Pollination of Single High-Quality Designs",
+      "category": "cross_polination",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auto_regen"
+        "produce_iheart_v4",
+        "produce_literal_idioms_v2",
+        "produce_quotes_minimal"
       ],
-      "current_pain_description": "Hugo has no visibility into his daily API usage (Together AI limits, Cloudflare limits, Runware budget cap) or silent workflow failures unless he manually scrolls through verbose GitHub Actions run logs.",
-      "proposed_fix": "Implement a lightweight state-logger (`sys_health_tracker.py`) that writes API status codes, run durations, and estimated costs (in cents) to a small JSON file (`state/health.json`) in the repository. At the end of each day, a CRON job sends a concise markdown digest via Telegram (e.g., 'Together AI: 45/100 free requests used. 0 errors. 12 coloring pages generated.').",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Prevents unexpected overspending; alerts Hugo immediately to broken APIs or rate limits before he wastes his 10 weekly hours debugging.",
+      "current_pain_description": "A successful design generated for a sticker (e.g., 'iheart' series) is saved in its specific folder and never reused. This misses the opportunity to scale to other platforms with zero added generation cost.",
+      "proposed_fix": "Develop a master routing script (`agent_orchestrator` enhancement). When a high-quality asset passes visual validation, the router automatically copies, resizes, and packages the asset into multiple formats: 1:1 transparent PNG for stickers (Redbubble), 1:1.5 aspect ratio for canvas prints, and a repeating seamless pattern for tumbler wraps.",
+      "estimated_implementation_hours_claude": 3.0,
+      "estimated_value_unlocked": "Multiplies listings per hour worked by 3x, maximizing long-tail organic traffic with zero extra API generation costs.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 7,
+      "issue_title": "Brittle Code Duplication Across Image Generation Workflows",
+      "category": "code_quality",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_iheart_v4",
+        "produce_kdp_cover",
+        "produce_literal_idioms"
+      ],
+      "current_pain_description": "API call formatting, error handling, metadata injection, and logging are hardcoded separately inside each individual pipeline script. Making a change to the image generation logic requires editing 5+ different Python files.",
+      "proposed_fix": "Refactor the image generation logic into a unified Python module `utils/image_generator.py` that handles client initialization, API fallbacks, retry logic, and resizing. Individual pipelines should import this utility rather than executing raw requests.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Reduces codebase maintenance overhead, makes adding new APIs (like Cloudflare Workers AI) instantly available to all pipelines at once.",
       "priority_1_10": 6
     }
   ]
