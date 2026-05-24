@@ -1,11 +1,158 @@
 {
   "agent": "money_maker",
-  "timestamp": "2026-05-24T06:56:36.954378Z",
-  "status": "ERROR — Gemini call failed",
-  "error": "gemini-flash-latest: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-  "models_tried": [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-flash-latest"
+  "title": "Money Maker Brain",
+  "timestamp": "2026-05-24T09:49:49.564677Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_strategist",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "action_title": "Upload First 40-Page Coloring Book to Amazon KDP",
+      "type": "upload",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 80,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "The 'produce_coloring_book' pipeline is ready. Using Runware PAYG (20€) or Together AI (free tier) allows generation of 40 high-quality FLUX-schnell black and white outlines. KDP allows zero-cost publishing with immediate global distribution.",
+      "first_action_today": "Trigger the 'produce_coloring_book' GitHub Actions workflow using Together AI to output a print-ready 40-page PDF."
+    },
+    {
+      "rank": 2,
+      "action_title": "Bulk Upload 50 Minimalist Text Designs to Redbubble",
+      "type": "upload",
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 40,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "Redbubble has high organic traffic for niche humor, quotes, and literal idioms. Using the 'produce_quotes_minimal' or 'produce_literal_idioms' pipeline, Hugo can generate 50 transparent PNGs via Python in Termux/GitHub Actions and upload them quickly using Redbubble's template system on his phone's browser.",
+      "first_action_today": "Generate 50 transparent PNG quote designs via Termux using a Python PIL script and save them to a GitHub Release."
+    },
+    {
+      "rank": 3,
+      "action_title": "Publish 5 Parametric 3D Printing STL Files on Cults3D",
+      "type": "upload",
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Cults3D has a highly active audience looking for functional, printable items. Running the 'produce_stl_parametric' pipeline using Gemini to write OpenSCAD scripts for household fixes (drawer dividers, phone stands, custom hooks) provides immediate, non-copyrighted utility value.",
+      "first_action_today": "Generate 3 OpenSCAD designs via Gemini, convert them to STL files using GitHub Actions, and upload them to Cults3D priced at 1.50€ to 2.50€."
+    },
+    {
+      "rank": 4,
+      "action_title": "Launch 5 Aesthetic Grid Notebooks on KDP using Runware FLUX Covers",
+      "type": "upload",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 35,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Low-content grid notebooks require minimal interior setup (simple repetitive PDF generated via Python). The differentiator is a stunning, niche-specific cover. Using FLUX-schnell via Runware (fractions of a cent per image) ensures eye-catching cover graphics.",
+      "first_action_today": "Generate a standard 120-page 6x9 graph paper interior PDF using a short Python script in Termux."
+    },
+    {
+      "rank": 5,
+      "action_title": "List a Seamless Textures Asset Pack on itch.io",
+      "type": "upload",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 0,
+      "estimated_revenue_uplift_eur_30days_high": 25,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Game developers constantly search itch.io for affordable, high-quality seamless textures (sci-fi, fantasy, medieval). Using FLUX-schnell with 'seamless tiling' prompts yields high-quality 2D assets that can be sold as a pack for $2.99.",
+      "first_action_today": "Generate 20 seamless fantasy stone and wood textures using Together AI / Runware, package them into a zip, and create a free itch.io seller page."
+    },
+    {
+      "rank": 6,
+      "action_title": "Implement High-Intent Keyword Optimization for KDP Listings",
+      "type": "conversion",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 1,
+      "why_this_works_now": "With zero marketing budget, organic search is the only driver. Using the Amazon search bar auto-suggest (via mobile browser in desktop mode) to find long-tail keywords (e.g. 'mindful coloring book for teen girls') boosts organic rank overnight.",
+      "first_action_today": "Search Amazon for your book's primary niche, extract 7 highly specific search phrases, and insert them into the KDP backend keyword fields."
+    }
   ]
 }
