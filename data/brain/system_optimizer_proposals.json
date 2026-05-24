@@ -1,11 +1,186 @@
 {
   "agent": "system_optimizer",
-  "timestamp": "2026-05-24T06:56:24.887974Z",
-  "status": "ERROR — Gemini call failed",
-  "error": "gemini-flash-latest: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-  "models_tried": [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-flash-latest"
+  "title": "System Optimizer Brain",
+  "timestamp": "2026-05-24T09:50:16.555815Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_strategist",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "issue_title": "Silent API failures and IP blocking on GitHub Actions for image generation",
+      "category": "failure_mode",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_kdp_cover",
+        "produce_tumbler_wraps",
+        "produce_literal_idioms_v2"
+      ],
+      "current_pain_description": "GitHub Actions shared runner IPs are frequently rate-limited or blocked (403/429) by image APIs like Hugging Face, AI Horde, and Gemini. Fallback to Pollinations results in low-quality images, causing silent pipeline failures or unusable assets.",
+      "proposed_fix": "Create a unified `image_gen_router.py` utility. It must implement exponential backoff retry for HTTP 429, mask requests using a free Cloudflare Worker reverse proxy to bypass GitHub IP bans, and strictly route through a prioritized hierarchy: 1) Together AI (FLUX-schnell), 2) Cloudflare Workers AI (10k free daily neurons), 3) Runware (PAYG capped at €20), and 4) Pollinations (only as a flagged debug fallback).",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Eliminates 90% of silent workflow crashes; guarantees high-quality FLUX-schnell outputs without manual intervention.",
+      "priority_1_10": 10
+    },
+    {
+      "rank": 2,
+      "issue_title": "Manual upload bottleneck on mobile phone",
+      "category": "bottleneck",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_svg_pack",
+        "produce_gamedev_asset_pack"
+      ],
+      "current_pain_description": "Hugo operates exclusively from an Android phone (Termux) and GitHub Actions. Downloading large PDFs/ZIPs from GH artifacts and manually uploading them to KDP, Redbubble, and Cults3D is highly inefficient and prone to mobile browser crashes.",
+      "proposed_fix": "Integrate a GitHub Actions step that automatically uploads successful build artifacts to a free tier Cloudflare R2 bucket or Google Drive, and sends a single Telegram message to Hugo via Telegram Bot API containing: 1) Direct download links, 2) Ready-to-copy-paste metadata (Title, Description, Tags) optimized for the target platform.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Saves 30 minutes per product upload; allows Hugo to manage his entire digital pipeline directly from his phone's chat interface.",
+      "priority_1_10": 9
+    },
+    {
+      "rank": 3,
+      "issue_title": "Unmarketable coloring book line art quality (shading, grays, and broken lines)",
+      "category": "quality_bug",
+      "affected_pipelines": [
+        "produce_coloring_book"
+      ],
+      "current_pain_description": "Raw AI outputs (even from FLUX) often contain gray gradients, complex shading, or broken outlines. These are rejected by buyers expecting clean, pure black-and-white lines for coloring.",
+      "proposed_fix": "Add an automated OpenCV/Pillow post-processing script (`clean_line_art.py`) in the coloring book pipeline. The script must: 1) Convert to grayscale, 2) Apply adaptive thresholding to force pixels to absolute black or absolute white, 3) Run a bilateral filter to smooth out jagged lines, and 4) Auto-reject images where the white-to-black pixel ratio is outside standard boundaries (indicating solid black or empty pages).",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Guarantees 100% print-ready, high-contrast coloring book pages; avoids negative customer reviews on KDP/Etsy.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 4,
+      "issue_title": "Severe code duplication across 'iheart' and 'cultural_arbitrage' pipelines",
+      "category": "code_quality",
+      "affected_pipelines": [
+        "produce_iheart_hf",
+        "produce_iheart_v2",
+        "produce_iheart_v3",
+        "produce_iheart_v4",
+        "produce_iheart_x",
+        "produce_cultural_arbitrage",
+        "produce_cultural_arbitrage_v2"
+      ],
+      "current_pain_description": "Multiple redundant pipeline variants exist (v1 to x). If a shared dependency, API endpoint, or prompt generation logic changes, Hugo must manually update up to 7 separate scripts, leading to code drift and broken pipelines.",
+      "proposed_fix": "Refactor all variants into a single, highly modular `produce_iheart_core.py` script. Use a structured JSON configuration file (`iheart_configs.json`) to control variations (e.g., source niches, text overlays, design ratios, API engines). Delete the deprecated duplicate scripts.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Reduces codebase footprint by ~1500 lines; slashes future maintenance time and prevents out-of-sync API bugs.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 5,
+      "issue_title": "Missed cross-pipeline asset exploitation (No multi-format repurposing)",
+      "category": "cross_polination",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_svg_pack",
+        "produce_quotes_minimal",
+        "produce_tumbler_wraps"
+      ],
+      "current_pain_description": "A high-quality asset generated for one specific pipeline (e.g., a floral vector illustration for a coloring book) remains locked in that single format. It is never automatically repackaged for other lucrative formats like Redbubble stickers, SVG laser-cutting files, or tumbler wraps.",
+      "proposed_fix": "Create a `cross_pollination_dispatcher.py` workflow step. When `agent_gemini_quality_check` marks an asset as 'A-grade', this script automatically: 1) Copies the asset to the SVG pack compiler, 2) Formats it to standard Redbubble sticker dimensions (adding a white stroke), and 3) Generates KDP-ready patterns. All metadata is generated in parallel.",
+      "estimated_implementation_hours_claude": 4,
+      "estimated_value_unlocked": "Multiplies inventory output by 3x per hour worked; maximizes the financial ROI of every single AI generation credit spent.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 6,
+      "issue_title": "Absence of a centralized API quota and error monitoring dashboard",
+      "category": "security",
+      "affected_pipelines": [
+        "agent_orchestrator",
+        "agent_auto_regen"
+      ],
+      "current_pain_description": "Hugo has no visibility into his daily API usage (Together AI limits, Cloudflare limits, Runware budget cap) or silent workflow failures unless he manually scrolls through verbose GitHub Actions run logs.",
+      "proposed_fix": "Implement a lightweight state-logger (`sys_health_tracker.py`) that writes API status codes, run durations, and estimated costs (in cents) to a small JSON file (`state/health.json`) in the repository. At the end of each day, a CRON job sends a concise markdown digest via Telegram (e.g., 'Together AI: 45/100 free requests used. 0 errors. 12 coloring pages generated.').",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Prevents unexpected overspending; alerts Hugo immediately to broken APIs or rate limits before he wastes his 10 weekly hours debugging.",
+      "priority_1_10": 6
+    }
   ]
 }
