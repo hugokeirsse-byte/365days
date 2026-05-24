@@ -1,11 +1,169 @@
 {
   "agent": "tools_scout",
-  "timestamp": "2026-05-24T02:14:10.327181Z",
-  "status": "ERROR — Gemini call failed",
-  "error": "gemini-flash-latest: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-  "models_tried": [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-flash-latest"
+  "title": "Tools Scout Brain",
+  "timestamp": "2026-05-24T06:55:47.454628Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_strategist",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "tool_or_platform": "Potrace CLI",
+      "url": "https://potrace.sourceforge.net/",
+      "category": "dev_tool",
+      "free_tier_concrete_limits": "100% Free, open-source (GPL). Runs locally with zero limits.",
+      "what_it_does_uniquely": "Converts bitmap images (PNG/BMP) into high-quality vector graphics (SVG/EPS/PDF). Essential for scaling black-and-white coloring book pages or line art to infinite resolution without pixelation.",
+      "would_integrate_where": "Integrate directly into the 'produce_coloring_book' GitHub Actions workflow. After generating a page with Pollinations or Together AI, Potrace can instantly convert it to a crisp SVG/PDF for KDP submission.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Only works well on monochrome (black/white) high-contrast images. Requires binary installation via apt-get in GitHub Actions runner."
+    },
+    {
+      "rank": 2,
+      "tool_or_platform": "Pytrends (Google Trends API wrapper)",
+      "url": "https://github.com/GeneralMills/pytrends",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100% Free, relies on scraping Google's public Trends pages.",
+      "what_it_does_uniquely": "Allows automated, programmatic extraction of Google Trends data (trending searches, related queries, interest by region) without needing a paid API key or official GCP credentials.",
+      "would_integrate_where": "Integrate into 'agent_trendhunter' or 'agent_opportunity_hunter' to automatically flag high-velocity keywords on Google and match them with POD niches.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "Google regularly changes its rate limits; can cause HTTP 429 errors if hit too hard from GitHub Actions IPs. Requires careful request throttling."
+    },
+    {
+      "rank": 3,
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list digital 3D models. Standard marketplace revenue share model.",
+      "what_it_does_uniquely": "A fast-growing 3D model community and search engine with high-performance geometry search. Includes a built-in membership system for 3D printing designers.",
+      "would_integrate_where": "An excellent expansion platform alongside Cults3D for 'produce_stl_parametric' or any CAD/gamedev assets generated in Hugo's pipeline.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Highly competitive for generic models; success requires targeting functional, niche 3D prints (e.g., custom board game inserts, organizer parts)."
+    },
+    {
+      "rank": 4,
+      "tool_or_platform": "Cloudflare R2",
+      "url": "https://www.cloudflare.com/developer-platform/products/r2/",
+      "category": "dev_tool",
+      "free_tier_concrete_limits": "10 GB per month storage, 1 million Class A operations, 10 million Class B operations per month. $0 egress fees.",
+      "what_it_does_uniquely": "Completely free egress bandwidth. Perfect for hosting large generated files (PDF books, high-res ZIPs, 3D models) without getting hit with bills when users download them.",
+      "would_integrate_where": "Acts as the central asset storage bucket. GitHub Actions generates the files, uploads them to R2 using AWS S3 CLI compatible commands, and stores the public URL in the system state.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires setting up a Cloudflare account and linking a payment card for verification, though billing remains $0 under limits."
+    },
+    {
+      "rank": 5,
+      "tool_or_platform": "Glif API",
+      "url": "https://glif.app/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous daily free credits upon signup; API endpoints can be called programmatically.",
+      "what_it_does_uniquely": "Allows you to create and run complex multi-step AI pipelines (e.g., Text-to-Image -> OCR -> Vectorize -> Meme template) using FLUX, SD, and custom LLMs in a single API call.",
+      "would_integrate_where": "Can replace Pollinations/Together AI for complex design generation (like KDP covers with integrated text overlays or vintage typography styles).",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "API access occasionally requires applying for developer status or is subject to sudden changes in free-credit policies."
+    },
+    {
+      "rank": 6,
+      "tool_or_platform": "Lemon Squeezy",
+      "url": "https://www.lemonsqueezy.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "No monthly fees. 5% + 50c per transaction on sales. Acts as Merchant of Record (handles global VAT/taxes).",
+      "what_it_does_uniquely": "Provides a clean, developer-friendly API to sell digital files, generate license keys, and handle subscriptions without worrying about complex EU VAT laws (which they handle automatically).",
+      "would_integrate_where": "Allows Hugo to spin up a direct-to-consumer storefront for asset packs, custom vectors, or PDFs. Can be programmatically updated using their REST API.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Payout fees and transaction costs are slightly higher than bare Stripe, but saves dozens of hours on tax compliance."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "Kokoro-82M (via HuggingFace Spaces API)",
+      "url": "https://huggingface.co/spaces/hexgrad/Kokoro-TTS",
+      "category": "ai_audio",
+      "free_tier_concrete_limits": "Free public HuggingFace Space API endpoints (no rate limits besides standard HF public API limits).",
+      "what_it_does_uniquely": "A highly lightweight (82M parameters) Text-to-Speech model that outperforms ElevenLabs in natural cadence while being small enough to run on basic CPUs or free cloud spaces.",
+      "would_integrate_where": "Can be utilized to generate audiobooks, guided meditations, or audio assets for gamedev bundles using simple Python requests inside GitHub Actions.",
+      "novelty_2026_1_10": 10,
+      "risk_or_caveat": "Public spaces can occasionally go down or experience high latency under heavy global load."
+    }
   ]
 }
