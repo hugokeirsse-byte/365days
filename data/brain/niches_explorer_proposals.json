@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-24T02:13:51.017464Z",
+  "timestamp": "2026-05-24T06:55:46.952111Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,129 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Ham Radio (Amateur Radio) Operators",
-      "type": "sub_culture",
-      "audience_size_estimate": 150000,
+      "name": "Sterile Processing Technicians (SPD / Central Sterile)",
+      "type": "deep_niche",
+      "audience_size_estimate": 120000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Tech-savvy hobbyists, often older but highly active, who spend thousands on gear and take immense pride in their custom callsigns, QSL cards, and technical setups.",
+      "buyer_persona": "Certified Registered Central Service Technicians (CRCST) who sterilize surgical instruments. They feel invisible compared to nurses, have strong insider humor about dirty bone mallets, bioburden, and autoclave cycles.",
       "product_angles": [
-        "Customizable QSL Card templates (Canva/SVG) for physical exchange",
-        "Highly specialized Ham Radio Operator Logbooks (Amazon KDP) with custom UTC/frequency/mode grid layouts",
-        "Patent-style schematic wall art of historic transmitters (POD Redbubble/Etsy)"
+        "Sarcastic autoclave & decontamination-themed stickers for water bottles (Redbubble)",
+        "KDP CRCST exam study planners and daily instrument tracking logbooks",
+        "Funny SVG cutting files for badge reels and custom scrub jackets"
       ],
-      "best_pipeline_or_new": "produce_ham_radio_logbooks (New KDP/SVG pipeline)",
-      "first_test_product": "A highly technical, sleekly designed 120-page amateur radio logbook with dedicated columns for signal reports (RST), power (W), and band/mode, optimized for KDP.",
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "The Ultimate Sterile Processing Technical Log & Shift Tracker (KDP)",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 2,
-      "name": "Godot Engine 4.x Visual Assets & Shaders",
+      "name": "Retro PSX / Low-Poly Gamedev 3D Assets",
       "type": "adjacent_market",
-      "audience_size_estimate": 250000,
+      "audience_size_estimate": 350000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
+      "current_saturation_1_10": 4,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers migrating from Unity to Godot who need rapid visual prototyping tools, procedural shaders, and UI themes that fit the Godot 4 ecosystem.",
+      "buyer_persona": "Indie game developers building horror or retro games mimicking 1990s PlayStation 1 aesthetics. They need hyper-optimized, low-texture-budget models and modular assets.",
       "product_angles": [
-        "Ready-to-use 2D particle effect sheets (fire, magic, smoke) with Godot scene files",
-        "Clean, minimalist sci-fi/fantasy UI kits pre-configured for Godot's control nodes",
-        "Handmade tileable pixel-art normal maps for dynamic 2D lighting"
+        "Low-poly retro dungeon/corridor modular tilesets (OBJ/FBX format)",
+        "Y2K-era low-fidelity prop packs (CRT TVs, payphones, old computers)",
+        "Cults3D printable retro console shell replacements or miniature dioramas"
       ],
-      "best_pipeline_or_new": "produce_godot_ui_assets (New adjacent market pipeline)",
-      "first_test_product": "A pack of 15 modular retro-futuristic sci-fi UI panels and buttons optimized for Godot's UI system, distributed on itch.io and Cults3D/Etsy.",
+      "best_pipeline_or_new": "produce_gamedev_asset_pack",
+      "first_test_product": "PSX-Style Retro Mall Prop Pack (30 modular FBX assets + low-res textures)",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
       "rank": 3,
-      "name": "Historical European Martial Arts (HEMA)",
+      "name": "Ham Radio (Amateur Radio) Operators",
       "type": "sub_culture",
-      "audience_size_estimate": 65000,
+      "audience_size_estimate": 750000,
       "passion_level_1_10": 10,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Martial artists studying historical fencing books (Fechtbücher). They love historical accuracy, vintage woodcuts, sword anatomy, and need tools to track their sparring and tournament training.",
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "slow",
+      "buyer_persona": "Highly technical hobbyists, often older but extremely passionate about global radio propagation, Morse code, and tracking their contacts (QSO). They love physical logs and custom equipment.",
       "product_angles": [
-        "HEMA Sparring & Tournament Logbooks with fencing strip diagrams and technique trackers",
-        "Restored and upscaled high-resolution medieval fencing woodcut posters (Liechtenauer/Fiore systems)",
-        "Technical sword anatomy and guard diagrams for gym wall decor"
+        "Ham Radio Operator Log Book with specialized fields (Frequency, Mode, Power, RST, QSL)",
+        "Redbubble t-shirts with humor about antenna tuning, SWR, and Morse code",
+        "SVG vector designs of classic radio towers and patent drawings for custom shack signs"
       ],
-      "best_pipeline_or_new": "produce_hema_gear_art (New KDP/POD hybrid pipeline)",
-      "first_test_product": "A dedicated HEMA Fencing Journal featuring vintage 15th-century master woodcuts on the cover and structured pages for recording sparring sessions, weapon specs, and tournament progression.",
-      "estimated_monthly_revenue_year1_eur": 120
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Amateur Radio QSO Contact Log Book (KDP, custom interior grid)",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 4,
-      "name": "Specialty Coffee Microroasters B2B",
+      "name": "French Regional GR Hiking Trails (Sentiers de Grande Randonnée)",
       "type": "b2b",
-      "audience_size_estimate": 80000,
+      "audience_size_estimate": 250000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 4,
+      "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Independent coffee roasters and specialty coffee shop owners who need aesthetic, modern branding materials, flavor wheels, and customer engagement merchandise on a budget.",
+      "buyer_persona": "Avid French hikers and international tourists completing specific routes (GR20, GR34, Saint-Jacques). They want memorabilia, planning journals, and local pride items.",
       "product_angles": [
-        "Customizable minimalist coffee bag label templates (Canva links sold on Etsy)",
-        "Printable 'Coffee Tasting Journals' that cafes can custom-brand and sell to their retail customers",
-        "Modern educational flavor-wheel posters for coffee shop decor"
+        "Vintage travel poster style designs of iconic GR34 lighthouses (Redbubble / Displate style)",
+        "KDP Hiking journal tailored specifically to the GR20 with packing lists and stage logs",
+        "SVG designs of trail markers and regional pride slogans for local decors"
       ],
-      "best_pipeline_or_new": "produce_roaster_branding_kits (New B2B digital asset pipeline)",
-      "first_test_product": "A bundle of 5 minimalist, editable Canva templates for specialty coffee bag labels (front & back with origin, altitude, process, and tasting notes grids).",
-      "estimated_monthly_revenue_year1_eur": 200
+      "best_pipeline_or_new": "produce_chateau_local",
+      "first_test_product": "Carnet de Randonnée GR34 - Breton Coast Trail Planner & Logbook (KDP)",
+      "estimated_monthly_revenue_year1_eur": 120
     },
     {
       "rank": 5,
-      "name": "Soil Scientists, Geologists & Agronomists",
-      "type": "deep_niche",
+      "name": "Solo Board Gamers (1-Player Board Games)",
+      "type": "sub_culture",
       "audience_size_estimate": 90000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Academic and field professionals working in soil science, geology, and agriculture. They have highly specific insider humor revolving around soil horizons (O, A, E, B, C), the Munsell color system, and sedimentology.",
-      "product_angles": [
-        "Humorous apparel referencing 'O-Horizon' or 'Munsell Soil Color Chart' color swatches",
-        "Technical geological stratigraphic column posters for laboratory and university office walls",
-        "Field notebook covers disguised as classic geological survey documents"
-      ],
-      "best_pipeline_or_new": "produce_soil_science_decor (New POD/KDP pipeline)",
-      "first_test_product": "A Munsell-inspired color chart parody poster or t-shirt substituting soil colors with humorous field-work descriptions, targeted at environmental science graduates.",
-      "estimated_monthly_revenue_year1_eur": 100
-    },
-    {
-      "rank": 6,
-      "name": "1-Bit Retro Handheld Console Assets (Playdate)",
-      "type": "adjacent_market",
-      "audience_size_estimate": 50000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Indie developers creating games for the Playdate console or retro systems that require strict 1-bit (black & white only, no transparency/gray) tilemaps, fonts, and UI assets.",
+      "buyer_persona": "Enthusiasts who play complex tabletop games alone. They track high scores, campaign progressions, and require physical organization systems for small play spaces.",
       "product_angles": [
-        "1-Bit (black and white) dithered tilesets for side-scrollers or RPGs",
-        "Pixel-art font packs optimized for extremely low-resolution screens (e.g., 400x240)",
-        "1-bit animated sprite sheets for character actions (running, jumping, attacking)"
+        "KDP Solo Board Game Campaign Journal & Session Log",
+        "Cults3D parametric card holders and universal token trays optimized for small desks",
+        "Redbubble apparel with insider jokes ('Autonomous AI Opponent Destroyer')"
       ],
-      "best_pipeline_or_new": "produce_onebit_retro_assets (New gamedev asset pipeline)",
-      "first_test_product": "A comprehensive 16x16 pixel 1-bit dungeon tileset with dithered shading, perfectly optimized for the Playdate screen resolution and constraints.",
-      "estimated_monthly_revenue_year1_eur": 180
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "Modular Stackable Token Tray & Card Holder STL Pack (Cults3D)",
+      "estimated_monthly_revenue_year1_eur": 200
+    },
+    {
+      "rank": 6,
+      "name": "Land Surveyors (Géomètres)",
+      "type": "deep_niche",
+      "audience_size_estimate": 60000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Outdoor professionals who combine precise mathematics, legal boundaries, and heavy equipment (theodolites, GPS). They take massive pride in mapping the physical world.",
+      "product_angles": [
+        "Technical humor t-shirts ('Trust me, I'm a Land Surveyor' with transit level schematics)",
+        "KDP weatherproof style Field Book grid templates for site measurements",
+        "SVGs of classic surveying tools for custom laser-engraved gifts"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Professional Land Surveyor Field Notes Book (KDP, 5x5 grid left, ruled right)",
+      "estimated_monthly_revenue_year1_eur": 110
+    },
+    {
+      "rank": 7,
+      "name": "Model Miniature Painters (Warhammer/DnD Minis)",
+      "type": "deep_niche",
+      "audience_size_estimate": 500000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Hobbyists spending hours painting 28mm miniatures. They struggle with paint bottle organization (Vallejo vs Citadel sizes) and tracking color recipes/paint backlog.",
+      "product_angles": [
+        "Cults3D parametric wall-mounted modular paint racks (custom fits)",
+        "KDP Miniatures Paint Project Planner & Color Recipe Journal",
+        "Redbubble stickers mocking the 'Pile of Shame' (unpainted minis)"
+      ],
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "Miniature Painting Recipe & Project Logbook (KDP)",
+      "estimated_monthly_revenue_year1_eur": 220
     }
   ]
 }
