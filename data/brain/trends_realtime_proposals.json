@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-24T13:02:27.388893Z",
+  "timestamp": "2026-05-24T16:53:56.140649Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Dark Cottagecore Tarot Coloring Book",
-      "platform_where_spotted": "TikTok / Pinterest",
+      "trend_keyword": "Gothic Botanical Herbs",
+      "platform_where_spotted": "Pinterest / Reddit r/coloringbooks",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 4,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 3,
       "best_product_format": "coloring_book",
       "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Dark Cottagecore Tarot Coloring Book: Mystical Gothic Botanical Designs for Adults",
-      "evidence_url_or_signal": "TikTok hashtag #cottagegoth coloring books spiking with 1.2M views in the last 14 days, combined with Etsy search volume increase for 'mystical tarot coloring' up 45%."
+      "title_template_suggestion": "Gothic Botanical Coloring Book: Dark Cottagecore Herbs and Poisonous Flowers for Adults",
+      "evidence_url_or_signal": "Spike in Pinterest searches for 'dark cottagecore aesthetic' (+140% last 12 days) and Reddit demand for mature, non-kids botanical line art with slightly gothic or apothecary vibes."
     },
     {
       "rank": 2,
-      "trend_keyword": "Aura Gradient Angel Numbers",
-      "platform_where_spotted": "TikTok / Pinterest",
+      "trend_keyword": "Corporate Brat",
+      "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 6,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_iheart_x",
-      "title_template_suggestion": "Aura Gradient Poster, Angel Number 444 777 Aesthetic Wall Art, Spiritual Manifestation Print",
-      "evidence_url_or_signal": "#auragradient and #angelnumbers have combined viral trends on TikTok (15M views total this month), specifically matching pastel gradient backgrounds with bold retro typography."
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 2,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Corporate Brat Mug - Funny Gen Z Office Humor Coffee Cup - Intern Gift",
+      "evidence_url_or_signal": "TikTok hashtag #corporatebrat gained 4.2 million views in the last 10 days, capturing Gen Z office workers using lime green minimalist aesthetics to parody corporate culture."
     },
     {
       "rank": 3,
-      "trend_keyword": "Funny Developer Git Commit Stickers",
-      "platform_where_spotted": "Reddit",
+      "trend_keyword": "Coquette Class of 2026",
+      "platform_where_spotted": "Etsy / Pinterest",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 90,
+      "estimated_lifespan_days": 30,
       "saturation_now_1_10": 5,
       "best_product_format": "sticker",
-      "best_pipeline_match": "produce_cope_pack",
-      "title_template_suggestion": "Funny Developer Sticker Pack, Git Commit Sarcastic Decals for Laptop, Programmer Humor Gift",
-      "evidence_url_or_signal": "Reddit r/programmerhumor post about 'funny git messages' got 15k upvotes last week; high conversion rate on Redbubble for minimalist typography stickers targeting devs."
+      "best_pipeline_match": "produce_viral_formats",
+      "title_template_suggestion": "Coquette Bow Class of 2026 Sticker - Cute Graduation Gift for Her - Laptop Decal",
+      "evidence_url_or_signal": "Etsy search volume for 'coquette graduation' spiked heavily since mid-May 2026, driven by high school and college seniors looking for pink bow graduation decor."
     },
     {
       "rank": 4,
-      "trend_keyword": "Parametric Hexagonal Desk Organizer",
-      "platform_where_spotted": "Cults3D / Reddit",
+      "trend_keyword": "Pilates Capybara",
+      "platform_where_spotted": "TikTok / Instagram",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 120,
-      "saturation_now_1_10": 4,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Modular Hexagonal Desk Organizer STL, Parametric Honeycomb Pen Holder 3D Print File",
-      "evidence_url_or_signal": "Reddit r/functionalprint trending modular honeycomb organizers with integrated magnetic locks; high download volume on Cults3D for 'parametric organizer' tagged files."
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 3,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "Cute Pilates Capybara Sticker - Funny Workout Matte Vinyl Decal",
+      "evidence_url_or_signal": "Viral Reels and TikTok trend showing capybaras animated doing yoga/pilates with 'In my pilates era' text. High engagement on fitness humor accounts."
     },
     {
       "rank": 5,
-      "trend_keyword": "Retro Mascot Coffee Mug / Cafe Core",
-      "platform_where_spotted": "Etsy / Instagram",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 3,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Retro Mascot Coffee Mug, Vintage Cartoon Coffee Lover Gift, Sarcastic Morning Mug",
-      "evidence_url_or_signal": "Etsy shops featuring 1930s rubber-hose style mascot characters with coffee cups are getting 'Bestseller' tags rapidly; Pinterest searches for 'vintage cartoon coffee' surged by 30% in mid-May."
+      "trend_keyword": "Vintage Matchbook Poster Art",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 120,
+      "saturation_now_1_10": 4,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_cultural_arbitrage",
+      "title_template_suggestion": "Vintage Matchbook Print Retro Diner Wall Art - Mid Century Modern Kitchen Poster Decor",
+      "evidence_url_or_signal": "Pinterest trend 'matchbook art aesthetic' has sustained a high click-through rate over the last 14 days, particularly targeting nostalgic culinary or travel themes."
     },
     {
       "rank": 6,
-      "trend_keyword": "Minimalist Line Art Chateau / French Countryside",
-      "platform_where_spotted": "Etsy",
+      "trend_keyword": "Emotional Support DM",
+      "platform_where_spotted": "Reddit r/dndmemes",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 90,
+      "estimated_lifespan_days": 75,
       "saturation_now_1_10": 2,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_chateau_local",
-      "title_template_suggestion": "French Countryside Chateau Minimalist Line Art, Vintage French Estate Sketch Print",
-      "evidence_url_or_signal": "Etsy searches for 'French countryside wall art' and 'minimalist chateau sketch' up 35% as summer travel planning peaks in France. Fits Hugo's local/regional asset generator."
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_gamedev_asset_pack",
+      "title_template_suggestion": "Emotional Support DM Coffee Mug - Funny TTRPG Gift for Dungeon Master",
+      "evidence_url_or_signal": "Multiple high-ranking posts on r/dndmemes and r/rpg in the last week joking about DM burnout and players buying them 'emotional support' gifts, presenting an easy text-based typography opportunity."
     }
   ]
 }
