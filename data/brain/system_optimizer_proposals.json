@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-24T13:01:47.127650Z",
+  "timestamp": "2026-05-24T16:54:19.346627Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,106 +90,96 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Silent Failures and Empty Files in Image Generation Pipelines",
+      "issue_title": "Lack of Unified Image Generation Router with Fallback",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_iheart_v4",
         "produce_kdp_cover",
-        "produce_literal_idioms_v2"
+        "produce_tumblr_wraps",
+        "produce_literal_idioms",
+        "produce_chateau_local"
       ],
-      "current_pain_description": "When Pollinations, Together AI, or Cloudflare returns a timeout, 429, or empty 0KB payload, the GitHub Actions runner saves empty files or crashes silently. This wastes Hugo's 10-hour weekly window on debugging empty runs.",
-      "proposed_fix": "Implement a standardized shell wrapper script (`safe_download.sh`) in the workflow. This script must: 1. Verify HTTP response is 200; 2. Check that the output file size is > 5KB; 3. Use `file` utility to confirm it is a valid PNG/JPEG; 4. Automatically retry up to 3 times with exponential backoff before falling back to a secondary API (e.g., fall back to Pollinations if Cloudflare fails).",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Eliminates empty assets in repository, reduces workflow runs failure rate by 90%, and saves Hugo ~2 hours/week of manual triage.",
+      "current_pain_description": "Pipelines hardcode specific image providers (like HF or Gemini). When a provider fails (e.g., Gemini 429 or HF deprecation), the entire pipeline crashes, requiring manual code changes by Hugo on his phone.",
+      "proposed_fix": "Create a centralized `image_generator_router.py` library. It attempts generation in order of cost/availability: 1. Together AI (FLUX-schnell free tier), 2. Cloudflare Workers AI (10k free daily neurons), 3. Runware (PAYG budget-capped fallback), 4. Pollinations (last-resort free fallback). If one fails, it catches the exception and falls back to the next dynamically.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Eliminates pipeline crashes due to API downtime; optimizes Hugo's 20€/month budget by exhausting free tiers first.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "GitHub Actions Runner IP Rate-Limiting and Blocks",
-      "category": "security",
+      "issue_title": "Mobile-Friendly Asset Review Bottleneck for Hugo (Android/Termux)",
+      "category": "bottleneck",
       "affected_pipelines": [
+        "agent_auditor",
+        "agent_visual_audit",
         "produce_coloring_book",
-        "produce_iheart_hf",
-        "agent_trendhunter"
+        "produce_lowcontent_kdp"
       ],
-      "current_pain_description": "Shared IPs of GitHub Actions runners are heavily blacklisted or rate-limited by free/cheap API providers (like AI Horde, Gemini free tier, and sometimes Pollinations) resulting in frequent 403 and 429 errors.",
-      "proposed_fix": "Route all API requests from GitHub Actions through a lightweight, self-hosted Cloudflare Worker acting as a proxy. This worker rotates User-Agents, injects API tokens securely from Cloudflare secrets, and uses Cloudflare's massive IP pool to bypass runner-specific blocks. Cloudflare Workers have a free tier of 100k requests/day.",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Bypasses IP blocks completely, ensuring 100% reliable execution of automated cron jobs without paying for dedicated proxy servers.",
+      "current_pain_description": "Hugo only has an Android phone. Reviewing 50+ generated coloring book pages or cover designs inside Termux CLI or raw GitHub directories is extremely tedious, slowing down the 'go-live' process.",
+      "proposed_fix": "Deploy an automated, password-protected (or hidden URL) static HTML 'Review Dashboard' via GitHub Pages. The GHA workflow writes metadata of new designs to a `pending_review.json`. The mobile-friendly HTML page displays the images with simple 'Approve' / 'Reject' buttons that trigger GitHub Repository Dispatch events to trigger the upload/publish workflows.",
+      "estimated_implementation_hours_claude": 4,
+      "estimated_value_unlocked": "Saves Hugo 3-4 hours/week of manual file sorting on mobile; speeds up QA from days to minutes.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Extreme Friction in Manual Asset Download and Upload on Android (Termux)",
-      "category": "bottleneck",
+      "issue_title": "No Checkpointing in Multi-Image Generation Workflows",
+      "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_tumbler_wraps"
+        "produce_specs_deck",
+        "produce_card_game"
       ],
-      "current_pain_description": "Hugo must manually navigate GitHub repositories or download Actions artifacts to his Android phone, then upload them to Redbubble, KDP, and Cults3D. This is highly tedious on a small mobile screen.",
-      "proposed_fix": "Create a GitHub Actions step that automatically pushes successful runs to a private `gh-pages` branch. This branch hosts a minimal, mobile-friendly HTML index page with one-click zip download links for optimized packages, and QR codes/direct download links for individual designs. Hugo can easily manage this via his phone's native browser.",
-      "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Reduces asset retrieval time on mobile from 15 minutes to 30 seconds per batch, leaving Hugo more energy for the actual listing creation.",
+      "current_pain_description": "Generating a 40-page coloring book inside GitHub Actions takes time. If the runner times out, API limits are reached midway, or a single network call fails, the entire run fails and progress is lost, wasting API credits.",
+      "proposed_fix": "Implement incremental checkpointing. Before generating image index N, the pipeline checks if `output/page_N.png` already exists in the repository or a persistent GHA Cache. If it exists, it skips generation. Commit progress back to a draft branch every 5 successfully generated images.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Prevents wasted API budget on failed runs; allows resume-capability on standard GHA runners.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Pixelated Print Quality for Coloring Books (Raster Outputs)",
+      "issue_title": "Silent Failures in KDP PDF Generation & Pre-flight Checks",
       "category": "quality_bug",
       "affected_pipelines": [
-        "produce_coloring_book"
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_chess_book"
       ],
-      "current_pain_description": "FLUX-schnell and SDXL generate raster images (PNG/JPG). When scaled to KDP standard printing dimensions (8.5x11 inches at 300 DPI), these images suffer from pixelation and fuzzy black lines, rendering them unprofessional for KDP books.",
-      "proposed_fix": "Add a vectorization step inside the GitHub Actions workflow using `potrace` and `imagemagick`. The script will auto-threshold the image to pure black/white, run `potrace -s` to convert it to a scalable SVG, and then export it back to a high-resolution 300 DPI PNG. This guarantees razor-sharp edges.",
+      "current_pain_description": "PDFs are compiled automatically, but blank pages, corrupt image files, wrong DPI, or incorrect page dimensions are not caught until Hugo tries to upload to Amazon KDP, leading to immediate manual rejection by Amazon.",
+      "proposed_fix": "Add an automated Python pre-flight validation step using `PyPDF2` and `Pillow`. Check that: 1. PDF has exactly the requested dimensions (e.g., 8.5x11 inches with bleed), 2. No pages are completely blank (mean pixel value threshold check), 3. Images are minimum 300 DPI, 4. Page count is even (for correct KDP spine calculation).",
       "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Ensures physical print-quality standard for Amazon KDP, eliminating negative reviews for pixelated interiors.",
+      "estimated_value_unlocked": "Avoids KDP upload rejections; guarantees 100% of generated PDFs meet Amazon's strict print specifications.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Runware Budget Runaway Risk",
+      "issue_title": "Zero Trademark & Copyright Safety Gateways",
       "category": "security",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_kdp_cover"
+        "produce_quotes_minimal",
+        "produce_viral_formats",
+        "produce_cultural_arbitrage"
       ],
-      "current_pain_description": "If Hugo implements Runware PAYG (budget capped at 20€/month) and a GitHub Actions workflow gets stuck in an infinite loop or runs too frequently on a misconfigured cron schedule, it could drain his entire monthly budget in a single afternoon.",
-      "proposed_fix": "Store a daily and monthly consumption counter in a local JSON state file inside the GitHub repository (e.g., `state/api_usage.json`). Before initiating any image generation script, the workflow must read this file, verify that the current billing cycle spend is below 15€, and abort immediately if the cap is reached.",
-      "estimated_implementation_hours_claude": 1.0,
-      "estimated_value_unlocked": "Hard limits financial exposure, protecting Hugo's tight 20€/month budget from software bugs.",
+      "current_pain_description": "Generating quotes, book titles, or design text automatically via LLMs risks generating trademarked phrases (e.g., Disney quotes, brand names), which can get Hugo's Redbubble or KDP accounts permanently banned.",
+      "proposed_fix": "Integrate a lightweight offline sanity-check script. Download a static list of highly litigious keywords/brands (Disney, Marvel, etc.) and run a regex check on all generated metadata. Use a free public API check (like the USPTO search API if available, or a fallback LLM prompt specifically optimized to flag IP violations) before finalizing metadata.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Protects Hugo's seller accounts from permanent suspension; ensures 100% legal compliance.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Missed Cross-Pollination of Single High-Quality Designs",
+      "issue_title": "Missed Cross-Pollination of Assets (Siloed Pipelines)",
       "category": "cross_polination",
       "affected_pipelines": [
-        "produce_iheart_v4",
-        "produce_literal_idioms_v2",
-        "produce_quotes_minimal"
-      ],
-      "current_pain_description": "A successful design generated for a sticker (e.g., 'iheart' series) is saved in its specific folder and never reused. This misses the opportunity to scale to other platforms with zero added generation cost.",
-      "proposed_fix": "Develop a master routing script (`agent_orchestrator` enhancement). When a high-quality asset passes visual validation, the router automatically copies, resizes, and packages the asset into multiple formats: 1:1 transparent PNG for stickers (Redbubble), 1:1.5 aspect ratio for canvas prints, and a repeating seamless pattern for tumbler wraps.",
-      "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Multiplies listings per hour worked by 3x, maximizing long-tail organic traffic with zero extra API generation costs.",
-      "priority_1_10": 7
-    },
-    {
-      "rank": 7,
-      "issue_title": "Brittle Code Duplication Across Image Generation Workflows",
-      "category": "code_quality",
-      "affected_pipelines": [
         "produce_coloring_book",
-        "produce_iheart_v4",
-        "produce_kdp_cover",
-        "produce_literal_idioms"
+        "produce_svg_pack",
+        "produce_tumbler_wraps",
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "API call formatting, error handling, metadata injection, and logging are hardcoded separately inside each individual pipeline script. Making a change to the image generation logic requires editing 5+ different Python files.",
-      "proposed_fix": "Refactor the image generation logic into a unified Python module `utils/image_generator.py` that handles client initialization, API fallbacks, retry logic, and resizing. Individual pipelines should import this utility rather than executing raw requests.",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Reduces codebase maintenance overhead, makes adding new APIs (like Cloudflare Workers AI) instantly available to all pipelines at once.",
+      "current_pain_description": "Pipelines run in complete isolation. An amazing vector-style SVG generated for a 'wedding stationery' or 'SVG pack' is never reused as a coloring page, card game asset, or POD sticker, missing out on massive ROI per hour worked.",
+      "proposed_fix": "Implement an 'Asset Pool' structure. When a pipeline successfully generates a high-quality asset, it saves it with standardized metadata tags (e.g., `theme: fantasy`, `style: vector_black_white`) to an `asset_pool/` directory. Other pipelines can crawl this pool to package products (e.g., compile 30 vector SVGs into a 'Fantasy Coloring Book' automatically).",
+      "estimated_implementation_hours_claude": 4,
+      "estimated_value_unlocked": "Multiplies output formats from a single design; maximizes Hugo's hourly ROI by cross-selling the same creative assets across Cults3D, Etsy, and KDP.",
       "priority_1_10": 6
     }
   ]
