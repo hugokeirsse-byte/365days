@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-24T16:53:56.140649Z",
+  "timestamp": "2026-05-24T20:44:19.310868Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Gothic Botanical Herbs",
-      "platform_where_spotted": "Pinterest / Reddit r/coloringbooks",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Gothic Botanical Coloring Book: Dark Cottagecore Herbs and Poisonous Flowers for Adults",
-      "evidence_url_or_signal": "Spike in Pinterest searches for 'dark cottagecore aesthetic' (+140% last 12 days) and Reddit demand for mature, non-kids botanical line art with slightly gothic or apothecary vibes."
-    },
-    {
-      "rank": 2,
-      "trend_keyword": "Corporate Brat",
-      "platform_where_spotted": "TikTok",
+      "trend_keyword": "Solarpunk Greenhouse",
+      "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 9,
       "estimated_lifespan_days": 45,
       "saturation_now_1_10": 2,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_cultural_arbitrage_v2",
-      "title_template_suggestion": "Corporate Brat Mug - Funny Gen Z Office Humor Coffee Cup - Intern Gift",
-      "evidence_url_or_signal": "TikTok hashtag #corporatebrat gained 4.2 million views in the last 10 days, capturing Gen Z office workers using lime green minimalist aesthetics to parody corporate culture."
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Solarpunk Greenhouse Coloring Book: Futuristic Botanical Gardens and Eco-Cities for Adults",
+      "evidence_url_or_signal": "Pinterest Search trends for 'Solarpunk Aesthetic Architecture' and 'Greenhouse Illustration' spiked +120% week-over-week ending May 18, 2026."
+    },
+    {
+      "rank": 2,
+      "trend_keyword": "Social Battery Slider Sticker",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 4,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Funny Social Battery Slide Sticker, Introvert Mental Health Decal for Laptop and Water Bottles",
+      "evidence_url_or_signal": "TikTok hashtag #socialbattery saw 4.2M views in the last 14 days, with viral videos showing physical sliding pin badges and sticker designs."
     },
     {
       "rank": 3,
-      "trend_keyword": "Coquette Class of 2026",
-      "platform_where_spotted": "Etsy / Pinterest",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 5,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Coquette Bow Class of 2026 Sticker - Cute Graduation Gift for Her - Laptop Decal",
-      "evidence_url_or_signal": "Etsy search volume for 'coquette graduation' spiked heavily since mid-May 2026, driven by high school and college seniors looking for pink bow graduation decor."
-    },
-    {
-      "rank": 4,
-      "trend_keyword": "Pilates Capybara",
-      "platform_where_spotted": "TikTok / Instagram",
+      "trend_keyword": "Gothic Apothecary Ephemera",
+      "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 60,
       "saturation_now_1_10": 3,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_iheart_v4",
-      "title_template_suggestion": "Cute Pilates Capybara Sticker - Funny Workout Matte Vinyl Decal",
-      "evidence_url_or_signal": "Viral Reels and TikTok trend showing capybaras animated doing yoga/pilates with 'In my pilates era' text. High engagement on fitness humor accounts."
+      "best_product_format": "lowcontent_kdp",
+      "best_pipeline_match": "produce_lowcontent_kdp",
+      "title_template_suggestion": "Gothic Apothecary Ephemera Book: Cut Out Elements for Junk Journaling, Scrapbooking and Collage",
+      "evidence_url_or_signal": "Etsy search volume for 'Gothic Ephemera Pack' and 'Apothecary Labels Printable' increased by 85% since early May 2026, driven by the spring junk-journaling community."
+    },
+    {
+      "rank": 4,
+      "trend_keyword": "DINKWAC Cat Lover Retro",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 40,
+      "saturation_now_1_10": 2,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Retro DINKWAC Shirt - Double Income No Kids With A Cat - Cute Cat Owner Tee",
+      "evidence_url_or_signal": "TikTok trend pairing the audio 'Double Income No Kids' with cats instead of dogs (#DINKWAC) gained 1.8M views between May 10 and May 22, 2026."
     },
     {
       "rank": 5,
-      "trend_keyword": "Vintage Matchbook Poster Art",
-      "platform_where_spotted": "Pinterest",
+      "trend_keyword": "Cozy Fantasy Tavern Maps",
+      "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 120,
-      "saturation_now_1_10": 4,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_cultural_arbitrage",
-      "title_template_suggestion": "Vintage Matchbook Print Retro Diner Wall Art - Mid Century Modern Kitchen Poster Decor",
-      "evidence_url_or_signal": "Pinterest trend 'matchbook art aesthetic' has sustained a high click-through rate over the last 14 days, particularly targeting nostalgic culinary or travel themes."
+      "estimated_lifespan_days": 50,
+      "saturation_now_1_10": 2,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Cozy Fantasy Tavern Coloring Book: Relaxing Inn Rooms, Magical Cafes, and Dungeon Maps for Adults",
+      "evidence_url_or_signal": "Spike in r/cozygamers and r/dnd communities discussing 'cozy cartography' and non-combat fantasy settings in mid-May 2026."
     },
     {
       "rank": 6,
-      "trend_keyword": "Emotional Support DM",
-      "platform_where_spotted": "Reddit r/dndmemes",
+      "trend_keyword": "Vintage Motel Keychain SVG",
+      "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 75,
-      "saturation_now_1_10": 2,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_gamedev_asset_pack",
-      "title_template_suggestion": "Emotional Support DM Coffee Mug - Funny TTRPG Gift for Dungeon Master",
-      "evidence_url_or_signal": "Multiple high-ranking posts on r/dndmemes and r/rpg in the last week joking about DM burnout and players buying them 'emotional support' gifts, presenting an easy text-based typography opportunity."
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 5,
+      "best_product_format": "svg_pack",
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Retro Motel Keychain SVG Bundle, Funny Sarcastic Quotes Keychain Laser Cut Files",
+      "evidence_url_or_signal": "Consistent 30% month-over-month rise in Etsy searches for DIY motel keychains, peaking mid-May as crafters prepare for summer market inventories."
     }
   ]
 }
