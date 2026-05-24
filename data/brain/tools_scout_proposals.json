@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-24T16:54:18.048113Z",
+  "timestamp": "2026-05-24T20:44:14.705542Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "SiliconFlow API",
-      "url": "https://siliconflow.cn/en/",
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai",
       "category": "ai_image",
-      "free_tier_concrete_limits": "14 Safe points daily upon log-in (~100 to 200 free FLUX.1-schnell or SDXL images generated daily).",
-      "what_it_does_uniquely": "Provides high-speed, stable OpenAI-compatible API endpoints for open-source models like FLUX.1-schnell, SD3, and Stable Diffusion XL without cold starts or IP blocks from GitHub Actions.",
-      "would_integrate_where": "Replace the broken Pollinations/Horde image generation step in 'produce_coloring_book' and 'produce_kdp_cover' pipelines.",
+      "free_tier_concrete_limits": "$1 to $10 free credits upon account creation (equivalent to ~300 to 3000 FLUX.1-schnell images at $0.003/img). No subscription required.",
+      "what_it_does_uniquely": "Provides lightning-fast, highly optimized API endpoints for state-of-the-art open-source image generators (FLUX.1-schnell, FLUX.1-dev, SD3.5) with native Python SDK support.",
+      "would_integrate_where": "GitHub Actions image generation step (e.g., `produce_coloring_book` or `produce_kdp_cover`), replacing Pollinations for high-definition, commercial-grade illustrations.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Registration requires phone verification; documentation is occasionally translated from Chinese but API standard is strictly OpenAI-compliant."
+      "risk_or_caveat": "Credits will eventually run out, requiring a top-up, but pricing is strictly pay-as-you-go (extremely cheap, fits within the 20€/month budget easily)."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to upload unlimited 3D models. Standard marketplace fee on sales (no monthly listing cost).",
-      "what_it_does_uniquely": "Fastest growing 3D search engine and marketplace for STL/3D files. Features a highly active community of 3D printing enthusiasts looking for functional/parametric models.",
-      "would_integrate_where": "Target platform for 'produce_stl_parametric' pipeline. Run python scripts in GitHub Actions to output STL files, then manually or semi-automatically upload to Thangs.",
+      "tool_or_platform": "Jina Reader API",
+      "url": "https://jina.ai/reader",
+      "category": "analytics",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month via API.",
+      "what_it_does_uniquely": "Converts any web URL (including search results, blogs, e-commerce listings) into clean, LLM-friendly Markdown format in a single API call.",
+      "would_integrate_where": "Trend hunting scripts (like `agent_trendhunter` or `agent_opportunity_hunter`) running in GitHub Actions to scrape and analyze niche opportunities from public forums, marketplaces, or social media.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Heavy focus on 3D printable models; purely artistic models perform worse than functional or pop-culture/tabletop gaming assets."
+      "risk_or_caveat": "Standard web scraping limitations apply if the target site blocks Jina's proxy IPs (e.g., heavy Cloudflare protection)."
     },
     {
       "rank": 3,
-      "tool_or_platform": "DriveThruRPG / WargameVault",
-      "url": "https://www.drivethrurpg.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to set up a publisher account. No listing fees. Takes commission on sales (30% to 35% standard).",
-      "what_it_does_uniquely": "The absolute gold standard marketplace for tabletop RPGs, map packs, paper minis, and rulebooks. Customers are highly accustomed to buying PDFs and digital-only print-and-play assets.",
-      "would_integrate_where": "Target platform for 'produce_card_game' and 'produce_coloring_book' (re-packaged as RPG fantasy maps or dungeon tiles).",
+      "tool_or_platform": "Serper.dev",
+      "url": "https://serper.dev",
+      "category": "analytics",
+      "free_tier_concrete_limits": "2,500 free search queries upon registration, no credit card required.",
+      "what_it_does_uniquely": "Extremely fast and reliable Google Search API. Specifically offers structured JSON outputs for Google Images, Shopping, and Autocomplete search queries.",
+      "would_integrate_where": "Niche validation automation scripts to query search volume, autocomplete suggestions, and competitive products before initiating a book or asset production pipeline.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Strict formatting rules for PDF uploads; community is highly sensitive to low-quality AI art, requiring careful curation of outputs."
+      "risk_or_caveat": "Strictly limited to 2,500 requests on the free tier; needs careful scheduling (e.g., run only once per week) to avoid rapid exhaustion."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Freesound API",
-      "url": "https://freesound.org/docs/api/",
-      "category": "scraping",
-      "free_tier_concrete_limits": "2,000 requests per day for search and download of audio files.",
-      "what_it_does_uniquely": "Provides programmatically searchable access to millions of user-submitted sound effects, many under CC0 (Creative Commons Zero) or Public Domain licenses.",
-      "would_integrate_where": "A new pipeline 'produce_gamedev_audio_pack'. Query CC0 UI sounds, ambient loops, or retro laser effects, bundle them with Python's pydub library, and sell them as asset packs on itch.io or Unity Asset Store.",
+      "tool_or_platform": "Creative Fabrica Studio & Teacher/Designer Account",
+      "url": "https://www.creativefabrica.com/designer-community/",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free to open a store and list digital files. Earns per-download royalties from subscribers or direct sales.",
+      "what_it_does_uniquely": "A massive, hyper-targeted marketplace for digital assets (SVG cuts, coloring pages, KDP templates, embroidery files). Users are actively looking for ready-to-use digital assets rather than physical prints.",
+      "would_integrate_where": "Parallel distribution pipeline. Every SVG pack or coloring book PDF generated for Amazon KDP/Redbubble can be cross-posted directly here to monetize digital-native crafters.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Must strictly filter search results to 'license:\"Creative Commons 0\"' to ensure complete legality for commercial resale."
+      "risk_or_caveat": "Payouts are aggregated and have minimum thresholds; strict quality and copyright control on listed SVGs."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Wikimedia Commons API",
-      "url": "https://commons.wikimedia.org/wiki/Commons:API",
-      "category": "scraping",
-      "free_tier_concrete_limits": "Completely free, no registration required for standard read requests. Rate limit is based on polite user-agent header.",
-      "what_it_does_uniquely": "Unlocks millions of high-resolution, public-domain historical illustrations, botanical drawings, and vintage maps perfect for commercial reconstruction.",
-      "would_integrate_where": "Integration into 'produce_cultural_arbitrage' or 'produce_svg_pack'. Automatic downloading of vintage line drawings, vectorizing via potrace in GitHub Actions, and uploading to Redbubble or Etsy.",
+      "tool_or_platform": "DriveThruRPG / WargameVault",
+      "url": "https://www.drivethrurpg.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list digital PDFs, card decks, and maps. Standard royalty split (up to 70% to creator).",
+      "what_it_does_uniquely": "The absolute largest marketplace for tabletop RPG assets, rulesets, print-and-play card games, and isometric map packs.",
+      "would_integrate_where": "Exporting print-and-play card games (`produce_card_game`) or tabletop assets generated programmatically as PDF packages for direct digital download.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires robust metadata parsing to confirm the source file is strictly 'PD-Old' or 'CC0' and not restricted by country-specific copyright laws."
+      "risk_or_caveat": "Target audience expects high thematic quality and cohesive design; metadata and descriptions must be well-optimized."
     },
     {
       "rank": 6,
       "tool_or_platform": "Nebius AI Studio",
-      "url": "https://nebius.com/services/ai-studio",
+      "url": "https://nebius.ai",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Generous free signup credits (often $10 to $20) with ultra-low PAYG pricing (~$0.0015 per FLUX.1-schnell image).",
-      "what_it_does_uniquely": "An enterprise-grade cloud provider serving open-source AI models at near-cost prices. Highly reliable endpoint availability with zero rate-limit blocks for GitHub Actions.",
-      "would_integrate_where": "High-quality, reliable backup to 'together_ai' and 'cloudflare' in the image generation stack.",
+      "free_tier_concrete_limits": "$10 free trial credit upon signup, providing access to FLUX.1-schnell and SDXL at wholesale pricing.",
+      "what_it_does_uniquely": "A highly competitive European cloud AI infrastructure player offering ultra-low latency API access to open-source models with strict data privacy compliance.",
+      "would_integrate_where": "Fallback image generation API inside GitHub Actions workflows when Together AI or Cloudflare Workers AI hit rate limits.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires credit card verification on signup to prevent abuse, even when using free trial credits."
+      "risk_or_caveat": "Relatively new platform; API schemas or pricing models might shift as they exit promotional phases."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "Gradio Client Python Library",
+      "url": "https://www.gradio.app/docs/client",
+      "category": "dev_tool",
+      "free_tier_concrete_limits": "100% free. Uses public Hugging Face Spaces infrastructure.",
+      "what_it_does_uniquely": "Allows programmatic execution of any active public Gradio app hosted on Hugging Face Spaces (such as Kokoro TTS audio generation or niche image upscalers) directly from Python.",
+      "would_integrate_where": "GitHub Actions Python workflows to tap into state-of-the-art TTS (audiobook generation) or image processing (upscaling) without needing dedicated API keys or local hardware.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Public spaces can be slow, rate-limited, or paused by their creators without warning. Best suited as a powerful experimental or fallback layer."
     }
   ]
 }
