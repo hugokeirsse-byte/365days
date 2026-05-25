@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-25T02:32:32.430266Z",
+  "timestamp": "2026-05-25T08:14:02.344098Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,91 +90,109 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Runware/Paid API Budget Runaway Risk",
-      "category": "security",
+      "issue_title": "Fragile & Fragmented Image Generation APIs Across Pipelines",
+      "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_tumbler_wraps"
+        "produce_literal_idioms",
+        "produce_tumblr_wraps",
+        "produce_viral_formats"
       ],
-      "current_pain_description": "If a GHA workflow gets stuck in an infinite loop or runs too frequently, a PAYG key like Runware can consume the entire 20€ monthly budget in minutes, halting all image production for the month.",
-      "proposed_fix": "Implement a lightweight state file (`.github/api_budget_state.json`) updated via Git commit/cache. Before any paid API call, check if the daily/monthly limit (e.g., $0.66/day) is exceeded. If so, fail gracefully or fallback to free Pollinations.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Saves 100% of financial risk; prevents sudden interruptions in development budget.",
+      "current_pain_description": "Pipelines have hardcoded, separate API calls. When Hugging Face, AI Horde, or Gemini block/rate-limit GHA runners, all pipelines break silently. Pollinations is the only working fallback but produces sub-optimal quality.",
+      "proposed_fix": "Create a unified Python module `image_gateway.py` with an automated fallback matrix. The gateway attempts: 1. Together AI (FLUX-schnell, free tier), 2. Cloudflare Workers AI (10k free daily neurons), 3. Runware (PAYG, capped at $20/month as premium option), 4. Pollinations (ultimate fallback). All pipelines must import this single gateway.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "100% pipeline resilience, zero manual code updates when API providers change, automatically utilizes the highest quality available model.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Silent GHA Failures on Android/Termux",
-      "category": "failure_mode",
-      "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auto_regen"
-      ],
-      "current_pain_description": "Hugo only has 10 hours/week and works via phone. If a GitHub Action fails (rate limits, API changes), he has to manually navigate to GitHub to check, losing valuable reaction time.",
-      "proposed_fix": "Add a post-failure step in all GHA workflows that sends a concise markdown payload (error message, log link) to a free Telegram Bot or Discord Webhook directly to Hugo's phone.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Saves 1-2 hours of manual monitoring per week; instant feedback loop on mobile.",
-      "priority_1_10": 9
-    },
-    {
-      "rank": 3,
-      "issue_title": "Unfiltered Low-Quality AI Images (Gibberish and Grayscale)",
-      "category": "quality_bug",
-      "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_svg_pack"
-      ],
-      "current_pain_description": "Free or fast generators (Pollinations, Together FLUX-schnell) often output artifacts, grayscale shading instead of pure line art, or distorted lines that make coloring books unsellable.",
-      "proposed_fix": "Leverage Gemini 2.5 Flash's free multimodal API inside `agent_gemini_quality_check`. Pass the generated image with a strict prompt: 'Is this clean black-and-white line art with NO gray shading, NO text, and NO anatomical errors? Answer YES/NO'. Discard NO outputs.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Ensures 100% sellable quality; prevents KDP account termination due to low-quality customer reviews.",
-      "priority_1_10": 9
-    },
-    {
-      "rank": 4,
-      "issue_title": "Manual Upload Bottleneck on Mobile",
+      "issue_title": "Manual Asset Download and Upload Pain on Mobile (Termux)",
       "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_lowcontent_kdp",
-        "produce_svg_pack"
+        "produce_svg_pack",
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Hugo has zero active platforms live. Uploading multiple loose images, tags, and descriptions from a Termux/Android phone to KDP or Etsy is extremely slow and tedious.",
-      "proposed_fix": "Create an automation step that compiles assets into a single ZIP file containing: the optimized PDF/PNG, a pre-formatted TXT file with (Title, Description, Tags, Price), and a thumbnail. Push this directly to a private GitHub Release. Hugo only downloads one ZIP per product to his phone.",
+      "current_pain_description": "Hugo only has an Android phone. Downloading massive ZIPs of generated coloring books or SVG packs to Termux/phone storage to manually upload them to Redbubble, Cults3D, or KDP is highly inefficient and consumes phone data.",
+      "proposed_fix": "Implement a 'Pre-signed Delivery' step. Have GHA automatically commit successful assets to a public/private Hugging Face Dataset repository or a GitHub Release, then generate a simple, mobile-friendly HTML index page hosted on GitHub Pages. Hugo can view, select, and directly upload files to platforms via his mobile browser without downloading them to Termux first.",
       "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Reduces manual listing time from 20 mins to 3 mins per product on mobile.",
+      "estimated_value_unlocked": "Saves hours of phone file management, reduces mobile data usage, and visualizes generated products instantly.",
+      "priority_1_10": 9
+    },
+    {
+      "rank": 3,
+      "issue_title": "Missing Visual Quality Gate for AI Gibberish and Artifacts",
+      "category": "quality_bug",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_kdp_cover",
+        "produce_literal_idioms_v2"
+      ],
+      "current_pain_description": "FLUX-schnell and other generators can occasionally output broken anatomy, overlapping lines, or corrupted text. Publishing these on KDP or Redbubble ruins store reputation and wastes upload slots.",
+      "proposed_fix": "Integrate `agent_gemini_quality_check` directly into the GHA workflow as a hard gate. Use the free `gemini-2.5-flash` multimodal API to analyze the generated image. Prompt: 'Verify if this coloring page has clean black and white lines, no grayscale gradients, and no gibberish text.' If it fails, auto-retry image generation once with a modified prompt.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Prevents low-quality products from reaching platforms, protecting seller account health.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 4,
+      "issue_title": "GHA Quota Burn and Silent Job Hangs",
+      "category": "failure_mode",
+      "affected_pipelines": [
+        "agent_orchestrator",
+        "agent_auto_regen",
+        "produce_coloring_book"
+      ],
+      "current_pain_description": "Without explicit timeouts, GHA jobs waiting on API responses or stuck in infinite loops can run for up to 6 hours, exhausting Hugo's free 2,000 monthly GHA minutes in a single day.",
+      "proposed_fix": "Enforce a strict `timeout-minutes: 15` on all GHA jobs. Add a lightweight Python wrapper that sends a fast, free webhook notification (via Telegram Bot API or Discord Webhook) to Hugo's phone whenever a GHA workflow fails or succeeds, detailing exactly what failed.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Zero wasted GHA minutes, immediate notification on mobile without checking GitHub Actions tab.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Redundant Trend-Hunting Agents Wasting API Quotas",
-      "category": "code_quality",
+      "issue_title": "Lack of Multi-Format Cross-Pollination",
+      "category": "cross_polination",
       "affected_pipelines": [
-        "agent_trendhunter",
-        "agent_opportunity_hunter",
-        "agent_niche_gap",
-        "agent_external_trends"
+        "produce_literal_idioms_v2",
+        "produce_quotes_minimal",
+        "produce_bible_verses_v2"
       ],
-      "current_pain_description": "Four separate agents perform similar web scraping or LLM trend analysis. This duplicates code, slows execution, and risks hitting Gemini API rate limits (429).",
-      "proposed_fix": "Consolidate the scraping and analysis logic into a single unified `agent_trend_consolidator`. Let it write a single schema-validated `trends_today.json` that other production pipelines read as a single source of truth.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Reduces API call volume by 60%; simplifies pipeline maintenance.",
+      "current_pain_description": "An asset generated for a book (e.g., a literal idiom illustration or quote design) is only used for that book. This wastes the computational cost and prompt engineering of that asset.",
+      "proposed_fix": "Add a post-processing script `cross_pollinate.py` to successful runs. If a high-quality transparent PNG illustration is generated, the script should automatically: 1. Format it as a Redbubble sticker (transparent PNG), 2. Format it as a Kindle lockscreen wallpaper, 3. Package it into a digital SVG/PNG clipart pack for Etsy. Output all three formats into the release directory.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "3x the product listings for the same API token and generation cost.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Missed Cross-Pollination of Coloring Designs to SVG/POD",
-      "category": "cross_polination",
+      "issue_title": "Unstructured Metadata for Mobile Uploading",
+      "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_tumbler_wraps"
+        "produce_lowcontent_kdp",
+        "produce_gamedev_asset_pack",
+        "produce_stl_parametric"
       ],
-      "current_pain_description": "High-quality vector/line art generated for coloring books is discarded after compilation, missing opportunities for digital SVG packs (Etsy) or transparent PNGs (Redbubble).",
-      "proposed_fix": "Add a post-generation script to `produce_coloring_book` that extracts individual high-quality pages, converts them to SVG (via potrace/vectorization utilities in GHA), and auto-stages them in the `produce_svg_pack` output folder.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Doubles the product output per hour of GPU generation; expands catalog footprint automatically.",
+      "current_pain_description": "Even if the files are generated, Hugo has to manually write titles, descriptions, and tags/keywords on his phone browser when uploading to KDP, Cults3D, or Redbubble.",
+      "proposed_fix": "Force every production pipeline to output a standardized `metadata.json` containing: `title`, `description` (optimized with keywords), `tags` (comma-separated), and `suggested_price`. Use Gemini to generate these during the pipeline. Render these details in the HTML index page (Proposal 2) with a 'Copy to Clipboard' button for quick mobile uploading.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Reduces mobile listing upload time from 10 minutes to less than 2 minutes per product.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 7,
+      "issue_title": "Unvalidated Parametric STL Generation for Cults3D",
+      "category": "code_quality",
+      "affected_pipelines": [
+        "produce_stl_parametric"
+      ],
+      "current_pain_description": "Parametric 3D designs (OpenSCAD/Python-based) can easily generate non-manifold (non-watertight) meshes or empty files if the parameters collide. Selling broken STL files on Cults3D leads to instant bad reviews and refund requests.",
+      "proposed_fix": "Add a validation step in the STL pipeline using the Python `numpy` or `trimesh` library (lightweight, runs easily in GHA). The script must verify: 1. The mesh is closed (watertight), 2. The volume is positive, 3. The file size is correct. If invalid, discard and log the parameters.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Guarantees 100% printable 3D models, preventing negative reviews on Cults3D.",
       "priority_1_10": 6
     }
   ]
