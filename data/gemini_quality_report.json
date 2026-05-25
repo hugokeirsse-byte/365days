@@ -1,58 +1,56 @@
 {
-  "audited_at": "2026-05-24T02:06:16.739790Z",
+  "audited_at": "2026-05-25T02:12:59.345784Z",
   "model": "gemini-2.5-flash",
   "total_processed": 30,
   "counters": {
     "approve": 4,
     "review": 0,
     "reject": 1,
-    "skip": 33,
+    "skip": 38,
     "error": 25
   },
   "audits": [
     {
-      "design_path": "bible_verses/old/trust/proverbs_3_5_6_soft_watercolor",
-      "pipeline": "bible_verses",
-      "verdict": "reject",
-      "issues": [
-        "verse_text_exactly_correct_no_typo",
-        "no_gibberish_text",
-        "reference_format_correct"
-      ],
-      "rating_0_100": 0,
-      "reasoning": "The image contains AI-generated gibberish text instead of the expected Bible verse 'Trust in the Lord with all your heart'. The text is unreadable and does not match the required verse, violating the 'verse_text_exactly_correct_no_typo' and 'no_gibberish_text' critical rules. Additionally, the required Bible reference 'Proverbs 3:5-6' is entirely missing from the image, violating the 'reference_format_correct' critical rule. These multiple critical failures necessitate a rejection."
-    },
-    {
-      "design_path": "bible_verses_v2/new/grace/ephesians_2_8_9_soft_watercolor",
+      "design_path": "bible_verses_v2/new/joy/james_1_2_3_modern_mountains",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 95,
-      "reasoning": "The image accurately displays the Bible verse 'By grace you have been saved through faith' which is correctly attributed to Ephesians 2:8-9. The text is clear, legible, and well-centered against a pleasant floral background. There are no visible typos, grammatical errors, or quality issues such as low resolution or artifacts. The overall design is clean and suitable for print-on-demand."
+      "reasoning": "The image displays excellent legibility with strong contrast between the dark text and the light, subtle background. The font choice is clear and aesthetically pleasing, and the layout is well-balanced and centered. The decorative lines complement the design without being distracting. The content, a bible verse with its reference, is appropriate for the 'bible_verses_v2' pipeline and is presented professionally, making it suitable for print-on-demand."
     },
     {
-      "design_path": "bible_verses_v2/new/grace/ephesians_2_8_9_vintage_botanical",
+      "design_path": "bible_verses_v2/new/joy/james_1_2_3_soft_watercolor",
+      "pipeline": "bible_verses_v2",
+      "verdict": "approve",
+      "issues": [],
+      "rating_0_100": 95,
+      "reasoning": "The image demonstrates excellent readability due to the strong contrast between the dark, clear text and the light, subtle floral background. The composition is well-balanced, with the text centered and appropriately sized within the frame. Both the bible verse and its reference are accurately presented and free from any cropping or distortion. The overall aesthetic is pleasing and professional, with no visible defects such as blurriness or pixelation, making it highly suitable for print-on-demand."
+    },
+    {
+      "design_path": "bible_verses_v2/new/joy/james_1_2_3_vintage_botanical",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 100,
-      "reasoning": "The image clearly presents a bible verse with its corresponding reference, 'Ephesians 2:8-9', and the text 'By grace you have been saved through faith'. The typography is clean and highly legible against the subtle, tasteful background pattern. The overall composition is balanced and aesthetically pleasing, making it suitable for the 'bible_verses_v2' pipeline without any apparent critical quality issues."
+      "reasoning": "The image demonstrates excellent adherence to critical quality standards for the 'bible_verses_v2' pipeline. The text is highly legible with strong contrast against the subtle background, ensuring clear readability on various print-on-demand products. The font choice is appropriate, and the composition is clean, balanced, and aesthetically pleasing. Both the bible verse and its reference are accurately presented without any spelling or grammatical errors. The overall image quality is high, free from pixelation or distracting elements, making it suitable for production."
     },
     {
-      "design_path": "bible_verses_v2/new/joy/james_1_2_3_minimalist_gold",
+      "design_path": "bible_verses_v2/new/love/1_corinthians_13_4_7_soft_watercolor",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 95,
-      "reasoning": "The image presents a bible verse with excellent legibility and a clean, appealing aesthetic. The text is well-centered, and the font choice is appropriate. The subtle background pattern adds visual interest without distracting from the main message. The bible reference is clearly visible and correctly formatted. Overall, the design is professional and suitable for print-on-demand, demonstrating high quality in composition and presentation."
+      "reasoning": "The image demonstrates high quality with excellent readability, featuring clear, well-contrasted text against a soft, aesthetically pleasing floral background. The biblical reference and verse are accurately presented without any spelling or grammatical errors. The composition is balanced and professional, making it suitable for print-on-demand without any critical quality concerns."
     },
     {
-      "design_path": "bible_verses_v2/new/love/john_3_16_soft_watercolor",
+      "design_path": "bible_verses_v2/new/rest/matthew_11_28_minimalist_gold",
       "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 95,
-      "reasoning": "The image presents a clear and legible Bible verse ('For God so loved the world' from John 3:16) with appropriate attribution. The design is aesthetically pleasing with a soft floral background and well-chosen fonts and colors, making it suitable for a 'bible_verses_v2' pipeline. There are no visible quality issues such as pixelation, text cut-off, or design flaws, ensuring it meets high print-on-demand standards."
+      "verdict": "reject",
+      "issues": [
+        "Incomplete Bible verse quote"
+      ],
+      "rating_0_100": 0,
+      "reasoning": "The image presents only a partial quote of Matthew 11:28. The full verse, in most common translations, continues beyond 'Come to me all who are weary' to include phrases such as 'and burdened, and I will give you rest' or similar concluding statements. Presenting an incomplete verse is a critical inaccuracy for a 'bible_verses_v2' pipeline, as it misrepresents the scripture and its full meaning."
     }
   ]
 }
