@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-25T14:35:43.552594Z",
+  "timestamp": "2026-05-25T17:29:55.963261Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,95 +90,93 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Brittle & Fragmented Image Generation APIs",
+      "issue_title": "Fragile Image Generation & Lack of API Fallback Wrapper",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_literal_idioms",
-        "produce_card_game"
+        "produce_tumbler_wraps",
+        "produce_literal_idioms_v2"
       ],
-      "current_pain_description": "Pipelines fail or produce low-quality results because they use hardcoded, single-provider image API calls. When Pollinations gives bad quality, Gemini throws 429, or AI Horde blocks GitHub Actions IPs, the workflows crash silently or commit unusable assets.",
-      "proposed_fix": "Implement a unified `ImageGenerator` class in a shared module. It must execute a strict, prioritized fallback chain: 1) Together AI (Flux-Schnell free tier), 2) Cloudflare Workers AI (10k free daily neurons), 3) Runware (PAYG, capped at 20€/mo), 4) Pollinations (as absolute emergency fallback). Add automatic exponential backoff retry logic using the 'tenacity' library.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Eliminates 90% of workflow failures; guarantees high-quality Flux-schnell images without manual intervention.",
+      "current_pain_description": "Pipelines rely on hardcoded API calls. If Pollinations has low quality, Together AI is rate-limited, or Gemini returns 429, the entire pipeline crashes. There is no unified logic to fallback from free APIs to low-cost paid ones (like Runware) while tracking the monthly 20€ budget.",
+      "proposed_fix": "Create a unified `image_generator_engine.py` helper. It implements sequential fallback logic: Together AI (free Flux-schnell) -> Cloudflare Workers AI -> Runware (paid PAYG, capped to 20€/month maximum via a local state file tracking spend) -> Pollinations (free fallback). If all fail, it raises a clean exception instead of silently writing corrupted files.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Eliminates pipeline crashes, optimizes image quality per prompt, and guarantees Hugo never exceeds his 20€ budget.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "GitHub Repository Bloat & Termux Sync Bottleneck",
-      "category": "bottleneck",
+      "issue_title": "Git Repository Bloat from Binary Assets on GitHub Actions",
+      "category": "code_quality",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_kdp_cover",
-        "produce_gamedev_asset_pack",
-        "produce_tumbler_wraps"
+        "produce_svg_pack",
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Committing high-resolution PNG/PDF assets directly to the GitHub repository to download them on Termux will rapidly bloat the git history, hitting GitHub's 1GB-5GB repository limits and slowing down 'git pull' on mobile devices to a crawl.",
-      "proposed_fix": "Stop committing raw production assets to Git. Modify pipelines to upload final ZIPs/PDFs to a free external storage provider (e.g., Transfer.sh, GoFile, or a Discord/Telegram Webhook channel) directly from GitHub Actions, then write only a lightweight JSON metadata file with download links back to the repo.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Saves gigabytes of local storage on Hugo's phone; prevents GitHub repository suspension; speeds up sync time from minutes to seconds.",
+      "current_pain_description": "Running image generation inside GitHub Actions and committing binary assets (.png, .jpg, .zip) directly to the Git repository will quickly exceed GitHub's 1GB-2GB recommended repository size limit, leading to repository lockout or slow Git performance on Termux.",
+      "proposed_fix": "Modify pipelines to never commit raw high-res assets to the git history. Instead, have GitHub Actions package assets into a ZIP file and upload them to a GitHub Release draft (using the GitHub CLI `gh release create` which is pre-installed in GHA). Only commit lightweight metadata JSON files to the main branch.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Keeps the Git repo under 50MB indefinitely, ensures rapid sync times on Hugo's Android Termux, and exploits free unlimited storage on GitHub Releases.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Gibberish Text on Generated Assets (Covers & Cards)",
-      "category": "quality_bug",
-      "affected_pipelines": [
-        "produce_kdp_cover",
-        "produce_card_game",
-        "produce_specs_deck"
-      ],
-      "current_pain_description": "Relying purely on AI text-to-image (even Flux) to render precise typography on book covers, card games, or board games leads to spelling mistakes, deformed characters, and unprofessional looking assets.",
-      "proposed_fix": "Enforce a strict separation of concerns: generate background textures/illustrations with AI *without text* (by adding 'no text, clean background, blank space' to negative prompts), and use Python's PIL (Pillow) library with free Google Fonts (.ttf) to dynamically overlay crisp, vector-grade typography, borders, and metadata programmatically.",
-      "estimated_implementation_hours_claude": 4,
-      "estimated_value_unlocked": "Guarantees 100% readable, professional, and typo-free text on all physical/digital products.",
-      "priority_1_10": 8
-    },
-    {
-      "rank": 4,
-      "issue_title": "Duplicate Utility Code Across 20+ Pipelines",
-      "category": "code_quality",
-      "affected_pipelines": [
-        "produce_bible_verses",
-        "produce_coloring_book",
-        "produce_chateau_local",
-        "produce_quotes_minimal"
-      ],
-      "current_pain_description": "Every pipeline independently implements its own image downloading, metadata creation, error logging, and API authentication routines, creating a massive maintenance burden when APIs change.",
-      "proposed_fix": "Refactor common operations into a core module `src/utils/shared_core.py`. This should handle API key validation, standardized JSON logging, image resizing/compression (using PIL), and final package generation.",
-      "estimated_implementation_hours_claude": 5,
-      "estimated_value_unlocked": "Reduces codebase size by 30%, making future pipeline additions take minutes instead of hours.",
-      "priority_1_10": 7
-    },
-    {
-      "rank": 5,
-      "issue_title": "Zero Verification on Generated PDFs and SVGs",
-      "category": "failure_mode",
+      "issue_title": "Manual Upload Bottleneck (10h/week Constraint)",
+      "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_lowcontent_kdp",
         "produce_svg_pack"
       ],
-      "current_pain_description": "Pipelines compile PDF books and SVG vectors but do not verify if the files are corrupted, empty, or have incorrect dimensions before declaring success, leading to silent failures that Hugo only discovers when trying to upload.",
-      "proposed_fix": "Add a post-generation audit step in each pipeline using lightweight libraries (`pypdf` to verify page counts/dimensions, and basic XML parsing for SVGs) to assert that output files are valid, non-empty, and conform to target platform specifications (e.g., exactly 8.5x11 inches for KDP bleed).",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Catches 100% of corrupted PDFs/SVGs before they consume Hugo's upload time.",
+      "current_pain_description": "Generating products is fully automated, but listing them on Redbubble, KDP, and Cults3D manually on an Android phone is highly tedious. Hugo spends hours copying/pasting tags, titles, descriptions, and pricing.",
+      "proposed_fix": "Build a `metadata_packer.py` step at the end of every production pipeline. This script outputs a standardized `listing_package.json` and a formatted text file optimized for mobile copy-pasting (or a standard CSV compatible with bulk uploaders like Bulk Upload extensions), containing pre-translated localized descriptions, keywords, and category selections.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Reduces listing time per product from 15 minutes to under 2 minutes, allowing Hugo to maintain volume within his 10h/week limit.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 4,
+      "issue_title": "Silent Failures and Zero-Byte/Corrupted Asset Generation",
+      "category": "quality_bug",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_kdp_cover",
+        "produce_tumbler_wraps"
+      ],
+      "current_pain_description": "When image APIs fail or return rate-limit HTML errors instead of binary images, pipelines sometimes write these HTML errors or empty bytes directly to `.png` files. This goes unnoticed until manual inspection, wasting GHA runtime.",
+      "proposed_fix": "Integrate an automated validation step in the pipelines using Python's `PIL` (Pillow) library. Check if the generated file is a valid image, has a file size > 10KB, and check the image dimensions. If invalid, retry the generation or switch provider immediately.",
+      "estimated_implementation_hours_claude": 1.0,
+      "estimated_value_unlocked": "Prevents broken/corrupt assets from reaching Hugo's queue, saving manual review time on his phone.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 5,
+      "issue_title": "Lack of Checkpointing / State Serialization for Long-Running Pipelines",
+      "category": "failure_mode",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_lowcontent_kdp"
+      ],
+      "current_pain_description": "To generate a 100-page coloring book, the pipeline must run 100 API image generation calls. If GHA timeouts (6 hours) or API limits are hit at page 85, the workflow fails, and all progress is lost, wasting API budget/quota on restart.",
+      "proposed_fix": "Implement a checkpoint state JSON (e.g., `progress_state.json`) inside the pipeline's output directory. Before making an API call for an image or page, check if the file already exists and is valid. If yes, skip it. This allows safe retries and incremental generation over multiple GHA runs.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Saves API limits and costs, allows building high-volume books incrementally, and provides resilience against network dropouts.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Missed Cross-Pollination (Single Source to Multi-Format)",
+      "issue_title": "Missed Cross-Pollination (Siloed Product Generation)",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
+        "produce_lowcontent_kdp",
         "produce_svg_pack",
-        "produce_lowcontent_kdp"
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Assets created for a coloring book (e.g., high-quality transparent line art) are only used for KDP. They are not leveraged for digital SVG selling on Etsy, or sticker packs on Redbubble, limiting ROI per hour worked.",
-      "proposed_fix": "Create a post-processing workflow `cross_pollinate.py` that takes the raw high-resolution transparent PNGs from completed coloring books, automatically packages them into ZIP files for digital craft sellers (Etsy/Cricut), and generates Redbubble-optimized 5000x5000px PNGs.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Triples the number of digital storefront assets generated from a single AI generation run.",
+      "current_pain_description": "Each pipeline acts in complete isolation. An asset generated for an SVG pack or a tumbler wrap is never reused for a coloring book background or a KDP paperback cover, forcing the system to generate new assets from scratch every time.",
+      "proposed_fix": "Implement an `asset_shared_pool` directory structure. High-quality vector SVGs generated by the SVG pipeline are indexed in a central catalog. The KDP cover or Coloring Book pipelines can scan this catalog first to reuse existing vectors, applying automated filters (like turning SVG paths to black/white for coloring pages).",
+      "estimated_implementation_hours_claude": 3.0,
+      "estimated_value_unlocked": "Multiplies productivity: 1 base vector design is automatically repackaged into 3 different end-products (SVG Pack, Coloring Page, KDP Notebook Cover).",
       "priority_1_10": 6
     }
   ]
