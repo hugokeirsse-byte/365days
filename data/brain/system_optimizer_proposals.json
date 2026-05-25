@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-24T20:44:11.018495Z",
+  "timestamp": "2026-05-25T02:32:32.430266Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,93 +90,92 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Runaway Spend Risk on Runware PAYG API",
+      "issue_title": "Runware/Paid API Budget Runaway Risk",
       "category": "security",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
         "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Transitioning to Runware PAYG (€20/month budget) introduces the risk of infinite loops in GitHub Actions burning the entire monthly budget in minutes if a script fails to break a loop or encounters 4xx/5xx retries.",
-      "proposed_fix": "Create a centralized `utils/rate_limiter.py` that reads and updates a committed `state/budget_ledger.json` tracking daily spending. Before any paid API call, the script must verify that the daily spend (e.g., max €0.66/day) has not been exceeded, otherwise failing gracefully with a warning.",
+      "current_pain_description": "If a GHA workflow gets stuck in an infinite loop or runs too frequently, a PAYG key like Runware can consume the entire 20€ monthly budget in minutes, halting all image production for the month.",
+      "proposed_fix": "Implement a lightweight state file (`.github/api_budget_state.json`) updated via Git commit/cache. Before any paid API call, check if the daily/monthly limit (e.g., $0.66/day) is exceeded. If so, fail gracefully or fallback to free Pollinations.",
       "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Saves up to €20/month in accidental API overspend and prevents account suspensions.",
+      "estimated_value_unlocked": "Saves 100% of financial risk; prevents sudden interruptions in development budget.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Silent Failures of Low-Quality Images in Print Pipelines",
-      "category": "quality_bug",
+      "issue_title": "Silent GHA Failures on Android/Termux",
+      "category": "failure_mode",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_card_game",
-        "produce_literal_idioms_v2"
+        "agent_orchestrator",
+        "agent_auto_regen"
       ],
-      "current_pain_description": "Images generated via Pollinations or experimental models are often blurry, grey, or anatomically broken, but currently pass straight to compilation, resulting in unmarketable final products.",
-      "proposed_fix": "Integrate a mandatory validation step using the free Gemini 2.5 Flash model inside `agent_gemini_quality_check`. Pass the generated image via base64 to Gemini with a strict checklist prompt (e.g., 'Is this strictly black and white? Is the line art clean? Are there weird artifact loops? Answer YES or NO'). If NO, trigger a single automated retry with adjusted prompt weights.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "100% automated quality control, ensuring only high-quality, sellable assets are compiled into books/cards.",
+      "current_pain_description": "Hugo only has 10 hours/week and works via phone. If a GitHub Action fails (rate limits, API changes), he has to manually navigate to GitHub to check, losing valuable reaction time.",
+      "proposed_fix": "Add a post-failure step in all GHA workflows that sends a concise markdown payload (error message, log link) to a free Telegram Bot or Discord Webhook directly to Hugo's phone.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Saves 1-2 hours of manual monitoring per week; instant feedback loop on mobile.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Lack of Automated Print-Ready PDF Compilation",
-      "category": "bottleneck",
+      "issue_title": "Unfiltered Low-Quality AI Images (Gibberish and Grayscale)",
+      "category": "quality_bug",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_chess_book"
+        "produce_svg_pack"
       ],
-      "current_pain_description": "Compiling individual images into a single, correctly-formatted KDP PDF (handling bleed, page margins, and inserting blank backing pages to prevent ink bleed-through) is tedious or impossible to do manually on a mobile phone via Termux.",
-      "proposed_fix": "Add an automated compilation step using `reportlab` or `fpdf2` in Python at the end of the generation workflows. The script must auto-calculate margins, insert blank pages on odd indices, enforce 300 DPI, and output a perfect, print-ready PDF directly to the GitHub Actions artifact/release.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Saves Hugo 1-2 hours of tedious manual formatting per book; enables pure mobile-to-KDP publishing.",
+      "current_pain_description": "Free or fast generators (Pollinations, Together FLUX-schnell) often output artifacts, grayscale shading instead of pure line art, or distorted lines that make coloring books unsellable.",
+      "proposed_fix": "Leverage Gemini 2.5 Flash's free multimodal API inside `agent_gemini_quality_check`. Pass the generated image with a strict prompt: 'Is this clean black-and-white line art with NO gray shading, NO text, and NO anatomical errors? Answer YES/NO'. Discard NO outputs.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Ensures 100% sellable quality; prevents KDP account termination due to low-quality customer reviews.",
       "priority_1_10": 9
     },
     {
       "rank": 4,
-      "issue_title": "GitHub Actions Runner Timeout and State Loss",
-      "category": "failure_mode",
+      "issue_title": "Manual Upload Bottleneck on Mobile",
+      "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_card_game",
-        "produce_lowcontent_kdp"
+        "produce_lowcontent_kdp",
+        "produce_svg_pack"
       ],
-      "current_pain_description": "Generating a full 40-50 page coloring book in a single GitHub Actions run takes time. If the runner hits a rate limit or times out at page 38, all intermediate generated images are lost, wasting time and API quotas.",
-      "proposed_fix": "Implement incremental state saving. After each successful image generation, commit the asset and metadata to a temporary branch (e.g., `drafts/coloring-book-1`) or push to a GitHub Actions cache. The pipeline should always check this state on startup and resume from the last successfully generated page.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Eliminates wasted API costs and workflow hours due to unexpected timeouts or network drops.",
+      "current_pain_description": "Hugo has zero active platforms live. Uploading multiple loose images, tags, and descriptions from a Termux/Android phone to KDP or Etsy is extremely slow and tedious.",
+      "proposed_fix": "Create an automation step that compiles assets into a single ZIP file containing: the optimized PDF/PNG, a pre-formatted TXT file with (Title, Description, Tags, Price), and a thumbnail. Push this directly to a private GitHub Release. Hugo only downloads one ZIP per product to his phone.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Reduces manual listing time from 20 mins to 3 mins per product on mobile.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Inefficient Mobile Interface for Workflow Management",
-      "category": "bottleneck",
+      "issue_title": "Redundant Trend-Hunting Agents Wasting API Quotas",
+      "category": "code_quality",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_strategist"
+        "agent_trendhunter",
+        "agent_opportunity_hunter",
+        "agent_niche_gap",
+        "agent_external_trends"
       ],
-      "current_pain_description": "Managing, triggering, and viewing logs of 20+ GitHub Actions workflows via the GitHub mobile web interface on an Android screen is incredibly frustrating and slow.",
-      "proposed_fix": "Implement a simple, free Telegram Bot or Discord Webhook integration in the orchestration workflows. Hugo can trigger pipelines with simple text commands (e.g., `/generate coloring 'dragons'`) and receive completion notifications with PDF download links directly on his phone.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Reduces administrative friction on mobile by 80%, making the 10h/week limit much more productive.",
+      "current_pain_description": "Four separate agents perform similar web scraping or LLM trend analysis. This duplicates code, slows execution, and risks hitting Gemini API rate limits (429).",
+      "proposed_fix": "Consolidate the scraping and analysis logic into a single unified `agent_trend_consolidator`. Let it write a single schema-validated `trends_today.json` that other production pipelines read as a single source of truth.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Reduces API call volume by 60%; simplifies pipeline maintenance.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "No Cross-Pollination of High-Quality Assets",
+      "issue_title": "Missed Cross-Pollination of Coloring Designs to SVG/POD",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_svg_pack",
-        "produce_tumbler_wraps",
-        "produce_kdp_cover"
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "A high-quality asset generated for a coloring book is only used once. It is not automatically reformatted into other digital products like SVGs, stickers, or tumbler wraps, leaving money on the table.",
-      "proposed_fix": "Create an automated 'asset pooler' script. When an asset passes the Gemini visual audit with a perfect score, it is automatically copied to an `/assets/approved/` directory. A secondary automated cron job packages these assets into vector SVGs (via Potrace), pattern wraps, or stickers, creating 3-4 distinct products from a single generation cost.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Multiplies inventory volume and revenue potential by 3x to 4x for the exact same API generation cost.",
-      "priority_1_10": 7
+      "current_pain_description": "High-quality vector/line art generated for coloring books is discarded after compilation, missing opportunities for digital SVG packs (Etsy) or transparent PNGs (Redbubble).",
+      "proposed_fix": "Add a post-generation script to `produce_coloring_book` that extracts individual high-quality pages, converts them to SVG (via potrace/vectorization utilities in GHA), and auto-stages them in the `produce_svg_pack` output folder.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Doubles the product output per hour of GPU generation; expands catalog footprint automatically.",
+      "priority_1_10": 6
     }
   ]
 }
