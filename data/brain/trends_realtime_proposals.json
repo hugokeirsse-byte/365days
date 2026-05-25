@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-25T17:29:53.552288Z",
+  "timestamp": "2026-05-25T20:59:15.540742Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Cozy Jar Worlds Coloring Book",
+      "trend_keyword": "goth coquette aesthetic",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
       "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 2,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Cozy Jar Worlds Coloring Book: Bold and Easy Miniature Tiny Scenes for Adults and Kids, Clean Bold Lines Book",
-      "evidence_url_or_signal": "TikTok hashtag #cozycoloring and #boldandeasy showing 4.2M views spike in the last 10 days, specifically focusing on micro-worlds trapped inside glass mason jars (tiny houses, mini forests, cute kitchens)."
-    },
-    {
-      "rank": 2,
-      "trend_keyword": "Corporate Burnout Bingo Stickers",
-      "platform_where_spotted": "Reddit",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 30,
       "saturation_now_1_10": 4,
       "best_product_format": "sticker",
       "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Funny Corporate Burnout Sticker Pack - Unhinged Employee Office Humor Laptop Decals",
-      "evidence_url_or_signal": "r/workplace and r/antiwork viral thread with 14k upvotes highlighting 'Let me double-check my capacity' and 'Per my last email' as gamified Bingo elements. High demand for physical sticker sheets."
+      "title_template_suggestion": "Pastel Goth Coquette Sticker Pack - Cute Skull with Pink Bow Decal",
+      "evidence_url_or_signal": "TikTok hashtag #gothcoquette spiked with over 4.2M views in the last 12 days, driving high demand for skull-and-pink-bow imagery on Redbubble."
+    },
+    {
+      "rank": 2,
+      "trend_keyword": "solarpunk greenhouse coloring book",
+      "platform_where_spotted": "Reddit",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 2,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Solarpunk Greenhouse Coloring Book: Aesthetic Eco-Futuristic Gardens and Plants for Adults",
+      "evidence_url_or_signal": "Sudden 35% subscriber spike on r/solarpunk in May 2026, with viral posts showing AI-generated cozy eco-homes, driving search queries for 'solarpunk aesthetic coloring book' on Amazon."
     },
     {
       "rank": 3,
-      "trend_keyword": "Retro Supermarket Nostalgia 90s",
+      "trend_keyword": "funny corporate email botanical",
       "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
+      "estimated_lifespan_days": 30,
       "saturation_now_1_10": 3,
-      "best_product_format": "tshirt",
-      "best_pipeline_match": "produce_cultural_arbitrage_v2",
-      "title_template_suggestion": "Vintage Retro Supermarket Aesthetic Tee - 90s Grocery Store Nostalgia Graphic Shirt",
-      "evidence_url_or_signal": "Pinterest Trends showing a 180% search acceleration for '90s supermarket aesthetic' and 'retro grocery branding' in the week ending May 18, 2026."
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_quotes_minimal",
+      "title_template_suggestion": "As Per My Last Email Vintage Botanical Print - Funny Corporate Office Wall Decor",
+      "evidence_url_or_signal": "Pinterest boards for 'office humor aesthetic' showing 150% growth in saves for medieval/botanical designs with aggressive modern corporate quotes."
     },
     {
       "rank": 4,
-      "trend_keyword": "Emotional Support Desk Planter",
-      "platform_where_spotted": "Cults3D",
-      "momentum_score_1_10": 7,
+      "trend_keyword": "DINKWAD lifestyle dog mom",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
       "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 2,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Cute Emotional Support Planter STL - 3D Print File for Funny Face Desk Succulent Pot",
-      "evidence_url_or_signal": "Cults3D search terms for 'funny face planter' and 'emotional support desk toy' grew 40% over the last fortnight, driven by desk setups trends on Instagram Reels."
+      "saturation_now_1_10": 5,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "Proud DINKWAD Mug - Double Income No Kids With A Dog Funny Couple Gift",
+      "evidence_url_or_signal": "TikTok search term 'DINKWAD morning routine' trending with multi-million view videos since mid-May 2026, translating to high-volume search on Etsy."
     },
     {
       "rank": 5,
-      "trend_keyword": "Aura Points Gamified Tracker",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 25,
-      "saturation_now_1_10": 1,
-      "best_product_format": "lowcontent_kdp",
-      "best_pipeline_match": "produce_lowcontent_kdp",
-      "title_template_suggestion": "My Daily Aura Points Tracker: Funny Gamified Self-Improvement Journal for Gen Z and Millennials",
-      "evidence_url_or_signal": "TikTok 'Aura Points' trend (+100, losing aura vs gaining aura) translating into physical tracking logs for humor/productivity. Zero competition on KDP as of mid-May 2026."
+      "trend_keyword": "class of 2026 trauma bonded",
+      "platform_where_spotted": "Etsy",
+      "momentum_score_1_10": 10,
+      "estimated_lifespan_days": 20,
+      "saturation_now_1_10": 6,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_viral_formats",
+      "title_template_suggestion": "Class of 2026 Trauma Bonded Shirt - Funny Graduation Senior Gift Tee",
+      "evidence_url_or_signal": "Etsy graduation-related searches peaking this week (late May 2026), with humor/cynical 'trauma bond' and 'survived' angles outperforming traditional designs."
     },
     {
       "rank": 6,
-      "trend_keyword": "Windows 95 Glitch Art",
-      "platform_where_spotted": "Redbubble",
+      "trend_keyword": "introvert camping club",
+      "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 50,
+      "estimated_lifespan_days": 40,
       "saturation_now_1_10": 3,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_iheart_v4",
-      "title_template_suggestion": "Retro Windows 95 Error Dialog Box Mug - Funny Tech Nostalgia Coffee Cup",
-      "evidence_url_or_signal": "Spike in searches for 'retro system error' on Redbubble tag analytics. Matches perfectly with simple, high-contrast prompt generations on Together AI."
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Introvert Camping Club Sticker - Leave Me Alone Outdoors National Park Badge",
+      "evidence_url_or_signal": "Pinterest searches for 'funny camping aesthetic' and 'introvert outdoor stickers' climbing rapidly as summer travel prep peaks in late May."
     }
   ]
 }
