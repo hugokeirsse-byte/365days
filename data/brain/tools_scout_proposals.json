@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-25T08:13:48.257653Z",
+  "timestamp": "2026-05-25T14:36:02.176055Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,80 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Segmind API",
-      "url": "https://www.segmind.com",
+      "tool_or_platform": "Segmind",
+      "url": "https://www.segmind.com/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "100 free credits per day (refreshed daily). SDXL costs 1 credit, Flux.1 Schnell costs 2 credits.",
-      "what_it_does_uniquely": "Provides reliable, fast API access to cutting-edge models (Flux.1 Schnell, SDXL, ControlNet) with a generous, permanent daily free quota that does not expire.",
-      "would_integrate_where": "In 'produce_coloring_book' or 'produce_kdp_cover' GitHub Actions workflow as a direct curl/request step replacement for Pollinations.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Requires API key registration. Rate limits apply to free tier (usually 2-5 requests per minute)."
+      "free_tier_concrete_limits": "100 free API requests per day (refreshed daily, no credit card required).",
+      "what_it_does_uniquely": "Provides reliable, fast serverless API access to FLUX.1-schnell, SDXL, and specialized ControlNet models. Does not block GitHub Actions runner IPs.",
+      "would_integrate_where": "Direct replacement for Pollinations inside 'produce_coloring_book' and 'produce_kdp_cover' pipelines via simple Python requests.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Daily limit is strictly enforced; requires robust error-handling when credits are exhausted."
     },
     {
       "rank": 2,
-      "tool_or_platform": "DeepInfra API",
-      "url": "https://deepinfra.com",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "1.80 USD free credits on signup. Flux.1 Schnell costs $0.0015 per image (equivalent to ~1,200 free images).",
-      "what_it_does_uniquely": "Incredibly cheap pay-as-you-go pricing for open-source LLMs and image models (including Flux and SDXL) with zero subscription commitments and high-speed API endpoints.",
-      "would_integrate_where": "GitHub Actions image generation steps. Excellent fallback for when Segmind daily credits are exhausted.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Once the $1.80 free credit is consumed, requires a credit card to reload (though $5 goes a very long way)."
+      "tool_or_platform": "Jina Reader API",
+      "url": "https://jina.ai/reader/",
+      "category": "scraping",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month.",
+      "what_it_does_uniquely": "Converts any web URL into clean, LLM-friendly Markdown. Bypasses typical scraper blocks (Cloudflare) and works instantly within lightweight Python scripts on GitHub Actions without needing heavy headless browsers.",
+      "would_integrate_where": "Used by 'agent_trendhunter' and 'agent_opportunity_hunter' to scrape e-commerce trend blogs and marketplace search results for niche extraction.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Highly dynamic SPA sites (Single Page Applications) might occasionally return empty layouts if they require complex JS execution."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Fab (by Epic Games)",
-      "url": "https://www.fab.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list unlimited assets. Epic Games takes a 12% commission on sales (you keep 88%).",
-      "what_it_does_uniquely": "The newly launched, unified marketplace combining Sketchfab, Quixel, and Unreal Engine Marketplace. Huge built-in audience of game developers looking for 2D/3D assets.",
-      "would_integrate_where": "Asset distribution pipeline ('produce_gamedev_asset_pack'). Hugo can upload 2D UI packs, textures, or low-poly 3D models.",
-      "novelty_2026_1_10": 10,
-      "risk_or_caveat": "Strict submission guidelines for asset quality; uploads must be zipped and structured correctly."
+      "tool_or_platform": "Nebius AI Studio",
+      "url": "https://nebius.com/services/ai-studio",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous initial free credit trial ($10-$15 signup credit) with ultra-low pricing thereafter (FLUX.1-schnell costs ~$0.003 per image).",
+      "what_it_does_uniquely": "High-performance open-source model hosting with zero rate limits on free trial credits. Extremely fast inference times for FLUX and SD3.",
+      "would_integrate_where": "High-quality image generation fallback when Together AI or Cloudflare Workers AI limits are hit during peak coloring book generation runs.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires a credit card to unlock the API key, although the free credits are consumed first."
     },
     {
       "rank": 4,
       "tool_or_platform": "Printables Store",
-      "url": "https://www.printables.com",
+      "url": "https://www.printables.com/",
       "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list digital designs (STL/3D files). Prusa takes a 10% platform fee on sales.",
-      "what_it_does_uniquely": "Direct competitor to Cults3D run by Prusa. High-intent 3D printing audience. Their 'Store' feature allows creators to sell digital 3D models directly.",
-      "would_integrate_where": "3D parametric pipeline ('produce_stl_parametric'). Exported STL files can be cross-posted here alongside Cults3D.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "The platform is heavily moderated to avoid spam, so designs must be functional or highly aesthetic."
+      "free_tier_concrete_limits": "100% free to list digital STL/3D files. Low transaction fee on sales.",
+      "what_it_does_uniquely": "Prusa's official 3D printing repository now has a dedicated digital store. It receives massive organic, highly targeted traffic of 3D printer owners looking for premium models, bypassing Cults3D saturation.",
+      "would_integrate_where": "Target marketplace for 'produce_stl_parametric' pipeline outputs (e.g., customized functional prints, gears, organizer bins).",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Users expect high-quality printable files; models must be sliced and verified for printability."
     },
     {
       "rank": 5,
-      "tool_or_platform": "DriveThruRPG / DriveThruCards",
-      "url": "https://www.drivethrurpg.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to set up a publisher account. Commission is 30% for exclusive listings, 35% for non-exclusive listings.",
-      "what_it_does_uniquely": "The premier marketplace for tabletop RPG PDFs, rulesets, maps, and printable card games. Extremely high organic traffic specifically searching for niche gaming PDFs.",
-      "would_integrate_where": "Printable card game pipeline ('produce_card_game' or 'produce_specs_deck'). Exported print-ready PDFs can be sold directly here.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Strict metadata requirements, and customers expect high-quality layouts (well-formatted PDFs)."
+      "tool_or_platform": "Lemon Squeezy",
+      "url": "https://www.lemonsqueezy.com/",
+      "category": "pod",
+      "free_tier_concrete_limits": "No monthly subscription fees. Flat transaction fee of 5% + 50c per sale.",
+      "what_it_does_uniquely": "Acts as the Merchant of Record (MoR). They handle global sales tax and EU VAT compliance automatically, which is an absolute necessity for a solo entrepreneur based in France selling digital goods.",
+      "would_integrate_where": "Direct storefront for digital PDF coloring books, SVG packs, and gamedev assets generated by the pipelines, hosted on a free GitHub Pages site.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Payout thresholds apply, and digital products must not violate their strict acceptable use policy regarding low-effort AI spam."
     },
     {
       "rank": 6,
-      "tool_or_platform": "ElevenLabs API",
-      "url": "https://elevenlabs.io",
-      "category": "ai_audio",
-      "free_tier_concrete_limits": "10,000 characters per month free. Access to high-quality pre-made voices.",
-      "what_it_does_uniquely": "Industry-leading voice synthesis. Allows Hugo to generate ultra-realistic audio files to bundle with KDP books (e.g., audiobooks or pronunciation guides).",
-      "would_integrate_where": "New educational KDP book pipeline (e.g., language learning or kids' stories with QR codes pointing to audio files hosted on GitHub Pages).",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Free tier requires attribution (e.g., 'voiced by ElevenLabs') and cannot be used for direct commercial resale without upgrading, though embedding audio in a book is generally a grey area."
-    },
-    {
-      "rank": 7,
-      "tool_or_platform": "Serpstack API",
-      "url": "https://serpstack.com",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100 free searches per month. No credit card required.",
-      "what_it_does_uniquely": "Provides clean JSON Google search results. Bypasses the blocks/captchas that GitHub Actions typically encounters when trying to scrape search queries directly.",
-      "would_integrate_where": "Trend hunting scripts ('agent_opportunity_hunter' or 'agent_trendhunter') to programmatically discover trending keywords on Google/Google Shopping.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "100 requests/month is low, so searches must be highly targeted and consolidated into single weekly cron jobs."
+      "tool_or_platform": "OpenGameArt",
+      "url": "https://opengameart.org/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to host, share, and promote assets.",
+      "what_it_does_uniquely": "The largest repository for free indie gamedev assets. Excellent for 'freemium' marketing: releasing a free base pack (CC-BY) to drive highly targeted organic traffic to paid expansion packs hosted on Lemon Squeezy.",
+      "would_integrate_where": "The traffic generation phase of the 'produce_gamedev_asset_pack' pipeline.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "Must strictly follow licensing standards (CC-BY, CC0) to build developer trust."
     }
   ]
 }
