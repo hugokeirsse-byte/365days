@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-25T17:29:59.021147Z",
+  "timestamp": "2026-05-25T21:00:04.192920Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Retro Handheld Gaming & FPGA Customization",
-      "type": "adjacent_market",
-      "audience_size_estimate": 150000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Collectors and modders of retro handhelds (Anbernic, Miyoo, Odin) and MiSTer FPGA setups who want to customize their devices and display them proudly.",
-      "product_angles": [
-        "3D printable display stands and custom ergonomic grips (Cults3D)",
-        "Pre-scaled vinyl decal cut files / skins (SVG Pack)",
-        "Console-inspired aesthetic wallpapers and custom OS theme assets (Digital Download)"
-      ],
-      "best_pipeline_or_new": "produce_stl_parametric_retro",
-      "first_test_product": "Parametric 3D-printable wall mount and desk stand for Miyoo Mini Plus / Anbernic RG35XX",
-      "estimated_monthly_revenue_year1_eur": 180
-    },
-    {
-      "rank": 2,
-      "name": "Quail Keepers & Micro-Homesteaders",
-      "type": "deep_niche",
-      "audience_size_estimate": 75000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Suburban or urban homesteaders raising Coturnix quails for eggs and meat, looking for specialized tools and community identity because standard chicken gear is too large.",
-      "product_angles": [
-        "Quail-specific egg carton labels and cottage industry branding templates (SVG Pack)",
-        "Daily quail flock health & egg production logbooks (KDP)",
-        "3D-printed quail-sized gravity feeders and egg-spiral dispensers (Cults3D)"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp_homestead",
-      "first_test_product": "The Essential Coturnix Quail Flock Record Keeping Logbook (KDP)",
-      "estimated_monthly_revenue_year1_eur": 120
-    },
-    {
-      "rank": 3,
-      "name": "Historical European Martial Arts (HEMA)",
-      "type": "sub_culture",
-      "audience_size_estimate": 60000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "HEMA sword fighters, historical fencing enthusiasts, and medieval combat practitioners who train weekly and obsess over historical manuals (Lichtenauer, Fiore).",
-      "product_angles": [
-        "Fencing bout analysis journals and training logs (KDP)",
-        "Cleaned-up vector designs of historical fechtbuch combat stances (SVG / Redbubble)",
-        "3D printable wall-mounts for feder swords and gear drying racks (Cults3D)"
-      ],
-      "best_pipeline_or_new": "produce_hema_gear",
-      "first_test_product": "HEMA Fighter's Training Journal & Bout Analyzer (KDP)",
-      "estimated_monthly_revenue_year1_eur": 150
-    },
-    {
-      "rank": 4,
-      "name": "Solo Journaling RPG Players",
-      "type": "adjacent_market",
-      "audience_size_estimate": 110000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Tabletop RPG fans who play solo journaling games (like Thousand Year Old Vampire, Ironsworn, Colostle) requiring heavy writing, mapping, and prompt-tracking.",
-      "product_angles": [
-        "Themed, highly structured prompt journals with atmospheric borders (KDP)",
-        "Printable oracle decks and encounter generator cards (TGC / PDF)",
-        "Modular dungeon-mapping hex tiles for print-and-play (SVG / PDF)"
-      ],
-      "best_pipeline_or_new": "produce_solo_rpg_tools",
-      "first_test_product": "Dark Fantasy Solo RPG Journal & Campaign Mapper (KDP)",
-      "estimated_monthly_revenue_year1_eur": 220
-    },
-    {
-      "rank": 5,
-      "name": "Amateur Radio (Ham Radio) Operators",
-      "type": "sub_culture",
-      "audience_size_estimate": 200000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Licensed radio amateurs (DXers) who log global contacts, build antennas, and exchange physical QSL confirmation cards.",
-      "product_angles": [
-        "ITU Zone & Prefix reference logs and contact record books (KDP)",
-        "Printable vintage-style QSL card design templates (SVG / Canva Links)",
-        "3D-printed portable dipole antenna wire-winders and coax-guides (Cults3D)"
-      ],
-      "best_pipeline_or_new": "produce_ham_radio_logs",
-      "first_test_product": "Amateur Radio DX Contact Logbook with ITU Prefix Map (KDP)",
-      "estimated_monthly_revenue_year1_eur": 140
-    },
-    {
-      "rank": 6,
-      "name": "French Local Volunteer Fire Stations (Sapeurs-Pompiers)",
+      "name": "Amicales des Sapeurs-Pompiers (B2B Local France)",
       "type": "b2b",
       "audience_size_estimate": 250000,
       "passion_level_1_10": 10,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Local French fire stations ('casernes de sapeurs-pompiers') organizing annual 'Sainte-Barbe' celebrations, retirement gifts, or public open houses.",
+      "buyer_persona": "French local fire station 'Amicale' presidents looking for custom, modern, non-copyright-infringing coloring books to distribute during their annual calendar campaign (Sainte-Barbe/fin d'année).",
       "product_angles": [
-        "Customizable emblem templates for specific regional fire-stations (SVG Pack)",
-        "Station shift planner and guard duty notebooks (KDP)",
-        "3D printable personalized locker gear tags or helmet displays (Cults3D)"
+        "Coloring books featuring realistic French fire trucks (FPT, VSAV, CCF) without brand logos",
+        "Customizable Canva templates for local fire station calendars",
+        "Vector mascot packs for custom station t-shirts and stickers"
       ],
-      "best_pipeline_or_new": "produce_pompier_b2b",
-      "first_test_product": "Carnet de Garde du Sapeur-Pompier - Agenda de Postes et d'Interventions (KDP)",
+      "best_pipeline_or_new": "produce_coloring_book",
+      "first_test_product": "Le Grand Livre de Coloriage des Sapeurs-Pompiers (focused on French trucks/scenes, sold via KDP and direct B2B digital PDF download for local printing)",
+      "estimated_monthly_revenue_year1_eur": 450
+    },
+    {
+      "rank": 2,
+      "name": "PSX Retro / Low-Poly Seamless Textures",
+      "type": "adjacent_market",
+      "audience_size_estimate": 150000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Solo indie game developers using Godot, Unity, or Unreal Engine, building retro 90s-style PSX horror/scifi games who need fast, cohesive, seamless textures.",
+      "product_angles": [
+        "Seamless pixelated wall, metal, and floor texture packs (256x256 and 512x512)",
+        "Sci-fi console UI texture atlases",
+        "Normal and height maps generated via GitHub Actions pipelines"
+      ],
+      "best_pipeline_or_new": "produce_gamedev_asset_pack",
+      "first_test_product": "Retro PSX Industrial Horror Texture Pack (50 seamless textures + normal maps on itch.io and Etsy)",
+      "estimated_monthly_revenue_year1_eur": 250
+    },
+    {
+      "rank": 3,
+      "name": "Arborists & Tree Climbers (Élagueurs)",
+      "type": "deep_niche",
+      "audience_size_estimate": 120000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Professional tree care specialists and climbers who view their high-risk job as an extreme sport and a core lifestyle identity.",
+      "product_angles": [
+        "Pocket-sized rigging and knot guide cheat-sheets (KDP/PDF)",
+        "Funny SVG cutting files for car windows featuring climbing gear and ropes",
+        "Vintage blueprint/patent art prints of chainsaws and climbing harnesses"
+      ],
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "The Tree Climber's Knot & Rigging Pocket Reference Guide (KDP low-content pocket book)",
+      "estimated_monthly_revenue_year1_eur": 180
+    },
+    {
+      "rank": 4,
+      "name": "Ham Radio Operators (Amateurs de Radio)",
+      "type": "sub_culture",
+      "audience_size_estimate": 3000000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "slow",
+      "buyer_persona": "Mainly older, highly technical, and passionate radio hobbyists who love logging contacts (QSOs), physical logbooks, and collecting QSL confirmation cards.",
+      "product_angles": [
+        "Highly optimized physical Ham Radio Logbooks with fields for frequency, RST, and power",
+        "Customizable QSL card templates (sold as Canva or high-res print-ready PDFs)",
+        "Vintage radio patent art printable posters"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Universal Ham Radio Logbook (KDP physical book with clean, high-contrast grid layouts)",
+      "estimated_monthly_revenue_year1_eur": 300
+    },
+    {
+      "rank": 5,
+      "name": "Ultra-Trail & GR20 Elevation Profilers",
+      "type": "sub_culture",
+      "audience_size_estimate": 200000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Extreme runners and long-distance hikers proud of finishing iconic routes (GR20, UTMB, PCT) wanting minimalist home decor representing their physical achievement.",
+      "product_angles": [
+        "Minimalist GPX-based elevation profile vector posters (automated rendering)",
+        "Funny trail runner SVG/sticker packs focusing on altitude sickness, extreme fatigue, and gear",
+        "Dedicated trail-running training logs tracking elevation gain (D+)"
+      ],
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "GR20 Minimalist Elevation Profile Poster (Digital SVG/PDF pack for self-printing)",
       "estimated_monthly_revenue_year1_eur": 200
+    },
+    {
+      "rank": 6,
+      "name": "PLC & Automation Engineers (Programmable Logic Controllers)",
+      "type": "deep_niche",
+      "audience_size_estimate": 400000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Industrial automation engineers who program factory machines (Siemens, Rockwell) and deal with commissioning chaos, PLC bugs, and 3:00 AM emergency calls.",
+      "product_angles": [
+        "Humorous stickers/SVGs featuring ladder logic, PLC code, and commissioning disasters",
+        "Cheat-sheet pocket notebooks with Modbus registers and industrial networking protocols",
+        "Mug designs with 'I survived the factory floor commissioning' schematics"
+      ],
+      "best_pipeline_or_new": "produce_cope_pack",
+      "first_test_product": "The PLC Engineer's Commissioning Survival Mug & Sticker SVG Bundle",
+      "estimated_monthly_revenue_year1_eur": 150
     }
   ]
 }
