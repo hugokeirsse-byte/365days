@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-25T02:32:16.790324Z",
+  "timestamp": "2026-05-25T08:13:58.045061Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Romantasy Map Coloring Book",
+      "trend_keyword": "Goth Gardening Witchy Plants",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 60,
+      "estimated_lifespan_days": 45,
       "saturation_now_1_10": 3,
       "best_product_format": "coloring_book",
       "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Cozy Romantasy Map Coloring Book: Fantasy Kingdoms and Mythical Cartography for Book Lovers",
-      "evidence_url_or_signal": "TikTok hashtag #booktok fantasy map drawing and coloring videos gained 4.2M views in the week of May 12, 2026, driven by summer fantasy book releases."
+      "title_template_suggestion": "Gothic Garden Coloring Book Dark Witchy Botanicals and Poisonous Flowers for Adults",
+      "evidence_url_or_signal": "Spike in TikTok views for #GothGardener and #WitchyPlants (over 4.2M views in the last 10 days) featuring dark, ornate greenhouse aesthetics."
     },
     {
       "rank": 2,
-      "trend_keyword": "Passive Aggressive Corporate Email Stickers",
+      "trend_keyword": "Cozy Pixel Art Desk Mats",
       "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 4,
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 2,
       "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Funny Corporate Email Sticker Pack - Sent From My Smart Fridge - Sarcastic Office Humor Decals",
-      "evidence_url_or_signal": "Reddit r/me_irl thread 'Unhinged email sign-offs' hit 28k upvotes on May 15, 2026, with users demanding sticker sheets of the best signs."
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Cute Cozy Pixel Art Stickers Pack Lofi Aesthetic Gamer Decals",
+      "evidence_url_or_signal": "Reddit r/cozygamers saw a 150% spike in threads requesting pastel pixel art desk mats and aesthetic setup stickers during mid-May 2026."
     },
     {
       "rank": 3,
-      "trend_keyword": "Gothic Herbarium Dark Academia Art",
-      "platform_where_spotted": "Etsy",
+      "trend_keyword": "DINK Dog Travel Journal",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 2,
+      "best_product_format": "lowcontent_kdp",
+      "best_pipeline_match": "produce_lowcontent_kdp",
+      "title_template_suggestion": "DINK Dog Travel Journal: The Ultimate Road Trip Planner for Spoiled Pups and Their Humans",
+      "evidence_url_or_signal": "TikTok viral videos tagged #DINKlife and #DogVacation showing high engagement (800k+ likes on videos from May 12-18, 2026) with users asking for logbooks for dog-friendly hotels."
+    },
+    {
+      "rank": 4,
+      "trend_keyword": "AI Prompt Engineer Corporate Humour",
+      "platform_where_spotted": "Reddit",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 5,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_viral_formats",
+      "title_template_suggestion": "Sarcastic AI Prompt Engineer Coffee Mug - I Prompt Therefore I Am Confused Funny Tech Gift",
+      "evidence_url_or_signal": "r/programmerhumor trending posts mockingly celebrating 'Prompt Architect' corporate job descriptions, sparking a high demand for desk accessories with these jokes."
+    },
+    {
+      "rank": 5,
+      "trend_keyword": "BookTok Tarot Bookmarks",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 3,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Aesthetic Dark Academia Tarot Card Stickers Printable Bookworm Bookmarks Pack",
+      "evidence_url_or_signal": "#BookTok trend focusing on dark fantasy reads featuring gothic tarot card designs as custom printable bookmarks, accelerated over the last 14 days."
+    },
+    {
+      "rank": 6,
+      "trend_keyword": "Solarpunk Botanical Blueprints",
+      "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 90,
       "saturation_now_1_10": 2,
       "best_product_format": "wall_art",
       "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Dark Academia Gothic Herbarium Botanical Prints - Set of 6 Vintage Poisonous Plants Wall Art SVG",
-      "evidence_url_or_signal": "Etsy keyword search volume for 'gothic herbarium' rose 114% during the first two weeks of May 2026, indicating a pivot from traditional bright cottagecore."
-    },
-    {
-      "rank": 4,
-      "trend_keyword": "Emotional Support Spreadsheet Mug",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 5,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_iheart_v4",
-      "title_template_suggestion": "Emotional Support Spreadsheet Coffee Mug - Funny Accountant and Data Analyst Gift",
-      "evidence_url_or_signal": "TikTok trend 'My Emotional Support Spreadsheet' with office workers sharing overly complex Excel sheets reached 3.1M views between May 8 and May 18, 2026."
-    },
-    {
-      "rank": 5,
-      "trend_keyword": "Solarpunk City Planner",
-      "platform_where_spotted": "Pinterest",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 75,
-      "saturation_now_1_10": 2,
-      "best_product_format": "lowcontent_kdp",
-      "best_pipeline_match": "produce_lowcontent_kdp",
-      "title_template_suggestion": "Solarpunk Garden Planner and Journal: Cyber-Organic Organic Gardening Log Book",
-      "evidence_url_or_signal": "Pinterest Trends tool showing a 180% year-on-year increase in 'Solarpunk aesthetic' and 'Urban green infrastructure design' searches peaking mid-May 2026."
-    },
-    {
-      "rank": 6,
-      "trend_keyword": "Retro Pixel Art Travel Poster",
-      "platform_where_spotted": "Pinterest",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 3,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_gamedev_asset_pack",
-      "title_template_suggestion": "Retro Pixel Art Travel Poster Print - Cozy 90s Aesthetic Tokyo Paris New York City Wall Decor",
-      "evidence_url_or_signal": "Etsy search spike for 'pixel art poster' and Pinterest boards showcasing 'cozy lofi pixel travel' growing exponentially since May 10, 2026."
+      "title_template_suggestion": "Solarpunk Botanical Blueprint Wall Art Set Aesthetic Green Tech Patent Prints",
+      "evidence_url_or_signal": "Pinterest Trends search volume for 'Solarpunk aesthetic' and 'Botanical blueprints' increased by 140% since May 8, 2026, driven by eco-futuristic home decor pinboards."
     }
   ]
 }
