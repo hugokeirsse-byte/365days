@@ -1,11 +1,169 @@
 {
   "agent": "tools_scout",
-  "timestamp": "2026-05-25T02:32:57.885671Z",
-  "status": "ERROR — Gemini call failed",
-  "error": "gemini-flash-latest: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-  "models_tried": [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-flash-latest"
+  "title": "Tools Scout Brain",
+  "timestamp": "2026-05-25T08:13:48.257653Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_coloring_intel",
+    "agent_external_trends",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_strategist",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "tool_or_platform": "Segmind API",
+      "url": "https://www.segmind.com",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "100 free credits per day (refreshed daily). SDXL costs 1 credit, Flux.1 Schnell costs 2 credits.",
+      "what_it_does_uniquely": "Provides reliable, fast API access to cutting-edge models (Flux.1 Schnell, SDXL, ControlNet) with a generous, permanent daily free quota that does not expire.",
+      "would_integrate_where": "In 'produce_coloring_book' or 'produce_kdp_cover' GitHub Actions workflow as a direct curl/request step replacement for Pollinations.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Requires API key registration. Rate limits apply to free tier (usually 2-5 requests per minute)."
+    },
+    {
+      "rank": 2,
+      "tool_or_platform": "DeepInfra API",
+      "url": "https://deepinfra.com",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "1.80 USD free credits on signup. Flux.1 Schnell costs $0.0015 per image (equivalent to ~1,200 free images).",
+      "what_it_does_uniquely": "Incredibly cheap pay-as-you-go pricing for open-source LLMs and image models (including Flux and SDXL) with zero subscription commitments and high-speed API endpoints.",
+      "would_integrate_where": "GitHub Actions image generation steps. Excellent fallback for when Segmind daily credits are exhausted.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Once the $1.80 free credit is consumed, requires a credit card to reload (though $5 goes a very long way)."
+    },
+    {
+      "rank": 3,
+      "tool_or_platform": "Fab (by Epic Games)",
+      "url": "https://www.fab.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list unlimited assets. Epic Games takes a 12% commission on sales (you keep 88%).",
+      "what_it_does_uniquely": "The newly launched, unified marketplace combining Sketchfab, Quixel, and Unreal Engine Marketplace. Huge built-in audience of game developers looking for 2D/3D assets.",
+      "would_integrate_where": "Asset distribution pipeline ('produce_gamedev_asset_pack'). Hugo can upload 2D UI packs, textures, or low-poly 3D models.",
+      "novelty_2026_1_10": 10,
+      "risk_or_caveat": "Strict submission guidelines for asset quality; uploads must be zipped and structured correctly."
+    },
+    {
+      "rank": 4,
+      "tool_or_platform": "Printables Store",
+      "url": "https://www.printables.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list digital designs (STL/3D files). Prusa takes a 10% platform fee on sales.",
+      "what_it_does_uniquely": "Direct competitor to Cults3D run by Prusa. High-intent 3D printing audience. Their 'Store' feature allows creators to sell digital 3D models directly.",
+      "would_integrate_where": "3D parametric pipeline ('produce_stl_parametric'). Exported STL files can be cross-posted here alongside Cults3D.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "The platform is heavily moderated to avoid spam, so designs must be functional or highly aesthetic."
+    },
+    {
+      "rank": 5,
+      "tool_or_platform": "DriveThruRPG / DriveThruCards",
+      "url": "https://www.drivethrurpg.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to set up a publisher account. Commission is 30% for exclusive listings, 35% for non-exclusive listings.",
+      "what_it_does_uniquely": "The premier marketplace for tabletop RPG PDFs, rulesets, maps, and printable card games. Extremely high organic traffic specifically searching for niche gaming PDFs.",
+      "would_integrate_where": "Printable card game pipeline ('produce_card_game' or 'produce_specs_deck'). Exported print-ready PDFs can be sold directly here.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Strict metadata requirements, and customers expect high-quality layouts (well-formatted PDFs)."
+    },
+    {
+      "rank": 6,
+      "tool_or_platform": "ElevenLabs API",
+      "url": "https://elevenlabs.io",
+      "category": "ai_audio",
+      "free_tier_concrete_limits": "10,000 characters per month free. Access to high-quality pre-made voices.",
+      "what_it_does_uniquely": "Industry-leading voice synthesis. Allows Hugo to generate ultra-realistic audio files to bundle with KDP books (e.g., audiobooks or pronunciation guides).",
+      "would_integrate_where": "New educational KDP book pipeline (e.g., language learning or kids' stories with QR codes pointing to audio files hosted on GitHub Pages).",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Free tier requires attribution (e.g., 'voiced by ElevenLabs') and cannot be used for direct commercial resale without upgrading, though embedding audio in a book is generally a grey area."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "Serpstack API",
+      "url": "https://serpstack.com",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100 free searches per month. No credit card required.",
+      "what_it_does_uniquely": "Provides clean JSON Google search results. Bypasses the blocks/captchas that GitHub Actions typically encounters when trying to scrape search queries directly.",
+      "would_integrate_where": "Trend hunting scripts ('agent_opportunity_hunter' or 'agent_trendhunter') to programmatically discover trending keywords on Google/Google Shopping.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "100 requests/month is low, so searches must be highly targeted and consolidated into single weekly cron jobs."
+    }
   ]
 }
