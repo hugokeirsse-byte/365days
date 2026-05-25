@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-25T14:35:56.838782Z",
+  "timestamp": "2026-05-25T17:30:11.657195Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch 1st High-Intent KDP Coloring Book (Bold & Easy style)",
+      "action_title": "Publish first 3 micro-niche Coloring Books on Amazon KDP via Runware PAYG",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 20,
-      "estimated_revenue_uplift_eur_30days_high": 150,
-      "hugo_effort_hours": 6,
-      "why_this_works_now": "The 'Bold and Easy' minimalist coloring book trend is exploding on TikTok/Amazon. It requires thick lines and simple shapes, which FLUX-schnell (via Together AI/Cloudflare free tiers) generates with 100% precision, avoiding the complex rendering artifacts of detailed coloring books.",
-      "first_action_today": "Run a bash script in Termux to call Together AI API, generating 40 thick-lined 'Cozy Hygge Objects' images, and compile them into a print-ready PDF using python-reportlab."
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 120,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "The 'produce_coloring_book' pipeline is ready. Using Runware PAYG ($0.006 per Flux-schnell image) bypasses the GitHub Action IP blocks for under 2 EUR total. Amazon KDP has built-in organic traffic for specific long-tail coloring book keywords (e.g., 'gothic mandala coloring book' or 'steampunk animals').",
+      "first_action_today": "Fund Runware account with 5 EUR, retrieve the API key, and trigger the 'produce_coloring_book' GitHub Action with a highly specific keyword."
     },
     {
       "rank": 2,
-      "action_title": "Cross-list Coloring Pages as Printable PDFs on Etsy",
+      "action_title": "Upload 50 minimalist quote designs to Redbubble using existing pipeline",
       "type": "upload",
-      "target_platform": "Etsy",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 100,
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 45,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Digital downloads have 90%+ profit margins and zero shipping issues. Reusing the exact same PDF compiled for KDP as a digital download on Etsy maximizes Hugo's hourly ROI immediately.",
-      "first_action_today": "Register the Etsy seller account via Android browser and prepare a single listing template for a 'Pack of 40 Cozy Bold & Easy Printable Coloring Pages'."
+      "why_this_works_now": "Redbubble is free to upload and has instant organic indexing. By running 'produce_quotes_minimal' or 'produce_literal_idioms_v2', you can batch-generate PNGs on Termux, upload them directly via mobile browser or a lightweight command-line uploader tool, targeting trending internet humor/idioms.",
+      "first_action_today": "Run the 'produce_quotes_minimal' script on Termux to output 50 transparent PNGs targeting tech/solopreneur humor."
     },
     {
       "rank": 3,
-      "action_title": "Programmatic Hexagonal / Isometric Grid Notebooks on KDP",
+      "action_title": "Launch 3 parametric STL models on Cults3D",
       "type": "upload",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 80,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "No AI image generation needed, bypassing current API bottlenecks. Hexagonal graph paper is highly sought after by organic chemistry students and tabletop RPG map makers. Grid lines are generated 100% mathematically via Python in Termux.",
-      "first_action_today": "Write a 30-line Python script using 'matplotlib' or 'reportlab' to output a 120-page hexagonal grid PDF, and design a minimalist typographic cover using HTML-to-Image in Termux."
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 35,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "The 3D printing community on Cults3D is highly transaction-oriented. Functional, parametric parts (using 'produce_stl_parametric' pipeline) sell consistently because they solve actual organization/hardware issues. Listing is free.",
+      "first_action_today": "Activate 'produce_stl_parametric' to generate 3 storage/organizational models and upload them to Cults3D with clear mobile screenshots."
     },
     {
       "rank": 4,
-      "action_title": "Upload 20 Seamless Pattern Packs for Redbubble Home Decor",
+      "action_title": "Package and list 5 2D Gamedev Asset Packs on itch.io",
       "type": "upload",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 5,
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 10,
       "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 5,
-      "why_this_works_now": "Redbubble requires zero upfront listing fees (unlike Etsy). By generating 20 high-quality abstract seamless tiles (using Together AI's FLUX-schnell model with pattern-specific prompts), Hugo can target high-margin items like throw pillows, duvets, and phone cases.",
-      "first_action_today": "Generate 5 seamless pastel retro patterns via GitHub Actions workflow using Together AI, download them to Termux, and upload them to Redbubble using the mobile web interface."
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "itch.io allows setting a 'suggested price' with a 'pay what you want' model. Using the 'produce_gamedev_asset_pack' pipeline (UI buttons, pixel art textures, tilemaps generated via Together AI / Pollinations), you can tap into indie game devs looking for quick assets.",
+      "first_action_today": "Run 'produce_gamedev_asset_pack' to create a 'Sci-Fi UI Button Pack' and upload it to itch.io with relevant tags."
     },
     {
       "rank": 5,
-      "action_title": "Publish Parametric Desk Organizers on Cults3D",
+      "action_title": "Publish 10 High-Volume Low-Content Planners on KDP",
       "type": "upload",
-      "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 60,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "Cults3D users love modularity. By writing basic OpenSCAD scripts directly in Termux, Hugo can generate customizable parametric STL files (e.g., SD card holders, hex-organizers) that do not require complex 3D modeling software skills.",
-      "first_action_today": "Write a basic OpenSCAD file for a customizable grid drawer organizer, render the STL using the OpenSCAD CLI in Termux, and create a Cults3D draft listing."
-    },
-    {
-      "rank": 6,
-      "action_title": "Launch a 'Pay-What-You-Want' 2D Game Asset Pack",
-      "type": "new_stream",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 40,
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 90,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Game developers are constantly looking for affordable UI buttons, icons, and tiled textures. Using Together AI, Hugo can generate sheets of UI assets, slice them programmatically using Python (Pillow), and upload them as a ZIP pack.",
-      "first_action_today": "Generate a set of 50 fantasy RPG potion bottles and UI icons on a grid, write a Python slicing script in Termux to output individual PNGs, and pack them into a zip file."
+      "why_this_works_now": "Using the 'produce_lowcontent_kdp' pipeline, you can generate simple grid interiors (dot journals, habit trackers, daily planners) that do not require complex AI image generation. This bypasses the current image API bottlenecks entirely.",
+      "first_action_today": "Generate 10 PDF interiors using the 'produce_lowcontent_kdp' script and upload them using mobile-optimized KDP metadata."
     }
   ]
 }
