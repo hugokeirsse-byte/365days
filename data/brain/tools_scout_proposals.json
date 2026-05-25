@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-25T14:36:02.176055Z",
+  "timestamp": "2026-05-25T17:30:37.552067Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Segmind",
-      "url": "https://www.segmind.com/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "100 free API requests per day (refreshed daily, no credit card required).",
-      "what_it_does_uniquely": "Provides reliable, fast serverless API access to FLUX.1-schnell, SDXL, and specialized ControlNet models. Does not block GitHub Actions runner IPs.",
-      "would_integrate_where": "Direct replacement for Pollinations inside 'produce_coloring_book' and 'produce_kdp_cover' pipelines via simple Python requests.",
+      "tool_or_platform": "Lemon Squeezy API",
+      "url": "https://www.lemonsqueezy.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to sign up. No monthly fees. Only transaction fees (5% + $0.50 per sale).",
+      "what_it_does_uniquely": "Acts as a Merchant of Record (MoR). It handles EU VAT compliance and invoicing automatically, which is a massive administrative relief for a solo entrepreneur based in France (auto-entrepreneur status).",
+      "would_integrate_where": "Use the API to programmatically create product pages and checkout links for digital coloring books (PDFs), STL packages, and gamedev asset packs right after GitHub Actions finishes generating them.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Daily limit is strictly enforced; requires robust error-handling when credits are exhausted."
+      "risk_or_caveat": "Payouts require verification; strict policy against copyright-infringing assets."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Jina Reader API",
-      "url": "https://jina.ai/reader/",
-      "category": "scraping",
-      "free_tier_concrete_limits": "1,000,000 free tokens per month.",
-      "what_it_does_uniquely": "Converts any web URL into clean, LLM-friendly Markdown. Bypasses typical scraper blocks (Cloudflare) and works instantly within lightweight Python scripts on GitHub Actions without needing heavy headless browsers.",
-      "would_integrate_where": "Used by 'agent_trendhunter' and 'agent_opportunity_hunter' to scrape e-commerce trend blogs and marketplace search results for niche extraction.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Highly dynamic SPA sites (Single Page Applications) might occasionally return empty layouts if they require complex JS execution."
+      "tool_or_platform": "Fal.ai API",
+      "url": "https://fal.ai/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "$10 free credits upon account creation (equivalent to ~3,300 FLUX.schnell images at $0.003/img).",
+      "what_it_does_uniquely": "Incredibly fast inference speeds for FLUX.schnell and FLUX-dev, optimized for developers. Offers robust img2img, inpainting, and controlnet endpoints with zero cold-starts.",
+      "would_integrate_where": "Replace the unreliable/low-quality image generators in the `produce_coloring_book` and `produce_kdp_cover` pipelines inside GitHub Actions using a simple cURL call.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires a credit card or GitHub login for verification; once free credits expire, it transitions to a low-cost pay-as-you-go model."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Nebius AI Studio",
-      "url": "https://nebius.com/services/ai-studio",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous initial free credit trial ($10-$15 signup credit) with ultra-low pricing thereafter (FLUX.1-schnell costs ~$0.003 per image).",
-      "what_it_does_uniquely": "High-performance open-source model hosting with zero rate limits on free trial credits. Extremely fast inference times for FLUX and SD3.",
-      "would_integrate_where": "High-quality image generation fallback when Together AI or Cloudflare Workers AI limits are hit during peak coloring book generation runs.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires a credit card to unlock the API key, although the free credits are consumed first."
+      "tool_or_platform": "Jina Reader API",
+      "url": "https://jina.ai/reader/",
+      "category": "scraping",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month via simple HTTP GET requests.",
+      "what_it_does_uniquely": "Converts any web URL (e.g., trend blogs, marketplace search result pages) into clean, LLM-friendly Markdown. It bypasses standard cloudflare protections that block regular scrapers.",
+      "would_integrate_where": "Integrate into `agent_trendhunter` and `agent_opportunity_hunter` to read real-time trend pages directly from GitHub Actions and feed clean text straight to Gemini.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Heavy JS-rendered pages can sometimes timeout or return partial content."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Printables Store",
-      "url": "https://www.printables.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to list digital STL/3D files. Low transaction fee on sales.",
-      "what_it_does_uniquely": "Prusa's official 3D printing repository now has a dedicated digital store. It receives massive organic, highly targeted traffic of 3D printer owners looking for premium models, bypassing Cults3D saturation.",
-      "would_integrate_where": "Target marketplace for 'produce_stl_parametric' pipeline outputs (e.g., customized functional prints, gears, organizer bins).",
+      "tool_or_platform": "Serper.dev API",
+      "url": "https://serper.dev/",
+      "category": "analytics",
+      "free_tier_concrete_limits": "2,500 free search queries upon signup.",
+      "what_it_does_uniquely": "Extremely fast and cheap Google Search, Google Images, and Google Shopping scraper. Essential for programmatic SEO and trend intelligence without getting IP-blocked.",
+      "would_integrate_where": "Add to `agent_niche_gap` to programmatically search for search-volume gaps and competitor listings on Google Shopping before deciding on a new book or card game topic.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Users expect high-quality printable files; models must be sliced and verified for printability."
+      "risk_or_caveat": "Strict rate limits on the free tier; search results are localized based on query parameters."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com/",
-      "category": "pod",
-      "free_tier_concrete_limits": "No monthly subscription fees. Flat transaction fee of 5% + 50c per sale.",
-      "what_it_does_uniquely": "Acts as the Merchant of Record (MoR). They handle global sales tax and EU VAT compliance automatically, which is an absolute necessity for a solo entrepreneur based in France selling digital goods.",
-      "would_integrate_where": "Direct storefront for digital PDF coloring books, SVG packs, and gamedev assets generated by the pipelines, hosted on a free GitHub Pages site.",
+      "tool_or_platform": "Segmind API",
+      "url": "https://www.segmind.com/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "100 free image generations per day, refreshed daily.",
+      "what_it_does_uniquely": "Offers a massive catalog of fine-tuned SDXL models, ControlNet, and FLUX.schnell. The daily 100-image limit is entirely free and does not expire.",
+      "would_integrate_where": "Use as the primary fallback engine in the `image_generation_status` pipeline when other free APIs hit rate limits.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Payout thresholds apply, and digital products must not violate their strict acceptable use policy regarding low-effort AI spam."
+      "risk_or_caveat": "Free tier API calls can experience high latency during peak usage hours."
     },
     {
       "rank": 6,
-      "tool_or_platform": "OpenGameArt",
-      "url": "https://opengameart.org/",
+      "tool_or_platform": "Printify REST API",
+      "url": "https://developers.printify.com/",
+      "category": "pod",
+      "free_tier_concrete_limits": "Free access to the API, up to 5 active merchant stores.",
+      "what_it_does_uniquely": "Allows complete programmatic creation of POD mockups, product listings, and order submission. Can automate publishing designs directly to connected stores (Etsy, Shopify, Pop-up stores).",
+      "would_integrate_where": "Build a new automated publishing script (`publish_to_printify`) that runs in GitHub Actions, uploading generated designs (like tumbler wraps or SVG packs) directly to a Printify shop.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Requires manual setup of store connections once; some product templates have complex JSON schemas."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "Godot Asset Library API",
+      "url": "https://godotengine.org/asset-library/api",
       "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to host, share, and promote assets.",
-      "what_it_does_uniquely": "The largest repository for free indie gamedev assets. Excellent for 'freemium' marketing: releasing a free base pack (CC-BY) to drive highly targeted organic traffic to paid expansion packs hosted on Lemon Squeezy.",
-      "would_integrate_where": "The traffic generation phase of the 'produce_gamedev_asset_pack' pipeline.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "Must strictly follow licensing standards (CC-BY, CC0) to build developer trust."
+      "free_tier_concrete_limits": "100% free to list, download, and query assets.",
+      "what_it_does_uniquely": "Directly targets the exploding Godot Engine developer community. Listing free/freemium assets (with links to paid expansions on Lemon Squeezy) drives highly targeted traffic.",
+      "would_integrate_where": "Integrate with a `produce_gamedev_asset_pack` pipeline to automatically package, submit, or update open-source base assets while pointing users to premium assets.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Assets must strictly adhere to Godot's open-source licensing guidelines (MIT/CC-BY)."
     }
   ]
 }
