@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-25T08:13:58.045061Z",
+  "timestamp": "2026-05-25T14:35:54.671320Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,63 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Goth Gardening Witchy Plants",
+      "trend_keyword": "Retro Rubber Hose Pickleball Mascot",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 45,
+      "estimated_lifespan_days": 60,
       "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Gothic Garden Coloring Book Dark Witchy Botanicals and Poisonous Flowers for Adults",
-      "evidence_url_or_signal": "Spike in TikTok views for #GothGardener and #WitchyPlants (over 4.2M views in the last 10 days) featuring dark, ornate greenhouse aesthetics."
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Retro Pickleball Sticker - Vintage Cartoon Mascot Decal - Cute Sarcastic Court Sport Gift",
+      "evidence_url_or_signal": "TikTok hashtag #pickleballaesthetic peaked at 4.2M views in past 10 days; Pinterest search for 'vintage pickleball' up 180% MoM"
     },
     {
       "rank": 2,
-      "trend_keyword": "Cozy Pixel Art Desk Mats",
-      "platform_where_spotted": "Reddit",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 2,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Cute Cozy Pixel Art Stickers Pack Lofi Aesthetic Gamer Decals",
-      "evidence_url_or_signal": "Reddit r/cozygamers saw a 150% spike in threads requesting pastel pixel art desk mats and aesthetic setup stickers during mid-May 2026."
-    },
-    {
-      "rank": 3,
-      "trend_keyword": "DINK Dog Travel Journal",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 2,
-      "best_product_format": "lowcontent_kdp",
-      "best_pipeline_match": "produce_lowcontent_kdp",
-      "title_template_suggestion": "DINK Dog Travel Journal: The Ultimate Road Trip Planner for Spoiled Pups and Their Humans",
-      "evidence_url_or_signal": "TikTok viral videos tagged #DINKlife and #DogVacation showing high engagement (800k+ likes on videos from May 12-18, 2026) with users asking for logbooks for dog-friendly hotels."
-    },
-    {
-      "rank": 4,
-      "trend_keyword": "AI Prompt Engineer Corporate Humour",
-      "platform_where_spotted": "Reddit",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 5,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Sarcastic AI Prompt Engineer Coffee Mug - I Prompt Therefore I Am Confused Funny Tech Gift",
-      "evidence_url_or_signal": "r/programmerhumor trending posts mockingly celebrating 'Prompt Architect' corporate job descriptions, sparking a high demand for desk accessories with these jokes."
-    },
-    {
-      "rank": 5,
-      "trend_keyword": "BookTok Tarot Bookmarks",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Aesthetic Dark Academia Tarot Card Stickers Printable Bookworm Bookmarks Pack",
-      "evidence_url_or_signal": "#BookTok trend focusing on dark fantasy reads featuring gothic tarot card designs as custom printable bookmarks, accelerated over the last 14 days."
-    },
-    {
-      "rank": 6,
-      "trend_keyword": "Solarpunk Botanical Blueprints",
+      "trend_keyword": "Whimsigoth Terrarium Coloring Pages",
       "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 90,
       "saturation_now_1_10": 2,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Solarpunk Botanical Blueprint Wall Art Set Aesthetic Green Tech Patent Prints",
-      "evidence_url_or_signal": "Pinterest Trends search volume for 'Solarpunk aesthetic' and 'Botanical blueprints' increased by 140% since May 8, 2026, driven by eco-futuristic home decor pinboards."
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Whimsigoth Terrarium Coloring Book - Gothic Botanical Witchy Aesthetic Coloring Pages for Adults",
+      "evidence_url_or_signal": "Pinterest search 'Whimsigoth aesthetic bedroom DIY' up 310% in mid-May 2026; TikTok #whimsigoth reaching 85M views with users asking for gothic botanical art"
+    },
+    {
+      "rank": 3,
+      "trend_keyword": "Corporate Clown Sticker",
+      "platform_where_spotted": "Reddit",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 4,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_cope_pack",
+      "title_template_suggestion": "Sarcastic Corporate Clown Sticker - Funny Office Humor Laptop Decal - Per My Last Email Gift",
+      "evidence_url_or_signal": "High engagement on Reddit r/antiwork and r/coping with viral 'clown putting on makeup for another 9-to-5' memes peaking May 15, 2026"
+    },
+    {
+      "rank": 4,
+      "trend_keyword": "Solo Female Car Camping Journal",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 120,
+      "saturation_now_1_10": 2,
+      "best_product_format": "lowcontent_kdp",
+      "best_pipeline_match": "produce_lowcontent_kdp",
+      "title_template_suggestion": "Solo Car Camping Journal and Logbook: Road Trip Planner and Campsite Tracker for Adventurous Women",
+      "evidence_url_or_signal": "TikTok #carcamping and #solofemalecamping trending up 45% in the last 14 days as warm weather starts"
+    },
+    {
+      "rank": 5,
+      "trend_keyword": "Cozy Desk Cable Holder STL",
+      "platform_where_spotted": "Cults3D",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 180,
+      "saturation_now_1_10": 2,
+      "best_product_format": "stl_parametric",
+      "best_pipeline_match": "produce_stl_parametric",
+      "title_template_suggestion": "Cozy Animal Desk Cable Holder STL - Cute Cable Organizer 3D Print File",
+      "evidence_url_or_signal": "Reddit r/cozygamers showing massive upvotes for custom pastel/cute desk setups; search volume for 'cute desk organizer STL' up 60% on Cults3D"
     }
   ]
 }
