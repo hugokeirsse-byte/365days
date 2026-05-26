@@ -1,0 +1,12 @@
+{
+  "audited_at": "2026-05-26T01:53:14.822788Z",
+  "pipeline": "bible_verses_v2",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "Verse text does not match the provided reference range.",
+    "Verse text is incomplete for the given reference."
+  ],
+  "rating_0_100": 15,
+  "reasoning": "The image displays the text 'Love is patient, love is kind' with the reference '1 Corinthians 13:4-7'. This is a critical error because the displayed text is only the first clause of 1 Corinthians 13:4, and does not represent the full verse 4, nor does it cover the entire range of verses 4 through 7 as indicated by the reference. For a 'bible_verses_v2' pipeline, accuracy of the verse content relative to its reference is paramount, and this image fails on that fundamental requirement."
+}
