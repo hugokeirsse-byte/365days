@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-26T18:20:24.279541Z",
+  "timestamp": "2026-05-26T21:30:50.833688Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,23 +90,38 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "GitHub Runner IP Blocking & Rate Limits on Free Image APIs",
+      "issue_title": "Silent Image Generation Failures and Low-Quality Fallbacks",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_iheart_v4",
+        "produce_kdp_cover",
         "produce_tumbler_wraps",
-        "produce_quotes_minimal"
+        "produce_viral_formats"
       ],
-      "current_pain_description": "GitHub Actions runner IPs are highly shared and frequently flagged/blacklisted (HTTP 403/429) by Cloudflare, AI Horde, and Gemini. This causes silent pipeline crashes and prevents stable image generation.",
-      "proposed_fix": "Create a unified `image_generator.py` gateway module with built-in retry logic, exponential backoff, and a dynamic fallback sequence (Together AI FLUX-schnell -> Cloudflare Workers AI -> Runware PAYG as paid fallback -> Pollinations as absolute last resort).",
+      "current_pain_description": "HF and Gemini images fail, AI Horde blocks GH Actions, and Pollinations outputs low-quality images without reference capabilities. Pipelines run blindly, consuming GH Actions minutes and committing low-quality/corrupted images to the repository.",
+      "proposed_fix": "Create a centralized Python abstraction helper `image_gen_gatekeeper.py`. It should implement a strict fallback chain (Together AI FLUX-schnell -> Cloudflare Workers AI FLUX -> Runware PAYG if budget allows -> Fail gracefully instead of committing Pollinations garbage). It must raise explicit exceptions on HTTP 429/403/500 to halt downstream processing immediately.",
       "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Eliminates random pipeline failures; guarantees image generation completes on every runner execution.",
+      "estimated_value_unlocked": "Saves 100% of GitHub Actions minutes wasted on broken runs; ensures zero garbage assets are committed.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Lack of Automated Listing Metadata Generation",
+      "issue_title": "Lack of Automated Visual Quality Control (Blind Commits)",
+      "category": "quality_bug",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_literal_idioms",
+        "produce_quotes_minimal"
+      ],
+      "current_pain_description": "Images generated via API can have broken anatomy, severe text gibberish, inverted colors (black backgrounds in coloring books), or empty canvas issues. Hugo must manually inspect everything on his phone, wasting his 10 hours/week.",
+      "proposed_fix": "Integrate the free Gemini 2.5 Flash vision capability in `agent_gemini_quality_check`. Pass every generated image to Gemini with a strict system prompt checking for: 1) Inverted colors (for coloring books, must be white background), 2) Text spelling errors, 3) Visual artifacts. Return a JSON score; reject and regenerate if score < 8/10.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Reduces manual filtering time by 90%, ensuring only ready-to-sell assets reach Hugo's phone.",
+      "priority_1_10": 9
+    },
+    {
+      "rank": 3,
+      "issue_title": "Mobile Upload Friction (The 'Phone-Only' Bottleneck)",
       "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
@@ -114,82 +129,54 @@
         "produce_svg_pack",
         "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Pipelines generate visual assets, but Hugo has to manually write SEO titles, descriptions, and tags/keywords from his Android phone, consuming his limited 10 hours/week.",
-      "proposed_fix": "Append a metadata generation step using Gemini 2.5 Flash at the end of each production pipeline. Output a standardized `listing_package.json` containing optimized Etsy/KDP titles, descriptions, and 13 tags, ready for easy copy-pasting.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Saves 15-20 minutes of manual work per listing, maximizing Hugo's 10h/week ROI.",
+      "current_pain_description": "Hugo only has an Android phone. Manually downloading raw images, copying SEO tags, writing descriptions, and uploading them to Redbubble, KDP, or Cults3D on a mobile browser is incredibly slow and error-prone.",
+      "proposed_fix": "Implement an automated 'Mobile Distribution Packager' utility. For every completed product, generate a unified ZIP archive containing: 1) The optimized assets, 2) A `metadata.json` / `metadata.txt` with pre-formatted, copy-pasteable Titles, Tags (comma-separated), and Descriptions optimized for the target platform's mobile UI layout.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Cuts listing time per product on mobile from 15 minutes to under 3 minutes.",
       "priority_1_10": 9
     },
     {
-      "rank": 3,
-      "issue_title": "Silent Pipeline Failures and Status Blindness on Mobile",
-      "category": "failure_mode",
-      "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auto_regen"
-      ],
-      "current_pain_description": "Hugo operates exclusively from an Android phone. Checking GitHub Actions logs to see if a workflow failed or succeeded is cumbersome and leads to delayed reactions to errors.",
-      "proposed_fix": "Implement a lightweight Telegram or Discord webhook notifier step at the end of every GitHub Action workflow. Send a structured message containing: Status (Success/Fail), Pipeline Name, Number of Assets Generated, and API costs incurred.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Immediate visibility of system health and cost tracking directly on Hugo's phone.",
-      "priority_1_10": 8
-    },
-    {
       "rank": 4,
-      "issue_title": "Gibberish Text on Generated Visual Assets",
-      "category": "quality_bug",
-      "affected_pipelines": [
-        "produce_quotes_minimal",
-        "produce_iheart_v4",
-        "produce_literal_idioms_v2"
-      ],
-      "current_pain_description": "AI image generators (even FLUX) occasionally render malformed text, spelling errors, or visual artifacts on typography-heavy designs, making them unsellable.",
-      "proposed_fix": "Integrate an automated OCR/VLM gate using the free Gemini 2.5 Flash API inside `agent_gemini_quality_check`. Pass the generated image to Gemini and ask it to transcribe the text and rate its visual legibility. Auto-discard and regenerate images failing this check.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Ensures zero typo-ridden products reach the upload stage; maintains high brand reputation.",
-      "priority_1_10": 8
-    },
-    {
-      "rank": 5,
-      "issue_title": "Missed Cross-Pollination of Visual Assets",
+      "issue_title": "Missed Cross-Pollination (Single-Format Waste)",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_svg_pack",
-        "produce_tumblr_wraps"
+        "produce_quotes_minimal"
       ],
-      "current_pain_description": "High-quality line art or graphic patterns are generated for a single product type (e.g., a coloring book page) and then archived. They are not repurposed into other profitable formats.",
-      "proposed_fix": "Build a post-generation utility that takes approved high-resolution graphics and automatically processes them into multiple SKUs: 1) Vectorized SVGs for Etsy, 2) Transparent PNGs for Redbubble stickers, and 3) Compiled PDFs for KDP interiors.",
+      "current_pain_description": "Assets are generated for a single pipeline and left there. A high-quality line art drawing created for `produce_coloring_book` is not reused, despite being highly valuable as a standalone SVG vector pack or a Cricut cut-file.",
+      "proposed_fix": "Build a `cross_pollinator.py` script. When a high-quality line-art PNG is approved by the quality check, auto-route it to: 1) Potrace (free CLI utility) to vectorize it into a clean SVG, 2) Package it as an SVG/DXF cut-file bundle for Etsy, 3) Add it as a transparent PNG transparent sticker design for Redbubble.",
       "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Multiplies inventory volume by 3x to 4x for the same API generation cost.",
+      "estimated_value_unlocked": "3x the product listings (Etsy SVG pack, Redbubble stickers, KDP coloring pages) from a single API generation cost.",
+      "priority_1_10": 8
+    },
+    {
+      "rank": 5,
+      "issue_title": "Termux vs. GitHub Actions Dependency Drift",
+      "category": "code_quality",
+      "affected_pipelines": [
+        "agent_orchestrator",
+        "produce_stl_parametric"
+      ],
+      "current_pain_description": "Scripts developed or tested in Termux on Android often fail silently or crash when run in GitHub Actions due to missing system-level libraries (e.g., `libGL`, `OpenCV`, `Cairo`, `WeasyPrint` dependencies, or Python PIL library differences).",
+      "proposed_fix": "Create a lightweight `env_sanitizer.py` pre-flight script. Run it as the first step in both Termux and GitHub Actions workflows to verify Python package versions, system binaries (like `potrace` or `openscad`), and write-permissions, failing fast with a clear debug log if a mismatch is found.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Eliminates 'works on my phone but fails on GitHub' debugging loops that drain Hugo's weekly hours.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Clunky GitHub Action Triggering from Android Termux",
-      "category": "bottleneck",
-      "affected_pipelines": [
-        "agent_orchestrator"
-      ],
-      "current_pain_description": "Triggering specific workflows with custom inputs through the GitHub mobile web interface is frustrating on a small touch screen.",
-      "proposed_fix": "Write a simple, interactive CLI bash script for Termux using `gh workflow run` and `fzf` (or basic `read` prompts) allowing Hugo to trigger, monitor, and cancel workflows directly from his terminal.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Reduces pipeline initiation friction to under 15 seconds from a mobile terminal.",
-      "priority_1_10": 7
-    },
-    {
-      "rank": 7,
-      "issue_title": "No Limit Controls on PAYG API Budgets",
-      "category": "security",
+      "issue_title": "GitHub Actions Execution Timeout and State Loss",
+      "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_gamedev_asset_pack"
+        "produce_lowcontent_kdp"
       ],
-      "current_pain_description": "If a workflow enters an infinite loop or runs unchecked on automated triggers, Runware PAYG or other paid APIs could quickly exhaust Hugo's strict €20/month budget.",
-      "proposed_fix": "Implement a local file-based budget tracker (`/tmp/monthly_spend.json` synced via cache or repository variables) that tracks API credit usage. Stop execution immediately if the current month's spend exceeds the €20 ceiling.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Eliminates the risk of unexpected bill shock, ensuring 100% compliance with financial constraints.",
-      "priority_1_10": 6
+      "current_pain_description": "Generating a full 40-page coloring book or low-content book requires multiple API calls and image downloads. If a GitHub Action runner times out or gets canceled, all progress is lost, wasting API costs and execution time.",
+      "proposed_fix": "Implement an incremental state-saving mechanism using GitHub Actions Cache or automatic Git branch commits. After every 5 successfully generated and checked pages, commit the partial progress (`state.json` + raw images) to a draft branch so the pipeline can resume where it left off on the next run.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Zero wasted API costs or runner time on interrupted multi-page book compilations.",
+      "priority_1_10": 7
     }
   ]
 }
