@@ -1,11 +1,29 @@
 {
-  "generated_at": "2026-05-19T14:13:29.436049Z",
+  "generated_at": "2026-05-26T14:15:34.501623Z",
   "sources_scanned": [
     "tiktok_creative_center"
   ],
   "total_keywords": 5,
   "top_cross_source": [],
   "top_overall": [
+    {
+      "keyword": "fff",
+      "keyword_normalized": "fff",
+      "score_total": 50,
+      "sources": [
+        "tiktok_creative_center"
+      ],
+      "cross_source_count": 1
+    },
+    {
+      "keyword": "184d0a__a",
+      "keyword_normalized": "184d0a__a",
+      "score_total": 50,
+      "sources": [
+        "tiktok_creative_center"
+      ],
+      "cross_source_count": 1
+    },
     {
       "keyword": "FE2C55",
       "keyword_normalized": "fe2c55",
@@ -16,8 +34,8 @@
       "cross_source_count": 1
     },
     {
-      "keyword": "nprogress",
-      "keyword_normalized": "nprogress",
+      "keyword": "25F4EE",
+      "keyword_normalized": "25f4ee",
       "score_total": 50,
       "sources": [
         "tiktok_creative_center"
@@ -25,26 +43,8 @@
       "cross_source_count": 1
     },
     {
-      "keyword": "x27",
-      "keyword_normalized": "x27",
-      "score_total": 50,
-      "sources": [
-        "tiktok_creative_center"
-      ],
-      "cross_source_count": 1
-    },
-    {
-      "keyword": "333333",
-      "keyword_normalized": "333333",
-      "score_total": 50,
-      "sources": [
-        "tiktok_creative_center"
-      ],
-      "cross_source_count": 1
-    },
-    {
-      "keyword": "fff",
-      "keyword_normalized": "fff",
+      "keyword": "ffffff",
+      "keyword_normalized": "ffffff",
       "score_total": 50,
       "sources": [
         "tiktok_creative_center"
