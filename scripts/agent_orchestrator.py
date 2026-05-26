@@ -223,6 +223,54 @@ def select_pipelines_to_trigger(candidates: list[dict],
     return decisions
 
 
+def dispatch_brief_pipeline(dry_run: bool) -> list[str]:
+    """Déclenche production_loop pour chaque brief approuvé non encore produit."""
+    triggered = []
+    briefs_dir = ROOT / "data" / "briefs"
+    gate1_dir = ROOT / "products" / "coloring_books" / "_gate1"
+    for brief_path in sorted(briefs_dir.glob("brief_*.json")):
+        try:
+            brief = json.loads(brief_path.read_text())
+        except Exception:
+            continue
+        gates = brief.get("human_gates", {})
+        if gates.get("gate_start") != "approved":
+            continue
+        bid = brief.get("id", brief_path.stem)
+        # Déjà produit si kdp_package.json ou interior.pdf présents
+        prod_dir = gate1_dir / bid
+        if (prod_dir / "kdp_package.json").exists() or (prod_dir / "interior.pdf").exists():
+            print(f"  ○ brief {bid} déjà produit — skip")
+            continue
+        trigger_path = TRIGGERS_DIR / "production_loop"
+        content = f"brief_id={bid}\n"
+        if dry_run:
+            print(f"  [DRY] production_loop <- {bid}")
+        else:
+            TRIGGERS_DIR.mkdir(parents=True, exist_ok=True)
+            trigger_path.write_text(content)
+            print(f"  ✓ production_loop déclenché pour {bid}")
+        triggered.append(bid)
+    return triggered
+
+
+def dispatch_builder_queue(dry_run: bool) -> bool:
+    """Déclenche le Builder si des briefings sont en attente."""
+    queue = ROOT / "data" / "build_queue"
+    pending = list(queue.glob("*.md")) if queue.exists() else []
+    if not pending:
+        return False
+    print(f"  Builder : {len(pending)} briefing(s) en attente")
+    trigger_path = TRIGGERS_DIR / "builder"
+    if dry_run:
+        print(f"  [DRY] builder trigger")
+    else:
+        TRIGGERS_DIR.mkdir(parents=True, exist_ok=True)
+        trigger_path.write_text(f"run_all=true\n{datetime.utcnow().isoformat()}Z\n")
+        print(f"  ✓ Builder déclenché ({len(pending)} briefings)")
+    return True
+
+
 def write_triggers(decisions: list[dict], dry_run: bool) -> int:
     TRIGGERS_DIR.mkdir(parents=True, exist_ok=True)
     triggered = 0
@@ -278,6 +326,12 @@ def main() -> int:
 
     written = write_triggers(decisions, dry_run)
     print(f"\n→ {written} pipeline(s) déclenché(s), {skipped_count} skipped")
+
+    # Dispatching brief-based production (nouvelle boucle autonome)
+    print("\n--- Briefs approuvés ---")
+    brief_triggered = dispatch_brief_pipeline(dry_run)
+    print("\n--- Builder queue ---")
+    dispatch_builder_queue(dry_run)
 
     # Log
     log = get_orchestrator_log()
