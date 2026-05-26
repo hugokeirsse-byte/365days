@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-26T18:19:26.183219Z",
+  "timestamp": "2026-05-26T21:31:06.196160Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Solo TTRPG & Journaling RPG Play Aids",
-      "type": "adjacent_market",
-      "audience_size_estimate": 120000,
+      "name": "Amateur Radio (Ham Radio) Operators",
+      "type": "sub_culture",
+      "audience_size_estimate": 750000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Solo tabletop roleplayers (active on Reddit, Itch.io, Kickstarter) who play games like Ironsworn, Thousand Year Old Vampire, or Colostle. They buy physical journals, prompts, oracle decks, and play mats to enhance immersion.",
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Tech-savvy hobbyists, licensed radio operators who legally must log contacts, often older with disposable income, proud of their call signs and technical setup.",
       "product_angles": [
-        "Minimalist PDF/Printable Hex-crawl exploration sheets",
-        "Physical 'Oracle' card decks for prompt generation on TGC",
-        "Aesthetic journaling layout templates (KDP/Etsy PDFs)"
+        "Highly functional, beautiful Contact Logbooks (KDP) with dedicated columns for UTC, Frequency, Mode, Power, and QSL card tracking",
+        "Vintage schematic or patent-style technical schematics of historical radios on apparel/mugs (Redbubble)",
+        "3D printable custom radio mounts or wire antenna insulators (Cults3D)"
       ],
-      "best_pipeline_or_new": "new_produce_solo_rpg_assets",
-      "first_test_product": "A 54-card 'Sci-Fi Sector Generator' Oracle Deck on TGC with abstract vector icons",
-      "estimated_monthly_revenue_year1_eur": 180
+      "best_pipeline_or_new": "produce_lowcontent_kdp (modified for specialized interiors)",
+      "first_test_product": "Premium Ham Radio Logbook (KDP) with a vintage 1920s patent schematic cover and optimized high-density grid interior",
+      "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 2,
-      "name": "Eurorack Modular Synthesizer Enthusiasts",
+      "name": "Rope Access Technicians (Cordistes)",
       "type": "deep_niche",
-      "audience_size_estimate": 65000,
+      "audience_size_estimate": 120000,
       "passion_level_1_10": 10,
-      "current_saturation_1_10": 2,
+      "current_saturation_1_10": 1,
       "growth_trajectory": "steady",
-      "buyer_persona": "Music producers, engineers, and DIY hardware geeks who build modular synth systems. They have high disposable income, love cyberpunk/brutalist aesthetics, and obsess over cable management and front panel designs.",
+      "buyer_persona": "High-altitude industrial workers (wind turbines, skyscrapers, bridges) who view themselves as extreme athletes. They love sharing insider memes, specialized gear references, and high-risk pride.",
       "product_angles": [
-        "3D printable Eurorack blank panels with geometric designs (Cults3D)",
-        "Eurorack patch cable hangers & desktop stand STL files",
-        "Modular patch notebook logs (KDP)"
+        "Sarcastic physics and gravity-related humor stickers (Redbubble)",
+        "Daily Inspection & Log Book for Rope Access Gear (KDP) - tailored to IRATA/SPRAT standards",
+        "3D printable modular carabiner/harness gear organizers (Cults3D)"
       ],
-      "best_pipeline_or_new": "new_produce_modular_synth_gear",
-      "first_test_product": "Pack of 5 brutalist-style 3D-printable Eurorack blank panels (8HP, 10HP, 12HP) on Cults3D",
+      "best_pipeline_or_new": "produce_cope_pack (modified for industrial trades)",
+      "first_test_product": "Rope Access Daily Equipment Log & Rigging Journal (KDP) with a rugged, high-contrast tactical cover",
       "estimated_monthly_revenue_year1_eur": 120
     },
     {
       "rank": 3,
-      "name": "Aquascaping & Dwarf Shrimp Breeders",
-      "type": "deep_niche",
-      "audience_size_estimate": 150000,
+      "name": "PS1-Style / Low-Poly Retro Gamedev Assets",
+      "type": "adjacent_market",
+      "audience_size_estimate": 250000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Aquarists focused on miniature planted tanks and breeding high-grade dwarf shrimp (Neocaridina/Caridina). They need exact water chemistry logs and specialized breeding caves or plant feeding ledges.",
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie game developers building horror, sci-fi, or retro games inspired by late 90s console aesthetics. They need lightweight, stylistically coherent assets fast.",
       "product_angles": [
-        "Water parameter tracking notebook with shrimp feeding calendars (KDP)",
-        "3D printed modular moss ledges and feeding dishes (Cults3D - PETG safe)",
-        "Minimalist line-art posters of specific shrimp morphs (Etsy/Redbubble)"
+        "Low-poly modular retro dungeon/corridor assets in OBJ/FBX format (Gamedev asset pack)",
+        "Dithered, low-resolution pixelated texture packs (Sci-Fi / Industrial theme)",
+        "Retro user interface (UI) pixel-art icon packs"
       ],
-      "best_pipeline_or_new": "new_produce_aquascaping_niche",
-      "first_test_product": "3D-printable suction-cup moss ledge and shrimp cave pack on Cults3D",
-      "estimated_monthly_revenue_year1_eur": 150
+      "best_pipeline_or_new": "produce_gamedev_asset_pack",
+      "first_test_product": "Retro 90s Industrial Corridor Asset Pack (30 low-poly FBX models with dithered 256x256 textures generated via Together AI/Flux and downscaled)",
+      "estimated_monthly_revenue_year1_eur": 200
     },
     {
       "rank": 4,
-      "name": "Amateur Astrophotography Logbooks & Rig Accessories",
+      "name": "Aquascaping & High-Tech Planted Tanks",
       "type": "deep_niche",
-      "audience_size_estimate": 90000,
+      "audience_size_estimate": 350000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
+      "current_saturation_1_10": 3,
       "growth_trajectory": "steady",
-      "buyer_persona": "Night sky photographers who spend hours capturing deep-space nebulae. They need precise logs for gear setups, target coordinates, exposure calculations, and weather conditions, plus cable management for their complex telescope rigs.",
+      "buyer_persona": "Obsessive aquarium hobbyists balancing water chemistry (pH, GH, KH, CO2) and plant aesthetics. Willing to spend hundreds on rare plants and pristine gear.",
       "product_angles": [
-        "Deep Sky Object (DSO) imaging logbook with calibration frame checklists (KDP)",
-        "3D-printable Bahtinov focusing masks customized for popular lens sizes (Cults3D)",
-        "Telescope counterweight and cable organizer clips"
+        "Aquascaping Layout Sketchbook & Water Parameter Tracker (KDP) with grid pages for hardscape design",
+        "Minimalist aesthetic vector art of rare aquatic plants (Bucephalandra, Anubias) on t-shirts/mugs (Redbubble)",
+        "3D printable low-profile aquarium rim lid clips or moss-growing ledges (Cults3D)"
       ],
-      "best_pipeline_or_new": "new_produce_astrophoto_gear",
-      "first_test_product": "An astrophotography session planner and data logbook on Amazon KDP",
-      "estimated_monthly_revenue_year1_eur": 110
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "The Aquascaper's Journal: 52-Week Water Parameter Tracker & Hardscape Planner (KDP)",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 5,
-      "name": "B2B Craft Brewery Merch & Vector Label Kits",
-      "type": "b2b",
-      "audience_size_estimate": 45000,
+      "name": "Solarpunk Aesthetic Game UI & Visual Assets",
+      "type": "adjacent_market",
+      "audience_size_estimate": 90000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Independent craft brewery owners and graphic designers looking for fast, high-quality vector assets to build beer labels, coasters, and taproom merchandise templates.",
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie creators, visual novel writers, and tabletop RPG worldbuilders looking for eco-optimistic, high-tech, stained-glass, and plant-integrated visual styles.",
       "product_angles": [
-        "Gothic/Psychedelic vector asset bundles for can labels (Etsy/Creative Market)",
-        "Customizable local craft beer coaster templates (SVG/Canva links)",
-        "Taproom t-shirt vector graphic packs"
+        "Solarpunk UI Kit: buttons, borders, and frames featuring brass, glass, and leaf motifs (PNG/SVG assets)",
+        "High-definition Solarpunk city/interior background packs for visual novels",
+        "Solarpunk-themed tabletop RPG character sheet templates (PDF/Digital download)"
       ],
-      "best_pipeline_or_new": "new_produce_brewery_assets",
-      "first_test_product": "Psychedelic & Retro-mascot vector design kit (SVG/PNG) for craft beer labels",
-      "estimated_monthly_revenue_year1_eur": 250
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "Solarpunk Visual Novel Background Pack (15 high-quality generated images from Together AI FLUX-schnell, upscaled and curated)",
+      "estimated_monthly_revenue_year1_eur": 140
     },
     {
       "rank": 6,
-      "name": "Urbex & Speleology (Caving) Gear & Logs",
+      "name": "Ortholinear & Split Mechanical Keyboard Enthusiasts",
       "type": "sub_culture",
-      "audience_size_estimate": 110000,
+      "audience_size_estimate": 150000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Urban explorers (Urbex) and cavers who document abandoned structures and cave networks. They value safety protocols, gear lists, mapping, and possess a strong dark/grungy sub-culture identity.",
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Software engineers, writers, and ergonomic nerds obsessed with custom layouts (Dactyl ManuForm, Corne, Planck). They love desk aesthetics and highly technical schematics.",
       "product_angles": [
-        "Urbex exploration logbook with safety checklists and location sketchpads (KDP)",
-        "Sarcastic 'cave squeeze' test templates and caving humor apparel (Redbubble)",
-        "3D printable rugged SD card / battery cases for action cameras (Cults3D)"
+        "Ortholinear keycap layout planner and macro mapping notebook (KDP)",
+        "Aesthetic technical deskmats featuring split keyboard wiring diagrams (Redbubble/Printify)",
+        "3D printable custom travel cases or tilting stands for Corne/Lily58 keyboards (Cults3D)"
       ],
-      "best_pipeline_or_new": "new_produce_urbex_caving",
-      "first_test_product": "The 'Urbex Expedition Log & Site Hazard Assessment Notebook' on Amazon KDP",
-      "estimated_monthly_revenue_year1_eur": 140
+      "best_pipeline_or_new": "produce_stl_parametric (or custom 3D design files)",
+      "first_test_product": "Corne Keyboard Ergonomic Tilting Stand (3D printable STL files with adjustable angles on Cults3D)",
+      "estimated_monthly_revenue_year1_eur": 110
     }
   ]
 }
