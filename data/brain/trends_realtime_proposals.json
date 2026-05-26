@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-26T07:38:29.810227Z",
+  "timestamp": "2026-05-26T14:45:00.090722Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,63 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Howdy Grad 2026",
+      "trend_keyword": "Bold and Easy Cozy Spaces Coloring Book",
       "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 25,
+      "momentum_score_1_10": 10,
+      "estimated_lifespan_days": 90,
       "saturation_now_1_10": 4,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_cultural_arbitrage_v2",
-      "title_template_suggestion": "Howdy Senior Class of 2026 Sticker - Retro Western Graduation Cap Decal",
-      "evidence_url_or_signal": "TikTok hashtag #howdygrad and #classof2026 trending with 3.2M views in the last 10 days, blending western retro disco themes with May 2026 graduations."
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Bold and Easy Cozy Spaces Coloring Book: Simple and Thick Lines Room Interior Coloring Pages for Adults and Kids",
+      "evidence_url_or_signal": "TikTok hashtag #boldandeasycoloringbook and #cozycoloringbook experiencing massive spike in views (over 15M views in the last 14 days) with creators showing simple, thick-lined bedroom/kitchen scenes."
     },
     {
       "rank": 2,
-      "trend_keyword": "Corporate Sabbatical Club",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 45,
+      "trend_keyword": "Medieval Tapestry Corporate Burnout Memes",
+      "platform_where_spotted": "Reddit",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 30,
       "saturation_now_1_10": 2,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Corporate Sabbatical Club Mug - Funny Burnout Office Humor Gift",
-      "evidence_url_or_signal": "Viral sound 'I am mentally on a sabbatical' peaking since May 12, 2026, with over 15k high-engagement videos of Gen Z and Millennial remote workers."
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Funny Medieval Tapestry Sticker - 'My Peasant Brain Cannot Comprehend This Spreadsheet' Laptop Decal",
+      "evidence_url_or_signal": "Reddit r/me_irl and r/funny posts pairing Bayeux Tapestry style illustrations with modern office dread text gaining 45k+ upvotes in mid-May 2026."
     },
     {
       "rank": 3,
-      "trend_keyword": "Cozy Fantasy Library",
+      "trend_keyword": "Disco Cowgirl Summer SVG",
       "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Cozy Fantasy Library Coloring Book - Whimsical Bookshelf and Magic Nook Pages",
-      "evidence_url_or_signal": "Pinterest trend search 'cozy fantasy aesthetic room' spiked by 140% between May 8 and May 20, 2026, showing high demand for stress-relief coloring pages of magical rooms."
+      "saturation_now_1_10": 5,
+      "best_product_format": "svg_pack",
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Disco Cowgirl SVG Bundle - Retro Western Bachelorette Party SVG, Cowgirl Boots and Disco Ball Clipart for Cricut",
+      "evidence_url_or_signal": "Pinterest Trends reports a 180% week-over-week spike in 'disco cowgirl bachelorette' and 'retro western summer SVG' searches as summer party planning peaks."
     },
     {
       "rank": 4,
-      "trend_keyword": "Emotional Support Plant Dad",
-      "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 30,
+      "trend_keyword": "Brutalist Self-Watering Planter STL",
+      "platform_where_spotted": "Cults3D",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 120,
       "saturation_now_1_10": 3,
-      "best_product_format": "tshirt",
-      "best_pipeline_match": "produce_iheart_v4",
-      "title_template_suggestion": "Emotional Support Plant Dad Shirt - Funny Father's Day Plant Lover Gift",
-      "evidence_url_or_signal": "Etsy search volume for 'Father's Day plant dad' increased 95% in the last 14 days, as buyers prepare for June 2026 with quirky botanical humor."
+      "best_product_format": "stl_parametric",
+      "best_pipeline_match": "produce_stl_parametric",
+      "title_template_suggestion": "Brutalist Modular Self-Watering Planter - Minimalist Geometric 3D Printable Flower Pot STL File",
+      "evidence_url_or_signal": "Cults3D and r/3Dprinting trending designs feature minimalist concrete-look functional planters. Search interest for 'modular self-watering planter' up 45% in May 2026."
     },
     {
       "rank": 5,
-      "trend_keyword": "Cute Frog Planter STL",
-      "platform_where_spotted": "Cults3D",
+      "trend_keyword": "Gothic Stained Glass Suncatcher Decals",
+      "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 2,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Cute Frog Planter STL File - Modular Succulent Pot 3D Print File",
-      "evidence_url_or_signal": "Search term 'frog planter' entered the top 50 trending tags on Cults3D on May 15, 2026, driven by summer gardening and low-filament 3D printing trends."
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 4,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "Gothic Stained Glass Window Cling Sticker - Whimsical Frog and Moon Suncatcher Decal for Windows",
+      "evidence_url_or_signal": "Etsy bestseller badges awarded to multiple new listings under 'stained glass window film' and 'gothic suncatcher sticker' with high conversion rates."
+    },
+    {
+      "rank": 6,
+      "trend_keyword": "Y2K Virtual Pet Retro Nostalgia",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 35,
+      "saturation_now_1_10": 3,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats",
+      "title_template_suggestion": "Retro Virtual Pet Pixel Art Sticker Pack - Y2K Nostalgia Aesthetic Decals for Water Bottles and Laptops",
+      "evidence_url_or_signal": "TikTok audio trends using 90s digital toy sounds paired with pixel-art aesthetic layout videos generating over 8 million views."
     }
   ]
 }
