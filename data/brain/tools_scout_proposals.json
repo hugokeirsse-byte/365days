@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-25T20:59:02.968376Z",
+  "timestamp": "2026-05-26T02:12:11.644161Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,80 +90,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Segmind API",
-      "url": "https://www.segmind.com",
+      "tool_or_platform": "SiliconFlow API",
+      "url": "https://siliconflow.cn/en/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24h). FLUX.1-schnell costs ~1 credit per image, SDXL ~0.5 credits.",
-      "what_it_does_uniquely": "Provides stable, fast, direct API access to top-tier models (FLUX.1-schnell, SDXL, ControlNet, IP-Adapter) without requiring complex Hugging Face space configurations or experiencing GitHub Actions IP blocks.",
-      "would_integrate_where": "Could be integrated directly into the 'produce_coloring_book' and 'produce_kdp_cover' GitHub Actions pipelines using simple curl requests with an API key.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Daily credits do not roll over; strictly enforced rate limit per minute on the free tier."
+      "free_tier_concrete_limits": "Generous daily free points (currently (~14M tokens/day free, allowing hundreds of FLUX.1-schnell and SDXL generations daily for free).",
+      "what_it_does_uniquely": "Provides high-speed, enterprise-grade API access to open-source models (FLUX.1-schnell, SDXL, HunyuanVideo) with an exceptionally generous free tier that doesn't block GitHub Actions IPs.",
+      "would_integrate_where": "GitHub Actions image generator pipeline (replaces Pollinations for high-quality FLUX-schnell generation).",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Based in China, documentation can occasionally default to Chinese; API keys require email verification."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Fal.ai",
-      "url": "https://fal.ai",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous initial $10 free credits on registration. FLUX.1-schnell is priced at $0.003 per image (translates to ~3,330 free images).",
-      "what_it_does_uniquely": "Extreme generation speed (<1 second for Schnell) and ultra-reliable developer-first REST API. Perfect for programmatic, bulk image generation in GitHub Actions.",
-      "would_integrate_where": "Can act as the primary generation engine in 'produce_gamedev_asset_pack' or 'produce_tumbler_wraps' when Pollinations quality is insufficient.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires a credit card or GitHub login for verification; once the initial $10 is consumed, it requires transitioning to a pay-as-you-go model."
+      "tool_or_platform": "Fab (by Epic Games)",
+      "url": "https://www.fab.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list unlimited assets. 88/12 revenue share (you keep 88%).",
+      "what_it_does_uniquely": "The newly launched unified marketplace replacing Unreal Engine Marketplace, Sketchfab, and Quixel. Huge built-in audience of gamedevs looking for 2D textures, UI packs, and 3D assets.",
+      "would_integrate_where": "Gamedev asset pack pipeline (automatically package and list generated UI elements, 2D tilesets, and 3D models).",
+      "novelty_2026_1_10": 10,
+      "risk_or_caveat": "High quality standards; assets are manually or semi-automatically reviewed before going live."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Printables Store",
-      "url": "https://www.printables.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to list digital STL/3D files. Printables takes a 10% platform fee on sales, with no monthly subscription required.",
-      "what_it_does_uniquely": "Directly targets the active 3D printing community. Safer and less saturated than Cults3D, with high-intent buyers looking for functional or decorative parametric designs.",
-      "would_integrate_where": "Ideal distribution channel for the output of 'produce_stl_parametric' scripts.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires designs to be genuinely 3D printable; community is highly technical and quick to flag non-functional or low-quality models."
+      "tool_or_platform": "Lulu Print-on-Demand API",
+      "url": "https://developers.lulu.com",
+      "category": "pod",
+      "free_tier_concrete_limits": "Free developer account, pay only production costs when an order is placed. No monthly fees.",
+      "what_it_does_uniquely": "Allows fully automated, programmatic book creation, printing, and global distribution (including Shopify, Amazon, or direct sales) via a REST API.",
+      "would_integrate_where": "Coloring book and low-content book pipelines (bypass manual KDP uploads by sending PDFs straight to print distribution via API).",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Requires setting up a payment method for base printing costs when fulfilling orders, though can be structured to charge customer first."
     },
     {
       "rank": 4,
-      "tool_or_platform": "SerpApi (Google & Etsy Scraping)",
-      "url": "https://serpapi.com",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100 free searches per month.",
-      "what_it_does_uniquely": "Bypasses search engine scraping blocks, allowing programmatic retrieval of Etsy autocomplete suggestions, Amazon search results, and Google Shopping trends via simple JSON API.",
-      "would_integrate_where": "Integrates into 'agent_opportunity_hunter' and 'agent_trend_explosion' to fetch real-time search volume and autocomplete tags to identify niche gaps.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "100 searches/month is low, meaning scripts must run selectively (e.g., once a week in automated GitHub Cron jobs)."
+      "tool_or_platform": "Printables Clubs & Store",
+      "url": "https://www.printables.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to publish. 10% platform fee on direct sales (excluding payment processing).",
+      "what_it_does_uniquely": "Prusa's official platform has evolved into a highly lucrative marketplace for 3D printing STL files, rivaling Cults3D with a more active, maker-focused community.",
+      "would_integrate_where": "Parametric 3D/STL asset pipeline (upload procedurally generated OpenSCAD/STL files).",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Requires high-quality printable files; models must be sliced and verified to maintain high ratings."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Payhip",
-      "url": "https://payhip.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Forever-free plan with unlimited products and storage. 5% transaction fee per sale.",
-      "what_it_does_uniquely": "Enables direct digital sales of PDFs, STL files, or game assets with built-in PDF stamping (to prevent piracy) and automatic EU VAT handling (crucial for a French entrepreneur).",
-      "would_integrate_where": "Acts as the direct-to-consumer hub for digital assets, linking directly from social media or viral formats without platform lock-in.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires driving own traffic via organic marketing or social media, as it lacks an internal search marketplace like Etsy."
+      "tool_or_platform": "Fal.ai API",
+      "url": "https://fal.ai",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Free trial credits upon registration ($1-$10 value depending on promo), extremely cheap PAYG pricing (e.g., $0.001 per FLUX-schnell generation).",
+      "what_it_does_uniquely": "Hyper-optimized model inference. Offers the fastest FLUX.1 and SD3 generation times in the industry with advanced control parameters (img2img, ControlNet).",
+      "would_integrate_where": "Fallback generator in GitHub Actions when free services rate limit us; fits easily within the €20/month budget.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires keeping track of credit usage to avoid service interruption during automated batch runs."
     },
     {
       "rank": 6,
-      "tool_or_platform": "DriveThruRPG / WargameVault",
-      "url": "https://www.drivethrurpg.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to publish. Platform takes a 30% commission on exclusive listings, or 35% on non-exclusive listings.",
-      "what_it_does_uniquely": "The absolute largest marketplace for tabletop RPG assets, custom rulebooks, map packs, and paper-miniatures. Highly targeted audience willing to pay for digital PDFs.",
-      "would_integrate_where": "Excellent secondary marketplace for 'produce_coloring_book' (re-packaged as fantasy/RPG coloring books) and 'produce_specs_deck'.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Strict formatting guidelines for PDFs; target audience is highly critical of AI-generated content if not transparently disclosed or highly polished."
+      "tool_or_platform": "SerpApi Google Trends API",
+      "url": "https://serpapi.com",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100 free successful searches per month.",
+      "what_it_does_uniquely": "Provides structured JSON data for Google Trends, Google Shopping, and eBay listings without needing complex headless browser scrapers.",
+      "would_integrate_where": "Niche hunter / Trend intelligence script (run once a week to discover spiking physical product niches).",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "100 searches is low; must be highly targeted and run only during scheduled weekly cron jobs."
     },
     {
       "rank": 7,
-      "tool_or_platform": "Kokoro-TTS (via Hugging Face Inference)",
-      "url": "https://huggingface.co/spaces/hexgrad/Kokoro-TTS",
-      "category": "ai_audio",
-      "free_tier_concrete_limits": "Free programmatic access via Hugging Face serverless API or public Gradio client wrappers.",
-      "what_it_does_uniquely": "An ultra-lightweight (82M parameters), state-of-the-art text-to-speech model that rivals ElevenLabs in natural voice quality, completely open-source and free.",
-      "would_integrate_where": "Can be used to generate audio asset packs for game development or voice narration for video books, running directly via Python scripts in GitHub Actions.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Public Hugging Face spaces can sometimes go offline or experience high latency under heavy load."
+      "tool_or_platform": "Ko-fi API & Webhooks",
+      "url": "https://ko-fi.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "0% platform fee on direct digital product sales (only standard stripe/paypal fees apply).",
+      "what_it_does_uniquely": "Allows setting up a slick digital storefront for asset packs, PDFs, or 3D files with zero monthly platform costs, complete with webhook triggers to automate delivery.",
+      "would_integrate_where": "B2B direct sales and digital asset landing page (sell bundles generated by the pipelines directly to users with zero middleman fees).",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Requires driving your own traffic; no organic search engine discovery volume compared to Etsy or Redbubble."
     }
   ]
 }
