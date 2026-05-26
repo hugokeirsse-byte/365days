@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-26T18:19:30.783304Z",
+  "timestamp": "2026-05-26T21:31:29.479177Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,69 +90,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Serper.dev",
-      "url": "https://serper.dev",
-      "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free search queries upon signup, non-expiring.",
-      "what_it_does_uniquely": "Provides clean, structured JSON of Google Search, Google Shopping, and Google Images results. Highly optimized, extremely fast, and does not get blocked by CAPTCHAs, unlike raw scraping from GitHub Actions.",
-      "would_integrate_where": "Integrate into 'agent_trendhunter' or 'agent_niche_gap' to programmatically scrape trending keywords, search volumes, and competitor listings on search engines.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Limited to 2,500 queries initially; requires creating new API keys or a low-cost top-up ($1 per 1,000 queries) if scaled heavily."
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "Generous free starting credits (around $10, with FLUX-schnell costing $0.003/image, equaling ~3,000 free images). No credit card required to start.",
+      "what_it_does_uniquely": "Fastest API access to FLUX.1 [schnell] and [dev] on the market. Offers optimized latency, built-in upscaling (Lora/ControlNet support), and runs flawlessly via simple HTTP requests from GitHub Actions.",
+      "would_integrate_where": "Could replace Pollinations inside the `produce_coloring_book` and `produce_kdp_cover` pipelines as the primary high-quality image generator.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Once free credits run out, requires Pay-As-You-Go billing, though rates are extremely cheap (much cheaper than Runware's base tier for equivalent speed)."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Segmind",
-      "url": "https://www.segmind.com",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "100 free API credits daily (refreshed every 24 hours).",
-      "what_it_does_uniquely": "Provides fast serverless API access to SDXL, SD 1.5, ControlNet, and specialized fine-tunes (like line-art or coloring book styles) without cold starts. Extremely reliable compared to Hugging Face free spaces.",
-      "would_integrate_where": "Integrate into 'produce_coloring_book' or 'produce_svg_pack' as a primary or fallback image generation API instead of Pollinations.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Some models cost more credits per run; requires monitoring usage to avoid running out mid-workflow."
+      "tool_or_platform": "Pytrends (Google Trends Unofficial API)",
+      "url": "https://github.com/GeneralMills/pytrends",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100% free, no API key required. Rate limits are dictated by Google's standard search rate limits (easily bypassed via GHA rotating runners).",
+      "what_it_does_uniquely": "Allows programmatic, scheduled trend analysis of keywords directly in Python. Can query trending searches, related queries, and interest over time for specific niches (e.g. 'coloring book' trends).",
+      "would_integrate_where": "Integrate into `agent_trendhunter` or `agent_opportunity_hunter` to automatically discover rising search terms before designing new books/assets.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Since it is an unofficial API, Google can occasionally block requests (HTTP 429) if triggered too rapidly. Needs careful request staggering inside GHA."
     },
     {
       "rank": 3,
       "tool_or_platform": "Thangs",
       "url": "https://thangs.com",
       "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list unlimited 3D models; offers a subscription-based membership model for creators with low commission fees.",
-      "what_it_does_uniquely": "The fastest-growing 3D model search engine and community. It indexes models across the web but also allows direct sales and memberships, serving as a powerful alternative/adjunct to Cults3D for parametric STLs.",
-      "would_integrate_where": "Integrate into 'produce_stl_parametric' pipeline to auto-generate description templates and upload metadata optimized for Thangs' search engine.",
+      "free_tier_concrete_limits": "100% free to upload, host, and sell 3D models. Take rate on sales is competitive with Cults3D.",
+      "what_it_does_uniquely": "A massive, fast-growing 3D model search engine and community. Hosting parametric STL files (from `produce_stl_parametric`) here taps into a highly active 3D printing community that specifically searches for functional prints.",
+      "would_integrate_where": "Target distribution platform for the `produce_stl_parametric` output pipeline to diversify away from only using Cults3D.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Requires manual upload or custom Selenium scripts since they do not offer an open public upload API yet."
+      "risk_or_caveat": "Highly technical audience; simple low-effort models won't sell. Requires high-quality rendering thumbnails."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Nebius AI Studio",
-      "url": "https://nebius.com/services/ai-studio",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous sign-up trial credits (typically $10-$20 free), with FLUX.1 Schnell priced at extremely low rates ($0.003 per image).",
-      "what_it_does_uniquely": "Offers high-performance, low-latency API access to open-source models including FLUX.1 (Schnell & Dev) and Llama 3.1. It runs on specialized European infrastructure, bypassing GitHub Actions IP bans.",
-      "would_integrate_where": "Integrate into the image generation module as the high-quality FLUX-schnell provider for coloring books and KDP covers.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Strictly API-driven; trial credits expire after a set period, requiring a small credit card deposit to continue (though costs remain under $1/month for Hugo's volume)."
+      "tool_or_platform": "DriveThruRPG",
+      "url": "https://www.drivethrurpg.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free publisher account. Takes a percentage commission on sales (30-35% for exclusive, 45% for non-exclusive). No upfront listing fees.",
+      "what_it_does_uniquely": "The absolute largest marketplace for tabletop RPG assets, fantasy coloring books, maps, card games, and PDF-based game accessories. Customers here are actively looking to buy print-ready PDFs and digital game assets.",
+      "would_integrate_where": "Publishing target for `produce_card_game`, `produce_coloring_book` (fantasy-themed), and `produce_gamedev_asset_pack` (specifically 2D maps and tokens).",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Strict formatting requirements for PDF uploads. Audience demands high-quality, thematic work (fantasy/sci-fi)."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Payhip",
-      "url": "https://payhip.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free forever plan with access to all features, charging a flat 5% transaction fee on successful sales.",
-      "what_it_does_uniquely": "Allows selling digital downloads (PDF coloring books, game assets, SVG packs) directly to consumers. Handles EU/UK VAT calculation and reporting automatically, which is a massive legal hurdle for solo entrepreneurs in France.",
-      "would_integrate_where": "Acts as the direct-to-consumer storefront. GitHub Actions can compile products (e.g., zipped assets or PDFs) and Hugo can upload them to Payhip to sell via social media or Pinterest.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Requires driving your own traffic (no built-in marketplace search volume like Etsy or Redbubble)."
+      "tool_or_platform": "Printify API",
+      "url": "https://printify.com/printify-api/",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free developer account. Allows creating up to 5 stores and publishing unlimited products via API.",
+      "what_it_does_uniquely": "Allows complete programmatic creation of POD products. Hugo can use GHA to generate designs, use the Printify API to create mockups/products (mugs, t-shirts, canvas), and automatically push them to connected shops like Etsy or eBay.",
+      "would_integrate_where": "New pipeline: `produce_pod_automation` to automatically push scaling variations of designs (e.g. `produce_tumbler_wraps`) directly into live store drafts.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires connecting a sales channel (like Etsy) which might have listing fees ($0.20 on Etsy per listing). Must be paired with free channels or used carefully."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Draft2Digital",
-      "url": "https://draft2digital.com",
-      "category": "pod",
-      "free_tier_concrete_limits": "Free formatting, conversion, and distribution. They take a 10% cut of the retail price only when a sale is made.",
-      "what_it_does_uniquely": "Distributes paperbacks and ebooks to multiple major storefronts (Barnes & Noble, Apple Books, Kobo, Tolino) simultaneously from a single manuscript file.",
-      "would_integrate_where": "Integrate into KDP pipelines ('produce_lowcontent_kdp' or 'produce_chess_book') to expand distribution of coloring books beyond Amazon without manual multi-platform re-uploading.",
+      "tool_or_platform": "Freesound API",
+      "url": "https://freesound.org/docs/api/",
+      "category": "scraping",
+      "free_tier_concrete_limits": "Free developer key with up to 2,000 requests per day. Access to millions of CC0/Creative Commons sound effects.",
+      "what_it_does_uniquely": "Enables programmatic searching, filtering, and downloading of high-quality audio files. Perfect for generating curated, themed audio assets for game developers.",
+      "would_integrate_where": "Integrate into `produce_gamedev_asset_pack` to bundle curated, mixed, or converted CC0 sound effect packs (UI sounds, ambient noises, retro synth effects).",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Distribution to physical stores requires strict adherence to formatting guidelines; metadata changes can take several days to propagate across partners."
+      "risk_or_caveat": "Must strictly filter for CC0 (Public Domain) licenses using the API query parameters to ensure 100% legal resale safety."
+    },
+    {
+      "rank": 7,
+      "tool_or_platform": "Segmind API",
+      "url": "https://www.segmind.com",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24 hours). FLUX-schnell costs ~0.05 credits per image, allowing ~2,000 free images per day.",
+      "what_it_does_uniquely": "Provides a highly stable, completely free daily allotment for high-end open models (FLUX, SDXL, ControlNet, and vector converters) with direct API access.",
+      "would_integrate_where": "Can act as a highly reliable, zero-cost secondary fallback or primary engine for `produce_coloring_book` and `produce_svg_pack` pipelines in GHA.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Daily credits do not roll over. Requires managing an API key and handling rate limits if generating high-volume batches simultaneously."
     }
   ]
 }
