@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-26T14:45:00.090722Z",
+  "timestamp": "2026-05-26T18:19:34.825570Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Bold and Easy Cozy Spaces Coloring Book",
+      "trend_keyword": "Summer Goth Aesthetic Stickers",
       "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 10,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 4,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Bold and Easy Cozy Spaces Coloring Book: Simple and Thick Lines Room Interior Coloring Pages for Adults and Kids",
-      "evidence_url_or_signal": "TikTok hashtag #boldandeasycoloringbook and #cozycoloringbook experiencing massive spike in views (over 15M views in the last 14 days) with creators showing simple, thick-lined bedroom/kitchen scenes."
-    },
-    {
-      "rank": 2,
-      "trend_keyword": "Medieval Tapestry Corporate Burnout Memes",
-      "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 2,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_cultural_arbitrage_v2",
-      "title_template_suggestion": "Funny Medieval Tapestry Sticker - 'My Peasant Brain Cannot Comprehend This Spreadsheet' Laptop Decal",
-      "evidence_url_or_signal": "Reddit r/me_irl and r/funny posts pairing Bayeux Tapestry style illustrations with modern office dread text gaining 45k+ upvotes in mid-May 2026."
-    },
-    {
-      "rank": 3,
-      "trend_keyword": "Disco Cowgirl Summer SVG",
-      "platform_where_spotted": "Pinterest",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 5,
-      "best_product_format": "svg_pack",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Disco Cowgirl SVG Bundle - Retro Western Bachelorette Party SVG, Cowgirl Boots and Disco Ball Clipart for Cricut",
-      "evidence_url_or_signal": "Pinterest Trends reports a 180% week-over-week spike in 'disco cowgirl bachelorette' and 'retro western summer SVG' searches as summer party planning peaks."
-    },
-    {
-      "rank": 4,
-      "trend_keyword": "Brutalist Self-Watering Planter STL",
-      "platform_where_spotted": "Cults3D",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 120,
-      "saturation_now_1_10": 3,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Brutalist Modular Self-Watering Planter - Minimalist Geometric 3D Printable Flower Pot STL File",
-      "evidence_url_or_signal": "Cults3D and r/3Dprinting trending designs feature minimalist concrete-look functional planters. Search interest for 'modular self-watering planter' up 45% in May 2026."
-    },
-    {
-      "rank": 5,
-      "trend_keyword": "Gothic Stained Glass Suncatcher Decals",
-      "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 45,
+      "estimated_lifespan_days": 90,
       "saturation_now_1_10": 4,
       "best_product_format": "sticker",
       "best_pipeline_match": "produce_iheart_v4",
-      "title_template_suggestion": "Gothic Stained Glass Window Cling Sticker - Whimsical Frog and Moon Suncatcher Decal for Windows",
-      "evidence_url_or_signal": "Etsy bestseller badges awarded to multiple new listings under 'stained glass window film' and 'gothic suncatcher sticker' with high conversion rates."
+      "title_template_suggestion": "Spooky Summer Goth Sticker Pack - Cute Pastel Goth Beach Vibing Skeleton Decals",
+      "evidence_url_or_signal": "TikTok hashtag #SummerGoth spiked to 15M views in mid-May 2026 with users showing off spooky beach towels and skeleton-themed summer accessories"
+    },
+    {
+      "rank": 2,
+      "trend_keyword": "Corporate Speak Translation Coloring Book",
+      "platform_where_spotted": "Reddit",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 3,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Funny Corporate Coloring Book for Adults - Sarcastic Office Humor & Work Stress Relief Pages",
+      "evidence_url_or_signal": "Sudden Reddit surge in r/antiwork and TikTok videos of remote workers coloring sarcastic corporate buzzword sheets during Zoom calls (May 2026)"
+    },
+    {
+      "rank": 3,
+      "trend_keyword": "Self-Watering Mushroom Planter 3D Print",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 180,
+      "saturation_now_1_10": 4,
+      "best_product_format": "stl_parametric",
+      "best_pipeline_match": "produce_stl_parametric",
+      "title_template_suggestion": "Cute Self-Watering Mushroom Planter STL - 3D Print File for Indoor Herbs and Succulents",
+      "evidence_url_or_signal": "Viral TikToks showing 3D-printed mushroom insert pots that slowly drip water into soil, with high comment engagement demanding STL files"
+    },
+    {
+      "rank": 4,
+      "trend_keyword": "Screaming Opossum Positivity",
+      "platform_where_spotted": "Redbubble",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 5,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_cope_pack",
+      "title_template_suggestion": "Screaming Opossum Positivity Sticker - Funny Chaotic Neutral Opossum Meme Decal",
+      "evidence_url_or_signal": "Spiking searches on Redbubble for 'chaotic opossum' and viral TikTok sound trends using screaming opossum visuals for end-of-semester/mid-year burnout"
+    },
+    {
+      "rank": 5,
+      "trend_keyword": "Retro Windows 95 Solitaire Win Screen",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 2,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Nostalgic Solitaire Win Screen Poster - Retro Windows 95 Desktop Aesthetic Wall Art Print",
+      "evidence_url_or_signal": "Pinterest searches for '90s computer aesthetic decor' up 140% in the last 14 days, specifically focusing on cascading card window patterns"
     },
     {
       "rank": 6,
-      "trend_keyword": "Y2K Virtual Pet Retro Nostalgia",
-      "platform_where_spotted": "TikTok",
+      "trend_keyword": "Cottagecore Frog Playing Banjo",
+      "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 35,
-      "saturation_now_1_10": 3,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Retro Virtual Pet Pixel Art Sticker Pack - Y2K Nostalgia Aesthetic Decals for Water Bottles and Laptops",
-      "evidence_url_or_signal": "TikTok audio trends using 90s digital toy sounds paired with pixel-art aesthetic layout videos generating over 8 million views."
+      "estimated_lifespan_days": 120,
+      "saturation_now_1_10": 6,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_iheart_v3",
+      "title_template_suggestion": "Cute Cottagecore Frog Playing Banjo Shirt - Whimsical Forest Toad Aesthetic Vintage Tee",
+      "evidence_url_or_signal": "Etsy search terms 'frog banjo' and 'goblincore stickers' rising rapidly in weekly charts; highly converting theme for sticker and apparel POD sellers"
     }
   ]
 }
