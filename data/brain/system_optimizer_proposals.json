@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-25T20:59:34.012604Z",
+  "timestamp": "2026-05-26T02:12:51.181576Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,95 +90,113 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Runware PAYG Budget Runaway Risk",
-      "category": "security",
+      "issue_title": "Centralized Image API Router with Failover and Rate-Limit Resilience",
+      "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
         "produce_lowcontent_kdp",
+        "produce_literal_idioms_v2",
         "produce_tumbler_wraps"
       ],
-      "current_pain_description": "If a GHA workflow gets stuck in an infinite retry loop or generates large batches due to a code bug, it can consume Hugo's entire 20 EUR monthly budget on Runware in minutes.",
-      "proposed_fix": "Implement a stateful local file tracker (e.g., 'runware_budget.json') inside the repository. Before calling the Runware API, read the JSON. Track daily and monthly costs. If the daily limit (e.g., 2 EUR) or monthly limit (20 EUR) is exceeded, immediately fail the GHA step with a clear budget warning. Commit the updated budget file back to the repo at the end of every run.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Prevents unexpected financial losses and account suspension on a strict bootstrap budget.",
+      "current_pain_description": "Individual pipelines hardcode their image API calls (or fail abruptly on HTTP 429/403). GH Actions IP blocks (Horde 403) and Gemini API limits (429) stall the entire production line without fallback paths, requiring manual intervention from Hugo's phone.",
+      "proposed_fix": "Create a core utility module `image_generator_router.py`. It accepts a standard prompt, size, and style. It handles backoff-retry (exponential), and automatically cascades through providers based on real-time availability: Together AI (FLUX-schnell) -> Cloudflare Workers AI -> Runware PAYG (if within 20€ budget) -> Pollinations (as fallback). Single point of failure eliminated.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Zero silent pipeline crashes; 100% automated recovery from API rate limits or IP bans.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Mobile-Friendly Asset Review Gallery via GitHub Pages",
-      "category": "bottleneck",
+      "issue_title": "Automated Vision-Based Quality Gate (Gemini 2.5 Flash Filter)",
+      "category": "quality_bug",
       "affected_pipelines": [
+        "agent_visual_audit",
         "produce_coloring_book",
-        "produce_quotes_minimal",
         "produce_svg_pack",
-        "produce_tumbler_wraps"
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Hugo operates solely from an Android phone (Termux). Reviewing generated designs, books, and SVGs inside raw GitHub directories or downloading large ZIP files on mobile is slow, tedious, and discourages quality control.",
-      "proposed_fix": "Add a GHA post-processing step that generates a single, lightweight HTML file listing all newly generated images/PDF links with checkboxes. Deploy this automatically to a private or obfuscated GitHub Pages URL. Hugo can swipe through, select 'Approve', and tap a button to copy a list of approved filenames back to Termux to trigger the publication step.",
-      "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Saves 3-4 hours per week of manual mobile file navigation, turning QC into a 2-minute swipe-and-tap process.",
+      "current_pain_description": "Pollinations or raw FLUX outputs can contain severe visual defects (e.g., gray fills in coloring books, broken anatomy, text artifacts). Hugo has to manually view every image on his phone to reject bad ones, wasting his 10 hrs/week budget.",
+      "proposed_fix": "Integrate a vision-based validation step inside `agent_visual_audit.py` using the free tier of Gemini 2.5 Flash. The model is sent the generated image and evaluates it against strict JSON-schema criteria (e.g., is_coloring_page_pure_bw: boolean, has_severe_deformities: boolean, quality_score: 1-10). If the score is below 7, automatically trigger a regenerate loop up to 3 times.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Saves Hugo 3-4 hours of manual curation per week; ensures only high-quality assets reach the staging folder.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Silent API Image Generation Failures and Blank Assets",
-      "category": "failure_mode",
+      "issue_title": "SQLite Flat-File Asset Registry for Mobile Status Tracking",
+      "category": "code_quality",
       "affected_pipelines": [
+        "agent_orchestrator",
+        "agent_winner_amplifier",
         "produce_coloring_book",
-        "produce_iheart_v4",
-        "produce_viral_formats_v2"
+        "produce_card_game"
       ],
-      "current_pain_description": "APIs like Pollinations or free tier Together AI can fail silently, return HTTP 200 with blank/corrupted images, or return low-resolution placeholders. These are compiled directly into PDFs or ZIPs, leading to rejected KDP submissions or unusable products.",
-      "proposed_fix": "Integrate a Python Pillow validation step right after image download. Check that: 1) File size is > 5KB, 2) Image can be opened without PIL.UnidentifiedImageError, 3) Image variance of laplacian is > threshold (not a blank/solid color screen), and 4) Dimensions match requested size. Raise a clean exception and trigger a fallback API (e.g., Pollinations to Cloudflare) if validation fails.",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Eliminates empty/corrupt files in final product batches, ensuring 100% of compiled PDF/ZIP pages are visually valid.",
+      "current_pain_description": "With 20+ pipeline scripts running on GH Actions, there is no centralized state tracking what assets have been generated, audited, approved, or published. Managing this via raw git files on Termux is highly disorganized.",
+      "proposed_fix": "Implement a lightweight `registry.db` (SQLite) stored in the Git repository. GH Actions pipelines insert metadata (file path, tags, status: 'generated', 'audited', 'ready_to_upload', 'published') during runs. A simple python script auto-updates and commits the DB. A read-only GH Pages dashboard displays this DB in a mobile-responsive format for easy viewing on Hugo's phone.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Clear dashboard of 'Ready to Upload' assets on Hugo's mobile browser; prevents double-uploading or lost assets.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Missing KDP Bleed and DPI Compliance Compiler",
-      "category": "quality_bug",
+      "issue_title": "Automated IP-Proxy Middleware via Free Cloudflare Workers",
+      "category": "failure_mode",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_chess_book"
+        "produce_iheart_hf",
+        "produce_coloring_book"
       ],
-      "current_pain_description": "Standard PDF generation scripts compile pages without exact bleed margins (0.125 inches extra on outer edges) or correct 300 DPI print-ready metadata. This causes Amazon KDP to reject the upload automatically, requiring tedious manual re-dimensioning.",
-      "proposed_fix": "Standardize the PDF compilation script using ReportLab or PyPDF. Programmatically calculate strict page dimensions based on KDP formulas (e.g., for an 8.5x11 inch book with bleed: 8.625 x 11.25 inches). Force image DPI to 300 before embedding, and convert RGB images to print-safe margins with blank reverse pages for coloring books.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Reaches 100% automatic approval rate on Amazon KDP upload without manual layout adjustments.",
+      "current_pain_description": "GitHub Actions runner IP ranges are heavily blacklisted by free AI hosts (like AI Horde, Hugging Face spaces) due to scraping abuse, rendering otherwise functional scripts completely useless.",
+      "proposed_fix": "Deploy a simple, free Cloudflare Worker (using Hugo's existing Cloudflare credentials) to act as a reverse proxy. GH Actions calls the Cloudflare Worker endpoint, which forwards the request to the target API and returns the payload. This bypasses the GH Actions IP blocklist instantly.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Unlocks restricted free image generators and endpoints safely without paying for premium VPNs/proxies.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "GitHub Actions IP Block Bypass via Cloudflare Worker Proxy",
-      "category": "failure_mode",
+      "issue_title": "Multi-Format Cross-Pollination Packager",
+      "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_iheart_v4",
-        "produce_iheart_x"
+        "produce_svg_pack",
+        "produce_tumbler_wraps",
+        "produce_kdp_cover"
       ],
-      "current_pain_description": "GHA runners use shared Microsoft Azure/AWS IPs which are heavily blacklisted or rate-limited by AI Horde, Hugging Face, and other free AI providers, resulting in 403 Forbidden or 429 Too Many Requests.",
-      "proposed_fix": "Deploy a free Cloudflare Worker (100k requests/day free tier) to act as a lightweight API reverse proxy. The GHA workflow sends requests to the Cloudflare Worker, which forwards them to the AI provider with custom headers, masking the GHA runner origin IP and performing automatic exponential backoff retries.",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Bypasses IP-based blocking on free image generation APIs, stabilizing the core automated pipeline infrastructure.",
+      "current_pain_description": "Assets generated for one specific pipeline (e.g., a high-quality vector-style SVG for a coloring book) are stored and used only for that product, leaving significant passive income on the table.",
+      "proposed_fix": "Create a `cross_pollinate.py` script run by the Orchestrator. When a high-quality asset is flagged in the registry, it automatically runs transformation routines: 1) Converts SVG to high-res PNG for Redbubble, 2) Groups similar SVGs into a 'Vector Bundle' zip for Etsy/Cults3D, 3) Generates a standard 300DPI KDP interior page. All formats are linked under the same asset ID in the registry.",
+      "estimated_implementation_hours_claude": 3.5,
+      "estimated_value_unlocked": "Multiplies the distribution footprint of a single successful design generation across 3-4 different platforms automatically.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Cross-Pollination Asset Resizer (Single Output -> Multiple Formats)",
-      "category": "cross_polination",
+      "issue_title": "Automated USPTO and Copyright Clearance Gatekeeper",
+      "category": "security",
       "affected_pipelines": [
         "produce_quotes_minimal",
         "produce_literal_idioms_v2",
-        "produce_viral_formats"
+        "produce_viral_formats_v2",
+        "produce_bible_verses_v2"
       ],
-      "current_pain_description": "Designs are currently generated for one specific pipeline (e.g., a quote vector for a poster) and ignored for other formats, leaving high-quality assets unexploited on other platforms.",
-      "proposed_fix": "Create a shared post-generation script ('agent_cross_pollinator') that runs after any successful asset creation. It automatically copies the source high-res image and outputs: 1) A transparent PNG sticker format for Redbubble, 2) A high-res 4:5 ratio PDF for Etsy printables, and 3) A 1080x1920 vertical format for Pinterest/TikTok marketing.",
-      "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Triples the surface area of every generated asset across Redbubble and Etsy with zero extra API generation costs.",
+      "current_pain_description": "Low-content designs, quotes, and viral texts risk infringing active trademarks (e.g., 'Boy Mom', 'Intellectual Property' phrases) which leads to instant account bans on Amazon KDP and Redbubble.",
+      "proposed_fix": "Integrate a lightweight automated check in the text-generation phase of pipelines. Query a free, cached list of common litigious terms, and use Gemini 2.5 Flash to explicitly scan the output text for potential trademarks, copyright risks, or public-domain violations, returning a simple boolean clearance flag.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Protects Hugo's merchant accounts from automated trademark bots and permanent platform bans.",
       "priority_1_10": 7
+    },
+    {
+      "rank": 7,
+      "issue_title": "Mobile-Optimized Metadata Copy-Paste Helper",
+      "category": "bottleneck",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_gamedev_asset_pack"
+      ],
+      "current_pain_description": "Uploading from a phone is painful because Hugo must copy-paste long titles, descriptions, tags, and pricing parameters from raw text files or JSON outputs.",
+      "proposed_fix": "Add a post-processing script that generates a highly-readable, mobile-friendly `upload_card.txt` for every approved asset. This file groups metadata into clear, single-tap copyable blocks (e.g., one tap to copy all 15 comma-separated tags, one tap for the SEO-optimized description) and can be accessed via his phone through GH Pages or sent via a free Telegram Bot notification.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Cuts manual publishing time on mobile devices by 50% per product.",
+      "priority_1_10": 6
     }
   ]
 }
