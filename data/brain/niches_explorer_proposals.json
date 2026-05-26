@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-25T21:00:04.192920Z",
+  "timestamp": "2026-05-26T02:12:11.211785Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,111 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Amicales des Sapeurs-Pompiers (B2B Local France)",
-      "type": "b2b",
-      "audience_size_estimate": 250000,
-      "passion_level_1_10": 10,
+      "name": "Arborist & Tree Climbing Professionals",
+      "type": "deep_niche",
+      "audience_size_estimate": 85000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "French local fire station 'Amicale' presidents looking for custom, modern, non-copyright-infringing coloring books to distribute during their annual calendar campaign (Sainte-Barbe/fin d'année).",
+      "buyer_persona": "Professional arborists and tree climbers who take immense pride in high-altitude danger, technical rigging, and chainsaw precision. They love decorating their gear (helmets, water bottles, trucks) with insider jargon and technical knot graphics.",
       "product_angles": [
-        "Coloring books featuring realistic French fire trucks (FPT, VSAV, CCF) without brand logos",
-        "Customizable Canva templates for local fire station calendars",
-        "Vector mascot packs for custom station t-shirts and stickers"
+        "Highly technical SVG vector bundles of rigging knots and chainsaw silhouettes for local B2B branding",
+        "Arborist helmet stickers (Redbubble) using insider humor like 'Rigging Physics' or 'Spur Climber'",
+        "Daily climbing safety & tree health inspection logbooks (KDP)"
       ],
-      "best_pipeline_or_new": "produce_coloring_book",
-      "first_test_product": "Le Grand Livre de Coloriage des Sapeurs-Pompiers (focused on French trucks/scenes, sold via KDP and direct B2B digital PDF download for local printing)",
-      "estimated_monthly_revenue_year1_eur": 450
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "Arborist Helmet Decals & Vector Bundle (Knot diagrams & humor)",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 2,
-      "name": "PSX Retro / Low-Poly Seamless Textures",
+      "name": "PSX Retro-Style Low-Poly 3D Assets for Indie Devs",
       "type": "adjacent_market",
-      "audience_size_estimate": 150000,
+      "audience_size_estimate": 250000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
+      "current_saturation_1_10": 4,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Solo indie game developers using Godot, Unity, or Unreal Engine, building retro 90s-style PSX horror/scifi games who need fast, cohesive, seamless textures.",
+      "buyer_persona": "Solo indie game developers building retro-horror or 90s-nostalgia games on Godot or Unity who need optimized, low-poly OBJ/FBX models with pixelated textures.",
       "product_angles": [
-        "Seamless pixelated wall, metal, and floor texture packs (256x256 and 512x512)",
-        "Sci-fi console UI texture atlases",
-        "Normal and height maps generated via GitHub Actions pipelines"
+        "Retro PS1-style low-poly props pack (street lamps, trash cans, old TVs) on Cults3D/Itch.io",
+        "Pixel-art UI button sets and icon packs",
+        "Textured modular sci-fi corridor tilesets"
       ],
       "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "Retro PSX Industrial Horror Texture Pack (50 seamless textures + normal maps on itch.io and Etsy)",
+      "first_test_product": "90s Retro Mall / Corridor Low-Poly Asset Pack (FBX + textures)",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
       "rank": 3,
-      "name": "Arborists & Tree Climbers (Élagueurs)",
-      "type": "deep_niche",
+      "name": "Solo Board Gaming (1-Player Tabletop)",
+      "type": "sub_culture",
       "audience_size_estimate": 120000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Professional tree care specialists and climbers who view their high-risk job as an extreme sport and a core lifestyle identity.",
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Adults who play heavy board games alone. They are highly organized, appreciate tactile components, and love tracking their campaigns, high scores, and house rules.",
       "product_angles": [
-        "Pocket-sized rigging and knot guide cheat-sheets (KDP/PDF)",
-        "Funny SVG cutting files for car windows featuring climbing gear and ropes",
-        "Vintage blueprint/patent art prints of chainsaws and climbing harnesses"
+        "Solo campaign tracker notebooks and scorecards (KDP)",
+        "3D-printable card holders and token organizers (Cults3D)",
+        "Print-and-Play (PnP) minimalistic solo card game templates"
       ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "The Tree Climber's Knot & Rigging Pocket Reference Guide (KDP low-content pocket book)",
-      "estimated_monthly_revenue_year1_eur": 180
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "The Ultimate Solo Board Gamer Campaign Logbook",
+      "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 4,
-      "name": "Ham Radio Operators (Amateurs de Radio)",
-      "type": "sub_culture",
-      "audience_size_estimate": 3000000,
+      "name": "Vintage Tech Restoration & Retro-Computing",
+      "type": "deep_niche",
+      "audience_size_estimate": 150000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Mainly older, highly technical, and passionate radio hobbyists who love logging contacts (QSOs), physical logbooks, and collecting QSL confirmation cards.",
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Hobbyists restoring 80s/90s computers (Amiga, Commodore, early Macintosh, IBM PCs). They need precise physical dimensions, custom brackets, replacement badges, and templates.",
       "product_angles": [
-        "Highly optimized physical Ham Radio Logbooks with fields for frequency, RST, and power",
-        "Customizable QSL card templates (sold as Canva or high-res print-ready PDFs)",
-        "Vintage radio patent art printable posters"
+        "3D printable mounting brackets (e.g., SD card reader to floppy drive bay converters) on Cults3D",
+        "Vector recreation of vintage motherboard layouts and patent-style art prints (Redbubble)",
+        "Restoration logbook to track capacitor replacements, voltage checks, and serial numbers (KDP)"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Universal Ham Radio Logbook (KDP physical book with clean, high-contrast grid layouts)",
-      "estimated_monthly_revenue_year1_eur": 300
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "3.5-inch Floppy Bay to modern SD-Card Reader 3D Printable Mount",
+      "estimated_monthly_revenue_year1_eur": 220
     },
     {
       "rank": 5,
-      "name": "Ultra-Trail & GR20 Elevation Profilers",
+      "name": "Sourdough & Micro-Baking Obsessives",
       "type": "sub_culture",
-      "audience_size_estimate": 200000,
+      "audience_size_estimate": 500000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Extreme runners and long-distance hikers proud of finishing iconic routes (GR20, UTMB, PCT) wanting minimalist home decor representing their physical achievement.",
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Home bakers obsessed with hydration ratios, starter feeding schedules, and bread scoring art. They view baking as a science and a lifestyle.",
       "product_angles": [
-        "Minimalist GPX-based elevation profile vector posters (automated rendering)",
-        "Funny trail runner SVG/sticker packs focusing on altitude sickness, extreme fatigue, and gear",
-        "Dedicated trail-running training logs tracking elevation gain (D+)"
+        "Flour hydration cheat-sheet magnets and stickers for kitchen appliances (Redbubble)",
+        "A highly detailed 'Bread Scoring Template & Pattern Book' (KDP)",
+        "Sourdough Starter feeding diary and hydration percentage logs"
       ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "GR20 Minimalist Elevation Profile Poster (Digital SVG/PDF pack for self-printing)",
-      "estimated_monthly_revenue_year1_eur": 200
+      "best_pipeline_or_new": "produce_coloring_book",
+      "first_test_product": "Sourdough Baker's Journal & Hydration Logbook",
+      "estimated_monthly_revenue_year1_eur": 120
     },
     {
       "rank": 6,
-      "name": "PLC & Automation Engineers (Programmable Logic Controllers)",
-      "type": "deep_niche",
-      "audience_size_estimate": 400000,
+      "name": "Local Amateur Astronomy Clubs",
+      "type": "b2b",
+      "audience_size_estimate": 65000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 1,
       "growth_trajectory": "steady",
-      "buyer_persona": "Industrial automation engineers who program factory machines (Siemens, Rockwell) and deal with commissioning chaos, PLC bugs, and 3:00 AM emergency calls.",
+      "buyer_persona": "Organizers of small astronomy associations and individual astrophotography geeks. They need customized tools, logbooks, and simple 3D utility parts.",
       "product_angles": [
-        "Humorous stickers/SVGs featuring ladder logic, PLC code, and commissioning disasters",
-        "Cheat-sheet pocket notebooks with Modbus registers and industrial networking protocols",
-        "Mug designs with 'I survived the factory floor commissioning' schematics"
+        "Night sky observation logs with technical exposure-time tracking tables (KDP)",
+        "3D printable custom Bahtinov focus masks for specific camera lens sizes (Cults3D)",
+        "Constellation vector design packs for club merch custom printing (B2B/SVG)"
       ],
-      "best_pipeline_or_new": "produce_cope_pack",
-      "first_test_product": "The PLC Engineer's Commissioning Survival Mug & Sticker SVG Bundle",
-      "estimated_monthly_revenue_year1_eur": 150
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Astrophotography Exposure & Target Logbook",
+      "estimated_monthly_revenue_year1_eur": 140
     }
   ]
 }
