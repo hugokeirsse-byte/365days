@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-26T07:38:23.883064Z",
+  "timestamp": "2026-05-26T14:44:59.849954Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,58 +90,69 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch First High-Quality KDP Coloring Book via Runware PAYG",
+      "action_title": "Launch First Niche Coloring Book on Amazon KDP",
       "type": "upload",
-      "target_platform": "Amazon KDP",
+      "target_platform": "KDP",
       "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 120,
-      "hugo_effort_hours": 6,
-      "why_this_works_now": "The 'produce_coloring_book' pipeline is ready. By dedicating 5 EUR of the 20 EUR budget to Runware (which yields ~8,000 FLUX-schnell images), Hugo can generate 40 ultra-crisp, high-definition coloring pages. This bypasses the GitHub Actions image block and delivers a retail-ready product on Amazon KDP instantly.",
-      "first_action_today": "Sign up on Runware, deposit 5 EUR, copy the API key into GitHub Secrets as RUNWARE_API_KEY, and trigger the 'produce_coloring_book' workflow."
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "The coloring book market is highly visual and searchable. Using a highly specific micro-niche (e.g., 'French Countryside Castles' using the produce_chateau_local pipeline) removes competition. Low pricing (4.99 EUR) helps trigger early sales and reviews.",
+      "first_action_today": "Take the top 25 images from the produce_chateau_local pipeline, compile them into a 120-page PDF on Termux using python-pdfkit or an online tool, and design a high-contrast cover."
     },
     {
       "rank": 2,
-      "action_title": "Upload 50 Minimalist Typography Designs on Redbubble",
-      "type": "upload",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 45,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "Typography and minimalist quote designs do not require complex AI image generators. They can be auto-generated as transparent PNGs inside Termux using Python's PIL library (via 'produce_quotes_minimal' or 'produce_literal_idioms_v2'). This avoids API dependency issues entirely and populates his dormant Redbubble store.",
-      "first_action_today": "Run the 'produce_quotes_minimal' script locally in Termux to generate 50 high-res PNGs, and upload the first 5 manually using his Android phone."
-    },
-    {
-      "rank": 3,
-      "action_title": "Publish 3 Parametric 3D Models on Cults3D",
+      "action_title": "Cults3D Parametric STL Files Upload",
       "type": "upload",
       "target_platform": "Cults3D",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 60,
+      "estimated_revenue_uplift_eur_30days_high": 45,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "The 3D printing community on Cults3D highly values functional, customizable parametric designs (e.g., custom organizers, brackets, rugged boxes). Using 'produce_stl_parametric' with OpenSCAD via GitHub Actions requires zero GPU resources and zero budget, generating clean STL files ready for monetization.",
-      "first_action_today": "Activate his Cults3D seller account, run the parametric script on GitHub Actions to output STL files, and list them at 1.99 EUR each."
+      "why_this_works_now": "Cults3D has a very low barrier to entry and active organic traffic looking for functional prints. Uploading 5 customizable parametric models (using produce_stl_parametric) at a low price (1.99 EUR) converts 3D printing enthusiasts looking for utility.",
+      "first_action_today": "Register the Cults3D account, render 3D preview images using a free online STL viewer on Android, and upload the first 2 parametric models with clear print settings in the description."
+    },
+    {
+      "rank": 3,
+      "action_title": "Redbubble Text-Only Trend Jacking Storm",
+      "type": "upload",
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 30,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Text-only designs bypass the current image generation rate-limits entirely. Using Termux + Pillow to generate 30 funny, highly specific tech/programmer/French culture quotes onto transparent PNGs yields high-margin sticker sales with 0 API cost.",
+      "first_action_today": "Write a quick Python script in Termux using PIL/Pillow to overlay 15 funny developer quotes on transparent 4000x4000px canvases and queue them for Redbubble upload."
     },
     {
       "rank": 4,
-      "action_title": "Generate and Upload 5 Pure-Python KDP Sudoku/Puzzle Books",
-      "type": "upload",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 80,
-      "hugo_effort_hours": 5,
-      "why_this_works_now": "Low-content puzzle books (Sudoku, Mazes) require zero AI image generation. The interior PDFs can be generated programmatically in seconds using Python libraries (reportlab/pdfkit) via 'produce_lowcontent_kdp'. Only a simple cover needs to be designed, bypassing all current image API bottlenecks.",
-      "first_action_today": "Run the Sudoku generator script via GitHub Actions, package the PDF interior, and create a basic cover using Canva on his Android phone."
+      "action_title": "Name-Your-Own-Price Gamedev Asset Packs",
+      "type": "new_stream",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 25,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Game developers browse itch.io daily for prototyping assets. Uploading 3 simple asset packs (using produce_gamedev_asset_pack) as 'Name Your Own Price' with a suggested $1.99 price triggers impulse tips while maintaining high search visibility.",
+      "first_action_today": "Zip the existing generated gamedev assets, write a short markdown description emphasizing royalty-free commercial license, and upload to itch.io."
     },
     {
       "rank": 5,
-      "action_title": "Publish 3 Game UI/Icon Packs on Itch.io",
-      "type": "upload",
-      "target_platform": "itch.io",
+      "action_title": "Redbubble Sticker Margin Optimization",
+      "type": "pricing",
+      "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "The 'produce_gamedev_asset_pack' pipeline can generate high-quality UI assets, buttons, and pixel-art icons using Together AI's free tier (FLUX-schnell). Itch.io has a highly active developer community searching for cheap assets. Listing them as 'Pay What You Want' with a suggested price of $2.99 triggers emotional conversions.",
-      "first_action_today": "Configure TOGETHER_API_KEY in GitHub Secrets, run the gamedev asset pipeline, and create a free creator account on itch.io."
+      "estimated_revenue_uplift_eur_30days_high": 15,
+      "hugo_effort_hours": 1,
+      "why_this_works_now": "The default Redbubble markup is 20%, which makes stickers yield pennies. Increasing the sticker markup to 60-70% only raises the retail price by a few cents but more than doubles the profit margin per unit sold.",
+      "first_action_today": "Go to Redbubble Account Settings > Product Pricing, change the default markup for Stickers & Magnets to 65%, and apply it to all current and future listings."
+    },
+    {
+      "rank": 6,
+      "action_title": "Publish Low-Content Bible Verse Journals on KDP",
+      "type": "upload",
+      "target_platform": "KDP",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 40,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Religious and inspirational low-content books are evergreen. By combining the outputs of produce_bible_verses_v2 with produce_lowcontent_kdp, Hugo can rapidly publish 10 lined journals targeting long-tail keywords with minimal competition.",
+      "first_action_today": "Use a pre-made 120-page lined interior PDF, generate 5 covers featuring distinct typography of uplifting bible verses, and list them on KDP at 5.99 EUR."
     }
   ]
 }
