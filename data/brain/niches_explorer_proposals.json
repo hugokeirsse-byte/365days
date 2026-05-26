@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-26T14:44:57.238840Z",
+  "timestamp": "2026-05-26T18:19:26.183219Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,129 +90,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "HEMA (Historical European Martial Arts) Practitioners",
-      "type": "sub_culture",
-      "audience_size_estimate": 150000,
+      "name": "Solo TTRPG & Journaling RPG Play Aids",
+      "type": "adjacent_market",
+      "audience_size_estimate": 120000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Adults (20-45) passionate about historical swordplay, fencing history, and medieval combat. They spend heavily on high-end protective gear, synthetic swords, and historical treatises.",
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Solo tabletop roleplayers (active on Reddit, Itch.io, Kickstarter) who play games like Ironsworn, Thousand Year Old Vampire, or Colostle. They buy physical journals, prompts, oracle decks, and play mats to enhance immersion.",
       "product_angles": [
-        "Historical fencing training logbooks with custom combat-stance tracking templates (KDP)",
-        "SVG vector packs of authentic historical weapon postures from 15th-century manuals (Etsy)",
-        "3D printable wall mounts and tabletop stands for feder swords or bucklers (Cults3D)"
+        "Minimalist PDF/Printable Hex-crawl exploration sheets",
+        "Physical 'Oracle' card decks for prompt generation on TGC",
+        "Aesthetic journaling layout templates (KDP/Etsy PDFs)"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "HEMA Training Journal & Sparring Logbook (KDP, 120 pages, matte cover with historical woodcut art)",
-      "estimated_monthly_revenue_year1_eur": 150
+      "best_pipeline_or_new": "new_produce_solo_rpg_assets",
+      "first_test_product": "A 54-card 'Sci-Fi Sector Generator' Oracle Deck on TGC with abstract vector icons",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 2,
-      "name": "Wind Turbine Technicians (Industrial Climbers)",
+      "name": "Eurorack Modular Synthesizer Enthusiasts",
       "type": "deep_niche",
-      "audience_size_estimate": 110000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Blue-collar specialized workers operating high above ground. High pride in their extreme job, strong brotherhood culture, heavy use of insider jokes about weather, heights, torque, and turbine brands (Vestas, Siemens).",
+      "audience_size_estimate": 65000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Music producers, engineers, and DIY hardware geeks who build modular synth systems. They have high disposable income, love cyberpunk/brutalist aesthetics, and obsess over cable management and front panel designs.",
       "product_angles": [
-        "Redbubble sticker packs containing wind-turbine humor and acronyms (e.g., LOTO, Nacelle Life)",
-        "Maintenance and torque inspection notebook templates (KDP)",
-        "SVG designs for laser-engraving on rugged thermal flasks (Etsy)"
+        "3D printable Eurorack blank panels with geometric designs (Cults3D)",
+        "Eurorack patch cable hangers & desktop stand STL files",
+        "Modular patch notebook logs (KDP)"
       ],
-      "best_pipeline_or_new": "produce_cope_pack",
-      "first_test_product": "Wind Tech Sticker Pack: 6 insider humor vector designs (Redbubble / Etsy SVGs)",
+      "best_pipeline_or_new": "new_produce_modular_synth_gear",
+      "first_test_product": "Pack of 5 brutalist-style 3D-printable Eurorack blank panels (8HP, 10HP, 12HP) on Cults3D",
       "estimated_monthly_revenue_year1_eur": 120
     },
     {
       "rank": 3,
-      "name": "Low-Poly Retro Gamedev Assets (PS1/Boomer Shooter Style)",
-      "type": "adjacent_market",
-      "audience_size_estimate": 250000,
+      "name": "Aquascaping & Dwarf Shrimp Breeders",
+      "type": "deep_niche",
+      "audience_size_estimate": 150000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers building retro-horror, sci-fi, or boomer shooter games. They need lightweight, stylistically coherent 3D models and textures that evoke the late 90s aesthetic.",
+      "growth_trajectory": "steady",
+      "buyer_persona": "Aquarists focused on miniature planted tanks and breeding high-grade dwarf shrimp (Neocaridina/Caridina). They need exact water chemistry logs and specialized breeding caves or plant feeding ledges.",
       "product_angles": [
-        "Retro industrial/sci-fi low-poly 3D props (Cults3D/Itch.io)",
-        "Tileable retro pixel-art texture packs (Etsy/Itch.io)",
-        "Retro-style UI/HUD vector asset bundles (Etsy/SVG)"
+        "Water parameter tracking notebook with shrimp feeding calendars (KDP)",
+        "3D printed modular moss ledges and feeding dishes (Cults3D - PETG safe)",
+        "Minimalist line-art posters of specific shrimp morphs (Etsy/Redbubble)"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "PS1-Style Retro Industrial Prop Pack (15 low-poly STL/FBX assets: crates, pipes, terminal screens)",
-      "estimated_monthly_revenue_year1_eur": 200
+      "best_pipeline_or_new": "new_produce_aquascaping_niche",
+      "first_test_product": "3D-printable suction-cup moss ledge and shrimp cave pack on Cults3D",
+      "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 4,
-      "name": "Amateur Radio (Ham Radio) Operators",
-      "type": "sub_culture",
-      "audience_size_estimate": 950000,
+      "name": "Amateur Astrophotography Logbooks & Rig Accessories",
+      "type": "deep_niche",
+      "audience_size_estimate": 90000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Tech-savvy hobbyists, often older but highly dedicated, who build radio stations to communicate globally. They collect QSL cards (confirmation of contact) and track contacts meticulously.",
+      "growth_trajectory": "steady",
+      "buyer_persona": "Night sky photographers who spend hours capturing deep-space nebulae. They need precise logs for gear setups, target coordinates, exposure calculations, and weather conditions, plus cable management for their complex telescope rigs.",
       "product_angles": [
-        "Customizable QSL Card templates designed for easy printing (Etsy)",
-        "Ham Radio Contact Logbooks with specialized tables for frequency, signal strength, and UTC times (KDP)",
-        "Patent art-style vector posters of classic vintage radio rigs (Etsy/Redbubble)"
+        "Deep Sky Object (DSO) imaging logbook with calibration frame checklists (KDP)",
+        "3D-printable Bahtinov focusing masks customized for popular lens sizes (Cults3D)",
+        "Telescope counterweight and cable organizer clips"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "The Ultimate Ham Radio Operator's Logbook (KDP, 150 pages, optimized layout for rapid logging)",
-      "estimated_monthly_revenue_year1_eur": 180
+      "best_pipeline_or_new": "new_produce_astrophoto_gear",
+      "first_test_product": "An astrophotography session planner and data logbook on Amazon KDP",
+      "estimated_monthly_revenue_year1_eur": 110
     },
     {
       "rank": 5,
-      "name": "Local French Hiking Trails & GR Enthusiasts (B2B/B2C)",
+      "name": "B2B Craft Brewery Merch & Vector Label Kits",
       "type": "b2b",
-      "audience_size_estimate": 500000,
-      "passion_level_1_10": 7,
-      "current_saturation_1_10": 2,
+      "audience_size_estimate": 45000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 4,
       "growth_trajectory": "steady",
-      "buyer_persona": "Hikers passionate about iconic French trails (GR20, GR34, Saint-Jacques) and local tourism offices seeking high-quality local merchandise.",
+      "buyer_persona": "Independent craft brewery owners and graphic designers looking for fast, high-quality vector assets to build beer labels, coasters, and taproom merchandise templates.",
       "product_angles": [
-        "Topographical elevation profile SVG vectors of specific trail sections (Etsy)",
-        "3D printable trail markers, topographical relief maps, or keychains (Cults3D)",
-        "Trail logbooks featuring stage checklists and wildlife guides (KDP)"
+        "Gothic/Psychedelic vector asset bundles for can labels (Etsy/Creative Market)",
+        "Customizable local craft beer coaster templates (SVG/Canva links)",
+        "Taproom t-shirt vector graphic packs"
       ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "GR34 (Sentier des Douaniers) Elevation Map SVG & Minimalist Poster Design (Etsy)",
-      "estimated_monthly_revenue_year1_eur": 100
+      "best_pipeline_or_new": "new_produce_brewery_assets",
+      "first_test_product": "Psychedelic & Retro-mascot vector design kit (SVG/PNG) for craft beer labels",
+      "estimated_monthly_revenue_year1_eur": 250
     },
     {
       "rank": 6,
-      "name": "Eurorack Modular Synthesizer Collectors",
+      "name": "Urbex & Speleology (Caving) Gear & Logs",
       "type": "sub_culture",
-      "audience_size_estimate": 180000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Electronic music producers, gear nerds, and sound designers who build modular synths. They spend thousands on hardware and value clean, industrial, cyberpunk, or minimalist retro aesthetics.",
-      "product_angles": [
-        "Modular synth patch sheet design notebooks for documenting knob positions (KDP)",
-        "3D-printable Eurorack blank panels, cable organizers, or desktop stands (Cults3D)",
-        "Geometric, schematic-style vector art of vintage synthesizer circuits (Etsy/Redbubble)"
-      ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "Modular Synth Patch Book: 100 blank patch templates for Eurorack modules (KDP)",
-      "estimated_monthly_revenue_year1_eur": 140
-    },
-    {
-      "rank": 7,
-      "name": "Speleologists & Cave Explorers",
-      "type": "deep_niche",
-      "audience_size_estimate": 60000,
-      "passion_level_1_10": 10,
+      "audience_size_estimate": 110000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 1,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Highly adventurous individuals navigating extreme cave systems. They rely on specialized gear, strict safety protocols, and have a rich sub-culture with terms like 'squeeze', 'SRT', and 'karst'.",
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Urban explorers (Urbex) and cavers who document abandoned structures and cave networks. They value safety protocols, gear lists, mapping, and possess a strong dark/grungy sub-culture identity.",
       "product_angles": [
-        "Cave mapping symbol reference guides and logbooks (KDP)",
-        "Speleo humor stickers featuring vertical caving and tight squeeze jokes (Redbubble)",
-        "SVG vector packs of cave wildlife, mapping symbols, and climbing rigs (Etsy)"
+        "Urbex exploration logbook with safety checklists and location sketchpads (KDP)",
+        "Sarcastic 'cave squeeze' test templates and caving humor apparel (Redbubble)",
+        "3D printable rugged SD card / battery cases for action cameras (Cults3D)"
       ],
-      "best_pipeline_or_new": "produce_cope_pack",
-      "first_test_product": "Caving & Speleology Expedition Logbook: Waterproof-look cover with cave survey layout (KDP)",
-      "estimated_monthly_revenue_year1_eur": 90
+      "best_pipeline_or_new": "new_produce_urbex_caving",
+      "first_test_product": "The 'Urbex Expedition Log & Site Hazard Assessment Notebook' on Amazon KDP",
+      "estimated_monthly_revenue_year1_eur": 140
     }
   ]
 }
