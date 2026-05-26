@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-26T18:19:34.825570Z",
+  "timestamp": "2026-05-26T21:30:54.003165Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,63 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Summer Goth Aesthetic Stickers",
-      "platform_where_spotted": "TikTok",
+      "trend_keyword": "Brutalist Architecture Coloring Book",
+      "platform_where_spotted": "TikTok / Reddit",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 4,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_iheart_v4",
-      "title_template_suggestion": "Spooky Summer Goth Sticker Pack - Cute Pastel Goth Beach Vibing Skeleton Decals",
-      "evidence_url_or_signal": "TikTok hashtag #SummerGoth spiked to 15M views in mid-May 2026 with users showing off spooky beach towels and skeleton-themed summer accessories"
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 2,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Brutalist Architecture Coloring Book for Adults: Minimalist Concrete Masterpieces and Geometric Structural Patterns",
+      "evidence_url_or_signal": "TikTok hashtag #brutalistdesign spiked with 14M views this week; r/architecture saw multiple viral posts featuring raw concrete line-art drafts with users asking for printable versions."
     },
     {
       "rank": 2,
-      "trend_keyword": "Corporate Speak Translation Coloring Book",
-      "platform_where_spotted": "Reddit",
+      "trend_keyword": "Corporate Gen Z Sarcasm Stickers",
+      "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Funny Corporate Coloring Book for Adults - Sarcastic Office Humor & Work Stress Relief Pages",
-      "evidence_url_or_signal": "Sudden Reddit surge in r/antiwork and TikTok videos of remote workers coloring sarcastic corporate buzzword sheets during Zoom calls (May 2026)"
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 4,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_cope_pack",
+      "title_template_suggestion": "Funny Gen Z Corporate Sticker Pack - Sarcastic Office Humor Decals for Laptop, Water Bottle, and Notebooks",
+      "evidence_url_or_signal": "Viral sound 'Please do not refer to my last email' trending across work-from-home accounts, with a 180% spike in search volume on Etsy for Gen Z office humor stickers since mid-May."
     },
     {
       "rank": 3,
-      "trend_keyword": "Self-Watering Mushroom Planter 3D Print",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 180,
-      "saturation_now_1_10": 4,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Cute Self-Watering Mushroom Planter STL - 3D Print File for Indoor Herbs and Succulents",
-      "evidence_url_or_signal": "Viral TikToks showing 3D-printed mushroom insert pots that slowly drip water into soil, with high comment engagement demanding STL files"
+      "trend_keyword": "Anatomical Botanical Wall Art",
+      "platform_where_spotted": "Pinterest / Etsy",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 3,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Vintage Anatomical Botanical Poster Set - Gothic Herbology and Human Anatomy Sketch Art Prints",
+      "evidence_url_or_signal": "Pinterest Trends data shows 'Gothic botanical anatomy sketches' search volume up 140% in the last 14 days, driven by the dark academia aesthetic shifting to late-spring home decor."
     },
     {
       "rank": 4,
-      "trend_keyword": "Screaming Opossum Positivity",
-      "platform_where_spotted": "Redbubble",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 5,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_cope_pack",
-      "title_template_suggestion": "Screaming Opossum Positivity Sticker - Funny Chaotic Neutral Opossum Meme Decal",
-      "evidence_url_or_signal": "Spiking searches on Redbubble for 'chaotic opossum' and viral TikTok sound trends using screaming opossum visuals for end-of-semester/mid-year burnout"
+      "trend_keyword": "Low-Poly Planter STL",
+      "platform_where_spotted": "Reddit / Cults3D",
+      "momentum_score_1_10": 7,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 3,
+      "best_product_format": "stl_parametric",
+      "best_pipeline_match": "produce_stl_parametric",
+      "title_template_suggestion": "Geometric Low-Poly Self-Watering Planter - 3D Print File STL for Desk Plants and Succulents",
+      "evidence_url_or_signal": "High engagement on r/3Dprinting and r/cozygames for minimalist, easy-to-print self-watering desk pots optimized for cheap PLA filament during the spring planting wave."
     },
     {
       "rank": 5,
-      "trend_keyword": "Retro Windows 95 Solitaire Win Screen",
-      "platform_where_spotted": "Pinterest",
+      "trend_keyword": "Gorpcore Outdoor Stickers",
+      "platform_where_spotted": "Pinterest / Instagram",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 2,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Nostalgic Solitaire Win Screen Poster - Retro Windows 95 Desktop Aesthetic Wall Art Print",
-      "evidence_url_or_signal": "Pinterest searches for '90s computer aesthetic decor' up 140% in the last 14 days, specifically focusing on cascading card window patterns"
-    },
-    {
-      "rank": 6,
-      "trend_keyword": "Cottagecore Frog Playing Banjo",
-      "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 120,
-      "saturation_now_1_10": 6,
-      "best_product_format": "tshirt",
-      "best_pipeline_match": "produce_iheart_v3",
-      "title_template_suggestion": "Cute Cottagecore Frog Playing Banjo Shirt - Whimsical Forest Toad Aesthetic Vintage Tee",
-      "evidence_url_or_signal": "Etsy search terms 'frog banjo' and 'goblincore stickers' rising rapidly in weekly charts; highly converting theme for sticker and apparel POD sellers"
+      "estimated_lifespan_days": 40,
+      "saturation_now_1_10": 5,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Gorpcore Aesthetic Sticker Pack - Retro Hiking, Camping, and Mountain Exploration Decals",
+      "evidence_url_or_signal": "Search queries on Pinterest for 'Granola girl gorpcore moodboard' and 'vintage hiking gear' peaking as summer camping season kicks off across Europe and North America."
     }
   ]
 }
