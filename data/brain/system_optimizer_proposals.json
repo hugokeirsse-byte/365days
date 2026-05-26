@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-26T14:45:40.228275Z",
+  "timestamp": "2026-05-26T18:20:24.279541Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,93 +90,106 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Runware PAYG Budget Runaway Risk",
-      "category": "security",
+      "issue_title": "GitHub Runner IP Blocking & Rate Limits on Free Image APIs",
+      "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_iheart_v4",
-        "produce_kdp_cover"
+        "produce_tumbler_wraps",
+        "produce_quotes_minimal"
       ],
-      "current_pain_description": "Runware is a PAYG (Pay-As-You-Go) service. A recursive loop bug or a misconfigured GitHub Actions matrix run could trigger thousands of API calls, consuming Hugo's entire 20€ monthly budget (or hitting billing limits) in minutes.",
-      "proposed_fix": "Implement a 'circuit_breaker.py' script run at the start of every image generation step. It must read a persistent state file in the repository (e.g., '.github/budget_state.json') tracking the current month's spent credits. If the estimated cost exceeds 18€, the script gracefully forces the workflow to exit with status 0, preventing further API charges.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Avoids unexpected API bills, protects the strict 20€/month budget boundary.",
+      "current_pain_description": "GitHub Actions runner IPs are highly shared and frequently flagged/blacklisted (HTTP 403/429) by Cloudflare, AI Horde, and Gemini. This causes silent pipeline crashes and prevents stable image generation.",
+      "proposed_fix": "Create a unified `image_generator.py` gateway module with built-in retry logic, exponential backoff, and a dynamic fallback sequence (Together AI FLUX-schnell -> Cloudflare Workers AI -> Runware PAYG as paid fallback -> Pollinations as absolute last resort).",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Eliminates random pipeline failures; guarantees image generation completes on every runner execution.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Mobile Download Bottleneck for Generated Assets",
+      "issue_title": "Lack of Automated Listing Metadata Generation",
       "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_lowcontent_kdp",
-        "produce_svg_pack"
+        "produce_svg_pack",
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Hugo operates solely from an Android phone (Termux). Navigating GitHub's UI to download ZIP artifacts, unzipping them, and uploading them to KDP/Redbubble is slow and frustrating on a mobile screen.",
-      "proposed_fix": "Add a post-generation step using a Telegram Bot API curl command. Upon successful pipeline completion, the workflow directly uploads the final PDF/ZIP (under 50MB) to a private Telegram channel/chat. Hugo receives a direct push notification on his phone with a one-click download link.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Saves 5-10 minutes per product upload, making the mobile-only pipeline friction-free.",
+      "current_pain_description": "Pipelines generate visual assets, but Hugo has to manually write SEO titles, descriptions, and tags/keywords from his Android phone, consuming his limited 10 hours/week.",
+      "proposed_fix": "Append a metadata generation step using Gemini 2.5 Flash at the end of each production pipeline. Output a standardized `listing_package.json` containing optimized Etsy/KDP titles, descriptions, and 13 tags, ready for easy copy-pasting.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Saves 15-20 minutes of manual work per listing, maximizing Hugo's 10h/week ROI.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Brittle Single-Provider Image APIs",
+      "issue_title": "Silent Pipeline Failures and Status Blindness on Mobile",
       "category": "failure_mode",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_iheart_v4",
-        "produce_kdp_cover",
-        "produce_lowcontent_kdp"
+        "agent_orchestrator",
+        "agent_auto_regen"
       ],
-      "current_pain_description": "Pipelines rely on hardcoded API calls (e.g., Pollinations, Together AI). If a provider goes down, rate-limits, or blocks GitHub Actions IPs, the entire generation pipeline breaks silently.",
-      "proposed_fix": "Refactor image generation into a single Python module 'image_gateway.py' that implements a prioritized fallback mechanism: 1. Together AI (free tier) -> 2. Cloudflare Workers AI (free tier) -> 3. Runware (paid fallback, if budget permits) -> 4. Pollinations (free, low-quality fallback). This ensures pipelines never crash due to API downtime.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "99.9% uptime for image generation without manual code intervention.",
-      "priority_1_10": 9
+      "current_pain_description": "Hugo operates exclusively from an Android phone. Checking GitHub Actions logs to see if a workflow failed or succeeded is cumbersome and leads to delayed reactions to errors.",
+      "proposed_fix": "Implement a lightweight Telegram or Discord webhook notifier step at the end of every GitHub Action workflow. Send a structured message containing: Status (Success/Fail), Pipeline Name, Number of Assets Generated, and API costs incurred.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Immediate visibility of system health and cost tracking directly on Hugo's phone.",
+      "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Wasted Processing on Defective AI Images",
+      "issue_title": "Gibberish Text on Generated Visual Assets",
       "category": "quality_bug",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_iheart_v4"
+        "produce_quotes_minimal",
+        "produce_iheart_v4",
+        "produce_literal_idioms_v2"
       ],
-      "current_pain_description": "AI models generate images with artifacts (extra limbs, broken borders, gray backgrounds instead of clean line art). Currently, these are packaged into books automatically, resulting in low-quality products that will get rejected or refunded.",
-      "proposed_fix": "Integrate 'agent_gemini_quality_check' directly into the image loop. Use the free Gemini 2.5 Flash Vision API to analyze each generated image before saving. Use a prompt like: 'Is this coloring page clean line art with white background, no gray shading, and no physical deformities? Respond strictly YES or NO.' If NO, auto-retry the generation with a tweaked seed.",
+      "current_pain_description": "AI image generators (even FLUX) occasionally render malformed text, spelling errors, or visual artifacts on typography-heavy designs, making them unsellable.",
+      "proposed_fix": "Integrate an automated OCR/VLM gate using the free Gemini 2.5 Flash API inside `agent_gemini_quality_check`. Pass the generated image to Gemini and ask it to transcribe the text and rate its visual legibility. Auto-discard and regenerate images failing this check.",
       "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Ensures near-perfect product quality for KDP/Etsy without manual inspection.",
+      "estimated_value_unlocked": "Ensures zero typo-ridden products reach the upload stage; maintains high brand reputation.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Siloed Pipelines Failing to Cross-Pollinate",
+      "issue_title": "Missed Cross-Pollination of Visual Assets",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_svg_pack",
-        "produce_tumbler_wraps"
+        "produce_tumblr_wraps"
       ],
-      "current_pain_description": "High-quality vector/line-art assets generated for a coloring book are only used once. Hugo spends 100% of his effort on one format, ignoring high-margin digital downloads like SVG sticker packs, PNG clip art, or seamless patterns.",
-      "proposed_fix": "Create a 'cross_pollinate.py' script. When 'produce_coloring_book' outputs high-quality transparent PNGs, this script auto-converts them to SVGs (using potrace/autotrace) and packages them as transparent sticker bundles for Redbubble and digital vector packs for Cults3D/Etsy.",
+      "current_pain_description": "High-quality line art or graphic patterns are generated for a single product type (e.g., a coloring book page) and then archived. They are not repurposed into other profitable formats.",
+      "proposed_fix": "Build a post-generation utility that takes approved high-resolution graphics and automatically processes them into multiple SKUs: 1) Vectorized SVGs for Etsy, 2) Transparent PNGs for Redbubble stickers, and 3) Compiled PDFs for KDP interiors.",
       "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Multiplies inventory by 3x for the same hours worked and image budget spent.",
+      "estimated_value_unlocked": "Multiplies inventory volume by 3x to 4x for the same API generation cost.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "GitHub Actions Runner IP Blocks on Scrapers",
-      "category": "failure_mode",
+      "issue_title": "Clunky GitHub Action Triggering from Android Termux",
+      "category": "bottleneck",
       "affected_pipelines": [
-        "agent_trendhunter",
-        "agent_opportunity_hunter",
-        "agent_external_trends"
+        "agent_orchestrator"
       ],
-      "current_pain_description": "Scraping trends directly from GitHub Actions runners results in HTTP 403/Cloudflare blocks because target websites block known hosting provider IP ranges.",
-      "proposed_fix": "Leverage Gemini 2.5 Flash's built-in Google Search grounding capability. Instead of scraping websites directly from the runner, ask Gemini to perform search queries and extract the trend data. This routes requests through Google's search infrastructure, bypassing IP blocks completely.",
+      "current_pain_description": "Triggering specific workflows with custom inputs through the GitHub mobile web interface is frustrating on a small touch screen.",
+      "proposed_fix": "Write a simple, interactive CLI bash script for Termux using `gh workflow run` and `fzf` (or basic `read` prompts) allowing Hugo to trigger, monitor, and cancel workflows directly from his terminal.",
       "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Restores reliable trend analysis and opportunity hunting capabilities.",
+      "estimated_value_unlocked": "Reduces pipeline initiation friction to under 15 seconds from a mobile terminal.",
       "priority_1_10": 7
+    },
+    {
+      "rank": 7,
+      "issue_title": "No Limit Controls on PAYG API Budgets",
+      "category": "security",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_gamedev_asset_pack"
+      ],
+      "current_pain_description": "If a workflow enters an infinite loop or runs unchecked on automated triggers, Runware PAYG or other paid APIs could quickly exhaust Hugo's strict €20/month budget.",
+      "proposed_fix": "Implement a local file-based budget tracker (`/tmp/monthly_spend.json` synced via cache or repository variables) that tracks API credit usage. Stop execution immediately if the current month's spend exceeds the €20 ceiling.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Eliminates the risk of unexpected bill shock, ensuring 100% compliance with financial constraints.",
+      "priority_1_10": 6
     }
   ]
 }
