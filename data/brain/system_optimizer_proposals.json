@@ -1,8 +1,8 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-26T02:12:51.181576Z",
-  "model": "gemini-flash-latest",
+  "timestamp": "2026-05-26T07:37:07.183985Z",
+  "model": "gemini-2.5-flash",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -90,112 +90,107 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Centralized Image API Router with Failover and Rate-Limit Resilience",
-      "category": "failure_mode",
+      "issue_title": "Image Generation Reliability & Cost-Effectiveness",
+      "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_lowcontent_kdp",
-        "produce_literal_idioms_v2",
-        "produce_tumbler_wraps"
+        "produce_tumbler_wraps",
+        "produce_svg_pack",
+        "produce_gamedev_asset_pack",
+        "agent_trend_design_matcher",
+        "agent_visual_audit"
       ],
-      "current_pain_description": "Individual pipelines hardcode their image API calls (or fail abruptly on HTTP 429/403). GH Actions IP blocks (Horde 403) and Gemini API limits (429) stall the entire production line without fallback paths, requiring manual intervention from Hugo's phone.",
-      "proposed_fix": "Create a core utility module `image_generator_router.py`. It accepts a standard prompt, size, and style. It handles backoff-retry (exponential), and automatically cascades through providers based on real-time availability: Together AI (FLUX-schnell) -> Cloudflare Workers AI -> Runware PAYG (if within 20€ budget) -> Pollinations (as fallback). Single point of failure eliminated.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Zero silent pipeline crashes; 100% automated recovery from API rate limits or IP bans.",
+      "current_pain_description": "Critical blocker for all image-dependent products. Current free options are unreliable (Gemini 429, AI Horde 403) or low quality (Pollinations). Untested options need integration, and the paid option (Runware) needs careful budget management.",
+      "proposed_fix": "Immediately implement and thoroughly test Together AI and Cloudflare Workers AI for image generation (text2img and img2img). Create an 'image_provider_router' module that attempts free options first, then falls back to Runware (with budget guardrails). Prioritize Flux-schnell model where possible for speed and quality within budget. Implement robust error handling and retry logic for each provider.",
+      "estimated_implementation_hours_claude": 5,
+      "estimated_value_unlocked": "Unblocks all visual product generation, increases product quality, ensures system resilience.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Automated Vision-Based Quality Gate (Gemini 2.5 Flash Filter)",
-      "category": "quality_bug",
+      "issue_title": "Lack of Automated Product Publication",
+      "category": "coverage_gap",
       "affected_pipelines": [
-        "agent_visual_audit",
         "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_gamedev_asset_pack"
+        "produce_lowcontent_kdp",
+        "produce_kdp_cover",
+        "Redbubble",
+        "Amazon KDP",
+        "Cults3D"
       ],
-      "current_pain_description": "Pollinations or raw FLUX outputs can contain severe visual defects (e.g., gray fills in coloring books, broken anatomy, text artifacts). Hugo has to manually view every image on his phone to reject bad ones, wasting his 10 hrs/week budget.",
-      "proposed_fix": "Integrate a vision-based validation step inside `agent_visual_audit.py` using the free tier of Gemini 2.5 Flash. The model is sent the generated image and evaluates it against strict JSON-schema criteria (e.g., is_coloring_page_pure_bw: boolean, has_severe_deformities: boolean, quality_score: 1-10). If the score is below 7, automatically trigger a regenerate loop up to 3 times.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Saves Hugo 3-4 hours of manual curation per week; ensures only high-quality assets reach the staging folder.",
+      "current_pain_description": "No products are published, and no sales have occurred. The system can generate products, but the crucial step of getting them onto platforms is manual, which is a major bottleneck given Hugo's limited hours.",
+      "proposed_fix": "Develop a minimal viable automated publication workflow for one target platform (e.g., Amazon KDP for coloring books). This involves generating metadata, packaging assets, and using platform APIs or headless browser automation (if API is unavailable/complex) within GitHub Actions to upload and list products. Start with the 'produce_coloring_book' pipeline as the first target.",
+      "estimated_implementation_hours_claude": 8,
+      "estimated_value_unlocked": "Enables first sales, validates end-to-end product pipeline, significantly reduces manual effort for scaling.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "SQLite Flat-File Asset Registry for Mobile Status Tracking",
-      "category": "code_quality",
+      "issue_title": "Missed Cross-Pipeline Design Reusability",
+      "category": "cross_polination",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_winner_amplifier",
         "produce_coloring_book",
-        "produce_card_game"
+        "produce_kdp_cover",
+        "produce_tumbler_wraps",
+        "produce_svg_pack",
+        "produce_iheart_v4",
+        "produce_viral_formats",
+        "agent_winner_amplifier"
       ],
-      "current_pain_description": "With 20+ pipeline scripts running on GH Actions, there is no centralized state tracking what assets have been generated, audited, approved, or published. Managing this via raw git files on Termux is highly disorganized.",
-      "proposed_fix": "Implement a lightweight `registry.db` (SQLite) stored in the Git repository. GH Actions pipelines insert metadata (file path, tags, status: 'generated', 'audited', 'ready_to_upload', 'published') during runs. A simple python script auto-updates and commits the DB. A read-only GH Pages dashboard displays this DB in a mobile-responsive format for easy viewing on Hugo's phone.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Clear dashboard of 'Ready to Upload' assets on Hugo's mobile browser; prevents double-uploading or lost assets.",
+      "current_pain_description": "A single successful design or concept is likely not being automatically adapted and deployed across multiple product formats (e.g., KDP cover, t-shirt, mug, tumbler wrap, SVG). This limits ROI per generated asset.",
+      "proposed_fix": "Introduce a 'core_design_asset' standard output format for winning designs identified by `agent_winner_amplifier`. Create a new pipeline, `agent_design_formatter`, which takes a `core_design_asset` and generates platform-specific variations (different aspect ratios, resolutions, file types) and product-specific adaptations (e.g., adding text for a KDP cover, tiling for a wrap).",
+      "estimated_implementation_hours_claude": 6,
+      "estimated_value_unlocked": "Multiplies the output and potential revenue from a single successful design, maximizing ROI for creative effort.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Automated IP-Proxy Middleware via Free Cloudflare Workers",
-      "category": "failure_mode",
+      "issue_title": "LLM Brains Output Quality Assurance Gaps",
+      "category": "quality_bug",
       "affected_pipelines": [
-        "produce_iheart_hf",
-        "produce_coloring_book"
+        "agent_coloring_intel",
+        "agent_niche_gap",
+        "agent_ideator_offline",
+        "agent_trend_explosion",
+        "agent_trendhunter",
+        "agent_orchestrator",
+        "agent_gemini_quality_check"
       ],
-      "current_pain_description": "GitHub Actions runner IP ranges are heavily blacklisted by free AI hosts (like AI Horde, Hugging Face spaces) due to scraping abuse, rendering otherwise functional scripts completely useless.",
-      "proposed_fix": "Deploy a simple, free Cloudflare Worker (using Hugo's existing Cloudflare credentials) to act as a reverse proxy. GH Actions calls the Cloudflare Worker endpoint, which forwards the request to the target API and returns the payload. This bypasses the GH Actions IP blocklist instantly.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Unlocks restricted free image generators and endpoints safely without paying for premium VPNs/proxies.",
-      "priority_1_10": 8
+      "current_pain_description": "While LLM brains are operational, the risk of 'gibberish text, broken anatomy, off-topic outputs' remains, especially with multi-model fallbacks. Low-quality intermediate outputs can lead to wasted image generation budget or unsellable products.",
+      "proposed_fix": "Enhance `agent_gemini_quality_check` with more comprehensive validation rules: check for specific keywords, minimum/maximum length, sentiment analysis (if relevant), and coherence. Implement a 'confidence score' or 'review_flag' for outputs, especially from fallback models. If a high-confidence output cannot be generated, flag it for Hugo's manual review rather than proceeding with potentially flawed content.",
+      "estimated_implementation_hours_claude": 4,
+      "estimated_value_unlocked": "Reduces wasted effort and API costs on generating products from poor quality inputs, improves final product quality.",
+      "priority_1_10": 7
     },
     {
       "rank": 5,
-      "issue_title": "Multi-Format Cross-Pollination Packager",
-      "category": "cross_polination",
+      "issue_title": "Lack of Automated Budget Monitoring & Alerts",
+      "category": "security",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_tumbler_wraps",
-        "produce_kdp_cover"
+        "All pipelines consuming external paid APIs (e.g., Together AI, Cloudflare, Runware)"
       ],
-      "current_pain_description": "Assets generated for one specific pipeline (e.g., a high-quality vector-style SVG for a coloring book) are stored and used only for that product, leaving significant passive income on the table.",
-      "proposed_fix": "Create a `cross_pollinate.py` script run by the Orchestrator. When a high-quality asset is flagged in the registry, it automatically runs transformation routines: 1) Converts SVG to high-res PNG for Redbubble, 2) Groups similar SVGs into a 'Vector Bundle' zip for Etsy/Cults3D, 3) Generates a standard 300DPI KDP interior page. All formats are linked under the same asset ID in the registry.",
-      "estimated_implementation_hours_claude": 3.5,
-      "estimated_value_unlocked": "Multiplies the distribution footprint of a single successful design generation across 3-4 different platforms automatically.",
-      "priority_1_10": 7
+      "current_pain_description": "With a strict 20€/month budget for image generation and new paid APIs being tested, there's a high risk of unexpected overages. Exceeding the budget silently could halt operations or cause financial strain.",
+      "proposed_fix": "Implement a dedicated GitHub Actions workflow (`agent_budget_monitor`) that runs daily or weekly. This workflow should query API usage statistics (if available) for all active paid providers (or estimate based on API call counts) and compare against the 20€ monthly limit. If usage exceeds a predefined threshold (e.g., 80%), send an email alert to Hugo via a simple service (e.g., `sendgrid` free tier, or a simple GitHub issue/comment).",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Prevents budget overruns, ensures financial stability, and allows proactive adjustments to API usage.",
+      "priority_1_10": 8
     },
     {
       "rank": 6,
-      "issue_title": "Automated USPTO and Copyright Clearance Gatekeeper",
-      "category": "security",
+      "issue_title": "Code Duplication and Maintainability from Pipeline Versioning",
+      "category": "code_quality",
       "affected_pipelines": [
-        "produce_quotes_minimal",
-        "produce_literal_idioms_v2",
-        "produce_viral_formats_v2",
-        "produce_bible_verses_v2"
+        "produce_bible_verses",
+        "produce_cultural_arbitrage",
+        "produce_iheart",
+        "produce_literal_idioms",
+        "produce_viral_formats"
       ],
-      "current_pain_description": "Low-content designs, quotes, and viral texts risk infringing active trademarks (e.g., 'Boy Mom', 'Intellectual Property' phrases) which leads to instant account bans on Amazon KDP and Redbubble.",
-      "proposed_fix": "Integrate a lightweight automated check in the text-generation phase of pipelines. Query a free, cached list of common litigious terms, and use Gemini 2.5 Flash to explicitly scan the output text for potential trademarks, copyright risks, or public-domain violations, returning a simple boolean clearance flag.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Protects Hugo's merchant accounts from automated trademark bots and permanent platform bans.",
-      "priority_1_10": 7
-    },
-    {
-      "rank": 7,
-      "issue_title": "Mobile-Optimized Metadata Copy-Paste Helper",
-      "category": "bottleneck",
-      "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_gamedev_asset_pack"
-      ],
-      "current_pain_description": "Uploading from a phone is painful because Hugo must copy-paste long titles, descriptions, tags, and pricing parameters from raw text files or JSON outputs.",
-      "proposed_fix": "Add a post-processing script that generates a highly-readable, mobile-friendly `upload_card.txt` for every approved asset. This file groups metadata into clear, single-tap copyable blocks (e.g., one tap to copy all 15 comma-separated tags, one tap for the SEO-optimized description) and can be accessed via his phone through GH Pages or sent via a free Telegram Bot notification.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Cuts manual publishing time on mobile devices by 50% per product.",
+      "current_pain_description": "Multiple versions of pipelines (e.g., `_v2`, `_v3`, `_v4`, `_x`) indicate a lack of clear iteration strategy, leading to code duplication, potential inconsistencies, and increased maintenance overhead. It's unclear which version is current and supported.",
+      "proposed_fix": "For active pipelines, consolidate `_vX` versions into a single pipeline with configuration options or feature flags to control variations. Deprecate and archive older versions that are no longer in use. Refactor common functionalities into shared utility modules to reduce duplication. Implement a simple README for each pipeline explaining its purpose, current version status, and how to configure it.",
+      "estimated_implementation_hours_claude": 7,
+      "estimated_value_unlocked": "Reduces technical debt, improves code readability and maintainability, makes future development faster and less error-prone.",
       "priority_1_10": 6
     }
   ]
