@@ -1,0 +1,80 @@
+name: Builder (briefing.md -> code via Gemini)
+
+on:
+  workflow_dispatch:
+    inputs:
+      briefing:
+        description: "Chemin du briefing (vide = traiter tous les pending)"
+        required: false
+        default: ""
+  push:
+    paths:
+      - .triggers/builder
+
+concurrency:
+  group: builder-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Traiter tous les briefings en file
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
+          BRIEFING: ${{ inputs.briefing }}
+        run: |
+          set -e
+          # Si un briefing spécifique est fourni, ne traiter que lui
+          if [ -n "$BRIEFING" ]; then
+            echo "=== Traitement du briefing : $BRIEFING ==="
+            python scripts/agent_builder.py
+          else
+            # Traiter tous les .md en queue (max 10 pour éviter timeout)
+            COUNT=0
+            while [ $COUNT -lt 10 ]; do
+              PENDING=$(ls data/build_queue/*.md 2>/dev/null | head -1)
+              if [ -z "$PENDING" ]; then
+                echo "Queue vide — tous les briefings traités."
+                break
+              fi
+              echo "=== Briefing : $PENDING ==="
+              BRIEFING="$PENDING" python scripts/agent_builder.py
+              COUNT=$((COUNT + 1))
+            done
+            echo "Total briefings traités : $COUNT"
+          fi
+
+      - name: Commit les fichiers générés
+        if: always()
+        run: |
+          git add scripts/ data/build_queue/done/ 2>/dev/null || echo "(rien à ajouter)"
+          if git diff --cached --quiet; then
+            echo "Aucun fichier généré."
+          else
+            git commit -m "Builder: code généré par Gemini depuis briefings"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep $((i * 2))
+            done
+          fi
