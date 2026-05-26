@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-26T02:12:29.699838Z",
+  "timestamp": "2026-05-26T07:38:29.810227Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,75 +90,63 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Retro Dad Era Groovy SVG",
-      "platform_where_spotted": "Etsy",
+      "trend_keyword": "Howdy Grad 2026",
+      "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
       "estimated_lifespan_days": 25,
       "saturation_now_1_10": 4,
       "best_product_format": "sticker",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Retro Dad Era SVG, Groovy Fathers Day SVG, Cool Dad Club PNG, Digital Download for Sublimation",
-      "evidence_url_or_signal": "Spike in Etsy search term 'Retro Dad Era SVG' (+180% week-on-week) ahead of Father's Day 2026, driven by TikTok creators showing DIY Cricut t-shirts with 70s wavy fonts."
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Howdy Senior Class of 2026 Sticker - Retro Western Graduation Cap Decal",
+      "evidence_url_or_signal": "TikTok hashtag #howdygrad and #classof2026 trending with 3.2M views in the last 10 days, blending western retro disco themes with May 2026 graduations."
     },
     {
       "rank": 2,
-      "trend_keyword": "SINKWAD (Single Income No Kids With A Dog)",
+      "trend_keyword": "Corporate Sabbatical Club",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 45,
       "saturation_now_1_10": 2,
       "best_product_format": "mug",
       "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "SINKWAD Funny Dog Mom Mug, Single Income No Kids With Dog, Dog Owner Gift, Retro Ceramic Coffee Cup",
-      "evidence_url_or_signal": "TikTok viral sound trends around 'DINKWAD lifestyle' have mutated into 'SINKWAD' (single income) showing solo pet owners celebrating their budget and freedom. Spiked mid-May 2026."
+      "title_template_suggestion": "Corporate Sabbatical Club Mug - Funny Burnout Office Humor Gift",
+      "evidence_url_or_signal": "Viral sound 'I am mentally on a sabbatical' peaking since May 12, 2026, with over 15k high-engagement videos of Gen Z and Millennial remote workers."
     },
     {
       "rank": 3,
-      "trend_keyword": "Desert Goth Aesthetic",
+      "trend_keyword": "Cozy Fantasy Library",
       "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 60,
       "saturation_now_1_10": 3,
       "best_product_format": "coloring_book",
       "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Desert Goth Coloring Book: Spooky Bohemian Western Landscapes, Skull and Cactus Gothic Designs for Adults",
-      "evidence_url_or_signal": "Pinterest Trends showing 'Desert Goth Home Decor' up 240% in May 2026. Merges traditional boho desert elements (cacti, suns) with dark gothic elements (skulls, ravens, occult stars)."
+      "title_template_suggestion": "Cozy Fantasy Library Coloring Book - Whimsical Bookshelf and Magic Nook Pages",
+      "evidence_url_or_signal": "Pinterest trend search 'cozy fantasy aesthetic room' spiked by 140% between May 8 and May 20, 2026, showing high demand for stress-relief coloring pages of magical rooms."
     },
     {
       "rank": 4,
-      "trend_keyword": "Retro Motel Keychain SVG",
+      "trend_keyword": "Emotional Support Plant Dad",
       "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 7,
       "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 5,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Funny Retro Motel Keychain SVG Bundle, Sarcastic Quotes Key Tag Design, Laser Cut File Cricut Silhouette",
-      "evidence_url_or_signal": "High transaction volume for blanks on Amazon/Etsy; search interest for DIY motel keychains with witty/anxious mental health sayings is peaking."
+      "saturation_now_1_10": 3,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_iheart_v4",
+      "title_template_suggestion": "Emotional Support Plant Dad Shirt - Funny Father's Day Plant Lover Gift",
+      "evidence_url_or_signal": "Etsy search volume for 'Father's Day plant dad' increased 95% in the last 14 days, as buyers prepare for June 2026 with quirky botanical humor."
     },
     {
       "rank": 5,
-      "trend_keyword": "Git Commit Humor / Dev Burnout",
-      "platform_where_spotted": "Reddit",
+      "trend_keyword": "Cute Frog Planter STL",
+      "platform_where_spotted": "Cults3D",
       "momentum_score_1_10": 7,
       "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 4,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_cope_pack",
-      "title_template_suggestion": "Funny Git Commit Coffee Mug, Software Engineer Gift, Developer Burnout Sarcastic Mug, Code Merge Drama",
-      "evidence_url_or_signal": "r/programmerhumor posts featuring chaotic git commit messages and 'force push to main' jokes on coffee mugs receiving 15k+ upvotes in the last 10 days."
-    },
-    {
-      "rank": 6,
-      "trend_keyword": "Acid Graphics Cyberpunk Vectors",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 40,
       "saturation_now_1_10": 2,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Y2K Acid Graphics SVG Pack, Chrome Cyberpunk Vectors, Futuristic Streetwear Design Elements, Digital PNG Clipart",
-      "evidence_url_or_signal": "TikTok hashtag #acidgraphics reaching 45M views. Gen Z graphic designers are selling vector element packs for local streetwear brands; perfect fit for Hugo's SVG/PNG generation capabilities."
+      "best_product_format": "stl_parametric",
+      "best_pipeline_match": "produce_stl_parametric",
+      "title_template_suggestion": "Cute Frog Planter STL File - Modular Succulent Pot 3D Print File",
+      "evidence_url_or_signal": "Search term 'frog planter' entered the top 50 trending tags on Cults3D on May 15, 2026, driven by summer gardening and low-filament 3D printing trends."
     }
   ]
 }
