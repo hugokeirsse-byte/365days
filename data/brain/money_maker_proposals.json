@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-27T02:32:11.659480Z",
+  "timestamp": "2026-05-27T07:58:05.977064Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -52,6 +52,7 @@
     "produce_cope_pack",
     "produce_cultural_arbitrage",
     "produce_cultural_arbitrage_v2",
+    "produce_from_brief",
     "produce_gamedev_asset_pack",
     "produce_iheart_hf",
     "produce_iheart_v2",
@@ -73,13 +74,17 @@
     "agent_auditor",
     "agent_auto_regen",
     "agent_brain_meta",
+    "agent_brief_auditor",
+    "agent_builder",
     "agent_coloring_intel",
     "agent_external_trends",
+    "agent_gate2",
     "agent_gemini_quality_check",
     "agent_ideator_offline",
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_publisher",
     "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
@@ -90,58 +95,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch 1st Niche Coloring Book on KDP using Runware PAYG",
+      "action_title": "Publish 3 Niche Coloring Books on Amazon KDP",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_low": 10,
       "estimated_revenue_uplift_eur_30days_high": 80,
       "hugo_effort_hours": 4,
-      "why_this_works_now": "KDP is registered but has 0 listings. Using Runware PAYG (~1.20 EUR for 200 high-quality FLUX-schnell images) bypasses the GitHub Actions API blockages and delivers professional-grade coloring lines that organic Amazon traffic actually buys.",
-      "first_action_today": "Fund Runware account with 5 EUR, run the 'produce_coloring_book' script with Runware API key to generate 40 French countryside illustrations."
+      "why_this_works_now": "Coloring books are highly searched on Amazon, and you already have the 'produce_coloring_book' pipeline ready. It bypasses shipping fees and leverages Amazon's massive organic traffic.",
+      "first_action_today": "Run the 'produce_coloring_book' pipeline via GitHub Actions to generate 40 high-quality coloring pages for a specific micro-niche (e.g., 'Cottagecore Frogs Coloring Book')."
     },
     {
       "rank": 2,
-      "action_title": "Bulk Upload 100 Minimalist French Quote Stickers",
+      "action_title": "Redbubble Mass Upload of 50 Sticker Designs",
       "type": "upload",
       "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 35,
+      "estimated_revenue_uplift_eur_30days_high": 40,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Redbubble is registered but empty. Text-based stickers require 0 image generator API calls, bypass all AI generation issues, and rank fast for trending French micro-quotes with high margins on stickers.",
-      "first_action_today": "Write a 20-line Python script in Termux using PIL (Pillow) to generate 100 transparent PNG text stickers using free Google Fonts."
+      "why_this_works_now": "Stickers are low-friction impulse buys. Redbubble is already registered. Using existing pipelines like 'produce_literal_idioms_v2' or 'produce_iheart_x' allows rapid generation of transparent PNGs ready to upload.",
+      "first_action_today": "Generate 50 clean sticker PNGs with transparent backgrounds using Together AI on GitHub Actions, package them in a zip, and download to your Android phone."
     },
     {
       "rank": 3,
-      "action_title": "Publish 3 Parametric 3D Printing Organizers using OpenSCAD",
+      "action_title": "Open Cults3D Account and List 5 Parametric Organizers",
       "type": "upload",
       "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_low": 5,
       "estimated_revenue_uplift_eur_30days_high": 50,
       "hugo_effort_hours": 2,
-      "why_this_works_now": "Cults3D buyers actively pay 1-3 EUR for functional, modular grid organizers. By generating STL variations via OpenSCAD on GitHub Actions, you can target specific desk/drawer dimensions without needing a physical 3D printer.",
-      "first_action_today": "Create a basic OpenSCAD script for a modular drawer divider, commit it to GitHub, and use GHA to export 5 common size configurations."
+      "why_this_works_now": "Cults3D has a highly active buyer base for 3D printing files. Your 'produce_stl_parametric' pipeline can output customizable gridfinity/boardgame organizers that people gladly pay 1.50 EUR to 3.00 EUR for.",
+      "first_action_today": "Activate your Cults3D account and upload the first parametric file (e.g., a customizable drawer divider or cable organizer) generated from your STL pipeline."
     },
     {
       "rank": 4,
-      "action_title": "Target High-Margin KDP Logbooks (Gardening/Beekeeping)",
+      "action_title": "Launch 5 KDP Low-Content Logbooks for Specific Hobbies",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 60,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Low-content logbooks (carnets de suivi) require no complex AI image generation except for the cover. Interior layouts are simple PDF grids easily generated via Python/ReportLab in Termux.",
-      "first_action_today": "Generate a 100-page 'Carnet de suivi Ruche/Apiculture' interior PDF using Python on Termux."
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Low-content logbooks (e.g., Mushroom Foraging Log, Ham Radio Logbook) require zero complex layout design inside. You only need a simple, highly-targeted cover and a standard interior template.",
+      "first_action_today": "Use the 'produce_lowcontent_kdp' pipeline to generate covers for 5 specific logbook niches, combine with a free 120-page logbook interior, and submit to KDP."
     },
     {
       "rank": 5,
-      "action_title": "Launch itch.io Gamedev UI Asset Pack (Pay-What-You-Want)",
-      "type": "new_stream",
+      "action_title": "Publish 3 Game Dev Asset Packs on Itch.io",
+      "type": "upload",
       "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 30,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "The gamedev community on itch.io frequently tips creators for clean UI assets. Using Pollinations (which is functional) to generate dark-fantasy or sci-fi UI button elements requires zero budget and can be packaged into a ZIP instantly.",
-      "first_action_today": "Set up a free itch.io creator profile and run a quick Pollinations script to fetch 50 fantasy-themed UI icons."
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Game developers constantly buy 2D UI elements, pixel art tilesets, and icons. Itch.io is free, easy to navigate from a phone, and allows direct digital sales with immediate payouts.",
+      "first_action_today": "Run the 'produce_gamedev_asset_pack' pipeline to generate a clean RPG UI kit or a set of 2D fantasy item icons, package it as a zip, and publish on Itch.io for $2.99."
     }
   ]
 }
