@@ -1,11 +1,44 @@
 # 📋 INSCRIPTIONS HUGO — version 20/05/2026 (Empire Perpétuel, 100% gratuit à l'inscription)
 
+> ## 🔄 MISE À JOUR 27/05/2026
+>
+> ### Secrets GitHub à ajouter MAINTENANT (bloquants)
+> | Secret | Service | URL inscription | Usage |
+> |--------|---------|-----------------|-------|
+> | `GROQ_API_KEY` | Groq Cloud | https://console.groq.com | Roman writer (Llama 3.3 70B, 30 req/min gratuit) |
+> | `MISTRAL_API_KEY` | Mistral | https://console.mistral.ai | Architecte Système (Mistral Small gratuit) |
+> | `RUNWARE_API_KEY` | Runware | https://runware.ai | Génération images (remplace HF, ~$0.002-0.006/image) |
+>
+> ### Plateformes à inscrire MAINTENANT (produits prêts à uploader)
+> | Plateforme | Produits prêts | Royalties | URL |
+> |-----------|---------------|-----------|-----|
+> | **Cults3D** | 194 fichiers STL (keychains, coasters, bookmarks, door plates) | 80% | https://cults3d.com |
+> | **Etsy** | Jeux de cartes (DevOps, Nurses, Pêche, Pompiers, Profs) — après ajout fichier règles | 80-85% | https://etsy.com |
+> | **KDP (déjà inscrit)** | Journaux low-content : 10 produits APPROUVÉS (fishing log, brewing log, etc.) | 35-70% | déjà fait |
+>
+> ### Ce qui est REJETÉ (ne pas uploader)
+> - ❌ Mystical Mushrooms coloring book → REJECT 40/100 (résolution 73 DPI, KDP exige 300 DPI)
+> - ❌ Mystical Creatures coloring book → REJECT 0/100 (6 pages seulement, résolution insuffisante)
+> - ⚠️ 5 jeux de cartes → REVIEW (fichier règles manquant) — ajouter les règles pour débloquer
+>
+> ### Ce que font les agents maintenant (branché depuis 27/05)
+> - 🧠 **B1 Stratège** : tous les lundis 06h UTC — lit les rapports brain et propose des produits
+> - 🔭 **Prospecteur d'Émergence** : tous les jeudis 05h UTC — scanne les business inexploités
+> - 🏗️ **Architecte Système** : tous les dimanches 04h UTC — audite système + génère briefings
+> - 📋 **CdC Roman** : sur trigger — génère cahier des charges complet (en attente : romance small-town)
+> - 📋 **CdC Low-content** : sur trigger — génère cahier des charges (en attente : witchy moon journal)
+>
+> ### ⚠️ OBLIGATOIRE AVANT 1ÈRE VENTE
+> **URSSAF Auto-entrepreneur** — toujours pas fait. Obligatoire légalement avant tout premier paiement.
+> URL : https://www.autoentrepreneur.urssaf.fr/portail/accueil/creer-mon-auto-entreprise.html
+> Durée : 10-15 min. À faire MAINTENANT.
+
 > ## ✅ ÉTAT AU 20/05/2026 (déclaré par Hugo)
 > Hugo a rempli les inscriptions **jusqu'à la clé Hugging Face**.
 > - **FAIT** : Redbubble · KDP (+ W-8BEN) · clés LLM **gratuites** : Gemini, Groq, Mistral, OpenRouter, Cohere, HF, **Civitai** (`CIVITAI_API_KEY`).
 > - **SKIPPÉ volontairement** (payant ou crédit limité — on veut du **100 % gratuit durable**) : Together (2.4), Replicate (2.9), Perplexity (2.10). Couverts par les gratuits + **Pollinations** (génération images **sans clé**) + post-traitement local sans clé.
 > - **PAS ENCORE FAIT (priorité)** : **URSSAF** (obligatoire avant la 1ère vente) · **Bitwarden** (Hugo utilise déjà le gestionnaire de mots de passe intégré de son téléphone) · **tout le reste des Vagues 3 → 8**.
-> - **Priorité convenue** : les **clés API** d'abord (fait jusqu'à HF). Action débloquante = poser `HF_API_KEY` + `GEMINI_API_KEY` dans les **GitHub Secrets** → ça lance la production.
+> - **Priorité convenue** : les **clés API** d'abord (fait jusqu'à HF). Action débloquante = poser `HF_API_KEY` + `GEMINI_API_KEY` dans les **GitHub Secrets** → ça lance la production. `HF_API_KEY` remplacé par `RUNWARE_API_KEY` pour la génération d'images (HF ne sert plus FLUX/SDXL gratuitement depuis mi-2025).
 > - ⚠️ *Les lignes individuelles ci-dessous ne sont pas toutes confirmées une par une : si une case est cochée à tort, signale-le.*
 
 > ## 🎨 GÉNÉRATEURS D'IMAGES — RÉALITÉ AU 21/05 (priorité actuelle)
