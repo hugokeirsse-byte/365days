@@ -44,16 +44,20 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Resolve BRIEF_ID
+      - name: Resolve BRIEF_ID et SKIP_IMAGES
         id: brief
         run: |
           BID="${{ inputs.brief_id }}"
+          SKIP="${{ inputs.skip_images }}"
           if [ "${{ github.event_name }}" = "push" ]; then
             T=$(grep -oP '^brief_id=\K.*' .triggers/production_loop 2>/dev/null | head -1)
             BID="${T:-brief_2026-05-22_coloring_kawaii_mushroom_hollow}"
+            S=$(grep -oP '^skip_images=\K.*' .triggers/production_loop 2>/dev/null | head -1)
+            SKIP="${S:-false}"
           fi
           echo "bid=$BID" >> "$GITHUB_OUTPUT"
-          echo "Brief = $BID"
+          echo "skip_images=$SKIP" >> "$GITHUB_OUTPUT"
+          echo "Brief = $BID  |  skip_images = $SKIP"
 
       - name: "Brique 2 — Producteur (redige les 30 prompts)"
         env:
@@ -63,7 +67,7 @@ jobs:
         run: python scripts/produce_from_brief.py
 
       - name: "Brique 2b — Generation d'images + conversion line-art"
-        if: ${{ inputs.skip_images != 'true' }}
+        if: ${{ steps.brief.outputs.skip_images != 'true' }}
         env:
           BRIEF_ID: ${{ steps.brief.outputs.bid }}
           RUNWARE_API_KEY: ${{ secrets.RUNWARE_API_KEY }}
@@ -76,7 +80,7 @@ jobs:
           if [ -f scripts/generate_from_plan.py ]; then
             python scripts/generate_from_plan.py
           else
-            echo "⚠️  generate_from_plan.py absent — en attente du Builder. Skip images."
+            echo "generate_from_plan.py absent — skip."
           fi
 
       - name: "Brique 2c — Assemblage PDF KDP"
@@ -86,20 +90,20 @@ jobs:
           if [ -f scripts/build_kdp_pdf.py ]; then
             python scripts/build_kdp_pdf.py
           else
-            echo "⚠️  build_kdp_pdf.py absent — en attente du Builder. Skip PDF."
+            echo "build_kdp_pdf.py absent — skip."
           fi
 
-      - name: "Brique 3 — Auditeur (point par point vs cahier des charges)"
+      - name: "Brique 3 — Auditeur"
         env:
           BRIEF_ID: ${{ steps.brief.outputs.bid }}
         run: python scripts/agent_brief_auditor.py "${{ steps.brief.outputs.bid }}"
 
-      - name: "Brique 4 — GATE 2 (presente si abouti, sinon refuse)"
+      - name: "Brique 4 — GATE 2"
         env:
           BRIEF_ID: ${{ steps.brief.outputs.bid }}
         run: python scripts/agent_gate2.py "${{ steps.brief.outputs.bid }}"
 
-      - name: "Brique 5 — Publication (paquet KDP + fiche Etsy)"
+      - name: "Brique 5 — Publication"
         env:
           BRIEF_ID: ${{ steps.brief.outputs.bid }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -108,7 +112,7 @@ jobs:
           if [ -f scripts/agent_publisher.py ]; then
             python scripts/agent_publisher.py "${{ steps.brief.outputs.bid }}"
           else
-            echo "⚠️  agent_publisher.py absent — en attente du Builder. Skip publication."
+            echo "agent_publisher.py absent — skip."
           fi
 
       - name: Commit artefacts
@@ -118,7 +122,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Aucun artefact nouveau."
           else
-            git commit -m "Production loop: prompts + images + PDF + audit + gate2 [${{ steps.brief.outputs.bid }}]"
+            git commit -m "Production loop: artefacts [${{ steps.brief.outputs.bid }}]"
             for i in 1 2 3 4 5; do
               if git push origin HEAD:${{ github.ref_name }}; then break; fi
               git pull --rebase origin ${{ github.ref_name }} || true
