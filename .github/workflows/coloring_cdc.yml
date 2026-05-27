@@ -1,0 +1,93 @@
+name: Coloring Book CdC Generator
+on:
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Thème principal (ex: botanical_garden, enchanted_forest, ocean_life, japanese_garden, art_nouveau)'
+        required: true
+        default: 'botanical_garden'
+      audience:
+        description: 'Audience cible'
+        required: true
+        default: 'adult'
+        type: choice
+        options: [adult, child]
+      pages:
+        description: 'Nombre de pages (20-40)'
+        required: false
+        default: '30'
+
+env:
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+
+      - name: Installer dependances
+        run: pip install --quiet requests
+
+      - name: Resoudre parametres
+        id: p
+        run: |
+          THEME="${{ inputs.theme }}"
+          AUDIENCE="${{ inputs.audience }}"
+          PAGES="${{ inputs.pages }}"
+          THEME=${THEME:-botanical_garden}
+          AUDIENCE=${AUDIENCE:-adult}
+          PAGES=${PAGES:-30}
+          COLORING_ID="coloring_$(date +%Y-%m-%d)_${THEME}"
+          echo "theme=$THEME" >> $GITHUB_OUTPUT
+          echo "audience=$AUDIENCE" >> $GITHUB_OUTPUT
+          echo "pages=$PAGES" >> $GITHUB_OUTPUT
+          echo "coloring_id=$COLORING_ID" >> $GITHUB_OUTPUT
+
+      - name: Generer le CdC coloring
+        env:
+          COLORING_THEME: ${{ steps.p.outputs.theme }}
+          COLORING_AUDIENCE: ${{ steps.p.outputs.audience }}
+          COLORING_PAGES: ${{ steps.p.outputs.pages }}
+          COLORING_ID: ${{ steps.p.outputs.coloring_id }}
+        run: python scripts/agent_coloring_cdc.py
+
+      - name: Commit CdC
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add products/coloring_books/ || true
+          git diff --cached --quiet || git commit -m "cdc: coloring ${{ steps.p.outputs.theme }} — EN ATTENTE VALIDATION HUGO"
+          git push || true
+
+      - name: Instructions pour Hugo
+        run: |
+          echo ""
+          echo "============================================================"
+          echo "  CAHIER DES CHARGES GENERE — EN ATTENTE VALIDATION HUGO"
+          echo "============================================================"
+          echo ""
+          echo "Thème    : ${{ steps.p.outputs.theme }}"
+          echo "Audience : ${{ steps.p.outputs.audience }}"
+          echo "Pages    : ${{ steps.p.outputs.pages }}"
+          echo ""
+          echo "ETAPES OBLIGATOIRES avant production :"
+          echo ""
+          echo "  1. Ouvrir products/coloring_books/${{ steps.p.outputs.coloring_id }}_*/"
+          echo "     -> Lire CAHIER_DES_CHARGES.md"
+          echo ""
+          echo "  2. Copier l'exemple_prompt_complet de la section 2"
+          echo "     -> Tester sur https://pollinations.ai"
+          echo "     -> Verifier : ZERO gris, lignes nettes, fond blanc pur"
+          echo ""
+          echo "  3. Si le prompt est satisfaisant :"
+          echo "     -> Editer cdc.json : changer gate_cdc de 'pending' a 'approved'"
+          echo "     -> git add . && git commit -m 'gate: approve coloring ${{ steps.p.outputs.theme }}'"
+          echo "     -> git push  => la production demarre automatiquement"
+          echo ""
+          echo "  NE PAS approuver si : gris visible, style pas net,"
+          echo "  theme sature sur Amazon, prompts trop vagues."
+          echo ""
+          echo "============================================================"
