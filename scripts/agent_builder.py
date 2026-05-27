@@ -35,12 +35,13 @@ GEMINI_FALLBACKS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest
 API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
 
-def call_gemini(prompt, retries=2):
+def call_gemini_text(prompt, retries=2):
+    """Appelle Gemini en mode texte libre (plus fiable pour le code)."""
     if not GEMINI_API_KEY:
         return None, "GEMINI_API_KEY absent"
     body = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.3, "responseMimeType": "application/json", "maxOutputTokens": 8192},
+        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 16384},
     }).encode("utf-8")
     last = "inconnu"
     for model in [GEMINI_MODEL] + [m for m in GEMINI_FALLBACKS if m != GEMINI_MODEL]:
@@ -49,9 +50,10 @@ def call_gemini(prompt, retries=2):
             try:
                 req = urllib.request.Request(url, data=body,
                     headers={"Content-Type": "application/json", "User-Agent": "365days-Builder/1.0"})
-                with urllib.request.urlopen(req, timeout=120) as r:
+                with urllib.request.urlopen(req, timeout=180) as r:
                     data = json.loads(r.read())
-                return json.loads(data["candidates"][0]["content"]["parts"][0]["text"]), model
+                text = data["candidates"][0]["content"]["parts"][0]["text"]
+                return text, model
             except urllib.error.HTTPError as exc:
                 last = f"{model}: HTTP {exc.code}"
                 if exc.code == 404:
@@ -61,6 +63,19 @@ def call_gemini(prompt, retries=2):
                 last = f"{model}: {type(exc).__name__}"
                 time.sleep(2 + attempt * 2)
     return None, last
+
+
+def extract_code(text):
+    """Extrait le code Python de la réponse Gemini (markdown ou texte brut)."""
+    # Cherche un bloc ```python ... ``` ou ``` ... ```
+    m = re.search(r"```(?:python)?\n(.*?)```", text, re.DOTALL)
+    if m:
+        return m.group(1).strip()
+    # Fallback : retourner le texte brut si ça ressemble à du Python
+    stripped = text.strip()
+    if stripped.startswith(("#!/", "import ", "from ", "#", "def ", "class ")):
+        return stripped
+    return None
 
 
 def pick_briefing():
@@ -96,18 +111,24 @@ def main():
     prompt = (
         "Tu es un developpeur Python senior. A partir du CAHIER DES CHARGES ci-dessous, "
         "ecris le FICHIER COMPLET demande. Code robuste, commente sobrement, sans dependances "
-        "lourdes hors celles autorisees. Reponds STRICTEMENT en JSON : "
-        '{ "path": "<chemin>", "code": "<contenu complet du fichier>" }\n\n'
+        "lourdes hors celles autorisees.\n"
+        "Reponds UNIQUEMENT avec le code Python dans un bloc ```python ... ```. "
+        "Rien d'autre avant ou apres le bloc.\n\n"
         "=== CAHIER DES CHARGES ===\n" + text
     )
-    res, info = call_gemini(prompt)
-    if not res or not res.get("code"):
-        print(f"✗ Gemini n'a pas produit de code ({info}).")
+    raw, info = call_gemini_text(prompt)
+    if not raw:
+        print(f"✗ Gemini n'a pas repondu ({info}).")
         return 2
-    out = ROOT / (res.get("path") or target)
+    code = extract_code(raw)
+    if not code:
+        print(f"✗ Impossible d'extraire le code de la reponse Gemini ({info}).")
+        print(f"  Debut reponse : {raw[:200]}")
+        return 2
+    out = ROOT / target
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(res["code"], encoding="utf-8")
-    print(f"✓ Code ecrit par Gemini ({info}) : {out}  ({len(res['code'])} car.)")
+    out.write_text(code, encoding="utf-8")
+    print(f"✓ Code ecrit par Gemini ({info}) : {out}  ({len(code)} car.)")
 
     # verif syntaxe si Python
     if str(out).endswith(".py"):
