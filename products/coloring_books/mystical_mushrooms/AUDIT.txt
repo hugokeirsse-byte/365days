@@ -1,15 +1,31 @@
-AUDIT VISUEL — 2026-05-27T00:00:55.387761Z
+AUDIT VISUEL v2 — 2026-05-27T11:13:44.995092Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 88.0/100
-  - Visual : 100/100
-  - Text   : 80/100
+VERDICT : REJECT
+Score : 30/100
 
-Détails visuels :
-  aucun problème
+── COLORIAGE BOOK CHECKS ──
+  Pages analysées       : 30
+  Pages contamination   : 0 (0.0% gris moyen)
+  Pages vides           : 0
+  Pages sous-résolues   : 30
+  Densité trait         : moy=9.5%, écart-type=1.9%
 
-Texte OCR extrait :
-  « (no text expected in this pipeline) »
+PROBLÈMES CRITIQUES :
+  ✗ 30/30 pages sous-résolues (<1400px) : page_01.png (673x875), page_02.png (673x875), page_03.png (673x875), page_04.png (673x875). KDP exige ≥300 DPI — ces images (~112 DPI) seront floues à l'impression, garantissant 1 étoile et un potentiel retrait de la vente.
+AVERTISSEMENTS :
+  ⚠ Cadrage — page_08.png: bande haut quasi-vide (0.0% lignes) → sujet mal cadré
+  ⚠ Cadrage — page_08.png: bande bas quasi-vide (0.1% lignes) → sujet mal cadré
+  ⚠ Cadrage — page_20.png: bande haut quasi-vide (0.0% lignes) → sujet mal cadré
+  ⚠ Cadrage — page_25.png: bande haut quasi-vide (0.0% lignes) → sujet mal cadré
+  ⚠ Cadrage — page_26.png: bande haut quasi-vide (0.0% lignes) → sujet mal cadré
 
-→ OK à uploader.
+── CE QUE L'AUDIT PIXEL NE DÉTECTE PAS (vérification manuelle requise) ──
+  • Cohérence de style visuel entre pages (ex: mix chibi / botanique / réaliste)
+  • Qualité artistique et attrait commercial des illustrations
+  • Thème respecté sur toutes les pages (ex: champignons présents partout ?)
+  • Lignes trop fines pour l'impression (imperceptibles à l'oeil nu sans zoom)
+  → Hugo doit vérifier visuellement 5-8 pages représentatives avant upload.
+
+→ REJETÉ. Ne pas uploader. Régénérer le contenu.
+  Les clients Amazon verront ces défauts et laisseront 1 étoile.
