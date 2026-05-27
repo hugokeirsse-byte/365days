@@ -20,6 +20,8 @@ DEFAULT_ROUTING = {
     "roman_writer": {"primary": "groq", "fallback": ["gemini", "mistral"]},
     "cdc_generator": {"primary": "gemini", "fallback": ["mistral"]},
     "conseil": {"primary": "gemini", "fallback": ["mistral"]},
+    "stl_trends": {"primary": "gemini", "fallback": ["groq", "mistral"]},
+    "stl_cdc": {"primary": "gemini", "fallback": ["groq", "mistral"]},
 }
 
 def _load_routing():

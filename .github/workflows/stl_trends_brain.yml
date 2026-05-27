@@ -1,0 +1,44 @@
+name: STL Trends Brain
+
+on:
+  schedule:
+    - cron: '0 4 * * 3'   # Mercredi 04h UTC
+  workflow_dispatch:
+    inputs:
+      angle_override:
+        description: 'Angle manuel (ex: gift_personalization)'
+        required: false
+        default: ''
+
+jobs:
+  stl-trends:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dépendances
+        run: pip install requests
+
+      - name: Créer répertoires brain STL
+        run: mkdir -p data/brain/stl data/reports
+
+      - name: Lancer agent STL Trends
+        run: python scripts/agent_stl_trends.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          STL_ANGLE: ${{ github.event.inputs.angle_override }}
+
+      - name: Commit rapport trends
+        run: |
+          git config user.name "STL Brain"
+          git config user.email "stl-brain@365days.bot"
+          git add data/brain/stl/ data/reports/
+          git diff --staged --quiet || git commit -m "brain: STL trends $(date +%Y-%m-%d)"
+          git push
