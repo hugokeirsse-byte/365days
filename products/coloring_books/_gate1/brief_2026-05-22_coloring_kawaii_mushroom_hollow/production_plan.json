@@ -1,6 +1,6 @@
 {
   "brief_id": "brief_2026-05-22_coloring_kawaii_mushroom_hollow",
-  "created_at": "2026-05-27T07:28:32.755145Z",
+  "created_at": "2026-05-27T10:12:14.975765Z",
   "title": "Mushroom Hollow",
   "author": "Maple Briarwood",
   "reference_image": "products/coloring_books/_gate1/brief_2026-05-22_coloring_kawaii_mushroom_hollow/ref_candidates/cand_4.png",
@@ -15,7 +15,7 @@
     "text",
     "watermark"
   ],
-  "prompt_source": "deterministe (1 prompt distinct par sujet, base de style partagee)",
+  "prompt_source": "gemini:gemini-flash-latest",
   "front_matter_typeset": [
     "title_page",
     "copyright",
@@ -26,181 +26,181 @@
     {
       "index": 1,
       "subject": "fly agaric mushroom with stars and moons floating around",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, fly agaric mushroom with stars and moons floating around, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a fly agaric mushroom with whimsical stars and crescent moons floating around it, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 7
     },
     {
       "index": 2,
       "subject": "fairy ring of mushrooms with small fairy door",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, fairy ring of mushrooms with small fairy door, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a fairy ring of mushrooms with a tiny, whimsical fairy door on the largest stem, cottagecore aesthetic, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 14
     },
     {
       "index": 3,
       "subject": "tiny mushroom cottage with smoking chimney",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, tiny mushroom cottage with smoking chimney, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a tiny mushroom cottage with a smoking chimney, whimsical cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 21
     },
     {
       "index": 4,
       "subject": "stacked mushrooms forming a tower",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, stacked mushrooms forming a tower, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of stacked mushrooms forming a tall, whimsical tower, rounded shapes, cottagecore style. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 28
     },
     {
       "index": 5,
       "subject": "mushroom holding an umbrella in the rain",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom holding an umbrella in the rain, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom holding a small leaf umbrella under gentle rain, cottagecore aesthetic, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 35
     },
     {
       "index": 6,
       "subject": "mushroom couple having tea together",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom couple having tea together, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a mushroom couple sitting on tiny logs, having tea together with a teapot, whimsical cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 42
     },
     {
       "index": 7,
       "subject": "owl perched on giant mushroom",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, owl perched on giant mushroom, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a round, whimsical owl perched on top of a giant mushroom, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 49
     },
     {
       "index": 8,
       "subject": "snail with mushroom hat on its shell",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, snail with mushroom hat on its shell, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a happy snail with a tiny mushroom cap as a hat on its shell, whimsical cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 56
     },
     {
       "index": 9,
       "subject": "mushroom wearing witch hat",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom wearing witch hat, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom wearing a pointy witch hat, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 63
     },
     {
       "index": 10,
       "subject": "mushroom garden with bees and butterflies",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom garden with bees and butterflies, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom garden with smiling bees and butterflies flying around, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 70
     },
     {
       "index": 11,
       "subject": "mushroom carrying lantern at night",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom carrying lantern at night, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom walking while carrying a glowing lantern, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 77
     },
     {
       "index": 12,
       "subject": "mushroom reading book by candlelight",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom reading book by candlelight, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a cozy mushroom sitting down and reading a book by the light of a tiny candle, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 84
     },
     {
       "index": 13,
       "subject": "giant mushroom with tiny door and windows like a fairy house",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, giant mushroom with tiny door and windows like a fairy house, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a giant mushroom transformed into a fairy house with a tiny door, small windows, and climbing vines, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 91
     },
     {
       "index": 14,
       "subject": "mushroom dancing with leaves",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom dancing with leaves, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom dancing joyfully with falling autumn leaves, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 98
     },
     {
       "index": 15,
       "subject": "mushroom riding tiny snail",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom riding tiny snail, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a tiny mushroom character riding on the back of a cute snail, whimsical cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 105
     },
     {
       "index": 16,
       "subject": "mushroom with ladybug friend",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom with ladybug friend, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom with a tiny, friendly ladybug sitting on its cap, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 112
     },
     {
       "index": 17,
       "subject": "field of mushrooms with crescent moon above",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, field of mushrooms with crescent moon above, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical field of rounded mushrooms with a large crescent moon in the sky, cottagecore style. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 119
     },
     {
       "index": 18,
       "subject": "mushroom inside crystal ball",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom inside crystal ball, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom growing inside a magical crystal ball, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 126
     },
     {
       "index": 19,
       "subject": "mushroom with butterfly wings",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom with butterfly wings, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom character with delicate butterfly wings, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 133
     },
     {
       "index": 20,
       "subject": "mushroom sleeping under leaf blanket",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom sleeping under leaf blanket, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a cozy, sleeping mushroom tucked under a large leaf blanket, whimsical cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 140
     },
     {
       "index": 21,
       "subject": "mushroom with constellation pattern on cap",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom with constellation pattern on cap, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom with a beautiful star constellation pattern on its cap, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 147
     },
     {
       "index": 22,
       "subject": "old wise mushroom with beard and walking stick",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, old wise mushroom with beard and walking stick, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of an old, wise mushroom character with a long beard and a tiny wooden walking stick, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 154
     },
     {
       "index": 23,
       "subject": "mushroom baker with apron and bread",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom baker with apron and bread, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom baker wearing a tiny apron, holding a freshly baked loaf of bread, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 161
     },
     {
       "index": 24,
       "subject": "mushroom holding ornate magic key",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom holding ornate magic key, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom character holding a large, ornate magic key, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 168
     },
     {
       "index": 25,
       "subject": "mushroom with sunflower companion",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom with sunflower companion, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom standing next to a tall, smiling sunflower companion, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 175
     },
     {
       "index": 26,
       "subject": "kitten curled up between mushrooms",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, kitten curled up between mushrooms, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a tiny, fluffy kitten curled up and sleeping soundly between rounded mushrooms, cottagecore style. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 182
     },
     {
       "index": 27,
       "subject": "frog sitting on mushroom playing tiny flute",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, frog sitting on mushroom playing tiny flute, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a happy little frog sitting on a mushroom cap, playing a tiny flute, whimsical cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 189
     },
     {
       "index": 28,
       "subject": "mushroom with vines and grapes climbing on it",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom with vines and grapes climbing on it, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom with sweet grapevines and tiny grapes climbing up its stem, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 196
     },
     {
       "index": 29,
       "subject": "winter mushroom in snow with pine cones",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, winter mushroom in snow with pine cones, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical winter mushroom surrounded by soft snow and small pine cones, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 203
     },
     {
       "index": 30,
       "subject": "mushroom emerging from book pages",
-      "prompt": "adult coloring book page, clean BOLD black outline line art ONLY, uniform thick vector-style outlines on pure white background, closed simple shapes ready to color, flat clean cartoon style, professional coloring book quality, cute kawaii, bold clean black line art, cottagecore, whimsical, rounded shapes, mushroom emerging from book pages, no color, no shading, no grayscale, no gray tones, no hatching, no text, no watermark",
+      "prompt": "Cute kawaii coloring page of a whimsical mushroom magically emerging from the open pages of an old book, cottagecore style, rounded shapes. Bold clean black line art, thick outlines, pure white background, no shading, no color.",
       "seed": 210
     }
   ],
