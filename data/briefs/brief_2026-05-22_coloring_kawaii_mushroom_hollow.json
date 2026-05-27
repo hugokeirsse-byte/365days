@@ -3,18 +3,11 @@
   "created_at": "2026-05-22T00:00:00Z",
   "business": "B1_coloriages",
   "product_type": "coloring_book",
-  "generation_strategy": "mono_trend",
-  "opportunity_rationale": "Trend 'kawaii cute' (score 550) croisee a l'esthetique cottagecore (evergreen fort sur Etsy/KDP). L'opportunite coloring_books cute/cottagecore est notee 88.5 (ROI estime 70-350 EUR/mois, marche Etsy + KDP). Choisi comme PREMIER projet de preuve : faible risque (pas de texte interieur), style deja eprouve par le pipeline, demande stable toute l'annee.",
-  "variations_target": 1,
-  "trend_strength": "strong",
-  "trends_source": "data/opportunities.json (2026-05-17) : 'kawaii cute' x 'Cottagecore' / 'Cute Kawaii Line Art (Coco-Wyo-like generic)', categorie coloring_books.",
   "target": {
-    "description": "Livre de coloriage adulte 'cute kawaii cottagecore' : un village de champignons enchante (maisonnettes-champignons, fees, petits animaux). Trait noir epais et net sur blanc pur, formes fermees pretes a colorier, ambiance douce et mignonne. Coherence stylistique stricte sur les 30 pages.",
+    "description": "Livre de coloriage adulte 'cute kawaii cottagecore' : un village de champignons enchante",
     "style_reference": {
-      "style_keywords": ["cute kawaii", "bold clean black line art", "cottagecore", "whimsical", "Coco-Wyo-like generic", "rounded shapes", "large expressive eyes"],
-      "reference_image_urls": [],
-      "reference_status_note": "A CHOISIR par Hugo parmi les candidates generees (voir reference_selection). Une fois choisie, son chemin remplace cette liste vide et verrouille le style.",
-      "negative": ["color", "shading", "grayscale", "gray tones", "hatching", "crosshatching", "sketch lines", "pencil texture", "fill", "text", "letters", "watermark", "signature", "blurry", "deformed", "tiny unconnected details", "open broken outlines"]
+      "style_keywords": ["cute kawaii", "bold clean black line art", "cottagecore", "whimsical", "rounded shapes"],
+      "negative": ["color", "shading", "grayscale", "gray tones", "hatching", "text", "watermark"]
     },
     "format": {
       "trim": "8.5x11in",
@@ -22,35 +15,24 @@
       "gutter": "0.75in",
       "margins": "0.5in",
       "pages_interior": 30,
-      "page_recto_verso_rotation": true,
       "export": "PDF/X-1a (interieur N&B) + couverture separee"
     },
-    "color_tone": "line-art noir epais sur blanc pur (aucune couleur, aucun gris)",
-    "signature": "Douceur kawaii cottagecore, lisible et apaisant ; complexite moyenne (ni trop vide, ni surcharge), adapte au coloriage adulte detente.",
     "cover": {
       "front": {
         "title_text": "Mushroom Hollow",
         "subtitle_text": "30 Cute Cottagecore Mushroom Coloring Pages for Relaxation",
-        "author_byline": "Maple Briarwood",
-        "layout_note": "Couverture COULEUR : scene phare du village colorée pastel doux, titre en haut bien lisible en miniature, nom d'auteur en bas. Doit ressortir en vignette Amazon/Etsy.",
-        "reference_image_path": ""
+        "author_byline": "Maple Briarwood"
       },
       "back": {
-        "blurb": "Texte de 4eme de couverture (chaleureux, vendeur) : invite a s'evader dans un village de champignons enchante, kawaii et cottagecore ; 30 dessins originaux au trait net pour la detente et la pleine conscience.",
-        "inside_bullets": ["30 illustrations originales", "trait net epais, facile a colorier", "grand format 8.5x11 pouces", "convient feutres, crayons et gel", "pour adultes, ados, debutants"],
-        "author_byline": "Maple Briarwood",
-        "barcode_isbn_zone": "espace reserve en bas a droite pour code-barres / ISBN KDP",
-        "layout_note": "Fond cottagecore doux assorti a la couv avant ; blurb lisible ; zone code-barres laissee vide."
+        "blurb": "Evade-toi dans un village de champignons enchante, kawaii et cottagecore.",
+        "author_byline": "Maple Briarwood"
       }
     },
     "collection": {
       "title": "Mushroom Hollow",
       "title_uniqueness_checked": false,
       "author": "Maple Briarwood",
-      "author_uniqueness_checked": false,
-      "volume": 1,
-      "decline_if_success": true,
-      "next_volumes_hint": ["Vol. 2: Fairy Cottages", "Vol. 3: Cozy Forest Animals", "Vol. 4: Mystical Mushrooms (darker/intricate)"]
+      "author_uniqueness_checked": false
     },
     "page_subjects": [
       "fly agaric mushroom with stars and moons floating around",
@@ -85,52 +67,27 @@
       "mushroom emerging from book pages"
     ],
     "book_structure": {
-      "note": "Livre COMPLET et professionnel : pas que les pages de coloriage.",
-      "front_cover": "couleur (voir cover.front)",
       "front_matter": [
-        { "page": "title_page", "content": "titre + sous-titre + nom d'auteur" },
-        { "page": "copyright", "content": "© 2026 Maple Briarwood. Tous droits reserves. Usage personnel ; reproduction interdite." },
-        { "page": "belongs_to", "content": "'Ce livre appartient a : ____' (page mignonne assortie au style)" },
-        { "page": "welcome", "content": "Page d'accueil chaleureuse : bienvenue dans Mushroom Hollow + comment l'utiliser (feutres/crayons, glisser une feuille sous la page pour eviter les bavures, prendre son temps) + invitation a la detente." }
-      ],
-      "interior": "30 pages de coloriage (voir page_subjects), 1 dessin par page",
-      "back_matter": [
-        { "page": "thank_you", "content": "Merci + invitation a laisser un avis + teaser des prochains volumes de la collection (Fairy Cottages, Cozy Forest Animals...)." }
-      ],
-      "back_cover": "couleur (voir cover.back) : blurb + bullets + nom d'auteur + zone code-barres/ISBN",
-      "page_count_interior_total": 35,
-      "page_count_breakdown": "4 liminaires (titre, copyright, appartient-a, accueil) + 30 coloriage + 1 remerciement = 35 (KDP peut imposer un arrondi a la page paire)"
+        {"page": "title_page"}, {"page": "copyright"}, {"page": "belongs_to"}, {"page": "welcome"}
+      ]
     }
   },
   "audit_criteria": [
-    { "criterion": "Trait noir PUR (#000000) uniquement, aucune couleur ni gris ni ombrage sur l'interieur", "how_to_check": "analyse pixels (variance/teintes) + Gemini Vision", "blocking": true },
-    { "criterion": "Coherence stylistique entre TOUTES les pages (meme epaisseur de trait, meme niveau de detail, meme registre kawaii)", "how_to_check": "Gemini Vision comparaison page-a-page vs image de reference verrouillee", "blocking": true },
-    { "criterion": "Formes fermees coloriables (pas de contours ouverts/casses, pas de micro-details inutilisables)", "how_to_check": "Gemini Vision + heuristique contours", "blocking": true },
-    { "criterion": "Le sujet de chaque page correspond au page_subject demande", "how_to_check": "Gemini Vision description vs page_subjects", "blocking": true },
-    { "criterion": "Zero texte / lettre / watermark parasite dans les images", "how_to_check": "OCR + Gemini Vision", "blocking": true },
-    { "criterion": "Format KDP conforme (trim 8.5x11, bleed, gutter 0.75, rotation recto/verso)", "how_to_check": "controle dimensions PDF programmatique", "blocking": true },
-    { "criterion": "Couverture presente, en COULEUR, titre + nom d'auteur lisibles en miniature", "how_to_check": "Gemini Vision + OCR sur la couverture", "blocking": true },
-    { "criterion": "Completude cle-en-main : titre + sous-titre + nom d'auteur + metadata KDP (keywords, categories, prix)", "how_to_check": "presence des champs dans metadata.json", "blocking": true },
-    { "criterion": "Titre et nom d'auteur verifies comme NON deja utilises", "how_to_check": "recherche Amazon/Etsy (manuelle ou web) avant publication", "blocking": true },
-    { "criterion": "Pages liminaires completes (titre, copyright, 'appartient a', page d'accueil)", "how_to_check": "presence des pages dans le PDF", "blocking": true },
-    { "criterion": "Page d'accueil/introduction presente et lisible (bienvenue + conseils d'utilisation)", "how_to_check": "OCR + Gemini Vision", "blocking": true },
-    { "criterion": "4eme de couverture presente et conforme (blurb + bullets + zone code-barres)", "how_to_check": "Gemini Vision + OCR sur la couv arriere", "blocking": true },
-    { "criterion": "Page de remerciement/avis presente en fin", "how_to_check": "presence dans le PDF", "blocking": false },
-    { "criterion": "Composition equilibree et centree, agreable a colorier", "how_to_check": "Gemini Vision (esthetique)", "blocking": false }
+    {"criterion": "Trait noir PUR uniquement, aucune couleur ni gris", "how_to_check": "Gemini Vision", "blocking": true},
+    {"criterion": "Coherence stylistique entre toutes les pages", "how_to_check": "Gemini Vision", "blocking": true},
+    {"criterion": "Formes fermees coloriables", "how_to_check": "Gemini Vision", "blocking": true},
+    {"criterion": "Format KDP conforme (trim 8.5x11, bleed)", "how_to_check": "controle dimensions PDF", "blocking": true},
+    {"criterion": "Couverture presente, en COULEUR", "how_to_check": "Gemini Vision", "blocking": true},
+    {"criterion": "Completude : titre + auteur + metadata KDP", "how_to_check": "presence champs", "blocking": true},
+    {"criterion": "Titre et auteur non deja utilises", "how_to_check": "recherche Amazon/Etsy", "blocking": true}
   ],
   "image_budget": {
     "max_images_total": 50,
-    "ideal_one_gen_one_use": true,
-    "regen_allowance_per_asset": 1,
     "reference_candidates_budget": 6
   },
   "reference_selection": {
-    "mode": "generate_candidates",
-    "candidates_count": 6,
-    "candidates_provider": "pollinations",
     "status": "locked",
-    "chosen_reference_path": "products/coloring_books/_gate1/brief_2026-05-22_coloring_kawaii_mushroom_hollow/ref_candidates/cand_4.png",
-    "character_model_sheets": []
+    "chosen_reference_path": "products/coloring_books/_gate1/brief_2026-05-22_coloring_kawaii_mushroom_hollow/ref_candidates/cand_4.png"
   },
   "loop_policy": {
     "max_iterations": 5,
@@ -139,7 +96,7 @@
   },
   "human_gates": {
     "gate_start": "approved",
-    "gate_start_note": "Hugo a choisi cand_4 comme reference (2026-05-22). Reserve : titre + nom d'auteur encore a verifier comme uniques (etape autonome a venir).",
+    "gate_start_note": "Hugo a choisi cand_4 comme reference. Titre + auteur a verifier comme uniques.",
     "gate_end": "not_reached"
   },
   "requested_by": "strategist_auto"
