@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-26T21:30:54.003165Z",
+  "timestamp": "2026-05-27T02:31:53.854048Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,63 +90,63 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Brutalist Architecture Coloring Book",
-      "platform_where_spotted": "TikTok / Reddit",
+      "trend_keyword": "Amalfi Coast Lemon Aesthetic",
+      "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 2,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Brutalist Architecture Coloring Book for Adults: Minimalist Concrete Masterpieces and Geometric Structural Patterns",
-      "evidence_url_or_signal": "TikTok hashtag #brutalistdesign spiked with 14M views this week; r/architecture saw multiple viral posts featuring raw concrete line-art drafts with users asking for printable versions."
+      "estimated_lifespan_days": 60,
+      "saturation_now_1_10": 4,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Retro Amalfi Coast Lemon Print, Italian Summer Wall Art, Vintage Citrus Kitchen Decor Poster",
+      "evidence_url_or_signal": "Search volume for 'Italian summer aesthetic' and 'Limoncello poster' up 140% on Pinterest since May 8, 2026."
     },
     {
       "rank": 2,
-      "trend_keyword": "Corporate Gen Z Sarcasm Stickers",
+      "trend_keyword": "Eclectic Grandpa Sport Club",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 30,
-      "saturation_now_1_10": 4,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_cope_pack",
-      "title_template_suggestion": "Funny Gen Z Corporate Sticker Pack - Sarcastic Office Humor Decals for Laptop, Water Bottle, and Notebooks",
-      "evidence_url_or_signal": "Viral sound 'Please do not refer to my last email' trending across work-from-home accounts, with a 180% spike in search volume on Etsy for Gen Z office humor stickers since mid-May."
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 5,
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Retro Grandpa Pickleball Club Tee, Vintage Athletic Aesthetic T-Shirt, Eclectic Country Club Apparel",
+      "evidence_url_or_signal": "TikTok hashtag #EclecticGrandpa hitting 12M views this week, transitioning into summer athletic/sport club wear designs on Etsy."
     },
     {
       "rank": 3,
-      "trend_keyword": "Anatomical Botanical Wall Art",
-      "platform_where_spotted": "Pinterest / Etsy",
+      "trend_keyword": "Victorian Capybara Portrait",
+      "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 60,
-      "saturation_now_1_10": 3,
-      "best_product_format": "wall_art",
-      "best_pipeline_match": "produce_cultural_arbitrage_v2",
-      "title_template_suggestion": "Vintage Anatomical Botanical Poster Set - Gothic Herbology and Human Anatomy Sketch Art Prints",
-      "evidence_url_or_signal": "Pinterest Trends data shows 'Gothic botanical anatomy sketches' search volume up 140% in the last 14 days, driven by the dark academia aesthetic shifting to late-spring home decor."
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 2,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_iheart_x",
+      "title_template_suggestion": "Funny Capybara Victorian Portrait Sticker, Regency Animal Wall Art, Whimsical Rodent Decal",
+      "evidence_url_or_signal": "Spike in r/capybara and r/aww for AI-generated historical animal portraits, with specific requests for physical stickers."
     },
     {
       "rank": 4,
-      "trend_keyword": "Low-Poly Planter STL",
-      "platform_where_spotted": "Reddit / Cults3D",
+      "trend_keyword": "Dark Cottagecore Gothic Moth",
+      "platform_where_spotted": "Etsy",
       "momentum_score_1_10": 7,
       "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 3,
-      "best_product_format": "stl_parametric",
-      "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Geometric Low-Poly Self-Watering Planter - 3D Print File STL for Desk Plants and Succulents",
-      "evidence_url_or_signal": "High engagement on r/3Dprinting and r/cozygames for minimalist, easy-to-print self-watering desk pots optimized for cheap PLA filament during the spring planting wave."
+      "saturation_now_1_10": 6,
+      "best_product_format": "coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Dark Cottagecore Coloring Book, Gothic Botanical Moths and Mushrooms Coloring Pages for Adults PDF",
+      "evidence_url_or_signal": "Etsy keyword 'Gothic cottagecore coloring' entered top 100 digital product searches in mid-May 2026."
     },
     {
       "rank": 5,
-      "trend_keyword": "Gorpcore Outdoor Stickers",
-      "platform_where_spotted": "Pinterest / Instagram",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 40,
-      "saturation_now_1_10": 5,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Gorpcore Aesthetic Sticker Pack - Retro Hiking, Camping, and Mountain Exploration Decals",
-      "evidence_url_or_signal": "Search queries on Pinterest for 'Granola girl gorpcore moodboard' and 'vintage hiking gear' peaking as summer camping season kicks off across Europe and North America."
+      "trend_keyword": "Silly Cat Affirmations",
+      "platform_where_spotted": "TikTok",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 25,
+      "saturation_now_1_10": 3,
+      "best_product_format": "mug",
+      "best_pipeline_match": "produce_quotes_minimal",
+      "title_template_suggestion": "Silly Cat Positive Affirmation Mug, Funny Cat Lover Gift, Mental Health Positivity Coffee Cup",
+      "evidence_url_or_signal": "Viral TikTok slideshow trend featuring low-res cats with ironic or sweet positive affirmations gaining over 500k likes in the last 10 days."
     }
   ]
 }
