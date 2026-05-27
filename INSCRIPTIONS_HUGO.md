@@ -1,5 +1,70 @@
 # 📋 INSCRIPTIONS HUGO — version 20/05/2026 (Empire Perpétuel, 100% gratuit à l'inscription)
 
+> ## 🔄 MISE À JOUR 27/05/2026 — INVENTAIRE COMPLET DES BUSINESSES
+>
+> ### 18 LIGNES DE PRODUITS — État global
+>
+> | # | Business | Plateforme | Script | CdC Gate | Status |
+> |---|----------|-----------|--------|----------|--------|
+> | 1 | **Livres de coloriage** (adulte/enfant) | Amazon KDP | produce_coloring_book.py | ✓ agent_coloring_cdc.py | ⚡ Prêt — à connecter |
+> | 2 | **Low-Content KDP** (journals/planners/trackers) | Amazon KDP | produce_lowcontent_from_cdc.py | ✓ agent_cdc_lowcontent.py | ⚡ Prêt |
+> | 3 | **Romans** (romance, mystery, cozy) | Amazon KDP eBook+PB | produce_roman_chapters.py | ✓ agent_cdc_roman.py | ⚡ Prêt |
+> | 4 | **Impression 3D** (bookmarks, keychains, coasters…) | Cults3D, Printables | produce_stl_openscad.py | ✓ agent_stl_cdc.py | ⚡ Prêt |
+> | 5 | **Jeux de Société** (cartes, plateau, party, RPG, éduc) | Etsy, DriveThruRPG, Itch.io | produce_board_game.py | ✓ agent_jeux_societe_cdc.py | ⚡ Prêt |
+> | 6 | **Tumbler Wraps** (designs sublimation 20oz/30oz) | Etsy | produce_tumbler_wraps.py | ✗ pas de gate | 🔧 Sans gate CdC |
+> | 7 | **SVG Packs** (silhouettes Cricut/Silhouette) | Etsy | produce_svg_pack.py | ✗ | 🔧 Sans gate CdC |
+> | 8 | **Papeterie Mariage** (faire-part, menus, tables) | Etsy | produce_wedding_stationery.py | ✗ | 🔧 Sans gate CdC |
+> | 9 | **COPE Pack** (design multi-format all-in-one) | Etsy, Redbubble | produce_cope_pack.py | ✗ | 🔧 Sans gate CdC |
+> | 10 | **Literal Idioms** (illustrations absurdes d'expressions) | Redbubble, Etsy | produce_literal_idioms_v2.py | ✗ | 🔧 Sans gate CdC |
+> | 11 | **Cultural Arbitrage** (mots étrangers + design) | Redbubble, Etsy | produce_cultural_arbitrage_v2.py | ✗ | 🔧 Sans gate CdC |
+> | 12 | **iHeart designs** ("I ❤️ X" niches hobbies/villes) | Redbubble, Merch Amazon | produce_iheart_v4.py | ✗ | 🔧 Sans gate CdC |
+> | 13 | **Citations Minimalistes** | Redbubble, Merch Amazon | produce_quotes_minimal.py | ✗ | 🔧 Sans gate CdC |
+> | 14 | **Bible Verses** (versets illustrés) | KDP, Redbubble | produce_bible_verses_v2.py | ✗ | 🔧 Sans gate CdC |
+> | 15 | **Gamedev Asset Packs** (assets pour créateurs indie) | Itch.io | produce_gamedev_asset_pack.py | ✗ | 🔧 Sans gate CdC |
+> | 16 | **Chess Strategy Book** (puzzles Lichess CC0) | Amazon KDP | produce_chess_book.py | ✗ | 🔧 Produit one-shot |
+> | 17 | **Château Local** (B2B monuments historiques) | KDP + partenariats | produce_chateau_local.py | ✗ | 🔧 Niche B2B |
+> | 18 | **Witchy/Cottagecore designs** | Redbubble, Etsy | (via COPE/viral_formats) | ✗ | 🔧 Intégré dans merch |
+>
+> ### INSCRIPTIONS REQUISES PAR PLATEFORME
+>
+> | Plateforme | Businesses concernés | Déjà inscrit ? | À faire |
+> |-----------|---------------------|---------------|---------|
+> | **Amazon KDP** | #1 #2 #3 #14 #16 #17 | ✅ OUI | Rien |
+> | **Redbubble** | #10 #11 #12 #13 #14 #18 | ✅ OUI | Rien |
+> | **Cults3D** | #4 | ❌ NON | https://cults3d.com — créer compte + Stripe |
+> | **Etsy** | #5 #6 #7 #8 #9 #10 #11 | ❌ NON | https://etsy.com — créer boutique (frais 0.20$/listing) |
+> | **DriveThruRPG** | #5 (RPG accessories) | ❌ NON | https://www.drivethrurpg.com/en/publisher/signup |
+> | **Itch.io** | #5 #15 | ❌ NON | https://itch.io/register — gratuit |
+> | **Printables** | #4 | ❌ NON | https://www.printables.com/join — gratuit |
+> | **The Game Crafter** | #5 (physique optionnel) | ❌ NON | https://www.thegamecrafter.com — optionnel |
+>
+> ### SECRETS GITHUB MANQUANTS (bloquants pour certains verticaux)
+>
+> | Secret | Bloque quoi | Service | URL |
+> |--------|-------------|---------|-----|
+> | `GROQ_API_KEY` | Romans (#3) | https://console.groq.com | Gratuit 30 req/min |
+> | `RUNWARE_API_KEY` | Coloriage (#1), Merch (#9-13) | https://runware.ai | ~$0.0006/image |
+> | `MISTRAL_API_KEY` | Architecte système | https://console.mistral.ai | Gratuit |
+>
+> ### ⚠️ OBLIGATOIRE AVANT 1ÈRE VENTE
+> **URSSAF Auto-entrepreneur** : https://www.autoentrepreneur.urssaf.fr
+> 10 minutes. Obligatoire légalement. Coût = 0€ tant que tu ne vends rien.
+>
+> ### CERVEAUX PERPÉTUELS (tous les secrets requis = GEMINI_API_KEY uniquement)
+>
+> | Jour | Cerveau | Domaine |
+> |------|---------|---------|
+> | Lundi 06h | Optimizer vertical | Analyse audits → génère CdC auto |
+> | Mardi 05h | Low-Content Brain | Tendances KDP journals/planners |
+> | Mercredi 02h | Saisonnier | Opportunités événements |
+> | Mercredi 04h | STL Trends | Cults3D/Printables trends |
+> | Jeudi 04h | Jeux Société Brain | Etsy/DriveThruRPG trends |
+> | Jeudi 05h | Prospecteur | Nouvelles niches émergentes |
+> | Vendredi 04h | Merch Brain | POD/Redbubble/Etsy trends |
+> | Toutes les 4h | Queue Manager | Maintient 10 CdC pending/vertical |
+> | Dimanche 02h | Architecte | Gaps système auto-détectés |
+> | Dimanche 20h | Rapporteur | Résumé hebdo pour Hugo |
+
 > ## 🔄 MISE À JOUR 27/05/2026
 >
 > ### Secrets GitHub à ajouter MAINTENANT (bloquants)

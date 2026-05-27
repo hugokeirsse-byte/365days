@@ -32,6 +32,19 @@ ROOT = Path(__file__).resolve().parent.parent
 # ── Configuration des verticaux ───────────────────────────────────────────────
 
 VERTICALS = {
+    "jeux_societe": {
+        "products_dir": "products/jeux_societe",
+        "brain_dir": "data/brain/jeux_societe",
+        "cdc_script": "scripts/agent_jeux_societe_cdc.py",
+        "cdc_env_vars": {
+            "JEU_TYPE": "type_from_llm",
+            "JEU_THEME": "theme_from_llm",
+            "JEU_MECANIQUE": "mecanique_from_llm",
+        },
+        "audit_verdict_field": "VERDICT",
+        "platform": "Etsy / DriveThruRPG / Itch.io",
+        "product_description": "jeu de société print-and-play (cartes, plateau, party, éducatif, RPG)",
+    },
     "coloring": {
         "products_dir": "products/coloring_books",
         "brain_dir": "data/brain/coloring",
