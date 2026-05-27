@@ -1,205 +1,141 @@
 import os
 import sys
 import json
+import tempfile
 from pathlib import Path
 
-# Configuration des chemins et imports requis
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / 'scripts'))
+sys.path.insert(0, str(ROOT / "scripts"))
 
-try:
-    from lib.image_router import generate as ir_generate
-    from lib.image_to_coloring import convert as coloring_convert
-except ImportError as e:
-    print(f"Erreur d'importation des librairies internes : {e}", file=sys.stderr)
-    sys.exit(1)
+from lib.image_router import generate as ir_generate
+from lib.image_to_coloring import convert as coloring_convert
 
 
 def main():
-    # Récupération et validation des variables d'environnement
-    brief_id = os.getenv("BRIEF_ID")
+    brief_id = os.environ.get("BRIEF_ID", "").strip()
     if not brief_id:
-        print("Erreur : La variable d'environnement BRIEF_ID est requise.", file=sys.stderr)
+        print("Error: BRIEF_ID environment variable is required.", file=sys.stderr)
         sys.exit(1)
 
-    line_thickness = int(os.getenv("LINE_THICKNESS", "2"))
-    max_pages_env = os.getenv("MAX_PAGES")
+    line_thickness = int(os.environ.get("LINE_THICKNESS", 2))
+    max_pages_env = os.environ.get("MAX_PAGES", "").strip()
     max_pages = int(max_pages_env) if max_pages_env else None
 
-    # Définition des chemins d'accès
+    # Charger le brief
     brief_path = ROOT / "data" / "briefs" / f"{brief_id}.json"
-    gate1_dir = ROOT / "products" / "coloring_books" / "_gate1" / brief_id
-    plan_path = gate1_dir / "production_plan.json"
-    pages_dir = gate1_dir / "pages"
-    report_path = gate1_dir / "generation_report.json"
-
-    # 1. Vérification de l'approbation du brief (gate_start == approved)
     if not brief_path.exists():
-        print(f"Erreur : Le brief {brief_path} n'existe pas.", file=sys.stderr)
+        print(f"Error: Brief not found at {brief_path}", file=sys.stderr)
         sys.exit(1)
 
-    try:
-        with open(brief_path, "r", encoding="utf-8") as f:
-            brief_data = json.load(f)
-    except Exception as e:
-        print(f"Erreur lors de la lecture du brief : {e}", file=sys.stderr)
-        sys.exit(1)
+    brief_data = json.loads(brief_path.read_text(encoding="utf-8"))
 
-    gate_start = brief_data.get("gate_start") or brief_data.get("status")
+    # Verifier gate_start (structure : brief.human_gates.gate_start)
+    gate_start = brief_data.get("human_gates", {}).get("gate_start", "")
     if gate_start != "approved":
-        print(f"Erreur : Le brief {brief_id} n'est pas approuvé (gate_start={gate_start}).", file=sys.stderr)
+        print(f"Error: Brief {brief_id} non approuve (human_gates.gate_start={gate_start!r}).",
+              file=sys.stderr)
         sys.exit(1)
 
-    # Lecture du plan de production
+    # Charger le plan de production
+    plan_path = (ROOT / "products" / "coloring_books" / "_gate1"
+                 / brief_id / "production_plan.json")
     if not plan_path.exists():
-        print(f"Erreur : Le plan de production {plan_path} n'existe pas.", file=sys.stderr)
+        print(f"Error: production_plan.json absent a {plan_path}", file=sys.stderr)
         sys.exit(1)
 
-    try:
-        with open(plan_path, "r", encoding="utf-8") as f:
-            plan_data = json.load(f)
-    except Exception as e:
-        print(f"Erreur lors de la lecture du plan de production : {e}", file=sys.stderr)
-        sys.exit(1)
+    plan_data = json.loads(plan_path.read_text(encoding="utf-8"))
 
-    pages = plan_data.get("pages", [])
-    covers = plan_data.get("covers", {})
-
-    if max_pages is not None:
-        pages = pages[:max_pages]
-
+    pages_dir = ROOT / "products" / "coloring_books" / "_gate1" / brief_id / "pages"
     pages_dir.mkdir(parents=True, exist_ok=True)
+
+    pages_to_process = plan_data.get("pages", [])
+    if max_pages is not None:
+        pages_to_process = pages_to_process[:max_pages]
+
     report_pages = []
+    summary = {"ok": 0, "failed": 0, "skipped": 0}
 
-    # Paramètres par défaut pour la génération de coloriages
-    default_neg_prompt = "color, colored, shading, shadows, textured, realistic, photo, blurry, low quality"
-
-    # 2. Génération des pages de coloriage
-    for page in pages:
-        index = page.get("index")
-        prompt = page.get("prompt")
-        page_filename = f"page_{index:03d}.png"
-        dest_path = pages_dir / page_filename
-
-        if dest_path.exists():
-            print(f"Page {index:03d} déjà existante. Passage.")
-            report_pages.append({
-                "page_number": index,
-                "status": "skipped",
-                "provider_used": "unknown"
-            })
+    # Pages interieures
+    for page in pages_to_process:
+        idx = page.get("index")
+        prompt = page.get("prompt", "").strip()
+        if not prompt:
+            print(f"Warning: page {idx} sans prompt — skip.")
             continue
 
-        tmp_path = pages_dir / f"tmp_page_{index:03d}.png"
-        status = "failed"
-        provider_used = "unknown"
+        out_path = pages_dir / f"page_{idx:03d}.png"
+
+        if out_path.exists():
+            print(f"Page {idx} deja presente — skip.")
+            report_pages.append({"page_number": idx, "status": "skipped", "provider_used": "none"})
+            summary["skipped"] += 1
+            continue
+
+        print(f"Generation page {idx}...")
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tf:
+            tmp_path = Path(tf.name)
 
         try:
-            print(f"Génération de la page {index:03d}...")
-            res = ir_generate(
-                prompt=prompt,
-                negative_prompt=default_neg_prompt,
-                width=832,
-                height=1152,
-                dest=str(tmp_path)
-            )
-
-            # Extraction optionnelle du provider utilisé si retourné par le routeur
-            if isinstance(res, dict):
-                provider_used = res.get("provider", "unknown")
-            elif isinstance(res, str) and res:
-                provider_used = res
-
-            if tmp_path.exists():
-                print(f"Conversion en line-art pour la page {index:03d}...")
-                coloring_convert(str(tmp_path), str(dest_path), line_thickness=line_thickness)
-                if dest_path.exists():
-                    status = "ok"
+            provider = ir_generate(prompt=prompt, width=832, height=1152, dest=str(tmp_path))
+            if provider and tmp_path.exists() and tmp_path.stat().st_size > 0:
+                coloring_convert(str(tmp_path), str(out_path), line_thickness=line_thickness)
+                print(f"OK page {idx} via {provider}")
+                report_pages.append({"page_number": idx, "status": "ok",
+                                      "provider_used": str(provider)})
+                summary["ok"] += 1
             else:
-                print(f"Erreur : Le fichier temporaire {tmp_path} n'a pas été généré.")
-
+                raise RuntimeError("image_router n'a retourne aucune image.")
         except Exception as e:
-            print(f"Exception lors du traitement de la page {index:03d} : {e}", file=sys.stderr)
+            print(f"Echec page {idx}: {e}", file=sys.stderr)
+            report_pages.append({"page_number": idx, "status": "failed", "provider_used": "none"})
+            summary["failed"] += 1
         finally:
-            if tmp_path.exists():
-                try:
-                    tmp_path.unlink()
-                except Exception as e:
-                    print(f"Impossible de supprimer le fichier temporaire {tmp_path} : {e}", file=sys.stderr)
-
-        report_pages.append({
-            "page_number": index,
-            "status": status,
-            "provider_used": provider_used
-        })
-
-    # 3. Génération des couvertures (en couleur, pas de conversion line-art)
-    cover_neg_prompt = "text, watermark, low quality, blurry, deformed, bad anatomy"
-    for cover_type in ["front", "back"]:
-        if cover_type in covers:
-            cover_data = covers[cover_type]
-            prompt = cover_data.get("prompt")
-            dest_path = pages_dir / f"cover_{cover_type}.png"
-
-            if dest_path.exists():
-                print(f"Couverture {cover_type} déjà existante. Passage.")
-                report_pages.append({
-                    "page_number": f"cover_{cover_type}",
-                    "status": "skipped",
-                    "provider_used": "unknown"
-                })
-                continue
-
-            status = "failed"
-            provider_used = "unknown"
-
             try:
-                print(f"Génération de la couverture {cover_type}...")
-                res = ir_generate(
-                    prompt=prompt,
-                    negative_prompt=cover_neg_prompt,
-                    width=2625,
-                    height=3375,
-                    dest=str(dest_path)
-                )
+                tmp_path.unlink(missing_ok=True)
+            except Exception:
+                pass
 
-                if isinstance(res, dict):
-                    provider_used = res.get("provider", "unknown")
-                elif isinstance(res, str) and res:
-                    provider_used = res
+    # Couvertures
+    covers = plan_data.get("covers", {})
+    for cover_type in ["front", "back"]:
+        cover_info = covers.get(cover_type, {})
+        prompt = cover_info.get("prompt", "").strip()
+        if not prompt:
+            continue
 
-                if dest_path.exists():
-                    status = "ok"
-            except Exception as e:
-                print(f"Exception lors du traitement de la couverture {cover_type} : {e}", file=sys.stderr)
+        out_path = pages_dir / f"cover_{cover_type}.png"
+        if out_path.exists():
+            print(f"Cover {cover_type} deja presente — skip.")
+            report_pages.append({"page_number": f"cover_{cover_type}", "status": "skipped",
+                                  "provider_used": "none"})
+            summary["skipped"] += 1
+            continue
 
-            report_pages.append({
-                "page_number": f"cover_{cover_type}",
-                "status": status,
-                "provider_used": provider_used
-            })
+        print(f"Generation cover {cover_type}...")
+        try:
+            provider = ir_generate(prompt=prompt, width=2625, height=3375, dest=str(out_path))
+            if provider and out_path.exists() and out_path.stat().st_size > 0:
+                print(f"OK cover {cover_type} via {provider}")
+                report_pages.append({"page_number": f"cover_{cover_type}", "status": "ok",
+                                      "provider_used": str(provider)})
+                summary["ok"] += 1
+            else:
+                raise RuntimeError("image_router n'a retourne aucune image pour la cover.")
+        except Exception as e:
+            print(f"Echec cover {cover_type}: {e}", file=sys.stderr)
+            report_pages.append({"page_number": f"cover_{cover_type}", "status": "failed",
+                                  "provider_used": "none"})
+            summary["failed"] += 1
 
-    # 4. Écriture du rapport de génération
-    ok_count = sum(1 for p in report_pages if p["status"] in ("ok", "skipped"))
-    failed_count = sum(1 for p in report_pages if p["status"] == "failed")
-
-    report = {
-        "pages": report_pages,
-        "summary": {
-            "ok": ok_count,
-            "failed": failed_count
-        }
-    }
-
-    try:
-        with open(report_path, "w", encoding="utf-8") as f:
-            json.dump(report, f, indent=2, ensure_ascii=False)
-        print(f"Rapport de génération écrit avec succès dans {report_path}")
-    except Exception as e:
-        print(f"Erreur lors de l'écriture du rapport de génération : {e}", file=sys.stderr)
-
-    print(f"Processus terminé. Succès/Skipped : {ok_count}, Échecs : {failed_count}")
-    sys.exit(0)
+    # Rapport
+    report_path = (ROOT / "products" / "coloring_books" / "_gate1"
+                   / brief_id / "generation_report.json")
+    report_path.write_text(
+        json.dumps({"pages": report_pages, "summary": summary}, indent=2, ensure_ascii=False),
+        encoding="utf-8"
+    )
+    print(f"Rapport ecrit -> {report_path}")
+    print(f"Resume : {summary}")
 
 
 if __name__ == "__main__":
