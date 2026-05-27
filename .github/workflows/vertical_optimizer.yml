@@ -1,0 +1,82 @@
+name: Vertical Optimizer — Boucle de Feedback
+
+# Analyse les audits, apprend des succès/échecs, génère le prochain CdC
+# sans intervention de Claude. Hugo valide en 1 minute.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Lundi 06h UTC (après le rapporteur hebdo du dimanche)
+  workflow_dispatch:
+    inputs:
+      vertical:
+        description: 'Vertical à optimiser'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - coloring
+          - stl
+          - lowcontent
+          - roman
+      dry_run:
+        description: 'Dry run (analyse sans générer de CdC)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dépendances
+        run: pip install requests
+
+      - name: Créer répertoires nécessaires
+        run: mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman data/reports
+
+      - name: Lancer l'optimiseur
+        run: python scripts/agent_vertical_optimizer.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+
+      - name: Commit (rapports + nouveaux CdC)
+        run: |
+          git config user.name "Vertical Optimizer"
+          git config user.email "optimizer@365days.bot"
+          git add data/reports/ products/ || true
+          git diff --staged --quiet || git commit -m "optimizer: analyse + nouveaux CdC $(date +%Y-%m-%d)"
+          git push
+
+      - name: Résumé pour Hugo
+        run: |
+          echo ""
+          echo "══════════════════════════════════════════════"
+          echo "  OPTIMIZER TERMINÉ — Action requise de Hugo"
+          echo "══════════════════════════════════════════════"
+          echo ""
+          echo "Nouveaux CdC créés avec gate=pending:"
+          find products/ -name cdc.json -newer data/reports/rapport_optimizer_*.json \
+            2>/dev/null | xargs -I{} python3 -c "
+          import json
+          try:
+            d = json.load(open('{}'))
+            g = d.get('gate_cdc','?')
+            t = d.get('concept',{}).get('titre', d.get('concept',{}).get('titre_principal','?'))
+            if g == 'pending':
+              print(f'  → {t} [{g}] — {}')
+          except: pass
+          " 2>/dev/null || echo "  (aucun nouveau CdC)"
+          echo ""
+          echo "Hugo: lire les CAHIER_DES_CHARGES.md, changer gate_cdc=approved, push."
