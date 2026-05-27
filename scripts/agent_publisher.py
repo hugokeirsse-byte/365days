@@ -1,349 +1,217 @@
+#!/usr/bin/env python3
+"""
+Agent Publisher
+Prépare le paquet de publication KDP + Etsy après validation du GATE 2.
+Génère metadata KDP, fiche Etsy, et PUBLICATION_READY.md lisible par Hugo.
+"""
+
 import os
 import sys
 import json
 import urllib.request
 import urllib.error
-import textwrap
-
-# --- Configuration ---
-# Base path for product files
-PRODUCTS_BASE_DIR = "products/coloring_books/_gate1"
-# Default Gemini model if not specified in environment
-DEFAULT_GEMINI_MODEL = "gemini-2.5-flash"
-# Fixed price for KDP
-KDP_PRICE = 8.99
-
-# --- Helper Functions ---
-
-def get_env_variable(name, default=None, required=False):
-    """Retrieves an environment variable, with optional default and requirement."""
-    value = os.getenv(name, default)
-    if required and value is None:
-        print(f"Erreur: La variable d'environnement '{name}' est requise.", file=sys.stderr)
-        sys.exit(1)
-    return value
-
-def create_directory_if_not_exists(path):
-    """Creates a directory if it doesn't already exist."""
-    os.makedirs(path, exist_ok=True)
-
-def load_json_file(filepath):
-    """Loads and returns content from a JSON file."""
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"Erreur: Fichier non trouvé à '{filepath}'.", file=sys.stderr)
-        sys.exit(1)
-    except json.JSONDecodeError:
-        print(f"Erreur: Impossible de décoder le JSON dans '{filepath}'.", file=sys.stderr)
-        sys.exit(1)
-    except Exception as e:
-        print(f"Erreur lors de la lecture de '{filepath}': {e}", file=sys.stderr)
-        sys.exit(1)
-
-def save_json_file(filepath, data):
-    """Saves data to a JSON file."""
-    try:
-        with open(filepath, 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
-    except Exception as e:
-        print(f"Erreur lors de l'écriture de '{filepath}': {e}", file=sys.stderr)
-        sys.exit(1)
-
-def save_markdown_file(filepath, content):
-    """Saves content to a Markdown file."""
-    try:
-        with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(content)
-    except Exception as e:
-        print(f"Erreur lors de l'écriture de '{filepath}': {e}", file=sys.stderr)
-        sys.exit(1)
-
-def call_gemini_api(api_key, model, prompt):
-    """Makes a request to the Gemini API."""
-    if not api_key:
-        return None # Indicate Gemini is not available
-
-    api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
-    headers = {
-        "Content-Type": "application/json"
-    }
-    data = {
-        "contents": [
-            {"parts": [{"text": prompt}]}
-        ]
-    }
-
-    try:
-        req = urllib.request.Request(api_url, data=json.dumps(data).encode('utf-8'), headers=headers, method='POST')
-        with urllib.request.urlopen(req, timeout=30) as response:
-            response_data = json.loads(response.read().decode('utf-8'))
-            # Extract text from the response
-            if 'candidates' in response_data and response_data['candidates']:
-                first_candidate = response_data['candidates'][0]
-                if 'content' in first_candidate and 'parts' in first_candidate['content']:
-                    for part in first_candidate['content']['parts']:
-                        if 'text' in part:
-                            return part['text']
-            print(f"Avertissement: Réponse Gemini inattendue: {response_data}", file=sys.stderr)
-            return None
-    except urllib.error.HTTPError as e:
-        print(f"Erreur HTTP Gemini ({e.code}): {e.read().decode('utf-8')}", file=sys.stderr)
-        return None
-    except urllib.error.URLError as e:
-        print(f"Erreur de connexion Gemini: {e.reason}", file=sys.stderr)
-        return None
-    except json.JSONDecodeError:
-        print("Erreur: Réponse Gemini non-JSON.", file=sys.stderr)
-        return None
-    except Exception as e:
-        print(f"Erreur inattendue lors de l'appel Gemini: {e}", file=sys.stderr)
-        return None
-
-def generate_content_with_gemini_or_fallback(brief_data, gemini_api_key, gemini_model):
-    """
-    Generates KDP blurb, Etsy description, tags, and keywords using Gemini or fallback templates.
-    Returns a dictionary with generated content.
-    """
-    title = brief_data.get('title', 'Livre de Coloriage')
-    author = brief_data.get('author', 'Nom de l\'Auteur')
-    main_theme = brief_data.get('main_theme', 'animaux mignons')
-    target_audience = brief_data.get('target_audience', 'enfants de 4 à 8 ans')
-
-    print("Tentative de génération de contenu via Gemini...")
-    gemini_output = None
-    if gemini_api_key:
-        # Combined prompt for all required outputs
-        combined_prompt = textwrap.dedent(f"""
-        Génère le contenu suivant pour un livre de coloriage intitulé "{title}" par "{author}",
-        dont le thème principal est "{main_theme}" et l'audience cible est "{target_audience}".
-
-        1.  **BLURB KDP (150-200 mots)**: Une description engageante pour Amazon KDP.
-        2.  **DESCRIPTION ETSY (500-800 mots)**: Une description détaillée et optimisée SEO pour Etsy,
-            incluant des mots-clés pertinents pour le coloriage, les enfants, le thème, etc.
-        3.  **TAGS ETSY (13 tags, séparés par des virgules)**: Des tags pertinents pour Etsy.
-        4.  **KEYWORDS KDP (7 mots-clés, séparés par des virgules)**: Des mots-clés pertinents pour KDP.
-
-        Structure de la réponse attendue (strictement):
-        BLURB_KDP: <blurb ici>
-        DESCRIPTION_ETSY: <description ici>
-        TAGS_ETSY: <tag1, tag2, ...>
-        KEYWORDS_KDP: <keyword1, keyword2, ...>
-        """)
-        gemini_raw_response = call_gemini_api(gemini_api_key, gemini_model, combined_prompt)
-
-        if gemini_raw_response:
-            gemini_output = {}
-            lines = gemini_raw_response.strip().split('\n')
-            current_key = None
-            current_value = []
-            for line in lines:
-                line = line.strip()
-                if line.startswith("BLURB_KDP:"):
-                    if current_key: gemini_output[current_key] = "\n".join(current_value).strip()
-                    current_key = "BLURB_KDP"
-                    current_value = [line[len("BLURB_KDP:"):].strip()]
-                elif line.startswith("DESCRIPTION_ETSY:"):
-                    if current_key: gemini_output[current_key] = "\n".join(current_value).strip()
-                    current_key = "DESCRIPTION_ETSY"
-                    current_value = [line[len("DESCRIPTION_ETSY:"):].strip()]
-                elif line.startswith("TAGS_ETSY:"):
-                    if current_key: gemini_output[current_key] = "\n".join(current_value).strip()
-                    current_key = "TAGS_ETSY"
-                    current_value = [line[len("TAGS_ETSY:"):].strip()]
-                elif line.startswith("KEYWORDS_KDP:"):
-                    if current_key: gemini_output[current_key] = "\n".join(current_value).strip()
-                    current_key = "KEYWORDS_KDP"
-                    current_value = [line[len("KEYWORDS_KDP:"):].strip()]
-                elif current_key:
-                    current_value.append(line)
-            if current_key: gemini_output[current_key] = "\n".join(current_value).strip()
-
-            # Basic validation of Gemini output
-            if all(k in gemini_output for k in ["BLURB_KDP", "DESCRIPTION_ETSY", "TAGS_ETSY", "KEYWORDS_KDP"]):
-                print("Contenu généré avec succès par Gemini.")
-            else:
-                print("Avertissement: La réponse de Gemini n'a pas le format attendu. Utilisation du mode fallback.", file=sys.stderr)
-                gemini_output = None # Force fallback
-        else:
-            print("Avertissement: Gemini n'a pas pu générer le contenu. Utilisation du mode fallback.", file=sys.stderr)
-
-    if not gemini_output:
-        print("Utilisation du mode fallback pour la génération de contenu.")
-        # Fallback templates
-        kdp_blurb = textwrap.dedent(f"""
-        Plongez dans un monde de créativité avec notre livre de coloriage "{title}" !
-        Conçu spécialement pour les {target_audience}, ce livre regorge de magnifiques illustrations sur le thème des {main_theme}.
-        Chaque page est une invitation à l'aventure artistique, parfaite pour développer la motricité fine et l'imagination.
-        Offrez des heures de plaisir et de détente avec ce compagnon idéal pour les jeunes artistes.
-        """)
-
-        etsy_description = textwrap.dedent(f"""
-        Découvrez le livre de coloriage ultime pour les {target_audience} : "{title}" !
-        Ce magnifique recueil d'illustrations sur le thème des {main_theme} est parfait pour stimuler la créativité et offrir des moments de calme.
-        Avec ses pages grand format et ses dessins clairs, il est idéal pour les petites mains.
-        Que ce soit pour un anniversaire, un cadeau de Noël ou simplement pour occuper les enfants de manière éducative,
-        ce livre de coloriage est un choix parfait. Il aide à développer la concentration, la reconnaissance des couleurs
-        et la coordination œil-main. Imprimable à la maison, il offre une flexibilité incroyable.
-        Procurez-vous le vôtre dès aujourd'hui et laissez l'aventure artistique commencer !
-        """)
-
-        etsy_tags = [
-            f"coloriage {main_theme}", "livre coloriage", "activite enfant", "cadeau enfant",
-            "dessin a colorier", "pages a colorier", "art pour enfants", "livre d'activite",
-            "coloriage educatif", "telechargement numerique", "imprimable enfant",
-            f"theme {main_theme}", f"pour {target_audience.replace(' ', '-')}"
-        ]
-        kdp_keywords = [
-            f"coloriage {main_theme}", "livre coloriage enfant", f"dessin {main_theme}",
-            "activite creative", "cadeau pour enfant", "livre d'art", "pages a imprimer"
-        ]
-
-        return {
-            "BLURB_KDP": kdp_blurb,
-            "DESCRIPTION_ETSY": etsy_description,
-            "TAGS_ETSY": ", ".join(etsy_tags),
-            "KEYWORDS_KDP": ", ".join(kdp_keywords)
-        }
-    else:
-        return {
-            "BLURB_KDP": gemini_output["BLURB_KDP"],
-            "DESCRIPTION_ETSY": gemini_output["DESCRIPTION_ETSY"],
-            "TAGS_ETSY": gemini_output["TAGS_ETSY"],
-            "KEYWORDS_KDP": gemini_output["KEYWORDS_KDP"]
-        }
+from pathlib import Path
+from datetime import datetime
 
 def main():
-    """Main function to orchestrate the publication package generation."""
-    # 1. Get BRIEF_ID from CLI or environment
-    brief_id = sys.argv[1] if len(sys.argv) > 1 else get_env_variable("BRIEF_ID")
+    # 1. Résolution du BRIEF_ID (CLI ou Variable d'environnement)
+    brief_id = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("BRIEF_ID")
     if not brief_id:
-        print("Erreur: BRIEF_ID doit être fourni en argument CLI ou via la variable d'environnement BRIEF_ID.", file=sys.stderr)
+        print("Erreur : BRIEF_ID doit être fourni en argument CLI ou via la variable d'environnement BRIEF_ID.")
         sys.exit(1)
 
-    print(f"Préparation du paquet de publication pour BRIEF_ID: {brief_id}")
+    # Définition des chemins
+    base_dir = Path("products/coloring_books/_gate1") / brief_id
+    pub_dir = base_dir / "publication"
+    
+    # Recherche de kdp_package.json
+    kdp_package_path = pub_dir / "kdp_package.json"
+    if not kdp_package_path.exists():
+        kdp_package_path = base_dir / "kdp_package.json"
 
-    # Define paths
-    brief_dir = os.path.join(PRODUCTS_BASE_DIR, brief_id)
-    kdp_package_path = os.path.join(brief_dir, "kdp_package.json")
-    publication_output_dir = os.path.join(brief_dir, "publication")
-
-    # Ensure output directory exists
-    create_directory_if_not_exists(publication_output_dir)
-
-    # 2. Verify kdp_package.json
-    kdp_package_data = load_json_file(kdp_package_path)
-
-    if not kdp_package_data.get('ready_for_gate2'):
-        print(f"Erreur: kdp_package.json n'indique pas 'ready_for_gate2=true' pour BRIEF_ID '{brief_id}'.", file=sys.stderr)
+    if not kdp_package_path.exists():
+        print(f"Erreur : kdp_package.json introuvable pour le brief {brief_id}.")
         sys.exit(1)
 
-    print("kdp_package.json vérifié et prêt pour GATE 2.")
+    # Lecture et validation de kdp_package.json
+    try:
+        with open(kdp_package_path, "r", encoding="utf-8") as f:
+            package_data = json.load(f)
+    except Exception as e:
+        print(f"Erreur lors de la lecture de kdp_package.json : {e}")
+        sys.exit(1)
 
-    # Extract essential data from kdp_package.json
-    brief_title = kdp_package_data.get('title', 'Livre de Coloriage')
-    brief_author = kdp_package_data.get('author', 'Nom de l\'Auteur')
-    brief_categories = kdp_package_data.get('categories', ["Art & Dessin", "Livres pour enfants"])
-    brief_main_theme = kdp_package_data.get('main_theme', 'animaux mignons')
-    brief_target_audience = kdp_package_data.get('target_audience', 'enfants de 4 à 8 ans')
+    # Vérification de la validation du Gate 2
+    ready_for_gate2 = package_data.get("ready_for_gate2")
+    if not ready_for_gate2 or str(ready_for_gate2).lower() != "true":
+        print("Erreur : ready_for_gate2 n'est pas à 'true' dans kdp_package.json. Le Gate 2 doit être approuvé.")
+        sys.exit(1)
 
-    # 3. Get Gemini API key and model
-    gemini_api_key = get_env_variable("GEMINI_API_KEY")
-    gemini_model = get_env_variable("GEMINI_MODEL", default=DEFAULT_GEMINI_MODEL)
+    # Extraction des métadonnées de base
+    title = package_data.get("title", "Coloring Book")
+    subtitle = package_data.get("subtitle", "")
+    author = package_data.get("author", "Creative Press")
+    theme = package_data.get("theme", "Coloring")
+    target_audience = package_data.get("target_audience", "Adults")
+    categories = package_data.get("categories", ["Activity Books", "Crafts & Hobbies"])
 
-    # 4. Generate content (Gemini or fallback)
-    generated_content = generate_content_with_gemini_or_fallback(
-        {
-            'title': brief_title,
-            'author': brief_author,
-            'main_theme': brief_main_theme,
-            'target_audience': brief_target_audience
-        },
-        gemini_api_key,
-        gemini_model
-    )
+    # 2. Appel à l'API Gemini ou Fallback
+    api_key = os.environ.get("GEMINI_API_KEY")
+    model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+    
+    gemini_success = False
+    generated_content = {}
 
-    kdp_description = generated_content["BLURB_KDP"]
-    etsy_description = generated_content["DESCRIPTION_ETSY"]
-    etsy_tags_str = generated_content["TAGS_ETSY"]
-    kdp_keywords_str = generated_content["KEYWORDS_KDP"]
+    if api_key:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        
+        prompt = f"""You are an expert copywriter for Amazon KDP and Etsy. Based on the following coloring book metadata, generate optimized marketing copy.
+        
+        Metadata:
+        - Title: {title}
+        - Subtitle: {subtitle}
+        - Author: {author}
+        - Theme: {theme}
+        - Target Audience: {target_audience}
+        
+        You must return a JSON object with exactly the following keys:
+        - "kdp_description": A compelling blurb for Amazon KDP (150-200 words).
+        - "kdp_keywords": Exactly 7 highly relevant search keywords/phrases for KDP.
+        - "etsy_title": A keyword-stuffed Etsy title (max 140 characters, keywords-first).
+        - "etsy_description": A detailed, SEO-optimized Etsy product description (500-800 words) highlighting benefits, features, and digital/physical nature.
+        - "etsy_tags": Exactly 13 relevant tags for Etsy.
+        
+        Return ONLY the raw JSON object. Do not wrap it in markdown code blocks or any other text."""
 
-    # Process tags and keywords into lists
-    etsy_tags = [tag.strip() for tag in etsy_tags_str.split(',') if tag.strip()]
-    kdp_keywords = [kw.strip() for kw in kdp_keywords_str.split(',') if kw.strip()]
+        payload = {
+            "contents": [{
+                "parts": [{"text": prompt}]
+            }],
+            "generationConfig": {
+                "responseMimeType": "application/json"
+            }
+        }
+        
+        try:
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+                method="POST"
+            )
+            with urllib.request.urlopen(req, timeout=30) as response:
+                res_data = json.loads(response.read().decode("utf-8"))
+                text_response = res_data["candidates"][0]["content"]["parts"][0]["text"]
+                generated_content = json.loads(text_response.strip())
+                gemini_success = True
+        except Exception as e:
+            print(f"Warning: Échec de l'appel Gemini ({e}). Utilisation du mode fallback statique.")
 
-    # Ensure KDP keywords are exactly 7
-    if len(kdp_keywords) > 7:
-        kdp_keywords = kdp_keywords[:7]
-    elif len(kdp_keywords) < 7:
-        # Pad with generic keywords if Gemini didn't provide enough
-        print("Avertissement: Moins de 7 mots-clés KDP générés. Ajout de mots-clés génériques.", file=sys.stderr)
-        generic_kws = ["livre coloriage", "activite enfant", "dessin enfant", "art therapie", "cadeau enfant", "loisirs creatifs", "livre d'activite"]
-        for kw in generic_kws:
-            if kw not in kdp_keywords and len(kdp_keywords) < 7:
-                kdp_keywords.append(kw)
+    # 3. Mode Fallback (Templates statiques)
+    if not gemini_success:
+        kdp_desc = (
+            f"Unleash your creativity with '{title}: {subtitle}'. This beautifully crafted coloring book "
+            f"is specifically designed for {target_audience} who love {theme}. Inside, you will find "
+            f"a stunning collection of high-quality, unique illustrations designed to provide hours of "
+            f"relaxation, stress relief, and artistic expression. Each page is single-sided to prevent "
+            f"bleed-through, making it perfect for markers, gel pens, or colored pencils. Whether you are "
+            f"an experienced artist or just starting your coloring journey, this book offers a perfect "
+            f"escape into a world of color and imagination. It also makes a wonderful gift for friends "
+            f"and family who appreciate the therapeutic benefits of coloring. Grab your copy today and "
+            f"start coloring your way to peace and tranquility!"
+        )
+        
+        kdp_keywords = [
+            f"{theme} coloring book",
+            f"coloring book for {target_audience}",
+            f"creative coloring pages",
+            f"relaxation coloring",
+            f"stress relief coloring",
+            f"artistic coloring book",
+            f"beautiful {theme} designs"
+        ][:7]
+        
+        etsy_title = f"{title} Coloring Book PDF - Printable {theme} Pages for {target_audience}"[:140]
+        
+        etsy_desc = (
+            f"Welcome to our creative studio! Bring your imagination to life with the '{title}' printable coloring book.\n\n"
+            f"This digital download features a gorgeous collection of {theme}-themed coloring pages, perfect for {target_audience} "
+            f"seeking a relaxing and mindful artistic escape. Designed with love and attention to detail, these pages offer "
+            f"the perfect balance of complexity and simplicity to suit all skill levels.\n\n"
+            f"--- WHAT YOU WILL RECEIVE ---\n"
+            f"- 1 High-Resolution PDF file containing all coloring pages.\n"
+            f"- Standard Letter Size (8.5 x 11 inches) for easy printing.\n"
+            f"- Clean, crisp, high-quality black and white vector-style illustrations.\n\n"
+            f"--- WHY YOU WILL LOVE THIS BOOK ---\n"
+            f"- Stress Relief & Mindfulness: Coloring is a proven way to reduce anxiety and find your inner calm.\n"
+            f"- Print Unlimited Times: Print your favorite designs as many times as you like on your preferred paper.\n"
+            f"- Perfect for All Mediums: Great for colored pencils, markers, crayons, or watercolors (we recommend printing on heavy cardstock for wet mediums).\n\n"
+            f"--- PLEASE NOTE ---\n"
+            f"This is a DIGITAL DOWNLOAD product. No physical item will be shipped to you. "
+            f"Due to the digital nature of this product, all sales are final. For personal use only. "
+            f"Commercial reproduction or resale is strictly prohibited.\n\n"
+            f"Thank you for supporting our shop! Happy coloring!"
+        )
+        
+        etsy_tags = [
+            "coloring book", "printable coloring", f"{theme} coloring", "digital download",
+            "pdf coloring book", "adult coloring", "kids coloring", "stress relief",
+            "mindful coloring", "printable pdf", "creative hobby", "coloring pages", "diy craft"
+        ][:13]
+        
+        generated_content = {
+            "kdp_description": kdp_desc,
+            "kdp_keywords": kdp_keywords,
+            "etsy_title": etsy_title,
+            "etsy_description": etsy_desc,
+            "etsy_tags": etsy_tags
+        }
 
-    # Ensure Etsy tags are exactly 13
-    if len(etsy_tags) > 13:
-        etsy_tags = etsy_tags[:13]
-    elif len(etsy_tags) < 13:
-        print("Avertissement: Moins de 13 tags Etsy générés. Ajout de tags génériques.", file=sys.stderr)
-        generic_tags = ["coloriage", "livre enfant", "activite manuelle", "cadeau unique", "art numerique", "telechargeable", "imprimable", "loisir creatif", "dessin", "pages a colorier", "pour enfants", "activite maison", "fun"]
-        for tag in generic_tags:
-            if tag not in etsy_tags and len(etsy_tags) < 13:
-                etsy_tags.append(tag)
+    # Assurer la création du dossier de publication
+    pub_dir.mkdir(parents=True, exist_ok=True)
 
+    # 4. Écriture des 3 fichiers requis
 
-    # 5. Prepare and write kdp_metadata.json
+    # Fichier 1 : kdp_metadata.json
     kdp_metadata = {
-        "title": brief_title,
-        "author": brief_author,
-        "description": kdp_description,
-        "keywords": kdp_keywords,
-        "categories": brief_categories,
-        "price": KDP_PRICE
+        "title": title,
+        "subtitle": subtitle,
+        "author": author,
+        "description": generated_content.get("kdp_description"),
+        "keywords": generated_content.get("kdp_keywords")[:7],
+        "categories": categories,
+        "price": 8.99
     }
-    kdp_metadata_path = os.path.join(publication_output_dir, "kdp_metadata.json")
-    save_json_file(kdp_metadata_path, kdp_metadata)
-    print(f"Fichier KDP metadata écrit: {kdp_metadata_path}")
+    with open(pub_dir / "kdp_metadata.json", "w", encoding="utf-8") as f:
+        json.dump(kdp_metadata, f, indent=2, ensure_ascii=False)
 
-    # 6. Prepare and write etsy_listing.json
-    # Etsy title: max 140 chars, keywords-first
-    etsy_title_base = f"{brief_title} - Livre de Coloriage {brief_main_theme} pour {brief_target_audience}"
-    etsy_title = etsy_title_base
-    if len(etsy_title) > 140:
-        etsy_title = etsy_title[:137] + "..." # Truncate if too long
-
+    # Fichier 2 : etsy_listing.json
     etsy_listing = {
-        "title": etsy_title,
-        "description": etsy_description,
-        "tags": etsy_tags
+        "title": generated_content.get("etsy_title")[:140],
+        "description": generated_content.get("etsy_description"),
+        "tags": generated_content.get("etsy_tags")[:13]
     }
-    etsy_listing_path = os.path.join(publication_output_dir, "etsy_listing.json")
-    save_json_file(etsy_listing_path, etsy_listing)
-    print(f"Fichier Etsy listing écrit: {etsy_listing_path}")
+    with open(pub_dir / "etsy_listing.json", "w", encoding="utf-8") as f:
+        json.dump(etsy_listing, f, indent=2, ensure_ascii=False)
 
-    # 7. Prepare and write PUBLICATION_READY.md
-    publication_ready_content = textwrap.dedent(f"""
-    ---
-    title: "Paquet de Publication Prêt pour {brief_title}"
-    date: {os.popen('date +%Y-%m-%d').read().strip()}
-    draft: false
-    ---
+    # Fichier 3 : PUBLICATION_READY.md (Formaté pour Hugo)
+    hugo_ready_content = f"""---
+title: "Publication Ready: {title}"
+date: "{datetime.now().isoformat()}"
+brief_id: "{brief_id}"
+draft: false
+---
 
-    # Paquet de Publication pour "{brief_title}" (ID: {brief_id})
+# Publication Package Ready for {title}
 
-    Ce document résume les informations générées pour la publication sur KDP et Etsy.
+This package has been fully prepared and validated. Below is the summary of the generated assets.
 
-    ## Résumé Hugo
+## KDP Checklist
+- [ ] **Title**: {title}
+- [ ] **Subtitle**: {subtitle}
+- [ ] **Author**: {author}
+- [ ] **Price**: $8.99
+- [ ] **Categories**: {", ".join(categories)}
+- [ ] **Keywords**: {", ".join(kdp_metadata["keywords"])}
 
-    Le paquet de publication pour le livre de coloriage **"{brief_title}"** est prêt.
-    Il inclut les métadonnées KDP, la fiche produit Etsy, et ce résumé.
-    Le thème principal est **"{brief_main_theme}"** et l'audience cible est **"{brief_target_audience}"**.
-
-    ## Checklist KDP
-
-    - [x] Titre: `{brief_title}`
-    - [x] Auteur: `{brief_author}`
-    - [x] Description (Blurb):
+### KDP Description
