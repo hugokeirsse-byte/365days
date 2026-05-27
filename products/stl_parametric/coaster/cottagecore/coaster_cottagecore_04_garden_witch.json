@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_coaster_cottagecore_04",
+  "product_type": "coaster",
+  "product_name": "Coaster",
+  "template": "cottagecore",
+  "variant_text": "Garden Witch",
+  "size_mm": "95Ø×4",
+  "estimated_print_time": "45 min",
+  "filament_estimate_g": 12,
+  "title": "Garden Witch Coaster STL — 3D Print Ready, Cottagecore Aesthetic",
+  "tags_cults3d": [
+    "cottagecore",
+    "coaster",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "cottagecore",
+    "coaster",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 2.0,
+  "price_makerworld_eur": 2.0,
+  "stl_file": "coaster_cottagecore_04_garden_witch.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}
