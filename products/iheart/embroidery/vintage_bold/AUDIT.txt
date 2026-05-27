@@ -1,24 +1,10 @@
-AUDIT VISUEL — 2026-05-27T00:01:06.820449Z
+AUDIT VISUEL v2 — 2026-05-27T11:13:46.319268Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 94.0/100
-  - Visual : 100/100
-  - Text   : 90/100
+VERDICT : REVIEW
+Score : 58.0/100
 
-Détails visuels :
-  aucun problème
+  Visual score  : 100/100
+  Text score    : 30/100
 
-Texte OCR extrait :
-  « Bae ce aa ! Te
-A ‘i 5 ee ‘ a ee : “2%
-Sih 4
-vee Soe amr ae
-Be oo iat
-= <= SS |
-"2 ae ie
-ei: rd wens
-aaa (PI uence |
-ss | <a »
-
-→ OK à uploader.
+→ REVUE MANUELLE OBLIGATOIRE avant upload.

@@ -1,19 +1,10 @@
-AUDIT VISUEL — 2026-05-27T00:01:21.788987Z
+AUDIT VISUEL v2 — 2026-05-27T11:13:48.769506Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 82.0/100
-  - Visual : 100/100
-  - Text   : 70/100
+VERDICT : REVIEW
+Score : 58.0/100
 
-Détails visuels :
-  aucun problème
+  Visual score  : 100/100
+  Text score    : 30/100
 
-Texte OCR extrait :
-  « 7 eS
-* DIGOSTED |
--MVENEP AEE |
-“CARING
-1) TEREANIING | »
-
-→ OK à uploader.
+→ REVUE MANUELLE OBLIGATOIRE avant upload.

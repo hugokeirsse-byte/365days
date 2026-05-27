@@ -1,23 +1,10 @@
-AUDIT VISUEL — 2026-05-27T00:01:07.738951Z
+AUDIT VISUEL v2 — 2026-05-27T11:13:46.429393Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 82.0/100
-  - Visual : 100/100
-  - Text   : 70/100
+VERDICT : REVIEW
+Score : 58.0/100
 
-Détails visuels :
-  aucun problème
+  Visual score  : 100/100
+  Text score    : 30/100
 
-Texte OCR extrait :
-  « gate — ITT 3.
-<ge d
-x | errs
-2 alae? |
-: _ i =
-A ——— ara
-—S~—<‘<‘C
-I Fishh hig
-Piles ‘( »
-
-→ OK à uploader.
+→ REVUE MANUELLE OBLIGATOIRE avant upload.

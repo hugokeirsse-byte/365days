@@ -1,26 +1,10 @@
-AUDIT VISUEL — 2026-05-27T00:01:12.436025Z
+AUDIT VISUEL v2 — 2026-05-27T11:13:46.716175Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 82.0/100
-  - Visual : 100/100
-  - Text   : 70/100
+VERDICT : REVIEW
+Score : 58.0/100
 
-Détails visuels :
-  aucun problème
+  Visual score  : 100/100
+  Text score    : 30/100
 
-Texte OCR extrait :
-  « ea e 9 4 7] \ S
-iam 9 Oo 5 or 7A
-ei. 6° 5) |! ieee nee
-Bia tape Saat
-
-* ——— ae cre, L . ao f of ial Z ae
-
-oir
-? OP
-
-ick hi na steien
-dssey fielistpetoo »
-
-→ OK à uploader.
+→ REVUE MANUELLE OBLIGATOIRE avant upload.

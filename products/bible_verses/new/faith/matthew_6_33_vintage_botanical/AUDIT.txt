@@ -1,27 +1,10 @@
-AUDIT VISUEL — 2026-05-27T00:00:43.942576Z
+AUDIT VISUEL v2 — 2026-05-27T11:13:45.018833Z
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 94.0/100
-  - Visual : 100/100
-  - Text   : 90/100
+VERDICT : REVIEW
+Score : 58.0/100
 
-Détails visuels :
-  aucun problème
+  Visual score  : 100/100
+  Text score    : 30/100
 
-Texte OCR extrait :
-  « i - . a “g mb”
-Lb >; , \ a i. : Y: YP ~ if
-ee SON £G
-i’ A) a Lz f ta
-Bas Seok
-= VW S| Y ae ieee es, Mi
-XK ; eé > a
-Va the, — y
-2 7S ° ( oe
-"4 tCASUM bi |
-“a | a J YZ Ny | | ae a
-ay v4 od ( ui fr. |
-a  »
-
-→ OK à uploader.
+→ REVUE MANUELLE OBLIGATOIRE avant upload.

@@ -1,0 +1,26 @@
+AUDIT VISUEL v2 — 2026-05-27T11:13:43.100367Z
+============================================================
+
+VERDICT : REJECT
+Score : 25/100
+
+── COLORIAGE BOOK CHECKS ──
+  Pages analysées       : 6
+  Pages contamination   : 0 (0.0% gris moyen)
+  Pages vides           : 0
+  Pages sous-résolues   : 6
+  Densité trait         : moy=9.6%, écart-type=3.1%
+
+PROBLÈMES CRITIQUES :
+  ✗ Seulement 6 pages — KDP exige ≥ 20 pour un livre de coloriage viable
+  ✗ 6/6 pages sous-résolues (<1400px) : page_01.png (673x875), page_02.png (673x875), page_03.png (673x875), page_04.png (673x875). KDP exige ≥300 DPI — ces images (~112 DPI) seront floues à l'impression, garantissant 1 étoile et un potentiel retrait de la vente.
+
+── CE QUE L'AUDIT PIXEL NE DÉTECTE PAS (vérification manuelle requise) ──
+  • Cohérence de style visuel entre pages (ex: mix chibi / botanique / réaliste)
+  • Qualité artistique et attrait commercial des illustrations
+  • Thème respecté sur toutes les pages (ex: champignons présents partout ?)
+  • Lignes trop fines pour l'impression (imperceptibles à l'oeil nu sans zoom)
+  → Hugo doit vérifier visuellement 5-8 pages représentatives avant upload.
+
+→ REJETÉ. Ne pas uploader. Régénérer le contenu.
+  Les clients Amazon verront ces défauts et laisseront 1 étoile.
