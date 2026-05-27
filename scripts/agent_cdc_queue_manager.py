@@ -281,7 +281,8 @@ CONFIGS = {
             "MERCH_LANGUE": "en",
         },
         "theme_key": lambda cdc: (
-            cdc.get("concept_theme", {}).get("titre", ""),
+            cdc.get("concept_theme", {}).get("titre", "").lower()[:40],
+            cdc.get("style_visuel", {}).get("style_illustration", ""),
         ),
     },
     "godot_assets": {

@@ -3,7 +3,7 @@
 Rédaction automatique des chapitres d'un roman KDP depuis un CdC approuvé.
 
 Pipeline :
-  1. Lit LC_DIR (env) ou cherche le dernier roman avec gate_cdc=approved
+  1. Lit NOVEL_DIR (env) ou cherche le dernier roman avec gate_cdc=approved
   2. Vérifie gate_cdc == "approved" — sort proprement sinon
   3. Lit plan_38_chapitres, guide_style, personnages, identite_commerciale
   4. Crée products/novels/{slug}/chapters/
@@ -17,7 +17,7 @@ Pipeline :
   8. Met à jour cdc.json avec production_status + gate_production
 
 Variables d'env :
-  LC_DIR        — chemin du dossier roman (products/novels/{slug})
+  NOVEL_DIR     — chemin du dossier roman (products/novels/{slug})
                   si absent, cherche le premier roman avec gate_cdc=approved
                   sans production_status déjà renseigné
   GROQ_API_KEY  — obligatoire (roman_writer → Groq / Llama-3.3-70b)
@@ -294,7 +294,7 @@ def find_novel_dir() -> Path | None:
 
 def run() -> int:
     # ── 1. Résolution du dossier roman ───────────────────────────────────────
-    lc_dir_env = os.environ.get("LC_DIR", "").strip()
+    lc_dir_env = os.environ.get("NOVEL_DIR", os.environ.get("LC_DIR", "")).strip()
 
     if lc_dir_env:
         novel_dir = (

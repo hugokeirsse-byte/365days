@@ -1,0 +1,24 @@
+name: Godot Brain — Tendances Assets Itch.io
+on:
+  schedule:
+    - cron: '0 5 * * 6'   # Samedi 05h UTC
+  workflow_dispatch:
+    inputs:
+      angle: {description: 'Angle override', required: false, default: ''}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    permissions: {contents: write}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - run: pip install requests
+      - run: mkdir -p data/brain/godot data/reports
+      - run: python scripts/agent_godot_trends.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GODOT_ANGLE: ${{ github.event.inputs.angle }}
+      - run: |
+          git config user.name "Godot Brain" && git config user.email "godot@365days.bot"
+          git add data/brain/godot/ && git diff --staged --quiet || git commit -m "brain: godot trends $(date +%Y-%m-%d)" && git push

@@ -47,7 +47,7 @@ def _find_latest_approved() -> Path | None:
             continue
         try:
             cdc = json.loads(cdc_file.read_text(encoding="utf-8"))
-            if cdc.get("gate_cdc") == "approved":
+            if cdc.get("gate_cdc") == "approved" and not cdc.get("production_status"):
                 candidates.append((cdc_file.stat().st_mtime, d))
         except Exception:
             pass
