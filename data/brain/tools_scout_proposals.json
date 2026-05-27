@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-26T21:31:29.479177Z",
+  "timestamp": "2026-05-27T02:31:58.144873Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,80 +90,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Fal.ai",
-      "url": "https://fal.ai",
+      "tool_or_platform": "Segmind API",
+      "url": "https://www.segmind.com/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Generous free starting credits (around $10, with FLUX-schnell costing $0.003/image, equaling ~3,000 free images). No credit card required to start.",
-      "what_it_does_uniquely": "Fastest API access to FLUX.1 [schnell] and [dev] on the market. Offers optimized latency, built-in upscaling (Lora/ControlNet support), and runs flawlessly via simple HTTP requests from GitHub Actions.",
-      "would_integrate_where": "Could replace Pollinations inside the `produce_coloring_book` and `produce_kdp_cover` pipelines as the primary high-quality image generator.",
+      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24 hours). Flux Schnell costs ~1 credit per image.",
+      "what_it_does_uniquely": "Provides reliable, low-latency API endpoints for Flux Schnell, SDXL, and ControlNet. It completely bypasses GitHub Actions IP blocks and does not require a paid plan to use the daily free tier.",
+      "would_integrate_where": "Replace Pollinations in the `produce_coloring_book` or `produce_svg_pack` workflows to get native 1024x1024 high-resolution outputs with much better prompt adherence.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Once free credits run out, requires Pay-As-You-Go billing, though rates are extremely cheap (much cheaper than Runware's base tier for equivalent speed)."
+      "risk_or_caveat": "API keys are tied to a single account; multi-accounting to bypass the 100 daily limit violates their ToS."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Pytrends (Google Trends Unofficial API)",
-      "url": "https://github.com/GeneralMills/pytrends",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100% free, no API key required. Rate limits are dictated by Google's standard search rate limits (easily bypassed via GHA rotating runners).",
-      "what_it_does_uniquely": "Allows programmatic, scheduled trend analysis of keywords directly in Python. Can query trending searches, related queries, and interest over time for specific niches (e.g. 'coloring book' trends).",
-      "would_integrate_where": "Integrate into `agent_trendhunter` or `agent_opportunity_hunter` to automatically discover rising search terms before designing new books/assets.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Since it is an unofficial API, Google can occasionally block requests (HTTP 429) if triggered too rapidly. Needs careful request staggering inside GHA."
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "10$ in free starting credits upon registration (no credit card required). Flux Schnell costs $0.003 per image, yielding ~3,300 free high-quality images.",
+      "what_it_does_uniquely": "Incredibly fast inference times (sub-second for Flux Schnell) with advanced parameters (seed, aspect ratio, denoise). Highly robust API libraries for Python and JS.",
+      "would_integrate_where": "Integrate into `produce_kdp_cover` and `produce_viral_formats` to get instant, ultra-high-quality graphics directly in the automated pipeline.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Once the 10$ credit is consumed, it is pay-as-you-go. Must keep an eye on the balance to prevent pipeline failure."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to upload, host, and sell 3D models. Take rate on sales is competitive with Cults3D.",
-      "what_it_does_uniquely": "A massive, fast-growing 3D model search engine and community. Hosting parametric STL files (from `produce_stl_parametric`) here taps into a highly active 3D printing community that specifically searches for functional prints.",
-      "would_integrate_where": "Target distribution platform for the `produce_stl_parametric` output pipeline to diversify away from only using Cults3D.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Highly technical audience; simple low-effort models won't sell. Requires high-quality rendering thumbnails."
+      "tool_or_platform": "Glif",
+      "url": "https://glif.app/",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "100 free 'runs' per day on their web app and API.",
+      "what_it_does_uniquely": "Allows you to build 'glifs'—which are chained AI pipelines (e.g., LLM prompt enhancer -> Flux image generator -> background remover -> vectorizer) and run them via a single API call.",
+      "would_integrate_where": "Perfect for `produce_literal_idioms` or complex card games where you need text, layout, and image generation packaged into one single API request.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Complex workflow UI to configure initially; API documentation can be tricky for custom community-built glifs."
     },
     {
       "rank": 4,
-      "tool_or_platform": "DriveThruRPG",
-      "url": "https://www.drivethrurpg.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free publisher account. Takes a percentage commission on sales (30-35% for exclusive, 45% for non-exclusive). No upfront listing fees.",
-      "what_it_does_uniquely": "The absolute largest marketplace for tabletop RPG assets, fantasy coloring books, maps, card games, and PDF-based game accessories. Customers here are actively looking to buy print-ready PDFs and digital game assets.",
-      "would_integrate_where": "Publishing target for `produce_card_game`, `produce_coloring_book` (fantasy-themed), and `produce_gamedev_asset_pack` (specifically 2D maps and tokens).",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Strict formatting requirements for PDF uploads. Audience demands high-quality, thematic work (fantasy/sci-fi)."
+      "tool_or_platform": "Ko-fi",
+      "url": "https://ko-fi.com/",
+      "category": "pod",
+      "free_tier_concrete_limits": "0% platform fee on digital downloads (only standard stripe/paypal processing fees). Unlimited listings. Max file size of 100MB per product.",
+      "what_it_does_uniquely": "Unlike Etsy (listing fees) or Gumroad (10% flat fee), Ko-fi's free tier allows digital assets to be hosted and sold with zero listing fees. It acts as an instant digital storefront with no overhead costs.",
+      "would_integrate_where": "Use as the primary checkout/delivery system for the STL packs, gamedev assets, and SVG bundles generated by the pipeline.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "No built-in organic search traffic like Etsy. Requires driving external traffic (via social media or redirecting from free platforms like Cults3D/itch.io)."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Printify API",
-      "url": "https://printify.com/printify-api/",
-      "category": "pod",
-      "free_tier_concrete_limits": "100% free developer account. Allows creating up to 5 stores and publishing unlimited products via API.",
-      "what_it_does_uniquely": "Allows complete programmatic creation of POD products. Hugo can use GHA to generate designs, use the Printify API to create mockups/products (mugs, t-shirts, canvas), and automatically push them to connected shops like Etsy or eBay.",
-      "would_integrate_where": "New pipeline: `produce_pod_automation` to automatically push scaling variations of designs (e.g. `produce_tumbler_wraps`) directly into live store drafts.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Requires connecting a sales channel (like Etsy) which might have listing fees ($0.20 on Etsy per listing). Must be paired with free channels or used carefully."
+      "tool_or_platform": "Thangs",
+      "url": "https://thangs.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to upload unlimited 3D models. Optional paid subscription tier for your fans (Thangs Membership) with a 91% creator revenue share.",
+      "what_it_does_uniquely": "A massive, fast-growing 3D model search engine and marketplace. It uses geometric search, making it easier for users to find parametric or functional STL files.",
+      "would_integrate_where": "Upload the outputs of `produce_stl_parametric` directly to tap into the active 3D printing community alongside Cults3D.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Strictly for 3D/STL files. The audience is highly technical (makers, 3D printing enthusiasts)."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Freesound API",
-      "url": "https://freesound.org/docs/api/",
-      "category": "scraping",
-      "free_tier_concrete_limits": "Free developer key with up to 2,000 requests per day. Access to millions of CC0/Creative Commons sound effects.",
-      "what_it_does_uniquely": "Enables programmatic searching, filtering, and downloading of high-quality audio files. Perfect for generating curated, themed audio assets for game developers.",
-      "would_integrate_where": "Integrate into `produce_gamedev_asset_pack` to bundle curated, mixed, or converted CC0 sound effect packs (UI sounds, ambient noises, retro synth effects).",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Must strictly filter for CC0 (Public Domain) licenses using the API query parameters to ensure 100% legal resale safety."
+      "tool_or_platform": "Godot Asset Library",
+      "url": "https://godotengine.org/asset-library/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to submit and download. No listing fees, no revenue cuts.",
+      "what_it_does_uniquely": "Assets published here appear directly inside the Godot Engine editor for millions of developers worldwide, creating a high-intent, friction-free traffic loop.",
+      "would_integrate_where": "Publish demo versions or free lite-packs generated by `produce_gamedev_asset_pack` inside Godot, then link to the full paid versions on Ko-fi.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Assets must be open-source (MIT, CC-BY, etc.) to be listed on the official library. Best used as a lead magnet."
     },
     {
       "rank": 7,
-      "tool_or_platform": "Segmind API",
-      "url": "https://www.segmind.com",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "100 free credits daily (refreshed every 24 hours). FLUX-schnell costs ~0.05 credits per image, allowing ~2,000 free images per day.",
-      "what_it_does_uniquely": "Provides a highly stable, completely free daily allotment for high-end open models (FLUX, SDXL, ControlNet, and vector converters) with direct API access.",
-      "would_integrate_where": "Can act as a highly reliable, zero-cost secondary fallback or primary engine for `produce_coloring_book` and `produce_svg_pack` pipelines in GHA.",
+      "tool_or_platform": "RapidAPI: Etsy / Pinterest Data Scrapers",
+      "url": "https://rapidapi.com/",
+      "category": "analytics",
+      "free_tier_concrete_limits": "500 to 1000 free API requests per month depending on the specific community scraper selected (e.g., 'Etsy Search Scraper').",
+      "what_it_does_uniquely": "Exposes structured JSON data of search results, trending tags, and listing details from platforms that otherwise charge heavily for API access or actively block scrapers.",
+      "would_integrate_where": "Integrate into `agent_trend_explosion` or `agent_opportunity_hunter` to automatically feed trending keywords into the generation pipelines weekly.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Daily credits do not roll over. Requires managing an API key and handling rate limits if generating high-volume batches simultaneously."
+      "risk_or_caveat": "Third-party scrapers on RapidAPI can occasionally break if the target platform updates its HTML structure."
     }
   ]
 }
