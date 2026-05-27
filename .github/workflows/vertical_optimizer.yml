@@ -19,6 +19,9 @@ on:
           - stl
           - lowcontent
           - roman
+          - jeux_societe
+          - merch_design
+          - godot_assets
       dry_run:
         description: 'Dry run (analyse sans générer de CdC)'
         required: false

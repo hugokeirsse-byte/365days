@@ -97,6 +97,33 @@ VERTICALS = {
         "platform": "Amazon KDP",
         "product_description": "roman KDP eBook + paperback",
     },
+    "merch_design": {
+        "products_dir": "products/merch",
+        "brain_dir": "data/brain/merch",
+        "cdc_script": "scripts/agent_merch_design_cdc.py",
+        "cdc_env_vars": {
+            "MERCH_CONCEPT": "concept_from_llm",
+            "MERCH_STYLE": "flat colorful illustration",
+            "MERCH_NB_DESIGNS": "30",
+            "MERCH_LANGUE": "en",
+        },
+        "audit_verdict_field": "VERDICT",
+        "platform": "Redbubble / Merch by Amazon / Society6 / Etsy+Printful",
+        "product_description": "collection de designs merch (t-shirts, mugs, stickers, posters)",
+    },
+    "godot_assets": {
+        "products_dir": "products/godot_assets",
+        "brain_dir": "data/brain/godot",
+        "cdc_script": "scripts/agent_godot_cdc.py",
+        "cdc_env_vars": {
+            "GODOT_TYPE": "type_from_llm",
+            "GODOT_THEME": "theme_from_llm",
+            "GODOT_NB_ASSETS": "30",
+        },
+        "audit_verdict_field": "VERDICT",
+        "platform": "Itch.io / Godot Asset Library",
+        "product_description": "asset pack Godot 4 (sprites, tilesets, UI kits, shaders, addons)",
+    },
 }
 
 
@@ -355,7 +382,11 @@ Apprends des échecs (REJECT) et capitalise sur les succès (APPROVE)."""
     env = os.environ.copy()
     for env_key, default_val in config["cdc_env_vars"].items():
         # Mapper les paramètres LLM aux variables d'env
-        if "theme" in env_key.lower():
+        if "merch_concept" in env_key.lower():
+            env[env_key] = params.get("concept", params.get("theme", default_val))
+        elif "godot_type" in env_key.lower():
+            env[env_key] = params.get("type", params.get("type_asset", default_val))
+        elif "theme" in env_key.lower():
             env[env_key] = params.get("theme", default_val)
         elif "type" in env_key.lower() or "lc_type" in env_key.lower():
             env[env_key] = params.get("type", default_val)
