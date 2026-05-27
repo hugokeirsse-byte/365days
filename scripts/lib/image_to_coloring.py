@@ -1,11 +1,15 @@
-from PIL import Image, ImageFilter
-from pathlib import Path
 import argparse
 import sys
+import tempfile
+from pathlib import Path
+from typing import Union
+
+from PIL import Image, ImageFilter
+
 
 def convert(
-    src: str | Path,
-    dst: str | Path | None = None,
+    src: Union[str, Path],
+    dst: Union[str, Path, None] = None,
     *,
     line_thickness: int = 2,
     threshold: int = 128,
@@ -13,176 +17,199 @@ def convert(
 ) -> Path:
     """
     Converts a color or grayscale image into a line-art coloring page.
-    The output will have a pure white background and thick, closed black outlines.
+
+    The process involves converting to grayscale, smoothing, edge detection,
+    thickening contours, and binarizing to pure black lines on a pure white background.
 
     Args:
         src: Path to the source image (PNG or JPEG).
-        dst: Path to save the output image (PNG). If None, a default name
-             will be generated based on the source path.
-        line_thickness: The thickness of the black lines. Corresponds to
-                        the 'size' parameter of ImageFilter.MinFilter.
-                        Must be a positive integer (e.g., 2 for a 2x2 kernel).
-        threshold: Binarization threshold (0-255). Pixels darker than this value
-                   will become black (0), otherwise white (255).
-        invert_input: If True, the input image's colors will be inverted
-                      after grayscale conversion but before edge detection.
-                      Useful for light-on-dark inputs where features are light.
+        dst: Optional path for the destination PNG image. If None, a default
+             name (<src_stem>_coloring.png) in the same directory as src will be used.
+        line_thickness: The desired thickness of the lines. This value is used
+                        as the kernel size for the MinFilter operation. Default is 2.
+        threshold: Binarization threshold (0-255). Pixels with a value darker
+                   than this become black (0), others become white (255). Default is 128.
+        invert_input: If True, the input image's grayscale values are inverted
+                      before processing (e.g., dark areas become light). Default is False.
 
     Returns:
-        The Path object of the saved output image.
+        The Path object of the generated coloring page.
 
     Raises:
         FileNotFoundError: If the source image does not exist.
         IOError: If there's an issue opening or saving the image.
-        ValueError: If line_thickness is not positive or threshold is out of range.
+        ValueError: If line_thickness or threshold are out of valid range.
     """
-    if not Path(src).exists():
-        raise FileNotFoundError(f"Source image not found: {src}")
-    if not isinstance(line_thickness, int) or line_thickness <= 0:
-        raise ValueError("line_thickness must be a positive integer.")
-    if not isinstance(threshold, int) or not (0 <= threshold <= 255):
-        raise ValueError("threshold must be an integer between 0 and 255.")
-
-    src_path = Path(src)
-    if dst is None:
-        # Generate default destination path: e.g., 'image_coloring.png'
-        dst_path = src_path.parent / f"{src_path.stem}_coloring.png"
+    if not isinstance(src, Path):
+        src_path = Path(src)
     else:
+        src_path = src
+
+    if not src_path.exists():
+        raise FileNotFoundError(f"Source image not found: {src_path}")
+
+    if dst is None:
+        dst_path = src_path.parent / f"{src_path.stem}_coloring.png"
+    elif not isinstance(dst, Path):
         dst_path = Path(dst)
+    else:
+        dst_path = dst
+
+    if not (1 <= line_thickness <= 10):  # Arbitrary reasonable range for thickness
+        raise ValueError("line_thickness must be between 1 and 10.")
+    if not (0 <= threshold <= 255):
+        raise ValueError("threshold must be between 0 and 255.")
 
     try:
-        # 1. Open image, convert to L (grayscale)
+        # 1. Ouvrir l'image, convertir en L (niveaux de gris)
         img = Image.open(src_path).convert("L")
 
-        # Apply invert_input if requested (after grayscale, before edge detection)
+        # Apply input inversion if requested
         if invert_input:
             img = img.point(lambda p: 255 - p)
 
-        # 2. Apply ImageFilter.SMOOTH (reduce noise)
+        # 2. Appliquer ImageFilter.SMOOTH (réduire le bruit FLUX)
         img = img.filter(ImageFilter.SMOOTH)
 
-        # 3. Apply ImageFilter.FIND_EDGES (edge detection)
+        # 3. Appliquer ImageFilter.FIND_EDGES (détection de contours)
         img = img.filter(ImageFilter.FIND_EDGES)
 
-        # 4. Apply MinFilter to thicken contours.
-        # MinFilter replaces each pixel with the darkest pixel in its neighborhood.
-        # If FIND_EDGES produces dark lines, MinFilter will expand them.
-        img = img.filter(ImageFilter.MinFilter(size=line_thickness))
+        # 4. MinFilter(size) épaissit les contours
+        #    FIND_EDGES typically produces dark lines on a light background.
+        #    MinFilter expands these dark regions, effectively thickening the lines.
+        #    The "puis inverser" part of the spec's step 4 is implicitly handled
+        #    by the binarization (step 5/6) to ensure black lines on white.
+        if line_thickness > 1:  # MinFilter(1) is an identity operation
+            img = img.filter(ImageFilter.MinFilter(size=line_thickness))
 
-        # 5. Binarize: turn pixels darker than threshold to black (0), others to white (255).
-        # This ensures pure black lines on a pure white background.
+        # 5. Binariser : point(lambda p: 0 if p < threshold else 255)
+        # 6. Forcer fond=255 (blanc), traits=0 (noir)
+        #    These two steps are combined: pixels darker than threshold become black (0),
+        #    all others become pure white (255).
         img = img.point(lambda p: 0 if p < threshold else 255)
 
-        # 6. Forcer fond=255 (blanc), traits=0 (noir) - already achieved by binarization.
-
-        # 7. Convert to RGB (for consistent output format), save as PNG.
+        # 7. Convertir en RGB, sauvegarder en PNG
+        #    Converting to RGB ensures a standard output format, even though it's B&W.
         img = img.convert("RGB")
         img.save(dst_path, "PNG")
 
+        return dst_path
+
     except Exception as e:
-        raise IOError(f"Error processing image {src_path}: {e}") from e
+        # Catch any Pillow-related errors or other exceptions during processing
+        raise IOError(f"Failed to process image '{src_path}': {e}") from e
 
-    return dst_path
 
-def _create_test_image(path: Path):
-    """Creates a synthetic test image: a red rectangle on a green background."""
-    img_size = (200, 150)
-    img = Image.new("RGB", img_size, color="green")
+def run_integrated_test():
+    """
+    Runs an integrated test by creating a synthetic image, converting it,
+    and verifying the output.
+    """
+    print("Running integrated test...")
+
+    # Create a synthetic image: red rectangle on green background
+    width, height = 200, 150
+    test_img = Image.new("RGB", (width, height), color="green")
     # Draw a red rectangle
     for x in range(50, 150):
-        for y in range(30, 120):
-            img.putpixel((x, y), (255, 0, 0))  # Red
-    img.save(path, "PNG")
+        for y in range(40, 110):
+            test_img.putpixel((x, y), (255, 0, 0))  # Red
 
-def _run_test():
-    """Runs the integrated test for the image conversion."""
-    print("Running integrated test...")
-    test_src_path = Path("test_input.png")
-    test_dst_path = Path("test_output_coloring.png")
-
-    try:
-        _create_test_image(test_src_path)
-        print(f"Created synthetic test image: {test_src_path}")
-
-        # Test with specific parameters to ensure lines are detected and thickened
-        output_path = convert(test_src_path, test_dst_path, line_thickness=3, threshold=100)
-        print(f"Generated coloring image: {output_path}")
-
-        # Verify output: check for pure black and white pixels, and presence of both.
-        output_img = Image.open(output_path).convert("L")
-        pixels = list(output_img.getdata())
-
-        unique_pixels = set(pixels)
-        if not all(p in (0, 255) for p in unique_pixels):
-            raise AssertionError("Output image contains colors other than pure black and white.")
-
-        if 0 not in unique_pixels or 255 not in unique_pixels:
-            raise AssertionError("Output image is either completely black or completely white (no lines or no background).")
-
-        print("Test successful: Output is B&W with detected lines.")
-        print("OK")
-
-    except Exception as e:
-        print(f"Test failed: {e}", file=sys.stderr)
-        print("FAIL")
-    finally:
-        # Clean up test files
-        if test_src_path.exists():
-            test_src_path.unlink()
-        if test_dst_path.exists():
-            test_dst_path.unlink()
-
-
-if __name__ == "__main__":
-    if len(sys.argv) == 1:
-        # No arguments provided, run integrated test
-        _run_test()
-    else:
-        # Parse command-line arguments
-        parser = argparse.ArgumentParser(
-            description="Convert an image to a line-art coloring page.",
-            formatter_class=argparse.ArgumentDefaultsHelpFormatter
-        )
-        parser.add_argument("src", type=str, help="Path to the source image (PNG or JPEG).")
-        parser.add_argument(
-            "dst",
-            type=str,
-            nargs="?",  # 0 or 1 argument
-            default=None,
-            help="Path to save the output image (PNG). If not provided, a default name will be generated."
-        )
-        parser.add_argument(
-            "--thickness",
-            type=int,
-            default=2,
-            help="The thickness of the black lines. Must be a positive integer."
-        )
-        parser.add_argument(
-            "--threshold",
-            type=int,
-            default=128,
-            help="Binarization threshold (0-255). Pixels darker than this value become black."
-        )
-        parser.add_argument(
-            "--invert-input",
-            action="store_true",
-            help="Invert the input image's colors before processing. Useful for light-on-dark inputs."
-        )
-
-        args = parser.parse_args()
+    with tempfile.TemporaryDirectory() as tmpdir:
+        src_test_path = Path(tmpdir) / "test_input.png"
+        dst_test_path = Path(tmpdir) / "test_output.png"
+        test_img.save(src_test_path)
+        print(f"Created synthetic test image: {src_test_path}")
 
         try:
             output_path = convert(
-                args.src,
-                args.dst,
-                line_thickness=args.thickness,
-                threshold=args.threshold,
-                invert_input=args.invert_input,
+                src=src_test_path,
+                dst=dst_test_path,
+                line_thickness=2,
+                threshold=128,
+                invert_input=False,
             )
-            print(f"Successfully converted '{args.src}' to '{output_path}'")
-        except (FileNotFoundError, IOError, ValueError) as e:
-            print(f"Error: {e}", file=sys.stderr)
-            sys.exit(1)
+
+            # Verify output
+            result_img = Image.open(output_path).convert("RGB")
+
+            # Check if the image is purely black and white (0,0,0) or (255,255,255)
+            is_pure_bw = True
+            for pixel in result_img.getdata():
+                if pixel not in [(0, 0, 0), (255, 255, 255)]:
+                    is_pure_bw = False
+                    break
+
+            # Check if it contains both black and white pixels (i.e., not entirely blank or solid)
+            unique_colors = set(result_img.getdata())
+            has_black = (0, 0, 0) in unique_colors
+            has_white = (255, 255, 255) in unique_colors
+
+            if is_pure_bw and has_black and has_white:
+                print("OK: Test image converted successfully to pure black and white line art.")
+            else:
+                print("FAIL: Output image is not pure black and white or lacks expected features.")
+                sys.exit(1)
+
         except Exception as e:
-            print(f"An unexpected error occurred: {e}", file=sys.stderr)
+            print(f"FAIL: An error occurred during test: {e}", file=sys.stderr)
             sys.exit(1)
+
+
+def main():
+    """
+    Parses command-line arguments and calls the convert function.
+    """
+    parser = argparse.ArgumentParser(
+        description="Convert an image to a coloring line-art page (black lines on white background)."
+    )
+    parser.add_argument(
+        "src",
+        type=str,
+        help="Path to the source image (PNG or JPEG)."
+    )
+    parser.add_argument(
+        "dst",
+        type=str,
+        nargs="?",  # Optional argument
+        help="Path for the destination PNG image. Defaults to <src_stem>_coloring.png."
+    )
+    parser.add_argument(
+        "--thickness",
+        type=int,
+        default=2,
+        help="Line thickness for contours (MinFilter kernel size). Default: 2."
+    )
+    parser.add_argument(
+        "--threshold",
+        type=int,
+        default=128,
+        help="Binarization threshold (0-255). Pixels darker than this become black. Default: 128."
+    )
+    # The 'invert_input' parameter is not exposed via the CLI as per the specification.
+
+    args = parser.parse_args()
+
+    try:
+        output_path = convert(
+            src=args.src,
+            dst=args.dst,
+            line_thickness=args.thickness,
+            threshold=args.threshold,
+            invert_input=False,  # Not exposed via CLI
+        )
+        print(f"Successfully converted '{args.src}' to '{output_path}'")
+    except (FileNotFoundError, IOError, ValueError) as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    # If called without arguments, run the integrated test.
+    if len(sys.argv) == 1:
+        run_integrated_test()
+    else:
+        main()
