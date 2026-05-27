@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-27T14:56:25.299637Z",
+  "timestamp": "2026-05-27T18:21:18.608307Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -98,111 +98,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "HEMA (Historical European Martial Arts) Practitioners",
+      "name": "Rope Access Technicians (Cordistes)",
       "type": "sub_culture",
-      "audience_size_estimate": 120000,
+      "audience_size_estimate": 150000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Historical sword fighting practitioners who obsess over 15th-century fight manuals (Liechtenauer, Fiore, Meyer), buy expensive gear, and love historical memes.",
+      "buyer_persona": "Industrial climbers and rope access professionals who take extreme pride in their dangerous, highly skilled work. They love showing off their lifestyle, rigging gear, and inside humor about gravity, wind, and safety inspectors.",
       "product_angles": [
-        "HEMA training logbook and sparring tracker (KDP)",
-        "Stickers with ironic medieval manual illustrations and insider jokes (Redbubble)",
-        "SVG vector packs of accurate historical sword silhouettes for club t-shirts (Etsy)"
+        "KDP Rope Access Hours Logbook (crucial for tracking IRATA/SPRAT certification levels)",
+        "Funny niche stickers on Redbubble focusing on rigging knots, carabiners, and height humor",
+        "Technical rigging reference pocket guides on KDP"
       ],
       "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "HEMA Sparring & Technique Log Book (KDP)",
-      "estimated_monthly_revenue_year1_eur": 120
-    },
-    {
-      "rank": 2,
-      "name": "Ham Radio (Amateur Radio) Operators",
-      "type": "deep_niche",
-      "audience_size_estimate": 750000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "slow",
-      "buyer_persona": "Older, tech-oriented hobbyists who build their own antennas, collect QSL cards, and communicate globally via Morse code or digital radio modes.",
-      "product_angles": [
-        "Amateur Radio Operator Log Book with vintage technical grid pages (KDP)",
-        "Patent art posters of historic radio components (Redbubble)",
-        "Morse code cheat-sheet stickers and vintage radio schematics (Redbubble)"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Ham Radio Contact Log Book (KDP)",
+      "first_test_product": "IRATA/SPRAT-compliant Work Hours Logbook with a rugged, professional cover design on KDP",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
-      "rank": 3,
-      "name": "Speleology & Cave Diving (Cavers)",
-      "type": "deep_niche",
-      "audience_size_estimate": 65000,
+      "rank": 2,
+      "name": "1:64 Post-Apocalyptic Car Skirmish Upgrades (Gaslands-compatible)",
+      "type": "adjacent_market",
+      "audience_size_estimate": 120000,
       "passion_level_1_10": 10,
-      "current_saturation_1_10": 1,
+      "current_saturation_1_10": 4,
       "growth_trajectory": "steady",
-      "buyer_persona": "Extreme outdoor enthusiasts who map underground cave systems, risk their lives in tight squeezes, and use highly specialized equipment.",
+      "buyer_persona": "Tabletop skirmish gamers who buy cheap Hot Wheels/Matchbox toy cars and customize them with weapons, armor, and rams to play post-apocalyptic car combat games like Gaslands.",
       "product_angles": [
-        "Caving survey log and cave mapping coordinates notebook (KDP)",
-        "Stickers with humorous caving warnings and technical typography (Redbubble)",
-        "SVG bundle of cave topography icons and karstic formations (Etsy)"
+        "Cults3D parametric STL packs for 1:64 scale weapons (miniguns, rockets, harpoons)",
+        "OpenSCAD customizable rams, armor plates, and engine blocks",
+        "KDP Campaign Tracker & Dashboard sheets for custom car builds"
+      ],
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "A set of 15 modular, high-detail weapon and armor upgrades optimized for 1:64 scale resin printing on Cults3D",
+      "estimated_monthly_revenue_year1_eur": 250
+    },
+    {
+      "rank": 3,
+      "name": "Miniature Painting Backlog & Project Tracking",
+      "type": "sub_culture",
+      "audience_size_estimate": 1500000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Warhammer, D&D, and board game enthusiasts who own hundreds of unpainted miniatures (their 'Pile of Shame') and need structured, visual ways to plan paint schemes, track color recipes, and gamify their painting progress.",
+      "product_angles": [
+        "KDP Miniature Painting Project Planner with recipe cards, paint brand checklists, and speed-painting trackers",
+        "Redbubble humorous merch poking fun at the 'Pile of Shame' and buying more plastic than one can paint",
+        "SVG SVG-stencils or printable masking templates for airbrushing"
       ],
       "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Cave Mapping & Exploration Logbook (KDP)",
-      "estimated_monthly_revenue_year1_eur": 80
+      "first_test_product": "A 120-page 'Miniature Painting Recipe & Backlog Tracker' workbook on KDP with structured template layouts",
+      "estimated_monthly_revenue_year1_eur": 200
     },
     {
       "rank": 4,
-      "name": "Low-Poly Retro PS1-Style Game Developers",
-      "type": "adjacent_market",
-      "audience_size_estimate": 90000,
-      "passion_level_1_10": 8,
+      "name": "French Mountain Passes Minimalist Altitude Profiles",
+      "type": "b2b",
+      "audience_size_estimate": 500000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers building retro horror or sci-fi games in Unity/Godot, looking for fast, stylized, low-poly 3D assets that fit the 90s aesthetic.",
+      "growth_trajectory": "steady",
+      "buyer_persona": "Passionate road cyclists, triathletes, and hikers who travel to the French Alps, Pyrenees, or Massif Central to climb iconic mountain passes (Cols like Galibier, Tourmalet, Ventoux) and want minimalist, high-end souvenirs of their achievement.",
       "product_angles": [
-        "Low-poly vintage office equipment or retro computer terminal 3D asset pack (Cults3D / Itch.io)",
-        "Dithered PSX-style texture tilemaps (Itch.io)",
-        "Parametric retro computer monitor generator file (Cults3D)"
+        "Minimalist vector altitude profile posters on Redbubble (representing distance, average gradient, peak altitude)",
+        "KDP Logbooks for French cycling climbs with space to record times, dates, and weather conditions",
+        "Customizable B2B poster templates for local bike rental shops and regional tourism offices near famous climbs"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "PSX Retro Tech 3D Low-Poly Asset Pack (Cults3D / Itch.io)",
-      "estimated_monthly_revenue_year1_eur": 110
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "A series of 5 minimalist altitude profile vector designs of the most famous French Alpine Cols on Redbubble (poster and sticker formats)",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 5,
-      "name": "Local Craft Breweries (Micro-brasseries françaises)",
-      "type": "b2b",
-      "audience_size_estimate": 50000,
-      "passion_level_1_10": 7,
+      "name": "Solo RPG Journaling (Thousand Year Old Vampire & Hex-Crawl style)",
+      "type": "deep_niche",
+      "audience_size_estimate": 90000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Small local craft brewers in France who need professional, localized, vintage-style label elements or taproom decor on a budget.",
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Solo tabletop roleplayers who play narrative journaling RPGs. They spend hours writing down stories, mapping fantasy lands, and rolling dice alone, demanding high-aesthetic journals that feel immersive (gothic, fantasy, or sci-fi retro themes).",
       "product_angles": [
-        "SVG bundle of vintage beer badges, hop elements, and localized French heraldry templates (Etsy)",
-        "Print-on-demand vintage metal sign designs for taproom decoration (Redbubble/Etsy)",
-        "Tasting flight logbooks for brewery taprooms (KDP)"
+        "KDP Hex-crawl mapping notebooks with dot-grid and hexagonal grids on facing pages",
+        "Structured journaling templates specifically optimized for solo vampire or space-explorer journaling games",
+        "Minimalist gothic-themed prompt cards published as PDF print-and-play files"
       ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "Vintage French Brewery SVG & Vector Asset Pack (Etsy)",
-      "estimated_monthly_revenue_year1_eur": 140
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "A high-aesthetic 'Solo RPG Campaign Cartography & Journaling Notebook' featuring alternating hex-grid and lined parchment-style pages on KDP",
+      "estimated_monthly_revenue_year1_eur": 220
     },
     {
       "rank": 6,
-      "name": "Hydroponics & Soil-less Urban Gardeners",
-      "type": "deep_niche",
-      "audience_size_estimate": 150000,
+      "name": "COBOL & Legacy Systems Software Engineers",
+      "type": "sub_culture",
+      "audience_size_estimate": 250000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Urban apartment dwellers optimizing Kratky, DWC, or NFT hydroponic setups, obsessing over water pH, electrical conductivity (EC), and nutrient ratios.",
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Enterprise developers maintaining massive legacy COBOL, Fortran, or mainframe architectures. They have a dry, cynical sense of humor about keeping the global banking system alive using 50-year-old code, and love highly technical inside jokes that younger web developers don't understand.",
       "product_angles": [
-        "Hydroponic system parameter tracker and nutrient log book (KDP)",
-        "3D-printable custom net-pot adapters, reservoir clips, or hose organizers (Cults3D)",
-        "Minimalist aesthetic stickers for mason jar herb setups (Redbubble)"
+        "Redbubble dark-humor developer apparel and stickers ('COBOL: Keeping the world running since 1959', 'I read dead code')",
+        "KDP 'Legacy Code Debugging Journal' with funny warning pages",
+        "Minimalist schematics posters of vintage mainframe architectures"
       ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "Parametric Hydroponic Net Pot Adapter (Cults3D)",
-      "estimated_monthly_revenue_year1_eur": 95
+      "best_pipeline_or_new": "produce_quotes_minimal",
+      "first_test_product": "A collection of 10 highly technical, text-based legacy developer inside-joke stickers on Redbubble",
+      "estimated_monthly_revenue_year1_eur": 120
     }
   ]
 }
