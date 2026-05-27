@@ -17,17 +17,29 @@
 ## FLUX UNIVERSEL
 
 ```
-Cerveau perpétuel (cron hebdo)
-       ↓
-CdC Generator (dispatch manuel)
-       ↓ gate=pending
-   Hugo lit le CdC
-   Hugo valide / rejette
-       ↓ gate=approved
-  Production (auto-trigger)
-       ↓
-     Audit
-       ↓
+Cerveau perpétuel (cron hebdo)         Optimizer (cron lundi)
+       ↓                                        ↓
+       └──────────── Queue Manager (cron 4h) ──┘
+                            ↓
+              Génère CdC jusqu'à 10 pending/vertical
+                            ↓ gate=pending
+                ┌───────────────────────────┐
+                │  HUGO : lit + valide      │  < 5 min/semaine
+                │  approve / reject         │
+                └───────────────────────────┘
+                   ↓ gate=approved    ↓ gate=rejected
+            Production (auto)    Queue Manager remplace
+                   ↓              automatiquement
+                 Audit
+                   ↓
+            Hugo publie (plateforme)
+                   ↓
+            Queue Manager détecte le manque
+                   ↓
+            Nouveau CdC généré auto
+```
+
+**Invariant garanti : 10 CdC pending par vertical à tout moment.**
  Hugo publie sur la plateforme
 ```
 
@@ -207,6 +219,20 @@ CdC Generator (dispatch manuel)
 - Générer des STL (automatique)
 - Auditer les produits (automatique)
 - Faire la veille marché (automatique, chaque semaine)
+
+---
+
+## PIPELINE CdC — GESTION DE LA FILE
+
+| Règle | Comportement |
+|-------|-------------|
+| File cible | **10 CdC pending** par vertical en permanence |
+| Hugo approuve 1 | 1 nouveau CdC généré auto pour remplacer |
+| Hugo rejette 3 | 3 nouveaux CdC générés auto |
+| File < 10 | Queue Manager génère jusqu'à 5 CdC par run, refait en 4h |
+| Hugo approuve / rejette via GitHub | Push `gate_cdc=approved/rejected` dans `cdc.json` → déclenche queue |
+
+**Pour Hugo : 1 seule action par CdC — changer `gate_cdc` dans le fichier JSON, push.**
 
 ---
 
