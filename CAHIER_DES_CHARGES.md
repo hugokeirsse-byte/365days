@@ -368,4 +368,121 @@ Deux niveaux de scaling :
 
 ---
 
+---
+
+## 16. DÉCISIONS STRUCTURANTES — 27/05/2026
+
+### 16.1 Fournisseur images : Runware remplace HuggingFace
+
+HuggingFace ne sert plus FLUX/SDXL gratuitement depuis mi-2025 (CPU-only). Décision :
+
+| Rôle | Fournisseur | Clé | Coût |
+|------|------------|-----|------|
+| Volume / brouillons | **Pollinations** | Aucune | Gratuit illimité |
+| Qualité finale | **Runware** | `RUNWARE_API_KEY` | ~$0.002-0.006/image |
+| Upscale 2× | **PIL LANCZOS** | Aucune | Gratuit local |
+
+La section 15.3 est mise à jour en conséquence (HF → Runware).
+
+**Résolution minimum pour coloriages KDP** : les images doivent sortir à ≥2550px (300 DPI pour 8.5×11"). Le pipeline `produce_coloring_book.py` inclut désormais un upscale 2× PIL automatique après téléchargement Pollinations.
+
+### 16.2 Processus CdC obligatoire avant production
+
+**Règle absolue** : aucun produit ne part en production sans CdC validé par Hugo.
+
+Workflow :
+1. Trigger → `agent_cdc_<type>.py` génère un CdC complet dans `products/<type>/<id>/`
+2. `cdc.json` contient `gate_cdc: "pending"`
+3. Hugo ouvre `CAHIER_DES_CHARGES.md` + `cdc.json` du produit, lit, valide ou rejette
+4. Si validé : Hugo change `gate_cdc` → `"approved"` et push → production démarre automatiquement
+5. Si rejeté : Hugo note les raisons → le CdC est régénéré avec de nouvelles contraintes
+
+**Ce que contient un CdC ultra-complet** :
+- Identité commerciale (nom de plume UNIQUE par livre, bio, style signature)
+- Concept (titre, logline, genre, sous-genre, langue, longueur)
+- Public cible (persona, tranche d'âge, douleur résolue)
+- Analyse marché (5 concurrents avec ASIN, note, ce qui manque, notre angle)
+- Description Amazon + mots-clés KDP (7 slots utilisés)
+- Pour les romans : plan de 38 chapitres COMPLET + guide de style + tropes
+- Pour les low-content : spec ReportLab page par page (layout précis au mm)
+- Calendrier de production + critères de validation
+
+### 16.3 Système d'audit v3 — par type de produit
+
+L'auditeur (`scripts/agent_visual_audit.py`) évalue maintenant chaque type selon ce qui compte pour les consommateurs de la plateforme cible :
+
+| Type | Critères principaux | Seuil REJECT |
+|------|--------------------|----|
+| Coloring KDP | Résolution ≥1400px, lignes pures, style cohérent, ≥30 pages | score < 45 |
+| Low-content KDP | ≥100 pages, PDF valide, 7 keywords, format standard | score < 45 |
+| STL Cults3D | Fichiers valides, dimensions ≤250mm, metadata listing | score < 45 |
+| Card game | ≥50 cartes, fichier règles OBLIGATOIRE, résolution cartes | score < 45 |
+| Roman | ≥50 000 mots, <30 phrases-tics IA, faible répétition | score < 45 |
+
+**Règle** : s'il y a UN problème bloquant (`issues[]` non vide) → maximum REVIEW, jamais APPROVE.  
+**APPROVE = prêt à uploader sans aucune réserve.**
+
+### 16.4 Stack LLM multi-provider (brain_utils.py)
+
+Tous les agents brain utilisent `scripts/lib/brain_utils.py` :
+
+| Fonction | Détail |
+|----------|--------|
+| `llm_call(agent_type, system, user)` | Tente provider primaire, bascule sur fallbacks automatiquement |
+| `get_angle(agent_type)` | Angle rotatif semaine par semaine (12 angles Prospecteur, 7 Architecte, 6 Stratège) |
+| `get_previous_propositions(dir, type)` | Lit 4 derniers rapports, injecte "INTERDIT de répéter" |
+| `get_temperature(agent_type)` | Température variable par semaine (stimulation créative) |
+| `log_api_call(...)` | Log `data/logs/quota.jsonl` pour contrôle budget |
+| `check_daily_budget(provider)` | Vérifie quota avant appel |
+
+Routing par agent :
+
+| Agent | Provider primaire | Fallback |
+|-------|-----------------|---------|
+| Prospecteur, Stratège, CdC | Gemini Flash | Groq → Mistral |
+| Architecte Système | Mistral Small | Gemini → Groq |
+| Roman Writer | Groq Llama 3.3 70B | Gemini → Mistral |
+
+### 16.5 Cerveaux branchés (27/05/2026)
+
+| Agent | Script | Workflow CI | Cron | Statut |
+|-------|--------|------------|------|--------|
+| B1 Stratège | `agent_b1_stratege.py` | `b1_stratege.yml` | Lundi 06h UTC | ✅ branché |
+| Prospecteur d'Émergence | `agent_prospecteur_emergence.py` | `prospecteur_emergence.yml` | Jeudi 05h UTC | ✅ branché |
+| Architecte Système | `agent_architecte_systeme.py` | `architecte_systeme.yml` | Dimanche 04h UTC | ✅ branché |
+| CdC Roman | `agent_cdc_roman.py` | `cdc_roman.yml` | Sur trigger | ✅ branché |
+| CdC Low-content | `agent_cdc_lowcontent.py` | `cdc_lowcontent.yml` | Sur trigger | ✅ branché |
+| Rapporteur Hebdo | `agent_rapporteur_hebdo.py` | `rapporteur_hebdo.yml` | Dimanche 20h UTC | ✅ branché |
+| Éclaireur Bestsellers | `agent_eclaireur_bestsellers.py` | `agent_eclaireur.yml` | Mardi 03h UTC | ✅ branché |
+| Saisonnier | `agent_saisonnier.py` | `seasonal_planner.yml` | Lundi 06h UTC | ✅ branché |
+
+Cerveaux du MAP non encore implémentés (backlog) :
+- **#5 Archéologue PD** — scrape musées (Smithsonian, Met, Rijks) pour images domaine public
+- **#6 Affiliate Hunter** — scanne Reddit/X pour intentions d'achat
+- **#24 Rapporteur Hebdo** → implémenté (voir ci-dessus)
+- **#35 Chasseur de Viral** — cherche le potentiel viral dans chaque domaine
+
+### 16.6 Asset packs gamedev — nouveau domaine
+
+Ajout au catalogue (section 3) : **vente de packs d'assets pour développeurs de jeux**.
+
+- Plateformes : **itch.io**, **GameDevMarket**, Gumroad
+- Contenu : sprite sheets, textures, UI kits, tilesets (pixel art, fantasy, sci-fi…)
+- Production : Gemini génère les specs + descriptions, Pollinations/Runware génère les visuels
+- Prix : $5-$25 par pack, revenus passifs (téléchargements illimités)
+- Script existant : `produce_gamedev_asset_pack.py`
+- Workflow existant : `produce_gamedev_asset_pack.yml`
+
+### 16.7 Produits uploadables maintenant (27/05/2026)
+
+| Produit | Type | Audit | Plateforme | Action Hugo |
+|---------|------|-------|------------|-------------|
+| 10 journaux low-content | Low-content KDP | APPROVE 92-100/100 | KDP | Upload manuel |
+| 194 fichiers STL (4 types) | STL | APPROVE 100/100 | Cults3D | S'inscrire + upload |
+| 5 jeux de cartes | Card game | REVIEW (pas de règles) | Etsy/TGC | Ajouter règles d'abord |
+| Mystical Mushrooms | Coloring | REJECT 40/100 | — | Ne pas uploader, régénérer |
+| Mystical Creatures | Coloring | REJECT 0/100 | — | Ne pas uploader, régénérer |
+
+---
+
 *Ce cahier des charges est vivant : il est mis à jour à chaque décision structurante.*
