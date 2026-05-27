@@ -4,14 +4,14 @@ import json
 import logging
 from pathlib import Path
 
-# Configuration des chemins et imports requis par le cahier des charges
+# Setup paths and imports
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'scripts'))
 
 from lib.image_router import generate as ir_generate
 from lib.image_to_coloring import convert as coloring_convert
 
-# Configuration du logging
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -20,56 +20,55 @@ logging.basicConfig(
 logger = logging.getLogger("generate_from_plan")
 
 def main():
-    # 1. Chargement et validation des variables d'environnement
+    # 1. Retrieve and validate environment variables
     brief_id = os.environ.get("BRIEF_ID")
     if not brief_id:
-        logger.error("La variable d'environnement BRIEF_ID est requise.")
+        logger.error("BRIEF_ID environment variable is required.")
         sys.exit(1)
 
-    line_thickness = int(os.environ.get("LINE_THICKNESS", 2))
-    
+    line_thickness = int(os.environ.get("LINE_THICKNESS", "2"))
     max_pages_env = os.environ.get("MAX_PAGES")
     max_pages = int(max_pages_env) if max_pages_env else None
 
-    # Définition des chemins d'accès
+    # Define paths
     brief_path = ROOT / "data" / "briefs" / f"{brief_id}.json"
     gate1_dir = ROOT / "products" / "coloring_books" / "_gate1" / brief_id
     plan_path = gate1_dir / "production_plan.json"
     pages_dir = gate1_dir / "pages"
     report_path = gate1_dir / "generation_report.json"
 
-    # 2. Vérification de la validation du brief (gate_start == approved)
+    # 2. Verify gate_start == approved
     if not brief_path.exists():
-        logger.error(f"Fichier brief introuvable : {brief_path}")
+        logger.error(f"Brief file not found: {brief_path}")
         sys.exit(1)
 
     try:
         with open(brief_path, "r", encoding="utf-8") as f:
             brief_data = json.load(f)
     except Exception as e:
-        logger.error(f"Impossible de lire le brief {brief_path} : {e}")
+        logger.error(f"Failed to read brief file: {e}")
         sys.exit(1)
 
-    if brief_data.get("gate_start") != "approved":
-        logger.error(f"Le brief {brief_id} n'est pas approuvé (gate_start = {brief_data.get('gate_start')}).")
+    gate_start = brief_data.get("gate_start") or brief_data.get("status")
+    if gate_start != "approved":
+        logger.error(f"Brief status is '{gate_start}', must be 'approved' to generate.")
         sys.exit(1)
 
-    # 3. Chargement du plan de production
+    # 3. Read production plan
     if not plan_path.exists():
-        logger.error(f"Fichier production_plan.json introuvable : {plan_path}")
+        logger.error(f"Production plan not found: {plan_path}")
         sys.exit(1)
 
     try:
         with open(plan_path, "r", encoding="utf-8") as f:
-            production_plan = json.load(f)
+            plan_data = json.load(f)
     except Exception as e:
-        logger.error(f"Impossible de lire le plan de production {plan_path} : {e}")
+        logger.error(f"Failed to read production plan: {e}")
         sys.exit(1)
 
-    # Création du dossier de destination pour les pages
     pages_dir.mkdir(parents=True, exist_ok=True)
 
-    # Initialisation du rapport de génération
+    # Initialize report structure
     report = {
         "pages": [],
         "summary": {
@@ -79,33 +78,33 @@ def main():
         }
     }
 
-    # Prompt négatif par défaut pour optimiser le rendu "line-art"
+    # Standard negative prompt for coloring book pages
     default_negative_prompt = (
-        "color, colored, shading, shadows, gradients, grayscale, photo, realistic, "
-        "background noise, dark background, blurry, textured paper"
+        "shading, gradients, shadows, realistic, photo, color, grayscale, "
+        "blurry, textured, background noise, dark fills"
     )
 
-    # 4. Traitement des pages de coloriage
-    pages_to_process = production_plan.get("pages", [])
+    # 4. Process Pages
+    pages_list = plan_data.get("pages", [])
     if max_pages is not None:
-        logger.info(f"Limite MAX_PAGES active : traitement de {max_pages} pages max.")
-        pages_to_process = pages_to_process[:max_pages]
+        logger.info(f"Limiting generation to {max_pages} pages (MAX_PAGES set).")
+        pages_list = pages_list[:max_pages]
 
-    for page in pages_to_process:
+    for page in pages_list:
         index = page.get("index")
         prompt = page.get("prompt")
         
         if index is None or not prompt:
-            logger.warning(f"Page invalide ignorée (index ou prompt manquant) : {page}")
+            logger.warning(f"Skipping invalid page entry: {page}")
             continue
 
         page_filename = f"page_{index:03d}.png"
         dest_path = pages_dir / page_filename
-        tmp_path = pages_dir / f"tmp_{page_filename}"
+        tmp_path = pages_dir / f"tmp_page_{index:03d}.png"
 
-        # Idempotence : si le fichier final existe déjà, on passe
+        # Idempotency check
         if dest_path.exists():
-            logger.info(f"La page {page_filename} existe déjà. Passage (idempotent).")
+            logger.info(f"Page {index:03d} already exists. Skipping.")
             report["pages"].append({
                 "page_number": index,
                 "status": "skipped",
@@ -114,11 +113,10 @@ def main():
             report["summary"]["skipped"] += 1
             continue
 
-        logger.info(f"Génération de la page {index:03d}...")
+        logger.info(f"Generating page {index:03d}...")
         try:
-            # Génération de l'image brute via le routeur
-            # Le routeur gère l'ordre des providers via l'env var IMAGE_PROVIDERS
-            success = ir_generate(
+            # Generate raw image
+            ir_generate(
                 prompt=prompt,
                 negative_prompt=default_negative_prompt,
                 width=832,
@@ -126,108 +124,112 @@ def main():
                 dest=str(tmp_path)
             )
 
-            if success and tmp_path.exists():
-                # Conversion en line-art (coloriage)
+            if tmp_path.exists():
+                # Convert to line-art
                 coloring_convert(
-                    input_path=tmp_path,
-                    output_path=dest_path,
+                    input_path=str(tmp_path),
+                    output_path=str(dest_path),
                     line_thickness=line_thickness
                 )
                 
-                # Nettoyage du fichier temporaire
-                if tmp_path.exists():
-                    tmp_path.unlink()
-
-                if dest_path.exists():
-                    logger.info(f"Page {page_filename} générée et convertie avec succès.")
-                    report["pages"].append({
-                        "page_number": index,
-                        "status": "ok",
-                        "provider_used": os.environ.get("IMAGE_PROVIDERS", "default")
-                    })
-                    report["summary"]["ok"] += 1
-                else:
-                    raise RuntimeError("Le fichier converti n'a pas pu être créé.")
+                report["pages"].append({
+                    "page_number": index,
+                    "status": "ok",
+                    "provider_used": "router_default"
+                })
+                report["summary"]["ok"] += 1
+                logger.info(f"Successfully generated and converted page {index:03d}.")
             else:
-                raise RuntimeError("La génération de l'image brute a échoué ou le fichier temporaire est manquant.")
+                raise FileNotFoundError("Temporary generated image not found.")
 
         except Exception as e:
-            logger.error(f"Échec de la génération pour la page {index:03d} : {e}")
-            if tmp_path.exists():
-                tmp_path.unlink()
+            logger.error(f"Failed to generate page {index:03d}: {e}")
             report["pages"].append({
                 "page_number": index,
                 "status": "failed",
                 "provider_used": "none"
             })
             report["summary"]["failed"] += 1
+        finally:
+            if tmp_path.exists():
+                try:
+                    tmp_path.unlink()
+                except Exception as e:
+                    logger.warning(f"Could not delete temporary file {tmp_path}: {e}")
 
-    # 5. Traitement des couvertures (Covers)
-    covers_plan = production_plan.get("covers", {})
-    for cover_type in ["front", "back"]:
-        cover_data = covers_plan.get(cover_type)
+    # 5. Process Covers (Front & Back)
+    covers = plan_data.get("covers", {})
+    for cover_key in ["front", "back"]:
+        cover_data = covers.get(cover_key)
         if not cover_data:
             continue
 
-        cover_filename = f"cover_{cover_type}.png"
-        dest_path = pages_dir / cover_filename
         prompt = cover_data.get("prompt")
-
         if not prompt:
-            logger.warning(f"Prompt manquant pour la couverture {cover_type}.")
+            logger.warning(f"No prompt found for cover_{cover_key}.")
             continue
 
+        dest_path = pages_dir / f"cover_{cover_key}.png"
+        tmp_path = pages_dir / f"tmp_cover_{cover_key}.png"
+
+        # Idempotency check
         if dest_path.exists():
-            logger.info(f"La couverture {cover_filename} existe déjà. Passage.")
+            logger.info(f"Cover {cover_key} already exists. Skipping.")
             report["pages"].append({
-                "page_number": f"cover_{cover_type}",
+                "page_number": f"cover_{cover_key}",
                 "status": "skipped",
                 "provider_used": "existing"
             })
             report["summary"]["skipped"] += 1
             continue
 
-        logger.info(f"Génération de la couverture {cover_type} (KDP 300DPI)...")
+        logger.info(f"Generating cover {cover_key} (KDP 300DPI)...")
         try:
-            # Les couvertures restent en couleur, pas de conversion line-art requise
-            success = ir_generate(
+            # Covers are generated in color, no line-art conversion needed
+            ir_generate(
                 prompt=prompt,
-                negative_prompt="blurry, low quality, distorted",
                 width=2625,
                 height=3375,
-                dest=str(dest_path)
+                dest=str(tmp_path)
             )
 
-            if success and dest_path.exists():
-                logger.info(f"Couverture {cover_filename} générée avec succès.")
+            if tmp_path.exists():
+                tmp_path.rename(dest_path)
                 report["pages"].append({
-                    "page_number": f"cover_{cover_type}",
+                    "page_number": f"cover_{cover_key}",
                     "status": "ok",
-                    "provider_used": os.environ.get("IMAGE_PROVIDERS", "default")
+                    "provider_used": "router_default"
                 })
                 report["summary"]["ok"] += 1
+                logger.info(f"Successfully generated cover {cover_key}.")
             else:
-                raise RuntimeError("La génération de la couverture a échoué.")
+                raise FileNotFoundError("Temporary cover image not found.")
 
         except Exception as e:
-            logger.error(f"Échec de la génération pour la couverture {cover_type} : {e}")
+            logger.error(f"Failed to generate cover {cover_key}: {e}")
             report["pages"].append({
-                "page_number": f"cover_{cover_type}",
+                "page_number": f"cover_{cover_key}",
                 "status": "failed",
                 "provider_used": "none"
             })
             report["summary"]["failed"] += 1
+        finally:
+            if tmp_path.exists():
+                try:
+                    tmp_path.unlink()
+                except Exception as e:
+                    logger.warning(f"Could not delete temporary file {tmp_path}: {e}")
 
-    # 6. Écriture du rapport de génération
+    # 6. Write Generation Report
     try:
         with open(report_path, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2, ensure_ascii=False)
-        logger.info(f"Rapport de génération écrit avec succès dans {report_path}")
+        logger.info(f"Generation report written to {report_path}")
     except Exception as e:
-        logger.error(f"Impossible d'écrire le rapport de génération : {e}")
+        logger.error(f"Failed to write generation report: {e}")
 
-    # Sortie propre (Exit 0 même si échecs partiels, conformément au cahier des charges)
-    logger.info(f"Processus terminé. Succès: {report['summary']['ok']}, Échecs: {report['summary']['failed']}, Ignorés: {report['summary']['skipped']}")
+    # Exit 0 even if partial failures occurred, as requested
+    logger.info("Generation process completed.")
     sys.exit(0)
 
 if __name__ == "__main__":

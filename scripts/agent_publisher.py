@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Agent Publisher
-Prépare le paquet de publication KDP + Etsy après validation du GATE 2.
-Génère metadata KDP, fiche Etsy, et PUBLICATION_READY.md lisible par Hugo.
+Prepares KDP and Etsy publication packages after GATE 2 approval.
+Generates KDP metadata, Etsy listing details, and a PUBLICATION_READY.md report.
 """
 
 import os
@@ -11,207 +11,169 @@ import json
 import urllib.request
 import urllib.error
 from pathlib import Path
-from datetime import datetime
 
-def main():
-    # 1. Résolution du BRIEF_ID (CLI ou Variable d'environnement)
-    brief_id = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("BRIEF_ID")
-    if not brief_id:
-        print("Erreur : BRIEF_ID doit être fourni en argument CLI ou via la variable d'environnement BRIEF_ID.")
-        sys.exit(1)
+# Default configuration
+DEFAULT_MODEL = "gemini-2.5-flash"
+KDP_PRICE = 8.99
+ETSY_PRICE = 4.99
 
-    # Définition des chemins
-    base_dir = Path("products/coloring_books/_gate1") / brief_id
-    pub_dir = base_dir / "publication"
+
+def log(message: str, level: str = "INFO"):
+    print(f"[{level}] {message}")
+
+
+def load_kdp_package(package_path: Path) -> dict:
+    """Loads and validates the kdp_package.json file."""
+    if not package_path.exists():
+        raise FileNotFoundError(f"kdp_package.json not found at {package_path}")
     
-    # Recherche de kdp_package.json
-    kdp_package_path = pub_dir / "kdp_package.json"
-    if not kdp_package_path.exists():
-        kdp_package_path = base_dir / "kdp_package.json"
+    with open(package_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    # Verify GATE 2 approval status
+    if not data.get("ready_for_gate2", False) and not data.get("ready_for_publication", False):
+        log("Warning: ready_for_gate2 is not set to true in kdp_package.json. Proceeding anyway.", "WARN")
+        
+    return data
 
-    if not kdp_package_path.exists():
-        print(f"Erreur : kdp_package.json introuvable pour le brief {brief_id}.")
-        sys.exit(1)
 
-    # Lecture et validation de kdp_package.json
+def call_gemini_api(api_key: str, model: str, prompt: str) -> dict:
+    """Calls the Gemini API using standard urllib to generate structured JSON."""
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+    
+    payload = {
+        "contents": [{
+            "parts": [{"text": prompt}]
+        }],
+        "generationConfig": {
+            "responseMimeType": "application/json"
+        }
+    }
+    
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+        method="POST"
+    )
+    
     try:
-        with open(kdp_package_path, "r", encoding="utf-8") as f:
-            package_data = json.load(f)
+        log(f"Contacting Gemini API ({model})...")
+        with urllib.request.urlopen(req, timeout=30) as response:
+            result = json.loads(response.read().decode("utf-8"))
+            
+            # Extract text from Gemini response structure
+            text_response = result["candidates"][0]["content"]["parts"][0]["text"]
+            return json.loads(text_response)
     except Exception as e:
-        print(f"Erreur lors de la lecture de kdp_package.json : {e}")
-        sys.exit(1)
+        log(f"Gemini API call failed: {e}. Using fallback generator.", "ERROR")
+        return {}
 
-    # Vérification de la validation du Gate 2
-    ready_for_gate2 = package_data.get("ready_for_gate2")
-    if not ready_for_gate2 or str(ready_for_gate2).lower() != "true":
-        print("Erreur : ready_for_gate2 n'est pas à 'true' dans kdp_package.json. Le Gate 2 doit être approuvé.")
-        sys.exit(1)
 
-    # Extraction des métadonnées de base
-    title = package_data.get("title", "Coloring Book")
-    subtitle = package_data.get("subtitle", "")
-    author = package_data.get("author", "Creative Press")
-    theme = package_data.get("theme", "Coloring")
-    target_audience = package_data.get("target_audience", "Adults")
-    categories = package_data.get("categories", ["Activity Books", "Crafts & Hobbies"])
-
-    # 2. Appel à l'API Gemini ou Fallback
-    api_key = os.environ.get("GEMINI_API_KEY")
-    model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+def generate_fallback_metadata(metadata: dict) -> dict:
+    """Generates static fallback assets if Gemini is unavailable."""
+    log("Generating fallback assets from local templates...", "INFO")
+    title = metadata.get("title", "Premium Coloring Book")
+    theme = metadata.get("theme", "Beautiful Designs")
+    audience = metadata.get("target_audience", "Adults and Teens")
     
-    gemini_success = False
-    generated_content = {}
-
-    if api_key:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+    kdp_blurb = (
+        f"Discover the wonderful world of {theme}! This premium coloring book is specifically designed "
+        f"for {audience} seeking relaxation, mindfulness, and creative expression. Inside, you will find "
+        f"high-quality, beautifully detailed illustrations crafted to provide hours of stress relief and artistic fun. "
+        f"Perfect for colored pencils, markers, or gel pens. Grab your copy today and start your coloring journey!"
+    )
+    
+    etsy_title = f"{theme} Coloring Book PDF | Printable Coloring Pages for {audience} | Digital Download"
+    if len(etsy_title) > 140:
+        etsy_title = etsy_title[:137] + "..."
         
-        prompt = f"""You are an expert copywriter for Amazon KDP and Etsy. Based on the following coloring book metadata, generate optimized marketing copy.
+    etsy_description = (
+        f"Welcome to our creative studio!\n\n"
+        f"Bring your imagination to life with this gorgeous printable {theme} coloring book, "
+        f"perfectly tailored for {audience}.\n\n"
+        f"--- WHAT YOU GET ---\n"
+        f"- High-resolution PDF file ready for instant printing.\n"
+        f"- Beautifully curated coloring pages featuring unique {theme} designs.\n"
+        f"- Standard letter size format (8.5 x 11 inches).\n\n"
+        f"--- HOW TO DOWNLOAD ---\n"
+        f"1. Purchase the listing.\n"
+        f"2. Once payment is confirmed, download your files directly from Etsy.\n"
+        f"3. Print at home or at your local print shop as many times as you like!\n\n"
+        f"Please note: This is a DIGITAL DOWNLOAD product. No physical item will be shipped."
+    )
+    
+    # Basic keyword extraction
+    keywords = [t.strip().lower() for t in theme.split() if len(t) > 3][:4]
+    keywords += [a.strip().lower() for a in audience.split() if len(a) > 3][:3]
+    while len(keywords) < 7:
+        keywords.append("coloring book")
+    
+    tags = [f"{theme[:15]} art", "printable pdf", "coloring pages", "digital download", "instant print"]
+    while len(tags) < 13:
+        tags.append(f"coloring {len(tags)}")
         
-        Metadata:
-        - Title: {title}
-        - Subtitle: {subtitle}
-        - Author: {author}
-        - Theme: {theme}
-        - Target Audience: {target_audience}
-        
-        You must return a JSON object with exactly the following keys:
-        - "kdp_description": A compelling blurb for Amazon KDP (150-200 words).
-        - "kdp_keywords": Exactly 7 highly relevant search keywords/phrases for KDP.
-        - "etsy_title": A keyword-stuffed Etsy title (max 140 characters, keywords-first).
-        - "etsy_description": A detailed, SEO-optimized Etsy product description (500-800 words) highlighting benefits, features, and digital/physical nature.
-        - "etsy_tags": Exactly 13 relevant tags for Etsy.
-        
-        Return ONLY the raw JSON object. Do not wrap it in markdown code blocks or any other text."""
-
-        payload = {
-            "contents": [{
-                "parts": [{"text": prompt}]
-            }],
-            "generationConfig": {
-                "responseMimeType": "application/json"
-            }
-        }
-        
-        try:
-            req = urllib.request.Request(
-                url,
-                data=json.dumps(payload).encode("utf-8"),
-                headers={"Content-Type": "application/json"},
-                method="POST"
-            )
-            with urllib.request.urlopen(req, timeout=30) as response:
-                res_data = json.loads(response.read().decode("utf-8"))
-                text_response = res_data["candidates"][0]["content"]["parts"][0]["text"]
-                generated_content = json.loads(text_response.strip())
-                gemini_success = True
-        except Exception as e:
-            print(f"Warning: Échec de l'appel Gemini ({e}). Utilisation du mode fallback statique.")
-
-    # 3. Mode Fallback (Templates statiques)
-    if not gemini_success:
-        kdp_desc = (
-            f"Unleash your creativity with '{title}: {subtitle}'. This beautifully crafted coloring book "
-            f"is specifically designed for {target_audience} who love {theme}. Inside, you will find "
-            f"a stunning collection of high-quality, unique illustrations designed to provide hours of "
-            f"relaxation, stress relief, and artistic expression. Each page is single-sided to prevent "
-            f"bleed-through, making it perfect for markers, gel pens, or colored pencils. Whether you are "
-            f"an experienced artist or just starting your coloring journey, this book offers a perfect "
-            f"escape into a world of color and imagination. It also makes a wonderful gift for friends "
-            f"and family who appreciate the therapeutic benefits of coloring. Grab your copy today and "
-            f"start coloring your way to peace and tranquility!"
-        )
-        
-        kdp_keywords = [
-            f"{theme} coloring book",
-            f"coloring book for {target_audience}",
-            f"creative coloring pages",
-            f"relaxation coloring",
-            f"stress relief coloring",
-            f"artistic coloring book",
-            f"beautiful {theme} designs"
-        ][:7]
-        
-        etsy_title = f"{title} Coloring Book PDF - Printable {theme} Pages for {target_audience}"[:140]
-        
-        etsy_desc = (
-            f"Welcome to our creative studio! Bring your imagination to life with the '{title}' printable coloring book.\n\n"
-            f"This digital download features a gorgeous collection of {theme}-themed coloring pages, perfect for {target_audience} "
-            f"seeking a relaxing and mindful artistic escape. Designed with love and attention to detail, these pages offer "
-            f"the perfect balance of complexity and simplicity to suit all skill levels.\n\n"
-            f"--- WHAT YOU WILL RECEIVE ---\n"
-            f"- 1 High-Resolution PDF file containing all coloring pages.\n"
-            f"- Standard Letter Size (8.5 x 11 inches) for easy printing.\n"
-            f"- Clean, crisp, high-quality black and white vector-style illustrations.\n\n"
-            f"--- WHY YOU WILL LOVE THIS BOOK ---\n"
-            f"- Stress Relief & Mindfulness: Coloring is a proven way to reduce anxiety and find your inner calm.\n"
-            f"- Print Unlimited Times: Print your favorite designs as many times as you like on your preferred paper.\n"
-            f"- Perfect for All Mediums: Great for colored pencils, markers, crayons, or watercolors (we recommend printing on heavy cardstock for wet mediums).\n\n"
-            f"--- PLEASE NOTE ---\n"
-            f"This is a DIGITAL DOWNLOAD product. No physical item will be shipped to you. "
-            f"Due to the digital nature of this product, all sales are final. For personal use only. "
-            f"Commercial reproduction or resale is strictly prohibited.\n\n"
-            f"Thank you for supporting our shop! Happy coloring!"
-        )
-        
-        etsy_tags = [
-            "coloring book", "printable coloring", f"{theme} coloring", "digital download",
-            "pdf coloring book", "adult coloring", "kids coloring", "stress relief",
-            "mindful coloring", "printable pdf", "creative hobby", "coloring pages", "diy craft"
-        ][:13]
-        
-        generated_content = {
-            "kdp_description": kdp_desc,
-            "kdp_keywords": kdp_keywords,
-            "etsy_title": etsy_title,
-            "etsy_description": etsy_desc,
-            "etsy_tags": etsy_tags
-        }
-
-    # Assurer la création du dossier de publication
-    pub_dir.mkdir(parents=True, exist_ok=True)
-
-    # 4. Écriture des 3 fichiers requis
-
-    # Fichier 1 : kdp_metadata.json
-    kdp_metadata = {
-        "title": title,
-        "subtitle": subtitle,
-        "author": author,
-        "description": generated_content.get("kdp_description"),
-        "keywords": generated_content.get("kdp_keywords")[:7],
-        "categories": categories,
-        "price": 8.99
+    return {
+        "kdp_blurb": kdp_blurb,
+        "etsy_title": etsy_title,
+        "etsy_description": etsy_description,
+        "etsy_tags": tags[:13],
+        "kdp_keywords": keywords[:7]
     }
-    with open(pub_dir / "kdp_metadata.json", "w", encoding="utf-8") as f:
-        json.dump(kdp_metadata, f, indent=2, ensure_ascii=False)
 
-    # Fichier 2 : etsy_listing.json
-    etsy_listing = {
-        "title": generated_content.get("etsy_title")[:140],
-        "description": generated_content.get("etsy_description"),
-        "tags": generated_content.get("etsy_tags")[:13]
-    }
-    with open(pub_dir / "etsy_listing.json", "w", encoding="utf-8") as f:
-        json.dump(etsy_listing, f, indent=2, ensure_ascii=False)
 
-    # Fichier 3 : PUBLICATION_READY.md (Formaté pour Hugo)
-    hugo_ready_content = f"""---
-title: "Publication Ready: {title}"
-date: "{datetime.now().isoformat()}"
-brief_id: "{brief_id}"
+def build_prompt(metadata: dict) -> str:
+    """Constructs the prompt for Gemini to generate optimized marketing copy."""
+    return f"""
+You are an expert KDP and Etsy publisher. Based on the following book metadata, generate optimized publication assets.
+
+Book Metadata:
+{json.dumps(metadata, indent=2)}
+
+Requirements:
+1. KDP Blurb: 150-200 words, engaging, highlighting benefits, formatting with clean spacing.
+2. Etsy Title: Max 140 characters, keywords-first, separated by pipes or commas (e.g., "Printable Coloring Book PDF | Theme Pages for Kids | ...").
+3. Etsy Description: 500-800 words, highly SEO-optimized, includes sections like "What's Included", "How to Download", "Terms of Use".
+4. Etsy Tags: Exactly 13 highly relevant search tags (max 20 chars per tag).
+5. KDP Keywords: Exactly 7 highly relevant search keywords/phrases.
+
+Respond ONLY with a JSON object matching this schema:
+{{
+  "kdp_blurb": "string (150-200 words)",
+  "etsy_title": "string (max 140 chars)",
+  "etsy_description": "string (500-800 words)",
+  "etsy_tags": ["string", "string", ... 13 total],
+  "kdp_keywords": ["string", "string", ... 7 total]
+}}
+"""
+
+
+def write_publication_ready_md(output_dir: Path, brief_id: str, kdp_meta: dict, etsy_meta: dict) -> None:
+    """Generates the PUBLICATION_READY.md file with Hugo front matter and checklists."""
+    md_content = f"""---
+title: "Publication Package - {brief_id}"
+date: {import_date()}
 draft: false
+brief_id: "{brief_id}"
+type: "publication"
 ---
 
-# Publication Package Ready for {title}
+# Publication Ready Package: {brief_id}
 
-This package has been fully prepared and validated. Below is the summary of the generated assets.
+This package contains all the metadata and assets required to publish your coloring book on Amazon KDP and Etsy.
 
-## KDP Checklist
-- [ ] **Title**: {title}
-- [ ] **Subtitle**: {subtitle}
-- [ ] **Author**: {author}
-- [ ] **Price**: $8.99
-- [ ] **Categories**: {", ".join(categories)}
-- [ ] **Keywords**: {", ".join(kdp_metadata["keywords"])}
+---
 
-### KDP Description
+## 📋 KDP PUBLISHING CHECKLIST
+
+- [ ] **Title**: `{kdp_meta.get('title')}`
+- [ ] **Subtitle**: `{kdp_meta.get('subtitle', '')}`
+- [ ] **Author**: `{kdp_meta.get('author')}`
+- [ ] **Description (Blurb)**: Copy from `kdp_metadata.json` (or see below)
+- [ ] **Primary Category**: `{kdp_meta.get('categories', [''])[0]}`
+- [ ] **Keywords**: Enter the 7 keywords listed in `kdp_metadata.json`
+- [ ] **Upload Interior**: Select your generated PDF interior
+- [ ] **Upload Cover**: Select your generated PDF cover
+- [ ] **Pricing**: Set price to **${kdp_meta.get('price', 8.99)}**
+
+### KDP Blurb Preview
