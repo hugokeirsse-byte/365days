@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-26T21:30:50.833688Z",
+  "timestamp": "2026-05-27T02:32:10.016850Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -90,92 +90,93 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Silent Image Generation Failures and Low-Quality Fallbacks",
+      "issue_title": "Lack of Unified Image Generation Fallback Wrapper",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
+        "produce_svg_pack",
         "produce_tumbler_wraps",
-        "produce_viral_formats"
+        "produce_literal_idioms"
       ],
-      "current_pain_description": "HF and Gemini images fail, AI Horde blocks GH Actions, and Pollinations outputs low-quality images without reference capabilities. Pipelines run blindly, consuming GH Actions minutes and committing low-quality/corrupted images to the repository.",
-      "proposed_fix": "Create a centralized Python abstraction helper `image_gen_gatekeeper.py`. It should implement a strict fallback chain (Together AI FLUX-schnell -> Cloudflare Workers AI FLUX -> Runware PAYG if budget allows -> Fail gracefully instead of committing Pollinations garbage). It must raise explicit exceptions on HTTP 429/403/500 to halt downstream processing immediately.",
+      "current_pain_description": "Each pipeline handles its own image generation calls. With Hugging Face and Gemini failing, and Pollinations yielding raw/low-quality results, pipelines fail individually or produce unmarketable assets without a structured fallback plan.",
+      "proposed_fix": "Create a centralized helper script `image_factory.py` that implements a strict fallback sequence: 1) Together AI (Flux-schnell), 2) Cloudflare Workers AI (if quotas remain), 3) Runware (if TOGETHER_API_KEY fails, with strict cost-tracking), 4) Pollinations (as absolute fallback). If all fail, gracefully terminate with an error code instead of generating corrupted/blank files.",
       "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Saves 100% of GitHub Actions minutes wasted on broken runs; ensures zero garbage assets are committed.",
+      "estimated_value_unlocked": "Zero wasted GHA runs, automatic quality maximization depending on API availability, and robust error handling.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Lack of Automated Visual Quality Control (Blind Commits)",
-      "category": "quality_bug",
+      "issue_title": "Runware Pay-As-You-Go Budget Runaway Risk",
+      "category": "security",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_literal_idioms",
-        "produce_quotes_minimal"
+        "produce_kdp_cover",
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Images generated via API can have broken anatomy, severe text gibberish, inverted colors (black backgrounds in coloring books), or empty canvas issues. Hugo must manually inspect everything on his phone, wasting his 10 hours/week.",
-      "proposed_fix": "Integrate the free Gemini 2.5 Flash vision capability in `agent_gemini_quality_check`. Pass every generated image to Gemini with a strict system prompt checking for: 1) Inverted colors (for coloring books, must be white background), 2) Text spelling errors, 3) Visual artifacts. Return a JSON score; reject and regenerate if score < 8/10.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Reduces manual filtering time by 90%, ensuring only ready-to-sell assets reach Hugo's phone.",
+      "current_pain_description": "With a hard 20 EUR/month limit, a malfunctioning loop or recursive trigger in GitHub Actions could completely drain the Runware account balance in minutes.",
+      "proposed_fix": "Implement a state-locked daily budget cap inside the GHA workflow. Save daily consumption (image count * cost per image) to a file in the repository (e.g., `budget_state.json`) updated via Git commit at the end of each run. Abort any run if the daily spending exceeds 0.66 EUR (20 EUR / 30 days).",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Guarantees Hugo never exceeds his 20 EUR/month budget due to automated script errors.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Mobile Upload Friction (The 'Phone-Only' Bottleneck)",
-      "category": "bottleneck",
+      "issue_title": "Strict KDP Print-Ready Formatting Failures",
+      "category": "quality_bug",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_lowcontent_kdp",
-        "produce_svg_pack",
-        "produce_gamedev_asset_pack"
+        "produce_chess_book"
       ],
-      "current_pain_description": "Hugo only has an Android phone. Manually downloading raw images, copying SEO tags, writing descriptions, and uploading them to Redbubble, KDP, or Cults3D on a mobile browser is incredibly slow and error-prone.",
-      "proposed_fix": "Implement an automated 'Mobile Distribution Packager' utility. For every completed product, generate a unified ZIP archive containing: 1) The optimized assets, 2) A `metadata.json` / `metadata.txt` with pre-formatted, copy-pasteable Titles, Tags (comma-separated), and Descriptions optimized for the target platform's mobile UI layout.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Cuts listing time per product on mobile from 15 minutes to under 3 minutes.",
-      "priority_1_10": 9
+      "current_pain_description": "KDP rejects books during manual review if margins, bleed, page count (must be even), or color profiles are off. Fixing this on an Android phone via Termux is extremely tedious.",
+      "proposed_fix": "Add a `kdp_preflight_checker.py` script to the end of KDP pipelines. This script uses PyPDF2/pdfplumber to programmatically verify: 1) Page count is even, 2) Dimensions match standard sizes (e.g., 8.5x11 inches) exactly with bleed calculated, 3) Contrast is high enough for coloring pages, 4) No elements extend into the safe margin zone.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Prevents KDP upload rejections which take 24-72 hours to hear back from, speeding up feedback loops.",
+      "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Missed Cross-Pollination (Single-Format Waste)",
-      "category": "cross_polination",
+      "issue_title": "Termux High-Res Download Bottleneck",
+      "category": "bottleneck",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_quotes_minimal"
+        "produce_kdp_cover",
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Assets are generated for a single pipeline and left there. A high-quality line art drawing created for `produce_coloring_book` is not reused, despite being highly valuable as a standalone SVG vector pack or a Cricut cut-file.",
-      "proposed_fix": "Build a `cross_pollinator.py` script. When a high-quality line-art PNG is approved by the quality check, auto-route it to: 1) Potrace (free CLI utility) to vectorize it into a clean SVG, 2) Package it as an SVG/DXF cut-file bundle for Etsy, 3) Add it as a transparent PNG transparent sticker design for Redbubble.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "3x the product listings (Etsy SVG pack, Redbubble stickers, KDP coloring pages) from a single API generation cost.",
+      "current_pain_description": "Hugo operates only on an Android phone via Termux. Downloading 100MB+ PDF/ZIP files to inspect them consumes his limited mobile data and phone storage.",
+      "proposed_fix": "Configure GHA to generate low-resolution preview grids (contact sheets of 4x4 thumbnails) and compile them into a lightweight WebP image (< 500KB) sent directly to Hugo via a Telegram Bot API message. The high-res files stay safely in GitHub Releases or Actions Artifacts until ready for upload.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Saves massive mobile data and allows instant, visual quality control directly on Hugo's phone screen in seconds.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Termux vs. GitHub Actions Dependency Drift",
-      "category": "code_quality",
+      "issue_title": "Lack of Multi-Format Asset Cross-Pollination",
+      "category": "cross_polination",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "produce_stl_parametric"
+        "produce_coloring_book",
+        "produce_svg_pack",
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "Scripts developed or tested in Termux on Android often fail silently or crash when run in GitHub Actions due to missing system-level libraries (e.g., `libGL`, `OpenCV`, `Cairo`, `WeasyPrint` dependencies, or Python PIL library differences).",
-      "proposed_fix": "Create a lightweight `env_sanitizer.py` pre-flight script. Run it as the first step in both Termux and GitHub Actions workflows to verify Python package versions, system binaries (like `potrace` or `openscad`), and write-permissions, failing fast with a clear debug log if a mismatch is found.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Eliminates 'works on my phone but fails on GitHub' debugging loops that drain Hugo's weekly hours.",
+      "current_pain_description": "Assets are generated for one specific pipeline and discarded. For example, a high-quality line-art design for a coloring book is not saved to be sold as a digital SVG cut file or transparent PNG clip art.",
+      "proposed_fix": "Create an asset router pipeline (`agent_winner_amplifier`) that takes verified high-quality outputs from `produce_coloring_book` and auto-converts/packages them into: 1) Transparent PNGs for POD, 2) SVG vectors using Potrace, 3) Digital paper packs. It then prepares metadata for Etsy and Cults3D.",
+      "estimated_implementation_hours_claude": 4,
+      "estimated_value_unlocked": "Multiplies inventory listings by 3x with zero extra generation costs or API calls.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "GitHub Actions Execution Timeout and State Loss",
+      "issue_title": "Silent Failures in Automated Runs",
       "category": "failure_mode",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_lowcontent_kdp"
+        "agent_orchestrator",
+        "agent_auto_regen"
       ],
-      "current_pain_description": "Generating a full 40-page coloring book or low-content book requires multiple API calls and image downloads. If a GitHub Action runner times out or gets canceled, all progress is lost, wasting API costs and execution time.",
-      "proposed_fix": "Implement an incremental state-saving mechanism using GitHub Actions Cache or automatic Git branch commits. After every 5 successfully generated and checked pages, commit the partial progress (`state.json` + raw images) to a draft branch so the pipeline can resume where it left off on the next run.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Zero wasted API costs or runner time on interrupted multi-page book compilations.",
+      "current_pain_description": "If a GHA runner fails due to API limits, git conflicts, or script errors, Hugo has no visibility unless he manually navigates the GitHub UI on his mobile browser.",
+      "proposed_fix": "Integrate a lightweight notification step using curl to a free Telegram/Discord webhook at the end of every workflow. It should send the run status, generation statistics, and direct links to the generated artifacts only if there is a failure, or when a high-value product is successfully packaged.",
+      "estimated_implementation_hours_claude": 1,
+      "estimated_value_unlocked": "Ensures immediate awareness of system health without constant manual checking.",
       "priority_1_10": 7
     }
   ]
