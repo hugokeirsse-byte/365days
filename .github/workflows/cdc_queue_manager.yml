@@ -13,6 +13,8 @@ on:
       - 'products/lowcontent_kdp/**/cdc.json'
       - 'products/novels/**/cdc.json'
       - 'products/jeux_societe/**/cdc.json'
+      - 'products/merch/**/cdc.json'
+      - 'products/godot_assets/**/cdc.json'
   workflow_dispatch:
     inputs:
       vertical:
@@ -27,6 +29,8 @@ on:
           - lowcontent
           - roman
           - jeux_societe
+          - merch_design
+          - godot_assets
       target:
         description: 'Nombre de CdC cibles par vertical (défaut: 10)'
         required: false
@@ -67,7 +71,9 @@ jobs:
       - name: Créer répertoires produits
         run: |
           mkdir -p products/coloring_books products/stl_3d products/lowcontent_kdp products/novels
+          mkdir -p products/jeux_societe products/merch products/godot_assets
           mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman
+          mkdir -p data/brain/jeux_societe data/brain/merch data/brain/godot
           mkdir -p data/reports
 
       - name: Vérifier l'état des files (avant)

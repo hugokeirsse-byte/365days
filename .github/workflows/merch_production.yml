@@ -1,0 +1,90 @@
+name: Merch Design — Production des designs approuvés
+
+# Déclenché quand Hugo approuve un CdC merch (gate_cdc → approved)
+# Génère tous les PNG designs + mosaïque + checklist upload
+
+on:
+  push:
+    paths:
+      - 'products/merch/**/cdc.json'
+  workflow_dispatch:
+    inputs:
+      merch_dir:
+        description: 'Dossier merch spécifique (ex: products/merch/merch_2026-05-27_world_proverbs). Vide = auto-détecte dernier approuvé.'
+        required: false
+        default: ''
+
+jobs:
+  check-gate:
+    runs-on: ubuntu-latest
+    outputs:
+      has_approved: ${{ steps.gate.outputs.has_approved }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérifier si un CdC est approuvé
+        id: gate
+        run: |
+          APPROVED=$(find products/merch -name cdc.json 2>/dev/null | xargs python3 -c "
+          import json, sys
+          files = sys.argv[1:]
+          for f in files:
+              try:
+                  d = json.load(open(f))
+                  if d.get('gate_cdc') == 'approved' and not d.get('production_status'):
+                      print(f)
+                      break
+              except: pass
+          " 2>/dev/null || echo "")
+          if [ -n "$APPROVED" ]; then
+            echo "has_approved=true" >> $GITHUB_OUTPUT
+            echo "CdC approuvé détecté: $APPROVED"
+          else
+            echo "has_approved=false" >> $GITHUB_OUTPUT
+            echo "Aucun CdC merch approuvé en attente de production."
+          fi
+
+  produce:
+    needs: check-gate
+    if: needs.check-gate.outputs.has_approved == 'true' || github.event.inputs.merch_dir != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer Pillow
+        run: pip install Pillow requests
+
+      - name: Créer répertoires
+        run: mkdir -p products/merch data/logs
+
+      - name: Générer les designs merch
+        run: python scripts/produce_merch_designs.py
+        env:
+          MERCH_DIR: ${{ github.event.inputs.merch_dir }}
+        timeout-minutes: 30
+
+      - name: Commit designs produits
+        run: |
+          git config user.name "Merch Design Bot"
+          git config user.email "merch@365days.bot"
+          git add products/merch/
+          git diff --staged --quiet && echo "Aucun design nouveau" || {
+            COUNT=$(git diff --staged --name-only | grep "\.png$" | wc -l)
+            SLUG=$(git diff --staged --name-only | grep "\.png$" | head -1 | cut -d'/' -f3)
+            git commit -m "merch: ${COUNT} designs générés pour ${SLUG}"
+            git push
+            echo ""
+            echo "════════════════════════════════════════════════"
+            echo "  DESIGNS MERCH PRÊTS — ${COUNT} PNG générés"
+            echo "════════════════════════════════════════════════"
+            echo "  → Voir products/merch/${SLUG}/designs/"
+            echo "  → Mosaïque: designs/preview_mosaic.png"
+            echo "  → Checklist upload: listing/upload_checklist.md"
+            echo ""
+            echo "PROCHAINE ÉTAPE: Publier sur Redbubble / Merch by Amazon"
+          }
