@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_bookmark_coffee_02",
+  "product_type": "bookmark",
+  "product_name": "Bookmark",
+  "template": "coffee",
+  "variant_text": "Espresso Mood",
+  "size_mm": "25×100×2.5",
+  "estimated_print_time": "25 min",
+  "filament_estimate_g": 5,
+  "title": "Espresso Mood Bookmark STL — 3D Print Ready, Coffee Aesthetic",
+  "tags_cults3d": [
+    "coffee",
+    "bookmark",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "coffee",
+    "bookmark",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 1.5,
+  "price_makerworld_eur": 1.5,
+  "stl_file": "bookmark_coffee_02_espresso_mood.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

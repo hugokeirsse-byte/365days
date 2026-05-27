@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_bookmark_minimalist_01",
+  "product_type": "bookmark",
+  "product_name": "Bookmark",
+  "template": "minimalist",
+  "variant_text": "Read More",
+  "size_mm": "25×100×2.5",
+  "estimated_print_time": "25 min",
+  "filament_estimate_g": 5,
+  "title": "Read More Bookmark STL — 3D Print Ready, Minimalist Aesthetic",
+  "tags_cults3d": [
+    "minimalist",
+    "bookmark",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "minimalist",
+    "bookmark",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 1.5,
+  "price_makerworld_eur": 1.5,
+  "stl_file": "bookmark_minimalist_01_read_more.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

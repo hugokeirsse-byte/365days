@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-26T18:20:24.279541Z",
+  "timestamp": "2026-05-27T07:58:10.990880Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -52,6 +52,7 @@
     "produce_cope_pack",
     "produce_cultural_arbitrage",
     "produce_cultural_arbitrage_v2",
+    "produce_from_brief",
     "produce_gamedev_asset_pack",
     "produce_iheart_hf",
     "produce_iheart_v2",
@@ -73,13 +74,17 @@
     "agent_auditor",
     "agent_auto_regen",
     "agent_brain_meta",
+    "agent_brief_auditor",
+    "agent_builder",
     "agent_coloring_intel",
     "agent_external_trends",
+    "agent_gate2",
     "agent_gemini_quality_check",
     "agent_ideator_offline",
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_publisher",
     "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
@@ -90,105 +95,94 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "GitHub Runner IP Blocking & Rate Limits on Free Image APIs",
+      "issue_title": "Lack of Unified API Failover Layer for Image Generation",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_iheart_v4",
+        "produce_kdp_cover",
         "produce_tumbler_wraps",
-        "produce_quotes_minimal"
+        "produce_viral_formats",
+        "produce_literal_idioms"
       ],
-      "current_pain_description": "GitHub Actions runner IPs are highly shared and frequently flagged/blacklisted (HTTP 403/429) by Cloudflare, AI Horde, and Gemini. This causes silent pipeline crashes and prevents stable image generation.",
-      "proposed_fix": "Create a unified `image_generator.py` gateway module with built-in retry logic, exponential backoff, and a dynamic fallback sequence (Together AI FLUX-schnell -> Cloudflare Workers AI -> Runware PAYG as paid fallback -> Pollinations as absolute last resort).",
+      "current_pain_description": "Each pipeline implements its own image generation calls. If Pollinations has low quality, Together AI hits rate limits, or Runware runs out of budget, the pipelines hard-crash or output corrupted/blank images, wasting GitHub Action execution minutes and manual debugging time on Termux.",
+      "proposed_fix": "Create a centralized `utils/image_generator.py` module. Implement a strict failover sequence: 1) Together AI (FLUX-schnell), 2) Cloudflare Workers AI, 3) Runware (if PAYG budget > 0), 4) Pollinations (fallback). The module must automatically handle 429/500 errors, rotate API keys from secrets, and validate that the output is a non-empty, valid image file before returning success.",
       "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Eliminates random pipeline failures; guarantees image generation completes on every runner execution.",
+      "estimated_value_unlocked": "Eliminates 90% of image-related pipeline failures; ensures high-quality FLUX-schnell is always prioritized without manual intervention.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Lack of Automated Listing Metadata Generation",
-      "category": "bottleneck",
+      "issue_title": "Silent Commits of Corrupted/Empty Asset Files",
+      "category": "quality_bug",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_lowcontent_kdp",
         "produce_svg_pack",
         "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Pipelines generate visual assets, but Hugo has to manually write SEO titles, descriptions, and tags/keywords from his Android phone, consuming his limited 10 hours/week.",
-      "proposed_fix": "Append a metadata generation step using Gemini 2.5 Flash at the end of each production pipeline. Output a standardized `listing_package.json` containing optimized Etsy/KDP titles, descriptions, and 13 tags, ready for easy copy-pasting.",
+      "current_pain_description": "Pipelines save API response payloads directly to disk and push them to GitHub. If an API returns an HTML error page (e.g. Cloudflare rate limit page) or a 0-byte file, it gets committed as a valid asset, corrupting the generation output and breaking downstream book compilers (e.g. FPDF/ReportLab).",
+      "proposed_fix": "Integrate an automated asset validator pre-commit. Use lightweight Python checks (e.g. Pillow to verify PNG/JPEG integrity, or XML parsing for SVG validity). If validation fails, delete the file, log the error to a central `failed_runs.json`, and prevent the Git commit.",
       "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Saves 15-20 minutes of manual work per listing, maximizing Hugo's 10h/week ROI.",
+      "estimated_value_unlocked": "Prevents publishing corrupted books/assets; saves manual review time on mobile.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Silent Pipeline Failures and Status Blindness on Mobile",
-      "category": "failure_mode",
+      "issue_title": "Manual Metadata Bottleneck on Android (Termux Screen Limitations)",
+      "category": "bottleneck",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auto_regen"
+        "agent_publisher",
+        "produce_coloring_book",
+        "produce_lowcontent_kdp"
       ],
-      "current_pain_description": "Hugo operates exclusively from an Android phone. Checking GitHub Actions logs to see if a workflow failed or succeeded is cumbersome and leads to delayed reactions to errors.",
-      "proposed_fix": "Implement a lightweight Telegram or Discord webhook notifier step at the end of every GitHub Action workflow. Send a structured message containing: Status (Success/Fail), Pipeline Name, Number of Assets Generated, and API costs incurred.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Immediate visibility of system health and cost tracking directly on Hugo's phone.",
+      "current_pain_description": "Hugo only has an Android phone. Manually writing optimized SEO titles, descriptions, and tags for KDP, Redbubble, and Cults3D on a mobile keyboard is a major cognitive bottleneck that slows down the transition from 'registered' to 'live'.",
+      "proposed_fix": "Implement a standardized `metadata_generator.py` using Gemini 2.5 Flash. For every generated asset, create a sidecar `metadata.json` containing: 1) Redbubble tags (comma-separated, SEO-optimized), 2) KDP book description (formatted in basic HTML), 3) Cults3D description and print settings, 4) A unified directory structure ready for automated/manual copy-pasting.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Saves 15-20 minutes of tedious mobile typing per product; ensures consistent SEO keywords.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Gibberish Text on Generated Visual Assets",
-      "category": "quality_bug",
-      "affected_pipelines": [
-        "produce_quotes_minimal",
-        "produce_iheart_v4",
-        "produce_literal_idioms_v2"
-      ],
-      "current_pain_description": "AI image generators (even FLUX) occasionally render malformed text, spelling errors, or visual artifacts on typography-heavy designs, making them unsellable.",
-      "proposed_fix": "Integrate an automated OCR/VLM gate using the free Gemini 2.5 Flash API inside `agent_gemini_quality_check`. Pass the generated image to Gemini and ask it to transcribe the text and rate its visual legibility. Auto-discard and regenerate images failing this check.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Ensures zero typo-ridden products reach the upload stage; maintains high brand reputation.",
-      "priority_1_10": 8
-    },
-    {
-      "rank": 5,
-      "issue_title": "Missed Cross-Pollination of Visual Assets",
-      "category": "cross_polination",
-      "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_svg_pack",
-        "produce_tumblr_wraps"
-      ],
-      "current_pain_description": "High-quality line art or graphic patterns are generated for a single product type (e.g., a coloring book page) and then archived. They are not repurposed into other profitable formats.",
-      "proposed_fix": "Build a post-generation utility that takes approved high-resolution graphics and automatically processes them into multiple SKUs: 1) Vectorized SVGs for Etsy, 2) Transparent PNGs for Redbubble stickers, and 3) Compiled PDFs for KDP interiors.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Multiplies inventory volume by 3x to 4x for the same API generation cost.",
-      "priority_1_10": 7
-    },
-    {
-      "rank": 6,
-      "issue_title": "Clunky GitHub Action Triggering from Android Termux",
-      "category": "bottleneck",
-      "affected_pipelines": [
-        "agent_orchestrator"
-      ],
-      "current_pain_description": "Triggering specific workflows with custom inputs through the GitHub mobile web interface is frustrating on a small touch screen.",
-      "proposed_fix": "Write a simple, interactive CLI bash script for Termux using `gh workflow run` and `fzf` (or basic `read` prompts) allowing Hugo to trigger, monitor, and cancel workflows directly from his terminal.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Reduces pipeline initiation friction to under 15 seconds from a mobile terminal.",
-      "priority_1_10": 7
-    },
-    {
-      "rank": 7,
-      "issue_title": "No Limit Controls on PAYG API Budgets",
-      "category": "security",
+      "issue_title": "GitHub Actions Run Time Limits on Large Asset Batches",
+      "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "If a workflow enters an infinite loop or runs unchecked on automated triggers, Runware PAYG or other paid APIs could quickly exhaust Hugo's strict €20/month budget.",
-      "proposed_fix": "Implement a local file-based budget tracker (`/tmp/monthly_spend.json` synced via cache or repository variables) that tracks API credit usage. Stop execution immediately if the current month's spend exceeds the €20 ceiling.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Eliminates the risk of unexpected bill shock, ensuring 100% compliance with financial constraints.",
+      "current_pain_description": "Generating a 40-page coloring book or a 100-item game asset pack in a single GitHub Actions run can exceed GHA job timeouts (or consume too many free API tokens at once), leading to lost progress mid-run.",
+      "proposed_fix": "Refactor heavy generation loops to use state-based incremental execution. Create a `.state.json` track file in the repo. The pipeline generates 5 pages, commits the partial progress to GitHub, and if incomplete, triggers itself again via GitHub Repository Dispatch API until the state is marked as 'completed'.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Bypasses GHA timeouts completely; allows building massive, high-value asset packs safely for free.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 5,
+      "issue_title": "GitHub Actions Account Ban Risks from Over-scheduling",
+      "category": "security",
+      "affected_pipelines": [
+        "agent_opportunity_hunter",
+        "agent_trendhunter",
+        "agent_auto_regen"
+      ],
+      "current_pain_description": "Having 15+ separate GitHub Action workflows running on different hourly/daily CRON schedules looks like automated script abuse/mining patterns to GitHub's automated abuse filters, risking account suspension.",
+      "proposed_fix": "Consolidate all scheduled cron jobs into a single `daily_orchestrator.yml` workflow. This master workflow runs once a day, sequentially executing the trend analysis, niche gap finding, and asset generation jobs in a controlled sequence.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Reduces ban risk to near zero; reduces overlapping run conflicts and simplifies workflow monitoring on mobile.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 6,
+      "issue_title": "Isolated Pipelines Wasting Cross-Pollination Opportunities",
+      "category": "cross_polination",
+      "affected_pipelines": [
+        "produce_coloring_book",
+        "produce_svg_pack",
+        "produce_lowcontent_kdp",
+        "produce_tumbler_wraps"
+      ],
+      "current_pain_description": "An asset generated for a coloring book (e.g., a high-quality mandala or line-art animal SVG) is only used once in that PDF book. It is not automatically repackaged as a standalone digital download (SVG pack on Etsy/Cults3D) or a pattern for Redbubble products.",
+      "proposed_fix": "Add a post-generation packaging hook. When a high-quality SVG/PNG is approved, copy it to a `shared_assets/` cache. A secondary workflow runs weekly to bundle these into SVG packs, Redbubble pattern sheets, and low-content KDP journal background pages.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Multiplies inventory count by 3x to 5x for the exact same image generation cost and effort.",
       "priority_1_10": 6
     }
   ]

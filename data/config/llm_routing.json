@@ -1,0 +1,43 @@
+{
+  "_comment": "Provider routing par agent. Si clé absente, bascule automatiquement sur fallback.",
+  "prospecteur": {
+    "primary": "gemini",
+    "fallback": ["groq", "mistral"],
+    "max_calls_per_week": 10
+  },
+  "architecte": {
+    "primary": "mistral",
+    "fallback": ["gemini", "groq"],
+    "max_calls_per_week": 8
+  },
+  "stratege": {
+    "primary": "gemini",
+    "fallback": ["mistral", "groq"],
+    "max_calls_per_week": 15
+  },
+  "roman_planner": {
+    "primary": "gemini",
+    "fallback": ["groq"],
+    "max_calls_per_run": 3
+  },
+  "roman_writer": {
+    "primary": "groq",
+    "fallback": ["gemini", "mistral"],
+    "max_calls_per_run": 50
+  },
+  "cdc_generator": {
+    "primary": "gemini",
+    "fallback": ["mistral"],
+    "max_calls_per_run": 3
+  },
+  "conseil": {
+    "primary": "gemini",
+    "fallback": ["mistral"],
+    "max_calls_per_run": 2
+  },
+  "daily_budget": {
+    "gemini_max_calls_per_day": 150,
+    "groq_max_calls_per_day": 200,
+    "mistral_max_calls_per_day": 100
+  }
+}

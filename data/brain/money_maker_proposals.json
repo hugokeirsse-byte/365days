@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-26T18:21:28.980257Z",
+  "timestamp": "2026-05-27T07:58:05.977064Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -52,6 +52,7 @@
     "produce_cope_pack",
     "produce_cultural_arbitrage",
     "produce_cultural_arbitrage_v2",
+    "produce_from_brief",
     "produce_gamedev_asset_pack",
     "produce_iheart_hf",
     "produce_iheart_v2",
@@ -73,13 +74,17 @@
     "agent_auditor",
     "agent_auto_regen",
     "agent_brain_meta",
+    "agent_brief_auditor",
+    "agent_builder",
     "agent_coloring_intel",
     "agent_external_trends",
+    "agent_gate2",
     "agent_gemini_quality_check",
     "agent_ideator_offline",
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_publisher",
     "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
@@ -90,69 +95,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch First KDP Coloring Book with Aggressive Launch Pricing",
+      "action_title": "Publish 3 Niche Coloring Books on Amazon KDP",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 60,
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 80,
       "hugo_effort_hours": 4,
-      "why_this_works_now": "The coloring book pipeline is near ready. Launching at $4.99 (minimal royalty) triggers the KDP 'New Release' algorithm boost and secures organic reviews before raising the price to $7.99.",
-      "first_action_today": "Use the Together AI free tier (FLUX-schnell) to generate 25 high-contrast black and white animal coloring pages, compile them to PDF via Python/ReportLab on Termux, and submit to KDP."
+      "why_this_works_now": "Coloring books are highly searched on Amazon, and you already have the 'produce_coloring_book' pipeline ready. It bypasses shipping fees and leverages Amazon's massive organic traffic.",
+      "first_action_today": "Run the 'produce_coloring_book' pipeline via GitHub Actions to generate 40 high-quality coloring pages for a specific micro-niche (e.g., 'Cottagecore Frogs Coloring Book')."
     },
     {
       "rank": 2,
-      "action_title": "Upload 100 Minimalist French Typography Designs on Redbubble",
+      "action_title": "Redbubble Mass Upload of 50 Sticker Designs",
       "type": "upload",
       "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 20,
-      "estimated_revenue_uplift_eur_30days_high": 100,
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 40,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Bypasses the image generation bottleneck completely. Text-based designs (e.g., regional French humor, developer jokes) have high conversion rates on stickers and mugs and require zero GPU budget.",
-      "first_action_today": "Write a Python PIL script in Termux to batch-generate 100 high-resolution transparent PNGs of trending text slogans using free Google Fonts."
+      "why_this_works_now": "Stickers are low-friction impulse buys. Redbubble is already registered. Using existing pipelines like 'produce_literal_idioms_v2' or 'produce_iheart_x' allows rapid generation of transparent PNGs ready to upload.",
+      "first_action_today": "Generate 50 clean sticker PNGs with transparent backgrounds using Together AI on GitHub Actions, package them in a zip, and download to your Android phone."
     },
     {
       "rank": 3,
-      "action_title": "Publish 10 Functional Parametric 3D Models on Cults3D",
+      "action_title": "Open Cults3D Account and List 5 Parametric Organizers",
       "type": "upload",
       "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_low": 5,
       "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Functional 3D prints (cable organizers, custom gridfinity boxes, SD card holders) sell consistently to 3D printing enthusiasts. OpenSCAD code can be written directly on Android/Termux.",
-      "first_action_today": "Write an OpenSCAD script for a modular, stackable drawer organizer, render the STL, and list it on Cults3D for 1.99€."
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Cults3D has a highly active buyer base for 3D printing files. Your 'produce_stl_parametric' pipeline can output customizable gridfinity/boardgame organizers that people gladly pay 1.50 EUR to 3.00 EUR for.",
+      "first_action_today": "Activate your Cults3D account and upload the first parametric file (e.g., a customizable drawer divider or cable organizer) generated from your STL pipeline."
     },
     {
       "rank": 4,
-      "action_title": "Generate and Upload 15 No-Content/Low-Content KDP Logbooks",
+      "action_title": "Launch 5 KDP Low-Content Logbooks for Specific Hobbies",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 80,
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 50,
       "hugo_effort_hours": 2,
-      "why_this_works_now": "Zero-image dependency. Specialized logbooks (e.g., 'Hexagonal Graph Paper for Organic Chemistry', 'French Mileage Logbook / Suivi Kilométrique') have high search volume and low barrier to entry.",
-      "first_action_today": "Generate a 120-page grid PDF using Python's ReportLab on Termux and design a minimalist text-only cover on KDP Cover Creator."
+      "why_this_works_now": "Low-content logbooks (e.g., Mushroom Foraging Log, Ham Radio Logbook) require zero complex layout design inside. You only need a simple, highly-targeted cover and a standard interior template.",
+      "first_action_today": "Use the 'produce_lowcontent_kdp' pipeline to generate covers for 5 specific logbook niches, combine with a free 120-page logbook interior, and submit to KDP."
     },
     {
       "rank": 5,
-      "action_title": "Bundle Redbubble Designs into High-Value Sticker Packs",
-      "type": "pricing",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Redbubble customers love sticker packs because they get 5-10 small stickers for the price of one medium sticker. It significantly boosts conversion rates.",
-      "first_action_today": "Combine 6 of your generated minimalist text/icon PNGs into a single grid image with spacing, upload it as a 'Sticker Pack' on Redbubble."
-    },
-    {
-      "rank": 6,
-      "action_title": "Publish 5 UI/UX Asset Packs on Itch.io for Game Devs",
+      "action_title": "Publish 3 Game Dev Asset Packs on Itch.io",
       "type": "upload",
       "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 30,
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Game developers constantly buy cheap UI packs (buttons, icons, panels) to prototype. You can generate clean SVG UI elements via Python scripts on Termux.",
-      "first_action_today": "Generate a pack of 50 flat-vector UI buttons in different colors using a Python SVG generation script, zip them, and list on Itch.io as 'Name Your Own Price' (suggested $1.99)."
+      "why_this_works_now": "Game developers constantly buy 2D UI elements, pixel art tilesets, and icons. Itch.io is free, easy to navigate from a phone, and allows direct digital sales with immediate payouts.",
+      "first_action_today": "Run the 'produce_gamedev_asset_pack' pipeline to generate a clean RPG UI kit or a set of 2D fantasy item icons, package it as a zip, and publish on Itch.io for $2.99."
     }
   ]
 }

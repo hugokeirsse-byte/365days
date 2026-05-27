@@ -1,67 +1,40 @@
 {
-  "audited_at": "2026-05-26T02:04:10.325860Z",
+  "audited_at": "2026-05-27T02:13:43.687541Z",
   "model": "gemini-2.5-flash",
   "total_processed": 30,
   "counters": {
-    "approve": 4,
+    "approve": 2,
     "review": 0,
-    "reject": 2,
-    "skip": 43,
-    "error": 24
+    "reject": 1,
+    "skip": 49,
+    "error": 27
   },
   "audits": [
     {
-      "design_path": "bible_verses_v2/new/love/1_corinthians_13_4_7_minimalist_gold",
+      "design_path": "bible_verses_v2/new/love/john_3_16_modern_mountains",
+      "pipeline": "bible_verses_v2",
+      "verdict": "approve",
+      "issues": [],
+      "rating_0_100": 92,
+      "reasoning": "The image accurately presents a meaningful portion of John 3:16 with its correct biblical reference. The text is highly legible, featuring clear typography and excellent contrast against the soft, aesthetically pleasing mountain landscape background. The overall design is clean, professional, and well-composed, making it suitable for print-on-demand products within the 'bible_verses_v2' pipeline. No critical violations were identified."
+    },
+    {
+      "design_path": "bible_verses_v2/new/rest/matthew_11_28_soft_watercolor",
       "pipeline": "bible_verses_v2",
       "verdict": "reject",
       "issues": [
-        "Verse text does not match the provided reference range.",
-        "Verse text is incomplete for the given reference."
+        "Incomplete verse text"
       ],
-      "rating_0_100": 15,
-      "reasoning": "The image displays the text 'Love is patient, love is kind' with the reference '1 Corinthians 13:4-7'. This is a critical error because the displayed text is only the first clause of 1 Corinthians 13:4, and does not represent the full verse 4, nor does it cover the entire range of verses 4 through 7 as indicated by the reference. For a 'bible_verses_v2' pipeline, accuracy of the verse content relative to its reference is paramount, and this image fails on that fundamental requirement."
+      "rating_0_100": 20,
+      "reasoning": "The image displays only a partial quote of Matthew 11:28, specifically 'Come to me all who are weary'. The full verse continues with 'and burdened, and I will give you rest', which is omitted. For a 'bible_verses_v2' pipeline, it is a critical requirement that the displayed scripture text is complete as per the referenced verse, or clearly indicated as an excerpt (e.g., with ellipses). The current design presents an incomplete verse without any such indication, which compromises the accuracy and completeness of the scriptural message."
     },
     {
-      "design_path": "bible_verses_v2/new/love/1_corinthians_13_4_7_modern_mountains",
+      "design_path": "bible_verses_v2/old/comfort/psalm_23_1_vintage_botanical",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 95,
-      "reasoning": "The image presents a clear and legible bible verse with its reference, '1 Corinthians 13:4-7 - Love is patient, love is kind'. The text is well-centered and has excellent contrast against the soft, muted mountain background, ensuring high readability. The overall composition is aesthetically pleasing, with subtle decorative elements that enhance the design without distracting from the message. The image quality appears high, suitable for print-on-demand, with no visible artifacts or cropping issues. The content is entirely appropriate for the 'bible_verses_v2' pipeline."
-    },
-    {
-      "design_path": "bible_verses_v2/new/love/1_corinthians_13_4_7_vintage_botanical",
-      "pipeline": "bible_verses_v2",
-      "verdict": "reject",
-      "issues": [
-        "Text does not match the full scope of the cited Bible reference"
-      ],
-      "rating_0_100": 20,
-      "reasoning": "The image displays the text \"Love is patient, love is kind\" and cites \"1 Corinthians 13:4-7\". However, the displayed text only represents the beginning of 1 Corinthians 13:4, omitting the remainder of verse 4 and the entirety of verses 5, 6, and 7. This discrepancy between the cited reference and the actual displayed text constitutes a critical factual inaccuracy for a bible verse product, as it misrepresents the content of the referenced passage. While the design, readability, and contrast are excellent, this core inaccuracy necessitates a rejection."
-    },
-    {
-      "design_path": "bible_verses_v2/new/love/john_3_16_vintage_botanical",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 100,
-      "reasoning": "The image accurately displays the Bible verse 'For God so loved the world' and the reference 'John 3:16', with both text and reference being exact matches to the requirements. There are no watermarks or logos present. All text is clearly legible against the background, and the image quality is high, free from pixelation or blurriness. The content is appropriate for the 'bible_verses_v2' pipeline, and no essential elements are cropped. The design is clean and professional, meeting all critical quality control standards."
-    },
-    {
-      "design_path": "bible_verses_v2/new/rest/matthew_11_28_modern_mountains",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 100,
-      "reasoning": "The image demonstrates exceptional quality, adhering to all implied critical standards for a print-on-demand product. The text is perfectly legible with excellent font choice and sufficient contrast against the background. The composition is balanced, and the aesthetic is clean and professional, with no discernible spelling errors, alignment issues, or visual artifacts. The design is ready for production without any concerns."
-    },
-    {
-      "design_path": "bible_verses_v2/new/transformation/romans_12_2_soft_watercolor",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 98,
-      "reasoning": "The image perfectly aligns with the 'bible_verses_v2' pipeline, featuring a clear and accurate bible verse (Romans 12:2). The text is highly legible due to excellent contrast against the soft, aesthetically pleasing floral background. The design is well-balanced, clean, and free from any visible defects, spelling errors, or inappropriate elements, indicating high quality suitable for print-on-demand production."
+      "reasoning": "The image presents the Bible verse 'Psalm 23:1 The Lord is my shepherd, I shall not want' with excellent legibility and a clean, appealing aesthetic. The text is well-centered and uses a clear, readable font with good contrast against the subtle fern background. There are no visible errors in the text, and the overall composition is balanced and suitable for print-on-demand. The image quality appears high, with no pixelation or artifacts that would hinder printability."
     }
   ]
 }

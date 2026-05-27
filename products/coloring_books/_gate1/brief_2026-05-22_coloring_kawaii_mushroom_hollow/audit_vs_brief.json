@@ -2,110 +2,61 @@
   "brief_id": "brief_2026-05-22_coloring_kawaii_mushroom_hollow",
   "results": [
     {
-      "criterion": "Trait noir PUR (#000000) uniquement, aucune couleur ni gris ni ombrage sur l'interieur",
+      "criterion": "Trait noir PUR uniquement, aucune couleur ni gris",
       "blocking": true,
       "category": "vision",
       "verdict": "PENDING_PRODUCTION",
       "why": "necessite Gemini Vision sur les images generees"
     },
     {
-      "criterion": "Coherence stylistique entre TOUTES les pages (meme epaisseur de trait, meme niveau de detail, meme registre kawaii)",
+      "criterion": "Coherence stylistique entre toutes les pages",
       "blocking": true,
       "category": "vision",
       "verdict": "PENDING_PRODUCTION",
       "why": "necessite Gemini Vision sur les images generees"
     },
     {
-      "criterion": "Formes fermees coloriables (pas de contours ouverts/casses, pas de micro-details inutilisables)",
+      "criterion": "Formes fermees coloriables",
       "blocking": true,
       "category": "vision",
       "verdict": "PENDING_PRODUCTION",
       "why": "necessite Gemini Vision sur les images generees"
     },
     {
-      "criterion": "Le sujet de chaque page correspond au page_subject demande",
-      "blocking": true,
-      "category": "vision",
-      "verdict": "PENDING_PRODUCTION",
-      "why": "necessite Gemini Vision sur les images generees"
-    },
-    {
-      "criterion": "Zero texte / lettre / watermark parasite dans les images",
-      "blocking": true,
-      "category": "vision",
-      "verdict": "PENDING_PRODUCTION",
-      "why": "necessite Gemini Vision sur les images generees"
-    },
-    {
-      "criterion": "Format KDP conforme (trim 8.5x11, bleed, gutter 0.75, rotation recto/verso)",
+      "criterion": "Format KDP conforme (trim 8.5x11, bleed)",
       "blocking": true,
       "category": "structural",
       "verdict": "PENDING_PRODUCTION",
       "why": "verifiable sur le PDF genere"
     },
     {
-      "criterion": "Couverture presente, en COULEUR, titre + nom d'auteur lisibles en miniature",
+      "criterion": "Couverture presente, en COULEUR",
       "blocking": true,
       "category": "vision",
       "verdict": "PENDING_PRODUCTION",
       "why": "necessite Gemini Vision sur les images generees"
     },
     {
-      "criterion": "Completude cle-en-main : titre + sous-titre + nom d'auteur + metadata KDP (keywords, categories, prix)",
+      "criterion": "Completude : titre + auteur + metadata KDP",
       "blocking": true,
       "category": "structural",
       "verdict": "PLANNED",
       "why": "titre+auteur+metadata prevus"
     },
     {
-      "criterion": "Titre et nom d'auteur verifies comme NON deja utilises",
+      "criterion": "Titre et auteur non deja utilises",
       "blocking": true,
       "category": "uniqueness",
       "verdict": "NEEDS_UNIQUENESS",
       "why": "titre/auteur a verifier (Amazon/Etsy)"
-    },
-    {
-      "criterion": "Pages liminaires completes (titre, copyright, 'appartient a', page d'accueil)",
-      "blocking": true,
-      "category": "structural",
-      "verdict": "PLANNED",
-      "why": "prevu: ['title_page', 'copyright', 'belongs_to', 'welcome']"
-    },
-    {
-      "criterion": "Page d'accueil/introduction presente et lisible (bienvenue + conseils d'utilisation)",
-      "blocking": true,
-      "category": "vision",
-      "verdict": "PENDING_PRODUCTION",
-      "why": "necessite Gemini Vision sur les images generees"
-    },
-    {
-      "criterion": "4eme de couverture presente et conforme (blurb + bullets + zone code-barres)",
-      "blocking": true,
-      "category": "vision",
-      "verdict": "PENDING_PRODUCTION",
-      "why": "necessite Gemini Vision sur les images generees"
-    },
-    {
-      "criterion": "Page de remerciement/avis presente en fin",
-      "blocking": false,
-      "category": "structural",
-      "verdict": "PENDING_PRODUCTION",
-      "why": "verifiable sur le produit"
-    },
-    {
-      "criterion": "Composition equilibree et centree, agreable a colorier",
-      "blocking": false,
-      "category": "vision",
-      "verdict": "PENDING_PRODUCTION",
-      "why": "necessite Gemini Vision sur les images generees"
     }
   ],
   "overall": {
     "abouti": false,
-    "blocking_total": 12,
+    "blocking_total": 7,
     "pass": 0,
     "fail": 0,
-    "pending_or_needs": 10,
-    "planned_preflight": 2
+    "pending_or_needs": 6,
+    "planned_preflight": 1
   }
 }

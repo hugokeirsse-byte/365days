@@ -1,0 +1,11 @@
+{
+  "audited_at": "2026-05-27T02:02:46.928382Z",
+  "pipeline": "bible_verses_v2",
+  "model": "gemini-2.5-flash",
+  "verdict": "reject",
+  "issues": [
+    "Incomplete verse text"
+  ],
+  "rating_0_100": 20,
+  "reasoning": "The image displays only a partial quote of Matthew 11:28, specifically 'Come to me all who are weary'. The full verse continues with 'and burdened, and I will give you rest', which is omitted. For a 'bible_verses_v2' pipeline, it is a critical requirement that the displayed scripture text is complete as per the referenced verse, or clearly indicated as an excerpt (e.g., with ellipses). The current design presents an incomplete verse without any such indication, which compromises the accuracy and completeness of the scriptural message."
+}

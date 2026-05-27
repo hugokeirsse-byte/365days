@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_keychain_booklover_08",
+  "product_type": "keychain",
+  "product_name": "Keychain",
+  "template": "booklover",
+  "variant_text": "Reading Era",
+  "size_mm": "30×50×4",
+  "estimated_print_time": "20 min",
+  "filament_estimate_g": 5,
+  "title": "Reading Era Keychain STL — 3D Print Ready, Booklover Aesthetic",
+  "tags_cults3d": [
+    "booklover",
+    "keychain",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "booklover",
+    "keychain",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 1.2,
+  "price_makerworld_eur": 1.2,
+  "stl_file": "keychain_booklover_08_reading_era.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

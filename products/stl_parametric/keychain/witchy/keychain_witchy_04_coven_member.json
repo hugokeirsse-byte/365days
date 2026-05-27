@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_keychain_witchy_04",
+  "product_type": "keychain",
+  "product_name": "Keychain",
+  "template": "witchy",
+  "variant_text": "Coven Member",
+  "size_mm": "30×50×4",
+  "estimated_print_time": "20 min",
+  "filament_estimate_g": 5,
+  "title": "Coven Member Keychain STL — 3D Print Ready, Witchy Aesthetic",
+  "tags_cults3d": [
+    "witchy",
+    "keychain",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "witchy",
+    "keychain",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 1.2,
+  "price_makerworld_eur": 1.2,
+  "stl_file": "keychain_witchy_04_coven_member.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

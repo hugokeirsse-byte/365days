@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_door_plate_dnd_06",
+  "product_type": "door_plate",
+  "product_name": "Door plate",
+  "template": "dnd",
+  "variant_text": "Loot Goblin",
+  "size_mm": "80×30×4",
+  "estimated_print_time": "35 min",
+  "filament_estimate_g": 5,
+  "title": "Loot Goblin Door plate STL — 3D Print Ready, Dnd Aesthetic",
+  "tags_cults3d": [
+    "dnd",
+    "door plate",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "dnd",
+    "door plate",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 2.5,
+  "price_makerworld_eur": 2.5,
+  "stl_file": "door_plate_dnd_06_loot_goblin.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

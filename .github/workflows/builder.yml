@@ -43,35 +43,43 @@ jobs:
           GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
           BRIEFING: ${{ inputs.briefing }}
         run: |
-          set -e
-          # Si un briefing spécifique est fourni, ne traiter que lui
           if [ -n "$BRIEFING" ]; then
             echo "=== Traitement du briefing : $BRIEFING ==="
-            python scripts/agent_builder.py
+            python scripts/agent_builder.py || echo "Echec briefing $BRIEFING (continue)"
           else
-            # Traiter tous les .md en queue (max 10 pour éviter timeout)
             COUNT=0
+            FAILED=0
             while [ $COUNT -lt 10 ]; do
               PENDING=$(ls data/build_queue/*.md 2>/dev/null | head -1)
               if [ -z "$PENDING" ]; then
-                echo "Queue vide — tous les briefings traités."
+                echo "Queue vide — tous les briefings traites."
                 break
               fi
               echo "=== Briefing : $PENDING ==="
-              BRIEFING="$PENDING" python scripts/agent_builder.py
+              if BRIEFING="$PENDING" python scripts/agent_builder.py; then
+                echo "OK: $PENDING"
+              else
+                CODE=$?
+                echo "ECHEC briefing $PENDING (code $CODE) — on continue avec le suivant"
+                FAILED=$((FAILED + 1))
+                # Eviter boucle infinie si le briefing ne se deplace pas vers done/
+                BAIL_DIR=$(dirname "$PENDING")/done
+                mkdir -p "$BAIL_DIR"
+                mv "$PENDING" "$BAIL_DIR/" 2>/dev/null || true
+              fi
               COUNT=$((COUNT + 1))
             done
-            echo "Total briefings traités : $COUNT"
+            echo "Total traites: $COUNT ($FAILED echecs)"
           fi
 
-      - name: Commit les fichiers générés
+      - name: Commit les fichiers generés
         if: always()
         run: |
-          git add scripts/ data/build_queue/done/ 2>/dev/null || echo "(rien à ajouter)"
+          git add scripts/ data/build_queue/done/ 2>/dev/null || echo "(rien a ajouter)"
           if git diff --cached --quiet; then
-            echo "Aucun fichier généré."
+            echo "Aucun fichier genere."
           else
-            git commit -m "Builder: code généré par Gemini depuis briefings"
+            git commit -m "Builder: code genere par Gemini depuis briefings"
             for i in 1 2 3 4 5; do
               if git push origin HEAD:${{ github.ref_name }}; then break; fi
               git pull --rebase origin ${{ github.ref_name }} || true
