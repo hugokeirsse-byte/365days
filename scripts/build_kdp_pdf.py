@@ -1,242 +1,173 @@
 import os
-import json
-import argparse
-import logging
 import sys
+import json
 from datetime import datetime
+from pathlib import Path
 
-# External dependencies
 from PIL import Image
 from reportlab.pdfgen import canvas
-from reportlab.lib.units import inch # 1 inch = 72 points
+from reportlab.lib.utils import ImageReader
 
-# --- Configuration ---
-# Determine the project root based on the script's location
-# Assuming scripts/build_kdp_pdf.py is in PROJECT_ROOT/scripts/
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.join(BASE_DIR, '..', '..') 
-
-DATA_BRIEFS_PATH = os.path.join(PROJECT_ROOT, 'data', 'briefs')
-PRODUCTS_GATE1_PATH = os.path.join(PROJECT_ROOT, 'products', 'coloring_books', '_gate1')
-
+# --- Constants ---
+POINTS_PER_INCH = 72
 DEFAULT_DPI = 300
 
-# --- Logging Setup ---
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
-def build_kdp_pdf(brief_id: str, dpi: int):
+# --- Helper Functions ---
+def get_brief_id():
     """
-    Assembles a KDP-ready interior PDF from line-art pages.
-    Reads brief for format metadata and generation report for page status.
-    Generates a PDF with bleed and a KDP package metadata file.
+    Retrieves BRIEF_ID from CLI arguments or environment variables.
+    CLI argument takes precedence.
     """
-    logger.info(f"Starting KDP PDF build for BRIEF_ID: {brief_id} with target DPI: {dpi}")
-
-    # --- 1. Load brief for format metadata ---
-    brief_file_path = os.path.join(DATA_BRIEFS_PATH, f"{brief_id}.json")
-    try:
-        with open(brief_file_path, 'r', encoding='utf-8') as f:
-            brief_data = json.load(f)
-        
-        trim_format = brief_data.get('format', {}).get('trim')
-        bleed_inches = brief_data.get('format', {}).get('bleed')
-        pages_interior_expected = brief_data.get('format', {}).get('pages_interior')
-
-        if not all([trim_format, bleed_inches is not None, pages_interior_expected is not None]):
-            raise ValueError("Missing 'format.trim', 'format.bleed', or 'format.pages_interior' in brief.")
-        
-        trim_width_inches = trim_format.get('width')
-        trim_height_inches = trim_format.get('height')
-
-        if not all([trim_width_inches, trim_height_inches]):
-            raise ValueError("Missing 'format.trim.width' or 'format.trim.height' in brief.")
-
-        logger.info(f"Brief loaded: Trim {trim_width_inches}x{trim_height_inches} inches, Bleed {bleed_inches} inches, Expected pages {pages_interior_expected}")
-
-    except FileNotFoundError:
-        logger.error(f"Brief file not found: {brief_file_path}. Please ensure the brief ID is correct.")
-        sys.exit(1)
-    except json.JSONDecodeError:
-        logger.error(f"Error decoding JSON from brief file: {brief_file_path}. Check file integrity.")
-        sys.exit(1)
-    except ValueError as e:
-        logger.error(f"Invalid brief data in {brief_file_path}: {e}")
-        sys.exit(1)
-
-    # --- 2. Calculate PDF page dimensions (including bleed) ---
-    pdf_page_width_inches = trim_width_inches + (2 * bleed_inches)
-    pdf_page_height_inches = trim_height_inches + (2 * bleed_inches)
-
-    pdf_page_width_pts = pdf_page_width_inches * inch
-    pdf_page_height_pts = pdf_page_height_inches * inch
-
-    logger.info(f"Calculated PDF page size: {pdf_page_width_inches:.3f}x{pdf_page_height_inches:.3f} inches ({pdf_page_width_pts:.2f}x{pdf_page_height_pts:.2f} points)")
-
-    # --- Define paths for current brief_id ---
-    brief_output_dir = os.path.join(PRODUCTS_GATE1_PATH, brief_id)
-    pages_input_dir = os.path.join(brief_output_dir, 'pages')
-    generation_report_path = os.path.join(brief_output_dir, 'generation_report.json')
-    output_pdf_path = os.path.join(brief_output_dir, 'interior.pdf')
-    kdp_package_path = os.path.join(brief_output_dir, 'kdp_package.json')
-
-    # Ensure the output directory for the brief exists
-    os.makedirs(brief_output_dir, exist_ok=True)
-
-    # --- 3. Load generation_report.json to get available pages ---
-    generated_pages_info = []
-    try:
-        with open(generation_report_path, 'r', encoding='utf-8') as f:
-            report_data = json.load(f)
-        
-        # Filter for pages with 'ok' status and sort them by index
-        generated_pages_info = sorted(
-            [p for p in report_data.get('pages', []) if p.get('status') == 'ok'],
-            key=lambda x: x['index']
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    brief_id = os.environ.get("BRIEF_ID")
+    if not brief_id:
+        raise ValueError(
+            "BRIEF_ID not provided. "
+            "Use: python scripts/build_kdp_pdf.py [BRIEF_ID] "
+            "or set BRIEF_ID environment variable."
         )
-        logger.info(f"Generation report loaded. Found {len(generated_pages_info)} 'ok' pages.")
+    return brief_id
 
+def get_dpi():
+    """
+    Retrieves DPI from environment variables or uses default.
+    """
+    try:
+        return int(os.environ.get("DPI", DEFAULT_DPI))
+    except ValueError:
+        print(f"Warning: Invalid DPI environment variable. Using default {DEFAULT_DPI}.", file=sys.stderr)
+        return DEFAULT_DPI
+
+def load_json_file(filepath):
+    """
+    Loads a JSON file from the given path.
+    """
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            return json.load(f)
     except FileNotFoundError:
-        logger.error(f"Generation report not found: {generation_report_path}. Cannot build PDF without page information.")
-        sys.exit(1)
+        raise FileNotFoundError(f"Required file not found: {filepath}")
     except json.JSONDecodeError:
-        logger.error(f"Error decoding JSON from generation report: {generation_report_path}. Check file integrity.")
-        sys.exit(1)
-    except Exception as e:
-        logger.error(f"An unexpected error occurred while loading generation report: {e}")
-        sys.exit(1)
+        raise ValueError(f"Invalid JSON format in file: {filepath}")
 
-    # Create a set of available page indices for efficient lookup
-    available_page_indices = {p['index'] for p in generated_pages_info}
-    
-    # --- 4. Initialize PDF Canvas ---
-    c = canvas.Canvas(output_pdf_path, pagesize=(pdf_page_width_pts, pdf_page_height_pts))
-    logger.info(f"PDF canvas initialized for output: {output_pdf_path}")
-
-    successful_png_pages_count = 0
-    missing_pages_detected = False
-
-    # --- 5. Process each expected page ---
-    # Iterate through the expected number of pages from the brief
-    for i in range(pages_interior_expected):
-        page_index = i + 1 # Page filenames are 1-indexed (e.g., page_001.png)
-        png_filename = f"page_{page_index:03d}.png"
-        png_path = os.path.join(pages_input_dir, png_filename)
-
-        if page_index in available_page_indices:
-            try:
-                img = Image.open(png_path)
-                # Convert image to grayscale ('L') then to RGB.
-                # ReportLab's drawImage works best with RGB/RGBA images,
-                # and 'L' ensures the content is truly B&W before conversion to 3-channel RGB.
-                img_rgb = img.convert('L').convert('RGB') 
-
-                # The PNG image is assumed to represent the content for the TRIM area.
-                # Calculate its drawing dimensions in points.
-                img_draw_width_pts = trim_width_inches * inch
-                img_draw_height_pts = trim_height_inches * inch
-
-                # Calculate the position to center the image within the PDF page.
-                # The image should start at (bleed_inches * inch, bleed_inches * inch)
-                # from the bottom-left of the PDF page, effectively placing the trim content.
-                x_offset_pts = bleed_inches * inch
-                y_offset_pts = bleed_inches * inch
-
-                c.drawImage(
-                    img_rgb, 
-                    x_offset_pts, 
-                    y_offset_pts, 
-                    width=img_draw_width_pts, 
-                    height=img_draw_height_pts, 
-                    mask='auto' # Let ReportLab handle transparency if present
-                )
-                c.showPage() # Finalize the current page and move to the next
-                successful_png_pages_count += 1
-                logger.debug(f"Added page {page_index} from {png_filename}")
-
-            except FileNotFoundError:
-                logger.warning(f"PNG file not found for page {page_index}: {png_path}. Adding a blank page to maintain count.")
-                c.showPage() # Add a blank page if PNG is missing
-                missing_pages_detected = True
-            except Exception as e:
-                logger.error(f"Error processing page {page_index} from {png_path}: {e}. Adding a blank page.")
-                c.showPage() # Add a blank page on other errors
-                missing_pages_detected = True
-        else:
-            logger.warning(f"Page {page_index} (expected {png_filename}) not found in generation report as 'ok'. Adding a blank page.")
-            c.showPage() # Add a blank page if not marked 'ok' in report
-            missing_pages_detected = True
-    
-    # --- 6. Save PDF ---
-    try:
-        c.save()
-        logger.info(f"PDF successfully saved to {output_pdf_path}")
-    except Exception as e:
-        logger.error(f"Error saving PDF to {output_pdf_path}: {e}")
-        sys.exit(1)
-
-    # --- Write kdp_package.json ---
-    # The page_count in kdp_package.json should reflect the total pages in the PDF,
-    # which is pages_interior_expected, even if some are blank.
-    kdp_package_data = {
-        "built_at": datetime.now().isoformat(),
-        "page_count": pages_interior_expected, 
-        "format": f"{trim_width_inches}x{trim_height_inches}in",
-        "bleed": f"{bleed_inches}in",
-        "ready_for_gate2": not missing_pages_detected
-    }
-
-    # If the number of successfully processed PNGs is less than expected,
-    # it means some pages were skipped or errored, so it's not ready for Gate 2.
-    if successful_png_pages_count < pages_interior_expected:
-        kdp_package_data["ready_for_gate2"] = False
-        logger.warning(f"Only {successful_png_pages_count} out of {pages_interior_expected} pages were successfully built from PNGs. "
-                       f"{pages_interior_expected - successful_png_pages_count} pages are blank in the PDF.")
-    
-    try:
-        with open(kdp_package_path, 'w', encoding='utf-8') as f:
-            json.dump(kdp_package_data, f, indent=4)
-        logger.info(f"KDP package metadata saved to {kdp_package_path}")
-        if not kdp_package_data["ready_for_gate2"]:
-            logger.warning("KDP package is NOT ready for Gate 2 due to missing or errored pages. Review logs for details.")
-    except Exception as e:
-        logger.error(f"Error saving KDP package metadata to {kdp_package_path}: {e}")
-        sys.exit(1)
-
-    logger.info(f"KDP PDF build finished for BRIEF_ID: {brief_id}. Ready for Gate 2: {kdp_package_data['ready_for_gate2']}")
-
+def save_json_file(filepath, data):
+    """
+    Saves data to a JSON file, creating parent directories if necessary.
+    """
+    filepath.parent.mkdir(parents=True, exist_ok=True)
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2)
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Assemble a KDP-ready interior PDF from line-art pages.",
-        formatter_class=argparse.RawTextHelpFormatter
+    brief_id = get_brief_id()
+    dpi = get_dpi()
+
+    print(f"Starting KDP PDF build for brief ID: {brief_id} with DPI: {dpi}")
+
+    # --- 1. Load brief for format metadata ---
+    brief_path = Path(f"data/briefs/{brief_id}.json")
+    brief_data = load_json_file(brief_path)
+
+    try:
+        trim_width_in = brief_data['format']['trim']['width']
+        trim_height_in = brief_data['format']['trim']['height']
+        bleed_in = brief_data['format']['bleed']
+        pages_interior_expected = brief_data['format']['pages_interior']
+    except KeyError as e:
+        raise ValueError(f"Missing expected key in brief data from {brief_path}: {e}")
+
+    # --- 2. Calculate PDF page dimensions (trim + 2*bleed) ---
+    page_w_in = trim_width_in + 2 * bleed_in
+    page_h_in = trim_height_in + 2 * bleed_in
+
+    page_w_pt = page_w_in * POINTS_PER_INCH
+    page_h_pt = page_h_in * POINTS_PER_INCH
+
+    print(f"Calculated PDF page size: {page_w_in:.3f}x{page_h_in:.3f} inches ({page_w_pt:.2f}x{page_h_pt:.2f} points)")
+
+    # --- 3. Load generation_report.json ---
+    generation_report_path = Path(f"products/coloring_books/_gate1/{brief_id}/generation_report.json")
+    generation_report_data = load_json_file(generation_report_path)
+
+    # Filter for 'ok' pages and sort by index to ensure correct order
+    ok_pages = sorted(
+        [p for p in generation_report_data.get('pages', []) if p.get('status') == 'ok'],
+        key=lambda x: x['index']
     )
-    parser.add_argument(
-        "brief_id",
-        nargs='?', # Make it optional, so it can be read from env var
-        help="Identifier of the brief (e.g., 'my_coloring_book_v1').\n"
-             "If not provided, will try to read from BRIEF_ID environment variable."
-    )
-    parser.add_argument(
-        "--dpi",
-        type=int,
-        default=None, # Use None to distinguish from DEFAULT_DPI
-        help=f"Target resolution in DPI (default: {DEFAULT_DPI}).\n"
-             "If not provided, will try to read from DPI environment variable."
-    )
+    actual_page_count = len(ok_pages)
+    print(f"Found {actual_page_count} 'ok' pages from generation report. Expected: {pages_interior_expected}")
 
-    args = parser.parse_args()
+    # --- 4. Initialize PDF Canvas ---
+    output_base_dir = Path(f"products/coloring_books/_gate1/{brief_id}")
+    output_base_dir.mkdir(parents=True, exist_ok=True) # Ensure output directory exists
+    output_pdf_path = output_base_dir / "interior.pdf"
 
-    # Determine BRIEF_ID: CLI argument takes precedence, then environment variable
-    brief_id = args.brief_id or os.environ.get('BRIEF_ID')
-    if not brief_id:
-        logger.error("BRIEF_ID is required. Please provide it as a CLI argument or set the BRIEF_ID environment variable.")
-        sys.exit(1)
+    c = canvas.Canvas(str(output_pdf_path), pagesize=(page_w_pt, page_h_pt))
+    c.setCreator("KDP PDF Builder Script")
+    c.setTitle(f"Interior for {brief_id}")
 
-    # Determine DPI: CLI argument takes precedence, then environment variable, then default
-    dpi = args.dpi or int(os.environ.get('DPI', DEFAULT_DPI))
+    # --- 5. Process each page ---
+    for page_info in ok_pages:
+        page_index = page_info['index']
+        png_path = output_base_dir / "pages" / f"page_{page_index:03d}.png"
 
-    build_kdp_pdf(brief_id, dpi)
+        if not png_path.exists():
+            print(f"Warning: PNG file not found for page {page_index:03d} at {png_path}. Skipping this page.", file=sys.stderr)
+            continue
+
+        try:
+            # Open PNG image
+            img = Image.open(png_path)
+            # Convert to grayscale (L) then to RGB. ReportLab's ImageReader
+            # works best with RGB/RGBA images, even for B&W content.
+            img = img.convert('L').convert('RGB')
+
+            img_w_px, img_h_px = img.size
+
+            # Calculate image dimensions in points based on its pixel size and DPI
+            # This assumes the PNG's pixel dimensions correspond to its intended
+            # physical size at the given DPI (e.g., 8.5in * 300dpi = 2550px)
+            draw_w_pt = (img_w_px / dpi) * POINTS_PER_INCH
+            draw_h_pt = (img_h_px / dpi) * POINTS_PER_INCH
+
+            # Calculate offsets to center the image on the PDF page
+            # The image content will be centered within the total page size (trim + bleed)
+            x_offset = (page_w_pt - draw_w_pt) / 2
+            y_offset = (page_h_pt - draw_h_pt) / 2
+
+            # Draw the image onto the canvas
+            c.drawImage(ImageReader(img), x_offset, y_offset, width=draw_w_pt, height=draw_h_pt)
+            c.showPage() # Marks the end of the current page and starts a new one
+            print(f"Added page {page_index:03d} from {png_path} to PDF.")
+
+        except Exception as e:
+            print(f"Error processing page {page_index:03d} from {png_path}: {e}", file=sys.stderr)
+            # Continue processing other pages even if one fails
+
+    # --- 6. Save PDF and write kdp_package.json ---
+    c.save()
+    print(f"PDF interior saved to: {output_pdf_path}")
+
+    # Determine if the package is ready for gate2 based on page count
+    ready_for_gate2 = (actual_page_count == pages_interior_expected)
+    if not ready_for_gate2:
+        print(f"Warning: Page count mismatch. Expected {pages_interior_expected}, got {actual_page_count}. Setting ready_for_gate2 to false.", file=sys.stderr)
+
+    kdp_package_data = {
+        "built_at": datetime.now().isoformat(),
+        "page_count": actual_page_count,
+        "format": f"{trim_width_in}x{trim_height_in}in",
+        "bleed": f"{bleed_in}in",
+        "ready_for_gate2": ready_for_gate2
+    }
+    kdp_package_path = output_base_dir / "kdp_package.json"
+    save_json_file(kdp_package_path, kdp_package_data)
+    print(f"KDP package metadata saved to: {kdp_package_path}")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"An unhandled error occurred: {e}", file=sys.stderr)
+        sys.exit(1)
