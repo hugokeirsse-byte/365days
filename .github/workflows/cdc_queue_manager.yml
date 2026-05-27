@@ -12,6 +12,7 @@ on:
       - 'products/stl_3d/**/cdc.json'
       - 'products/lowcontent_kdp/**/cdc.json'
       - 'products/novels/**/cdc.json'
+      - 'products/jeux_societe/**/cdc.json'
   workflow_dispatch:
     inputs:
       vertical:
@@ -25,6 +26,7 @@ on:
           - stl
           - lowcontent
           - roman
+          - jeux_societe
       target:
         description: 'Nombre de CdC cibles par vertical (défaut: 10)'
         required: false

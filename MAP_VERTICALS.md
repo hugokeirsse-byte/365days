@@ -160,25 +160,41 @@ Cerveau perpétuel (cron hebdo)         Optimizer (cron lundi)
 
 ---
 
-## VERTICAL 5 — JEUX DE CARTES (ETSY / PDF)
+## VERTICAL 5 — JEUX DE SOCIÉTÉ (ETSY / DRIVETHRURPG / ITCH.IO)
 
-**Plateforme** : Etsy (PDF téléchargeable), potentiellement The Game Crafter  
-**Outil production** : Pillow (images) + ReportLab (PDF)  
-**Cerveau dédié** : à créer (agent_card_game_trends.py)  
+**Scope** : card games, jeux de plateau, jeux de dés, party games, jeux éducatifs, accessoires JDR  
+**Plateformes** : Etsy (PDF print-and-play), DriveThruRPG (JDR), Itch.io (indie), The Game Crafter (physique)  
+**Outil production** : Pillow + ReportLab (composants imprimables complets)  
+**Cerveau dédié** : à créer (agent_jeux_societe_trends.py)  
 
 | Étape | Script | Workflow | Statut |
 |-------|--------|----------|--------|
 | Tendances marché | (à créer) | (à créer) | ✗ Manquant |
-| CdC jeu | **agent_card_game_cdc.py** | **card_game_cdc.yml** | ✗ Manquant |
-| Production cartes | produce_card_game.py | produce_card_game.yml | ✓ (sans gate) |
+| CdC jeu complet | agent_jeux_societe_cdc.py | jeux_societe_cdc.yml | ✓ Nouveau |
+| Production card game | produce_card_game.py | produce_card_game.yml | ✓ (sans gate — à connecter) |
+| Production board game | (à créer) | — | ✗ Manquant |
 | Audit | agent_visual_audit.py (audit_card_game) | agent_visual_audit.yml | ✓ v3 |
-| Listing Etsy | Manuel Hugo | — | Manuel Hugo |
+| Listing plateforme | Manuel Hugo | — | Manuel Hugo |
+
+**Types de jeux supportés dans le CdC :**
+
+| Type | Composants | Plateforme | Prix typique |
+|------|-----------|------------|-------------|
+| card_game | 52-200 cartes poker | Etsy, TGC | 4.99-12.99 USD |
+| board_game | plateau + cartes + pions + règles | Etsy, Itch.io | 8.99-24.99 USD |
+| dice_game | étiquettes dés + score sheets | Etsy, Itch.io | 3.99-7.99 USD |
+| party_game | 100-300 cartes + règles | Etsy, Amazon | 5.99-14.99 USD |
+| educational | flashcards + plateau optionnel | Etsy, TPT | 3.99-9.99 USD |
+| rpg_accessory | feuilles perso + cartes + tuiles | DriveThruRPG, Itch.io | 2.99-24.99 USD |
 
 **Ce que Hugo valide dans le CdC :**
-- Concept du jeu (thème, mécanique de jeu, règles)
-- Nombre de cartes et catégories
-- Style visuel (illustrations, typo)
-- Règles complètes (indispensable pour les reviews)
+- Concept du jeu et mécanique principale
+- Liste complète des composants (quoi imprimer)
+- Règles de jeu complètes (cause #1 de mauvaises reviews = règles manquantes)
+- Exemples de contenu (cartes, questions, textes)
+- Plateforme de vente et prix
+
+**Queue** : 10 CdC jeux_societe en attente à tout moment (20 combinaisons type × thème × mécanique)
 
 ---
 

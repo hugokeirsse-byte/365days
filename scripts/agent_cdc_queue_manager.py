@@ -126,6 +126,29 @@ POOLS = {
         ("romance", "sports", "en"),
         ("cozy_mystery", "bookshop", "en"),
     ],
+    "jeux_societe": [
+        # (type_jeu, theme, mecanique)
+        ("card_game", "dark humor infirmières", "questions réponses"),
+        ("party_game", "soirée entre amis adultes", "défis et gages"),
+        ("board_game", "exploration fantasy medieval", "tile placement"),
+        ("card_game", "dark humor profs de lycée", "bluffing"),
+        ("educational", "apprentissage anglais enfants", "memory matching"),
+        ("rpg_accessory", "donjon fantasy D&D compatible", "narration collaborative"),
+        ("dice_game", "apéro entre amis", "push your luck"),
+        ("card_game", "dark humor développeurs", "questions réponses"),
+        ("party_game", "team building entreprise", "créativité collective"),
+        ("board_game", "gestion de ferme cozy", "resource management"),
+        ("card_game", "culture générale décalée", "trivia quiz"),
+        ("educational", "tables de multiplication gamifiées", "jeu de rapidité"),
+        ("party_game", "soirée filles bachelorette", "défis humoristiques"),
+        ("rpg_accessory", "feuilles de personnage universelles", "système custom"),
+        ("card_game", "dark humor pompiers", "questions réponses"),
+        ("board_game", "escape room imprimable", "coopératif déduction"),
+        ("dice_game", "voyage road trip", "collecte et scoring"),
+        ("educational", "histoire de France enfants", "quiz progression"),
+        ("party_game", "Noël famille multigénérationnel", "questions nostalgie"),
+        ("card_game", "dark humor avocat juriste", "questions réponses"),
+    ],
 }
 
 # ── Config par vertical ───────────────────────────────────────────────────────
@@ -167,6 +190,20 @@ CONFIGS = {
         },
         "theme_key": lambda cdc: (
             cdc.get("concept", {}).get("type", ""),
+            cdc.get("concept", {}).get("theme", ""),
+        ),
+    },
+    "jeux_societe": {
+        "products_dir": "products/jeux_societe",
+        "cdc_script": "scripts/agent_jeux_societe_cdc.py",
+        "build_env": lambda t: {
+            "JEU_TYPE": t[0],
+            "JEU_THEME": t[1],
+            "JEU_MECANIQUE": t[2],
+            "JEU_LANGUE": "fr",
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("type_jeu", ""),
             cdc.get("concept", {}).get("theme", ""),
         ),
     },
