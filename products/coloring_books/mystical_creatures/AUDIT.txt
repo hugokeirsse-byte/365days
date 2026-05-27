@@ -1,26 +1,30 @@
-AUDIT VISUEL v2 — 2026-05-27T11:13:43.100367Z
+AUDIT v3 — 2026-05-27T11:22:18.333768Z
+Type produit : COLORING
 ============================================================
 
 VERDICT : REJECT
-Score : 25/100
+Score    : 0/100
 
-── COLORIAGE BOOK CHECKS ──
-  Pages analysées       : 6
-  Pages contamination   : 0 (0.0% gris moyen)
-  Pages vides           : 0
-  Pages sous-résolues   : 6
-  Densité trait         : moy=9.6%, écart-type=3.1%
+── PROBLÈMES BLOQUANTS (causes de 1★ Amazon/Etsy/Cults3D) ──
+  ✗ Seulement 6 pages. Un livre de coloriage KDP viable nécessite ≥30 pages. Les acheteurs laissent 1★ pour 'pas assez de contenu'.
+  ✗ BLOQUANT — 6/6 pages (100%) sous-résolues : page_01.png (673×875px ≈ 75 DPI), page_02.png (673×875px ≈ 75 DPI), page_03.png (673×875px ≈ 75 DPI), page_04.png (673×875px ≈ 75 DPI). KDP imprimera ces images floues — cause directe de 1★ 'qualité médiocre à l'impression'.
 
-PROBLÈMES CRITIQUES :
-  ✗ Seulement 6 pages — KDP exige ≥ 20 pour un livre de coloriage viable
-  ✗ 6/6 pages sous-résolues (<1400px) : page_01.png (673x875), page_02.png (673x875), page_03.png (673x875), page_04.png (673x875). KDP exige ≥300 DPI — ces images (~112 DPI) seront floues à l'impression, garantissant 1 étoile et un potentiel retrait de la vente.
+── AVERTISSEMENTS (à corriger avant upload idéalement) ──
+  ⚠ Pas de couverture trouvée. KDP exige une couverture séparée — sans ça le produit est incomplet.
 
-── CE QUE L'AUDIT PIXEL NE DÉTECTE PAS (vérification manuelle requise) ──
-  • Cohérence de style visuel entre pages (ex: mix chibi / botanique / réaliste)
-  • Qualité artistique et attrait commercial des illustrations
-  • Thème respecté sur toutes les pages (ex: champignons présents partout ?)
-  • Lignes trop fines pour l'impression (imperceptibles à l'oeil nu sans zoom)
-  → Hugo doit vérifier visuellement 5-8 pages représentatives avant upload.
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Cohérence visuelle du style artistique sur toutes les pages (chibi vs botanique vs réaliste ?)
+  → Thème respecté à chaque page (ex: champignons présents sur TOUTES les pages ?)
+  → Lignes assez épaisses pour être visibles imprimées (tester une impression test)
+  → Niveau de difficulté approprié à l'audience cible (adulte = complexe, enfant = simple)
+  → Couverture suffisamment attractive face aux 100+ concurrents sur Amazon
 
-→ REJETÉ. Ne pas uploader. Régénérer le contenu.
-  Les clients Amazon verront ces défauts et laisseront 1 étoile.
+── STATS PAGES ──
+  Pages analysées : 6
+  Densité trait   : moy=9.6%, std=3.1%
+  Gris moyen      : 0.0%
+  Pages low-res   : 6
+  Pages grises    : 0
+
+→ REJETÉ — Ne pas uploader. Corriger les problèmes critiques d'abord.
+  Ces défauts sont visibles par les acheteurs et entraîneront des 1★.
