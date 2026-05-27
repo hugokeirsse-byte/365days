@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-27T02:32:07.983455Z",
+  "timestamp": "2026-05-27T07:57:59.621473Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -52,6 +52,7 @@
     "produce_cope_pack",
     "produce_cultural_arbitrage",
     "produce_cultural_arbitrage_v2",
+    "produce_from_brief",
     "produce_gamedev_asset_pack",
     "produce_iheart_hf",
     "produce_iheart_v2",
@@ -73,13 +74,17 @@
     "agent_auditor",
     "agent_auto_regen",
     "agent_brain_meta",
+    "agent_brief_auditor",
+    "agent_builder",
     "agent_coloring_intel",
     "agent_external_trends",
+    "agent_gate2",
     "agent_gemini_quality_check",
     "agent_ideator_offline",
     "agent_niche_gap",
     "agent_opportunity_hunter",
     "agent_orchestrator",
+    "agent_publisher",
     "agent_strategist",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
@@ -90,128 +95,110 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Eurorack & Modular Synthesizer Enthusiasts",
+      "name": "Retro-Computing Restoration & Customization",
       "type": "sub_culture",
       "audience_size_estimate": 150000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Modular synthesizer hobbyists, hardware sound designers, and electronic musicians who spend thousands on gear and highly value their technical aesthetic.",
+      "buyer_persona": "Retro-tech collectors and hobbyists who restore Amiga, Atari, Commodore, and early Macintosh computers and want precise replacement components or customized aesthetic decals.",
       "product_angles": [
-        "KDP Patch Sheets and Routing Logbooks specifically formatted for Eurorack modules",
-        "Redbubble sticker packs with insider jokes (e.g., 'CV/Gate', 'Warm Analog', 'GAS: Gear Acquisition Syndrome')",
-        "SVG vector layouts for DIY synth faceplates and custom rack designs"
+        "3D-printable replacement drive bezels, custom keycap adapters, and case feet (Cults3D)",
+        "SVG vector decal sheets for restoration of case logos and custom keyboard layouts (Etsy)",
+        "Vintage-style schematic artwork and technical blueprint posters (Redbubble)"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "A4 Eurorack Patch Notes & Sound Design Logbook (KDP)",
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "3D-printable replacement drive latch and custom badge set for the Amiga 500",
       "estimated_monthly_revenue_year1_eur": 150
     },
     {
       "rank": 2,
-      "name": "Historical European Martial Arts (HEMA)",
-      "type": "sub_culture",
-      "audience_size_estimate": 85000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Historical fencing practitioners, sword collectors, and medieval martial arts enthusiasts who study historical combat treatises.",
-      "product_angles": [
-        "Redbubble apparel featuring upscale, digitally restored vector illustrations from 15th-century combat treatises (Fiore dei Liberi, Lichtenauer)",
-        "KDP Training Logs and Sparring Journals for HEMA fighters",
-        "Cults3D parametric sword wall-mounts and protective gear drying rack hangers"
-      ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "Parametric wall-mount bracket for historical longswords (Cults3D)",
-      "estimated_monthly_revenue_year1_eur": 120
-    },
-    {
-      "rank": 3,
-      "name": "Actuaries & Quantitative Risk Analysts",
-      "type": "deep_niche",
+      "name": "Solo Print-and-Play (PnP) RPGs & Board Games",
+      "type": "adjacent_market",
       "audience_size_estimate": 110000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Highly paid math professionals who take immense pride in passing brutal professional exams (SOA/CAS) and love dark, hyper-specific statistical humor.",
-      "product_angles": [
-        "Minimalist Redbubble office mugs and desk stickers with actuary-specific black humor (e.g., 'Life expectancy is just a suggestion')",
-        "KDP Exam Study Trackers engineered for the 300+ hours of study required per exam",
-        "Minimalist SVG/PNG wall art using elegant probability distributions and risk equations"
-      ],
-      "best_pipeline_or_new": "produce_quotes_minimal",
-      "first_test_product": "Premium Actuarial Exam Study Tracker & Syllabus Logbook (KDP)",
-      "estimated_monthly_revenue_year1_eur": 180
-    },
-    {
-      "rank": 4,
-      "name": "Bikepacking & Ultra-Distance Cycling",
-      "type": "sub_culture",
-      "audience_size_estimate": 350000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Adventure cyclists who travel self-supported on gravel/dirt roads for days, obsessed with lightweight gear, route planning, and 'Type 2 fun' suffering.",
-      "product_angles": [
-        "KDP Route Planner & Rig Setup Journals (weight tracking, gear checklists, mechanical logs)",
-        "Redbubble graphic tees with bikepacking-specific jargon ('Overnighter', 'Farkling', 'Sleep is a symptom of caffeine deprivation')",
-        "Cults3D 3D-printable custom frame-bag spacers, accessory mounts, and bar-plug stash capsules"
-      ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "100-Day Bikepacking Expedition Planner & Gear Log (KDP)",
-      "estimated_monthly_revenue_year1_eur": 200
-    },
-    {
-      "rank": 5,
-      "name": "Red Team / Penetration Testers (Cybersecurity)",
-      "type": "deep_niche",
-      "audience_size_estimate": 500000,
-      "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Ethical hackers, network security engineers, and CTF (Capture The Flag) players who love command-line humor, Linux, and digital privacy.",
+      "buyer_persona": "Solo gamers looking for print-at-home tabletop RPG experiences, tracking journals, and minimalistic card/dice layout sheets.",
       "product_angles": [
-        "Redbubble high-contrast terminal-style laptop stickers with realistic syntax jokes (Nmap, Metasploit, Wireshark commands)",
-        "KDP Pen-testing Hex notebooks and network architecture sketching pads",
-        "SVG icon packs of cyber threats and network nodes for technical documentation"
+        "Solo RPG journaling templates and campaign tracker logs (KDP/PDF)",
+        "Printable pocket-sized hex-crawl maps and modular dungeon card decks (Etsy/PDF)",
+        "Minimalistic token designs and counters ready for laser cutting or 3D printing (Cults3D/Etsy)"
       ],
-      "best_pipeline_or_new": "produce_svg_pack",
-      "first_test_product": "Red Team command syntax sticker pack (Redbubble)",
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Solo RPG Campaign Logbook & Hex-Grid Journal for fantasy adventurers",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
-      "rank": 6,
-      "name": "Local Craft Beer Homebrewers",
+      "rank": 3,
+      "name": "HEMA (Historical European Martial Arts)",
       "type": "sub_culture",
-      "audience_size_estimate": 400000,
+      "audience_size_estimate": 85000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Practitioners of historical fencing, longsword combat, and medieval martial arts looking for training logs, rulebooks, and niche-specific gear design.",
+      "product_angles": [
+        "HEMA Training Logbook tracking sparring metrics, techniques, and bouts (KDP)",
+        "Vector sword-fighting technical schematic designs (Etsy/Redbubble)",
+        "Medieval treatise-style stylized vector graphics for gear customization (Etsy/Redbubble)"
+      ],
+      "best_pipeline_or_new": "produce_quotes_minimal",
+      "first_test_product": "The Longsword Fencer's Codex: A structured 12-week training log",
+      "estimated_monthly_revenue_year1_eur": 120
+    },
+    {
+      "rank": 4,
+      "name": "Microscopy & Tardigrade Admirers",
+      "type": "deep_niche",
+      "audience_size_estimate": 130000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
       "growth_trajectory": "steady",
-      "buyer_persona": "Hobbyists brewing beer at home who obsess over yeast strains, hop profiles, water chemistry, and professional-looking batch logs.",
+      "buyer_persona": "Science teachers, amateur biologists, and micro-photography enthusiasts obsessed with microscopic life (tardigrades, rotifers, diatoms).",
       "product_angles": [
-        "KDP Homebrew Recipe Logbooks with precise SG/FG gravity charts, hop schedules, and fermentation trackers",
-        "Redbubble humor apparel ('Yeast Rancher', 'Diacetyl Rest Enthusiast')",
-        "Printable vintage SVG beer label templates for homebrewers to customize and print at home"
+        "Micro-world and Tardigrade line-art coloring book (KDP)",
+        "Vintage scientific botany/microbiology style vector stickers (Redbubble)",
+        "Diatom arrangement geometric SVG pattern packs (Etsy)"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "Craft Brewer's Recipe Logbook & Batch Tracker (KDP)",
-      "estimated_monthly_revenue_year1_eur": 140
+      "best_pipeline_or_new": "produce_coloring_book",
+      "first_test_product": "The Microscopic Kingdom: Tardigrades and Protozoa Coloring Book",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
-      "rank": 7,
-      "name": "Indie Game Developers (Asset Packs)",
-      "type": "adjacent_market",
-      "audience_size_estimate": 600000,
+      "rank": 5,
+      "name": "Geotechnical Engineers & Soil Mechanics",
+      "type": "deep_niche",
+      "audience_size_estimate": 95000,
       "passion_level_1_10": 7,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Solo game developers and game jam participants looking for quick, affordable, cohesive UI assets and icons to build prototypes fast.",
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "slow",
+      "buyer_persona": "Civil engineers, geologists, and geotechnical professionals looking for niche humor, field logbooks, and office mugs.",
       "product_angles": [
-        "SVG/PNG UI Asset Packs (minimalist fantasy RPG buttons, sci-fi terminal HUDs, retro pixel icons)",
-        "Seamless high-resolution texture maps generated via Together AI/Cloudflare FLUX-schnell",
-        "KDP Game Design Document (GDD) layout templates and storyboarding notebooks"
+        "Geotechnical Engineer Field Book with built-in reference charts/formulas (KDP)",
+        "Mohr's Circle, shear strength, and 'soil mechanics' inside-joke apparel (Redbubble)",
+        "Unified Soil Classification System (USCS) quick-reference vector templates (Etsy)"
       ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack",
-      "first_test_product": "Vector Sci-Fi Terminal UI Icon & Button Pack (SVG/PNG pack for Itch.io/Etsy)",
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Geotechnical Field Notebook & Soil Classification Quick-Reference Guide",
+      "estimated_monthly_revenue_year1_eur": 100
+    },
+    {
+      "rank": 6,
+      "name": "French Micro-Museums & Regional Heritage Sites",
+      "type": "b2b",
+      "audience_size_estimate": 35000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Curators of local French historical monuments, small regional museums, and heritage protection associations seeking affordable souvenir merchandise.",
+      "product_angles": [
+        "Customizable regional history coloring books depicting specific local monuments (KDP/Direct B2B)",
+        "3D-printable architectural replicas of local castles/chateaux for souvenir shops (Cults3D/B2B)",
+        "Vector-based historical postcard templates highlighting regional legends (Etsy/Direct B2B)"
+      ],
+      "best_pipeline_or_new": "produce_chateau_local",
+      "first_test_product": "Customizable 'Coloriage Patrimoine' template pack for French medieval ruins",
       "estimated_monthly_revenue_year1_eur": 300
     }
   ]
