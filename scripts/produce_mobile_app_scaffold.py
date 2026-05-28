@@ -92,7 +92,7 @@ Include: setup steps for the chosen framework, folder structure overview,
 build/run commands for iOS and Android, monetization integration notes,
 privacy/offline data handling notes."""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate README.", file=sys.stderr)
         sys.exit(1)
@@ -133,7 +133,7 @@ Generate sections for:
 3. Screenshots plan (what each of the {store.get('screenshots_count', 5)} screenshots should show)
 4. Privacy policy template (offline-first, no data collection assumed)"""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate STORE_LISTING.", file=sys.stderr)
         sys.exit(1)
@@ -180,7 +180,7 @@ Also include:
 - Empty states (first use)
 - Error states"""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=2500)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=2500, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate UX_FLOW.", file=sys.stderr)
         sys.exit(1)
@@ -234,7 +234,7 @@ Requirements:
 - Local storage / offline-first architecture notes
 - Accessibility basics (semantic labels)"""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate entry point.", file=sys.stderr)
         sys.exit(1)

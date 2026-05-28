@@ -224,7 +224,7 @@ Sois direct, honnête sur ce qui manque ou dysfonctionne, et précis sur les opp
 
 Génère le rapport hebdomadaire complet selon le format spécifié."""
 
-    return llm_call("conseil", system, user, temperature=0.6, max_tokens=4000)
+    return llm_call("conseil", system, user, temperature=0.6, max_tokens=4000, json_mode=False)
 
 
 # --------------------------------------------------------------------------- #

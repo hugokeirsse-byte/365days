@@ -88,7 +88,7 @@ ASO keywords: {', '.join(cdc.get('mots_cles_aso', [])[:8])}
 
 Include: setup steps for the chosen framework, folder structure overview, build commands for Android/iOS, monetization integration notes."""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate README.", file=sys.stderr)
         sys.exit(1)
@@ -129,7 +129,7 @@ Generate sections for:
 3. Itch.io — title, tagline, description
 4. Screenshots plan (what each of the 5-8 screenshots should show)"""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate STORE_LISTING.", file=sys.stderr)
         sys.exit(1)
@@ -163,7 +163,7 @@ Include:
 - Export/build folder structure
 - Where to put monetization (ads/IAP) integration files"""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.6, max_tokens=2000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.6, max_tokens=2000, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate project_structure.", file=sys.stderr)
         sys.exit(1)
@@ -209,7 +209,7 @@ Requirements:
 - Mobile-specific considerations (touch input, screen size, battery)
 - Monetization hooks (banner/interstitial placeholder)"""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.65, max_tokens=3000, json_mode=False)
     if not response:
         print("[Scaffold] LLM failed to generate entry point.", file=sys.stderr)
         sys.exit(1)

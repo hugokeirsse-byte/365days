@@ -237,7 +237,7 @@ Shaders demandés:
 Chaque shader doit être unique, fonctionnel, et bien commenté.
 Format JSON: {{"shaders": [{{"nom": "...", "description": "...", "code_gdshader": "shader_type canvas_item;\\n..."}}]}}"""
 
-        response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.7, max_tokens=6000)
+        response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.7, max_tokens=6000, json_mode=False)
         if not response:
             return {}
         clean = response.strip()
@@ -257,7 +257,7 @@ JSON uniquement."""
 Description: {concept.get("description", "")}
 Format: {{"plugin_cfg": "...", "main_script": "...", "fichiers_supplementaires": [{{"nom": "...", "contenu": "..."}}]}}"""
 
-        response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.6, max_tokens=8000)
+        response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.6, max_tokens=8000, json_mode=False)
         if not response:
             return {}
         clean = response.strip()
@@ -277,7 +277,7 @@ JSON uniquement."""
 Description: {concept.get("description", "")}
 Format: {{"project_godot": "...", "scenes": [{{"nom": "Main.tscn", "contenu_tscn": "..."}}], "scripts": [{{"nom": "Player.gd", "contenu_gd": "..."}}]}}"""
 
-        response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.6, max_tokens=8000)
+        response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.6, max_tokens=8000, json_mode=False)
         if not response:
             return {}
         clean = response.strip()

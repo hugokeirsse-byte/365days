@@ -42,20 +42,28 @@ def _load_routing():
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 
 
-def _call_gemini(system: str, user: str, temperature: float, max_tokens: int) -> tuple[str, int, int]:
+def _call_gemini(system: str, user: str, temperature: float, max_tokens: int,
+                 json_mode: bool = True) -> tuple[str, int, int]:
     key = os.environ.get("GEMINI_API_KEY", "")
     if not key:
         raise ValueError("GEMINI_API_KEY not set")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={key}"
+    gen_config = {"temperature": temperature, "maxOutputTokens": max_tokens}
+    if json_mode:
+        gen_config["responseMimeType"] = "application/json"
     body = {
         "contents": [{"role": "user", "parts": [{"text": f"{system}\n\n{user}"}]}],
-        "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens},
+        "generationConfig": gen_config,
     }
     data = json.dumps(body).encode()
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req, timeout=60) as resp:
+    with urllib.request.urlopen(req, timeout=120) as resp:
         result = json.loads(resp.read())
-    text = result["candidates"][0]["content"]["parts"][0]["text"]
+    candidate = result["candidates"][0]
+    finish = candidate.get("finishReason", "STOP")
+    if finish not in ("STOP", "MAX_TOKENS"):
+        raise ValueError(f"Gemini finish reason: {finish}")
+    text = candidate["content"]["parts"][0]["text"]
     usage = result.get("usageMetadata", {})
     return text, usage.get("promptTokenCount", 0), usage.get("candidatesTokenCount", 0)
 
@@ -115,8 +123,12 @@ PROVIDERS = {
 # Main LLM call
 # --------------------------------------------------------------------------- #
 def llm_call(agent_type: str, system: str, user: str,
-             temperature: float = 0.7, max_tokens: int = 4000) -> str:
-    """Try primary provider then fallbacks. Returns text or empty string."""
+             temperature: float = 0.7, max_tokens: int = 4000,
+             json_mode: bool = True) -> str:
+    """Try primary provider then fallbacks. Returns text or empty string.
+    json_mode=True (default): Gemini uses responseMimeType application/json — prevents truncation.
+    Set json_mode=False for free-text outputs (novel chapters, etc.).
+    """
     routing = _load_routing()
     config = routing.get(agent_type, DEFAULT_ROUTING.get(agent_type, {"primary": "gemini", "fallback": []}))
     providers = [config["primary"]] + config.get("fallback", [])
@@ -128,7 +140,10 @@ def llm_call(agent_type: str, system: str, user: str,
         for attempt in range(2):
             try:
                 print(f"[brain_utils] {agent_type} → {provider} (attempt {attempt+1})")
-                text, tokens_in, tokens_out = fn(system, user, temperature, max_tokens)
+                if provider == "gemini":
+                    text, tokens_in, tokens_out = fn(system, user, temperature, max_tokens, json_mode)
+                else:
+                    text, tokens_in, tokens_out = fn(system, user, temperature, max_tokens)
                 log_api_call(agent_type, provider, tokens_in, tokens_out, True)
                 return text
             except (urllib.error.URLError, TimeoutError) as e:
