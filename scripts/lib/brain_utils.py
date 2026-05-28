@@ -48,7 +48,11 @@ def _call_gemini(system: str, user: str, temperature: float, max_tokens: int,
     if not key:
         raise ValueError("GEMINI_API_KEY not set")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={key}"
-    gen_config = {"temperature": temperature, "maxOutputTokens": max_tokens}
+    gen_config = {
+        "temperature": temperature,
+        "maxOutputTokens": max_tokens,
+        "thinkingConfig": {"thinkingBudget": 0},
+    }
     if json_mode:
         gen_config["responseMimeType"] = "application/json"
     body = {
