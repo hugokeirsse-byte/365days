@@ -29,7 +29,7 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 
 ---
 
-## ÉTAT DES 7 VERTICAUX
+## ÉTAT DES 9 VERTICAUX
 
 | # | Vertical | Plateforme | CdC | Prod | Brain | Statut |
 |---|----------|------------|-----|------|-------|--------|
@@ -37,9 +37,11 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 | 2 | Low-Content KDP | Amazon KDP | ✅ | ✅ ReportLab | ✅ | **PRÊT** |
 | 3 | Romans KDP | Amazon KDP | ✅ | ✅ Groq Llama | ✅ | **PRÊT** |
 | 4 | STL 3D print | Cults3D | ✅ | ✅ OpenSCAD | ✅ | **PRÊT** |
-| 5 | Jeux de société | Etsy/Itch.io | ✅ | ✅ PDF print | ✅ | **PRÊT** |
+| 5 | Jeux de société | Itch.io/DriveThru | ✅ | ✅ PDF print | ✅ | **PRÊT** |
 | 6 | Merch Design | Redbubble/Amazon | ✅ | ✅ Pollinations+Pillow | ✅ | **PRÊT** |
 | 7 | Godot Assets | Itch.io | ✅ | ✅ Pollinations/LLM | ✅ | **PRÊT** |
+| 8 | Jeux Mobiles | App Store/Play/Itch | ✅ | ✅ Scaffold LLM | ✅ | **PRÊT** |
+| 9 | Applications | App Store/Play Store | ✅ | ✅ Scaffold LLM | ✅ | **PRÊT** |
 
 ---
 
@@ -161,10 +163,49 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 
 ---
 
+## VERTICAL 8 — JEUX MOBILES
+
+**Plateformes** : App Store (iOS), Google Play (Android), Itch.io  
+**Framework** : Déterminé par le brain (Godot 4 export mobile, Phaser web/mobile, Unity)  
+**Production** : LLM génère scaffold projet + store listing + fichier entry point  
+**Monétisation** : Déterminée par le brain (free+ads, freemium IAP, paid, demo)
+
+| Script | Workflow | Rôle |
+|--------|----------|------|
+| agent_mobile_games_cdc.py | mobile_games_cdc.yml | CdC : genre + niche + framework + monétisation |
+| produce_mobile_game_scaffold.py | mobile_games_production.yml | Scaffold projet + STORE_LISTING.md |
+| agent_mobile_games_trends.py | mobile_games_brain.yml | Brain tendances (lundi 05h) |
+
+**Gate check** : Hugo valide concept, framework choisi, modèle économique, périmètre MVP  
+**Exigences** : framework justifié par les données marché, MVP faisable en <21 jours, hook clair en 15s  
+**Différence vs autres verticaux** : production = scaffold (Hugo développe), pas de publication automatique
+
+---
+
+## VERTICAL 9 — APPLICATIONS MOBILES
+
+**Plateformes** : App Store (iOS), Google Play (Android)  
+**Framework** : Déterminé par le brain (Flutter, React Native, PWA, Swift+Kotlin natif)  
+**Production** : LLM génère scaffold + UX flow + store listing + fichier entry point  
+**Monétisation** : Déterminée par le brain (freemium, subscription, one-time purchase, free+ads)
+
+| Script | Workflow | Rôle |
+|--------|----------|------|
+| agent_mobile_apps_cdc.py | mobile_apps_cdc.yml | CdC : catégorie + niche + framework + monétisation |
+| produce_mobile_app_scaffold.py | mobile_apps_production.yml | Scaffold + UX_FLOW.md + STORE_LISTING.md |
+| agent_mobile_apps_trends.py | mobile_apps_brain.yml | Brain tendances (vendredi 05h) |
+
+**Gate check** : Hugo valide concept app, problème résolu, framework, modèle économique, features MVP  
+**Exigences** : valeur unique claire, MVP <30 jours, modèle économique viable  
+**Différence vs autres verticaux** : production = scaffold (Hugo développe), pas de publication automatique
+
+---
+
 ## CERVEAUX PERPÉTUELS
 
 | Cron | Agent | Domaine |
 |------|-------|---------|
+| Lundi 05h | agent_mobile_games_trends.py | Jeux mobiles (App Store/Play/Itch) |
 | Lundi 06h | agent_vertical_optimizer.py | Feedback loop tous verticaux |
 | Mardi 05h | agent_lowcontent_trends.py | Low-content KDP |
 | Mercredi 04h | agent_stl_trends.py | STL 3D print |
@@ -173,6 +214,7 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 | Jeudi 04h | agent_jeux_societe_trends.py | Jeux de société |
 | Jeudi 05h | agent_prospecteur_emergence.py | Nouvelles niches émergentes |
 | Vendredi 04h | agent_merch_trends.py | Merch POD |
+| Vendredi 05h | agent_mobile_apps_trends.py | Applications mobiles |
 | Samedi 05h | agent_godot_trends.py | Godot/Itch.io assets |
 | Dimanche 20h | agent_rapporteur_hebdo.py | Rapport hebdo pour Hugo |
 | Toutes les 4h | agent_cdc_queue_manager.py | Maintenir 10 CdC/vertical |
@@ -196,16 +238,14 @@ Hugo peut injecter ses propres idées via GitHub → Actions → "💡 Idée Hug
 |----------|------------|-------|----------|
 | Wall Art printable | Etsy Digital | Pollinations + Pillow | Haute |
 | Excel/Sheets templates | Etsy + Gumroad | Python openpyxl | Haute |
-| Applications mobiles | App Store + Google Play | Flutter/Godot + AdMob/IAP | Haute |
 | Cross-stitch patterns | Etsy | Python grille + PDF | Moyenne |
 | Digital Planners iPad | Etsy | ReportLab hyperliens | Moyenne |
 | Tarot/Oracle cards | Etsy | Pollinations + PDF | Basse |
 | Prompt Packs IA | PromptBase + Etsy | LLM pur texte | Basse |
 
-**Notes verticaux futurs :**
+**Notes :**
 - **Wall Art** : même stack que merch (Pollinations + Pillow), adaptation rapide — format PNG 300dpi + PDF A3/A4
 - **Excel templates** : 100% offline Python (openpyxl), aucune dépendance API, revenus récurrents sur Gumroad
-- **Apps mobiles** : vertical différent (distribution App Store/Play Store, monétisation pub/IAP vs vente directe). Nécessite stratégie complète avant implémentation : choix framework, niche, modèle économique
 
 ---
 
