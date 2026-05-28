@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-28T15:29:10.496239Z",
+  "timestamp": "2026-05-28T18:31:12.634600Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -75,6 +75,7 @@
     "produce_specs_deck",
     "produce_stl_openscad",
     "produce_stl_parametric",
+    "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
     "produce_viral_formats",
@@ -124,6 +125,8 @@
     "agent_stl_cdc",
     "agent_stl_trends",
     "agent_strategist",
+    "agent_svg_cdc",
+    "agent_svg_trends",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -134,7 +137,7 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Unreliable Image Generation & Missing Fallback Strategy",
+      "issue_title": "Brittle Image Generation Fallback & Lack of Quality Gates",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
@@ -142,102 +145,84 @@
         "produce_kdp_cover",
         "produce_tumbler_wraps"
       ],
-      "current_pain_description": "HF is dead, Gemini is 429, AI Horde is 403. Pollinations is the only operational generator but outputs low-quality, non-stylized raw assets that are unmarketable. If Pollinations fails or outputs junk, the pipeline crashes or produces unusable products.",
-      "proposed_fix": "Create a unified gateway script (`image_generator_gateway.py`) implementing a strict priority queue: 1) Together AI (FLUX-schnell, free tier), 2) Cloudflare Workers AI (10k free neurons/day, SDXL/Flux), 3) Runware (PAYG, capped at $10/month via API key budget monitoring), 4) Pollinations as absolute fallback. Implement automated prompt-tuning per provider to guarantee high-contrast black & white lines for coloring books.",
-      "estimated_implementation_hours_claude": 3.5,
-      "estimated_value_unlocked": "Ensures zero pipeline crashes, shifts quality from raw/unusable to professional FLUX-schnell grade for < 5 EUR/month.",
+      "current_pain_description": "Currently, if a primary image API (like Together AI) fails or hits a rate limit, the system either crashes or silently falls back to Pollinations, which generates low-quality, unusable images. These bad images waste GitHub Actions runtime and require manual deletion by Hugo.",
+      "proposed_fix": "Create a centralized 'image_generator_gateway.py' wrapper. It should implement a strict fallback sequence (Cloudflare -> Together AI -> Runware PAYG -> Pollinations). If Pollinations is triggered, the script must automatically flag the output metadata as 'UNVERIFIED_LOW_QUALITY' and prevent it from being packaged for publication without Hugo's manual approval.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Saves 100% of wasted packaging/publishing time on low-quality assets; ensures only sellable assets reach final directories.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Mobile Upload Bottleneck & Disorganized Metadata Packages",
-      "category": "bottleneck",
+      "issue_title": "No Automated Visual Quality Audit (Anatomy & Text Gibberish)",
+      "category": "quality_bug",
       "affected_pipelines": [
-        "agent_publisher",
         "produce_coloring_book",
         "produce_merch_designs",
-        "produce_lowcontent_kdp"
+        "produce_kdp_cover"
       ],
-      "current_pain_description": "Hugo only has an Android phone and 10 hours/week. Downloading raw build artifacts from GitHub Actions and manually writing titles, descriptions, and tags on mobile for KDP/Redbubble/Cults3D is extremely slow, leading to a publishing bottleneck.",
-      "proposed_fix": "Modify `agent_publisher` to auto-generate a `distribution_package.zip` for every run. This zip must contain: 1) Resized, optimized, and ready-to-upload assets, 2) A `metadata.json` and a formatted `copy_paste_helper.txt` containing platform-specific pre-optimized SEO titles, tags, descriptions, and pricing tailored for fast copy-pasting on mobile UI.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Reduces manual publishing time per product on mobile from 25 minutes to less than 3 minutes, unlocking high-velocity listing.",
+      "current_pain_description": "AI models (especially FLUX-schnell and SDXL) occasionally generate deformed hands, overlapping lines, or gibberish text. Publishing these on Amazon KDP or Redbubble ruins store reputation and leads to account suspensions.",
+      "proposed_fix": "Leverage the free tier of Gemini 2.5 Flash's multimodal vision capability inside 'agent_gemini_quality_check.py'. After image generation, send the low-res preview of the image to Gemini with a strict structured prompt to grade: 1) Text legibility, 2) Anatomical/structural anomalies, 3) Line cleanlines (for coloring books). If score < 7/10, automatically discard and retry generation once with an altered seed.",
+      "estimated_implementation_hours_claude": 3.0,
+      "estimated_value_unlocked": "Eliminates 90% of visually defective products before they are shown to customers, protecting seller accounts.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Silent API Failures and Lack of Mobile Monitoring",
-      "category": "failure_mode",
+      "issue_title": "GitHub Actions Artifact Expiration & Mobile Retrieval Bottleneck",
+      "category": "bottleneck",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auto_regen"
+        "All asset production pipelines"
       ],
-      "current_pain_description": "GitHub Actions run headless. If an API key expires, rate-limits occur, or image generation fails, Hugo does not know until he manually checks GitHub logs on his phone web browser, wasting critical debugging time.",
-      "proposed_fix": "Add a lightweight Telegram/Discord webhook notification class inside `agent_orchestrator`. Send a rich text notification to Hugo's private mobile channel upon workflow completion, summarizing: Run Status (Success/Failure), number of assets generated, API cost spent, and a direct download link to the release artifact.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Instant feedback loop on Hugo's Android phone without navigating the complex GitHub UI.",
+      "current_pain_description": "GitHub Actions artifacts expire after 90 days. Downloading large zip files on an Android phone via Termux is slow, hard to organize, and easy to lose track of, resulting in lost work.",
+      "proposed_fix": "Set up a free Cloudflare R2 bucket (10GB free tier, $0/month) or Backblaze B2. Integrate an 'upload_to_storage.py' script at the end of every successful pipeline run. The script uploads the final product (PDF, PNG, SVG) and appends a direct download URL to a simple markdown index file ('portfolio.md') in the repo, allowing Hugo to download assets directly to his phone via a standard browser.",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Prevents data loss, organizes assets automatically, and makes mobile downloading 5x faster.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Lack of Image Generation Caching leading to Wasted Budget",
+      "issue_title": "Hardcoded LLM Models Across Multiple Agent Scripts",
       "category": "code_quality",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_roman_chapters",
-        "produce_board_game"
+        "agent_b1_stratege",
+        "agent_architecte_systeme",
+        "agent_gemini_quality_check",
+        "agent_eclaireur_bestsellers",
+        "agent_novel_planner"
       ],
-      "current_pain_description": "If a 50-page coloring book pipeline crashes at page 45 due to a transient API timeout, restarting the GitHub Action regenerates all 45 pages from scratch. This wastes valuable daily API quotas, Together AI limits, or Runware cash.",
-      "proposed_fix": "Implement a lightweight SQLite database or file-based JSON cache (`generation_cache.json`) in the workspace. Commit intermediate successful asset generation states back to a temporary git branch or use GitHub Actions Cache. Before calling any generation API, check if the specific prompt/asset hash already exists in the cache.",
-      "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Saves up to 80% of API quotas and compute time on failed/retried pipeline runs.",
+      "current_pain_description": "LLM model names (e.g., 'gemini-2.5-flash') and API keys are hardcoded or independently configured across 40+ different agent scripts. When Google updates/deprecates a model, or if Hugo needs to swap to another free provider, dozens of files must be edited manually.",
+      "proposed_fix": "Refactor all agents to import their LLM client and model configurations from a single shared utility module: 'src/utils/llm_client.py'. This module will handle model versioning, API key rotation, system instructions, and universal retry logic (exponential backoff for HTTP 429).",
+      "estimated_implementation_hours_claude": 2.0,
+      "estimated_value_unlocked": "Reduces maintenance overhead from hours to minutes when API endpoints change; prevents silent workflow failures due to model deprecation.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Strict KDP Print-Specification Violations",
-      "category": "quality_bug",
+      "issue_title": "Missed Cross-Pollination (Single Asset -> Multi-Platform Formats)",
+      "category": "cross_polination",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_lowcontent_kdp",
-        "produce_chess_book"
+        "produce_merch_designs",
+        "produce_svg_pack",
+        "produce_coloring_book"
       ],
-      "current_pain_description": "Generated images do not respect physical print formats (e.g., KDP 8.5x11 inches bleed/no-bleed margins). Raw outputs from AI generators are usually 1:1 square. If compiled raw, Amazon KDP will reject the PDF during review, causing high manual rework rates.",
-      "proposed_fix": "Integrate an automated Pillow-based pre-flight canvas adapter inside the PDF compilation step. Automatically resize, pad to 300 DPI, add standard KDP margins (0.25 inch bleed safety zone), and convert to grayscale/CMYK color space before compiling images into the final PDF.",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Zero KDP print-on-demand rejections due to formatting/sizing issues, ensuring automated compliance.",
+      "current_pain_description": "A design generated for a t-shirt (Merch) stays in the merch folder. It is not automatically repackaged as a coloring book page, a sticker for Redbubble, a KDP low-content cover, or a digital SVG cut file, missing out on massive leverage.",
+      "proposed_fix": "Introduce 'pipeline_cross_pollinator.py'. Once an asset is marked as 'high-quality approved', this script runs automated ImageMagick / potrace CLI commands (available in GitHub Actions runner) to: 1) Convert color designs to SVG vectors, 2) Extract high-contrast outlines for coloring books, 3) Resize and pad to standard KDP cover dimensions.",
+      "estimated_implementation_hours_claude": 4.0,
+      "estimated_value_unlocked": "Multiplies the output catalog by 3x to 4x for every hour Hugo works, maximizing ROI per design.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Missed Cross-Pollination of Assets Across Platforms",
-      "category": "cross_polination",
+      "issue_title": "API Quota Exhaustion & Lack of Cross-Workflow Rate Limiting",
+      "category": "failure_mode",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_merch_designs",
-        "produce_svg_pack",
-        "produce_stl_parametric"
+        "All pipelines running on GitHub Actions cron"
       ],
-      "current_pain_description": "Pipelines run in silos. A high-quality line-art illustration generated for a coloring book is never reused as a vector SVG pack for Etsy, a transparent PNG for Redbubble stickers, or extruded into a 3D cookie cutter for Cults3D.",
-      "proposed_fix": "Create a post-generation multiplexer script (`agent_vertical_optimizer`). For every high-quality black-and-white asset generated: 1) Convert to transparent PNG (via Pillow/rembg) for Merch, 2) Vectorize to SVG (via potrace) for Etsy SVG packs, 3) Auto-generate a simple OpenSCAD script to extrude the SVG profile into a 3D printable STL for Cults3D.",
-      "estimated_implementation_hours_claude": 4.0,
-      "estimated_value_unlocked": "4x multiplier on digital assets produced per hour of API compute time.",
-      "priority_1_10": 7
-    },
-    {
-      "rank": 7,
-      "issue_title": "Gemini API Rate Limiting (HTTP 429) Under Heavy Load",
-      "category": "security",
-      "affected_pipelines": [
-        "agent_architecte_systeme",
-        "agent_eclaireur_bestsellers",
-        "agent_orchestrator"
-      ],
-      "current_pain_description": "Using multiple parallel agents on GitHub Actions using the free Gemini tier triggers immediate 429 rate limit errors, breaking orchestrations midway.",
-      "proposed_fix": "Implement a centralized API client wrapper with built-in client-side rate-limiting using token bucket algorithms and exponential backoff with jitter (e.g., `tenacity` library or custom loop), spacing out LLM calls to never exceed 15 RPM (Requests Per Minute).",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Completely mitigates HTTP 429 crash failures across all LLM-reliant agents.",
-      "priority_1_10": 7
+      "current_pain_description": "If multiple GitHub Actions workflows trigger at once, they can collectively exceed Cloudflare's 10k daily neuron limit or Gemini's RPM limits, causing cascade failures mid-run and wasting action runner minutes.",
+      "proposed_fix": "Implement a lightweight state-locking mechanism using a file in the repository (e.g., '.api_lock'). When a workflow starts, it checks if a lock exists or if the daily quota is nearing depletion. It can sleep or defer execution. Alternatively, serialize all production runs through a single queue manager workflow ('agent_cdc_queue_manager.py') instead of independent cron triggers.",
+      "estimated_implementation_hours_claude": 3.0,
+      "estimated_value_unlocked": "Eliminates API rate limit failures, ensuring 100% successful completion of scheduled runs.",
+      "priority_1_10": 6
     }
   ]
 }
