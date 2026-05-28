@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-28T15:29:11.155339Z",
+  "timestamp": "2026-05-28T18:31:10.772230Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -75,6 +75,7 @@
     "produce_specs_deck",
     "produce_stl_openscad",
     "produce_stl_parametric",
+    "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
     "produce_viral_formats",
@@ -124,6 +125,8 @@
     "agent_stl_cdc",
     "agent_stl_trends",
     "agent_strategist",
+    "agent_svg_cdc",
+    "agent_svg_trends",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -137,66 +140,66 @@
       "tool_or_platform": "SiliconFlow AI",
       "url": "https://siliconflow.cn/en/",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Daily free credits upon login + ~14 Million tokens/credits free on signup. Running FLUX.1-schnell costs virtually nothing (~$0.0001 per image), enabling thousands of free high-quality generations.",
-      "what_it_does_uniquely": "Provides an OpenAI-compatible API for cutting-edge models including FLUX.1-schnell, SD3-Medium, and various LLMs. It is extremely fast, highly available, and doesn't block GitHub Actions runners.",
-      "would_integrate_where": "Replace the broken Pollinations/HF pipelines in the 'produce_coloring_book' and 'produce_merch_designs' workflows. The API payload is standard OpenAI format, making integration into Python scripts trivial.",
+      "free_tier_concrete_limits": "Generous sign-up credits (approx. 14 CNY / $2 USD) plus daily free login credits. FLUX.1-schnell costs only ~0.01 CNY per image, giving thousands of free generations.",
+      "what_it_does_uniquely": "Provides high-speed API endpoints for FLUX.1-schnell, SD3, and state-of-the-art LLMs. It bypasses GitHub Actions IP bans (unlike AI Horde) and is significantly cheaper/more reliable than standard US-based providers.",
+      "would_integrate_where": "Replace current broken image pipelines (e.g., `produce_coloring_book` or `produce_merch_designs`) by switching the API endpoint from Together/Cloudflare to SiliconFlow with simple cURL or Python requests.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Based in China; UI is occasionally bilingual (Chinese/English), but API documentation and endpoint reliability are fully production-grade."
+      "risk_or_caveat": "Documentation is sometimes partially in Chinese, but the API is fully OpenAI-compatible. Subject to future promotional tier changes."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Jina Reader API",
+      "tool_or_platform": "Jina AI Reader API",
       "url": "https://jina.ai/reader/",
       "category": "scraping",
-      "free_tier_concrete_limits": "1,000,000 free tokens per month. No API key required for basic rate-limited usage.",
-      "what_it_does_uniquely": "Prefixing any URL with 'https://r.jina.ai/' converts the entire web page into clean, LLM-friendly Markdown. It handles dynamic JavaScript rendering and bypasses standard anti-scraping blocks better than raw requests.",
-      "would_integrate_where": "Integrate into the 'agent_trendhunter' and 'agent_eclaireur_bestsellers' scripts to scrape e-commerce trend pages and search results directly from GitHub Actions without getting 403 blocks.",
+      "free_tier_concrete_limits": "1,000,000 free tokens per month via API.",
+      "what_it_does_uniquely": "Converts any URL (including search results, e-commerce listings, or blog posts) into clean, LLM-friendly Markdown. Perfect for feeding raw web data directly into Gemini-2.5-flash.",
+      "would_integrate_where": "Integration into market analysis agents (e.g., `agent_eclaireur_bestsellers` or `agent_trend_explosion`) to scrape and understand live trends directly from GitHub Actions without needing complex headless browsers.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Extremely popular, meaning rate limits on the free tier without an API key can occasionally be hit during peak GitHub Actions hours. Getting a free API key mitigates this."
+      "risk_or_caveat": "Some highly protected sites (like Etsy or Amazon) might still trigger Cloudflare challenge blocks, requiring proxy rotations."
     },
     {
       "rank": 3,
       "tool_or_platform": "Serper.dev",
       "url": "https://serper.dev/",
       "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free search queries upon signup. No credit card required.",
-      "what_it_does_uniquely": "An incredibly fast, cheap, and reliable Google Search & Google Images scraping API. It returns structured JSON of search results, shopping listings, and autocomplete suggestions.",
-      "would_integrate_where": "Used inside 'agent_niche_gap' and 'agent_opportunity_hunter' to programmatically check search volumes and competition levels for newly generated digital product ideas before building them.",
+      "free_tier_concrete_limits": "2,500 free Google Search / Google Images / Google Shopping queries on signup.",
+      "what_it_does_uniquely": "An extremely fast, reliable, and cheap Google Search API. It allows automated scraping of Google Trends, autocomplete keywords, and Google Shopping prices.",
+      "would_integrate_where": "Used in `agent_niche_gap` and `agent_opportunity_hunter` to programmatically fetch search volumes, related search terms, and current product pricing to identify low-competition niches.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "It is a finite pool of 2,500 requests; Hugo must optimize his cron jobs to search only high-potential keywords to avoid burning the quota quickly."
+      "risk_or_caveat": "Credits do not auto-renew monthly (one-time signup credit), but multiple free accounts can be cycled if needed, or topped up extremely cheaply."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to upload, host, and index 3D models. Optional paid memberships/downloads program where Thangs takes a low commission.",
-      "what_it_does_uniquely": "It is the fastest-growing 3D model search engine and community. Unlike Cults3D, it behaves like a search crawler and social network combined, giving massive organic reach to newly uploaded STL files.",
-      "would_integrate_where": "Add as a primary distribution channel in the 'produce_stl_parametric' and 'produce_stl_openscad' pipelines. Hugo can automatically upload generated STLs via their API/upload interface or direct link propagation.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Heavy focus on 3D printing community; designs must be manifold and printable to avoid bad reviews."
-    },
-    {
-      "rank": 5,
       "tool_or_platform": "Draft2Digital",
       "url": "https://www.draft2digital.com/",
       "category": "pod",
-      "free_tier_concrete_limits": "Free to format, publish, and distribute. They take a 10% cut of the retail price only when a book sells.",
-      "what_it_does_uniquely": "Distributes digital and print-on-demand books to dozens of major retailers (Apple Books, Kobo, Barnes & Noble, Scribd, Tolino) simultaneously, handling formatting, metadata, and payment aggregation.",
-      "would_integrate_where": "Integrate into the publishing step of 'produce_coloring_book' and 'produce_lowcontent_kdp'. Instead of publishing only to Amazon KDP, the EPUBs/PDFs are pushed wide to capture non-Amazon audiences.",
+      "free_tier_concrete_limits": "100% free to publish and distribute. They take a 10% cut of the retail price only when a sale occurs.",
+      "what_it_does_uniquely": "Distributes digital books, EPUBs, and paperbacks to dozens of major platforms (Apple Books, Kobo, Barnes & Noble, Scribd, Tolino) simultaneously from a single dashboard.",
+      "would_integrate_where": "Used at the end of the `agent_publisher` pipeline to distribute generated books (like the chess book, roman chapters, or low-content notebooks) wide, rather than relying solely on Amazon KDP.",
       "novelty_2026_1_10": 6,
-      "risk_or_caveat": "Manual metadata upload is usually required unless using their bulk upload tools; formatting templates are rigid but highly compatible."
+      "risk_or_caveat": "Strict formatting requirements for interior files; automatic EPUB conversion can sometimes mess up complex image-heavy layouts like coloring books."
+    },
+    {
+      "rank": 5,
+      "tool_or_platform": "Thangs 3D",
+      "url": "https://thangs.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to upload and host unlimited 3D models. Offers a creator membership program with competitive fee splits.",
+      "what_it_does_uniquely": "The fastest-growing 3D model search engine and community. It indexes and matches geometries, making it highly discoverable for 3D printing enthusiasts.",
+      "would_integrate_where": "Used alongside Cults3D in `produce_stl_parametric` or `produce_stl_openscad` to double the distribution footprint of Hugo's gamedev/3D assets with zero extra coding.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Very competitive niche; requires proper tagging and descriptions to stand out in their native geometric search engine."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Freesound API",
-      "url": "https://freesound.org/docs/api/",
-      "category": "dev_tool",
-      "free_tier_concrete_limits": "2,000 requests per day, completely free with a standard developer account.",
-      "what_it_does_uniquely": "Gives programmatic access to a massive database of millions of Creative Commons and CC0 (Public Domain) audio clips, sound effects, and loops.",
-      "would_integrate_where": "Integrate into 'produce_gamedev_asset_pack' to automatically search, filter by CC0 license, download, and bundle thematic sound effect packs (e.g., '8-Bit Retro UI Sounds', 'Ambient Forest Loop Pack') to sell on itch.io or Cults3D.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Must strictly filter search queries by license type (specifically 'Creative Commons 0') in the API payload to remain 100% legally compliant for commercial resale."
+      "tool_or_platform": "Kokoro-82M (via local Python/ONNX)",
+      "url": "https://github.com/hexgrad/kokoro",
+      "category": "ai_audio",
+      "free_tier_concrete_limits": "100% free, open-source (Apache 2.0 license). Runs entirely locally.",
+      "what_it_does_uniquely": "A state-of-the-art text-to-speech model with only 82 million parameters that outputs studio-quality, highly natural human speech. Because it is so lightweight, it can run directly inside a free GitHub Actions runner without a GPU.",
+      "would_integrate_where": "Can be integrated into a new script `produce_audiobook_or_shorts` to generate high-quality voiceovers for social media marketing videos (TikTok/YouTube Shorts) or audiobooks to package with KDP books.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires Python dependencies (ONNX runtime) to be installed in the GitHub Actions workflow, which can slightly increase runner startup time."
     }
   ]
 }
