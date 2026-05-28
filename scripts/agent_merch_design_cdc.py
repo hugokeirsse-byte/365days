@@ -286,7 +286,7 @@ Return this exact JSON structure with ALL {nb_designs} designs fully specified:
 Generate ALL {nb_designs} entries in the designs array. Each must be unique, creative, and fully specified."""
 
     print(f"[Merch CdC] Appel LLM Gemini (génération CdC complet, {nb_designs} designs)...")
-    response = llm_call("stl_cdc", system_prompt, user_prompt, temperature=0.85, max_tokens=8000)
+    response = llm_call("stl_cdc", system_prompt, user_prompt, temperature=0.85, max_tokens=16000)
 
     if not response:
         print("[Merch CdC] Échec LLM — aucune réponse reçue.")

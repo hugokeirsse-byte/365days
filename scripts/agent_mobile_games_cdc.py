@@ -140,7 +140,7 @@ The game must be viable on App Store and Google Play.
 The monetization model must be justified by genre conventions.
 Focus on a tight MVP scope that can be shipped fast."""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=4000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=16000)
     if not response:
         print("[CdC Mobile Games] LLM call failed.", file=sys.stderr)
         sys.exit(1)

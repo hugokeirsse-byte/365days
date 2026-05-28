@@ -131,7 +131,7 @@ Génère un concept différenciant qui se vendra bien sur Amazon KDP dès aujour
 Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans cette niche)."""
 
     print("[CdC Coloring] Appel LLM (génération CdC complet)...")
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=6000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=16000)
 
     if not response:
         print("[CdC Coloring] Echec LLM.")

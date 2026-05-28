@@ -130,7 +130,7 @@ Ce livre doit être entièrement généré par ReportLab (Python), sans image ex
 Le layout doit être précis au millimètre pour que le script de production puisse l'implémenter directement."""
 
     print("[CdC Low-Content] Appel LLM...")
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=5000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=16000)
 
     if not response:
         print("[CdC Low-Content] Échec LLM.", file=sys.stderr)

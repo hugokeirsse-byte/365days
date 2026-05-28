@@ -168,7 +168,7 @@ Genre cible : {genre} / {sous_genre} en {langue}.
 Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui."""
 
     print("[CdC Roman] Appel LLM (génération CdC complet)...")
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=8000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=16000)
 
     if not response:
         print("[CdC Roman] Échec LLM.", file=sys.stderr)

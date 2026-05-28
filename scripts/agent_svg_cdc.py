@@ -201,7 +201,7 @@ Fournis :
 4. Specs techniques (stroke width, style courbes, viewBox, DXF)
 5. Stratégie différenciation vs concurrents Etsy"""
 
-    response = llm_call("stratege", system_prompt, user_prompt, temperature=0.7, max_tokens=4000)
+    response = llm_call("stratege", system_prompt, user_prompt, temperature=0.7, max_tokens=16000)
     if not response:
         print("[CdC SVG] Échec LLM.", file=sys.stderr)
         sys.exit(1)
