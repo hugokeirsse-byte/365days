@@ -1,0 +1,103 @@
+{
+  "coloring_id": "coloring_2026-05-28",
+  "date_cdc": "2026-05-28",
+  "gate_cdc": "pending",
+  "concept": {
+    "titre": "Gothic Dark Florals: Shadow Bloom",
+    "sous_titre": "An Adult Coloring Book of Macabre Botanicals & Intricate Victorian Designs for Relaxation",
+    "theme_principal": "gothic_dark_florals",
+    "style_artistique": "botanical_precision|intricate|engraving_style",
+    "audience": "adult",
+    "niveau_complexite": "intricate",
+    "nombre_pages": 30,
+    "element_unique": "Ce livre combine la beauté délicate des illustrations botaniques vintage avec l'esthétique sombre et mystérieuse de l'art gothique. Chaque page intègre des éléments macabres (crânes, toiles d'araignées, ornements victoriens) de manière cohérente et élégante au sein de compositions florales luxuriantes, offrant une immersion profonde dans un jardin secret et enchanté, loin des designs génériques."
+  },
+  "prompts_pollinations": {
+    "style_base": "black and white coloring page, clean outlines, no fill, pure white background, no gray, no shading, high contrast, crisp lines, intricate ink drawing style, vector art",
+    "style_modificateurs": [
+      "ornate",
+      "highly detailed",
+      "sharp lines",
+      "engraving style",
+      "line art illustration",
+      "pen and ink drawing"
+    ],
+    "theme_keywords": [
+      "gothic florals",
+      "dark botanical garden",
+      "victorian macabre",
+      "skull and rose",
+      "spiderwebs and thorns",
+      "ornate frames",
+      "wilting beauty",
+      "haunted conservatory"
+    ],
+    "negative_keywords": [
+      "gray",
+      "shading",
+      "photo",
+      "realistic texture",
+      "color",
+      "gradient",
+      "shadow",
+      "blurry",
+      "soft lines",
+      "watercolor",
+      "sepia",
+      "cartoon",
+      "childish",
+      "simple outlines"
+    ],
+    "exemple_prompt_complet": "black and white coloring page, an ornate gothic archway entwined with dark roses and thorn branches, a small human skull partially hidden amongst the leaves, intricate details, clean lines, no fill, pure white background, no gray, no shading, high contrast, crisp lines, engraving style, vector art",
+    "variantes_exemples": [
+      "Prompt page simple (débutant) : black and white coloring page, a single large gothic rose with clean leaves and a simple vine border, clear lines, no fill, pure white background, no gray, no shading, high contrast, crisp lines, ink drawing style",
+      "Prompt page medium (intermédiaire) : black and white coloring page, an intricate arrangement of dark lilies and belladonna plants, with subtle spiderwebs and a decorative Victorian frame, detailed, clean lines, no fill, pure white background, no gray, no shading, high contrast, crisp lines, engraving style",
+      "Prompt page complexe (expert) : black and white coloring page, a sprawling gothic conservatory filled with highly detailed wilting flora, tangled roots, a large ornate skull statue, and intricate stained glass patterns, extreme detail, sharp lines, no fill, pure white background, no gray, no shading, high contrast, crisp lines, pen and ink illustration"
+    ],
+    "note_importante": "Toujours exclure les mots qui génèrent du gris ou du shading. Tester 1 page avant production."
+  },
+  "pages_distribution": {
+    "pages_simples": 6,
+    "pages_medium": 14,
+    "pages_complexes": 10,
+    "description_progression": "Le livre débute avec des designs plus épurés et de plus grandes surfaces pour se familiariser avec le style. La complexité augmente ensuite progressivement avec l'ajout de détails plus fins, de textures ornementales et de compositions plus denses, culminant avec des scènes labyrinthiques pour les colorieurs expérimentés, offrant un défi croissant et une satisfaction durable."
+  },
+  "public_cible": {
+    "persona": "Femme (ou homme) adulte, 25-55 ans, passionnée par l'esthétique gothique, le dark academia, le folklore macabre et les jardins secrets. Elle cherche une activité relaxante et méditative, appréciant les défis artistiques et les motifs non-conventionnels. Elle est souvent créative, aime l'art, la lecture et l'ambiance mystérieuse, et rejette les thèmes de coloriage trop 'mignons' ou enfantins.",
+    "tranche_age": "25-55 ans",
+    "pourquoi_ce_theme": "Ce thème résonne avec une audience qui trouve la beauté dans l'obscurité, l'éphémère et le mystique. Il offre une évasion créative loin des thèmes plus 'joyeux' et permet d'explorer une esthétique raffinée et souvent sous-représentée dans les livres de coloriage pour adultes classiques. Il procure un sentiment de sophistication et d'originalité, répondant à un besoin d'expression artistique plus personnel et profond."
+  },
+  "cinq_concurrents_amazon": [
+    {
+      "titre": "Gothic Garden Coloring Book: Dark & Mysterious Florals",
+      "note": 4.2,
+      "nb_avis": 320,
+      "ce_qui_manque": "Certains motifs sont trop simples et répétitifs. Les lignes sont parfois floues ou il y a du gris résiduel, rendant le coloriage difficile avec des marqueurs.",
+      "notre_avantage": "Nos designs sont variés, complexes et chaque page est unique. Nous garantissons des lignes ultra-nettes et un fond blanc pur, parfait pour tous les médiums de coloriage."
+    },
+    {
+      "titre": "Victorian Macabre Coloring: Spooky Flowers & Skulls",
+      "note": 4.0,
+      "nb_avis": 180,
+      "ce_qui_manque": "Les images manquent de consistance stylistique. Trop de pages ont un fond légèrement grisé ou des ombres pré-existantes qui limitent la liberté artistique et le choix des couleurs.",
+      "notre_avantage": "Un style artistique cohérent et raffiné sur toutes les pages. Nos images sont strictement noir et blanc, offrant une toile vierge pour une liberté créative totale et sans compromis."
+    },
+    {
+      "titre": "Dark Academia Botanical Coloring Book: Intricate Designs",
+      "note": 4.3,
+      "nb_avis": 450,
+      "ce_qui_manque": "Les illustrations sont belles, mais le papier KDP est fin et les dessins ne sont pas toujours adaptés aux marqueurs (bleed-through). Certains motifs sont trop 'light' pour un thème 'dark'.",
+      "notre_avantage": "Nous nous concentrons sur des designs audacieux et profonds, avec des lignes suffisamment épaisses pour être coloriées sans frustration, même sur du papier KDP standard. Le style est résolument 'dark'."
+    },
+    {
+      "titre": "Enchanted Goth Coloring Book: Fantasy & Flowers",
+      "note": 3.9,
+      "nb_avis": 95,
+      "ce_qui_manque": "Le thème est intéressant mais l'exécution est parfois bâclée, avec des détails manquants ou des lignes qui ne se rejoignent pas. L'IA a laissé des artefacts visibles, nuisant à l'expérience.",
+      "notre_avantage": "Chaque image est rigoureusement vérifiée et éditée pour garantir une qualité irréprochable, sans artefacts ni erreurs de ligne, pour une expérience de coloriage fluide et agréable, digne d'un art professionnel."
+    },
+    {
+      "titre": "Mystic Florals Adult Coloring: Gothic Art",
+      "note": 4.4,
+      "nb_avis": 610,
+      "ce_qui_manque": "Assez bon, mais les images sont parfois trop 'occupées' et difficiles à colorier sans se
