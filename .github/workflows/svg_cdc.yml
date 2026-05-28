@@ -1,0 +1,69 @@
+name: SVG Packs — Génération CdC manuelle
+
+# Génère un Cahier des Charges pour un pack SVG Etsy/Cricut
+
+on:
+  workflow_dispatch:
+    inputs:
+      type_pack:
+        description: "Type de pack SVG"
+        required: true
+        type: choice
+        options:
+          - mandala
+          - floral
+          - monogram
+          - seasonal
+          - animal
+          - quote_frame
+          - geometric
+          - bundle_mix
+        default: mandala
+      niche:
+        description: "Niche/thème (ex: boho wildflowers, gothic halloween, cottagecore)"
+        required: true
+        default: 'boho wildflowers'
+      nb_elements:
+        description: "Nombre d'éléments SVG dans le pack"
+        required: false
+        default: '20'
+
+jobs:
+  generate-cdc:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: mkdir -p products/svg_packs data/logs
+
+      - name: Générer le CdC SVG
+        run: python scripts/agent_svg_cdc.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SVG_TYPE: ${{ github.event.inputs.type_pack }}
+          SVG_NICHE: ${{ github.event.inputs.niche }}
+          SVG_NB_ELEMENTS: ${{ github.event.inputs.nb_elements }}
+
+      - name: Commit CdC
+        run: |
+          git config user.name "SVG CdC Bot"
+          git config user.email "svg@365days.bot"
+          git add products/svg_packs/
+          git diff --staged --quiet && echo "Rien à committer" || {
+            git commit -m "svg: CdC ${{ github.event.inputs.type_pack }} '${{ github.event.inputs.niche }}' — gate=pending"
+            git push
+            echo ""
+            echo "═══════════════════════════════════════════"
+            echo "  CdC SVG généré — À VALIDER"
+            echo "═══════════════════════════════════════════"
+            echo "  Type: ${{ github.event.inputs.type_pack }}"
+            echo "  Niche: ${{ github.event.inputs.niche }}"
+            echo "  → Lire cdc.json dans products/svg_packs/"
+            echo "  → gate_cdc = approved → push → production"
+          }

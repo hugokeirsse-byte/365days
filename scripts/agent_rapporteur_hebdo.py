@@ -39,6 +39,7 @@ VERTICAL_DIRS = {
     "godot_assets":  ROOT / "products" / "godot_assets",
     "mobile_games":  ROOT / "products" / "mobile_games",
     "mobile_apps":   ROOT / "products" / "mobile_apps",
+    "svg_packs":     ROOT / "products" / "svg_packs",
 }
 
 # --------------------------------------------------------------------------- #

@@ -236,6 +236,24 @@ POOLS = {
         ("creativity", "daily writing prompt journal"),
         ("health", "breathing exercise anxiety"),
     ],
+    "svg_packs": [
+        # (type_pack, niche)
+        ("mandala", "boho wildflowers"),
+        ("floral", "cottagecore botanical"),
+        ("monogram", "wedding elegant script"),
+        ("seasonal", "halloween gothic witch"),
+        ("animal", "farmhouse rooster buffalo"),
+        ("geometric", "sacred geometry boho"),
+        ("quote_frame", "motivational vintage banner"),
+        ("bundle_mix", "christmas holiday mega bundle"),
+        ("mandala", "celestial moon phases"),
+        ("floral", "tropical leaves exotic"),
+        ("seasonal", "easter spring bunny"),
+        ("animal", "forest woodland deer fox"),
+        ("geometric", "art deco geometric seamless"),
+        ("monogram", "minimalist modern alphabet"),
+        ("quote_frame", "sunflower farmhouse frame"),
+    ],
 }
 
 # ── Config par vertical ───────────────────────────────────────────────────────
@@ -356,6 +374,19 @@ CONFIGS = {
         "theme_key": lambda cdc: (
             cdc.get("concept", {}).get("categorie", ""),
             cdc.get("concept", {}).get("sous_niche", cdc.get("concept", {}).get("valeur_unique", "")[:30]),
+        ),
+    },
+    "svg_packs": {
+        "products_dir": "products/svg_packs",
+        "cdc_script": "scripts/agent_svg_cdc.py",
+        "build_env": lambda t: {
+            "SVG_TYPE": t[0],
+            "SVG_NICHE": t[1],
+            "SVG_NB_ELEMENTS": "20",
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("concept", {}).get("type_pack", ""),
+            cdc.get("concept", {}).get("niche", ""),
         ),
     },
 }

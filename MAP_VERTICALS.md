@@ -42,6 +42,7 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 | 7 | Godot Assets | Itch.io | ✅ | ✅ Pollinations/LLM | ✅ | **PRÊT** |
 | 8 | Jeux Mobiles | App Store/Play/Itch | ✅ | ✅ Scaffold LLM | ✅ | **PRÊT** |
 | 9 | Applications | App Store/Play Store | ✅ | ✅ Scaffold LLM | ✅ | **PRÊT** |
+| 10 | SVG Packs Cricut | Etsy Digital Downloads | ✅ | ✅ svgwrite+Potrace | ✅ | **PRÊT** |
 
 ---
 
@@ -201,6 +202,26 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 
 ---
 
+## VERTICAL 10 — SVG PACKS CRICUT/ETSY
+
+**Plateformes** : Etsy Digital Downloads (primary, prix 1.50-8 USD)  
+**Machines cibles** : Cricut Maker/Joy, Silhouette Cameo 4  
+**Types** : mandala, floral, monogram, seasonal, animal, quote_frame, geometric, bundle_mix  
+**Production** : svgwrite Python (procédural) ou Pollinations→Potrace (vectorisation)  
+**0 API payante** : svgwrite = 100% offline | Pollinations = gratuit
+
+| Script | Workflow | Rôle |
+|--------|----------|------|
+| agent_svg_trends.py | svg_brain.yml | Brain tendances Etsy/Cricut (dimanche 04h) |
+| agent_svg_cdc.py | svg_cdc.yml | CdC : type + niche + listing Etsy complet |
+| produce_svg_from_cdc.py | svg_production.yml | SVG procéduraux ou vectorisés + ZIP |
+
+**Gate check** : Hugo valide type de pack, niche, liste des éléments, prix Etsy  
+**Exigences** : SVG cuttable (pas de détails fins), compatibilité Cricut Design Space, fond blanc pur  
+**Différenciation** : packs à réhabiliter (vendus mais mal notés = DXF manquant, nœuds excessifs)
+
+---
+
 ## CERVEAUX PERPÉTUELS
 
 | Cron | Agent | Domaine |
@@ -216,6 +237,7 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 | Vendredi 04h | agent_merch_trends.py | Merch POD |
 | Vendredi 05h | agent_mobile_apps_trends.py | Applications mobiles |
 | Samedi 05h | agent_godot_trends.py | Godot/Itch.io assets |
+| Dimanche 04h | agent_svg_trends.py | SVG Packs Etsy/Cricut |
 | Dimanche 20h | agent_rapporteur_hebdo.py | Rapport hebdo pour Hugo |
 | Toutes les 4h | agent_cdc_queue_manager.py | Maintenir 10 CdC/vertical |
 
