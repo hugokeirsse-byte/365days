@@ -15,6 +15,9 @@ on:
       - 'products/jeux_societe/**/cdc.json'
       - 'products/merch/**/cdc.json'
       - 'products/godot_assets/**/cdc.json'
+      - 'products/mobile_games/**/cdc.json'
+      - 'products/mobile_apps/**/cdc.json'
+      - 'products/svg_packs/**/cdc.json'
   workflow_dispatch:
     inputs:
       vertical:
@@ -31,6 +34,9 @@ on:
           - jeux_societe
           - merch_design
           - godot_assets
+          - mobile_games
+          - mobile_apps
+          - svg_packs
       target:
         description: 'Nombre de CdC cibles par vertical (défaut: 10)'
         required: false
@@ -58,7 +64,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Pull latest pour voir les CdC déjà approuvés/rejetés par Hugo
           ref: ${{ github.ref_name }}
 
       - uses: actions/setup-python@v5
@@ -72,8 +77,10 @@ jobs:
         run: |
           mkdir -p products/coloring_books products/stl_3d products/lowcontent_kdp products/novels
           mkdir -p products/jeux_societe products/merch products/godot_assets
+          mkdir -p products/mobile_games products/mobile_apps products/svg_packs
           mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman
           mkdir -p data/brain/jeux_societe data/brain/merch data/brain/godot
+          mkdir -p data/brain/mobile_games data/brain/mobile_apps data/brain/svg
           mkdir -p data/reports
 
       - name: Vérifier l'état des files (avant)
@@ -82,7 +89,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
           TARGET: ${{ github.event.inputs.target || '10' }}
-          MAX_PER_RUN: '0'   # dry-run pour afficher l'état
+          MAX_PER_RUN: '0'
           DRY_RUN: '1'
 
       - name: Remplir les files manquantes
@@ -103,13 +110,18 @@ jobs:
           git diff --staged --quiet && echo "Rien à committer (files déjà pleines)" || {
             COUNT=$(git diff --staged --name-only | grep cdc.json | wc -l)
             git commit -m "queue: +${COUNT} CdC générés (gate=pending) — $(date +%Y-%m-%d %H:%M)"
-            git push
+            for i in 1 2 3 4; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              echo "retry push $i/4"
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep $((i * 2))
+            done
             echo ""
             echo "════════════════════════════════════════════"
             echo "  ${COUNT} NOUVEAUX CdC DISPONIBLES POUR HUGO"
             echo "════════════════════════════════════════════"
             echo ""
-            echo "Lire dans GitHub → products/*/{slug}/CAHIER_DES_CHARGES.md"
+            echo "Lire dans GitHub → products/*/{slug}/cdc.json"
             echo "Valider : changer gate_cdc = 'approved' dans cdc.json et push"
             echo "Rejeter : changer gate_cdc = 'rejected' dans cdc.json et push"
           }
