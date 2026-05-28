@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-27T07:58:05.977064Z",
+  "timestamp": "2026-05-28T11:31:29.562938Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -77,11 +77,14 @@
     "agent_brief_auditor",
     "agent_builder",
     "agent_coloring_intel",
+    "agent_domain_image_finder",
     "agent_external_trends",
     "agent_gate2",
     "agent_gemini_quality_check",
     "agent_ideator_offline",
     "agent_niche_gap",
+    "agent_novel_planner",
+    "agent_novel_writer",
     "agent_opportunity_hunter",
     "agent_orchestrator",
     "agent_publisher",
@@ -95,58 +98,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Publish 3 Niche Coloring Books on Amazon KDP",
+      "action_title": "Publish first 3 micro-niche Coloring Books on Amazon KDP",
       "type": "upload",
       "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 80,
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 120,
       "hugo_effort_hours": 4,
-      "why_this_works_now": "Coloring books are highly searched on Amazon, and you already have the 'produce_coloring_book' pipeline ready. It bypasses shipping fees and leverages Amazon's massive organic traffic.",
-      "first_action_today": "Run the 'produce_coloring_book' pipeline via GitHub Actions to generate 40 high-quality coloring pages for a specific micro-niche (e.g., 'Cottagecore Frogs Coloring Book')."
+      "why_this_works_now": "The produce_coloring_book pipeline is ready. By using Together AI (free tier FLUX-schnell) via GitHub Actions, Hugo can bypass image generation blocks, compile a high-quality PDF, and list on KDP for organic traffic without ad spend.",
+      "first_action_today": "Run the produce_coloring_book pipeline on GitHub Actions using the TOGETHER_API_KEY with FLUX-schnell to generate 25 coloring pages on a targeted niche (e.g., 'Retro Camper Van Life')."
     },
     {
       "rank": 2,
-      "action_title": "Redbubble Mass Upload of 50 Sticker Designs",
+      "action_title": "Upload 50 typography & sticker designs to Redbubble",
       "type": "upload",
       "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 40,
+      "estimated_revenue_uplift_eur_30days_high": 45,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Stickers are low-friction impulse buys. Redbubble is already registered. Using existing pipelines like 'produce_literal_idioms_v2' or 'produce_iheart_x' allows rapid generation of transparent PNGs ready to upload.",
-      "first_action_today": "Generate 50 clean sticker PNGs with transparent backgrounds using Together AI on GitHub Actions, package them in a zip, and download to your Android phone."
+      "why_this_works_now": "Stickers are Redbubble's highest volume item and require zero image generation budget. Using existing 'produce_literal_idioms' or 'produce_quotes_minimal' pipelines, Hugo can generate high-contrast text PNGs that render perfectly on stickers.",
+      "first_action_today": "Generate 20 transparent-background text PNGs using Termux (Python/PIL) with quirky French/English wordplay, and upload them to Redbubble using his phone's browser."
     },
     {
       "rank": 3,
-      "action_title": "Open Cults3D Account and List 5 Parametric Organizers",
+      "action_title": "Upload 5 functional parametric STL models to Cults3D",
       "type": "upload",
       "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Cults3D has a highly active buyer base for 3D printing files. Your 'produce_stl_parametric' pipeline can output customizable gridfinity/boardgame organizers that people gladly pay 1.50 EUR to 3.00 EUR for.",
-      "first_action_today": "Activate your Cults3D account and upload the first parametric file (e.g., a customizable drawer divider or cable organizer) generated from your STL pipeline."
-    },
-    {
-      "rank": 4,
-      "action_title": "Launch 5 KDP Low-Content Logbooks for Specific Hobbies",
-      "type": "upload",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Low-content logbooks (e.g., Mushroom Foraging Log, Ham Radio Logbook) require zero complex layout design inside. You only need a simple, highly-targeted cover and a standard interior template.",
-      "first_action_today": "Use the 'produce_lowcontent_kdp' pipeline to generate covers for 5 specific logbook niches, combine with a free 120-page logbook interior, and submit to KDP."
-    },
-    {
-      "rank": 5,
-      "action_title": "Publish 3 Game Dev Asset Packs on Itch.io",
-      "type": "upload",
-      "target_platform": "itch.io",
       "estimated_revenue_uplift_eur_30days_low": 10,
       "estimated_revenue_uplift_eur_30days_high": 60,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Game developers constantly buy 2D UI elements, pixel art tilesets, and icons. Itch.io is free, easy to navigate from a phone, and allows direct digital sales with immediate payouts.",
-      "first_action_today": "Run the 'produce_gamedev_asset_pack' pipeline to generate a clean RPG UI kit or a set of 2D fantasy item icons, package it as a zip, and publish on Itch.io for $2.99."
+      "why_this_works_now": "Cults3D organic traffic actively searches for functional 3D prints (e.g., custom organizers, board game inserts, pegboard mounts). The 'produce_stl_parametric' pipeline can output clean, print-tested files that sell for €1.50 - €3.00 repeatedly.",
+      "first_action_today": "Activate the Cults3D account, generate 3 variants of a parametric battery organizer using OpenSCAD in Termux, render preview images, and list them at €1.99."
+    },
+    {
+      "rank": 4,
+      "action_title": "Publish 3 GameDev Asset Packs on itch.io (Pay-What-You-Want with Suggested Price)",
+      "type": "upload",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 75,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Indie developers constantly look for cheap, cohesive 2D assets (UI kits, pixel art, or textures). By packaging generated outputs from 'produce_gamedev_asset_pack' into clean ZIP files, Hugo can list on itch.io with a suggested price of $2.99.",
+      "first_action_today": "Create an itch.io creator account, bundle 50 seamless textures generated by Together AI/Cloudflare into a ZIP, and publish the project page under the 'Game Assets' category."
+    },
+    {
+      "rank": 5,
+      "action_title": "Launch 5 hyper-specific Low-Content Logbooks on KDP",
+      "type": "upload",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 100,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Logbooks (e.g., 'Beekeeping Hive Tracker', 'Sourdough Baking Log') require zero complex AI image generation—only simple vector interiors easily generated with Python PDF libraries in Termux. They sell on utility, not art style.",
+      "first_action_today": "Use Python (reportlab/fpdf) in Termux to generate a 100-page lined tracking grid for a specific hobby, design a simple text-based cover, and upload to KDP."
     }
   ]
 }

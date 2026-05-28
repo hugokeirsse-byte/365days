@@ -1,40 +1,40 @@
 {
-  "audited_at": "2026-05-27T02:13:43.687541Z",
+  "audited_at": "2026-05-28T01:57:29.969043Z",
   "model": "gemini-2.5-flash",
   "total_processed": 30,
   "counters": {
     "approve": 2,
     "review": 0,
     "reject": 1,
-    "skip": 49,
+    "skip": 52,
     "error": 27
   },
   "audits": [
     {
-      "design_path": "bible_verses_v2/new/love/john_3_16_modern_mountains",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 92,
-      "reasoning": "The image accurately presents a meaningful portion of John 3:16 with its correct biblical reference. The text is highly legible, featuring clear typography and excellent contrast against the soft, aesthetically pleasing mountain landscape background. The overall design is clean, professional, and well-composed, making it suitable for print-on-demand products within the 'bible_verses_v2' pipeline. No critical violations were identified."
-    },
-    {
-      "design_path": "bible_verses_v2/new/rest/matthew_11_28_soft_watercolor",
+      "design_path": "bible_verses_v2/new/love/john_3_16_minimalist_gold",
       "pipeline": "bible_verses_v2",
       "verdict": "reject",
       "issues": [
-        "Incomplete verse text"
+        "Verse is incomplete"
       ],
-      "rating_0_100": 20,
-      "reasoning": "The image displays only a partial quote of Matthew 11:28, specifically 'Come to me all who are weary'. The full verse continues with 'and burdened, and I will give you rest', which is omitted. For a 'bible_verses_v2' pipeline, it is a critical requirement that the displayed scripture text is complete as per the referenced verse, or clearly indicated as an excerpt (e.g., with ellipses). The current design presents an incomplete verse without any such indication, which compromises the accuracy and completeness of the scriptural message."
+      "rating_0_100": 40,
+      "reasoning": "The image displays only a partial segment of John 3:16 ('For God so loved the world') without indicating it is an excerpt. For a pipeline focused on bible verses, it is critical that the displayed text accurately represents the referenced scripture, either by providing the full verse or clearly marking partial text. This incompleteness could potentially mislead customers expecting the full verse, thus failing a strict quality control audit."
     },
     {
-      "design_path": "bible_verses_v2/old/comfort/psalm_23_1_vintage_botanical",
+      "design_path": "bible_verses_v2/new/rest/matthew_11_28_vintage_botanical",
       "pipeline": "bible_verses_v2",
       "verdict": "approve",
       "issues": [],
       "rating_0_100": 95,
-      "reasoning": "The image presents the Bible verse 'Psalm 23:1 The Lord is my shepherd, I shall not want' with excellent legibility and a clean, appealing aesthetic. The text is well-centered and uses a clear, readable font with good contrast against the subtle fern background. There are no visible errors in the text, and the overall composition is balanced and suitable for print-on-demand. The image quality appears high, with no pixelation or artifacts that would hinder printability."
+      "reasoning": "The image presents a clear and legible bible verse with its reference, 'Matthew 11:28 - Come to me all who are weary'. The typography is well-chosen and easy to read against the subtle, tasteful fern background. The composition is balanced, and the colors are harmonious, creating a serene and appropriate aesthetic for a bible verse design. There are no visible quality issues such as pixelation, blurriness, or misspellings, making it suitable for print-on-demand without further review."
+    },
+    {
+      "design_path": "bible_verses_v2/new/spirit/galatians_5_22_23_modern_mountains",
+      "pipeline": "bible_verses_v2",
+      "verdict": "approve",
+      "issues": [],
+      "rating_0_100": 100,
+      "reasoning": "The image clearly presents a bible verse reference and a corresponding quote, which perfectly aligns with the 'bible_verses_v2' pipeline. The text is highly legible, well-centered, and uses an appropriate font and color scheme that complements the serene background. There are no visible quality issues such as pixelation, misspellings, or design flaws, making it suitable for print-on-demand without any concerns."
     }
   ]
 }
