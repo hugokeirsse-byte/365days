@@ -49,6 +49,13 @@ Tu identifies les tendances de genres, tropes, et niches qui vendent sur Kindle.
 
 ANGLE D'ANALYSE : {angle}
 
+RÈGLES STRATÉGIQUES :
+- LANGUE : Anglais par défaut (marché KDP mondial). Ne recommande une autre langue que sur
+  preuve d'une opportunité spécifique non-anglophone (volume de recherche, gap éditorial).
+- RÉHABILITATION : Identifie les romans bestsellers (top 1000 KDP) avec mauvaises notes
+  (< 3.5 étoiles). Analyse pourquoi (couverture bâclée, écriture IA trop visible, fin
+  décevante, synopsis trompeur). Une meilleure version dans ce genre = fort potentiel.
+
 FORMAT RÉPONSE — JSON STRICTEMENT :
 {{
   "date": "{today}",

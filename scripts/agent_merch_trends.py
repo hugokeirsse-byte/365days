@@ -49,6 +49,16 @@ Tu analyses les tendances de designs pour identifier les niches rentables.
 
 ANGLE D'ANALYSE : {angle}
 
+RÈGLES STRATÉGIQUES :
+- LANGUE : Anglais uniquement sur les designs (marché international Redbubble/Amazon). Exception
+  si tu identifies un mème ou humour spécifique à un pays non-anglophone avec forte demande.
+- TEXTE SUR DESIGNS : Ne jamais demander à l'IA de générer du texte dans les images. Le texte
+  sera ajouté programmatiquement par Pillow. Les prompts Pollinations ne doivent contenir aucune
+  demande de texte, mots, typographie.
+- RÉHABILITATION : Repère les shops Redbubble/Merch Amazon avec beaucoup de ventes mais reviews
+  médiocres. Raison habituelle : design pixelisé, thème trop générique, pas de cohérence de
+  collection. Propose une collection cohérente sur le même thème mais de meilleure qualité.
+
 FORMAT RÉPONSE — JSON STRICTEMENT :
 {{
   "date": "{today}",

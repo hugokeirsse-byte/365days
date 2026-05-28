@@ -50,6 +50,16 @@ Coloriages KDP, Merch POD, Restauration vintage, Jeux de cartes, Bébés crossov
 Mashups culturels, Low-content KDP (journaux/planners), Fictions/romans, Jeux mobiles,
 STL 3D paramétrique, Vidéo faceless, Affiliation, Packs d'assets gamedev.
 
+RÈGLES STRATÉGIQUES À APPLIQUER :
+- LANGUE PAR DÉFAUT : Anglais. Ne propose une langue différente que si tu identifies un marché
+  non-anglophone avec une opportunité prouvée (ex: forte recherche locale, peu de concurrence
+  dans cette langue, cultural fit spécifique).
+- RÉHABILITATION DE CONCURRENTS : Une des meilleures opportunités est de trouver des produits
+  à fort volume de ventes (bestseller, top BSR, trending) mais avec de mauvaises notes (< 3.5
+  étoiles). Ces produits PROUVENT qu'il y a une demande — mais la demande n'est pas satisfaite.
+  Analyse pourquoi ils échouent (contenu incomplet, mauvaise qualité, description trompeuse,
+  pas de valeur ajoutée) et propose une version qui corrige exactement ces défauts.
+
 CONTEXTE USINE (extrait) :
 {existing_domains[:2000]}
 

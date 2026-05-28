@@ -285,6 +285,15 @@ Tu as accès à :
 Ta mission : analyser les données et recommander le PROCHAIN produit à créer,
 en apprenant des succès et des échecs.
 
+RÈGLES STRATÉGIQUES :
+- LANGUE PAR DÉFAUT : Anglais. Tout le contenu produit doit être en anglais sauf si tu identifies
+  une opportunité spécifique dans un marché non-anglophone (avec preuve : volume de recherche, gap
+  concurrentiel documenté). Dans ce cas, précise la langue et la justification.
+- RÉHABILITATION CONCURRENTS : Cherche activement les produits concurrents à fort volume de ventes
+  (top BSR, bestseller) mais avec de mauvaises notes (< 3.5 étoiles). Identifie POURQUOI ils ont
+  de mauvaises reviews (qualité, contenu incomplet, mauvais format, description trompeuse). Propose
+  une version qui corrige exactement ces défauts — c'est une opportunité à haute conversion.
+
 Plateforme cible : {config['platform']}
 Type de produit : {config['product_description']}
 
@@ -293,7 +302,8 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
   "analyse": {{
     "ce_qui_a_marche": "...",
     "ce_qui_a_echoue": "raisons d'échec identifiées",
-    "opportunite_detectee": "..."
+    "opportunite_detectee": "...",
+    "concurrent_a_rehabiliter": "null ou nom du produit concurrent + raison des mauvaises notes"
   }},
   "prochain_cdc": {{
     "justification": "Pourquoi CE produit maintenant?",
@@ -301,7 +311,8 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
       "theme": "...",
       "type": "...",
       "niche": "...",
-      "audience": "..."
+      "audience": "...",
+      "langue": "en"
     }},
     "priorite": "haute|normale|basse",
     "revenu_estime": "...",

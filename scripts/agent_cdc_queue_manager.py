@@ -367,7 +367,6 @@ def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
             cwd=str(ROOT),
         )
         if result.returncode == 0:
-            # Extraire le nom du produit généré
             for line in result.stdout.splitlines():
                 if "CdC généré" in line or "→ products" in line:
                     print(f"    ✓ {line.strip()}")
@@ -376,7 +375,8 @@ def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
                 print(f"    ✓ CdC généré (gate=pending)")
             return True
         else:
-            print(f"    ✗ Erreur: {result.stderr[:150]}")
+            err = (result.stderr or result.stdout or "").strip()[:200]
+            print(f"    ✗ Erreur (rc={result.returncode}): {err}")
             return False
     except subprocess.TimeoutExpired:
         print(f"    ✗ Timeout (180s)")
