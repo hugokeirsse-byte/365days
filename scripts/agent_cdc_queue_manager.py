@@ -200,6 +200,42 @@ POOLS = {
         ("sprite_pack", "magical girl anime style"),
         ("shader_pack", "pixel art retro crt effects"),
     ],
+    "mobile_games": [
+        # (genre, niche)
+        ("hyper_casual", "satisfying merge puzzle"),
+        ("puzzle", "word game dark humor"),
+        ("idle", "cute animals farm"),
+        ("platformer", "precision indie hardcore"),
+        ("hyper_casual", "brain training reflex"),
+        ("simulation", "cozy life management"),
+        ("arcade", "survival endless runner"),
+        ("puzzle", "logic grid minimalist"),
+        ("idle", "space exploration incremental"),
+        ("platformer", "retro pixel art adventure"),
+        ("hyper_casual", "color sorting calming"),
+        ("rpg", "roguelike dungeon minimal"),
+        ("simulation", "restaurant management casual"),
+        ("arcade", "rhythm music tapping"),
+        ("puzzle", "physics sandbox creative"),
+    ],
+    "mobile_apps": [
+        # (category, niche)
+        ("productivity", "task manager anxiety-friendly"),
+        ("health", "sleep tracker minimalist"),
+        ("finance", "expense tracker no-ads"),
+        ("lifestyle", "habit tracker cute gamification"),
+        ("tools", "password manager offline"),
+        ("creativity", "quick sketch doodle journal"),
+        ("education", "language flashcards spaced repetition"),
+        ("health", "water intake reminder gentle"),
+        ("productivity", "pomodoro timer focus"),
+        ("finance", "bill splitter friends"),
+        ("lifestyle", "mood journal private no-cloud"),
+        ("tools", "unit converter offline"),
+        ("education", "speed reading trainer"),
+        ("creativity", "daily writing prompt journal"),
+        ("health", "breathing exercise anxiety"),
+    ],
 }
 
 # ── Config par vertical ───────────────────────────────────────────────────────
@@ -296,6 +332,30 @@ CONFIGS = {
         "theme_key": lambda cdc: (
             cdc.get("type_asset", ""),
             cdc.get("concept", {}).get("theme", ""),
+        ),
+    },
+    "mobile_games": {
+        "products_dir": "products/mobile_games",
+        "cdc_script": "scripts/agent_mobile_games_cdc.py",
+        "build_env": lambda t: {
+            "GAME_GENRE": t[0],
+            "GAME_NICHE": t[1],
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("concept", {}).get("genre", ""),
+            cdc.get("concept", {}).get("sous_niche", ""),
+        ),
+    },
+    "mobile_apps": {
+        "products_dir": "products/mobile_apps",
+        "cdc_script": "scripts/agent_mobile_apps_cdc.py",
+        "build_env": lambda t: {
+            "APP_CATEGORY": t[0],
+            "APP_NICHE": t[1],
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("concept", {}).get("categorie", ""),
+            cdc.get("concept", {}).get("sous_niche", cdc.get("concept", {}).get("valeur_unique", "")[:30]),
         ),
     },
 }

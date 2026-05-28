@@ -1,0 +1,69 @@
+name: Mobile Games — Génération CdC manuelle
+
+# Génère un CdC pour un jeu mobile (App Store / Google Play / Itch.io)
+
+on:
+  workflow_dispatch:
+    inputs:
+      game_genre:
+        description: "Genre du jeu"
+        required: true
+        type: choice
+        options:
+          - hyper_casual
+          - puzzle
+          - platformer
+          - rpg
+          - simulation
+          - arcade
+          - idle
+        default: puzzle
+      game_niche:
+        description: "Sous-niche (ex: cute animals idle clicker, word game dark humor)"
+        required: true
+        default: 'minimalist logic grid'
+      nb_cdcs:
+        description: "Nombre de CdC à générer"
+        required: false
+        default: '1'
+
+jobs:
+  generate-cdc:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: mkdir -p products/mobile_games data/logs data/reports
+
+      - name: Générer le CdC Mobile Game
+        run: python scripts/agent_mobile_games_cdc.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GAME_GENRE: ${{ github.event.inputs.game_genre }}
+          GAME_NICHE: ${{ github.event.inputs.game_niche }}
+
+      - name: Commit CdC
+        run: |
+          git config user.name "Mobile Games CdC Bot"
+          git config user.email "mobile-games@365days.bot"
+          git add products/mobile_games/
+          git diff --staged --quiet && echo "Nothing to commit" || {
+            git commit -m "mobile_games: CdC ${{ github.event.inputs.game_genre }} '${{ github.event.inputs.game_niche }}' — gate=pending"
+            git push
+            echo ""
+            echo "═══════════════════════════════════════════"
+            echo "  CdC Mobile Game généré — À VALIDER"
+            echo "═══════════════════════════════════════════"
+            echo "  Genre: ${{ github.event.inputs.game_genre }}"
+            echo "  Niche: ${{ github.event.inputs.game_niche }}"
+            echo "  → Lire CAHIER_DES_CHARGES.md dans products/mobile_games/"
+            echo "  → gate_cdc = approved → push → scaffold généré"
+          }

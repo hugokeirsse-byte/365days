@@ -30,13 +30,15 @@ PRODUCTS_DIR = ROOT / "products"
 TRIGGERS_DIR = ROOT / ".triggers"
 
 VERTICAL_DIRS = {
-    "coloring":     ROOT / "products" / "coloring_books",
-    "lowcontent":   ROOT / "products" / "lowcontent_kdp",
-    "roman":        ROOT / "products" / "novels",
-    "stl":          ROOT / "products" / "stl_3d",
-    "jeux_societe": ROOT / "products" / "jeux_societe",
-    "merch_design": ROOT / "products" / "merch",
-    "godot_assets": ROOT / "products" / "godot_assets",
+    "coloring":      ROOT / "products" / "coloring_books",
+    "lowcontent":    ROOT / "products" / "lowcontent_kdp",
+    "roman":         ROOT / "products" / "novels",
+    "stl":           ROOT / "products" / "stl_3d",
+    "jeux_societe":  ROOT / "products" / "jeux_societe",
+    "merch_design":  ROOT / "products" / "merch",
+    "godot_assets":  ROOT / "products" / "godot_assets",
+    "mobile_games":  ROOT / "products" / "mobile_games",
+    "mobile_apps":   ROOT / "products" / "mobile_apps",
 }
 
 # --------------------------------------------------------------------------- #
