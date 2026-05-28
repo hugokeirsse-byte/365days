@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-28T15:29:10.234086Z",
+  "timestamp": "2026-05-28T18:32:07.067476Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -75,6 +75,7 @@
     "produce_specs_deck",
     "produce_stl_openscad",
     "produce_stl_parametric",
+    "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
     "produce_viral_formats",
@@ -124,6 +125,8 @@
     "agent_stl_cdc",
     "agent_stl_trends",
     "agent_strategist",
+    "agent_svg_cdc",
+    "agent_svg_trends",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -134,69 +137,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Publish first 'Bold & Easy' Minimalist Coloring Book on Amazon KDP",
-      "type": "upload",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 120,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "The 'Bold & Easy' / 'Minimalist' coloring book trend for adults/toddlers is booming. It requires simple lines, bypassing his current API image generation resolution limit. He can compile 30 pages using Together AI (FLUX-schnell, free) or Pollinations via GitHub Actions and compile the PDF via a simple python script in Termux.",
-      "first_action_today": "Run the existing 'produce_coloring_book' pipeline with a simple theme (e.g., 'Cute Cozy Hygge Objects') to generate 35 clean line-art images."
-    },
-    {
-      "rank": 2,
-      "action_title": "Upload 10 Parametric 3D Printing Files (OpenSCAD) to Cults3D",
-      "type": "upload",
-      "target_platform": "Cults3D (prevu)",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 80,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Functional 3D prints (gridfinity boxes, custom cable organizers, wall mounts) sell consistently on Cults3D for 1-3 EUR. Since he has 'produce_stl_parametric' and 'produce_stl_openscad' pipelines, he can generate highly customizable utility models that require zero artistic skills and 0 image budget.",
-      "first_action_today": "Activate Cults3D profile and generate 5 variations of a parametric drawer organizer using his OpenSCAD pipeline."
-    },
-    {
-      "rank": 3,
-      "action_title": "Bulk Upload 50 Typography and Minimalist Quote Designs to Redbubble",
+      "action_title": "Upload 50 Minimalist Text-Based Designs on Redbubble",
       "type": "upload",
       "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Typography and simple quote designs do not require complex AI image generation, avoiding current API bottlenecks. Using the 'produce_quotes_minimal' or 'produce_literal_idioms' pipelines, he can output high-contrast SVG text designs that scale perfectly on t-shirts, mugs, and stickers.",
-      "first_action_today": "Generate 50 minimalist funny developer/entrepreneur quote SVGs using Termux/Python, then upload them in bulk using Redbubble templates."
+      "estimated_revenue_uplift_eur_30days_high": 40,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Bypasses the current AI image generation bottleneck completely. Text-only designs (funny developer quotes, niche professions, regional slang) require only Python/ImageMagick in Termux to generate transparent PNGs. High organic search volume on Redbubble.",
+      "first_action_today": "Write a quick Python script on Termux to combine a list of 50 funny developer/entrepreneur quotes with a clean typography template and output transparent PNGs."
     },
     {
-      "rank": 4,
-      "action_title": "Publish a Local-Interest 'Château/Patrimoine' Notebook on Amazon KDP France",
+      "rank": 2,
+      "action_title": "Publish First KDP Coloring Book Using Together AI (FLUX-schnell)",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 75,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Hyper-local niches have extremely low competition and high organic click-through rates. By using the 'produce_chateau_local' pipeline to create notebooks branded for specific French regions or historic towns (e.g., 'Mon carnet de randonnée - Châteaux de la Loire'), he captures intent-driven organic traffic.",
-      "first_action_today": "Select 3 high-tourism French departments, generate 3 custom covers with local public domain map assets or simple text, and upload them as lined journals."
+      "estimated_revenue_uplift_eur_30days_high": 100,
+      "hugo_effort_hours": 5,
+      "why_this_works_now": "Together AI offers a generous free tier for FLUX-schnell. FLUX is excellent at line art. Generating 30 high-quality coloring pages for a specific micro-niche (e.g., 'Retro Future Vehicles' or 'Cute Axolotls') will launch the first KDP asset.",
+      "first_action_today": "Set up a free Together AI account, grab the API key, and test a single curl command from Termux to generate a black-and-white vector-style coloring page."
+    },
+    {
+      "rank": 3,
+      "action_title": "Upload 3 Parametric OpenSCAD Utility Models on Cults3D",
+      "type": "upload",
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "3D printing hobbyists love customizability. OpenSCAD files (like parametric grid wall hooks or drawer dividers) do not require AI image generation. Renderings can be automatically generated via OpenSCAD CLI on GitHub Actions.",
+      "first_action_today": "Write or adapt a simple parametric drawer organizer script in OpenSCAD, and test-compile it to STL via GitHub Actions."
+    },
+    {
+      "rank": 4,
+      "action_title": "Repackage Coloring Book as Digital PDF on Gumroad + Pinterest Auto-Pin",
+      "type": "new_stream",
+      "target_platform": "direct",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 80,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "KDP physical book buyers are different from digital buyers. Selling the exact same coloring book pages as a printable PDF on Gumroad/Lemonsqueezy allows global access instantly. Traffic can be driven for free via automated Pinterest pins using GitHub Actions.",
+      "first_action_today": "Create a free Gumroad account and draft a product listing template for 'Printable Coloring Book PDF'."
     },
     {
       "rank": 5,
-      "action_title": "Launch a Godot 2D UI & Asset Pack on itch.io",
+      "action_title": "Publish 10 Ultra-Niche KDP Lined Journals with Minimalist Cover Art",
       "type": "upload",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 100,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "The Godot Engine community is growing exponentially, and there is a high demand for simple, ready-to-use GUI elements, button packs, and icons. Hugo can use the 'produce_godot_assets' or 'produce_gamedev_asset_pack' pipelines to bundle flat-style game assets and list them on itch.io as premium/pay-what-you-want.",
-      "first_action_today": "Compile a pack of 100 minimalist flat-style UI buttons/icons using his SVG pipeline and set up the itch.io project page."
-    },
-    {
-      "rank": 6,
-      "action_title": "Launch SVG Vector Bundles as Pay-What-You-Want on Gumroad",
-      "type": "new_stream",
-      "target_platform": "direct",
+      "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 60,
+      "estimated_revenue_uplift_eur_30days_high": 30,
       "hugo_effort_hours": 2,
-      "why_this_works_now": "Crafters, laser-cutter owners, and Cricut makers actively search for SVG bundles. Setting up a free Gumroad store to distribute SVG packs (from 'produce_svg_pack' or 'produce_literal_idioms_v2') with a 'Pay-What-You-Want' model generates direct email leads and tips with zero upfront platform cost.",
-      "first_action_today": "Create a Gumroad account, package 20 retro-style SVG icons into a zip file, and publish it with a suggested price of 3 EUR (allowing 0 EUR free downloads to build an audience)."
+      "why_this_works_now": "Low-content journals require zero complex interior formatting (just repeating lined pages). By using simple, high-contrast geometric cover art (easy to generate on Cloudflare Workers AI free tier or Together AI), Hugo can target 10 specific sub-hobbies in minutes.",
+      "first_action_today": "Generate 10 PDF interiors (standard 6x9, 120 pages) using a basic Python PDF generation script on Termux."
     }
   ]
 }
