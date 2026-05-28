@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-28T02:06:28.624505Z",
+  "timestamp": "2026-05-28T07:50:22.669689Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -98,94 +98,94 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "GitHub Actions Shared IP Rate-Limiting (HTTP 429/403)",
+      "issue_title": "Lack of Unified Image Provider Router with Failover",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
         "produce_tumbler_wraps",
-        "agent_domain_image_finder"
+        "produce_viral_formats"
       ],
-      "current_pain_description": "GitHub Actions runners share public IP pools. Unauthenticated calls to Gemini, AI Horde, or Hugging Face fail instantly with 429/403 errors because other GitHub users have exhausted the quotas, halting automated production.",
-      "proposed_fix": "Enforce mandatory authenticated-only API routes. Implement a unified HTTP client wrapper with exponential backoff + jitter specifically tailored for GitHub runner environments, and route all image tasks through Cloudflare Workers AI (using account credentials) or Runware PAYG (with explicit API keys) instead of IP-based free endpoints.",
+      "current_pain_description": "Pipelines hardcode specific image APIs (e.g., Pollinations, Gemini). When an API fails (429/403/deprecation), the entire pipeline crashes. Switching providers requires manual code edits, which is slow on Termux.",
+      "proposed_fix": "Create a unified Python module `utils/image_gateway.py` that accepts a prompt and styling parameters. It should try providers in a tiered fallback order based on cost and availability: 1) Cloudflare Workers AI (Free), 2) Together AI (Free tier), 3) Runware (PAYG - if balance > 0), 4) Pollinations (Fallback). It must catch HTTP errors and silently try the next provider.",
       "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Eliminates silent workflow failures, ensuring 100% reliable automated nightly runs.",
+      "estimated_value_unlocked": "Zero pipeline crashes due to API downtime; automatic transition to paid tier only when free tiers are exhausted.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Missing Centralized Image Generation & Fallback SDK",
+      "issue_title": "Git Repository Bloat from Binary Assets on GitHub Actions",
       "category": "code_quality",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_kdp_cover",
-        "produce_tumbler_wraps",
-        "produce_svg_pack",
-        "produce_gamedev_asset_pack"
+        "produce_gamedev_asset_pack",
+        "produce_svg_pack"
       ],
-      "current_pain_description": "Image generation logic is fragmented across multiple pipelines. Changing from Pollinations to Runware or Together AI requires editing multiple scripts, increasing maintenance overhead and code duplication.",
-      "proposed_fix": "Create a single helper module `lib_image_gen.py` implementing a Provider-Fallback Pattern (Together AI -> Cloudflare Workers -> Runware PAYG -> Pollinations as absolute fallback). It should standardize prompts, handle resolution scaling, and return unified image metadata.",
+      "current_pain_description": "Generating PDFs, high-res PNGs, and ZIP packs directly inside GitHub Actions and committing them to the Git repository will quickly exceed GitHub's 1GB repository limit and make git pull/push operations on Termux painfully slow.",
+      "proposed_fix": "Integrate Cloudflare R2 (10GB/month free tier, S3 compatible) into the production pipelines. Use `boto3` in Python to upload generated binaries directly to R2, only committing lightweight metadata (JSON with download URLs) back to the Git repository.",
       "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "High code maintainability; allows swapping the entire image-gen infrastructure with a single environment variable change.",
+      "estimated_value_unlocked": "Prevents repository bloat, keeps Termux sync fast, and provides direct download links for customers/platforms.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Manual Asset Download and Transfer Bottleneck on Mobile",
+      "issue_title": "Silent Failures on GitHub Actions Cron Runs",
       "category": "bottleneck",
       "affected_pipelines": [
-        "agent_publisher",
-        "produce_coloring_book",
-        "produce_lowcontent_kdp"
+        "agent_orchestrator",
+        "agent_auto_regen",
+        "agent_trendhunter"
       ],
-      "current_pain_description": "Hugo operates solely from an Android phone (Termux). Downloading high-resolution books, heavy PDFs, or massive zip archives to his phone to manually upload them to KDP or Cults3D is slow, consumes mobile data, and risks storage limits.",
-      "proposed_fix": "Configure GitHub Actions to automatically upload final output assets (PDFs, ZIPs, PNGs) directly to a free Cloudflare R2 bucket (10GB free tier) or Google Drive via API. The runner should then output a clean Markdown summary containing direct download links and auto-generated platform copy (tags, description, title) to a single GitHub Issue or Telegram bot notification.",
-      "estimated_implementation_hours_claude": 4,
-      "estimated_value_unlocked": "Saves hours of mobile download/upload time; reduces Hugo's manual intervention to a simple copy-paste of links and metadata.",
+      "current_pain_description": "Hugo operates solely from an Android phone. Checking the GitHub Actions 'Actions' tab on mobile web to see if cron jobs failed is slow and frustrating. Silent API failures go unnoticed.",
+      "proposed_fix": "Add a global GitHub Actions workflow step wrapper or a Python exception hook that sends a brief Telegram message via a free Telegram Bot API curl request whenever a workflow fails, containing the error log snippet and run URL.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Instant feedback loop on Hugo's phone without needing to manually poll GitHub.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Silent Quality Failures in Line Art and Coloring Pages",
+      "issue_title": "Unvalidated LLM SVG Output (Broken XML/Empty Paths)",
       "category": "quality_bug",
       "affected_pipelines": [
-        "produce_coloring_book"
+        "produce_svg_pack",
+        "produce_stl_parametric"
       ],
-      "current_pain_description": "AI-generated coloring pages frequently contain gray shading, blurry gradients, or broken line structures that make them unmarketable. Reviewing these manually on a phone screen is tedious and error-prone.",
-      "proposed_fix": "Integrate an automated OpenCV / Pillow pre-processor in `agent_visual_audit`. The script must check contrast levels, calculate the percentage of pure black vs. pure white pixels (binarization check), and auto-reject images with excessive grayscale shading before compiling the final PDF book.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Ensures only high-contrast, easily-colorable line art reaches the final book, preventing customer complaints and negative reviews.",
-      "priority_1_10": 8
+      "current_pain_description": "LLMs generating SVGs directly often output broken XML tags, unclosed paths, or empty canvas elements. These files pass pipeline checks but are unusable for customers on Etsy or Cults3D.",
+      "proposed_fix": "Implement a structural validation step in `agent_visual_audit` or as a utility function using Python's `xml.etree.ElementTree`. It must parse the SVG, assert the presence of critical tags (e.g., `<path>`, `<svg>`, `viewBox`), and verify that the file size is non-trivial before marking the asset as ready.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Guarantees that 100% of generated vector assets are structurally valid and openable in Illustrator/Inkscape.",
+      "priority_1_10": 7
     },
     {
       "rank": 5,
-      "issue_title": "Siloed Pipelines Missing Multi-Format Syndication",
+      "issue_title": "No Single-Asset to Multi-Product Cross-Pollination",
       "category": "cross_polination",
       "affected_pipelines": [
-        "produce_bible_verses",
-        "produce_literal_idioms",
+        "produce_coloring_book",
         "produce_quotes_minimal",
         "produce_svg_pack"
       ],
-      "current_pain_description": "A high-quality asset (e.g., a hand-crafted SVG quote or idiom) is generated for a single format, missing out on cross-publishing on other platforms (e.g., a quote design can be a sticker on Redbubble, a page in a KDP journal, and a tumbler wrap).",
-      "proposed_fix": "Implement a 'Syndication Router' in `agent_orchestrator` that triggers post-processing scripts once a high-quality asset is approved. For example, a transparent PNG design should be automatically resized and formatted into: 1) Redbubble sticker dimensions, 2) KDP paperback cover dimensions, 3) Tumbler wrap aspect ratio.",
-      "estimated_implementation_hours_claude": 5,
-      "estimated_value_unlocked": "Multiplies inventory output by 3x to 4x for every single successful design generated, with zero extra creative effort.",
+      "current_pain_description": "An asset generated for a coloring book is only used for KDP. Hugo misses out on the ROI of converting that same design into transparent PNGs for Redbubble stickers, or SVG cut files for Etsy.",
+      "proposed_fix": "Introduce a post-generation orchestrator script `utils/cross_pollinator.py`. When a high-quality asset is approved by `agent_auditor`, this script automatically duplicates, resizes, and packages the asset into multiple formats (e.g., transparent PNG for Redbubble, PDF for KDP print, SVG vector package for Etsy).",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Multiplies the potential revenue streams of a single hourly workload by 3x to 4x.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "GitHub Actions 6-Hour Timeout and Pipeline State Loss",
+      "issue_title": "GitHub Actions Shared IP Rate-Limiting (429/403 Bypass)",
       "category": "failure_mode",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_gamedev_asset_pack"
+        "agent_trendhunter",
+        "agent_external_trends",
+        "produce_iheart_hf"
       ],
-      "current_pain_description": "Generating a complete coloring book or asset pack requires dozens of API calls. If the workflow times out or encounters a network error on page 35 of 40, the entire run fails, wasting API credits, time, and progress.",
-      "proposed_fix": "Implement checkpointing/state serialization. Save each successfully generated image and its metadata into a temporary JSON state file, committing progress back to a cache branch in the Git repository. On re-run, the pipeline should read the state and resume exactly where it failed.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Prevents wasted API costs and ensures long-running asset generation processes are robust against network interruptions.",
-      "priority_1_10": 7
+      "current_pain_description": "GitHub Actions runner IPs are heavily shared. External APIs (like Gemini, Hugging Face, or AI Horde) frequently return 403 Forbidden or 429 Too Many Requests because other developers on GitHub have exhausted the IP limits.",
+      "proposed_fix": "Incorporate randomized delay jitter (1 to 5 seconds) before API requests and configure a custom User-Agent string. For critical API calls, implement a mechanism to route traffic through a free tier proxy or Cloudflare Tunnel if standard requests fail.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Eliminates IP-block-related execution pauses on free GitHub runners.",
+      "priority_1_10": 6
     }
   ]
 }
