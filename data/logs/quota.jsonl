@@ -38,3 +38,11 @@
 {"ts": "2026-05-28T12:05:01.466706Z", "date": "2026-05-28", "agent": "cdc_generator", "provider": "mistral", "tokens_in": 0, "tokens_out": 0, "success": false}
 {"ts": "2026-05-28T19:39:31.115279Z", "date": "2026-05-28", "agent": "cdc_generator", "provider": "gemini", "tokens_in": 0, "tokens_out": 0, "success": false}
 {"ts": "2026-05-28T19:39:31.115582Z", "date": "2026-05-28", "agent": "cdc_generator", "provider": "mistral", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:25:38.691774Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "gemini", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:25:38.692334Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "groq", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:25:38.692466Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "mistral", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:25:48.896268Z", "date": "2026-05-28", "agent": "cdc_generator", "provider": "gemini", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:25:48.896725Z", "date": "2026-05-28", "agent": "cdc_generator", "provider": "mistral", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:26:59.271882Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "gemini", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:26:59.272494Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "groq", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-28T21:26:59.272667Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "mistral", "tokens_in": 0, "tokens_out": 0, "success": false}
