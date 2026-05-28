@@ -1,0 +1,9 @@
+{
+  "audited_at": "2026-05-28T01:45:59.952986Z",
+  "pipeline": "bible_verses_v2",
+  "model": "gemini-2.5-flash",
+  "verdict": "approve",
+  "issues": [],
+  "rating_0_100": 95,
+  "reasoning": "The image presents a clear and legible bible verse with its reference, 'Matthew 11:28 - Come to me all who are weary'. The typography is well-chosen and easy to read against the subtle, tasteful fern background. The composition is balanced, and the colors are harmonious, creating a serene and appropriate aesthetic for a bible verse design. There are no visible quality issues such as pixelation, blurriness, or misspellings, making it suitable for print-on-demand without further review."
+}
