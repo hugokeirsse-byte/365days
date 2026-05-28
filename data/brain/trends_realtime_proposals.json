@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-28T15:29:24.019283Z",
+  "timestamp": "2026-05-28T18:31:07.219163Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -75,6 +75,7 @@
     "produce_specs_deck",
     "produce_stl_openscad",
     "produce_stl_parametric",
+    "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
     "produce_viral_formats",
@@ -124,6 +125,8 @@
     "agent_stl_cdc",
     "agent_stl_trends",
     "agent_strategist",
+    "agent_svg_cdc",
+    "agent_svg_trends",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -134,63 +137,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Class of 2026 AI Humor",
+      "trend_keyword": "Snail Girl Summer",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 25,
-      "saturation_now_1_10": 4,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_viral_formats",
-      "title_template_suggestion": "Class of 2026 AI Sticker - Sarcastic Graduation Gift for College and High School",
-      "evidence_url_or_signal": "TikTok hashtag #ClassOf2026 and viral sound trend 'I did not use ChatGPT for this degree' peaking from May 10 to May 20, 2026."
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 2,
+      "best_product_format": "sticker / coloring_book",
+      "best_pipeline_match": "produce_coloring_book",
+      "title_template_suggestion": "Snail Girl Summer Coloring Book, Cute Slow Living Aesthetic Pages for Adults and Teens",
+      "evidence_url_or_signal": "Spike in TikTok views under hashtag #snailgirlsummer (1.2M views since May 10, 2026) promoting cozy, slow lifestyle over hustle culture."
     },
     {
       "rank": 2,
-      "trend_keyword": "DINKWAC aesthetic",
-      "platform_where_spotted": "Reddit",
-      "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 2,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_merch_designs",
-      "title_template_suggestion": "DINKWAC Club Mug - Double Income No Kids With A Cat Minimalist Ceramic Mug",
-      "evidence_url_or_signal": "Spike in r/childfree and r/cats with the term 'DINKWAC' trending on May 15, 2026, as an evolution of DINKWAD."
-    },
-    {
-      "rank": 3,
-      "trend_keyword": "Cozy Isometric Gaming Room",
+      "trend_keyword": "Poison Garden Aesthetic",
       "platform_where_spotted": "Pinterest",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 60,
       "saturation_now_1_10": 3,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Cozy Isometric Gaming Rooms Coloring Book - Cute Aesthetic Lo-Fi Interiors for Adults",
-      "evidence_url_or_signal": "Pinterest Search volume for 'cozy gaming setup aesthetic drawings' increased by 140% in the last 14 days of May 2026."
+      "best_product_format": "wall_art / SVG pack",
+      "best_pipeline_match": "produce_svg_pack",
+      "title_template_suggestion": "Dark Botanical Poison Garden SVG Cut Files, Vintage Witchy Herbs Clipart Vector Bundle",
+      "evidence_url_or_signal": "Pinterest Trends showing +140% search volume spike in 'Gothic botany' and 'poisonous plant illustrations' between May 8 and May 22, 2026."
+    },
+    {
+      "rank": 3,
+      "trend_keyword": "Dungeons and Dragons Dad",
+      "platform_where_spotted": "Etsy",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 4,
+      "best_product_format": "mug / tshirt",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "World's Okayest Dungeon Master Dad Mug, Father's Day D&D Gift, Retro Gamer Papa Coffee Cup",
+      "evidence_url_or_signal": "Etsy search ranking shifts on 'Father's Day RPG' (+85% week-over-week) as buyers search for June 2026 gifts tailored to geeky fathers."
     },
     {
       "rank": 4,
-      "trend_keyword": "Vintage Motel Keychain SVG",
-      "platform_where_spotted": "Etsy",
+      "trend_keyword": "Retro Mascot Apathy Club",
+      "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 90,
+      "estimated_lifespan_days": 25,
       "saturation_now_1_10": 5,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Vintage Hotel Keychain SVG Bundle - Retro Motel Key Tag Cut Files for Cricut",
-      "evidence_url_or_signal": "Etsy search analytics show a sudden 85% week-over-week spike in mid-May 2026 for customizable retro motel key chains designs."
+      "best_product_format": "sticker / tshirt",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Retro 1930s Cartoon Mascot Sticker, Funny Corporate Burnout Apathy Club Decal",
+      "evidence_url_or_signal": "Viral Instagram Reels and TikTok videos using vintage rubber-hose animation styles with modern sarcastic, demotivational text spiking mid-May 2026."
     },
     {
       "rank": 5,
-      "trend_keyword": "Solarpunk Aesthetic Line Art",
+      "trend_keyword": "Cozy Isometric Pixel Room",
       "platform_where_spotted": "Reddit",
       "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 40,
+      "estimated_lifespan_days": 90,
       "saturation_now_1_10": 2,
-      "best_product_format": "coloring_book",
-      "best_pipeline_match": "produce_coloring_from_cdc",
-      "title_template_suggestion": "Solarpunk Dreams Coloring Book - Eco-Futuristic Green Cities and Sustainable Living",
-      "evidence_url_or_signal": "r/solarpunk community growth spike and high engagement on architectural concept art posts during May 2026."
+      "best_product_format": "gamedev_asset_pack / wall_art",
+      "best_pipeline_match": "produce_gamedev_asset_pack",
+      "title_template_suggestion": "Cozy Lofi Isometric Pixel Art Room Assets, Game Creator Sprite Sheet PNG Bundle",
+      "evidence_url_or_signal": "Reddit r/PixelArt and r/gamedev experiencing high engagement on cozy, warm-toned interior scenes, matching the rise of cozy gaming trends."
+    },
+    {
+      "rank": 6,
+      "trend_keyword": "Howdy Frog Western",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 8,
+      "estimated_lifespan_days": 40,
+      "saturation_now_1_10": 4,
+      "best_product_format": "tshirt / sticker",
+      "best_pipeline_match": "produce_literal_idioms_v2",
+      "title_template_suggestion": "Vintage Howdy Cowboy Frog Shirt, Retro 70s Western Toad Graphic Tee, Cottagecore Country Aesthetic",
+      "evidence_url_or_signal": "Sustained high search volume on 'cottagecore western aesthetic' with frogs wearing cowboy hats peaking on Pinterest search metrics on May 18, 2026."
     }
   ]
 }
