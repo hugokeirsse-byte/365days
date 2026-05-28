@@ -1,11 +1,120 @@
 # 📋 INSCRIPTIONS HUGO — version 20/05/2026 (Empire Perpétuel, 100% gratuit à l'inscription)
 
+> ## 🔄 MISE À JOUR 27/05/2026 — INVENTAIRE COMPLET DES BUSINESSES
+>
+> ### 20 LIGNES DE PRODUITS — État global
+>
+> | # | Business | Plateforme | Script | CdC Gate | Status |
+> |---|----------|-----------|--------|----------|--------|
+> | 1 | **Livres de coloriage** (adulte/enfant) | Amazon KDP | produce_coloring_book.py | ✓ agent_coloring_cdc.py | ⚡ Prêt — à connecter |
+> | 2 | **Low-Content KDP** (journals/planners/trackers) | Amazon KDP | produce_lowcontent_from_cdc.py | ✓ agent_cdc_lowcontent.py | ⚡ Prêt |
+> | 3 | **Romans** (romance, mystery, cozy) | Amazon KDP eBook+PB | produce_roman_chapters.py | ✓ agent_cdc_roman.py | ⚡ Prêt |
+> | 4 | **Impression 3D** (bookmarks, keychains, coasters…) | Cults3D, Printables | produce_stl_openscad.py | ✓ agent_stl_cdc.py | ⚡ Prêt |
+> | 5 | **Jeux de Société** (cartes, plateau, party, RPG, éduc) | Etsy, DriveThruRPG, Itch.io | produce_board_game.py | ✓ agent_jeux_societe_cdc.py | ⚡ Prêt |
+> | 6 | **Tumbler Wraps** (designs sublimation 20oz/30oz) | Etsy | produce_tumbler_wraps.py | ✗ pas de gate | 🔧 Sans gate CdC |
+> | 7 | **SVG Packs** (silhouettes Cricut/Silhouette) | Etsy | produce_svg_pack.py | ✗ | 🔧 Sans gate CdC |
+> | 8 | **Papeterie Mariage** (faire-part, menus, tables) | Etsy | produce_wedding_stationery.py | ✗ | 🔧 Sans gate CdC |
+> | 9 | **COPE Pack** (design multi-format all-in-one) | Etsy, Redbubble | produce_cope_pack.py | ✗ | 🔧 Sans gate CdC |
+> | 10 | **Literal Idioms** (illustrations absurdes d'expressions) | Redbubble, Etsy | produce_literal_idioms_v2.py | ✗ | 🔧 Sans gate CdC |
+> | 11 | **Cultural Arbitrage** (mots étrangers + design) | Redbubble, Etsy | produce_cultural_arbitrage_v2.py | ✗ | 🔧 Sans gate CdC |
+> | 12 | **iHeart designs** ("I ❤️ X" niches hobbies/villes) | Redbubble, Merch Amazon | produce_iheart_v4.py | ✗ | 🔧 Sans gate CdC |
+> | 13 | **Citations Minimalistes** | Redbubble, Merch Amazon | produce_quotes_minimal.py | ✗ | 🔧 Sans gate CdC |
+> | 14 | **Bible Verses** (versets illustrés) | KDP, Redbubble | produce_bible_verses_v2.py | ✗ | 🔧 Sans gate CdC |
+> | 15 | **Gamedev Asset Packs** (assets pour créateurs indie) | Itch.io | produce_gamedev_asset_pack.py | ✗ | 🔧 Sans gate CdC |
+> | 16 | **Chess Strategy Book** (puzzles Lichess CC0) | Amazon KDP | produce_chess_book.py | ✗ | 🔧 Produit one-shot |
+> | 17 | **Château Local** (B2B monuments historiques) | KDP + partenariats | produce_chateau_local.py | ✗ | 🔧 Niche B2B |
+> | 18 | **Witchy/Cottagecore designs** | Redbubble | (via COPE/viral_formats) | ✗ | 🔧 Intégré dans merch |
+> | 19 | **Merch Design POD** (collections 30 designs/thème) | Redbubble, TeePublic, Society6 | produce_merch_designs.py | ✓ agent_merch_design_cdc.py | ⚡ Prêt |
+> | 20 | **Godot Assets** (sprites, tilesets, shaders, addons) | Itch.io | produce_godot_assets.py | ✓ agent_godot_cdc.py | ⚡ Prêt |
+>
+> ### INSCRIPTIONS REQUISES PAR PLATEFORME
+>
+> | Plateforme | Businesses concernés | Déjà inscrit ? | À faire |
+> |-----------|---------------------|---------------|---------|
+> | **Amazon KDP** | #1 #2 #3 #14 #16 #17 | ✅ OUI | Rien |
+> | **Redbubble** | #10 #11 #12 #13 #14 #18 #19 | ✅ OUI | Rien |
+> | **TeePublic** | #19 | ❌ NON | https://www.teepublic.com — gratuit, s'inscrire comme artiste |
+> | **Society6** | #19 | ❌ NON | https://society6.com/create-store — gratuit |
+> | **Cults3D** | #4 | ❌ NON | https://cults3d.com — créer compte + Stripe |
+> | **Printables** | #4 | ❌ NON | https://www.printables.com/join — gratuit |
+> | **MyMiniFactory** | #4 | ❌ NON | https://www.myminifactory.com — gratuit |
+> | **DriveThruRPG** | #5 (RPG accessories) | ❌ NON | https://www.drivethrurpg.com/en/publisher/signup — gratuit |
+> | **Itch.io** | #5 #15 #20 | ❌ NON | https://itch.io/register — gratuit |
+> | **The Game Crafter** | #5 (physique optionnel) | ❌ NON | https://www.thegamecrafter.com — optionnel |
+> | **Etsy** ⏸️ | #6 #7 #8 #9 #10 #11 | ⏸️ REPORTÉ | 0,20$/listing — attendre 1er revenu (voir section 🔴) |
+>
+> ### SECRETS GITHUB MANQUANTS (bloquants pour certains verticaux)
+>
+> | Secret | Bloque quoi | Service | URL |
+> |--------|-------------|---------|-----|
+> | `GROQ_API_KEY` | Romans (#3) | https://console.groq.com | Gratuit 30 req/min |
+> | `RUNWARE_API_KEY` | Coloriage (#1), Merch (#9-13) | https://runware.ai | ~$0.0006/image |
+> | `MISTRAL_API_KEY` | Architecte système | https://console.mistral.ai | Gratuit |
+>
+> ### ⚠️ OBLIGATOIRE AVANT 1ÈRE VENTE
+> **URSSAF Auto-entrepreneur** : https://www.autoentrepreneur.urssaf.fr
+> 10 minutes. Obligatoire légalement. Coût = 0€ tant que tu ne vends rien.
+>
+> ### CERVEAUX PERPÉTUELS (tous les secrets requis = GEMINI_API_KEY uniquement)
+>
+> | Jour | Cerveau | Domaine |
+> |------|---------|---------|
+> | Lundi 06h | Optimizer vertical | Analyse audits → génère CdC auto |
+> | Mardi 05h | Low-Content Brain | Tendances KDP journals/planners |
+> | Mercredi 04h | STL Trends | Cults3D/Printables trends |
+> | Mercredi 05h | Roman Brain | Tendances KDP Fiction (romance, mystery, cozy) |
+> | Jeudi 03h | Coloring Intel | Tendances coloriage KDP (bestsellers Amazon) |
+> | Jeudi 04h | Jeux Société Brain | DriveThruRPG/Itch.io trends |
+> | Jeudi 05h | Prospecteur | Nouvelles niches émergentes |
+> | Vendredi 04h | Merch Brain | POD/Redbubble/TeePublic trends |
+> | Samedi 05h | Godot Brain | Tendances Itch.io assets (sprites, shaders) |
+> | Toutes les 4h | Queue Manager | Maintient 10 CdC pending/vertical |
+> | Dimanche 02h | Architecte | Gaps système auto-détectés |
+> | Dimanche 20h | Rapporteur | Résumé hebdo pour Hugo |
+>
+> **⚠️ LANCER LES CdC** : Le Queue Manager tourne automatiquement toutes les 4h UNIQUEMENT sur la branche principale.
+> Pour déclencher maintenant : GitHub → Actions → **"CdC Queue Manager"** → **"Run workflow"** → sélectionner la branche `claude/365days-orchestration-jVm2g`.
+> Cible : 10 CdCs pending par vertical (7 verticaux = 70 CdCs générés automatiquement par les agents).
+
+> ## 🔄 MISE À JOUR 27/05/2026
+>
+> ### Secrets GitHub à ajouter MAINTENANT (bloquants)
+> | Secret | Service | URL inscription | Usage |
+> |--------|---------|-----------------|-------|
+> | `GROQ_API_KEY` | Groq Cloud | https://console.groq.com | Roman writer (Llama 3.3 70B, 30 req/min gratuit) |
+> | `MISTRAL_API_KEY` | Mistral | https://console.mistral.ai | Architecte Système (Mistral Small gratuit) |
+> | `RUNWARE_API_KEY` | Runware | https://runware.ai | Génération images (remplace HF, ~$0.002-0.006/image) |
+>
+> ### Plateformes à inscrire MAINTENANT (produits prêts à uploader)
+> | Plateforme | Produits prêts | Royalties | URL |
+> |-----------|---------------|-----------|-----|
+> | **Cults3D** | 194 fichiers STL (keychains, coasters, bookmarks, door plates) | 80% | https://cults3d.com |
+> | **Etsy** | Jeux de cartes (DevOps, Nurses, Pêche, Pompiers, Profs) — après ajout fichier règles | 80-85% | https://etsy.com |
+> | **KDP (déjà inscrit)** | Journaux low-content : 10 produits APPROUVÉS (fishing log, brewing log, etc.) | 35-70% | déjà fait |
+>
+> ### Ce qui est REJETÉ (ne pas uploader)
+> - ❌ Mystical Mushrooms coloring book → REJECT 40/100 (résolution 73 DPI, KDP exige 300 DPI)
+> - ❌ Mystical Creatures coloring book → REJECT 0/100 (6 pages seulement, résolution insuffisante)
+> - ⚠️ 5 jeux de cartes → REVIEW (fichier règles manquant) — ajouter les règles pour débloquer
+>
+> ### Ce que font les agents maintenant (branché depuis 27/05)
+> - 🧠 **B1 Stratège** : tous les lundis 06h UTC — lit les rapports brain et propose des produits
+> - 🔭 **Prospecteur d'Émergence** : tous les jeudis 05h UTC — scanne les business inexploités
+> - 🏗️ **Architecte Système** : tous les dimanches 04h UTC — audite système + génère briefings
+> - 📋 **CdC Roman** : sur trigger — génère cahier des charges complet (en attente : romance small-town)
+> - 📋 **CdC Low-content** : sur trigger — génère cahier des charges (en attente : witchy moon journal)
+>
+> ### ⚠️ OBLIGATOIRE AVANT 1ÈRE VENTE
+> **URSSAF Auto-entrepreneur** — toujours pas fait. Obligatoire légalement avant tout premier paiement.
+> URL : https://www.autoentrepreneur.urssaf.fr/portail/accueil/creer-mon-auto-entreprise.html
+> Durée : 10-15 min. À faire MAINTENANT.
+
 > ## ✅ ÉTAT AU 20/05/2026 (déclaré par Hugo)
 > Hugo a rempli les inscriptions **jusqu'à la clé Hugging Face**.
 > - **FAIT** : Redbubble · KDP (+ W-8BEN) · clés LLM **gratuites** : Gemini, Groq, Mistral, OpenRouter, Cohere, HF, **Civitai** (`CIVITAI_API_KEY`).
 > - **SKIPPÉ volontairement** (payant ou crédit limité — on veut du **100 % gratuit durable**) : Together (2.4), Replicate (2.9), Perplexity (2.10). Couverts par les gratuits + **Pollinations** (génération images **sans clé**) + post-traitement local sans clé.
 > - **PAS ENCORE FAIT (priorité)** : **URSSAF** (obligatoire avant la 1ère vente) · **Bitwarden** (Hugo utilise déjà le gestionnaire de mots de passe intégré de son téléphone) · **tout le reste des Vagues 3 → 8**.
-> - **Priorité convenue** : les **clés API** d'abord (fait jusqu'à HF). Action débloquante = poser `HF_API_KEY` + `GEMINI_API_KEY` dans les **GitHub Secrets** → ça lance la production.
+> - **Priorité convenue** : les **clés API** d'abord (fait jusqu'à HF). Action débloquante = poser `HF_API_KEY` + `GEMINI_API_KEY` dans les **GitHub Secrets** → ça lance la production. `HF_API_KEY` remplacé par `RUNWARE_API_KEY` pour la génération d'images (HF ne sert plus FLUX/SDXL gratuitement depuis mi-2025).
 > - ⚠️ *Les lignes individuelles ci-dessous ne sont pas toutes confirmées une par une : si une case est cochée à tort, signale-le.*
 
 > ## 🎨 GÉNÉRATEURS D'IMAGES — RÉALITÉ AU 21/05 (priorité actuelle)
@@ -517,7 +626,8 @@ la mention `"En tant que partenaire, je touche une commission..."` ou équivalen
 \+ **KDP** ✅ (Vague 3.11, fait en avance) · **W-8BEN** ✅
 
 **RESTE À FAIRE** : URSSAF · Bitwarden (optionnel) · Vagues 3 → 8.
-**ACTION DÉBLOQUANTE** : poser `HF_API_KEY` + `GEMINI_API_KEY` dans les GitHub Secrets → lance la production.
+**ACTION DÉBLOQUANTE** : poser `GEMINI_API_KEY` dans les GitHub Secrets (si pas encore fait) → lance les cerveaux.
+**LANCER LES CdC** : GitHub → Actions → "CdC Queue Manager" → "Run workflow" → branche `claude/365days-orchestration-jVm2g` → génère 70 CdCs (10/vertical × 7 verticaux).
 
 ---
 

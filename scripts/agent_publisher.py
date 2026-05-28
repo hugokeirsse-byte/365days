@@ -236,3 +236,23 @@ This package has been successfully prepared and validated for publication on Ama
 {chr(10).join([f"  - {tag}" for tag in etsy_listing['tags']])}
 
 ### Etsy Description
+{etsy_listing['description']}
+
+---
+
+*Generated on {current_date} — ready for upload*
+"""
+    with open(pub_ready_path, "w", encoding="utf-8") as f:
+        f.write(markdown_content)
+    log(f"Wrote {pub_ready_path}")
+
+    log("Publication package complete.")
+    log(f"Files written to: {publication_dir}")
+    log("Next steps:")
+    log("  1. Upload PDF to Amazon KDP")
+    log("  2. Use kdp_metadata.json for title/description/keywords")
+    log("  3. Review PUBLICATION_READY.md for full checklist")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,98 @@
+name: Novel Production (écriture chapitres)
+
+on:
+  push:
+    paths:
+      - "products/novels/**/cdc.json"
+  workflow_dispatch:
+    inputs:
+      novel_dir:
+        description: "Chemin du dossier roman (ex: products/novels/roman_2024-01-01_le_titre)"
+        required: false
+        default: ""
+
+concurrency:
+  group: novel-production-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  write-novel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --quiet requests
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Produce roman chapters
+        env:
+          GROQ_API_KEY:    ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY:  ${{ secrets.GEMINI_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          NOVEL_DIR:       ${{ inputs.novel_dir }}
+        run: python scripts/produce_roman_chapters.py
+
+      - name: Commit chapters + manuscript + updated cdc.json
+        if: always()
+        run: |
+          git add products/novels/ 2>/dev/null || echo "(rien a ajouter)"
+          if git diff --cached --quiet; then
+            echo "Aucun fichier nouveau — rien a committer."
+          else
+            NOVEL_SLUG=$(git diff --cached --name-only | grep 'cdc.json' | head -1 | cut -d/ -f3)
+            git commit -m "Roman: chapitres produits — ${NOVEL_SLUG:-roman}"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then
+                break
+              fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep $((i * 2))
+            done
+          fi
+
+      - name: Print word count summary
+        if: always()
+        run: |
+          echo "## Résumé production roman" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Chercher le manuscrit le plus récent
+          MANUSCRIPT=$(find products/novels -name "manuscript.txt" -newer /tmp/nothing 2>/dev/null | head -1)
+
+          if [ -n "$MANUSCRIPT" ] && [ -f "$MANUSCRIPT" ]; then
+            WORD_COUNT=$(wc -w < "$MANUSCRIPT")
+            CHAPTER_COUNT=$(find "$(dirname "$MANUSCRIPT")/chapters" -name "ch_*.txt" 2>/dev/null | wc -l)
+            NOVEL_DIR=$(dirname "$MANUSCRIPT")
+            SLUG=$(basename "$NOVEL_DIR")
+
+            echo "| Champ            | Valeur                  |" >> $GITHUB_STEP_SUMMARY
+            echo "| ---------------- | ----------------------- |" >> $GITHUB_STEP_SUMMARY
+            echo "| Roman            | \`${SLUG}\`             |" >> $GITHUB_STEP_SUMMARY
+            echo "| Chapitres écrits | ${CHAPTER_COUNT} / 38   |" >> $GITHUB_STEP_SUMMARY
+            echo "| Mots totaux      | ${WORD_COUNT}           |" >> $GITHUB_STEP_SUMMARY
+
+            if [ "$WORD_COUNT" -ge 50000 ]; then
+              echo "| Statut           | ✅ Complet (≥ 50 000 mots) |" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "| Statut           | ⚠️ Incomplet (< 50 000 mots) |" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "Aucun manuscrit trouvé — vérifier les logs de production." >> $GITHUB_STEP_SUMMARY
+          fi

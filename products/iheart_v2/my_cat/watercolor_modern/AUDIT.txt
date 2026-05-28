@@ -1,24 +1,15 @@
-AUDIT VISUEL — 2026-05-27T23:58:12.697472Z
+AUDIT v3 — 2026-05-27T11:22:20.663455Z
+Type produit : GENERIC
 ============================================================
 
 VERDICT : APPROVE
-Score composite : 94.0/100
-  - Visual : 100/100
-  - Text   : 90/100
+Score    : 70.0/100
 
-Détails visuels :
-  aucun problème
+── AVERTISSEMENTS (à corriger avant upload idéalement) ──
+  ⚠ Texte douteux (50/100) — vérification manuelle.
 
-Texte OCR extrait :
-  « y “és = :
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Le visuel est-il attractif face à la concurrence sur Etsy/Redbubble ?
+  → Le texte est-il lisible en miniature (comme il apparaît dans les résultats de recherche) ?
 
-ff e a= ; | \ \
-rs \
-’ : | ql ~J
-) Se za 4
-Sa 7s xX ae 2 by \h (-
-SS hen 4 B=, meen he N) La
-
-mS ~~ | |S »
-
-→ OK à uploader.
+→ Approuvé — viable commercialement sous réserve des vérifications manuelles ci-dessus.

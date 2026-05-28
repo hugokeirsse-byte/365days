@@ -1,15 +1,23 @@
-AUDIT VISUEL — 2026-05-27T23:57:58.454928Z
+AUDIT v3 — 2026-05-27T11:22:17.950708Z
+Type produit : CARD_GAME
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 80.0/100
-  - Visual : 80/100
-  - Text   : 80/100
+VERDICT : REVIEW
+Score    : 70/100
 
-Détails visuels :
-  ['résolution faible (657x896)']
+── PROBLÈMES BLOQUANTS (causes de 1★ Amazon/Etsy/Cults3D) ──
+  ✗ Pas de fichier de règles trouvé. Un jeu de cartes DOIT inclure les règles — sans ça les acheteurs ne peuvent pas jouer, garantissant des avis négatifs.
 
-Texte OCR extrait :
-  « (no text expected in this pipeline) »
+── AVERTISSEMENTS (à corriger avant upload idéalement) ──
+  ⚠ 49 cartes — acceptable, mais 54+ (deck standard) ou 100+ (party game) serait plus attractif.
 
-→ OK à uploader.
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Imprimer 5-10 cartes test et vérifier la lisibilité du texte à taille réelle
+  → Vérifier que le bleed (zone de découpe) est bien présent et que les éléments importants ne sont pas dans la zone de découpe
+  → Les règles sont-elles claires pour quelqu'un qui découvre le jeu ?
+  → La cohérence graphique est-elle maintenue sur toutes les cartes ?
+  → Le thème de la couverture/back des cartes est-il cohérent ?
+
+  Cartes : 49
+
+→ REVUE MANUELLE obligatoire avant toute décision d'upload.

@@ -1,17 +1,12 @@
-AUDIT VISUEL — 2026-05-27T23:58:26.057030Z
+AUDIT v3 — 2026-05-27T11:22:23.080142Z
+Type produit : GENERIC
 ============================================================
 
-VERDICT : REVIEW
-Score composite : 61.0/100
-  - Visual : 100/100
-  - Text   : 35/100
+VERDICT : APPROVE
+Score    : 90.0/100
 
-Détails visuels :
-  aucun problème
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Le visuel est-il attractif face à la concurrence sur Etsy/Redbubble ?
+  → Le texte est-il lisible en miniature (comme il apparaît dans les résultats de recherche) ?
 
-Texte OCR extrait :
-  « Diapea
-Wyse |
-onntinn , »
-
-→ REVUE MANUELLE recommandée avant upload.
+→ Approuvé — viable commercialement sous réserve des vérifications manuelles ci-dessus.

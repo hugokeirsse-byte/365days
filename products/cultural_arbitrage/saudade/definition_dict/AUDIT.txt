@@ -1,30 +1,15 @@
-AUDIT VISUEL — 2026-05-27T23:58:05.122571Z
+AUDIT v3 — 2026-05-27T11:22:20.258320Z
+Type produit : GENERIC
 ============================================================
 
 VERDICT : APPROVE
-Score composite : 82.0/100
-  - Visual : 100/100
-  - Text   : 70/100
+Score    : 70.0/100
 
-Détails visuels :
-  aucun problème
+── AVERTISSEMENTS (à corriger avant upload idéalement) ──
+  ⚠ Texte douteux (50/100) — vérification manuelle.
 
-Texte OCR extrait :
-  « Sa ee. wale ee at, Oe Rn, Vad SRS St ees pA eed
-2 eas Fran ers Brat ae | Bier |
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Le visuel est-il attractif face à la concurrence sur Etsy/Redbubble ?
+  → Le texte est-il lisible en miniature (comme il apparaît dans les résultats de recherche) ?
 
-2 e ae er “Fe " he a
-
-\ eg ; ate ——— .&
-
-.- rte ; ‘S
-
-a F ; = i avo
-* S@ie tissciad \ ee
-/ aN
-Bie ™
-iE ‘ : 4S]
-k
-mn ey  »
-
-→ OK à uploader.
+→ Approuvé — viable commercialement sous réserve des vérifications manuelles ci-dessus.

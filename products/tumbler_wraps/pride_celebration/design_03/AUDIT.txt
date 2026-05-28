@@ -1,15 +1,12 @@
-AUDIT VISUEL — 2026-05-27T23:58:19.161065Z
+AUDIT v3 — 2026-05-27T11:22:22.991209Z
+Type produit : GENERIC
 ============================================================
 
 VERDICT : APPROVE
-Score composite : 88.0/100
-  - Visual : 100/100
-  - Text   : 80/100
+Score    : 90.0/100
 
-Détails visuels :
-  aucun problème
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Le visuel est-il attractif face à la concurrence sur Etsy/Redbubble ?
+  → Le texte est-il lisible en miniature (comme il apparaît dans les résultats de recherche) ?
 
-Texte OCR extrait :
-  « (no text expected in this pipeline) »
-
-→ OK à uploader.
+→ Approuvé — viable commercialement sous réserve des vérifications manuelles ci-dessus.

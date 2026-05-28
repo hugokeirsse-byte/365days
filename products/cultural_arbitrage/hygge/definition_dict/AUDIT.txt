@@ -1,46 +1,15 @@
-AUDIT VISUEL — 2026-05-27T23:58:03.312328Z
+AUDIT v3 — 2026-05-27T11:22:20.286844Z
+Type produit : GENERIC
 ============================================================
 
 VERDICT : APPROVE
-Score composite : 82.0/100
-  - Visual : 100/100
-  - Text   : 70/100
+Score    : 70.0/100
 
-Détails visuels :
-  aucun problème
+── AVERTISSEMENTS (à corriger avant upload idéalement) ──
+  ⚠ Texte douteux (50/100) — vérification manuelle.
 
-Texte OCR extrait :
-  « rt ; ee ere a
-és : e |
-€-
-ye ee - ae
-a
-Gee: x
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Le visuel est-il attractif face à la concurrence sur Etsy/Redbubble ?
+  → Le texte est-il lisible en miniature (comme il apparaît dans les résultats de recherche) ?
 
-2
-or |
-> (ie) 1
-
-ed .
-
-° ’ '. |
-ie Be
-' @ me
-;
-q ,
-
-. 3
-rf
-) |
-LE
- @ Sat
-
-a 2
-" e '
-
-f AE LASS Ee Breck eis . )
-eh :
-
-at PeeIPLTEA Un cris ak Ere 10 9m B »
-
-→ OK à uploader.
+→ Approuvé — viable commercialement sous réserve des vérifications manuelles ci-dessus.

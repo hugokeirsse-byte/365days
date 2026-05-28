@@ -1,0 +1,115 @@
+name: CdC Queue Manager — 10 CdC par vertical en permanence
+
+# Maintient TARGET_PENDING CdC avec gate=pending par vertical.
+# Hugo en approuve/rejette → ce workflow détecte le manque → remplit auto.
+
+on:
+  schedule:
+    - cron: '0 */4 * * *'   # Toutes les 4 heures
+  push:
+    paths:
+      - 'products/coloring_books/**/cdc.json'
+      - 'products/stl_3d/**/cdc.json'
+      - 'products/lowcontent_kdp/**/cdc.json'
+      - 'products/novels/**/cdc.json'
+      - 'products/jeux_societe/**/cdc.json'
+      - 'products/merch/**/cdc.json'
+      - 'products/godot_assets/**/cdc.json'
+  workflow_dispatch:
+    inputs:
+      vertical:
+        description: 'Vertical à remplir'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - coloring
+          - stl
+          - lowcontent
+          - roman
+          - jeux_societe
+          - merch_design
+          - godot_assets
+      target:
+        description: 'Nombre de CdC cibles par vertical (défaut: 10)'
+        required: false
+        default: '10'
+      max_per_run:
+        description: 'Max générés par run par vertical (défaut: 5)'
+        required: false
+        default: '5'
+      dry_run:
+        description: 'Afficher sans générer'
+        required: false
+        default: 'false'
+        type: boolean
+
+concurrency:
+  group: cdc-queue-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fill-queue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Pull latest pour voir les CdC déjà approuvés/rejetés par Hugo
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dépendances
+        run: pip install requests
+
+      - name: Créer répertoires produits
+        run: |
+          mkdir -p products/coloring_books products/stl_3d products/lowcontent_kdp products/novels
+          mkdir -p products/jeux_societe products/merch products/godot_assets
+          mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman
+          mkdir -p data/brain/jeux_societe data/brain/merch data/brain/godot
+          mkdir -p data/reports
+
+      - name: Vérifier l'état des files (avant)
+        run: python scripts/agent_cdc_queue_manager.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
+          TARGET: ${{ github.event.inputs.target || '10' }}
+          MAX_PER_RUN: '0'   # dry-run pour afficher l'état
+          DRY_RUN: '1'
+
+      - name: Remplir les files manquantes
+        run: python scripts/agent_cdc_queue_manager.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
+          TARGET: ${{ github.event.inputs.target || '10' }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '5' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+
+      - name: Commit nouveaux CdC
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "CdC Queue Manager"
+          git config user.email "cdc-queue@365days.bot"
+          git add products/
+          git diff --staged --quiet && echo "Rien à committer (files déjà pleines)" || {
+            COUNT=$(git diff --staged --name-only | grep cdc.json | wc -l)
+            git commit -m "queue: +${COUNT} CdC générés (gate=pending) — $(date +%Y-%m-%d %H:%M)"
+            git push
+            echo ""
+            echo "════════════════════════════════════════════"
+            echo "  ${COUNT} NOUVEAUX CdC DISPONIBLES POUR HUGO"
+            echo "════════════════════════════════════════════"
+            echo ""
+            echo "Lire dans GitHub → products/*/{slug}/CAHIER_DES_CHARGES.md"
+            echo "Valider : changer gate_cdc = 'approved' dans cdc.json et push"
+            echo "Rejeter : changer gate_cdc = 'rejected' dans cdc.json et push"
+          }

@@ -1,15 +1,29 @@
-AUDIT VISUEL — 2026-05-27T23:57:58.680843Z
+AUDIT v3 — 2026-05-27T11:22:20.243191Z
+Type produit : COLORING
 ============================================================
 
-VERDICT : APPROVE
-Score composite : 88.0/100
-  - Visual : 100/100
-  - Text   : 80/100
+VERDICT : REJECT
+Score    : 40/100
 
-Détails visuels :
-  aucun problème
+── PROBLÈMES BLOQUANTS (causes de 1★ Amazon/Etsy/Cults3D) ──
+  ✗ BLOQUANT — 30/30 pages (100%) sous-résolues : page_01.png (673×875px ≈ 75 DPI), page_02.png (673×875px ≈ 75 DPI), page_03.png (673×875px ≈ 75 DPI), page_04.png (673×875px ≈ 75 DPI). KDP imprimera ces images floues — cause directe de 1★ 'qualité médiocre à l'impression'.
 
-Texte OCR extrait :
-  « (no text expected in this pipeline) »
+── AVERTISSEMENTS (à corriger avant upload idéalement) ──
+  ⚠ 4 pages mal cadrées (espace vide haut/bas) : page_08.png (haut=0.0% bot=0.1%), page_20.png (haut=0.0% bot=4.0%), page_25.png (haut=0.0% bot=8.8%), page_26.png (haut=0.0% bot=8.8%). Vérifier le cadrage.
 
-→ OK à uploader.
+── VÉRIFICATIONS MANUELLES OBLIGATOIRES (l'audit ne peut pas voir ça) ──
+  → Cohérence visuelle du style artistique sur toutes les pages (chibi vs botanique vs réaliste ?)
+  → Thème respecté à chaque page (ex: champignons présents sur TOUTES les pages ?)
+  → Lignes assez épaisses pour être visibles imprimées (tester une impression test)
+  → Niveau de difficulté approprié à l'audience cible (adulte = complexe, enfant = simple)
+  → Couverture suffisamment attractive face aux 100+ concurrents sur Amazon
+
+── STATS PAGES ──
+  Pages analysées : 30
+  Densité trait   : moy=9.5%, std=1.9%
+  Gris moyen      : 0.0%
+  Pages low-res   : 30
+  Pages grises    : 0
+
+→ REJETÉ — Ne pas uploader. Corriger les problèmes critiques d'abord.
+  Ces défauts sont visibles par les acheteurs et entraîneront des 1★.

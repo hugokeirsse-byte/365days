@@ -1,0 +1,127 @@
+name: Jeux de Société — Production Print & Play
+
+on:
+  push:
+    paths:
+      - "products/jeux_societe/**/cdc.json"
+  workflow_dispatch:
+    inputs:
+      jeu_dir:
+        description: "Chemin du répertoire jeu (ex: products/jeux_societe/jeu_2025-01-15_mon_jeu)"
+        required: false
+        default: ""
+
+concurrency:
+  group: jeux-societe-production-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: |
+          pip install --quiet reportlab Pillow requests
+
+      - name: Vérifier ReportLab
+        run: python -c "import reportlab; print(f'ReportLab {reportlab.Version} OK')"
+
+      - name: Créer répertoire produits
+        run: mkdir -p products/jeux_societe
+
+      - name: Lancer la production
+        run: python scripts/produce_board_game.py
+        env:
+          JEU_DIR: ${{ github.event.inputs.jeu_dir }}
+
+      - name: Lister les fichiers générés
+        run: |
+          echo ""
+          echo "══════════════════════════════════════════════════════"
+          echo "  FICHIERS GÉNÉRÉS"
+          echo "══════════════════════════════════════════════════════"
+          if find products/jeux_societe -name "*.pdf" -newer products/jeux_societe 2>/dev/null | grep -q .; then
+            find products/jeux_societe -name "*.pdf" -newer products/jeux_societe | while read f; do
+              size=$(du -h "$f" | cut -f1)
+              echo "  $size  $f"
+            done
+          else
+            find products/jeux_societe/*/print -name "*.pdf" 2>/dev/null | while read f; do
+              size=$(du -h "$f" | cut -f1)
+              echo "  $size  $f"
+            done
+          fi
+          echo ""
+          echo "  Guides d'impression :"
+          find products/jeux_societe/*/print -name "PRINT_GUIDE.md" 2>/dev/null | while read f; do
+            echo "  $f"
+          done
+          echo "══════════════════════════════════════════════════════"
+
+      - name: Configurer git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit et push des fichiers produits
+        run: |
+          git add products/jeux_societe/
+
+          if git diff --cached --quiet; then
+            echo "Aucun nouveau fichier à committer."
+            exit 0
+          fi
+
+          # Identifier le jeu produit depuis les PDFs nouvellement créés
+          jeu_slug=$(find products/jeux_societe/*/print -name "*.pdf" 2>/dev/null \
+            | head -1 | awk -F'/' '{print $3}' || echo "jeu inconnu")
+
+          pdf_count=$(find products/jeux_societe/*/print -name "*.pdf" 2>/dev/null | wc -l)
+
+          git commit -m "prod: ${jeu_slug} — ${pdf_count} PDFs print-and-play générés"
+
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:${{ github.ref_name }}; then
+              echo "Push OK"
+              break
+            fi
+            echo "Push échoué (tentative $i/5) — rebase et réessai..."
+            git pull --rebase origin ${{ github.ref_name }} || true
+            sleep 3
+          done
+
+      - name: Instructions post-production
+        run: |
+          echo ""
+          echo "╔══════════════════════════════════════════════════════╗"
+          echo "║  PRODUCTION TERMINÉE — JEUX DE SOCIÉTÉ               ║"
+          echo "╚══════════════════════════════════════════════════════╝"
+          echo ""
+          echo "  Fichiers PDF disponibles dans :"
+          find products/jeux_societe/*/print -name "*.pdf" 2>/dev/null | while read f; do
+            echo "    → $f"
+          done
+          echo ""
+          echo "  Pour imprimer :"
+          find products/jeux_societe/*/print -name "PRINT_GUIDE.md" 2>/dev/null | while read f; do
+            echo "    → Lire $f"
+          done
+          echo ""
+          echo "  Prochaine étape :"
+          echo "    → Mettre en vente sur Itch.io / DriveThruRPG"
+          echo "    → Uploader le PDF dans products/jeux_societe/{slug}/print/"
+          echo ""
