@@ -454,7 +454,7 @@ def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
             env=env,
             capture_output=True,
             text=True,
-            timeout=180,
+            timeout=300,
             cwd=str(ROOT),
         )
         if result.returncode == 0:

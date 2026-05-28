@@ -57,12 +57,12 @@ def _call_gemini(system: str, user: str, temperature: float, max_tokens: int,
     }
     data = json.dumps(body).encode()
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req, timeout=120) as resp:
+    with urllib.request.urlopen(req, timeout=180) as resp:
         result = json.loads(resp.read())
     candidate = result["candidates"][0]
     finish = candidate.get("finishReason", "STOP")
-    if finish not in ("STOP", "MAX_TOKENS"):
-        raise ValueError(f"Gemini finish reason: {finish}")
+    if finish not in ("STOP", "MAX_TOKENS", "FINISH_REASON_STOP"):
+        print(f"[brain_utils] Gemini finishReason={finish} (non bloquant)")
     text = candidate["content"]["parts"][0]["text"]
     usage = result.get("usageMetadata", {})
     return text, usage.get("promptTokenCount", 0), usage.get("candidatesTokenCount", 0)
