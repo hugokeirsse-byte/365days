@@ -11,7 +11,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
 
 LOWCONTENT_DIR = Path("products/lowcontent_kdp")
 
@@ -130,17 +130,13 @@ Ce livre doit être entièrement généré par ReportLab (Python), sans image ex
 Le layout doit être précis au millimètre pour que le script de production puisse l'implémenter directement."""
 
     print("[CdC Low-Content] Appel LLM...")
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=16000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=8000)
 
     if not response:
         print("[CdC Low-Content] Échec LLM.", file=sys.stderr)
         sys.exit(1)
 
-    clean = response.strip()
-    if clean.startswith("```"):
-        parts = clean.split("```")
-        clean = parts[1][4:] if parts[1].startswith("json") else parts[1]
-    clean = clean.strip()
+    clean = extract_json(response)
 
     try:
         cdc = json.loads(clean)

@@ -22,7 +22,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
 
 STL_3D_DIR = Path("products/stl_3d")
 BRAIN_STL_DIR = Path("data/brain/stl")
@@ -261,17 +261,13 @@ Génère {nb_variantes} variantes créatives et vendables pour la niche "{stl_ni
 Le JSON doit être complet et directement utilisable par le script de production OpenSCAD."""
 
     print(f"[STL CdC] Appel LLM Gemini (génération CdC complet, {nb_variantes} variantes)...")
-    response = llm_call("stl_cdc", system_prompt, user_prompt, temperature=0.85, max_tokens=16000)
+    response = llm_call("stl_cdc", system_prompt, user_prompt, temperature=0.85, max_tokens=8000)
 
     if not response:
         print("[STL CdC] Échec LLM — aucune réponse.")
         sys.exit(1)
 
-    # Clean markdown fences if present
-    clean = response.strip()
-    if clean.startswith("```"):
-        parts = clean.split("```")
-        clean = parts[1][4:].strip() if parts[1].startswith("json") else parts[1].strip()
+    clean = extract_json(response)
 
     try:
         cdc = json.loads(clean)

@@ -25,7 +25,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
 
 MERCH_DIR = Path("products/merch")
 
@@ -286,13 +286,13 @@ Return this exact JSON structure with ALL {nb_designs} designs fully specified:
 Generate ALL {nb_designs} entries in the designs array. Each must be unique, creative, and fully specified."""
 
     print(f"[Merch CdC] Appel LLM Gemini (génération CdC complet, {nb_designs} designs)...")
-    response = llm_call("stl_cdc", system_prompt, user_prompt, temperature=0.85, max_tokens=16000)
+    response = llm_call("stl_cdc", system_prompt, user_prompt, temperature=0.85, max_tokens=8000)
 
     if not response:
         print("[Merch CdC] Échec LLM — aucune réponse reçue.")
         sys.exit(1)
 
-    clean = _strip_json_fences(response)
+    clean = extract_json(response)
     try:
         cdc = json.loads(clean)
     except Exception as e:

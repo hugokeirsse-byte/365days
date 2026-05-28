@@ -16,7 +16,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
 
 COLORING_DIR = Path("products/coloring_books")
 
@@ -131,18 +131,13 @@ Génère un concept différenciant qui se vendra bien sur Amazon KDP dès aujour
 Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans cette niche)."""
 
     print("[CdC Coloring] Appel LLM (génération CdC complet)...")
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=16000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=8000)
 
     if not response:
         print("[CdC Coloring] Echec LLM.")
         sys.exit(1)
 
-    # Strip markdown fences if present
-    clean = response.strip()
-    if clean.startswith("```"):
-        parts = clean.split("```")
-        clean = parts[1][4:] if parts[1].startswith("json") else parts[1]
-    clean = clean.strip()
+    clean = extract_json(response)
 
     try:
         cdc = json.loads(clean)

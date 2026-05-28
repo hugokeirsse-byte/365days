@@ -48,13 +48,7 @@ def _call_gemini(system: str, user: str, temperature: float, max_tokens: int,
     if not key:
         raise ValueError("GEMINI_API_KEY not set")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={key}"
-    gen_config = {
-        "temperature": temperature,
-        "maxOutputTokens": max_tokens,
-        "thinkingConfig": {"thinkingBudget": 0},
-    }
-    if json_mode:
-        gen_config["responseMimeType"] = "application/json"
+    gen_config = {"temperature": temperature, "maxOutputTokens": max_tokens}
     body = {
         "contents": [{"role": "user", "parts": [{"text": f"{system}\n\n{user}"}]}],
         "generationConfig": gen_config,
@@ -112,7 +106,7 @@ def _call_mistral(system: str, user: str, temperature: float, max_tokens: int) -
     model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest")
     return _call_openai_compat(
         "https://api.mistral.ai/v1/chat/completions",
-        model, key, system, user, temperature, max_tokens
+        model, key, system, user, temperature, min(max_tokens, 8192)
     )
 
 
@@ -161,6 +155,31 @@ def llm_call(agent_type: str, system: str, user: str,
 
     print(f"[brain_utils] All providers failed for {agent_type}")
     return ""
+
+
+def extract_json(text: str) -> str:
+    """Extract JSON from LLM response, stripping markdown fences or surrounding prose."""
+    t = text.strip()
+    # Try direct parse first
+    if t.startswith("{") or t.startswith("["):
+        return t
+    # Strip ```json ... ``` or ``` ... ```
+    if "```" in t:
+        parts = t.split("```")
+        for part in parts[1::2]:  # odd parts are inside fences
+            inner = part.strip()
+            if inner.startswith("json"):
+                inner = inner[4:].strip()
+            if inner.startswith("{") or inner.startswith("["):
+                return inner
+    # Last resort: find first { or [
+    for ch, end in [("{", "}"), ("[", "]")]:
+        start = t.find(ch)
+        if start != -1:
+            last = t.rfind(end)
+            if last > start:
+                return t[start:last + 1]
+    return t
 
 
 # --------------------------------------------------------------------------- #

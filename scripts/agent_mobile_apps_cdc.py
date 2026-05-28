@@ -26,7 +26,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
 
 ROOT = Path(__file__).resolve().parent.parent
 APPS_DIR = ROOT / "products" / "mobile_apps"
@@ -137,18 +137,15 @@ The app must be viable on App Store and Google Play.
 The monetization model must match category conventions (subscription for lifestyle/health, one_time for tools).
 Focus on a tight MVP scope — solve one problem exceptionally well."""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=16000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=8000)
     if not response:
         print("[CdC Mobile Apps] LLM call failed.", file=sys.stderr)
         sys.exit(1)
 
-    clean = response.strip()
-    if clean.startswith("```"):
-        parts = clean.split("```")
-        clean = parts[1][4:] if parts[1].startswith("json") else parts[1]
+    clean = extract_json(response)
 
     try:
-        cdc = json.loads(clean.strip())
+        cdc = json.loads(clean)
     except Exception as e:
         print(f"[CdC Mobile Apps] Invalid JSON: {e}", file=sys.stderr)
         sys.exit(1)

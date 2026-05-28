@@ -28,7 +28,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
 
 ROOT = Path(__file__).resolve().parent.parent
 GODOT_DIR = ROOT / "products" / "godot_assets"
@@ -172,18 +172,15 @@ JSON uniquement."""
 Le pack doit être VENDABLE sur Itch.io face à la concurrence gratuite.
 L'élément unique doit justifier le prix."""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=16000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=8000)
     if not response:
         print("[CdC Godot] Échec LLM.", file=sys.stderr)
         sys.exit(1)
 
-    clean = response.strip()
-    if clean.startswith("```"):
-        parts = clean.split("```")
-        clean = parts[1][4:] if parts[1].startswith("json") else parts[1]
+    clean = extract_json(response)
 
     try:
-        cdc = json.loads(clean.strip())
+        cdc = json.loads(clean)
     except Exception as e:
         print(f"[CdC Godot] JSON invalide: {e}", file=sys.stderr)
         sys.exit(1)
