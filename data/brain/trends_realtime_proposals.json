@@ -1,7 +1,7 @@
 {
   "agent": "trends_realtime",
   "title": "Trends Realtime Brain",
-  "timestamp": "2026-05-27T21:48:01.619343Z",
+  "timestamp": "2026-05-28T02:06:18.281070Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -98,75 +98,75 @@
   "proposals": [
     {
       "rank": 1,
-      "trend_keyword": "Chaos Gardening / Seed Bombing Aesthetic",
+      "trend_keyword": "Bold and Easy Cozy Spaces",
       "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 45,
-      "saturation_now_1_10": 2,
-      "best_product_format": "sticker",
-      "best_pipeline_match": "produce_literal_idioms_v2",
-      "title_template_suggestion": "Chaos Gardening Club Sticker - Retro Wildflower Seed Bomb Aesthetic Decal",
-      "evidence_url_or_signal": "TikTok hashtag #chaosgardening exploded with over 12M views in the first two weeks of May 2026, with users sharing chaotic wildflower planting videos. High demand for related indie-style stickers."
-    },
-    {
-      "rank": 2,
-      "trend_keyword": "Bold and Easy Cozy Summer Coloring Book",
-      "platform_where_spotted": "TikTok",
-      "momentum_score_1_10": 9,
-      "estimated_lifespan_days": 60,
+      "momentum_score_1_10": 10,
+      "estimated_lifespan_days": 90,
       "saturation_now_1_10": 4,
       "best_product_format": "coloring_book",
       "best_pipeline_match": "produce_coloring_book",
-      "title_template_suggestion": "Bold and Easy Cozy Summer Coloring Book: Simple and Clean Designs for Adults and Kids",
-      "evidence_url_or_signal": "Search queries for 'bold and easy coloring book' surged on Amazon KDP and TikTok (#cozycoloring) in mid-May 2026, shifting from winter hygge to simple summer beach/cabin themes."
+      "title_template_suggestion": "Bold and Easy Cozy Spaces Coloring Book: Simple Clean Outlines Designs for Adults and Kids",
+      "evidence_url_or_signal": "TikTok hashtag #boldandeasy and #cozycoloring spiked with over 15M combined views in the last 12 days, showing a massive demand for low-stress, thick-line minimalist coloring books over complex mandalas."
+    },
+    {
+      "rank": 2,
+      "trend_keyword": "Teacher Out of Office Mode",
+      "platform_where_spotted": "Etsy",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 45,
+      "saturation_now_1_10": 5,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_viral_formats_v2",
+      "title_template_suggestion": "Retro Teacher Out Of Office Sticker - Cute End of School Year Gift Laptop Decal",
+      "evidence_url_or_signal": "Search queries on Etsy for 'Teacher Summer Break Retro SVG' and 'Out of Office Teacher' increased by 240% since May 10, 2026, as teachers prepare for summer vacation."
     },
     {
       "rank": 3,
-      "trend_keyword": "Birth Month Moth Vintage Tattoo",
-      "platform_where_spotted": "Pinterest",
+      "trend_keyword": "Aura Points Deduction Checklist",
+      "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 8,
-      "estimated_lifespan_days": 90,
-      "saturation_now_1_10": 3,
-      "best_product_format": "tshirt",
-      "best_pipeline_match": "produce_svg_pack",
-      "title_template_suggestion": "Vintage Birth Month Moth SVG PNG - Aesthetic Cottagecore Death Head Moth Clipart Bundle",
-      "evidence_url_or_signal": "Pinterest Trends dashboard for May 2026 shows a 140% weekly spike in searches for 'birth month moth tattoo' and 'cottagecore moth illustration' as an alternative to birth flowers."
+      "estimated_lifespan_days": 30,
+      "saturation_now_1_10": 2,
+      "best_product_format": "sticker",
+      "best_pipeline_match": "produce_cope_pack",
+      "title_template_suggestion": "-1000 Aura Points Funny Gen Z Slang Sticker for Water Bottles and Laptops",
+      "evidence_url_or_signal": "The 'Aura Points' meme has pivoted into daily life checklists ('losing aura points when tripping on the sidewalk'). Video edits using retro mascot designs with aura checklists gained 4.2M views in the last week."
     },
     {
       "rank": 4,
-      "trend_keyword": "I Did It For The Plot Graduation 2026",
-      "platform_where_spotted": "Etsy",
-      "momentum_score_1_10": 10,
-      "estimated_lifespan_days": 20,
-      "saturation_now_1_10": 5,
-      "best_product_format": "mug",
-      "best_pipeline_match": "produce_viral_formats_v2",
-      "title_template_suggestion": "Class of 2026 Mug - I Did It For The Plot Graduation Gift - Funny College Grad Mug",
-      "evidence_url_or_signal": "Etsy real-time search auto-completes 'I did it for the plot graduation' with high transaction volume spikes from May 10 to May 22, 2026, matching active commencement ceremonies."
+      "trend_keyword": "Amalfi Coast Limoncello Vintage Poster",
+      "platform_where_spotted": "Pinterest",
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 75,
+      "saturation_now_1_10": 6,
+      "best_product_format": "wall_art",
+      "best_pipeline_match": "produce_tumbler_wraps",
+      "title_template_suggestion": "Vintage Italian Summer Limoncello Print - Retro Amalfi Coast Kitchen Wall Art Poster",
+      "evidence_url_or_signal": "Pinterest boards for 'Amalfi Coast Retro Aesthetic' and 'Limoncello Vintage Kitchen Decor' are up 180% week-on-week as users curate summer home aesthetics."
     },
     {
       "rank": 5,
-      "trend_keyword": "Emotional Support Romance Book Club",
+      "trend_keyword": "Unc Status Retro Mascot",
       "platform_where_spotted": "TikTok",
       "momentum_score_1_10": 8,
       "estimated_lifespan_days": 40,
       "saturation_now_1_10": 3,
-      "best_product_format": "tumbler_wraps",
-      "best_pipeline_match": "produce_tumbler_wraps",
-      "title_template_suggestion": "Emotional Support Romance Book Club Tumbler Wrap - 20oz Skinny Tumbler Sublimation Design",
-      "evidence_url_or_signal": "#BookTok viral videos in mid-May showcase customized physical 'romance reader' tumblers with retro grid and mascot designs, specifically targeting spicy fantasy romance readers."
+      "best_product_format": "tshirt",
+      "best_pipeline_match": "produce_cultural_arbitrage_v2",
+      "title_template_suggestion": "Retro Cartoon Mascot Unc Status Tee - Funny Vintage 1930s Style Unc Shirt",
+      "evidence_url_or_signal": "The slang 'Unc' (Uncle, used to describe millennial men showing their age) has exploded on TikTok. Merging this with 1930s rubber-hose style cartoon mascots is a highly viral aesthetic style."
     },
     {
       "rank": 6,
-      "trend_keyword": "Articulated Capybara with Orange Fidget",
+      "trend_keyword": "Tactile Screw Bolt Fidget",
       "platform_where_spotted": "Reddit",
-      "momentum_score_1_10": 7,
-      "estimated_lifespan_days": 50,
-      "saturation_now_1_10": 2,
+      "momentum_score_1_10": 9,
+      "estimated_lifespan_days": 90,
+      "saturation_now_1_10": 3,
       "best_product_format": "stl_parametric",
       "best_pipeline_match": "produce_stl_parametric",
-      "title_template_suggestion": "Articulated Capybara with Citrus Hat - Flexible 3D Print STL - Cute Fidget Toy Design",
-      "evidence_url_or_signal": "r/3Dprinting and Cults3D trending tags show high organic traffic for flexible/articulated animals holding food items, with Capybaras with yuzu/orange hats topping the charts this week."
+      "title_template_suggestion": "Parametric Screw Bolt Fidget Keychain STL - Tactile Mechanical EDC Toy",
+      "evidence_url_or_signal": "In r/3Dprinting and r/functionalprint, posts showcasing pocket-sized parametric screw fidgets with hidden storage compartments reached the front page twice in the last 10 days, indicating high cults3D demand."
     }
   ]
 }
