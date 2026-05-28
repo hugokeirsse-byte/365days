@@ -1,0 +1,114 @@
+```json
+{
+  "stl_id": "stl_2026-05-28",
+  "date_cdc": "2026-05-28",
+  "gate_cdc": "pending",
+  "identite_commerciale": {
+    "nom_boutique": "Rooted Prints",
+    "slogan": "Grow More Than Just Plants.",
+    "niche_principale": "gardening"
+  },
+  "concept": {
+    "titre": "Whispering Roots Plant Markers",
+    "type_produit": "plant_marker",
+    "niche": "gardening",
+    "theme": "Enchanted Garden Botanical",
+    "element_unique": "Parametric decorative marker tip (leaf, flower, arrow, minimalist) that integrates seamlessly with the marker's silhouette, allowing for unique visual customization beyond just text engraving.",
+    "pourquoi_ca_va_vendre": "Gardeners love personalization and aesthetics. This product offers a unique blend of custom text and an elegant, choice-driven decorative tip, making it stand out from basic text-only markers. It's a perfect gift or a way to beautifully organize any garden."
+  },
+  "variantes": [
+    {
+      "slug": "bloom_where_planted",
+      "texte": "Bloom Where Planted",
+      "description_courte": "For cottagecore lovers who embrace growth",
+      "emoji_thumbnail": "🌸",
+      "prix_cults3d_usd": 2.75
+    },
+    {
+      "slug": "grow_your_own_sunshine",
+      "texte": "Grow Your Own Sunshine",
+      "description_courte": "Bring cheer to your garden every day",
+      "emoji_thumbnail": "☀️",
+      "prix_cults3d_usd": 3.00
+    },
+    {
+      "slug": "life_in_full_bloom",
+      "texte": "Life in Full Bloom",
+      "description_courte": "Celebrate every stage of life's beauty",
+      "emoji_thumbnail": "🌼",
+      "prix_cults3d_usd": 3.25
+    },
+    {
+      "slug": "garden_of_my_dreams",
+      "texte": "Garden of My Dreams",
+      "description_courte": "Mark the spot of your personal paradise",
+      "emoji_thumbnail": "🏡",
+      "prix_cults3d_usd": 3.50
+    },
+    {
+      "slug": "home_grown_happiness",
+      "texte": "Home Grown Happiness",
+      "description_courte": "For the joy of growing your own produce",
+      "emoji_thumbnail": "🥕",
+      "prix_cults3d_usd": 2.50
+    },
+    {
+      "slug": "dig_it_plant_it_grow_it",
+      "texte": "Dig It, Plant It, Grow It",
+      "description_courte": "A playful motto for enthusiastic gardeners",
+      "emoji_thumbnail": "🧤",
+      "prix_cults3d_usd": 2.00
+    },
+    {
+      "slug": "seed_soil_soul",
+      "texte": "Seed, Soil, Soul",
+      "description_courte": "A thoughtful marker for mindful gardeners",
+      "emoji_thumbnail": "🧘‍♀️",
+      "prix_cults3d_usd": 3.75
+    },
+    {
+      "slug": "plant_kindness_gather_love",
+      "texte": "Plant Kindness, Gather Love",
+      "description_courte": "A heartwarming message for any garden",
+      "emoji_thumbnail": "💖",
+      "prix_cults3d_usd": 4.00
+    },
+    {
+      "slug": "my_happy_place",
+      "texte": "My Happy Place",
+      "description_courte": "Declare your garden as your sanctuary",
+      "emoji_thumbnail": "😌",
+      "prix_cults3d_usd": 2.25
+    },
+    {
+      "slug": "let_love_grow",
+      "texte": "Let Love Grow",
+      "description_courte": "Perfect for a couple's garden or a gift",
+      "emoji_thumbnail": "💕",
+      "prix_cults3d_usd": 3.00
+    },
+    {
+      "slug": "dirt_therapy",
+      "texte": "Dirt Therapy",
+      "description_courte": "For those who find peace in the soil",
+      "emoji_thumbnail": "💆‍♀️",
+      "prix_cults3d_usd": 2.75
+    },
+    {
+      "slug": "keep_growing",
+      "texte": "Keep Growing",
+      "description_courte": "An encouraging reminder for plants and people",
+      "emoji_thumbnail": "🌱",
+      "prix_cults3d_usd": 2.50
+    },
+    {
+      "slug": "from_my_garden_to_yours",
+      "texte": "From My Garden To Yours",
+      "description_courte": "Share the love of gardening with others",
+      "emoji_thumbnail": "🎁",
+      "prix_cults3d_usd": 3.50
+    },
+    {
+      "slug": "cultivate_joy",
+      "texte": "Cultivate Joy",
+      "description_courte": "A simple yet
