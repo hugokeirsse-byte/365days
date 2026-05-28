@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_coaster_dnd_01",
+  "product_type": "coaster",
+  "product_name": "Coaster",
+  "template": "dnd",
+  "variant_text": "Roll Initiative",
+  "size_mm": "95Ø×4",
+  "estimated_print_time": "45 min",
+  "filament_estimate_g": 12,
+  "title": "Roll Initiative Coaster STL — 3D Print Ready, Dnd Aesthetic",
+  "tags_cults3d": [
+    "dnd",
+    "coaster",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "dnd",
+    "coaster",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 2.0,
+  "price_makerworld_eur": 2.0,
+  "stl_file": "coaster_dnd_01_roll_initiative.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

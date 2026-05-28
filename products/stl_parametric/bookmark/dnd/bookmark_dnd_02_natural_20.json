@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_bookmark_dnd_02",
+  "product_type": "bookmark",
+  "product_name": "Bookmark",
+  "template": "dnd",
+  "variant_text": "Natural 20",
+  "size_mm": "25×100×2.5",
+  "estimated_print_time": "25 min",
+  "filament_estimate_g": 5,
+  "title": "Natural 20 Bookmark STL — 3D Print Ready, Dnd Aesthetic",
+  "tags_cults3d": [
+    "dnd",
+    "bookmark",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "dnd",
+    "bookmark",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 1.5,
+  "price_makerworld_eur": 1.5,
+  "stl_file": "bookmark_dnd_02_natural_20.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

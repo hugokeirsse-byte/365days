@@ -1,0 +1,33 @@
+{
+  "design_id": "stl_keychain_dnd_08",
+  "product_type": "keychain",
+  "product_name": "Keychain",
+  "template": "dnd",
+  "variant_text": "Wizard Vibes",
+  "size_mm": "30×50×4",
+  "estimated_print_time": "20 min",
+  "filament_estimate_g": 5,
+  "title": "Wizard Vibes Keychain STL — 3D Print Ready, Dnd Aesthetic",
+  "tags_cults3d": [
+    "dnd",
+    "keychain",
+    "3d print",
+    "stl",
+    "decoration",
+    "gift",
+    "personalized"
+  ],
+  "tags_printables": [
+    "dnd",
+    "keychain",
+    "3d print",
+    "decor",
+    "gift idea",
+    "home accessory",
+    "small print"
+  ],
+  "price_cults3d_eur": 1.2,
+  "price_makerworld_eur": 1.2,
+  "stl_file": "keychain_dnd_08_wizard_vibes.stl",
+  "license_suggested": "Cults3D Standard (personal + small commercial)"
+}

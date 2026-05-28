@@ -1,0 +1,247 @@
+{
+  "id": "brief_2026-05-22_coloring_kawaii-cottagecore-dad",
+  "created_at": "2026-05-22T21:30:33.867687Z",
+  "business": "B1_coloriages",
+  "product_type": "coloring_book",
+  "generation_strategy": "mono_trend",
+  "opportunity_rationale": "Trend 'kawaii cute' x style 'Cottagecore Watercolor' (score composite 88.5). Un livre de coloriage réconfortant mettant en scène d'adorables duos de papas animaux et leurs petits dans un style cottagecore mignon et champêtre, parfait pour célébrer la fête des pères.",
+  "variations_target": 1,
+  "trend_strength": "strong",
+  "trends_source": "opportunities.json : Cottagecore Watercolor / kawaii cute",
+  "target": {
+    "description": "Un livre de coloriage réconfortant mettant en scène d'adorables duos de papas animaux et leurs petits dans un style cottagecore mignon et champêtre, parfait pour célébrer la fête des pères.",
+    "style_reference": {
+      "style_keywords": [
+        "cute kawaii",
+        "bold clean black line art",
+        "cottagecore",
+        "whimsical",
+        "rounded shapes",
+        "large expressive eyes"
+      ],
+      "reference_image_urls": [],
+      "negative": [
+        "color",
+        "shading",
+        "grayscale",
+        "gray tones",
+        "hatching",
+        "crosshatching",
+        "sketch lines",
+        "pencil texture",
+        "fill",
+        "text",
+        "letters",
+        "watermark",
+        "signature",
+        "blurry",
+        "deformed",
+        "tiny unconnected details",
+        "open broken outlines"
+      ]
+    },
+    "format": {
+      "trim": "8.5x11in",
+      "bleed": "0.125in",
+      "gutter": "0.75in",
+      "margins": "0.5in",
+      "pages_interior": 30,
+      "page_recto_verso_rotation": true,
+      "export": "PDF/X-1a (interieur N&B) + couverture separee"
+    },
+    "color_tone": "line-art noir epais sur blanc pur (aucune couleur, aucun gris)",
+    "signature": "Douceur kawaii cottagecore, lisible et apaisant, complexite moyenne (coloriage adulte detente).",
+    "cover": {
+      "front": {
+        "title_text": "Kawaii Cottagecore Dads",
+        "subtitle_text": "30 Cute Cottagecore Coloring Pages for Father's Day and Cozy Relaxation",
+        "author_byline": "Maisie Woodgrove",
+        "layout_note": "Couverture COULEUR : scene phare coloree pastel, titre haut lisible miniature, auteur bas.",
+        "reference_image_path": ""
+      },
+      "back": {
+        "blurb": "Celebrate the warmth of fatherhood with this adorable cottagecore coloring book! Featuring 30 beautifully simple illustrations of cute animal dads and their little ones sharing cozy moments in nature, this is the perfect relaxing gift for Father's Day. Grab your favorite coloring tools and bring these heartwarming, thick-lined rustic scenes to life!",
+        "inside_bullets": [
+          "30 illustrations originales",
+          "trait net facile a colorier",
+          "grand format 8.5x11 pouces",
+          "feutres, crayons, gel",
+          "adultes & ados"
+        ],
+        "author_byline": "Maisie Woodgrove",
+        "barcode_isbn_zone": "espace reserve en bas a droite pour code-barres / ISBN KDP",
+        "layout_note": "Fond cottagecore doux assorti a la couv avant ; blurb lisible ; zone code-barres vide."
+      }
+    },
+    "collection": {
+      "title": "Kawaii Cottagecore Dads",
+      "title_uniqueness_checked": false,
+      "author": "Maisie Woodgrove",
+      "author_uniqueness_checked": false,
+      "volume": 1,
+      "decline_if_success": true,
+      "next_volumes_hint": []
+    },
+    "page_subjects": [
+      "Papa bear and cub harvesting wild berries in a woven basket",
+      "Father hedgehog and baby drinking warm tea by a tiny wooden table",
+      "Cute frog dad teaching his tadpole how to play the banjo",
+      "Papa badger baking fresh bread with his little helper",
+      "Father mouse and son reading a book by a mushroom fireplace",
+      "Rabbit dad and bunny watering giant sunflowers in the garden",
+      "Papa fox brushing his little cub's tail on a cozy patchwork rug",
+      "Father squirrel and baby collecting acorns in the autumn forest",
+      "Papa otter teaching his pup how to float down a gentle river",
+      "Cute raccoon dad and baby washing red apples in a wooden bucket",
+      "Father deer and fawn walking through a meadow of wild daisies",
+      "Papa owl reading a bedtime story to his owlet in a tree hollow",
+      "Father cat and kitten taking a nap in a cozy wicker armchair",
+      "Papa duck guiding his ducklings across a pond with waterlilies",
+      "Cute beaver dad and pup building a small wooden toy boat",
+      "Father mole and son planting seeds in a cozy underground home",
+      "Papa snail carrying his baby on his shell through tall grass",
+      "Father dog and puppy having a picnic with honey and biscuits",
+      "Papa koala carrying his baby on his back near eucalyptus leaves",
+      "Cute hamster dad sharing a giant strawberry with his pup",
+      "Father sheep and lamb knitting a warm winter scarf together",
+      "Papa pig and piglet painting a woodland landscape on a small easel",
+      "Father turtle and hatchling sunbathing on a mossy river log",
+      "Papa panda and cub chewing bamboo shoots in a cozy garden",
+      "Cute chipmunk dad and baby packing a tiny backpack for a hike",
+      "Father goat and kid picking wild purple lavender flowers",
+      "Papa wolf howling gently at the moon with his cub",
+      "Father skunk and baby sniffing sweet woodland blossoms",
+      "Papa robin feeding his hungry chick in a beautifully woven nest",
+      "Father mouse and baby sleeping cozy under a large green leaf blanket"
+    ],
+    "book_structure": {
+      "note": "Livre COMPLET et professionnel : pas que les pages de coloriage.",
+      "front_cover": "couleur (voir cover.front)",
+      "front_matter": [
+        {
+          "page": "title_page",
+          "content": "titre + sous-titre + nom d'auteur"
+        },
+        {
+          "page": "copyright",
+          "content": "(c) 2026 Maisie Woodgrove. Tous droits reserves. Usage personnel."
+        },
+        {
+          "page": "belongs_to",
+          "content": "'Ce livre appartient a : ____' (page mignonne assortie au style)"
+        },
+        {
+          "page": "welcome",
+          "content": "Bienvenue dans le monde douillet de nos papas animaux ! Installez-vous confortablement avec une tasse de thé chaud et utilisez de préférence des crayons de couleur pour un rendu doux et poudré digne d'une aquarelle rustique."
+        }
+      ],
+      "interior": "30 pages de coloriage (voir page_subjects), 1 dessin par page",
+      "back_matter": [
+        {
+          "page": "thank_you",
+          "content": "Merci + invitation a laisser un avis + teaser des prochains volumes."
+        }
+      ],
+      "back_cover": "couleur (voir cover.back)",
+      "page_count_interior_total": 35,
+      "page_count_breakdown": "4 liminaires + 30 coloriage + 1 remerciement = 35 (arrondi page paire KDP)."
+    }
+  },
+  "audit_criteria": [
+    {
+      "criterion": "Trait noir PUR (#000000), aucune couleur/gris/ombrage sur l'interieur",
+      "how_to_check": "analyse pixels + Gemini Vision",
+      "blocking": true
+    },
+    {
+      "criterion": "Coherence stylistique entre TOUTES les pages vs reference verrouillee",
+      "how_to_check": "Gemini Vision page-a-page",
+      "blocking": true
+    },
+    {
+      "criterion": "Formes fermees coloriables (pas de contours ouverts ni micro-details)",
+      "how_to_check": "Gemini Vision + heuristique",
+      "blocking": true
+    },
+    {
+      "criterion": "Sujet de chaque page conforme au page_subject demande",
+      "how_to_check": "Gemini Vision vs page_subjects",
+      "blocking": true
+    },
+    {
+      "criterion": "Zero texte/lettre/watermark parasite dans les images",
+      "how_to_check": "OCR + Gemini Vision",
+      "blocking": true
+    },
+    {
+      "criterion": "Format KDP conforme (trim 8.5x11, bleed, gutter 0.75, rotation r/v)",
+      "how_to_check": "controle dimensions PDF",
+      "blocking": true
+    },
+    {
+      "criterion": "Couverture avant conforme (couleur, titre+auteur lisibles miniature)",
+      "how_to_check": "Gemini Vision + OCR",
+      "blocking": true
+    },
+    {
+      "criterion": "4eme de couverture conforme (blurb + bullets + zone code-barres)",
+      "how_to_check": "Gemini Vision + OCR",
+      "blocking": true
+    },
+    {
+      "criterion": "Pages liminaires completes (titre, copyright, 'appartient a', accueil)",
+      "how_to_check": "presence pages PDF",
+      "blocking": true
+    },
+    {
+      "criterion": "Page d'accueil presente et lisible (bienvenue + conseils)",
+      "how_to_check": "OCR + Gemini Vision",
+      "blocking": true
+    },
+    {
+      "criterion": "Completude cle-en-main (titre + auteur + metadata KDP)",
+      "how_to_check": "presence champs metadata",
+      "blocking": true
+    },
+    {
+      "criterion": "Titre et nom d'auteur verifies NON deja utilises",
+      "how_to_check": "recherche Amazon/Etsy avant publi",
+      "blocking": true
+    },
+    {
+      "criterion": "Page de remerciement/avis presente en fin",
+      "how_to_check": "presence PDF",
+      "blocking": false
+    },
+    {
+      "criterion": "Composition equilibree et centree, agreable a colorier",
+      "how_to_check": "Gemini Vision esthetique",
+      "blocking": false
+    }
+  ],
+  "image_budget": {
+    "max_images_total": 50,
+    "ideal_one_gen_one_use": true,
+    "regen_allowance_per_asset": 1,
+    "reference_candidates_budget": 6
+  },
+  "reference_selection": {
+    "mode": "generate_candidates",
+    "candidates_count": 6,
+    "candidates_provider": "pollinations",
+    "status": "pending_human_pick",
+    "chosen_reference_path": "",
+    "character_model_sheets": []
+  },
+  "loop_policy": {
+    "max_iterations": 5,
+    "stop_on_repeated_failure": 2,
+    "escalate_to_human": true
+  },
+  "human_gates": {
+    "gate_start": "pending",
+    "gate_end": "not_reached"
+  },
+  "requested_by": "strategist_auto",
+  "_creative_source": "gemini:gemini-flash-latest"
+}

@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-05-25T12:53:15.244984Z",
+  "dry_run": true,
+  "rejected_count": 1,
+  "deleted_count": 0,
+  "triggered_pipelines": [],
+  "queue_by_pipeline": {
+    "bible_verses_v2": 1
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/hugokeirsse-byte/365days/blob/main/data/schemas/asset.schema.json",
+  "title": "Asset",
+  "description": "Contrat canonique pour tout asset produit par les modules. Voir AUTOMATION_BLUEPRINT.md §9.",
+  "type": "object",
+  "required": ["id", "opp_id", "type", "path_in_repo", "qa_verdict"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^asset_\\d{4}-\\d{2}-\\d{2}_[a-z0-9_]+_v\\d+$",
+      "examples": ["asset_2026-05-19_mystical_mushrooms_v1"]
+    },
+    "opp_id": {
+      "type": "string",
+      "description": "ID de l'opportunité parent (cf. opportunity.schema.json)"
+    },
+    "brand_id": {
+      "type": "string",
+      "enum": ["heritage_coloring", "iconic_offspring", "pocket_decks", "modern_cozy"]
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "pdf_book",
+        "pdf_low_content",
+        "png_design_300dpi",
+        "png_design_print_ready",
+        "svg_vector",
+        "apk_android",
+        "epub_ebook",
+        "zip_pack",
+        "stl_3d",
+        "mp4_video",
+        "sticker_pack",
+        "ar_filter_effect",
+        "audio_wav"
+      ]
+    },
+    "path_in_repo": {
+      "type": "string",
+      "description": "Chemin relatif depuis racine repo, sous staging/ ou products/"
+    },
+    "format_metadata": {
+      "type": "object",
+      "properties": {
+        "dimensions_pixels": { "type": "string", "examples": ["3000x3000", "2550x3300", "1080x1920"] },
+        "dpi": { "type": "integer" },
+        "color_mode": { "type": "string", "enum": ["RGB", "CMYK", "Greyscale", "Bitmap"] },
+        "page_count": { "type": "integer" },
+        "file_size_mb": { "type": "number" },
+        "duration_seconds": { "type": "number" }
+      }
+    },
+    "qa_verdict": {
+      "type": "string",
+      "enum": ["PASS", "FAIL", "PENDING_HUMAN", "PASS_WITH_NOTES"]
+    },
+    "qa_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "qa_critic_model": {
+      "type": "string",
+      "examples": ["gemini-2.0-vision", "claude-arbitrage", "human_review"]
+    },
+    "qa_pain_points_addressed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Liste des pain points (extraits des reviews bestsellers) explicitement corrigés dans cet asset"
+    },
+    "qa_notes": { "type": "string" },
+    "publish_targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "platform": { "type": "string", "examples": ["amazon_kdp", "redbubble", "teepublic", "gumroad", "cults3d", "tgc"] },
+          "status": { "type": "string", "enum": ["queued", "published", "rejected", "removed"] },
+          "url_when_published": { "type": "string", "format": "uri" },
+          "published_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "metadata_for_listing": {
+      "type": "object",
+      "description": "Métadonnées pour les listings (titre, tags, bullets), localisées par langue",
+      "properties": {
+        "en": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string", "maxLength": 200 },
+            "subtitle": { "type": "string" },
+            "description": { "type": "string" },
+            "keywords": { "type": "array", "items": { "type": "string" }, "maxItems": 7 },
+            "bullets": { "type": "array", "items": { "type": "string" }, "maxItems": 5 },
+            "categories": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "fr": { "$ref": "#/properties/metadata_for_listing/properties/en" },
+        "es": { "$ref": "#/properties/metadata_for_listing/properties/en" },
+        "de": { "$ref": "#/properties/metadata_for_listing/properties/en" }
+      }
+    },
+    "anti_slop_check": {
+      "type": "object",
+      "properties": {
+        "regex_chatgptisms_detected": { "type": "array", "items": { "type": "string" } },
+        "passed": { "type": "boolean" }
+      }
+    },
+    "copyright_check": {
+      "type": "object",
+      "properties": {
+        "whitelist_match": { "type": "string", "description": "ID dans whitelist_pd.json si dérivé" },
+        "blacklist_clean": { "type": "boolean" },
+        "transformative_use_notes": { "type": "string" }
+      }
+    },
+    "human_validation": {
+      "type": "object",
+      "properties": {
+        "telegram_message_id": { "type": "string" },
+        "decision": { "type": "string", "enum": ["approved", "rejected", "pending"] },
+        "decided_at": { "type": "string", "format": "date-time" },
+        "decided_by": { "type": "string" }
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "version": { "type": "integer", "default": 1 }
+  }
+}

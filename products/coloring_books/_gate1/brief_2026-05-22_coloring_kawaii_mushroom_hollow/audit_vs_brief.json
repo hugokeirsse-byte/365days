@@ -1,0 +1,62 @@
+{
+  "brief_id": "brief_2026-05-22_coloring_kawaii_mushroom_hollow",
+  "results": [
+    {
+      "criterion": "Trait noir PUR uniquement, aucune couleur ni gris",
+      "blocking": true,
+      "category": "vision",
+      "verdict": "PENDING_PRODUCTION",
+      "why": "necessite Gemini Vision sur les images generees"
+    },
+    {
+      "criterion": "Coherence stylistique entre toutes les pages",
+      "blocking": true,
+      "category": "vision",
+      "verdict": "PENDING_PRODUCTION",
+      "why": "necessite Gemini Vision sur les images generees"
+    },
+    {
+      "criterion": "Formes fermees coloriables",
+      "blocking": true,
+      "category": "vision",
+      "verdict": "PENDING_PRODUCTION",
+      "why": "necessite Gemini Vision sur les images generees"
+    },
+    {
+      "criterion": "Format KDP conforme (trim 8.5x11, bleed)",
+      "blocking": true,
+      "category": "structural",
+      "verdict": "PENDING_PRODUCTION",
+      "why": "verifiable sur le PDF genere"
+    },
+    {
+      "criterion": "Couverture presente, en COULEUR",
+      "blocking": true,
+      "category": "vision",
+      "verdict": "PENDING_PRODUCTION",
+      "why": "necessite Gemini Vision sur les images generees"
+    },
+    {
+      "criterion": "Completude : titre + auteur + metadata KDP",
+      "blocking": true,
+      "category": "structural",
+      "verdict": "PLANNED",
+      "why": "titre+auteur+metadata prevus"
+    },
+    {
+      "criterion": "Titre et auteur non deja utilises",
+      "blocking": true,
+      "category": "uniqueness",
+      "verdict": "NEEDS_UNIQUENESS",
+      "why": "titre/auteur a verifier (Amazon/Etsy)"
+    }
+  ],
+  "overall": {
+    "abouti": false,
+    "blocking_total": 7,
+    "pass": 0,
+    "fail": 0,
+    "pending_or_needs": 6,
+    "planned_preflight": 1
+  }
+}

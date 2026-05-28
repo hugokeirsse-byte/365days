@@ -1,0 +1,57 @@
+name: CdC Roman Generator
+on:
+  push:
+    paths: ['.triggers/cdc_roman']
+  workflow_dispatch:
+    inputs:
+      roman_id: {required: false, default: ''}
+      genre: {required: false, default: 'romance'}
+      sous_genre: {required: false, default: 'small-town second-chance'}
+      langue: {required: false, default: 'en'}
+env:
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Résoudre params
+        id: p
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            G=$(grep -oP '^genre=\K.*' .triggers/cdc_roman 2>/dev/null | head -1)
+            SG=$(grep -oP '^sous_genre=\K.*' .triggers/cdc_roman 2>/dev/null | head -1)
+            L=$(grep -oP '^langue=\K.*' .triggers/cdc_roman 2>/dev/null | head -1)
+            ID=$(grep -oP '^roman_id=\K.*' .triggers/cdc_roman 2>/dev/null | head -1)
+          else
+            G="${{ inputs.genre }}"; SG="${{ inputs.sous_genre }}"
+            L="${{ inputs.langue }}"; ID="${{ inputs.roman_id }}"
+          fi
+          G=${G:-romance}; SG=${SG:-small-town second-chance}; L=${L:-en}
+          ID=${ID:-roman_$(date +%Y-%m-%d)_${G}}
+          echo "roman_id=$ID" >> $GITHUB_OUTPUT
+          echo "genre=$G" >> $GITHUB_OUTPUT
+          echo "sous_genre=$SG" >> $GITHUB_OUTPUT
+          echo "langue=$L" >> $GITHUB_OUTPUT
+      - name: Run CdC Roman
+        env:
+          ROMAN_ID: ${{ steps.p.outputs.roman_id }}
+          ROMAN_GENRE: ${{ steps.p.outputs.genre }}
+          ROMAN_SOUS_GENRE: ${{ steps.p.outputs.sous_genre }}
+          ROMAN_LANGUE: ${{ steps.p.outputs.langue }}
+        run: |
+          if [ -f scripts/agent_cdc_roman.py ]; then
+            python scripts/agent_cdc_roman.py
+          else
+            echo "[CdC Roman] Script non encore généré par Builder"
+            exit 0
+          fi
+      - name: Commit CdC
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add products/novels/ || true
+          git diff --cached --quiet || git commit -m "CdC Roman généré — ${{ steps.p.outputs.roman_id }} — EN ATTENTE VALIDATION"
+          git push || true

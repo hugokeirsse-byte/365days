@@ -1,0 +1,133 @@
+name: Production Loop (full pipeline)
+
+on:
+  workflow_dispatch:
+    inputs:
+      brief_id:
+        description: "Brief approuve a produire"
+        required: false
+        default: "brief_2026-05-22_coloring_kawaii_mushroom_hollow"
+      skip_images:
+        description: "Passer la generation d'images (prompts only)"
+        required: false
+        default: "false"
+  push:
+    paths:
+      - .triggers/production_loop
+
+concurrency:
+  group: production-loop-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Installer dependances
+        run: pip install --quiet Pillow reportlab
+
+      - name: Configure git
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Resolve BRIEF_ID et SKIP_IMAGES
+        id: brief
+        run: |
+          BID="${{ inputs.brief_id }}"
+          SKIP="${{ inputs.skip_images }}"
+          if [ "${{ github.event_name }}" = "push" ]; then
+            T=$(grep -oP '^brief_id=\K.*' .triggers/production_loop 2>/dev/null | head -1)
+            BID="${T:-brief_2026-05-22_coloring_kawaii_mushroom_hollow}"
+            S=$(grep -oP '^skip_images=\K.*' .triggers/production_loop 2>/dev/null | head -1)
+            SKIP="${S:-false}"
+          fi
+          echo "bid=$BID" >> "$GITHUB_OUTPUT"
+          echo "skip_images=$SKIP" >> "$GITHUB_OUTPUT"
+          echo "Brief = $BID  |  skip_images = $SKIP"
+
+      - name: "Brique 2 - Producteur (redige les 30 prompts)"
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+        run: python scripts/produce_from_brief.py
+
+      - name: "Brique 2b - Generation d'images + conversion line-art"
+        if: ${{ steps.brief.outputs.skip_images != 'true' }}
+        env:
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+          RUNWARE_API_KEY: ${{ secrets.RUNWARE_API_KEY }}
+          TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          IMAGE_PROVIDERS: ${{ secrets.RUNWARE_API_KEY && 'runware,pollinations' || 'pollinations' }}
+          LINE_THICKNESS: "2"
+        run: |
+          if [ -f scripts/generate_from_plan.py ]; then
+            python scripts/generate_from_plan.py
+          else
+            echo "generate_from_plan.py absent - skip."
+          fi
+
+      - name: "Brique 2c - Assemblage PDF KDP"
+        continue-on-error: true
+        env:
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+        run: |
+          if [ -f scripts/build_kdp_pdf.py ]; then
+            python scripts/build_kdp_pdf.py
+          else
+            echo "build_kdp_pdf.py absent - skip."
+          fi
+
+      - name: "Brique 3 - Auditeur"
+        env:
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+        run: python scripts/agent_brief_auditor.py "${{ steps.brief.outputs.bid }}"
+
+      - name: "Brique 4 - GATE 2"
+        env:
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+        run: python scripts/agent_gate2.py "${{ steps.brief.outputs.bid }}"
+
+      - name: "Brique 5 - Publication"
+        continue-on-error: true
+        env:
+          BRIEF_ID: ${{ steps.brief.outputs.bid }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ secrets.GEMINI_MODEL }}
+        run: |
+          if [ -f scripts/agent_publisher.py ]; then
+            python scripts/agent_publisher.py "${{ steps.brief.outputs.bid }}"
+          else
+            echo "agent_publisher.py absent - skip."
+          fi
+
+      - name: Commit artefacts
+        if: always()
+        run: |
+          git add products/coloring_books/_gate1/ data/briefs/ 2>/dev/null || echo "(rien)"
+          if git diff --cached --quiet; then
+            echo "Aucun artefact nouveau."
+          else
+            git commit -m "Production loop: artefacts [${{ steps.brief.outputs.bid }}]"
+            for i in 1 2 3 4 5; do
+              if git push origin HEAD:${{ github.ref_name }}; then break; fi
+              git pull --rebase origin ${{ github.ref_name }} || true
+              sleep $((i * 2))
+            done
+          fi

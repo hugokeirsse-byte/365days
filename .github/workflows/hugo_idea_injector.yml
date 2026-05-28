@@ -1,0 +1,68 @@
+name: 💡 Idée Hugo — Injection manuelle de concept
+
+# Hugo tape une idée libre → le système génère le CdC approprié
+# sans avoir besoin d'un cerveau ou d'un cycle de tendances.
+
+on:
+  workflow_dispatch:
+    inputs:
+      idee:
+        description: 'Ton idée (ex: "proverbes africains illustrés façon BD", "jeu de cartes dark humor vétérinaires")'
+        required: true
+      vertical:
+        description: 'Vertical cible'
+        required: true
+        type: choice
+        options:
+          - merch_design
+          - jeux_societe
+          - coloring
+          - lowcontent
+          - stl
+          - roman
+          - godot_assets
+          - auto_detect
+        default: auto_detect
+      nb_variations:
+        description: 'Nb de designs/variantes dans ce CdC (pour merch: nb designs, pour jeux: nb cartes...)'
+        required: false
+        default: '30'
+
+jobs:
+  inject-idea:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: mkdir -p products/merch products/jeux_societe products/coloring_books products/lowcontent_kdp products/stl_3d products/novels products/godot_assets data/reports
+
+      - name: Injecter l'idée de Hugo
+        run: python scripts/agent_idea_injector.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          HUGO_IDEE: ${{ github.event.inputs.idee }}
+          HUGO_VERTICAL: ${{ github.event.inputs.vertical }}
+          HUGO_NB_VARIATIONS: ${{ github.event.inputs.nb_variations }}
+
+      - name: Commit CdC généré
+        run: |
+          git config user.name "Hugo Idea Bot"
+          git config user.email "hugo-idea@365days.bot"
+          git add products/
+          git diff --staged --quiet && echo "Rien à committer" || {
+            git commit -m "💡 idée Hugo: ${{ github.event.inputs.idee }} [${{ github.event.inputs.vertical }}] — gate=pending"
+            git push
+            echo ""
+            echo "═══════════════════════════════════════════"
+            echo "  CdC généré pour ton idée — À VALIDER"
+            echo "═══════════════════════════════════════════"
+            echo "  Idée: ${{ github.event.inputs.idee }}"
+            echo "  → Lire le CAHIER_DES_CHARGES.md dans products/"
+            echo "  → gate_cdc = approved → push → production auto"
+          }

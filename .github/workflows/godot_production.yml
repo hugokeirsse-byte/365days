@@ -1,0 +1,91 @@
+name: Godot Assets — Production depuis CdC approuvé
+
+# Déclenché quand Hugo approuve un CdC godot_assets
+# Génère sprites/UI/tilesets (Pollinations) ou code GDScript/GLSL (LLM)
+
+on:
+  push:
+    paths:
+      - 'products/godot_assets/**/cdc.json'
+  workflow_dispatch:
+    inputs:
+      godot_dir:
+        description: 'Dossier godot spécifique (ex: products/godot_assets/godot_2026-05-27_sprite_pack). Vide = auto-détecte dernier approuvé.'
+        required: false
+        default: ''
+
+jobs:
+  check-gate:
+    runs-on: ubuntu-latest
+    outputs:
+      has_approved: ${{ steps.gate.outputs.has_approved }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérifier si un CdC est approuvé
+        id: gate
+        run: |
+          APPROVED=$(find products/godot_assets -name cdc.json 2>/dev/null | xargs python3 -c "
+          import json, sys
+          files = sys.argv[1:]
+          for f in files:
+              try:
+                  d = json.load(open(f))
+                  if d.get('gate_cdc') == 'approved' and not d.get('production_status'):
+                      print(f)
+                      break
+              except: pass
+          " 2>/dev/null || echo "")
+          if [ -n "$APPROVED" ]; then
+            echo "has_approved=true" >> $GITHUB_OUTPUT
+            echo "CdC approuvé: $APPROVED"
+          else
+            echo "has_approved=false" >> $GITHUB_OUTPUT
+            echo "Aucun CdC godot approuvé en attente."
+          fi
+
+  produce:
+    needs: check-gate
+    if: needs.check-gate.outputs.has_approved == 'true' || github.event.inputs.godot_dir != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dépendances
+        run: pip install Pillow requests
+
+      - name: Créer répertoires
+        run: mkdir -p products/godot_assets data/logs
+
+      - name: Produire les assets Godot
+        run: python scripts/produce_godot_assets.py
+        env:
+          GEMINI_API_KEY:  ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY:    ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GODOT_DIR: ${{ github.event.inputs.godot_dir }}
+        timeout-minutes: 30
+
+      - name: Commit assets produits
+        run: |
+          git config user.name "Godot Assets Bot"
+          git config user.email "godot@365days.bot"
+          git add products/godot_assets/
+          git diff --staged --quiet && echo "Aucun asset nouveau" || {
+            SLUG=$(git diff --staged --name-only | head -1 | cut -d'/' -f3)
+            COUNT=$(git diff --staged --name-only | grep -E "\.(png|gd|gdshader|tscn)$" | wc -l)
+            git commit -m "godot: ${SLUG} — ${COUNT} assets générés"
+            git push
+            echo ""
+            echo "════════════════════════════════════════════════════"
+            echo "  ASSETS GODOT PRÊTS — ITCH.IO UPLOAD"
+            echo "════════════════════════════════════════════════════"
+            echo "  → Voir products/godot_assets/${SLUG}/"
+            echo "  → README.md pour les instructions d'import"
+            echo "  → Publier sur https://itch.io"
+          }
