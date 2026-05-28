@@ -2,8 +2,11 @@
 """
 Production Coloring Book depuis CdC validé — gate_cdc=approved requis.
 
-Lit les prompts Pollinations du CdC et génère N images KDP-ready.
-Assemble un PDF 8.5×11 inches prêt pour impression KDP.
+Pipeline :
+  1. Génère une illustration COULEUR normale (meilleure qualité source)
+  2. Extraction de contours propres (GaussianBlur → FIND_EDGES → enhance → invert)
+  3. Upscale LANCZOS × 2 (Runware quand disponible)
+  4. Assemble PDF 8.5×11 inches KDP-ready
 
 Variables d'env :
   COLORING_DIR — chemin du produit (products/coloring_books/{slug})
@@ -19,13 +22,12 @@ import urllib.request
 from pathlib import Path
 
 try:
-    from PIL import Image, ImageOps, ImageFilter
+    from PIL import Image, ImageOps, ImageFilter, ImageEnhance
 except ImportError:
     print("ERREUR : Pillow non installé. pip install Pillow")
     sys.exit(2)
 
 try:
-    from reportlab.lib.pagesizes import letter
     from reportlab.lib.units import inch
     from reportlab.pdfgen import canvas as pdf_canvas
     from reportlab.lib.utils import ImageReader
@@ -35,14 +37,17 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# KDP 8.5×11 interior (with bleed)
+# KDP 8.5×11 interior
 PAGE_W = 8.5 * inch
 PAGE_H = 11.0 * inch
 MARGIN = 0.75 * inch
 
-# Pollinations target size (portrait, high-res for 300 DPI at 8.5×11)
-IMG_W = 2550
-IMG_H = 3300
+# Pollinations : image couleur haute résolution
+# On génère en couleur d'abord → meilleure source pour extraction de contours
+IMG_W = 1664
+IMG_H = 2160
+# Upscale final × 2 → 3328×4320px (300 DPI KDP 11×14")
+UPSCALE = 2
 
 
 def find_approved_coloring() -> Path | None:
@@ -64,16 +69,23 @@ def find_approved_coloring() -> Path | None:
     return None
 
 
-def build_prompt(style_base: str, modifiers: list, theme_keywords: list,
-                 negative_keywords: list, page_n: int) -> tuple[str, str]:
+def build_color_prompt(modifiers: list, theme_keywords: list, page_n: int) -> str:
+    """
+    Génère un prompt pour une illustration COULEUR normale.
+    L'extraction de contours est faite en post-traitement — pas dans le prompt.
+    Résultat bien meilleur qu'une demande directe de 'coloring page'.
+    """
     modifier = modifiers[(page_n - 1) % len(modifiers)] if modifiers else ""
-    theme_hint = ", ".join(theme_keywords[:4]) if theme_keywords else ""
-    negative = ", ".join(negative_keywords[:6]) if negative_keywords else ""
-    positive = f"{style_base}, {modifier}, {theme_hint}".strip(", ")
-    return positive, negative
+    theme_hint = ", ".join(theme_keywords[:5]) if theme_keywords else ""
+    # Illustration couleur riche — les contours seront extraits par Pillow
+    return (
+        f"beautiful detailed illustration, {modifier}, {theme_hint}, "
+        f"rich colors, clean composition, professional digital art, "
+        f"intricate details, vibrant, no text, centered composition"
+    ).strip(", ")
 
 
-def download_pollinations(prompt: str, negative: str, out_path: Path) -> bool:
+def download_pollinations(prompt: str, out_path: Path) -> bool:
     encoded = urllib.parse.quote(prompt)
     url = (
         f"https://image.pollinations.ai/prompt/{encoded}"
@@ -90,15 +102,52 @@ def download_pollinations(prompt: str, negative: str, out_path: Path) -> bool:
         return False
 
 
-def clean_coloring_image(img_path: Path, out_path: Path):
-    img = Image.open(img_path).convert("L")
-    # High-contrast threshold to ensure pure black/white
-    img = img.point(lambda x: 0 if x < 180 else 255)
-    # Slight sharpening for cleaner lines
-    img = img.filter(ImageFilter.SHARPEN)
-    rgb = Image.new("RGB", img.size, (255, 255, 255))
-    rgb.paste(img)
-    rgb.save(out_path, "PNG", dpi=(300, 300))
+def extract_line_art(raw_path: Path, out_path: Path):
+    """
+    Convertit une illustration couleur en page de coloriage ligne propre.
+
+    Pipeline :
+    1. Légère réduction du bruit (GaussianBlur)
+    2. Conversion en niveaux de gris
+    3. Extraction des contours (FIND_EDGES = différence de pixels voisins)
+    4. Amplification du contraste pour lignes nettes
+    5. Inversion (lignes noires sur fond blanc)
+    6. Seuil pour éliminer le gris résiduel
+    7. Upscale × 2 LANCZOS (qualité impression)
+    """
+    img = Image.open(raw_path).convert("RGB")
+
+    # 1. Lissage léger pour réduire le bruit (pixels isolés)
+    img = img.filter(ImageFilter.GaussianBlur(radius=0.8))
+
+    # 2. Niveaux de gris
+    gray = img.convert("L")
+
+    # 3. Extraction des contours (détection de bords)
+    edges = gray.filter(ImageFilter.FIND_EDGES)
+
+    # 4. Amplifier le contraste pour avoir des lignes marquées
+    enhancer = ImageEnhance.Contrast(edges)
+    edges = enhancer.enhance(8.0)
+
+    # 4b. Légère augmentation de la netteté
+    edges = edges.filter(ImageFilter.SHARPEN)
+    edges = edges.filter(ImageFilter.SHARPEN)
+
+    # 5. Inversion : lignes noires sur fond blanc
+    inverted = ImageOps.invert(edges)
+
+    # 6. Seuil : élimine le gris résiduel → noir pur ou blanc pur
+    bw = inverted.point(lambda x: 0 if x < 210 else 255)
+
+    # 7. Upscale × 2 pour qualité impression (LANCZOS = meilleure qualité PIL)
+    w, h = bw.size
+    upscaled = bw.resize((w * UPSCALE, h * UPSCALE), Image.LANCZOS)
+
+    # Sauvegarder en RGB blanc + canal L B&W
+    result = Image.new("RGB", upscaled.size, (255, 255, 255))
+    result.paste(upscaled)
+    result.save(out_path, "PNG", dpi=(300, 300))
 
 
 def assemble_pdf(images: list[Path], out_pdf: Path, title: str):
@@ -162,10 +211,10 @@ def run():
     titre = concept.get("titre_livre", concept.get("theme_principal", coloring_dir.name))
     nb_pages = int(concept.get("nombre_pages", 30))
 
-    style_base = prompts_cfg.get("style_base", "black and white coloring page, clean lines, white background, no gray, no shading")
+    # Lire les infos thème depuis le CdC (le style_base du CdC peut être "coloring page"
+    # mais on l'ignore — on génère en couleur et on extrait les contours après)
     modifiers = prompts_cfg.get("style_modificateurs", [])
-    theme_keywords = prompts_cfg.get("theme_keywords", [])
-    negative_keywords = prompts_cfg.get("negative_keywords", [])
+    theme_keywords = prompts_cfg.get("theme_keywords", [concept.get("theme_principal", titre)])
 
     images_dir = coloring_dir / "images"
     images_dir.mkdir(parents=True, exist_ok=True)
@@ -173,6 +222,7 @@ def run():
     raw_dir.mkdir(exist_ok=True)
 
     print(f"\n[Coloring] Production: '{titre}' — {nb_pages} pages")
+    print(f"[Coloring] Pipeline: illustration couleur → extraction contours → upscale ×{UPSCALE}")
     print(f"[Coloring] Source: {coloring_dir.name}")
 
     generated = 0
@@ -185,22 +235,23 @@ def run():
             generated += 1
             continue
 
-        positive, negative = build_prompt(style_base, modifiers, theme_keywords, negative_keywords, n)
-        print(f"  [{n}/{nb_pages}] Génération...")
+        # Générer une illustration COULEUR normale (pas "coloring page")
+        prompt = build_color_prompt(modifiers, theme_keywords, n)
+        print(f"  [{n}/{nb_pages}] Génération couleur + extraction contours...")
 
         raw_path = raw_dir / f"raw_{n:02d}.png"
-        ok = download_pollinations(positive, negative, raw_path)
+        ok = download_pollinations(prompt, raw_path)
         if not ok:
             failed.append(n)
             time.sleep(2)
             continue
 
         try:
-            clean_coloring_image(raw_path, clean_path)
+            extract_line_art(raw_path, clean_path)
             generated += 1
             print(f"  [{n}/{nb_pages}] ✓")
         except Exception as e:
-            print(f"  [{n}/{nb_pages}] ✗ Traitement image: {e}")
+            print(f"  [{n}/{nb_pages}] ✗ Extraction contours: {e}")
             failed.append(n)
 
         time.sleep(0.5)

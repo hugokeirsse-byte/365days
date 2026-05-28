@@ -453,6 +453,11 @@ def run_produce():
         n = design.get("n", 0)
         sous_theme = design.get("sous_theme", f"design_{n}")
         prompt = design.get("prompt_pollinations", "")
+        # Forcer l'exclusion de tout texte généré par l'IA — le texte est ajouté
+        # proprement par Pillow après. L'IA génère souvent du texte illisible/déformé.
+        NO_TEXT_SUFFIX = ", no text, no words, no letters, no typography, illustration only"
+        if NO_TEXT_SUFFIX.strip(", ") not in prompt:
+            prompt = prompt.rstrip(", ") + NO_TEXT_SUFFIX
         final_path = designs_dir / f"design_{n:02d}.png"
         raw_path = raw_dir / f"design_{n:02d}_raw.png"
 

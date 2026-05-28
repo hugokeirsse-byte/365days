@@ -2,7 +2,7 @@
 
 > ## 🔄 MISE À JOUR 27/05/2026 — INVENTAIRE COMPLET DES BUSINESSES
 >
-> ### 18 LIGNES DE PRODUITS — État global
+> ### 20 LIGNES DE PRODUITS — État global
 >
 > | # | Business | Plateforme | Script | CdC Gate | Status |
 > |---|----------|-----------|--------|----------|--------|
@@ -23,20 +23,25 @@
 > | 15 | **Gamedev Asset Packs** (assets pour créateurs indie) | Itch.io | produce_gamedev_asset_pack.py | ✗ | 🔧 Sans gate CdC |
 > | 16 | **Chess Strategy Book** (puzzles Lichess CC0) | Amazon KDP | produce_chess_book.py | ✗ | 🔧 Produit one-shot |
 > | 17 | **Château Local** (B2B monuments historiques) | KDP + partenariats | produce_chateau_local.py | ✗ | 🔧 Niche B2B |
-> | 18 | **Witchy/Cottagecore designs** | Redbubble, Etsy | (via COPE/viral_formats) | ✗ | 🔧 Intégré dans merch |
+> | 18 | **Witchy/Cottagecore designs** | Redbubble | (via COPE/viral_formats) | ✗ | 🔧 Intégré dans merch |
+> | 19 | **Merch Design POD** (collections 30 designs/thème) | Redbubble, TeePublic, Society6 | produce_merch_designs.py | ✓ agent_merch_design_cdc.py | ⚡ Prêt |
+> | 20 | **Godot Assets** (sprites, tilesets, shaders, addons) | Itch.io | produce_godot_assets.py | ✓ agent_godot_cdc.py | ⚡ Prêt |
 >
 > ### INSCRIPTIONS REQUISES PAR PLATEFORME
 >
 > | Plateforme | Businesses concernés | Déjà inscrit ? | À faire |
 > |-----------|---------------------|---------------|---------|
 > | **Amazon KDP** | #1 #2 #3 #14 #16 #17 | ✅ OUI | Rien |
-> | **Redbubble** | #10 #11 #12 #13 #14 #18 | ✅ OUI | Rien |
+> | **Redbubble** | #10 #11 #12 #13 #14 #18 #19 | ✅ OUI | Rien |
+> | **TeePublic** | #19 | ❌ NON | https://www.teepublic.com — gratuit, s'inscrire comme artiste |
+> | **Society6** | #19 | ❌ NON | https://society6.com/create-store — gratuit |
 > | **Cults3D** | #4 | ❌ NON | https://cults3d.com — créer compte + Stripe |
-> | **Etsy** | #5 #6 #7 #8 #9 #10 #11 | ❌ NON | https://etsy.com — créer boutique (frais 0.20$/listing) |
-> | **DriveThruRPG** | #5 (RPG accessories) | ❌ NON | https://www.drivethrurpg.com/en/publisher/signup |
-> | **Itch.io** | #5 #15 | ❌ NON | https://itch.io/register — gratuit |
 > | **Printables** | #4 | ❌ NON | https://www.printables.com/join — gratuit |
+> | **MyMiniFactory** | #4 | ❌ NON | https://www.myminifactory.com — gratuit |
+> | **DriveThruRPG** | #5 (RPG accessories) | ❌ NON | https://www.drivethrurpg.com/en/publisher/signup — gratuit |
+> | **Itch.io** | #5 #15 #20 | ❌ NON | https://itch.io/register — gratuit |
 > | **The Game Crafter** | #5 (physique optionnel) | ❌ NON | https://www.thegamecrafter.com — optionnel |
+> | **Etsy** ⏸️ | #6 #7 #8 #9 #10 #11 | ⏸️ REPORTÉ | 0,20$/listing — attendre 1er revenu (voir section 🔴) |
 >
 > ### SECRETS GITHUB MANQUANTS (bloquants pour certains verticaux)
 >
@@ -54,16 +59,23 @@
 >
 > | Jour | Cerveau | Domaine |
 > |------|---------|---------|
+> | Lundi 02h | Coloring Intel | Tendances coloriage KDP |
 > | Lundi 06h | Optimizer vertical | Analyse audits → génère CdC auto |
 > | Mardi 05h | Low-Content Brain | Tendances KDP journals/planners |
 > | Mercredi 02h | Saisonnier | Opportunités événements |
 > | Mercredi 04h | STL Trends | Cults3D/Printables trends |
-> | Jeudi 04h | Jeux Société Brain | Etsy/DriveThruRPG trends |
+> | Mercredi 05h | Roman Brain | Tendances KDP Fiction (romance, mystery, cozy) |
+> | Jeudi 04h | Jeux Société Brain | DriveThruRPG/Itch.io trends |
 > | Jeudi 05h | Prospecteur | Nouvelles niches émergentes |
-> | Vendredi 04h | Merch Brain | POD/Redbubble/Etsy trends |
+> | Vendredi 04h | Merch Brain | POD/Redbubble/TeePublic trends |
+> | Samedi 05h | Godot Brain | Tendances Itch.io assets (sprites, shaders) |
 > | Toutes les 4h | Queue Manager | Maintient 10 CdC pending/vertical |
 > | Dimanche 02h | Architecte | Gaps système auto-détectés |
 > | Dimanche 20h | Rapporteur | Résumé hebdo pour Hugo |
+>
+> **⚠️ LANCER LES CdC** : Le Queue Manager tourne automatiquement toutes les 4h UNIQUEMENT sur la branche principale.
+> Pour déclencher maintenant : GitHub → Actions → **"CdC Queue Manager"** → **"Run workflow"** → sélectionner la branche `claude/365days-orchestration-jVm2g`.
+> Cible : 10 CdCs pending par vertical (7 verticaux = 70 CdCs générés automatiquement par les agents).
 
 > ## 🔄 MISE À JOUR 27/05/2026
 >
@@ -615,7 +627,8 @@ la mention `"En tant que partenaire, je touche une commission..."` ou équivalen
 \+ **KDP** ✅ (Vague 3.11, fait en avance) · **W-8BEN** ✅
 
 **RESTE À FAIRE** : URSSAF · Bitwarden (optionnel) · Vagues 3 → 8.
-**ACTION DÉBLOQUANTE** : poser `HF_API_KEY` + `GEMINI_API_KEY` dans les GitHub Secrets → lance la production.
+**ACTION DÉBLOQUANTE** : poser `GEMINI_API_KEY` dans les GitHub Secrets (si pas encore fait) → lance les cerveaux.
+**LANCER LES CdC** : GitHub → Actions → "CdC Queue Manager" → "Run workflow" → branche `claude/365days-orchestration-jVm2g` → génère 70 CdCs (10/vertical × 7 verticaux).
 
 ---
 
