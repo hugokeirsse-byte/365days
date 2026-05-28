@@ -466,11 +466,11 @@ def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
                 print(f"    ✓ CdC généré (gate=pending)")
             return True
         else:
-            err = (result.stderr or result.stdout or "").strip()[:200]
-            print(f"    ✗ Erreur (rc={result.returncode}): {err}")
+            full = (result.stdout + result.stderr).strip()
+            print(f"    ✗ Erreur (rc={result.returncode}): {full[-800:]}")
             return False
     except subprocess.TimeoutExpired:
-        print(f"    ✗ Timeout (180s)")
+        print(f"    ✗ Timeout (300s)")
         return False
     except Exception as e:
         print(f"    ✗ Exception: {e}")
