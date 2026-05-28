@@ -171,8 +171,8 @@ Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui."""
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=8000)
 
     if not response:
-        print("[CdC Roman] Échec LLM.")
-        return
+        print("[CdC Roman] Échec LLM.", file=sys.stderr)
+        sys.exit(1)
 
     clean = response.strip()
     if clean.startswith("```"):
@@ -183,13 +183,12 @@ Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui."""
     try:
         cdc = json.loads(clean)
     except Exception as e:
-        print(f"[CdC Roman] JSON invalide : {e}")
-        # Save raw for debug
+        print(f"[CdC Roman] JSON invalide : {e}", file=sys.stderr)
         debug_path = NOVELS_DIR / roman_id / "cdc_raw_debug.txt"
         debug_path.parent.mkdir(parents=True, exist_ok=True)
         debug_path.write_text(response, encoding="utf-8")
-        print(f"[CdC Roman] Raw sauvegardé → {debug_path}")
-        return
+        print(f"[CdC Roman] Raw sauvegardé → {debug_path}", file=sys.stderr)
+        sys.exit(1)
 
     # Create output directory
     nom_plume = cdc.get("identite_commerciale", {}).get("nom_de_plume", "auteur")

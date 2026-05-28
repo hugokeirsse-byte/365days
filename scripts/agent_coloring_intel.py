@@ -284,12 +284,30 @@ def main() -> int:
         all_results.append(analyze_niche(niche, results_per_niche))
         time.sleep(3)  # politesse Amazon
 
+    # Rehabilitation candidates: bestsellers with low ratings
+    rehab = []
+    for niche_result in all_results:
+        for p in niche_result.get("products", []):
+            try:
+                r = float(p.get("rating", "5"))
+                if r < 3.5 and p.get("title"):
+                    rehab.append({
+                        "niche": niche_result["niche"],
+                        "title": p["title"],
+                        "rating": r,
+                        "note": "Bestseller avec mauvaises notes — opportunité de réhabilitation",
+                    })
+            except (ValueError, TypeError):
+                pass
+    rehab.sort(key=lambda x: x["rating"])
+
     output = {
         "agent": "coloring_intel",
         "generated_at": datetime.utcnow().isoformat() + "Z",
         "gemini_vision_active": bool(GEMINI_API_KEY),
         "niches_analyzed": len(niches),
         "results": all_results,
+        "rehabilitation_candidates": rehab[:10],
     }
     out_path = DATA_DIR / "coloring_styles_meta.json"
     out_path.write_text(json.dumps(output, indent=2, ensure_ascii=False))

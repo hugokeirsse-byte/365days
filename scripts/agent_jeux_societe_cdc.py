@@ -238,8 +238,8 @@ Le jeu doit être :
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=6000)
 
     if not response:
-        print("[CdC Jeu] Échec LLM.")
-        return
+        print("[CdC Jeu] Échec LLM.", file=sys.stderr)
+        sys.exit(1)
 
     clean = response.strip()
     if clean.startswith("```"):
@@ -250,11 +250,11 @@ Le jeu doit être :
     try:
         cdc = json.loads(clean)
     except Exception as e:
-        print(f"[CdC Jeu] JSON invalide : {e}")
+        print(f"[CdC Jeu] JSON invalide : {e}", file=sys.stderr)
         debug_dir = GAMES_DIR / jeu_id
         debug_dir.mkdir(parents=True, exist_ok=True)
         (debug_dir / "cdc_raw_debug.txt").write_text(response, encoding="utf-8")
-        return
+        sys.exit(1)
 
     concept = cdc.get("concept", {})
     titre = concept.get("titre", jeu_id)

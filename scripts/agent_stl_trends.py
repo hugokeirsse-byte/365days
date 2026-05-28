@@ -94,6 +94,12 @@ AVANTAGES CONCURRENTIELS À EXPLORER :
 - Saisonnalité (Halloween, Noël, Saint-Valentin, rentrée)
 - Personnalisation facile (OpenSCAD paramétrique)
 
+RÈGLES STRATÉGIQUES :
+- LANGUE : Titres et descriptions en anglais pour tous les produits (marché international).
+- RÉHABILITATION : Repère les STL avec nombreux téléchargements/achats sur Cults3D mais
+  mauvaises notes. Raison habituelle : texte non gravé (juste en relief), supports difficiles,
+  dimensions hors marges imprimantes standard. Propose une version corrigeant ces défauts.
+
 {previous}
 
 FORMAT RÉPONSE — JSON STRICTEMENT (pas de markdown, pas de texte avant ou après) :

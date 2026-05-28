@@ -49,6 +49,12 @@ Tu analyses les tendances du marché des assets Godot pour identifier les opport
 
 ANGLE D'ANALYSE : {angle}
 
+RÈGLES STRATÉGIQUES :
+- LANGUE : Anglais uniquement pour les assets et documentations (marché Itch.io international).
+- RÉHABILITATION : Cherche des assets très téléchargés/achetés sur Itch.io avec mauvaises
+  reviews. Raison habituelle : pas de README, assets incomplets, résolution trop basse,
+  incompatibilité Godot 4. Une version qui corrige ça face à la concurrence gratuite = vente.
+
 FORMAT RÉPONSE — JSON STRICTEMENT :
 {{
   "date": "{today}",

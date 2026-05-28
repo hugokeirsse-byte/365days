@@ -48,6 +48,14 @@ Tu analyses le marché Amazon KDP pour identifier les niches rentables et sous-e
 
 ANGLE D'ANALYSE CETTE SEMAINE : {angle}
 
+RÈGLES STRATÉGIQUES :
+- LANGUE : Tous les produits en anglais par défaut. Ne recommande une autre langue que si tu
+  identifies une opportunité spécifique prouvée dans ce marché (ex: forte demande locale non
+  couverte, gap de concurrence dans cette langue).
+- RÉHABILITATION : Cherche des produits KDP avec fort volume (BSR < 50 000) mais mauvaises
+  notes (< 3.5 étoiles). Indique pourquoi ils échouent (qualité, format, contenu) et comment
+  une meilleure version surpasserait la concurrence.
+
 FORMAT RÉPONSE — JSON STRICTEMENT :
 {{
   "date": "{today}",

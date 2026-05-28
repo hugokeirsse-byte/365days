@@ -133,8 +133,8 @@ Le layout doit être précis au millimètre pour que le script de production pui
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=5000)
 
     if not response:
-        print("[CdC Low-Content] Échec LLM.")
-        return
+        print("[CdC Low-Content] Échec LLM.", file=sys.stderr)
+        sys.exit(1)
 
     clean = response.strip()
     if clean.startswith("```"):
@@ -145,11 +145,11 @@ Le layout doit être précis au millimètre pour que le script de production pui
     try:
         cdc = json.loads(clean)
     except Exception as e:
-        print(f"[CdC Low-Content] JSON invalide : {e}")
+        print(f"[CdC Low-Content] JSON invalide : {e}", file=sys.stderr)
         debug_path = LOWCONTENT_DIR / lc_id / "cdc_raw_debug.txt"
         debug_path.parent.mkdir(parents=True, exist_ok=True)
         debug_path.write_text(response, encoding="utf-8")
-        return
+        sys.exit(1)
 
     concept = cdc.get("concept", {})
     titre = concept.get("titre", lc_id)

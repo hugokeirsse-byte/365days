@@ -174,8 +174,8 @@ L'élément unique doit justifier le prix."""
 
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=4000)
     if not response:
-        print("[CdC Godot] Échec LLM.")
-        return
+        print("[CdC Godot] Échec LLM.", file=sys.stderr)
+        sys.exit(1)
 
     clean = response.strip()
     if clean.startswith("```"):
@@ -185,8 +185,8 @@ L'élément unique doit justifier le prix."""
     try:
         cdc = json.loads(clean.strip())
     except Exception as e:
-        print(f"[CdC Godot] JSON invalide: {e}")
-        return
+        print(f"[CdC Godot] JSON invalide: {e}", file=sys.stderr)
+        sys.exit(1)
 
     concept = cdc.get("concept", {})
     titre = concept.get("titre", godot_id)

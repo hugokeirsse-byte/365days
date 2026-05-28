@@ -48,6 +48,14 @@ Tu analyses le marché pour identifier les niches rentables et sous-exploitées.
 
 ANGLE D'ANALYSE : {angle}
 
+RÈGLES STRATÉGIQUES :
+- LANGUE : Anglais par défaut (marchés Itch.io/DriveThruRPG internationaux). Français ou
+  autre langue uniquement si tu identifies un créneau culturel fort (ex: jeu de société
+  francophone avec demande prouvée non couverte en anglais).
+- RÉHABILITATION : Cherche des jeux très vendus (bestsellers Etsy/DriveThruRPG) avec
+  mauvaises reviews. Raison habituelle : règles incomplètes, plateau mal imprimable,
+  cartes illisibles. Une version qui corrige ça = opportunité directe.
+
 FORMAT RÉPONSE — JSON STRICTEMENT :
 {{
   "date": "{today}",
