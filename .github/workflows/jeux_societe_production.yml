@@ -122,6 +122,6 @@ jobs:
           done
           echo ""
           echo "  Prochaine étape :"
-          echo "    → Mettre en vente sur Etsy / Itch.io / DriveThruRPG"
-          echo "    → Lancer : python scripts/etsy_listings_builder.py"
+          echo "    → Mettre en vente sur Itch.io / DriveThruRPG"
+          echo "    → Uploader le PDF dans products/jeux_societe/{slug}/print/"
           echo ""

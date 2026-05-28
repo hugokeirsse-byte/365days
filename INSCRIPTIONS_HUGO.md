@@ -59,12 +59,11 @@
 >
 > | Jour | Cerveau | Domaine |
 > |------|---------|---------|
-> | Lundi 02h | Coloring Intel | Tendances coloriage KDP |
 > | Lundi 06h | Optimizer vertical | Analyse audits → génère CdC auto |
 > | Mardi 05h | Low-Content Brain | Tendances KDP journals/planners |
-> | Mercredi 02h | Saisonnier | Opportunités événements |
 > | Mercredi 04h | STL Trends | Cults3D/Printables trends |
 > | Mercredi 05h | Roman Brain | Tendances KDP Fiction (romance, mystery, cozy) |
+> | Jeudi 03h | Coloring Intel | Tendances coloriage KDP (bestsellers Amazon) |
 > | Jeudi 04h | Jeux Société Brain | DriveThruRPG/Itch.io trends |
 > | Jeudi 05h | Prospecteur | Nouvelles niches émergentes |
 > | Vendredi 04h | Merch Brain | POD/Redbubble/TeePublic trends |

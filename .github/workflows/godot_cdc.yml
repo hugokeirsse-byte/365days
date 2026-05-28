@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       type_asset:
-        description: 'Type d'asset'
+        description: "Type d'asset"
         required: true
         type: choice
         options:
@@ -18,11 +18,11 @@ on:
           - addon
         default: sprite_pack
       theme:
-        description: 'Thème (ex: "fantasy medieval", "cyberpunk neon", "cozy farm")'
+        description: "Thème (ex: fantasy medieval, cyberpunk neon, cozy farm)"
         required: true
         default: 'fantasy medieval'
       nb_assets:
-        description: 'Nombre d'assets dans le pack'
+        description: "Nombre d'assets dans le pack"
         required: false
         default: '30'
 

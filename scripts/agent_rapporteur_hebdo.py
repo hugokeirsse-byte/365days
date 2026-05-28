@@ -29,6 +29,16 @@ BUILD_QUEUE_DIR = ROOT / "data" / "build_queue"
 PRODUCTS_DIR = ROOT / "products"
 TRIGGERS_DIR = ROOT / ".triggers"
 
+VERTICAL_DIRS = {
+    "coloring":     ROOT / "products" / "coloring_books",
+    "lowcontent":   ROOT / "products" / "lowcontent_kdp",
+    "roman":        ROOT / "products" / "novels",
+    "stl":          ROOT / "products" / "stl_3d",
+    "jeux_societe": ROOT / "products" / "jeux_societe",
+    "merch_design": ROOT / "products" / "merch",
+    "godot_assets": ROOT / "products" / "godot_assets",
+}
+
 # --------------------------------------------------------------------------- #
 # Collectors
 # --------------------------------------------------------------------------- #
@@ -69,6 +79,47 @@ def collect_recent_reports() -> str:
         if content:
             sections.append(f"## Fichiers {label} (7 derniers jours)\n{content}")
     return "\n\n".join(sections) if sections else "Aucun rapport récent trouvé."
+
+
+def collect_cdc_queue_status() -> str:
+    """Reads all cdc.json files and summarizes the CdC pipeline state per vertical."""
+    lines = ["## État de la file CdC par vertical"]
+    totals = {"pending": 0, "approved_unprod": 0, "produced": 0, "rejected": 0}
+
+    for vertical, vdir in VERTICAL_DIRS.items():
+        if not vdir.exists():
+            lines.append(f"  - {vertical}: aucun dossier products/")
+            continue
+        counts = {"pending": 0, "approved_unprod": 0, "produced": 0, "rejected": 0}
+        for cdc_path in vdir.rglob("cdc.json"):
+            try:
+                cdc = json.loads(cdc_path.read_text(encoding="utf-8"))
+                gate = cdc.get("gate_cdc", "pending")
+                has_prod = bool(cdc.get("production_status"))
+                if gate == "pending":
+                    counts["pending"] += 1
+                elif gate == "approved" and not has_prod:
+                    counts["approved_unprod"] += 1
+                elif gate == "approved" and has_prod:
+                    counts["produced"] += 1
+                elif gate == "rejected":
+                    counts["rejected"] += 1
+            except Exception:
+                pass
+        for k in totals:
+            totals[k] += counts[k]
+        lines.append(
+            f"  - {vertical}: {counts['pending']} pending | "
+            f"{counts['approved_unprod']} approuvés (à produire) | "
+            f"{counts['produced']} produits | "
+            f"{counts['rejected']} rejetés"
+        )
+
+    lines.append(
+        f"\nTOTAL : {totals['pending']} pending | {totals['approved_unprod']} à produire | "
+        f"{totals['produced']} produits | {totals['rejected']} rejetés"
+    )
+    return "\n".join(lines)
 
 
 def collect_audit_summary() -> str:
@@ -190,6 +241,9 @@ def main() -> int:
     print("[Rapporteur] Collecte des audits produits...")
     audit_summary = collect_audit_summary()
 
+    print("[Rapporteur] Collecte de l'état des files CdC...")
+    cdc_status = collect_cdc_queue_status()
+
     print("[Rapporteur] Collecte de la file de production...")
     build_queue = collect_build_queue()
 
@@ -199,6 +253,7 @@ def main() -> int:
     full_context = "\n\n".join([
         recent_reports,
         audit_summary,
+        cdc_status,
         build_queue,
         triggers,
     ])

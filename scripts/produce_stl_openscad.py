@@ -346,7 +346,9 @@ def run_production():
         ]
         approved = [
             d for d in candidates
-            if json.loads((d / "cdc.json").read_text(encoding="utf-8")).get("gate_cdc") == "approved"
+            if (lambda c: c.get("gate_cdc") == "approved" and not c.get("production_status"))(
+                json.loads((d / "cdc.json").read_text(encoding="utf-8"))
+            )
         ]
         if not approved:
             print("[STL Production] Aucun produit avec gate_cdc=approved. Hugo doit valider.")

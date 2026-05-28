@@ -165,12 +165,13 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 
 | Cron | Agent | Domaine |
 |------|-------|---------|
-| Lundi 02h | agent_coloring_intel.py | Coloriage KDP |
 | Lundi 06h | agent_vertical_optimizer.py | Feedback loop tous verticaux |
 | Mardi 05h | agent_lowcontent_trends.py | Low-content KDP |
 | Mercredi 04h | agent_stl_trends.py | STL 3D print |
 | Mercredi 05h | agent_roman_trends.py | Romans KDP Fiction |
+| Jeudi 03h | agent_coloring_intel.py | Coloriage KDP (bestsellers Amazon) |
 | Jeudi 04h | agent_jeux_societe_trends.py | Jeux de société |
+| Jeudi 05h | agent_prospecteur_emergence.py | Nouvelles niches émergentes |
 | Vendredi 04h | agent_merch_trends.py | Merch POD |
 | Samedi 05h | agent_godot_trends.py | Godot/Itch.io assets |
 | Dimanche 20h | agent_rapporteur_hebdo.py | Rapport hebdo pour Hugo |
