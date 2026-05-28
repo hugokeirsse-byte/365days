@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-28T02:07:10.249041Z",
+  "timestamp": "2026-05-28T07:49:38.458230Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -98,80 +98,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Jina Reader API",
-      "url": "https://jina.ai/reader",
-      "category": "scraping",
-      "free_tier_concrete_limits": "No strict limit for basic usage, standard rate limits apply, completely free without credit card.",
-      "what_it_does_uniquely": "Converts any URL (including JS-rendered pages) into clean, LLM-friendly Markdown by simply prepending 'https://r.jina.ai/' to the URL.",
-      "would_integrate_where": "Trend scouting step: GitHub Actions curls Google Trends or niche marketplace pages through Jina Reader and feeds the clean Markdown directly to Gemini to extract high-value keywords.",
+      "tool_or_platform": "Fab (by Epic Games)",
+      "url": "https://www.fab.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to register and publish; Epic Games takes a 12% revenue share, leaving 88% to the creator.",
+      "what_it_does_uniquely": "A massive unified marketplace launched by Epic Games (merging Sketchfab, Quixel, and Unreal Engine Marketplace). It opens up a massive audience of game developers looking for 2D/3D assets, UI packs, and audio.",
+      "would_integrate_where": "Pipeline: produce_gamedev_asset_pack. Export generated sprites, textures, and UI elements directly as packs to be listed on Fab alongside itch.io.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Some sites with heavy Cloudflare protection may block the Jina proxy."
+      "risk_or_caveat": "High quality standards; assets must be properly packaged and categorized to pass validation."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Serper.dev",
-      "url": "https://serper.dev",
-      "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free search queries upon registration, no expiration.",
-      "what_it_does_uniquely": "Provides raw Google Search, Google Images, and Google Shopping results in structured JSON at a fraction of the cost of SerpApi.",
-      "would_integrate_where": "Niche validation step: Automated scripts on GitHub Actions query Google Shopping/Images to verify demand and competition for proposed coloring book themes before generation.",
+      "tool_or_platform": "DeepInfra",
+      "url": "https://deepinfra.com",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "$1.80 free sign-up credit. FLUX-schnell costs $0.0015 per image, meaning ~1,200 high-quality images completely free before paying anything.",
+      "what_it_does_uniquely": "Incredible API response times, fully compatible with OpenAI-like API payloads, and hosts FLUX-schnell, FLUX-dev, and SDXL with no rate blocks on GitHub Actions IPs.",
+      "would_integrate_where": "Pipeline: produce_coloring_book & produce_kdp_cover. Replaces the current failing image APIs inside GitHub Actions workflows.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Requires email registration to get the API key; once the 2,500 queries are exhausted, requires paid top-ups (though very cheap at $1 per 1,000 queries)."
+      "risk_or_caveat": "Requires a credit card to reload after the free $1.80 is exhausted (though prices remain dirt cheap)."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Fal.ai",
-      "url": "https://fal.ai",
+      "tool_or_platform": "Glif API",
+      "url": "https://glif.app",
       "category": "ai_image",
-      "free_tier_concrete_limits": "Around $10 in free credits upon initial developer registration.",
-      "what_it_does_uniquely": "Hosts ultra-fast FLUX.1-schnell ($0.003/image) and specialized models like FLUX-LoRAs. Extremely developer-friendly with a lightweight Python SDK.",
-      "would_integrate_where": "Coloring book generation pipeline: GitHub Actions calls the Fal.ai API to generate high-quality vector-ready line art using FLUX.1-schnell at less than a fraction of a cent per image.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Once free credits run out, requires a credit card to transition to a pay-as-you-go model (though costs remain extremely low)."
+      "free_tier_concrete_limits": "Generous daily free credits on signup; API access allows running complex multi-step generative workflows for free.",
+      "what_it_does_uniquely": "Allows you to build or use pre-made 'glifs' (workflows combining LLMs, image generators, ComfyUI, and vectorizers) and call them with a single API request.",
+      "would_integrate_where": "Pipeline: produce_svg_pack or produce_coloring_book. Can run a specialized 'vectorizer' or 'line-art' glif to get clean SVGs directly.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "API structure is custom and requires learning their specific JSON payload format."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Segmind",
-      "url": "https://www.segmind.com",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "100 free image generation credits refreshed daily.",
-      "what_it_does_uniquely": "Offers a solid API for Stable Diffusion XL, ControlNet, and custom models with a generous, recurring daily free tier that fits automated cron-jobs.",
-      "would_integrate_where": "Daily POD asset pipeline: A GitHub Actions cron job runs daily, uses the 100 free credits to generate high-quality watercolor or graphic assets, and pushes them to Redbubble.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Rate limits on the free tier can cause temporary 429 errors if images are requested too rapidly in parallel."
+      "tool_or_platform": "Draft2Digital",
+      "url": "https://www.draft2digital.com",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free to publish; they take a 10% cut of the retail price only when a sale occurs.",
+      "what_it_does_uniquely": "Distributes paperbacks and ebooks to multiple major storefronts simultaneously (Barnes & Noble, Kobo, Apple Books, Tolino, Vivlio) with automated formatting tools.",
+      "would_integrate_where": "Pipeline: produce_lowcontent_kdp. Expands distribution of low-content books beyond Amazon KDP to capture global markets.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Formatting templates are somewhat rigid compared to custom-designed KDP PDFs."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Printables (by Prusa)",
-      "url": "https://www.printables.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to publish and sell digital 3D models (STLs/3MFs).",
-      "what_it_does_uniquely": "Features a unique 'Prusameters' reward system where free downloads of your designs earn points redeemable for physical 3D printers and filament, alongside a direct Store feature.",
-      "would_integrate_where": "3D Asset Pipeline: Expand Cults3D strategy by cross-publishing parametric or decorative STL files to Printables, building passive traffic and earning physical rewards or direct sales.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Audience is highly tech-literate; models must be highly functional or aesthetically flawless to gain traction."
+      "tool_or_platform": "PyTrends (Google Trends API wrapper)",
+      "url": "https://github.com/GeneralMills/pytrends",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100% free, no API key required. Rate limits are dictated by Google Trends' standard web limits.",
+      "what_it_does_uniquely": "Allows programmatic extraction of trending search terms, interest over time, and related queries directly inside Python scripts.",
+      "would_integrate_where": "Pipeline: agent_trendhunter or agent_niche_gap. Run weekly via GitHub Actions to identify rising search trends for POD designs.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "GitHub Actions runner IPs can sometimes trigger Google rate limits (HTTP 429); requires handling retries and backoffs."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com",
-      "category": "dev_tool",
-      "free_tier_concrete_limits": "No monthly fees. Standard transaction fee of 5% + $0.50 per sale.",
-      "what_it_does_uniquely": "Acts as the Merchant of Record (MoR), handling global sales tax, EU VAT (TVA in France), and compliance automatically. Extremely clean developer API.",
-      "would_integrate_where": "Direct Sales Pipeline: Allows Hugo to host his own minimal catalog of digital coloring books, card game PDFs, or gamedev assets on a custom static site (hosted free on GitHub Pages) and accept payments legally without complex tax overhead.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Slightly higher transaction fees compared to Stripe, but saves dozens of hours in accounting and tax filing."
+      "tool_or_platform": "Printables Store & Clubs",
+      "url": "https://www.printables.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to upload; 10% platform fee on direct sales or club memberships.",
+      "what_it_does_uniquely": "Prusa's official repository. It has high active engagement and allows creators to sell 3D printable files directly or set up subscription-based Clubs.",
+      "would_integrate_where": "Pipeline: produce_stl_parametric. Publish parametric 3D models or STL packs to capture an audience distinct from Cults3D.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Community is highly technical; models must be highly functional and printable without errors."
     },
     {
       "rank": 7,
-      "tool_or_platform": "Cloudinary",
-      "url": "https://cloudinary.com",
-      "category": "dev_tool",
-      "free_tier_concrete_limits": "25 Monthly Credits (approx. 25,000 transformations or 25 GB of storage/bandwidth).",
-      "what_it_does_uniquely": "An API-driven image management suite. Can auto-convert formats, apply real-time filters, resize, and optimize images via URL parameters instantly.",
-      "would_integrate_where": "Asset optimization pipeline: After generating large raw images via AI, GitHub Actions uploads them to Cloudinary to automatically generate compressed WebP previews, watermarked thumbnails, and optimized print layouts.",
+      "tool_or_platform": "Freepik Contributor",
+      "url": "https://contributor.freepik.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to register and upload. Earn royalties per download (typically €0.05 to €0.10 per download, scaling with high volume).",
+      "what_it_does_uniquely": "Freepik has massive organic traffic and officially accepts high-quality AI-generated images, patterns, and vector files.",
+      "would_integrate_where": "Pipeline: produce_svg_pack or produce_tumbler_wraps. Upload packs of patterns, backgrounds, and SVGs to earn passive download commissions.",
       "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Exceeding the credit limit will temporarily disable dynamic transformations until the monthly cycle resets."
+      "risk_or_caveat": "Strict curation team; metadata, tags, and image quality must be pristine to be accepted."
     }
   ]
 }
