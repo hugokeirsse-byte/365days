@@ -39,11 +39,14 @@ def _load_routing():
 # --------------------------------------------------------------------------- #
 # Provider implementations (stdlib urllib only)
 # --------------------------------------------------------------------------- #
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+
+
 def _call_gemini(system: str, user: str, temperature: float, max_tokens: int) -> tuple[str, int, int]:
     key = os.environ.get("GEMINI_API_KEY", "")
     if not key:
         raise ValueError("GEMINI_API_KEY not set")
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={key}"
     body = {
         "contents": [{"role": "user", "parts": [{"text": f"{system}\n\n{user}"}]}],
         "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens},
@@ -83,9 +86,10 @@ def _call_groq(system: str, user: str, temperature: float, max_tokens: int) -> t
     key = os.environ.get("GROQ_API_KEY", "")
     if not key:
         raise ValueError("GROQ_API_KEY not set")
+    model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
     return _call_openai_compat(
         "https://api.groq.com/openai/v1/chat/completions",
-        "llama-3.3-70b-versatile", key, system, user, temperature, max_tokens
+        model, key, system, user, temperature, max_tokens
     )
 
 
@@ -93,9 +97,10 @@ def _call_mistral(system: str, user: str, temperature: float, max_tokens: int) -
     key = os.environ.get("MISTRAL_API_KEY", "")
     if not key:
         raise ValueError("MISTRAL_API_KEY not set")
+    model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest")
     return _call_openai_compat(
         "https://api.mistral.ai/v1/chat/completions",
-        "mistral-small-latest", key, system, user, temperature, max_tokens
+        model, key, system, user, temperature, max_tokens
     )
 
 
