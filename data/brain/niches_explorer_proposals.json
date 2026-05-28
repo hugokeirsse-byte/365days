@@ -1,7 +1,7 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-28T15:29:25.170667Z",
+  "timestamp": "2026-05-28T18:31:09.709660Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -75,6 +75,7 @@
     "produce_specs_deck",
     "produce_stl_openscad",
     "produce_stl_parametric",
+    "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
     "produce_viral_formats",
@@ -124,6 +125,8 @@
     "agent_stl_cdc",
     "agent_stl_trends",
     "agent_strategist",
+    "agent_svg_cdc",
+    "agent_svg_trends",
     "agent_trend_design_matcher",
     "agent_trend_explosion",
     "agent_trendhunter",
@@ -134,111 +137,111 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "French Micro-Heritage & Local Museums (Châteaux & Chapelles)",
-      "type": "b2b",
-      "audience_size_estimate": 120000,
-      "passion_level_1_10": 8,
+      "name": "Ham Radio Operators & SWL (Radioamateurs)",
+      "type": "sub_culture",
+      "audience_size_estimate": 150000,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Curators of small French municipal museums, local history association presidents, or tourists visiting regional hidden gems looking for cheap, authentic souvenirs.",
+      "buyer_persona": "Tech-oriented hobbyists, often 40-70 years old, highly meticulous, proud of their call signs, who love logging contacts and displaying technical reference charts in their radio shacks.",
       "product_angles": [
-        "Custom historical coloring books of the local monument generated via FLUX-schnell img2img based on public photos",
-        "Vintage-style travel posters of minor French villages (e.g., 'Les Plus Beaux Villages de France' but the lesser-known ones)",
-        "OpenSCAD 3D models of local architectural elements (gargoyles, specific regional columns) for souvenir 3D printing"
+        "Printable QSL Card templates (fully customizable SVG/Canva links)",
+        "DX Contact Logbooks and ITU zone tracking journals (Amazon KDP)",
+        "Ham Radio Cheat Sheets, frequency allocation wall art poster files"
       ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "A 16-page digital PDF coloring book of historical landmarks in the Indre-et-Loire or regional department, pitched directly to local tourism offices.",
-      "estimated_monthly_revenue_year1_eur": 150
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "A minimalist, high-density Radio Contact Log Book for Amazon KDP with a premium retro technical cover design",
+      "estimated_monthly_revenue_year1_eur": 180
     },
     {
       "rank": 2,
-      "name": "PSX-Era Low-Poly Retro Textures for Godot",
+      "name": "Solo TTRPG (Solo Roleplaying Games)",
       "type": "adjacent_market",
-      "audience_size_estimate": 95000,
+      "audience_size_estimate": 110000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
+      "current_saturation_1_10": 3,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Solo indie game developers using Godot 4.x who want to ride the 'boomer shooter' or retro survival horror wave but cannot draw or model. They need cheap, cohesive, tileable asset packs.",
+      "buyer_persona": "Indie tabletop gamers who play alone. They require journaling templates, minimalist oracle cards, and random table generators to drive their narrative without a Dungeon Master.",
       "product_angles": [
-        "Tileable 256x256 PSX-style sci-fi metal corridors textures",
-        "Retro horror environment textures (grungy concrete, pixelated blood splatters, old wallpaper)",
-        "Low-poly 3D props (crates, barrels, light fixtures) in GLTF format with low-res textures"
+        "Solo RPG Campaign Journal & World-building templates (KDP)",
+        "Printable Oracle Cards / Spark Tables (The Game Crafter / PDF download)",
+        "Hex-crawl map builder SVGs & minimalist fantasy map-making assets"
       ],
-      "best_pipeline_or_new": "produce_godot_assets",
-      "first_test_product": "A pack of 30 tileable PSX-style retro industrial textures (diffuse, normal maps) hosted on Itch.io and linked on Cults3D.",
+      "best_pipeline_or_new": "produce_board_game",
+      "first_test_product": "A 120-page 'Solo RPG Journaling Companion' with built-in minimalist dungeon-generation tables on KDP",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
       "rank": 3,
-      "name": "Parametric Board Game Organizers (OpenSCAD)",
-      "type": "adjacent_market",
-      "audience_size_estimate": 250000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 5,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Board game enthusiasts who own complex 'Eurogames' (e.g., Ark Nova, Castles of Burgundy) and own a 3D printer. They hate setup times and want custom-fit box organizers.",
-      "product_angles": [
-        "Fully customizable card holders and token trays generated via OpenSCAD",
-        "Modular hex-tile organizers that lock into standard game boxes",
-        "Extruder-friendly, no-support-needed STL files designed to minimize filament usage"
-      ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "A parametric, stackable resource tray system in OpenSCAD that users can resize themselves for any token dimensions, sold on Cults3D.",
-      "estimated_monthly_revenue_year1_eur": 180
-    },
-    {
-      "rank": 4,
-      "name": "Geotechnical & Tunneling Engineers",
-      "type": "deep_niche",
-      "audience_size_estimate": 65000,
-      "passion_level_1_10": 8,
+      "name": "HEMA (Historical European Martial Arts / AMHE)",
+      "type": "sub_culture",
+      "audience_size_estimate": 85000,
+      "passion_level_1_10": 10,
       "current_saturation_1_10": 1,
       "growth_trajectory": "steady",
-      "buyer_persona": "Civil engineers specializing in soil mechanics, foundation drilling, and tunnel boring. They have high incomes, love technical inside jokes, and have absolutely no targeted merchandise.",
+      "buyer_persona": "Martial artists practicing historical European combat (longsword, rapier). They are highly dedicated, value historical accuracy, and love displaying fencing-themed insider gear.",
       "product_angles": [
-        "Patent drawing style schematics of historical Tunnel Boring Machines on mugs and t-shirts",
-        "Geotechnical humor ('Terzaghi is my co-pilot', 'I deal with soil mechanics') minimalist vector designs",
-        "KDP Notebooks with semi-logarithmic graph paper specifically formatted for sieve analysis and soil classification"
+        "HEMA Sparring and Technique Training Diaries (KDP)",
+        "Historical fencing vector graphics (SVG) for club t-shirts and gear customisation",
+        "Minimalist technical weapon maintenance logs and tournament brackets"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "An Amazon KDP Logbook specifically designed for 'Geotechnical Site Investigation & Soil Core Logging' with pre-formatted tables.",
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "An SVG graphic pack featuring accurate historical longsword guards (Liechtenauer / Fiore) for print-on-demand customisation",
       "estimated_monthly_revenue_year1_eur": 120
     },
     {
+      "rank": 4,
+      "name": "Homebrewers & Small Craft Breweries (Micro-brasseries)",
+      "type": "b2b",
+      "audience_size_estimate": 250000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Homebrewing enthusiasts and local nano-breweries who need professional, clean, yet affordable branding assets, label layouts, and batch tracking organizers.",
+      "product_angles": [
+        "Homebrew Recipe Logbooks with gravity-to-ABV conversion charts (KDP)",
+        "Editable beer bottle labels (Canva/SVG templates sold on Etsy)",
+        "Brewery batch record sheets and cellar logs for tiny commercial setups"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "The 'Ultimate Homebrewer's Recipe & Batch Logbook' on Amazon KDP with a clean, modern grid interior",
+      "estimated_monthly_revenue_year1_eur": 150
+    },
+    {
       "rank": 5,
-      "name": "Aquascaping & High-Tech Planted Tanks",
-      "type": "sub_culture",
-      "audience_size_estimate": 350000,
-      "passion_level_1_10": 10,
+      "name": "Godot 4 2D Indie Game UI/UX Themes",
+      "type": "adjacent_market",
+      "audience_size_estimate": 130000,
+      "passion_level_1_10": 8,
       "current_saturation_1_10": 3,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Passionate hobbyists who spend thousands on CO2 systems, ADA tanks, and rare aquatic plants (Bucephalandra, Anubias). They treat aquascaping as high art and love Japanese minimalist aesthetics.",
+      "buyer_persona": "Solo indie game developers using Godot 4 who lack graphic design skills but want professional, cohesive, and drag-and-drop UI templates for their RPGs or Platformers.",
       "product_angles": [
-        "Detailed botanical-style line art posters of specific rare aquatic plants with their scientific names",
-        "Minimalist t-shirts featuring classic aquascaping layouts (Iwagumi, Ryuboku, Dutch style)",
-        "3D printable tools holders and rimless tank accessories (lily pipe holders, tool organizers)"
+        "Minimalist flat UI vector icons (SVG packs optimized for retro/cyberpunk themes)",
+        "Godot-native '.tres' UI theme presets with pre-configured button states",
+        "Low-poly or pixel-art inventory grid layouts and UI framing vectors"
       ],
-      "best_pipeline_or_new": "produce_merch_designs",
-      "first_test_product": "A set of 3 high-resolution botanical poster prints featuring detailed line-art of Bucephalandra species, sold on Redbubble and Etsy.",
-      "estimated_monthly_revenue_year1_eur": 200
+      "best_pipeline_or_new": "produce_godot_assets",
+      "first_test_product": "A 'Minimalist Sci-Fi UI Vector Kit' containing 150+ clean SVG icons and panels for Godot 2D games",
+      "estimated_monthly_revenue_year1_eur": 220
     },
     {
       "rank": 6,
-      "name": "Traditional Regional Sports (e.g., Boule de Fort, Pelote Basque)",
-      "type": "sub_culture",
-      "audience_size_estimate": 80000,
+      "name": "Cave Explorers (Speleology / Spéléologie)",
+      "type": "deep_niche",
+      "audience_size_estimate": 50000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 1,
       "growth_trajectory": "slow",
-      "buyer_persona": "Active players and local supporters of traditional regional sports in France (especially Pays de la Loire for Boule de Fort, Basque Country for Pelote). They are hyper-local, proud, and completely ignored by major sports brands.",
+      "buyer_persona": "Cave explorers, vertical caving enthusiasts, and surveyors who require extremely rugged, structured logbooks for subterranean expeditions and mapping.",
       "product_angles": [
-        "Retro-distressed graphic tees featuring regional club vibes and insider terminology ('Chistera', 'Plat', 'Gros')",
-        "Vector SVG packs of regional sports equipment for local clubs to make their own flyers",
-        "Custom tournament scorecards and bracket logbooks on Amazon KDP"
+        "Cave Surveying & Sketching Field Books (KDP, with grid/polar coordinate pages)",
+        "Caving trip planning journals with gear checklists and vertical rigging logs",
+        "Minimalist cave mapping iconography and technical SVG vector packs"
       ],
-      "best_pipeline_or_new": "produce_cultural_arbitrage_v2",
-      "first_test_product": "A minimalist, high-quality vector t-shirt design celebrating 'La Boule de Fort' with accurate representations of the unique asymmetrical wooden ball, published on Redbubble.",
-      "estimated_monthly_revenue_year1_eur": 100
+      "best_pipeline_or_new": "produce_lowcontent_from_cdc",
+      "first_test_product": "A specialized 'Cave Expedition Log & Survey Sketchbook' featuring cross-section graph papers",
+      "estimated_monthly_revenue_year1_eur": 90
     }
   ]
 }
