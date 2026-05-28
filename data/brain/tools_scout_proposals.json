@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-28T07:49:38.458230Z",
+  "timestamp": "2026-05-28T11:31:35.842065Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -98,80 +98,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Fab (by Epic Games)",
-      "url": "https://www.fab.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to register and publish; Epic Games takes a 12% revenue share, leaving 88% to the creator.",
-      "what_it_does_uniquely": "A massive unified marketplace launched by Epic Games (merging Sketchfab, Quixel, and Unreal Engine Marketplace). It opens up a massive audience of game developers looking for 2D/3D assets, UI packs, and audio.",
-      "would_integrate_where": "Pipeline: produce_gamedev_asset_pack. Export generated sprites, textures, and UI elements directly as packs to be listed on Fab alongside itch.io.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "High quality standards; assets must be properly packaged and categorized to pass validation."
-    },
-    {
-      "rank": 2,
       "tool_or_platform": "DeepInfra",
       "url": "https://deepinfra.com",
       "category": "ai_image",
-      "free_tier_concrete_limits": "$1.80 free sign-up credit. FLUX-schnell costs $0.0015 per image, meaning ~1,200 high-quality images completely free before paying anything.",
-      "what_it_does_uniquely": "Incredible API response times, fully compatible with OpenAI-like API payloads, and hosts FLUX-schnell, FLUX-dev, and SDXL with no rate blocks on GitHub Actions IPs.",
-      "would_integrate_where": "Pipeline: produce_coloring_book & produce_kdp_cover. Replaces the current failing image APIs inside GitHub Actions workflows.",
+      "free_tier_concrete_limits": "$1.80 free starting credit, FLUX-schnell costs $0.003 per image (~600 free images, then ultra-cheap PAYG)",
+      "what_it_does_uniquely": "Provides incredibly fast and cheap API access to FLUX-schnell and SDXL with zero cold-starts, bypassing GitHub Actions IP blocklists common with AI Horde.",
+      "would_integrate_where": "Replace failing image generation backends in 'produce_coloring_book' and 'produce_kdp_cover' via a simple Python post request.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Requires monitoring of remaining credit; needs a simple check to fall back to Pollinations when credits hit $0."
+    },
+    {
+      "rank": 2,
+      "tool_or_platform": "Serper.dev",
+      "url": "https://serper.dev",
+      "category": "analytics",
+      "free_tier_concrete_limits": "2,500 free search queries upon registration, no credit card required.",
+      "what_it_does_uniquely": "An extremely fast, reliable, and cheap Google Search & Google Shopping scraper API that bypasses Google's bot detection entirely.",
+      "would_integrate_where": "Inject into 'agent_opportunity_hunter' and 'agent_trendhunter' to discover trending search terms and competitor pricing on Etsy/Amazon.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Requires a credit card to reload after the free $1.80 is exhausted (though prices remain dirt cheap)."
+      "risk_or_caveat": "Queries must be optimized and cached to prevent burning through the 2,500 free limit too quickly."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Glif API",
-      "url": "https://glif.app",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous daily free credits on signup; API access allows running complex multi-step generative workflows for free.",
-      "what_it_does_uniquely": "Allows you to build or use pre-made 'glifs' (workflows combining LLMs, image generators, ComfyUI, and vectorizers) and call them with a single API request.",
-      "would_integrate_where": "Pipeline: produce_svg_pack or produce_coloring_book. Can run a specialized 'vectorizer' or 'line-art' glif to get clean SVGs directly.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "API structure is custom and requires learning their specific JSON payload format."
+      "tool_or_platform": "Printify API",
+      "url": "https://printify.com",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free API access, pay only when an order is placed by a customer.",
+      "what_it_does_uniquely": "Allows programmatic creation of products, generation of high-quality mockups, and direct publishing to connected Etsy, Shopify, or Printify Pop-up stores via API.",
+      "would_integrate_where": "Add a publishing step to 'produce_tumbler_wraps' and 'produce_wedding_stationery' to push products to a live store without manual UI clicking.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Requires setting up store integrations (e.g., Etsy or Printify Pop-Up) beforehand."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Draft2Digital",
-      "url": "https://www.draft2digital.com",
-      "category": "pod",
-      "free_tier_concrete_limits": "100% free to publish; they take a 10% cut of the retail price only when a sale occurs.",
-      "what_it_does_uniquely": "Distributes paperbacks and ebooks to multiple major storefronts simultaneously (Barnes & Noble, Kobo, Apple Books, Tolino, Vivlio) with automated formatting tools.",
-      "would_integrate_where": "Pipeline: produce_lowcontent_kdp. Expands distribution of low-content books beyond Amazon KDP to capture global markets.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Formatting templates are somewhat rigid compared to custom-designed KDP PDFs."
+      "tool_or_platform": "Fab.com",
+      "url": "https://www.fab.com",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "Free to list products, 88/12 revenue split (you keep 88% of sales).",
+      "what_it_does_uniquely": "Epic Games' unified marketplace (merging Sketchfab, Unreal Engine Marketplace, and Quixel). It is currently the highest-traffic hub for gamedev assets, 3D models, and 2D textures.",
+      "would_integrate_where": "Target distribution marketplace for 'produce_gamedev_asset_pack' and 'produce_stl_parametric' outputs.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Listing process is partially manual; assets must strictly comply with high technical standards to pass curation."
     },
     {
       "rank": 5,
-      "tool_or_platform": "PyTrends (Google Trends API wrapper)",
-      "url": "https://github.com/GeneralMills/pytrends",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100% free, no API key required. Rate limits are dictated by Google Trends' standard web limits.",
-      "what_it_does_uniquely": "Allows programmatic extraction of trending search terms, interest over time, and related queries directly inside Python scripts.",
-      "would_integrate_where": "Pipeline: agent_trendhunter or agent_niche_gap. Run weekly via GitHub Actions to identify rising search trends for POD designs.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "GitHub Actions runner IPs can sometimes trigger Google rate limits (HTTP 429); requires handling retries and backoffs."
+      "tool_or_platform": "Fal.ai",
+      "url": "https://fal.ai",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "$10 free trial credits (equivalent to roughly 1,000 FLUX-schnell or SDXL lightning generations).",
+      "what_it_does_uniquely": "Offers the fastest inference times on the market for modern models, with built-in upscaling (Real-ESRGAN) and controlnet pipelines via clean Python SDKs.",
+      "would_integrate_where": "Integrate as a high-tier image generator for complex assets like 'produce_gamedev_asset_pack' or detailed coloring book covers.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Strict rate limits on free trial keys during peak hours; pricing plan is usage-based once trial expires."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Printables Store & Clubs",
-      "url": "https://www.printables.com",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to upload; 10% platform fee on direct sales or club memberships.",
-      "what_it_does_uniquely": "Prusa's official repository. It has high active engagement and allows creators to sell 3D printable files directly or set up subscription-based Clubs.",
-      "would_integrate_where": "Pipeline: produce_stl_parametric. Publish parametric 3D models or STL packs to capture an audience distinct from Cults3D.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Community is highly technical; models must be highly functional and printable without errors."
+      "tool_or_platform": "SambaNova Cloud",
+      "url": "https://cloud.sambanova.ai",
+      "category": "ai_text",
+      "free_tier_concrete_limits": "Generous free tier with high RPM (Requests Per Minute) limits for Llama 3.1 (up to 405B) and Llama 3.2.",
+      "what_it_does_uniquely": "Incredibly high-speed text inference (hundreds of tokens per second) on open-weights models, perfect for heavy data processing and automated text generation.",
+      "would_integrate_where": "Acts as the primary fast fallback LLM for metadata generation, SEO tag compilation, and niche description writing when Gemini hits rate limits.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Free tier terms are subject to change as the platform transitions out of its developer preview phase."
     },
     {
       "rank": 7,
-      "tool_or_platform": "Freepik Contributor",
-      "url": "https://contributor.freepik.com",
+      "tool_or_platform": "Lemon Squeezy API",
+      "url": "https://www.lemonsqueezy.com",
       "category": "marketplace",
-      "free_tier_concrete_limits": "Free to register and upload. Earn royalties per download (typically €0.05 to €0.10 per download, scaling with high volume).",
-      "what_it_does_uniquely": "Freepik has massive organic traffic and officially accepts high-quality AI-generated images, patterns, and vector files.",
-      "would_integrate_where": "Pipeline: produce_svg_pack or produce_tumbler_wraps. Upload packs of patterns, backgrounds, and SVGs to earn passive download commissions.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Strict curation team; metadata, tags, and image quality must be pristine to be accepted."
+      "free_tier_concrete_limits": "No monthly fees. 5% + $0.50 transaction fee on sales. Handles global sales tax (merchant of record).",
+      "what_it_does_uniquely": "Provides an API-first storefront and checkout system, allowing Hugo to sell digital PDF guides, coloring books, and gamedev assets directly from a static site or GitHub Pages.",
+      "would_integrate_where": "Create a completely automated direct-sales funnel where GitHub Actions publishes generated PDF books/assets and generates payment links automatically.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Requires driving organic traffic to the payment links, unlike Etsy or Amazon which have built-in search traffic."
     }
   ]
 }
