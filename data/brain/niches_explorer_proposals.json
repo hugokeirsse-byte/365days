@@ -1,11 +1,208 @@
 {
   "agent": "niches_explorer",
-  "timestamp": "2026-05-27T21:48:42.307162Z",
-  "status": "ERROR — Gemini call failed",
-  "error": "gemini-flash-latest: HTTP 429 {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-a",
-  "models_tried": [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-flash-latest"
+  "title": "Niches & Assets Explorer Brain",
+  "timestamp": "2026-05-28T02:06:20.682102Z",
+  "model": "gemini-flash-latest",
+  "system_state_snapshot": {
+    "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
+    "last_updated": "2026-05-22T05:10:00Z",
+    "phase": "amorçage — aucun produit publie, aucune vente encore",
+    "monthly_revenue_eur": 0,
+    "active_platforms": [],
+    "registered_not_live": [
+      "Redbubble",
+      "Amazon KDP",
+      "Cults3D (prevu)"
+    ],
+    "hugo_available_hours_per_week": 10,
+    "hugo_budget_eur_per_month": 20,
+    "hardware": "Telephone Android uniquement (Termux) + GitHub Actions comme infra de calcul gratuite",
+    "current_priorities": [
+      "Debloquer un generateur d'image de qualite pro accessible par cle API depuis GitHub Actions",
+      "Rendre les 5 cerveaux perpetuels reellement fonctionnels",
+      "Produire et publier le premier coloring book abouti (qualite vendable)"
+    ],
+    "recent_sales_summary": "Aucune vente. Le systeme est en phase de mise en place des moteurs de production.",
+    "open_issues": [
+      "Generation d'image: HF ne sert plus FLUX/SDXL gratuitement, Gemini image = 429 (payant), AI Horde bloque depuis les IP GitHub Actions (403). Seul Pollinations repond mais qualite brute.",
+      "Pistes image en cours: Together AI (gratuit, FLUX-schnell + img2img) et Cloudflare Workers AI (gratuit 10k neurons/j) a tester; Runware en PAYG plafonne 20€ comme option qualite/volume.",
+      "Cerveaux: modele Gemini experimental deprecie corrige, fallback multi-modeles ajoute."
+    ],
+    "image_generation_status": {
+      "pollinations": "operationnel mais qualite brute, text2img sans image de reference",
+      "gemini_image": "indisponible (HTTP 429, necessite facturation)",
+      "together_ai": "a tester (gratuit, FLUX-schnell + img2img, cle TOGETHER_API_KEY)",
+      "cloudflare": "a tester (gratuit, FLUX-schnell + SD img2img, CLOUDFLARE_API_TOKEN + ACCOUNT_ID)",
+      "runware": "option payante PAYG plafonnee a 20€/mois (~33000 images FLUX-schnell)"
+    },
+    "llm_brains_status": "Gemini texte operationnel (cle posee), modele stable gemini-2.5-flash avec fallback",
+    "constraints": [
+      "100% gratuit privilegie; budget image max 20€/mois accepte",
+      "Tout doit tourner sans PC, via GitHub Actions",
+      "Legal et ethique uniquement (pas de copyright, pas de spam)"
+    ]
+  },
+  "pipelines_known": [
+    "produce_bible_verses",
+    "produce_bible_verses_v2",
+    "produce_card_game",
+    "produce_chateau_local",
+    "produce_chess_book",
+    "produce_coloring_book",
+    "produce_cope_pack",
+    "produce_cultural_arbitrage",
+    "produce_cultural_arbitrage_v2",
+    "produce_from_brief",
+    "produce_gamedev_asset_pack",
+    "produce_iheart_hf",
+    "produce_iheart_v2",
+    "produce_iheart_v3",
+    "produce_iheart_v4",
+    "produce_iheart_x",
+    "produce_kdp_cover",
+    "produce_literal_idioms",
+    "produce_literal_idioms_v2",
+    "produce_lowcontent_kdp",
+    "produce_quotes_minimal",
+    "produce_specs_deck",
+    "produce_stl_parametric",
+    "produce_svg_pack",
+    "produce_tumbler_wraps",
+    "produce_viral_formats",
+    "produce_viral_formats_v2",
+    "produce_wedding_stationery",
+    "agent_auditor",
+    "agent_auto_regen",
+    "agent_brain_meta",
+    "agent_brief_auditor",
+    "agent_builder",
+    "agent_coloring_intel",
+    "agent_domain_image_finder",
+    "agent_external_trends",
+    "agent_gate2",
+    "agent_gemini_quality_check",
+    "agent_ideator_offline",
+    "agent_niche_gap",
+    "agent_novel_planner",
+    "agent_novel_writer",
+    "agent_opportunity_hunter",
+    "agent_orchestrator",
+    "agent_publisher",
+    "agent_strategist",
+    "agent_trend_design_matcher",
+    "agent_trend_explosion",
+    "agent_trendhunter",
+    "agent_visual_audit",
+    "agent_winner_amplifier"
+  ],
+  "proposals": [
+    {
+      "rank": 1,
+      "name": "Historical European Martial Arts (HEMA) Practitioners",
+      "type": "sub_culture",
+      "audience_size_estimate": 150000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "An active HEMA fighter who trains weekly, values historical accuracy (Liechtenauer, Fiore, Meyer), and takes pride in their specific weapon discipline (Longsword, Rapier, Dussack).",
+      "product_angles": [
+        "Historical Fechtbuch-style training and sparring logbook (KDP)",
+        "3D printable wall mounts and modular racks for Federschwerter / training swords (Cults3D)",
+        "Vector SVG packs of historical fencing stances and guard postures for custom guild shirts (Etsy)"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "HEMA Sparring and Technique Journal with custom interior template pages for recording bout outcomes and technique drills",
+      "estimated_monthly_revenue_year1_eur": 180
+    },
+    {
+      "rank": 2,
+      "name": "Modular Sci-Fi Hex Terrain (Wargaming & Battletech)",
+      "type": "adjacent_market",
+      "audience_size_estimate": 350000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Tabletop wargamers (especially Battletech and hex-based RPG players) who own 3D printers and want cheap, modular, scalable sci-fi terrain that fits standard 1.25-inch or 2-inch hex grids.",
+      "product_angles": [
+        "Parametric 3D-printable sci-fi hex hills, craters, and industrial barricades (Cults3D)",
+        "Laser-cut MDF terrain patterns and acrylic token vectors (Etsy)",
+        "Hex grid mapping notebooks for scenario design (KDP)"
+      ],
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "A set of 5 parametric, stackable sci-fi hex hills optimized for supportless FDM printing",
+      "estimated_monthly_revenue_year1_eur": 250
+    },
+    {
+      "rank": 3,
+      "name": "Arborists & Professional Tree Climbers",
+      "type": "deep_niche",
+      "audience_size_estimate": 120000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Professional tree care technicians and climbers who are highly passionate about rigging physics, safety gear, tree biology, and the physical danger of their daily job.",
+      "product_angles": [
+        "Arborist daily rigging calculations and equipment safety inspection logbook (KDP)",
+        "Vector SVG pack of precise climbing knot diagrams and tree rigging setups (Etsy)",
+        "Humorous 'Rigging is just math in the air' POD apparel (Redbubble)"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Arborist Daily Work Log & Rigging Safety Checklist Book (KDP)",
+      "estimated_monthly_revenue_year1_eur": 150
+    },
+    {
+      "rank": 4,
+      "name": "Software Defined Radio (SDR) & Signal Hunters",
+      "type": "sub_culture",
+      "audience_size_estimate": 220000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Tech hobbyists, ham radio operators, and cyber-security enthusiasts who use cheap SDR dongles (like RTL-SDR) to scan the RF spectrum, decode weather satellites, or track aircraft.",
+      "product_angles": [
+        "Frequency spectrum coordinator and signal hunting logbook (KDP)",
+        "3D printable snap-fit enclosures and antenna mounts for RTL-SDR boards (Cults3D)",
+        "RF waterfall diagram aesthetic poster art and stickers (Redbubble)"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "SDR Signal Hunter's Logbook for recording frequencies, modes, decibels, and coordinates (KDP)",
+      "estimated_monthly_revenue_year1_eur": 120
+    },
+    {
+      "rank": 5,
+      "name": "Local Craft Breweries (French B2B / Micro-brasseries)",
+      "type": "b2b",
+      "audience_size_estimate": 2500,
+      "passion_level_1_10": 7,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Independent craft brewery owners in France looking for inexpensive, customizable marketing templates, tasting room assets, or production logbooks.",
+      "product_angles": [
+        "Cellar master batch brewing logbook with French regulatory tracking helpers (KDP)",
+        "3D printable custom tasting flight paddles and tap handles (Cults3D)",
+        "Local hops and botanical vector SVG illustration packs for label design (Etsy)"
+      ],
+      "best_pipeline_or_new": "produce_svg_pack",
+      "first_test_product": "Botanical Hops and Yeast Vector SVG Pack with vintage hand-drawn styling for craft beer labels",
+      "estimated_monthly_revenue_year1_eur": 200
+    },
+    {
+      "rank": 6,
+      "name": "Acoustic Engineers & Home Studio Designers",
+      "type": "deep_niche",
+      "audience_size_estimate": 90000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Acousticians, audiophiles, and bedroom producers obsessed with frequency response curves, room modes, RT60 decay times, and physical acoustic treatment placement.",
+      "product_angles": [
+        "Room impulse response measurement and acoustic calibration logbook (KDP)",
+        "Humorous room-mode and phase-cancellation visual diagram posters (Redbubble)",
+        "3D-printable mathematical calculation template tools for DIY skyline diffusers (Cults3D)"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "Acoustic Measurement & Studio Calibration Logbook for tracking speaker placement and room treatment improvements (KDP)",
+      "estimated_monthly_revenue_year1_eur": 110
+    }
   ]
 }
