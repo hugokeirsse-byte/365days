@@ -190,14 +190,22 @@ Hugo peut injecter ses propres idées via GitHub → Actions → "💡 Idée Hug
 
 ## FUTURS VERTICAUX (non encore implémentés)
 
+> **Règle** : un dossier `products/<vertical>/` n'est créé QUE quand le vertical a son agent CdC + script de production + workflow GitHub. Pas de dossiers vides.
+
 | Vertical | Plateforme | Stack | Priorité |
 |----------|------------|-------|----------|
 | Wall Art printable | Etsy Digital | Pollinations + Pillow | Haute |
 | Excel/Sheets templates | Etsy + Gumroad | Python openpyxl | Haute |
+| Applications mobiles | App Store + Google Play | Flutter/Godot + AdMob/IAP | Haute |
 | Cross-stitch patterns | Etsy | Python grille + PDF | Moyenne |
 | Digital Planners iPad | Etsy | ReportLab hyperliens | Moyenne |
 | Tarot/Oracle cards | Etsy | Pollinations + PDF | Basse |
 | Prompt Packs IA | PromptBase + Etsy | LLM pur texte | Basse |
+
+**Notes verticaux futurs :**
+- **Wall Art** : même stack que merch (Pollinations + Pillow), adaptation rapide — format PNG 300dpi + PDF A3/A4
+- **Excel templates** : 100% offline Python (openpyxl), aucune dépendance API, revenus récurrents sur Gumroad
+- **Apps mobiles** : vertical différent (distribution App Store/Play Store, monétisation pub/IAP vs vente directe). Nécessite stratégie complète avant implémentation : choix framework, niche, modèle économique
 
 ---
 
