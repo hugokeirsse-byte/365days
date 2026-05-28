@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-28T07:49:48.813392Z",
+  "timestamp": "2026-05-28T11:31:29.562938Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -98,58 +98,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Upload 50 Text-Only Meme Stickers on Redbubble",
-      "type": "upload",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Redbubble is registered but has 0 listings. Text-based sticker designs require 0 image generation budget, bypass current AI bottlenecks, render perfectly on mobile, and convert fast on trending pop-culture/workplace humor.",
-      "first_action_today": "Generate 50 SVG text layouts on Termux using a Python script with open-source Google Fonts (e.g., impact, permanent marker) and push them to GitHub."
-    },
-    {
-      "rank": 2,
-      "action_title": "Publish First KDP Coloring Book using Runware PAYG",
-      "type": "upload",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 20,
-      "estimated_revenue_uplift_eur_30days_high": 120,
-      "hugo_effort_hours": 5,
-      "why_this_works_now": "Unlocks the 'produce_coloring_book' priority. Spending 2-3 EUR of the 20 EUR budget on Runware (FLUX-schnell) bypasses free API limits, delivering 40+ high-quality, ultra-crisp vector-like coloring pages that actually sell.",
-      "first_action_today": "Configure Runware API key in GitHub Actions secrets and run a test batch of 5 coloring book pages to verify quality."
-    },
-    {
-      "rank": 3,
-      "action_title": "Upload 5 Niche French Logbooks on KDP",
+      "action_title": "Publish first 3 micro-niche Coloring Books on Amazon KDP",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 80,
+      "estimated_revenue_uplift_eur_30days_high": 120,
       "hugo_effort_hours": 4,
-      "why_this_works_now": "Low-content logbooks (e.g., 'Carnet de Pêche', 'Suivi de Ruche') have high demand in France with low competition. Interior PDFs are 100% text/tables, easily generated using ReportLab on Termux with zero image API dependencies.",
-      "first_action_today": "Write a Python script on Termux to output a structured 100-page PDF interior for a specific French outdoor hobby."
+      "why_this_works_now": "The produce_coloring_book pipeline is ready. By using Together AI (free tier FLUX-schnell) via GitHub Actions, Hugo can bypass image generation blocks, compile a high-quality PDF, and list on KDP for organic traffic without ad spend.",
+      "first_action_today": "Run the produce_coloring_book pipeline on GitHub Actions using the TOGETHER_API_KEY with FLUX-schnell to generate 25 coloring pages on a targeted niche (e.g., 'Retro Camper Van Life')."
+    },
+    {
+      "rank": 2,
+      "action_title": "Upload 50 typography & sticker designs to Redbubble",
+      "type": "upload",
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 45,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Stickers are Redbubble's highest volume item and require zero image generation budget. Using existing 'produce_literal_idioms' or 'produce_quotes_minimal' pipelines, Hugo can generate high-contrast text PNGs that render perfectly on stickers.",
+      "first_action_today": "Generate 20 transparent-background text PNGs using Termux (Python/PIL) with quirky French/English wordplay, and upload them to Redbubble using his phone's browser."
+    },
+    {
+      "rank": 3,
+      "action_title": "Upload 5 functional parametric STL models to Cults3D",
+      "type": "upload",
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Cults3D organic traffic actively searches for functional 3D prints (e.g., custom organizers, board game inserts, pegboard mounts). The 'produce_stl_parametric' pipeline can output clean, print-tested files that sell for €1.50 - €3.00 repeatedly.",
+      "first_action_today": "Activate the Cults3D account, generate 3 variants of a parametric battery organizer using OpenSCAD in Termux, render preview images, and list them at €1.99."
     },
     {
       "rank": 4,
-      "action_title": "Publish 3 Parametric 3D Printing Files on Cults3D",
+      "action_title": "Publish 3 GameDev Asset Packs on itch.io (Pay-What-You-Want with Suggested Price)",
       "type": "upload",
-      "target_platform": "Cults3D (prevu)",
+      "target_platform": "itch.io",
       "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Cults3D is highly receptive to functional, parametric designs (e.g., customized brackets, storage organizers, Gridfinity mods). Using OpenSCAD via CLI on Termux allows programmatic generation of STL files without a high-end PC.",
-      "first_action_today": "Finalize one parametric organizer design in OpenSCAD on Termux, render the STL, and set up the Cults3D seller profile."
+      "estimated_revenue_uplift_eur_30days_high": 75,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Indie developers constantly look for cheap, cohesive 2D assets (UI kits, pixel art, or textures). By packaging generated outputs from 'produce_gamedev_asset_pack' into clean ZIP files, Hugo can list on itch.io with a suggested price of $2.99.",
+      "first_action_today": "Create an itch.io creator account, bundle 50 seamless textures generated by Together AI/Cloudflare into a ZIP, and publish the project page under the 'Game Assets' category."
     },
     {
       "rank": 5,
-      "action_title": "Bundle and Upload 2D Game Asset Pack on Itch.io",
+      "action_title": "Launch 5 hyper-specific Low-Content Logbooks on KDP",
       "type": "upload",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 30,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Itch.io allows immediate publishing of digital assets with no upfront fees. Micro gamedev assets (UI buttons, retro icons, pixel art tilesets) can be generated using Together AI's free tier (FLUX-schnell) and packaged on Termux.",
-      "first_action_today": "Run a test generation of a 16x16 icon sheet using Together AI free tier and slice it into individual PNGs via Python PIL."
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 100,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Logbooks (e.g., 'Beekeeping Hive Tracker', 'Sourdough Baking Log') require zero complex AI image generation—only simple vector interiors easily generated with Python PDF libraries in Termux. They sell on utility, not art style.",
+      "first_action_today": "Use Python (reportlab/fpdf) in Termux to generate a 100-page lined tracking grid for a specific hobby, design a simple text-based cover, and upload to KDP."
     }
   ]
 }
