@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-28T18:31:12.634600Z",
+  "timestamp": "2026-05-28T21:51:38.632148Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -137,91 +137,94 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Brittle Image Generation Fallback & Lack of Quality Gates",
+      "issue_title": "Silent GHA Minute Exhaustion via API Rate Limits",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
+        "produce_lowcontent_kdp",
         "produce_merch_designs",
-        "produce_kdp_cover",
-        "produce_tumbler_wraps"
+        "produce_svg_pack"
       ],
-      "current_pain_description": "Currently, if a primary image API (like Together AI) fails or hits a rate limit, the system either crashes or silently falls back to Pollinations, which generates low-quality, unusable images. These bad images waste GitHub Actions runtime and require manual deletion by Hugo.",
-      "proposed_fix": "Create a centralized 'image_generator_gateway.py' wrapper. It should implement a strict fallback sequence (Cloudflare -> Together AI -> Runware PAYG -> Pollinations). If Pollinations is triggered, the script must automatically flag the output metadata as 'UNVERIFIED_LOW_QUALITY' and prevent it from being packaged for publication without Hugo's manual approval.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "Saves 100% of wasted packaging/publishing time on low-quality assets; ensures only sellable assets reach final directories.",
-      "priority_1_10": 10
+      "current_pain_description": "If Together AI or Cloudflare Workers AI hit rate limits (429) or quota limits, GHA workflows will hang, retry indefinitely, or fail late, wasting precious free GHA runner minutes (2000/month limit).",
+      "proposed_fix": "Implement a lightweight pre-flight API checker step in GitHub Actions. If a 5-second test request to the target API returns 429 or 401, immediately exit the workflow gracefully with status 'success' (not 'failed' to prevent email alert spam) and log the block.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Prevents GHA account suspensions and preserves free run minutes for active pipelines.",
+      "priority_1_10": 9
     },
     {
       "rank": 2,
-      "issue_title": "No Automated Visual Quality Audit (Anatomy & Text Gibberish)",
-      "category": "quality_bug",
+      "issue_title": "Fragile Image Generation Silos and Lack of Fallback",
+      "category": "code_quality",
       "affected_pipelines": [
         "produce_coloring_book",
+        "produce_kdp_cover",
         "produce_merch_designs",
-        "produce_kdp_cover"
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "AI models (especially FLUX-schnell and SDXL) occasionally generate deformed hands, overlapping lines, or gibberish text. Publishing these on Amazon KDP or Redbubble ruins store reputation and leads to account suspensions.",
-      "proposed_fix": "Leverage the free tier of Gemini 2.5 Flash's multimodal vision capability inside 'agent_gemini_quality_check.py'. After image generation, send the low-res preview of the image to Gemini with a strict structured prompt to grade: 1) Text legibility, 2) Anatomical/structural anomalies, 3) Line cleanlines (for coloring books). If score < 7/10, automatically discard and retry generation once with an altered seed.",
+      "current_pain_description": "Each image pipeline manually handles its API requests. If Pollinations has low quality, or Gemini is rate-limited, the pipeline crashes instead of switching to alternative providers.",
+      "proposed_fix": "Refactor image generation into a single unified helper module (`image_service.py`) with a standardized parameter schema. Implement a strict priority chain: Cloudflare Workers AI (Free) -> Together AI (Free) -> Runware (PAYG, if balance > 0) -> Pollinations (Fallback).",
       "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Eliminates 90% of visually defective products before they are shown to customers, protecting seller accounts.",
+      "estimated_value_unlocked": "Zero pipeline failures due to image API downtime; optimal selection of best free image providers automatically.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "GitHub Actions Artifact Expiration & Mobile Retrieval Bottleneck",
+      "issue_title": "Mobile Upload Bottleneck (The Phone-Only Last Mile)",
       "category": "bottleneck",
       "affected_pipelines": [
-        "All asset production pipelines"
+        "produce_coloring_book",
+        "produce_lowcontent_kdp",
+        "produce_merch_designs"
       ],
-      "current_pain_description": "GitHub Actions artifacts expire after 90 days. Downloading large zip files on an Android phone via Termux is slow, hard to organize, and easy to lose track of, resulting in lost work.",
-      "proposed_fix": "Set up a free Cloudflare R2 bucket (10GB free tier, $0/month) or Backblaze B2. Integrate an 'upload_to_storage.py' script at the end of every successful pipeline run. The script uploads the final product (PDF, PNG, SVG) and appends a direct download URL to a simple markdown index file ('portfolio.md') in the repo, allowing Hugo to download assets directly to his phone via a standard browser.",
+      "current_pain_description": "Hugo operates only on an Android phone. Extracting generated assets, copy-pasting descriptions, tags, and pricing from raw JSON files to upload to Redbubble/KDP via mobile browser is tedious and error-prone.",
+      "proposed_fix": "Add an automated packaging step at the end of each production pipeline. Generate a single ZIP file containing the assets, plus a highly-readable 'UPLOAD_MANIFEST.txt' tailored for mobile screen copy-pasting (clean emoji-bulleted tags, short titles, pre-calculated prices). Store this ZIP in GHA artifacts.",
       "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Prevents data loss, organizes assets automatically, and makes mobile downloading 5x faster.",
+      "estimated_value_unlocked": "Cuts manual mobile publishing time per product from 15 minutes to under 3 minutes.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Hardcoded LLM Models Across Multiple Agent Scripts",
-      "category": "code_quality",
+      "issue_title": "Git History Bloat from Generated Heavy Assets",
+      "category": "security",
       "affected_pipelines": [
-        "agent_b1_stratege",
-        "agent_architecte_systeme",
-        "agent_gemini_quality_check",
-        "agent_eclaireur_bestsellers",
-        "agent_novel_planner"
+        "produce_coloring_book",
+        "produce_kdp_cover",
+        "produce_merch_designs"
       ],
-      "current_pain_description": "LLM model names (e.g., 'gemini-2.5-flash') and API keys are hardcoded or independently configured across 40+ different agent scripts. When Google updates/deprecates a model, or if Hugo needs to swap to another free provider, dozens of files must be edited manually.",
-      "proposed_fix": "Refactor all agents to import their LLM client and model configurations from a single shared utility module: 'src/utils/llm_client.py'. This module will handle model versioning, API key rotation, system instructions, and universal retry logic (exponential backoff for HTTP 429).",
-      "estimated_implementation_hours_claude": 2.0,
-      "estimated_value_unlocked": "Reduces maintenance overhead from hours to minutes when API endpoints change; prevents silent workflow failures due to model deprecation.",
+      "current_pain_description": "Committing raw PNG/PDF assets directly into the GitHub repository quickly reaches GitHub's 1GB/2GB soft repository size limit, risking account flags or slow git pulls on Termux.",
+      "proposed_fix": "Configure GHA to never commit raw output images back to the main branch. Instead, upload high-res outputs strictly as GHA Artifacts (stored free for 90 days) or compile them directly into compressed WebP formats before any commit is made.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Prevents repository bloat, maintains fast `git pull` speeds on Termux, and avoids GitHub TOS warnings.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Missed Cross-Pollination (Single Asset -> Multi-Platform Formats)",
-      "category": "cross_polination",
+      "issue_title": "Debris, Grey Gradients, and Unfillable Spaces in Coloring Books",
+      "category": "quality_bug",
       "affected_pipelines": [
-        "produce_merch_designs",
-        "produce_svg_pack",
-        "produce_coloring_book"
+        "produce_coloring_book",
+        "produce_coloring_from_cdc"
       ],
-      "current_pain_description": "A design generated for a t-shirt (Merch) stays in the merch folder. It is not automatically repackaged as a coloring book page, a sticker for Redbubble, a KDP low-content cover, or a digital SVG cut file, missing out on massive leverage.",
-      "proposed_fix": "Introduce 'pipeline_cross_pollinator.py'. Once an asset is marked as 'high-quality approved', this script runs automated ImageMagick / potrace CLI commands (available in GitHub Actions runner) to: 1) Convert color designs to SVG vectors, 2) Extract high-contrast outlines for coloring books, 3) Resize and pad to standard KDP cover dimensions.",
-      "estimated_implementation_hours_claude": 4.0,
-      "estimated_value_unlocked": "Multiplies the output catalog by 3x to 4x for every hour Hugo works, maximizing ROI per design.",
+      "current_pain_description": "Raw outputs from FLUX or SDXL often contain grey shading, sketchy lines, and semi-colored regions that look unprofessional and are impossible to color physically.",
+      "proposed_fix": "Add an automated Python post-processing script using `Pillow` and `OpenCV`. Run a binary thresholding filter (adaptive thresholding) to force pixels to absolute black or absolute white, and apply a mild bilateral filter to smooth out jagged lines.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "Ensures clean, high-contrast, professional-looking line art ready for KDP printing without manual GIMP/Photoshop touchups.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "API Quota Exhaustion & Lack of Cross-Workflow Rate Limiting",
-      "category": "failure_mode",
+      "issue_title": "Underutilized Cross-Pipeline Asset Multiplication",
+      "category": "cross_polination",
       "affected_pipelines": [
-        "All pipelines running on GitHub Actions cron"
+        "produce_merch_designs",
+        "produce_svg_pack",
+        "produce_coloring_book",
+        "produce_tumbler_wraps"
       ],
-      "current_pain_description": "If multiple GitHub Actions workflows trigger at once, they can collectively exceed Cloudflare's 10k daily neuron limit or Gemini's RPM limits, causing cascade failures mid-run and wasting action runner minutes.",
-      "proposed_fix": "Implement a lightweight state-locking mechanism using a file in the repository (e.g., '.api_lock'). When a workflow starts, it checks if a lock exists or if the daily quota is nearing depletion. It can sleep or defer execution. Alternatively, serialize all production runs through a single queue manager workflow ('agent_cdc_queue_manager.py') instead of independent cron triggers.",
-      "estimated_implementation_hours_claude": 3.0,
-      "estimated_value_unlocked": "Eliminates API rate limit failures, ensuring 100% successful completion of scheduled runs.",
+      "current_pain_description": "Assets generated for a merch design are discarded after the run, missing the chance to reuse the prompt or the base vector in other product types.",
+      "proposed_fix": "Create a lightweight metadata database (`assets_vault.json`) in the repository. When a high-quality asset is approved, log its metadata, tag keywords, and prompts. Allow other pipelines (e.g., coloring books, tumbler wraps) to query this vault to dynamically generate matching sister products.",
+      "estimated_implementation_hours_claude": 3.5,
+      "estimated_value_unlocked": "1 design effort automatically turns into 4 distinct product listings, multiplying ROI per hour worked.",
       "priority_1_10": 6
     }
   ]
