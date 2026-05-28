@@ -1,9 +1,0 @@
-{
-  "audited_at": "2026-05-25T02:01:21.720746Z",
-  "pipeline": "bible_verses_v2",
-  "model": "gemini-2.5-flash",
-  "verdict": "approve",
-  "issues": [],
-  "rating_0_100": 95,
-  "reasoning": "The image displays excellent legibility with strong contrast between the dark text and the light, subtle background. The font choice is clear and aesthetically pleasing, and the layout is well-balanced and centered. The decorative lines complement the design without being distracting. The content, a bible verse with its reference, is appropriate for the 'bible_verses_v2' pipeline and is presented professionally, making it suitable for print-on-demand."
-}

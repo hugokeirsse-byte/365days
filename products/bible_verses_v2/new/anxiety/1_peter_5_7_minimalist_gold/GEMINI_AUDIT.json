@@ -1,9 +1,0 @@
-{
-  "audited_at": "2026-05-22T10:43:29.003790Z",
-  "pipeline": "bible_verses_v2",
-  "model": "gemini-2.5-flash",
-  "verdict": "approve",
-  "issues": [],
-  "rating_0_100": 98,
-  "reasoning": "The image displays excellent legibility with clear, well-contrasted text against a subtle, light background. The composition is balanced, with the verse and reference centered, and the decorative lines enhance the overall aesthetic without distracting from the message. There are no visible defects such as blurriness, pixelation, or alignment issues, making it suitable for print-on-demand without any concerns."
-}

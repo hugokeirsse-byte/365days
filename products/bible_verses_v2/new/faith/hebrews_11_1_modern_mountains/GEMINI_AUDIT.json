@@ -1,9 +1,0 @@
-{
-  "audited_at": "2026-05-23T08:01:37.234221Z",
-  "pipeline": "bible_verses_v2",
-  "model": "gemini-2.5-flash",
-  "verdict": "approve",
-  "issues": [],
-  "rating_0_100": 92,
-  "reasoning": "The image clearly and legibly displays the bible verse 'Hebrews 11:1 Faith is the substance of things hoped for'. The text uses a clean, readable serif font with excellent contrast against the light background. The composition is well-balanced, with the verse centered and the reference appropriately placed above. The subtle mountain landscape background adds a pleasant aesthetic without distracting from the primary text. All elements appear sharp and high-resolution, indicating good print quality. There are no visible defects, misspellings, or design flaws that would warrant a rejection or review."
-}

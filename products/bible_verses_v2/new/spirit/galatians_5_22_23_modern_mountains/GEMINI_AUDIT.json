@@ -1,9 +1,0 @@
-{
-  "audited_at": "2026-05-28T01:46:36.111246Z",
-  "pipeline": "bible_verses_v2",
-  "model": "gemini-2.5-flash",
-  "verdict": "approve",
-  "issues": [],
-  "rating_0_100": 100,
-  "reasoning": "The image clearly presents a bible verse reference and a corresponding quote, which perfectly aligns with the 'bible_verses_v2' pipeline. The text is highly legible, well-centered, and uses an appropriate font and color scheme that complements the serene background. There are no visible quality issues such as pixelation, misspellings, or design flaws, making it suitable for print-on-demand without any concerns."
-}
