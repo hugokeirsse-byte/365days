@@ -1,36 +1,36 @@
 {
   "agent": "coloring_intel",
-  "generated_at": "2026-05-21T14:21:18.956840Z",
+  "generated_at": "2026-05-28T14:57:06.899818Z",
   "gemini_vision_active": true,
   "niches_analyzed": 12,
   "results": [
     {
       "niche": "mandala coloring book adults",
-      "products": []
+      "error": "amazon fetch failed"
     },
     {
       "niche": "mushroom coloring book adults",
-      "products": []
+      "error": "amazon fetch failed"
     },
     {
       "niche": "fantasy coloring book adults",
-      "products": []
+      "error": "amazon fetch failed"
     },
     {
       "niche": "fairy coloring book adults",
-      "products": []
+      "error": "amazon fetch failed"
     },
     {
       "niche": "animal coloring book adults",
-      "products": []
+      "error": "amazon fetch failed"
     },
     {
       "niche": "flower coloring book adults",
-      "products": []
+      "error": "amazon fetch failed"
     },
     {
       "niche": "cottagecore coloring book adults",
-      "products": []
+      "error": "amazon fetch failed"
     },
     {
       "niche": "witchy coloring book adults",
@@ -52,5 +52,6 @@
       "niche": "horror coloring book adults",
       "error": "amazon fetch failed"
     }
-  ]
+  ],
+  "rehabilitation_candidates": []
 }
