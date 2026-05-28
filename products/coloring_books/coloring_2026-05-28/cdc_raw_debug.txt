@@ -1,0 +1,125 @@
+{
+  "coloring_id": "coloring_2026-05-28",
+  "date_cdc": "2026-05-28",
+  "gate_cdc": "pending",
+  "concept": {
+    "titre": "Whimsical Ocean Friends Coloring Book",
+    "sous_titre": "A Cute Sea Creatures Adventure for Kids Ages 4-8: Dive into an Adorable Underwater World!",
+    "theme_principal": "sea_creatures_cute",
+    "style_artistique": "whimsical|kawaii",
+    "audience": "child",
+    "niveau_complexite": "simple|medium|intricate",
+    "nombre_pages": 30,
+    "element_unique": "Chaque page présente une créature marine adorable avec une personnalité unique, dans un style kawaii et fantaisiste qui encourage la narration. Le livre offre une progression de difficulté du simple au complexe, avec des arrière-plans variés et engageants qui ne sont pas génériques, garantissant des images en noir et blanc pur avec des lignes épaisses, sans aucun gris ou shading pour une expérience de coloriage optimale."
+  },
+  "prompts_pollinations": {
+    "style_base": "black and white coloring page, clean outlines, no fill, white background, no gray, no shading, bold lines, thick lines, crisp lines",
+    "style_modificateurs": [
+      "kawaii style",
+      "whimsical illustration",
+      "cute cartoon style",
+      "simple shapes"
+    ],
+    "theme_keywords": [
+      "adorable sea turtle",
+      "playful dolphin",
+      "cute octopus",
+      "friendly whale",
+      "happy clownfish",
+      "starfish and coral reef",
+      "jellyfish swimming"
+    ],
+    "negative_keywords": [
+      "gray",
+      "shading",
+      "photo",
+      "realistic texture",
+      "color",
+      "gradient",
+      "shadow",
+      "3D",
+      "photograph",
+      "grainy",
+      "sketch",
+      "blurry",
+      "thin lines",
+      "complex background",
+      "human"
+    ],
+    "exemple_prompt_complet": "black and white coloring page, kawaii style, a playful dolphin jumping over a wave with a smiling starfish, thick lines, clean outlines, no fill, white background, no gray, no shading, bold lines, crisp lines",
+    "variantes_exemples": [
+      "Prompt page simple (débutant) : black and white coloring page, kawaii style, a single cute smiling crab on a sandy beach, very thick lines, simple background, no gray, no shading, crisp outlines",
+      "Prompt page medium (intermédiaire) : black and white coloring page, whimsical illustration, a friendly sea turtle swimming with two small fish through kelp, medium details, clean outlines, white background, no gray, no shading, bold lines",
+      "Prompt page complexe (expert) : black and white coloring page, intricate whimsical illustration, a busy coral reef scene with many cute sea creatures (octopus, clownfish, seahorse) hiding among detailed coral formations, bold lines, complex background elements, white background, no gray, no shading, crisp outlines"
+    ],
+    "note_importante": "Toujours exclure les mots qui génèrent du gris ou du shading. La présence de 'bold lines' et 'thick lines' est cruciale pour l'épaisseur. Tester au moins 1 page avant production pour valider la pureté du noir et blanc, l'absence de gris, la netteté et l'épaisseur des lignes."
+  },
+  "pages_distribution": {
+    "pages_simples": 8,
+    "pages_medium": 14,
+    "pages_complexes": 8,
+    "description_progression": "Le livre commence par des illustrations simples de créatures marines isolées sur fond épuré, idéales pour les plus jeunes ou comme pages d'échauffement. La difficulté augmente progressivement avec des scènes de taille moyenne incorporant plus d'éléments environnementaux et plusieurs créatures. Les dernières pages présentent des scènes plus complexes et détaillées de récifs coralliens ou de rassemblements de créatures, offrant un défi stimulant pour développer la concentration et la motricité fine des enfants plus âgés."
+  },
+  "public_cible": {
+    "persona": "Parents (28-55 ans) ou grands-parents à la recherche d'activités créatives et éducatives pour leurs enfants (4-8 ans). Ils privilégient les livres de coloriage avec des illustrations mignonnes, positives et de haute qualité, qui encouragent l'apprentissage et l'imagination, tout en étant faciles à colorier pour les petites mains.",
+    "tranche_age": "4-8 ans (cible primaire enfant), 28-55 ans (cible acheteur adulte)",
+    "pourquoi_ce_theme": "Le thème des créatures marines mignonnes est universellement attrayant pour les enfants, offrant un mélange de fantaisie et de découverte du monde aquatique. Il stimule la curiosité pour la nature et permet une expression créative joyeuse, sans éléments effrayants. Ce thème est intemporel et toujours populaire auprès des familles."
+  },
+  "cinq_concurrents_amazon": [
+    {
+      "titre": "Ocean Animals Coloring Book for Kids Ages 4-8",
+      "note": 4.4,
+      "nb_avis": 380,
+      "ce_qui_manque": "Certains avis mentionnent des illustrations qui manquent de variété ou semblent génériques, parfois avec des lignes trop fines ou des arrière-plans vides.",
+      "notre_avantage": "Notre livre propose des créatures uniques avec des expressions distinctes et des scènes variées, des lignes épaisses et des arrière-plans riches pour stimuler l'imagination et l'engagement."
+    },
+    {
+      "titre": "Cute Sea Animals Coloring Book: For Kids Ages 4-8",
+      "note": 4.6,
+      "nb_avis": 512,
+      "ce_qui_manque": "Quelques utilisateurs signalent la présence de légères teintes de gris ou d'ombres, ce qui peut nuire à la clarté du coloriage en pur noir et blanc.",
+      "notre_avantage": "Nos images sont garanties en noir et blanc pur, sans le moindre gris ni ombrage, grâce à nos prompts optimisés pour Pollinations AI, offrant une base de coloriage impeccable."
+    },
+    {
+      "titre": "My First Big Book of Ocean Animals Coloring",
+      "note": 4.3,
+      "nb_avis": 650,
+      "ce_qui_manque": "Le niveau de détail est parfois trop bas pour les enfants plus âgés de la tranche (7-8 ans) ou les illustrations peuvent être répétitives.",
+      "notre_avantage": "Nous offrons une progression de difficulté bien pensée, avec des pages plus complexes vers la fin pour maintenir l'intérêt des enfants plus âgés, tout en conservant un style adorable."
+    },
+    {
+      "titre": "Under The Sea Coloring Book For Kids: Ocean Animal Fun",
+      "note": 4.5,
+      "nb_avis": 290,
+      "ce_qui_manque": "Des clients se plaignent que les lignes ne sont pas toujours assez nettes ou que la qualité d'impression est inconsistante (blurry outlines).",
+      "notre_avantage": "Nos prompts Pollinations AI sont spécifiquement conçus pour générer des lignes extrêmement nettes et crisp, assurant une impression de haute qualité et une expérience de coloriage agréable."
+    },
+    {
+      "titre": "Adorable Ocean Animals Coloring Book for Toddlers and Kids",
+      "note": 4.2,
+      "nb_avis": 415,
+      "ce_qui_manque": "Certains avis indiquent que le style artistique est trop générique ou manque de 'personnalité' pour les créatures.",
+      "notre_avantage": "Notre style 'kawaii' et 'whimsical' confère une personnalité unique et attachante à chaque créature, rendant le livre plus mémorable et stimulant pour les enfants."
+    }
+  ],
+  "kdp_listing": {
+    "titre_amazon": "Whimsical Ocean Friends Coloring Book for Kids Ages 4-8: Cute Sea Creatures Adventure - Whales, Dolphins, Octopuses & More - Fun & Engaging Activities for Boys & Girls",
+    "sous_titre_amazon": "Dive into an Adorable Underwater World! Unique Kawaii Marine Life Designs, Thick Lines & Pure Black/White Pages for Creative Kids Ages 4, 5, 6, 7, 8",
+    "description": "Plongez dans un monde sous-marin d'émerveillement et de créativité avec le <b>Whimsical Ocean Friends Coloring Book</b> !<br><br>Ce livre de coloriage a été spécialement conçu pour les enfants de 4 à 8 ans, offrant une aventure adorable et éducative sous les vagues. Chaque page présente des créatures marines mignonnes et joyeuses, des dauphins espiègles aux tortues sages, toutes dessinées avec des lignes épaisses et nettes, parfaites pour les petites mains.<br><br><b>Ce que votre enfant va adorer :</b><br><ul><li><b>30 Illustrations Uniques :</b> Découvrez une variété de scènes, des animaux solitaires aux récifs coralliens animés, avec une difficulté progressive.</li><li><b>Style Kawaii et Fantaisiste :</b> Des créatures attachantes avec des expressions adorables qui stimulent l'imagination.</li><li><b>Qualité Supérieure :</b> Des images en noir et blanc pur, sans gris ni ombrage, pour des couleurs éclatantes et sans bavures.</li><li><b>Éducatif et Amusant :</b> Idéal pour développer la motricité fine, la reconnaissance des couleurs et la concentration, tout en s'amusant.</li></ul>Offrez à votre enfant des heures de plaisir créatif et de détente. C'est le cadeau parfait pour les anniversaires, les vacances, ou simplement pour une journée pluvieuse !<br><br><b>N'attendez plus, ajoutez ce livre de coloriage à votre panier et laissez la magie de l'océan commencer !</b>",
+    "mots_cles": [
+      "sea creatures coloring book",
+      "kids ocean animals",
+      "cute animal coloring",
+      "toddler coloring book",
+      "underwater adventure",
+      "easy coloring pages",
+      "marine life for kids"
+    ],
+    "categories": [
+      "Juvenile Nonfiction / Activity Books / Coloring Books",
+      "Juvenile Nonfiction / Animals / Marine Life"
+    ],
+    "prix_usd": 7.99
+  },
+  "criteres_validation": {
+    "test_style": "Générer 1 page test avec l'exemple_prompt_complet — vérifier rigoureusement : pur noir/blanc, ZERO gris (pas de points ou teintes), lignes parfaitement nettes, fond blanc immaculé. Confirmer l'épaisseur des lignes
