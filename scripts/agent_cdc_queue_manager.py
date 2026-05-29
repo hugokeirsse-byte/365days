@@ -30,8 +30,9 @@ ROOT = Path(__file__).resolve().parent.parent
 
 TARGET_PENDING = int(os.environ.get("TARGET", "10"))
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN", "5"))
-# Délai entre chaque génération pour rester sous la limite RPM de Gemini free tier.
-THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "8"))
+# Délai entre chaque génération. 70s = bien en dessous du RPM free tier Gemini.
+# Avec 10 verticals × 10 CdC = 100 CdC max → ~117 min total, parfaitement OK pour un cron.
+THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "70"))
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 
 # ── Pools de thèmes — diversité garantie, pas de répétition ──────────────────
