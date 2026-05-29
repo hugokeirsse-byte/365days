@@ -93,7 +93,10 @@ jobs:
           DRY_RUN: '1'
 
       - name: Remplir les files manquantes
-        run: python scripts/agent_cdc_queue_manager.py
+        run: |
+          mkdir -p data/logs
+          set -o pipefail
+          python scripts/agent_cdc_queue_manager.py 2>&1 | tee data/logs/queue_run_latest.txt
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
@@ -102,11 +105,11 @@ jobs:
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
 
       - name: Commit nouveaux CdC
-        if: ${{ github.event.inputs.dry_run != 'true' }}
+        if: ${{ always() && github.event.inputs.dry_run != 'true' }}
         run: |
           git config user.name "CdC Queue Manager"
           git config user.email "cdc-queue@365days.bot"
-          git add products/
+          git add products/ data/logs/queue_run_latest.txt
           git diff --staged --quiet && echo "Rien à committer (files déjà pleines)" || {
             COUNT=$(git diff --staged --name-only | grep cdc.json | wc -l)
             git commit -m "queue: +${COUNT} CdC générés (gate=pending) — $(date +%Y-%m-%d %H:%M)"
