@@ -1,0 +1,198 @@
+{
+  "stl_id": "stl_2026-05-29",
+  "date_cdc": "2026-05-29",
+  "gate_cdc": "pending",
+  "identite_commerciale": {
+    "nom_boutique": "Whispering Woods 3D",
+    "slogan": "Crafting cottagecore dreams, one print at a time.",
+    "niche_principale": "cottagecore"
+  },
+  "concept": {
+    "titre": "Enchanted Whisper Keychains: Cottagecore Edition",
+    "type_produit": "keychain",
+    "niche": "cottagecore",
+    "theme": "Cottagecore whimsical nature & introspective sayings",
+    "element_unique": "Each keychain features a subtly embossed, integrated cottagecore motif (e.g., a tiny wildflower sprig, a delicate mushroom, a whimsical bee, or a graceful butterfly) that complements the engraved text. This creates a miniature piece of wearable art, elevating it beyond a simple text-only design and offering a deeper connection to the cottagecore aesthetic.",
+    "pourquoi_ca_va_vendre": "The cottagecore niche is highly engaged and passionate about personalized, thematic items. These keychains offer a unique blend of personal expression and subtle artistry, providing high perceived value at an accessible price point. Their ease of printing and thoughtful design make them perfect for gifts or personal collection, appealing directly to a loyal and growing community."
+  },
+  "variantes": [
+    {
+      "slug": "bloom_where_planted",
+      "texte": "Bloom Where Planted",
+      "description_courte": "For cottagecore lovers who embrace growth and inner beauty.",
+      "emoji_thumbnail": "🌸",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "wild_free_spirit",
+      "texte": "Wild & Free Spirit",
+      "description_courte": "Celebrate your untamed, nature-loving soul.",
+      "emoji_thumbnail": "🦋",
+      "prix_cults3d_usd": 2.75
+    },
+    {
+      "slug": "forest_nymph_vibes",
+      "texte": "Forest Nymph Vibes",
+      "description_courte": "Embody the magic of the woods wherever you go.",
+      "emoji_thumbnail": "🌿",
+      "prix_cults3d_usd": 3.0
+    },
+    {
+      "slug": "sun_dappled_dreams",
+      "texte": "Sun-Dappled Dreams",
+      "description_courte": "Carry the warmth of a gentle, sunlit day.",
+      "emoji_thumbnail": "☀️",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "gather_your_magic",
+      "texte": "Gather Your Magic",
+      "description_courte": "A reminder to find wonder in everyday moments.",
+      "emoji_thumbnail": "✨",
+      "prix_cults3d_usd": 3.5
+    },
+    {
+      "slug": "sweet_serenity_seeker",
+      "texte": "Sweet Serenity Seeker",
+      "description_courte": "For those who seek peace in simple pleasures.",
+      "emoji_thumbnail": "🕊️",
+      "prix_cults3d_usd": 2.25
+    },
+    {
+      "slug": "of_earth_and_sky",
+      "texte": "Of Earth & Sky",
+      "description_courte": "Connected to the grounding earth and boundless sky.",
+      "emoji_thumbnail": "🌍",
+      "prix_cults3d_usd": 2.75
+    },
+    {
+      "slug": "cozy_hearth_home",
+      "texte": "Cozy Hearth & Home",
+      "description_courte": "The essence of comfort and warmth, always with you.",
+      "emoji_thumbnail": "🏡",
+      "prix_cults3d_usd": 2.0
+    },
+    {
+      "slug": "whispering_woods_wanderer",
+      "texte": "Whispering Woods Wanderer",
+      "description_courte": "A tribute to mystical forest explorations.",
+      "emoji_thumbnail": "🌲",
+      "prix_cults3d_usd": 3.25
+    },
+    {
+      "slug": "grow_wildflower",
+      "texte": "Grow Wildflower",
+      "description_courte": "Embrace your natural beauty and unconventional spirit.",
+      "emoji_thumbnail": "🌼",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "enchanted_forest_friend",
+      "texte": "Enchanted Forest Friend",
+      "description_courte": "For those who feel a deep kinship with nature's magic.",
+      "emoji_thumbnail": "🍄",
+      "prix_cults3d_usd": 3.75
+    },
+    {
+      "slug": "simple_joys_daily",
+      "texte": "Simple Joys Daily",
+      "description_courte": "A gentle reminder to cherish life's small, beautiful moments.",
+      "emoji_thumbnail": "☕",
+      "prix_cults3d_usd": 1.75
+    },
+    {
+      "slug": "meadow_wanderer_soul",
+      "texte": "Meadow Wanderer Soul",
+      "description_courte": "Stroll through life with grace and curiosity.",
+      "emoji_thumbnail": "🌾",
+      "prix_cults3d_usd": 2.75
+    },
+    {
+      "slug": "kindred_spirit_found",
+      "texte": "Kindred Spirit Found",
+      "description_courte": "Celebrate connections that feel like home.",
+      "emoji_thumbnail": "💖",
+      "prix_cults3d_usd": 3.0
+    },
+    {
+      "slug": "natures_gentle_embrace",
+      "texte": "Nature's Gentle Embrace",
+      "description_courte": "Feel the comforting hug of the natural world.",
+      "emoji_thumbnail": "🍃",
+      "prix_cults3d_usd": 3.5
+    }
+  ],
+  "spec_openscad": {
+    "product_type": "keychain",
+    "dimensions_mm": {
+      "width": 45,
+      "height": 45,
+      "thickness": 4
+    },
+    "text_area_mm": {
+      "width": 35,
+      "height": 25
+    },
+    "font": "Liberation Sans:style=Bold",
+    "text_size_mm": 9,
+    "engrave_depth_mm": 0.8,
+    "corner_radius_mm": 5,
+    "decoration": "integrated_motif",
+    "decoration_options": "none|leaf_sprig_small|mushroom_cap_outline|flying_bee_outline|butterfly_silhouette",
+    "print_settings": {
+      "layer_height_mm": 0.2,
+      "infill_pct": 20,
+      "supports_needed": false,
+      "material": "PLA",
+      "print_time_min_estimate": 25
+    }
+  },
+  "listing_cults3d": {
+    "titre_listing": "Cottagecore Keychain STL - Personalized Nature Lover 3D Print File",
+    "description_longue": "Step into the enchanting world of cottagecore with our 'Enchanted Whisper Keychains' STL file! Designed for the nature-loving soul, this parametric 3D model allows you to create beautiful, personalized keychains featuring evocative cottagecore phrases and subtle, integrated nature motifs.\n\n**Why You'll Love These Keychains:**\n*   **Unique Cottagecore Aesthetic:** Each design combines a heartfelt phrase with a delicately embossed motif (like a tiny wildflower sprig, a whimsical mushroom, a graceful butterfly, or a busy bee), creating a miniature piece of art that truly captures the spirit of cottagecore.\n*   **Personal Touch:** With 15 carefully curated phrases, you can choose the perfect sentiment for yourself or a loved one. Ideal for expressing your connection to nature, simplicity, and gentle living.\n*   **Easy to Print:** Optimized for FDM 3D printers, these keychains are designed for hassle-free printing. No supports needed, minimal material, and a quick print time (around 25 minutes per keychain).\n*   **Versatile Use:** Perfect for your keys, backpack, purse, as a zipper pull, or even as a unique gift tag. A charming addition to any cottagecore enthusiast's collection.\n*   **High-Quality Design:** Our OpenSCAD parametric file ensures precise dimensions and clean engravings, resulting in a professional-looking finished product. The integrated motif adds a touch of sophistication not found in generic text-only keychains.\n\n**Recommended Print Settings:**\n*   **Material:** PLA (for vibrant colors and ease of printing)\n*   **Layer Height:** 0.2mm\n*   **Infill:** 15-20%\n*   **No Supports!**\n\nEmbrace the magic of the countryside and carry a piece of your cottagecore dream with you. Download, print, and share your unique creations today!",
+    "tags": [
+      "cottagecore",
+      "keychain",
+      "3d print",
+      "stl",
+      "personalized",
+      "nature",
+      "gift",
+      "whimsical",
+      "easy print",
+      "diy"
+    ],
+    "categorie": "Jewelry & Fashion / Keychains",
+    "licence": "Creative Commons - Attribution - Non-Commercial - No Derivatives"
+  },
+  "analyse_marche": {
+    "concurrents_cults3d": [
+      {
+        "titre": "Custom Name Keychain STL",
+        "prix": 2.0,
+        "downloads": 1200,
+        "note": "Primarily focused on names, lacks thematic depth and integrated design elements specific to niches like cottagecore. Our product offers curated phrases and motifs."
+      },
+      {
+        "titre": "Basic Round Floral Keychain",
+        "prix": 1.5,
+        "downloads": 750,
+        "note": "Often flat designs with simple floral outlines or cutouts, without an integrated embossed text/motif combination. Lacks the 'whisper' and 'enchanted' feel."
+      },
+      {
+        "titre": "Quote Keychain 3D Print File",
+        "prix": 3.0,
+        "downloads": 900,
+        "note": "Offers text quotes, but usually generic or pop culture, not specifically tailored to the cottagecore aesthetic. Lacks the unique visual motif our product offers."
+      }
+    ],
+    "notre_positionnement": "Our 'Enchanted Whisper Keychains' stand out by offering a highly niche-specific product for cottagecore lovers, combining carefully chosen, evocative phrases with subtly integrated embossed nature motifs. This provides a level of thematic consistency, personalization, and perceived quality superior to generic text keychains or flat designs. The parametric nature ensures consistent quality across all 15 variants, making it a valuable and easy-to-print offering.",
+    "revenue_estime_mensuel_usd": 0
+  },
+  "criteres_validation": {
+    "texte_lisible_imprime": "Tester sur imprimante avec le texte le plus long ('Whispering Woods Wanderer') pour assurer la lisibilité et la clarté de la gravure à 0.8mm de profondeur.",
+    "dimensions_ok_slicer": "Vérifier le fichier STL généré dans un slicer (Bambu Studio ou PrusaSlicer) pour confirmer les dimensions exactes et l'absence d'erreurs d'échelle ou de géométrie.",
+    "fichier_sans_erreur": "Passer le STL généré à travers des outils de vérification de maillage (comme Meshmixer ou le Manifold check de PrusaSlicer) pour s'assurer qu'il est 'manifold' et sans erreurs structurelles, garantissant une impression sans problème.",
+    "photos_pro": "Prendre au moins 3 photos de haute qualité du produit imprimé: une vue de face claire, une vue oblique à 45° pour montrer la profondeur de gravure et le motif, et un gros plan détaillé du texte et du motif."
+  }
+}

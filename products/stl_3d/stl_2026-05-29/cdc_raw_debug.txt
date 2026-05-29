@@ -1,0 +1,146 @@
+```json
+{
+  "stl_id": "stl_2026-05-29",
+  "date_cdc": "2026-05-29",
+  "gate_cdc": "pending",
+  "identite_commerciale": {
+    "nom_boutique": "Willow & Thyme Prints",
+    "slogan": "Nature-Inspired 3D Prints for Cozy Homes",
+    "niche_principale": "cottagecore"
+  },
+  "concept": {
+    "titre": "Whispering Woods Door Plate",
+    "type_produit": "door_plate",
+    "niche": "cottagecore",
+    "theme": "Cottagecore Botanical Whispers",
+    "element_unique": "A beautifully sculpted, organic botanical border integrated directly into the door plate's design, featuring subtly raised leaves and vines. This isn't just a flat border or a simple engraving; it's a genuine 3D sculpted frame that feels part of the plate's structure. It also allows for optional parametric corner accents (e.g., a tiny bee, a whimsical mushroom, or a delicate flower) for deep personalization, making it feel truly handcrafted and unique on the market.",
+    "pourquoi_ca_va_vendre": "This design transcends simple engraved text plates by offering a deeply embedded cottagecore aesthetic with sculpted, integrated details that feel premium and unique. The parametric nature allows buyers to truly personalize their space with meaningful texts and charming accents, appealing directly to the desire for handcrafted, nature-inspired decor that stands out on digital marketplaces."
+  },
+  "variantes": [
+    {
+      "slug": "bloom_where_planted",
+      "texte": "Bloom Where Planted",
+      "description_courte": "For cottagecore lovers who embrace growth and natural beauty.",
+      "emoji_thumbnail": "🌸",
+      "prix_cults3d_usd": 2.50
+    },
+    {
+      "slug": "welcome_to_our_burrow",
+      "texte": "Welcome to Our Burrow",
+      "description_courte": "A warm invitation to your cozy, whimsical home.",
+      "emoji_thumbnail": "🏡",
+      "prix_cults3d_usd": 3.00
+    },
+    {
+      "slug": "the_cozy_nook",
+      "texte": "The Cozy Nook",
+      "description_courte": "Designating your favorite quiet corner for reading and dreaming.",
+      "emoji_thumbnail": "📚",
+      "prix_cults3d_usd": 2.75
+    },
+    {
+      "slug": "home_sweet_mushroom",
+      "texte": "Home Sweet Mushroom",
+      "description_courte": "Embrace the whimsical magic of a forest home.",
+      "emoji_thumbnail": "🍄",
+      "prix_cults3d_usd": 3.50
+    },
+    {
+      "slug": "sunbeam_and_snapdragon",
+      "texte": "Sunbeam & Snapdragon",
+      "description_courte": "Capturing the light and floral essence of a perfect day.",
+      "emoji_thumbnail": "☀️",
+      "prix_cults3d_usd": 3.25
+    },
+    {
+      "slug": "gather_here_with_us",
+      "texte": "Gather Here With Us",
+      "description_courte": "An open invitation for warmth, friendship, and shared moments.",
+      "emoji_thumbnail": "☕",
+      "prix_cults3d_usd": 2.25
+    },
+    {
+      "slug": "wildflower_wanderer",
+      "texte": "Wildflower Wanderer",
+      "description_courte": "For the free spirit who loves nature's untamed beauty.",
+      "emoji_thumbnail": "🌼",
+      "prix_cults3d_usd": 3.75
+    },
+    {
+      "slug": "fairy_tale_corner",
+      "texte": "Fairy Tale Corner",
+      "description_courte": "Where magic resides and stories come to life.",
+      "emoji_thumbnail": "✨",
+      "prix_cults3d_usd": 3.75
+    },
+    {
+      "slug": "little_house_of_dreams",
+      "texte": "Little House of Dreams",
+      "description_courte": "A charming sign for a space filled with aspirations.",
+      "emoji_thumbnail": "🌙",
+      "prix_cults3d_usd": 3.00
+    },
+    {
+      "slug": "whistle_and_bloom",
+      "texte": "Whistle & Bloom",
+      "description_courte": "Inspired by birdsong and flourishing gardens.",
+      "emoji_thumbnail": "🐦",
+      "prix_cults3d_usd": 2.80
+    },
+    {
+      "slug": "kindred_spirits_abode",
+      "texte": "Kindred Spirits Abode",
+      "description_courte": "Perfect for a shared space where souls connect.",
+      "emoji_thumbnail": "💖",
+      "prix_cults3d_usd": 3.20
+    },
+    {
+      "slug": "eat_pray_garden_grow",
+      "texte": "Eat, Pray, Garden, Grow",
+      "description_courte": "A reminder to live simply and nurture your soul.",
+      "emoji_thumbnail": "🌿",
+      "prix_cults3d_usd": 2.90
+    },
+    {
+      "slug": "quiet_moments_found",
+      "texte": "Quiet Moments Found",
+      "description_courte": "For a serene retreat where peace is cherished.",
+      "emoji_thumbnail": "🕯️",
+      "prix_cults3d_usd": 2.60
+    },
+    {
+      "slug": "rooted_in_love_home",
+      "texte": "Rooted in Love Home",
+      "description_courte": "Celebrating a home built on enduring affection.",
+      "emoji_thumbnail": "🌳",
+      "prix_cults3d_usd": 3.10
+    },
+    {
+      "slug": "forest_nymphs_hideaway",
+      "texte": "Forest Nymph's Hideaway",
+      "description_courte": "An enchanting sign for a hidden, natural sanctuary.",
+      "emoji_thumbnail": "🦋",
+      "prix_cults3d_usd": 4.00
+    }
+  ],
+  "spec_openscad": {
+    "product_type": "door_plate",
+    "dimensions_mm": {"width": 120, "height": 70, "thickness": 5},
+    "text_area_mm": {"width": 100, "height": 45},
+    "font": "Liberation Sans:style=Bold",
+    "text_size_mm": 12,
+    "engrave_depth_mm": 1.0,
+    "corner_radius_mm": 8,
+    "decoration": "sculpted_botanical_frame",
+    "decoration_options": "sculpted_botanical_frame|minimal_groove|honeycomb_border|wood_grain_texture",
+    "print_settings": {
+      "layer_height_mm": 0.2,
+      "infill_pct": 20,
+      "supports_needed": false,
+      "material": "PLA",
+      "print_time_min_estimate": 90
+    }
+  },
+  "listing_cults3d": {
+    "titre_listing": "Cottagecore Door Plate STL - Botanical Frame & Custom Text",
+    "description_longue": "Transform your home into a whimsical sanctuary with our 'Whispering Woods Door Plate' 3D printable STL file. This unique design goes beyond simple name plates, featuring a beautifully sculpted, organic botanical border seamlessly integrated into the plate. Imagine delicate raised leaves and flowing vines gracing the edges of your personalized sign, making it feel like a cherished piece of art rather than just a print.\n\nCrafted with the cottagecore aesthetic in mind, this parametric OpenSCAD file allows for full customization. Not only can you engrave any of our 15 enchanting cottagecore phrases (or your own custom text!), but the design also includes options for interchangeable corner accents – think a tiny, sweet bee, a whimsical mushroom, or a delicate wildflower – adding an unparalleled level of personalization. This isn't just an STL; it's a customizable canvas for your cottagecore dreams.\n\nPerfect for designating your cozy reading nook, welcoming guests to your 'burrow,' or adding a touch of rustic elegance to any room. It's an ideal gift for fellow nature lovers, gardeners, or anyone who cherishes a serene, handcrafted home aesthetic. Easy to print on most FDM 3D printers, we recommend PLA for its vibrant color options, or even a wood-filled PLA for an authentic, earthy feel.\n\n**Key Features:**\n*   **Unique Sculpted Botanical Frame:** Not a flat decal, but a 3D integrated design that adds depth and texture.\n*   **Fully Parametric (OpenSCAD):** Customize text, plate dimensions, and choose from various corner accents.\n*   **Cottagecore Themed:** 15 enchanting, pre-designed texts included, ready to print.\n*   **Easy to Print:** Optimized for FDM printers, no supports needed, ideal for PLA.\n*   **Versatile Decor:** Perfect for doors, walls, shelves, or as a unique, personalized gift.\n\nBring the magic of the forest and the charm of a rustic cottage into your
