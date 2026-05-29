@@ -52,6 +52,11 @@ on:
         required: false
         default: 'false'
         type: boolean
+      generate_previews:
+        description: 'Générer 5 images aperçu par CdC visuel (coloring/merch/svg) — plus lent'
+        required: false
+        default: 'false'
+        type: boolean
 
 concurrency:
   group: cdc-queue-${{ github.ref }}
@@ -105,6 +110,7 @@ jobs:
           TARGET: ${{ github.event.inputs.target || '10' }}
           MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '10' }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+          GENERATE_PREVIEWS: ${{ github.event.inputs.generate_previews == 'true' && '1' || '0' }}
 
       - name: Commit nouveaux CdC
         if: ${{ always() && github.event.inputs.dry_run != 'true' }}

@@ -6,3 +6,4 @@ __pycache__/
 /__pycache__/
 *.swp
 .DS_Store
+fetch_failures.log

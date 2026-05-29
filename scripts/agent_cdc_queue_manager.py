@@ -437,6 +437,72 @@ CONFIGS = {
 }
 
 
+# ── Pont Brain → CdC ──────────────────────────────────────────────────────────
+# Pour chaque vertical disposant d'un cerveau (trends), on déclare où lire ses
+# propositions et comment les convertir en tuples au format de la pool.
+# Les recommandations Gemini sont ainsi RÉELLEMENT injectées dans la génération,
+# avec priorité sur les pools statiques (fallback). Les verticaux sans extracteur
+# (coloring, mobile_*) continuent d'utiliser uniquement leur pool statique.
+
+def _stl_brain(d):
+    out = []
+    r = d.get("recommandation_cdc", {})
+    if r.get("type_produit") and r.get("niche"):
+        out.append((r["type_produit"], r["niche"]))
+    for p in d.get("produits_gagnants", []):
+        if p.get("type_objet") and p.get("texte_ou_theme"):
+            out.append((p["type_objet"], p["texte_ou_theme"]))
+    return out
+
+def _lowcontent_brain(d):
+    r = d.get("recommandation_cdc", {})
+    return [(r["type"], r["theme"])] if r.get("type") and r.get("theme") else []
+
+def _jeux_brain(d):
+    r = d.get("recommandation_cdc", {})
+    if r.get("type_jeu") and r.get("theme"):
+        return [(r["type_jeu"], r["theme"], r.get("mecanique", "deck-building"))]
+    return []
+
+def _roman_brain(d):
+    r = d.get("recommandation_prochain_roman", {})
+    if r.get("genre") and r.get("sous_genre"):
+        return [(r["genre"], r["sous_genre"], r.get("langue", "en"))]
+    return []
+
+def _merch_brain(d):
+    out = []
+    r = d.get("recommandation_production", {})
+    if r.get("niche"):
+        out.append((r["niche"], "flat colorful illustration"))
+    return out
+
+def _godot_brain(d):
+    r = d.get("recommandation_prochain_pack", {})
+    return [(r["type"], r["theme"])] if r.get("type") and r.get("theme") else []
+
+def _vpd_brain(d):
+    r = d.get("recommandation_cdc_prioritaire", {})
+    if r.get("collection") and r.get("sujet") and r.get("type_produit"):
+        return [(r["collection"], r["sujet"], r["type_produit"])]
+    return []
+
+_BRAIN_BRIDGE = {
+    "stl":          ("data/brain/stl",          _stl_brain),
+    "lowcontent":   ("data/brain/lowcontent",   _lowcontent_brain),
+    "jeux_societe": ("data/brain/jeux_societe", _jeux_brain),
+    "roman":        ("data/brain/roman",        _roman_brain),
+    "merch_design": ("data/brain/merch",        _merch_brain),
+    "godot_assets": ("data/brain/godot",        _godot_brain),
+    "vintage_pd":   ("data/brain/vintage_pd",   _vpd_brain),
+}
+
+for _vk, (_bdir, _bfn) in _BRAIN_BRIDGE.items():
+    if _vk in CONFIGS:
+        CONFIGS[_vk]["brain_dir"] = _bdir
+        CONFIGS[_vk]["brain_extract"] = _bfn
+
+
 def scan_pending(products_dir: Path, theme_key_fn) -> tuple[int, list]:
     """Compte les CdC en attente et retourne leurs thèmes (pour éviter doublons)."""
     if not products_dir.exists():
@@ -465,12 +531,18 @@ def scan_pending(products_dir: Path, theme_key_fn) -> tuple[int, list]:
     return pending_count, pending_themes
 
 
-def pick_next_theme(pool: list, already_pending: list, already_used: list) -> tuple | None:
-    """Choisit le prochain thème en évitant les doublons."""
+def pick_next_theme(pool: list, already_pending: list, already_used: list,
+                    recycle: bool = True) -> tuple | None:
+    """Choisit le prochain thème en évitant les doublons.
+
+    recycle=True  : si tout est consommé, on repart de la pool complète (statique).
+    recycle=False : si tout est consommé, on retourne None (themes brain : épuisés
+                    une fois utilisés, on bascule alors sur la pool statique).
+    """
     used_set = set(map(str, already_pending + already_used))
     candidates = [t for t in pool if str(t) not in used_set]
 
-    if not candidates:
+    if not candidates and recycle:
         # Pool épuisé — recommencer depuis le début avec la pool complète
         all_pending_set = set(map(str, already_pending))
         candidates = [t for t in pool if str(t) not in all_pending_set]
@@ -479,6 +551,48 @@ def pick_next_theme(pool: list, already_pending: list, already_used: list) -> tu
         return None
 
     return random.choice(candidates)
+
+
+def _brain_themes(vertical_name: str, config: dict) -> list:
+    """Lit les propositions des cerveaux (trends) d'un vertical et les convertit
+    en tuples au format de la pool. Renvoie [] si aucun cerveau/extracteur.
+
+    C'est le pont Brain → CdC : les recommandations Gemini alimentent réellement
+    la génération de CdC, au lieu de se limiter aux pools statiques.
+    """
+    extractor = config.get("brain_extract")
+    brain_dir = config.get("brain_dir")
+    if not extractor or not brain_dir:
+        return []
+    bdir = ROOT / brain_dir
+    if not bdir.exists():
+        return []
+
+    # latest en priorité, puis quelques fichiers datés récents
+    files = list(bdir.glob("*_latest.json"))
+    dated = sorted([f for f in bdir.glob("*.json") if "_latest" not in f.name],
+                   reverse=True)[:6]
+    files += dated
+
+    themes, seen = [], set()
+    for f in files:
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        try:
+            extracted = extractor(data) or []
+        except Exception:
+            extracted = []
+        for t in extracted:
+            if not t or not all(str(x).strip() for x in t):
+                continue
+            key = str(t)
+            if key in seen:
+                continue
+            seen.add(key)
+            themes.append(tuple(t))
+    return themes
 
 
 def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
@@ -527,13 +641,15 @@ def fill_queue(vertical_name: str, config: dict) -> int:
     products_dir = ROOT / config["products_dir"]
     cdc_script = ROOT / config["cdc_script"]
     pool = POOLS[vertical_name]
+    brain_pool = _brain_themes(vertical_name, config)
 
     pending_count, pending_themes = scan_pending(products_dir, config["theme_key"])
     need = max(0, TARGET_PENDING - pending_count)
     to_generate = min(need, MAX_PER_RUN)
 
     print(f"\n[Queue] ── {vertical_name.upper()} ──")
-    print(f"  Pending: {pending_count}/{TARGET_PENDING} | À générer: {to_generate}")
+    print(f"  Pending: {pending_count}/{TARGET_PENDING} | À générer: {to_generate}"
+          + (f" | Brain: {len(brain_pool)} propositions" if brain_pool else ""))
 
     if to_generate == 0:
         print(f"  ✓ File pleine ({pending_count} CdC en attente)")
@@ -547,14 +663,19 @@ def fill_queue(vertical_name: str, config: dict) -> int:
     used_this_run = []
 
     for i in range(to_generate):
-        theme = pick_next_theme(pool, pending_themes, used_this_run)
+        # Priorité aux propositions des cerveaux (Brain → CdC), puis pool statique
+        theme = pick_next_theme(brain_pool, pending_themes, used_this_run, recycle=False)
+        source = "🧠 brain"
+        if theme is None:
+            theme = pick_next_theme(pool, pending_themes, used_this_run)
+            source = "pool"
         if theme is None:
             print(f"  ✗ Pool épuisé pour {vertical_name}")
             break
 
         env_vars = config["build_env"](theme)
         theme_str = " + ".join(str(t) for t in theme)
-        print(f"  → Génération {i+1}/{to_generate}: {theme_str}")
+        print(f"  → Génération {i+1}/{to_generate} [{source}]: {theme_str}")
 
         if DRY_RUN:
             print(f"    [DRY RUN] Serait généré avec: {env_vars}")
