@@ -5,6 +5,7 @@ Multi-provider LLM routing, angle rotation, report memory, quota logging.
 import json
 import os
 import time
+import urllib.parse
 import urllib.request
 import urllib.error
 from datetime import date, datetime
@@ -148,8 +149,8 @@ def llm_call(agent_type: str, system: str, user: str,
     providers = [config["primary"]] + config.get("fallback", [])
 
     # Sur 429 (rate limit), on attend que la fenêtre RPM se libère puis on
-    # réessaie le MÊME provider. Backoff: 30s, 60s. Free tier Gemini ~10 RPM.
-    RATE_LIMIT_BACKOFF = [30, 60]
+    # réessaie le MÊME provider. Backoff: 60s, 120s. Free tier Gemini 15 RPM.
+    RATE_LIMIT_BACKOFF = [60, 120]
     MAX_ATTEMPTS = 4
 
     for provider in providers:
@@ -187,6 +188,74 @@ def llm_call(agent_type: str, system: str, user: str,
 
     print(f"[brain_utils] All providers failed for {agent_type}")
     return ""
+
+
+def generate_preview_images(
+    prompt: str,
+    out_dir,
+    nb: int = 5,
+    width: int = 512,
+    height: int = 640,
+    timeout: int = 45,
+) -> list:
+    """Generate N preview images via Pollinations.ai (free, no key required).
+
+    Only runs when env GENERATE_PREVIEWS=1.
+    Returns list of Path objects for images saved, empty list on skip or error.
+    """
+    from pathlib import Path as _Path
+    if os.environ.get("GENERATE_PREVIEWS", "0") != "1":
+        return []
+    if not prompt or not prompt.strip():
+        return []
+    out_dir = _Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    saved = []
+    encoded = urllib.parse.quote(prompt.strip())
+    print(f"[Preview] Génération de {nb} images test (Pollinations.ai)...")
+    for i in range(1, nb + 1):
+        seed = i * 137  # well-distributed seeds
+        url = (f"https://image.pollinations.ai/prompt/{encoded}"
+               f"?width={width}&height={height}&seed={seed}"
+               f"&nologo=true&model=flux&enhance=false")
+        path = out_dir / f"preview_{i}.jpg"
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "365days-preview/1.0"})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                path.write_bytes(resp.read())
+            print(f"[Preview] {i}/{nb} ✓ {path.name}")
+            saved.append(path)
+        except Exception as e:
+            print(f"[Preview] {i}/{nb} ✗ {e}")
+    return saved
+
+
+def preview_markdown_section(preview_paths: list, previews_dir_name: str = "previews") -> list:
+    """Return markdown lines for the preview images section."""
+    if not preview_paths:
+        return []
+    lines = [
+        "",
+        "---",
+        "",
+        "## 🖼️ Aperçu Visuel — 5 images test",
+        "",
+        "> Générées automatiquement avec Pollinations.ai pour valider le style.",
+        "> Choisir la direction visuelle avant d'approuver la production complète.",
+        "",
+    ]
+    # 3 columns, then 2
+    row1 = [f"![p{i}]({previews_dir_name}/preview_{i}.jpg)" for i in range(1, 4) if i <= len(preview_paths)]
+    row2 = [f"![p{i}]({previews_dir_name}/preview_{i}.jpg)" for i in range(4, 6) if i <= len(preview_paths)]
+    if row1:
+        lines.append("| " + " | ".join(row1) + " |")
+        lines.append("|" + "---|" * len(row1))
+    if row2:
+        lines.append("")
+        lines.append("| " + " | ".join(row2) + " |")
+        lines.append("|" + "---|" * len(row2))
+    lines += ["", f"*{len(preview_paths)} images dans `{previews_dir_name}/`*", ""]
+    return lines
 
 
 def extract_json(text: str) -> str:
