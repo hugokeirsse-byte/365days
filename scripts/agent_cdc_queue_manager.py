@@ -181,8 +181,8 @@ POOLS = {
         ("dungeons dragons gamer nerdy humor", "fantasy pixel illustration"),
         ("tattoo artist dark humour studio life", "bold graphic illustration"),
     ],
-    "godot_assets": [
-        # (type_asset, theme)
+    "game_assets": [
+        # Asset packs pour game devs (itch.io, Unity Asset Store, GameDev Market)
         ("sprite_pack", "fantasy medieval characters"),
         ("ui_kit", "clean minimal rpg interface"),
         ("tileset", "top-down dungeon pixel art"),
@@ -221,6 +221,20 @@ POOLS = {
         ("simulation", "restaurant management casual"),
         ("arcade", "rhythm music tapping"),
         ("puzzle", "physics sandbox creative"),
+        # Escape puzzle (style Rusty Lake — dark, surréaliste, atmosphérique)
+        ("escape_puzzle", "dark surrealist rusty lake atmospheric"),
+        ("escape_puzzle", "minimalist black white geometric abstract"),
+        ("escape_puzzle", "retro pixel mysterious horror room"),
+        # Sliding puzzles
+        ("sliding_puzzle", "classic 15 puzzle dark gothic minimal"),
+        ("sliding_puzzle", "hex grid zen nature calming"),
+        # Text RPG / Dungeon crawler
+        ("text_rpg", "dungeon crawler dnd dark fantasy turn based"),
+        ("text_rpg", "branching narrative survival horror choice"),
+        ("roguelike_text", "procedural dungeon roguelike minimalist"),
+        # Puzzle narratif
+        ("puzzle_narrative", "mystery noir detective investigation"),
+        ("turn_based_rpg", "grid tactical fantasy minimal no sprites"),
     ],
     "mobile_apps": [
         # (category, niche)
@@ -371,8 +385,8 @@ CONFIGS = {
             cdc.get("style_visuel", {}).get("style_illustration", ""),
         ),
     },
-    "godot_assets": {
-        "products_dir": "products/godot_assets",
+    "game_assets": {
+        "products_dir": "products/game_assets",
         "cdc_script": "scripts/agent_godot_cdc.py",
         "build_env": lambda t: {
             "GODOT_TYPE": t[0],
@@ -494,7 +508,7 @@ _BRAIN_BRIDGE = {
     "jeux_societe": ("data/brain/jeux_societe", _jeux_brain),
     "roman":        ("data/brain/roman",        _roman_brain),
     "merch_design": ("data/brain/merch",        _merch_brain),
-    "godot_assets": ("data/brain/godot",        _godot_brain),
+    "game_assets":  ("data/brain/game_assets",   _godot_brain),
     "vintage_pd":   ("data/brain/vintage_pd",   _vpd_brain),
 }
 

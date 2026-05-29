@@ -3,14 +3,20 @@
 CdC Mobile Games — génère un Cahier des Charges pour un jeu mobile.
 
 Genres supportés :
-  hyper_casual   — jeu à mécanique simple, session ultra-courte
-  puzzle         — jeu de réflexion, logique, mots
-  platformer     — plateforme 2D, saut, précision
-  rpg            — jeu de rôle, progression, inventaire
-  simulation     — gestion, construction, ferme
-  arcade         — action rapide, score, endless
-  idle           — incrémental, clicker, offline progress
-  strategy       — stratégie temps réel ou tour par tour
+  hyper_casual      — jeu à mécanique simple, session ultra-courte
+  puzzle            — jeu de réflexion, logique, mots
+  platformer        — plateforme 2D, saut, précision
+  rpg               — jeu de rôle, progression, inventaire
+  simulation        — gestion, construction, ferme
+  arcade            — action rapide, score, endless
+  idle              — incrémental, clicker, offline progress
+  strategy          — stratégie temps réel ou tour par tour
+  escape_puzzle     — room escape avec inventaire, puzzles atmosphériques, narrative sombre (style Rusty Lake)
+  sliding_puzzle    — variantes de taquin (15-puzzle, hex, image), UI épurée
+  text_rpg          — donjon textuel, choix narratifs, journal de combat
+  roguelike_text    — donjon procédural, permadeath, interface texte
+  puzzle_narrative  — investigation/mystère, combinaison d'objets, story-driven
+  turn_based_rpg    — combat tactique en grille, pas d'assets lourds nécessaires
 
 Plateformes cibles : Android (Google Play) + iOS (App Store) + optionnel Itch.io
 
@@ -83,6 +89,14 @@ You create complete Game Design Documents (Cahiers des Charges) for monetizable 
 GAME GENRE: {game_genre}
 NICHE: {game_niche}
 
+GENRE DESCRIPTIONS:
+- escape_puzzle: room escape with inventory, atmospheric puzzles, dark narrative (Rusty Lake style)
+- sliding_puzzle: tile sliding variants (15-puzzle, hex, image), clean UI
+- text_rpg: text-based dungeon crawler, branching choices, combat log
+- roguelike_text: procedural dungeon, permadeath, text interface
+- puzzle_narrative: investigation/mystery, combine items, story-driven
+- turn_based_rpg: grid tactical combat, no heavy sprites needed
+
 STRATEGIC RULES:
 - LANGUAGE: English by default for all store listings and content. Exception only if a specific proven market opportunity exists.
 - REHABILITATION: Consider if this niche has poorly-rated competitors that can be beaten with quality execution.
@@ -125,7 +139,8 @@ RESPONSE FORMAT — STRICT JSON:
     "nb_niveaux": 10,
     "features_v1": ["..."],
     "features_v2": ["..."],
-    "effort_estimé_jours": 14
+    "effort_estimé_jours": 14,
+    "generation_approach": "godot4_pure_code|godot4_scenes|phaser_js"
   }},
   "mots_cles_aso": ["..."]
 }}
