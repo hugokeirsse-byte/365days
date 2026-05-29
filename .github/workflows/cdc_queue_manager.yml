@@ -18,6 +18,7 @@ on:
       - 'products/mobile_games/**/cdc.json'
       - 'products/mobile_apps/**/cdc.json'
       - 'products/svg_packs/**/cdc.json'
+      - 'products/vintage_pd/**/cdc.json'
   workflow_dispatch:
     inputs:
       vertical:
@@ -37,6 +38,7 @@ on:
           - mobile_games
           - mobile_apps
           - svg_packs
+          - vintage_pd
       target:
         description: 'Nombre de CdC cibles par vertical (défaut: 10)'
         required: false
@@ -77,10 +79,10 @@ jobs:
         run: |
           mkdir -p products/coloring_books products/stl_3d products/lowcontent_kdp products/novels
           mkdir -p products/jeux_societe products/merch products/godot_assets
-          mkdir -p products/mobile_games products/mobile_apps products/svg_packs
+          mkdir -p products/mobile_games products/mobile_apps products/svg_packs products/vintage_pd
           mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman
           mkdir -p data/brain/jeux_societe data/brain/merch data/brain/godot
-          mkdir -p data/brain/mobile_games data/brain/mobile_apps data/brain/svg
+          mkdir -p data/brain/mobile_games data/brain/mobile_apps data/brain/svg data/brain/vintage_pd
           mkdir -p data/reports
 
       - name: Vérifier l'état des files (avant)

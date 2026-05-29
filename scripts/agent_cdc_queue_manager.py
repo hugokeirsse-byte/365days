@@ -257,6 +257,34 @@ POOLS = {
         ("monogram", "minimalist modern alphabet"),
         ("quote_frame", "sunflower farmhouse frame"),
     ],
+    "vintage_pd": [
+        # (collection, sujet, type_produit)
+        ("kohler_medizinal", "lavandula_officinalis", "coloring_page"),
+        ("kohler_medizinal", "rosa_canina", "merch_tshirt"),
+        ("kohler_medizinal", "mentha_piperita", "educational_coloring_book"),
+        ("kohler_medizinal", "chamomilla_recutita", "merch_mug"),
+        ("kohler_medizinal", "digitalis_purpurea", "merch_tote"),
+        ("redoute_roses", "rosa_centifolia", "coloring_page"),
+        ("redoute_roses", "rosa_gallica", "merch_tshirt"),
+        ("audubon_birds", "northern_cardinal", "coloring_page"),
+        ("audubon_birds", "american_flamingo", "merch_tshirt"),
+        ("audubon_birds", "great_blue_heron", "merch_tote"),
+        ("haeckel_kunstformen", "radiolaria", "coloring_page"),
+        ("haeckel_kunstformen", "sea_anemones_actiniae", "merch_tshirt"),
+        ("haeckel_kunstformen", "jellyfish_medusae", "coloring_page"),
+        ("haeckel_kunstformen", "orchids_tropical", "merch_tote"),
+        ("maria_sibylla_merian", "metamorphose_surinam_butterflies", "coloring_page"),
+        ("donovan_british_insects", "papillons_exotiques", "merch_tshirt"),
+        ("gould_birds_europe", "birds_of_paradise", "coloring_page"),
+        ("audubon_quadrupeds", "american_bison", "merch_mug"),
+        ("brehm_tierleben", "owls_hiboux", "coloring_page"),
+        ("gray_anatomy_1858", "human_skull_scientific", "merch_tshirt"),
+        ("kohler_medizinal", "valeriana_officinalis", "educational_coloring_book"),
+        ("redoute_lilies", "lilium_candidum", "coloring_page"),
+        ("wilson_american_ornithology", "woodpecker_species", "coloring_page"),
+        ("blaeu_atlas_1662", "ornate_world_map_detail", "kdp_journal_cover"),
+        ("haeckel_kunstformen", "cacti_desert_forms", "merch_mug"),
+    ],
 }
 
 # ── Config par vertical ───────────────────────────────────────────────────────
@@ -390,6 +418,20 @@ CONFIGS = {
         "theme_key": lambda cdc: (
             cdc.get("concept", {}).get("type_pack", ""),
             cdc.get("concept", {}).get("niche", ""),
+        ),
+    },
+    "vintage_pd": {
+        "products_dir": "products/vintage_pd",
+        "cdc_script": "scripts/agent_vintage_pd_cdc.py",
+        "build_env": lambda t: {
+            "VPD_COLLECTION": t[0],
+            "VPD_SUJET": t[1],
+            "VPD_PRODUCT_TYPE": t[2],
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("source", {}).get("collection", ""),
+            cdc.get("source", {}).get("sujet", ""),
+            cdc.get("produit", {}).get("type", ""),
         ),
     },
 }
