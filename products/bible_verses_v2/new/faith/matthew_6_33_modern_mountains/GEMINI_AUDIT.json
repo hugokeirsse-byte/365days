@@ -1,9 +1,0 @@
-{
-  "audited_at": "2026-05-23T08:02:17.035218Z",
-  "pipeline": "bible_verses_v2",
-  "model": "gemini-2.5-flash",
-  "verdict": "approve",
-  "issues": [],
-  "rating_0_100": 98,
-  "reasoning": "The image displays excellent legibility with clear, well-contrasted text against a subtle, appropriate background. The font choice and overall layout are aesthetically pleasing and professional, aligning well with a spiritual theme. The Bible verse and reference are accurately presented, and the design appears ready for print without any visible flaws such as pixelation, cropping issues, or poor composition. The design adheres to high-quality standards for the 'bible_verses_v2' pipeline."
-}

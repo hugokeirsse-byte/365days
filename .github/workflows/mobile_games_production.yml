@@ -1,0 +1,92 @@
+name: Mobile Games — Production scaffold depuis CdC approuvé
+
+# Déclenché quand Hugo approuve un CdC mobile_games (gate_cdc = approved)
+# Génère le scaffold du projet : README, STORE_LISTING, project_structure, entry point
+
+on:
+  push:
+    paths:
+      - 'products/mobile_games/**/cdc.json'
+  workflow_dispatch:
+    inputs:
+      game_dir:
+        description: 'Dossier du jeu spécifique (ex: products/mobile_games/game_2026-05-28_puzzle_...). Vide = auto-détecte dernier approuvé.'
+        required: false
+        default: ''
+
+jobs:
+  check-gate:
+    runs-on: ubuntu-latest
+    outputs:
+      has_approved: ${{ steps.gate.outputs.has_approved }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérifier si un CdC est approuvé
+        id: gate
+        run: |
+          APPROVED=$(find products/mobile_games -name cdc.json 2>/dev/null | xargs python3 -c "
+          import json, sys
+          files = sys.argv[1:]
+          for f in files:
+              try:
+                  d = json.load(open(f))
+                  if d.get('gate_cdc') == 'approved' and not d.get('production_status'):
+                      print(f)
+                      break
+              except: pass
+          " 2>/dev/null || echo "")
+          if [ -n "$APPROVED" ]; then
+            echo "has_approved=true" >> $GITHUB_OUTPUT
+            echo "CdC approuvé: $APPROVED"
+          else
+            echo "has_approved=false" >> $GITHUB_OUTPUT
+            echo "Aucun CdC mobile_games approuvé en attente."
+          fi
+
+  produce:
+    needs: check-gate
+    if: needs.check-gate.outputs.has_approved == 'true' || github.event.inputs.game_dir != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dépendances
+        run: pip install requests
+
+      - name: Créer répertoires
+        run: mkdir -p products/mobile_games data/logs
+
+      - name: Générer le scaffold du jeu mobile
+        run: python scripts/produce_mobile_game_scaffold.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GAME_DIR: ${{ github.event.inputs.game_dir }}
+        timeout-minutes: 15
+
+      - name: Commit scaffold généré
+        run: |
+          git config user.name "Mobile Games Bot"
+          git config user.email "mobile-games@365days.bot"
+          git add products/mobile_games/
+          git diff --staged --quiet && echo "Nothing to commit" || {
+            SLUG=$(git diff --staged --name-only | head -1 | cut -d'/' -f3)
+            COUNT=$(git diff --staged --name-only | grep -E "\.(md|gd|js|dart|tsx|html)$" | wc -l)
+            git commit -m "mobile_games: ${SLUG} — scaffold généré (${COUNT} fichiers)"
+            git push
+            echo ""
+            echo "════════════════════════════════════════════════════"
+            echo "  SCAFFOLD MOBILE GAME PRÊT"
+            echo "════════════════════════════════════════════════════"
+            echo "  → Voir products/mobile_games/${SLUG}/"
+            echo "  → README.md pour les instructions de développement"
+            echo "  → STORE_LISTING.md pour la soumission App Store/Play"
+            echo "  → project_structure.md pour l'arborescence du projet"
+          }

@@ -1,8 +1,0 @@
-HF active : True
-prompt : adult coloring book page, clean BOLD black outline line art ONLY, no shading no grey no hatching no sketch, flat clean cartoon style, cute kawaii baby dragon sitting in a cozy cottage room with fireplace, books and potted plants, full scene with background, pure white background
-============================================================
-❌ black-forest-labs/FLUX.1-schnell : ECHEC (None apres retries) 50s
-❌ stabilityai/stable-diffusion-xl-base-1.0 : ECHEC (None apres retries) 50s
-❌ stabilityai/sdxl-turbo : ECHEC (None apres retries) 50s
-❌ black-forest-labs/FLUX.1-dev : ECHEC (None apres retries) 50s
-🟡 pollinations/flux (temoin) : OK 138507o -> _pollinations_flux.png

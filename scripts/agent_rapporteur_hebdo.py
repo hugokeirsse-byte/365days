@@ -30,13 +30,16 @@ PRODUCTS_DIR = ROOT / "products"
 TRIGGERS_DIR = ROOT / ".triggers"
 
 VERTICAL_DIRS = {
-    "coloring":     ROOT / "products" / "coloring_books",
-    "lowcontent":   ROOT / "products" / "lowcontent_kdp",
-    "roman":        ROOT / "products" / "novels",
-    "stl":          ROOT / "products" / "stl_3d",
-    "jeux_societe": ROOT / "products" / "jeux_societe",
-    "merch_design": ROOT / "products" / "merch",
-    "godot_assets": ROOT / "products" / "godot_assets",
+    "coloring":      ROOT / "products" / "coloring_books",
+    "lowcontent":    ROOT / "products" / "lowcontent_kdp",
+    "roman":         ROOT / "products" / "novels",
+    "stl":           ROOT / "products" / "stl_3d",
+    "jeux_societe":  ROOT / "products" / "jeux_societe",
+    "merch_design":  ROOT / "products" / "merch",
+    "godot_assets":  ROOT / "products" / "godot_assets",
+    "mobile_games":  ROOT / "products" / "mobile_games",
+    "mobile_apps":   ROOT / "products" / "mobile_apps",
+    "svg_packs":     ROOT / "products" / "svg_packs",
 }
 
 # --------------------------------------------------------------------------- #
@@ -221,7 +224,7 @@ Sois direct, honnête sur ce qui manque ou dysfonctionne, et précis sur les opp
 
 Génère le rapport hebdomadaire complet selon le format spécifié."""
 
-    return llm_call("conseil", system, user, temperature=0.6, max_tokens=4000)
+    return llm_call("conseil", system, user, temperature=0.6, max_tokens=4000, json_mode=False)
 
 
 # --------------------------------------------------------------------------- #

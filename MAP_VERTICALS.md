@@ -29,7 +29,7 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 
 ---
 
-## ÉTAT DES 7 VERTICAUX
+## ÉTAT DES 9 VERTICAUX
 
 | # | Vertical | Plateforme | CdC | Prod | Brain | Statut |
 |---|----------|------------|-----|------|-------|--------|
@@ -37,9 +37,12 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 | 2 | Low-Content KDP | Amazon KDP | ✅ | ✅ ReportLab | ✅ | **PRÊT** |
 | 3 | Romans KDP | Amazon KDP | ✅ | ✅ Groq Llama | ✅ | **PRÊT** |
 | 4 | STL 3D print | Cults3D | ✅ | ✅ OpenSCAD | ✅ | **PRÊT** |
-| 5 | Jeux de société | Etsy/Itch.io | ✅ | ✅ PDF print | ✅ | **PRÊT** |
+| 5 | Jeux de société | Itch.io/DriveThru | ✅ | ✅ PDF print | ✅ | **PRÊT** |
 | 6 | Merch Design | Redbubble/Amazon | ✅ | ✅ Pollinations+Pillow | ✅ | **PRÊT** |
 | 7 | Godot Assets | Itch.io | ✅ | ✅ Pollinations/LLM | ✅ | **PRÊT** |
+| 8 | Jeux Mobiles | App Store/Play/Itch | ✅ | ✅ Scaffold LLM | ✅ | **PRÊT** |
+| 9 | Applications | App Store/Play Store | ✅ | ✅ Scaffold LLM | ✅ | **PRÊT** |
+| 10 | SVG Packs Cricut | Etsy Digital Downloads | ✅ | ✅ svgwrite+Potrace | ✅ | **PRÊT** |
 
 ---
 
@@ -161,10 +164,69 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 
 ---
 
+## VERTICAL 8 — JEUX MOBILES
+
+**Plateformes** : App Store (iOS), Google Play (Android), Itch.io  
+**Framework** : Déterminé par le brain (Godot 4 export mobile, Phaser web/mobile, Unity)  
+**Production** : LLM génère scaffold projet + store listing + fichier entry point  
+**Monétisation** : Déterminée par le brain (free+ads, freemium IAP, paid, demo)
+
+| Script | Workflow | Rôle |
+|--------|----------|------|
+| agent_mobile_games_cdc.py | mobile_games_cdc.yml | CdC : genre + niche + framework + monétisation |
+| produce_mobile_game_scaffold.py | mobile_games_production.yml | Scaffold projet + STORE_LISTING.md |
+| agent_mobile_games_trends.py | mobile_games_brain.yml | Brain tendances (lundi 05h) |
+
+**Gate check** : Hugo valide concept, framework choisi, modèle économique, périmètre MVP  
+**Exigences** : framework justifié par les données marché, MVP faisable en <21 jours, hook clair en 15s  
+**Différence vs autres verticaux** : production = scaffold (Hugo développe), pas de publication automatique
+
+---
+
+## VERTICAL 9 — APPLICATIONS MOBILES
+
+**Plateformes** : App Store (iOS), Google Play (Android)  
+**Framework** : Déterminé par le brain (Flutter, React Native, PWA, Swift+Kotlin natif)  
+**Production** : LLM génère scaffold + UX flow + store listing + fichier entry point  
+**Monétisation** : Déterminée par le brain (freemium, subscription, one-time purchase, free+ads)
+
+| Script | Workflow | Rôle |
+|--------|----------|------|
+| agent_mobile_apps_cdc.py | mobile_apps_cdc.yml | CdC : catégorie + niche + framework + monétisation |
+| produce_mobile_app_scaffold.py | mobile_apps_production.yml | Scaffold + UX_FLOW.md + STORE_LISTING.md |
+| agent_mobile_apps_trends.py | mobile_apps_brain.yml | Brain tendances (vendredi 05h) |
+
+**Gate check** : Hugo valide concept app, problème résolu, framework, modèle économique, features MVP  
+**Exigences** : valeur unique claire, MVP <30 jours, modèle économique viable  
+**Différence vs autres verticaux** : production = scaffold (Hugo développe), pas de publication automatique
+
+---
+
+## VERTICAL 10 — SVG PACKS CRICUT/ETSY
+
+**Plateformes** : Etsy Digital Downloads (primary, prix 1.50-8 USD)  
+**Machines cibles** : Cricut Maker/Joy, Silhouette Cameo 4  
+**Types** : mandala, floral, monogram, seasonal, animal, quote_frame, geometric, bundle_mix  
+**Production** : svgwrite Python (procédural) ou Pollinations→Potrace (vectorisation)  
+**0 API payante** : svgwrite = 100% offline | Pollinations = gratuit
+
+| Script | Workflow | Rôle |
+|--------|----------|------|
+| agent_svg_trends.py | svg_brain.yml | Brain tendances Etsy/Cricut (dimanche 04h) |
+| agent_svg_cdc.py | svg_cdc.yml | CdC : type + niche + listing Etsy complet |
+| produce_svg_from_cdc.py | svg_production.yml | SVG procéduraux ou vectorisés + ZIP |
+
+**Gate check** : Hugo valide type de pack, niche, liste des éléments, prix Etsy  
+**Exigences** : SVG cuttable (pas de détails fins), compatibilité Cricut Design Space, fond blanc pur  
+**Différenciation** : packs à réhabiliter (vendus mais mal notés = DXF manquant, nœuds excessifs)
+
+---
+
 ## CERVEAUX PERPÉTUELS
 
 | Cron | Agent | Domaine |
 |------|-------|---------|
+| Lundi 05h | agent_mobile_games_trends.py | Jeux mobiles (App Store/Play/Itch) |
 | Lundi 06h | agent_vertical_optimizer.py | Feedback loop tous verticaux |
 | Mardi 05h | agent_lowcontent_trends.py | Low-content KDP |
 | Mercredi 04h | agent_stl_trends.py | STL 3D print |
@@ -173,7 +235,9 @@ Cerveaux Brain (cron hebdo) + Optimizer (lundi 06h)
 | Jeudi 04h | agent_jeux_societe_trends.py | Jeux de société |
 | Jeudi 05h | agent_prospecteur_emergence.py | Nouvelles niches émergentes |
 | Vendredi 04h | agent_merch_trends.py | Merch POD |
+| Vendredi 05h | agent_mobile_apps_trends.py | Applications mobiles |
 | Samedi 05h | agent_godot_trends.py | Godot/Itch.io assets |
+| Dimanche 04h | agent_svg_trends.py | SVG Packs Etsy/Cricut |
 | Dimanche 20h | agent_rapporteur_hebdo.py | Rapport hebdo pour Hugo |
 | Toutes les 4h | agent_cdc_queue_manager.py | Maintenir 10 CdC/vertical |
 
@@ -190,6 +254,8 @@ Hugo peut injecter ses propres idées via GitHub → Actions → "💡 Idée Hug
 
 ## FUTURS VERTICAUX (non encore implémentés)
 
+> **Règle** : un dossier `products/<vertical>/` n'est créé QUE quand le vertical a son agent CdC + script de production + workflow GitHub. Pas de dossiers vides.
+
 | Vertical | Plateforme | Stack | Priorité |
 |----------|------------|-------|----------|
 | Wall Art printable | Etsy Digital | Pollinations + Pillow | Haute |
@@ -198,6 +264,10 @@ Hugo peut injecter ses propres idées via GitHub → Actions → "💡 Idée Hug
 | Digital Planners iPad | Etsy | ReportLab hyperliens | Moyenne |
 | Tarot/Oracle cards | Etsy | Pollinations + PDF | Basse |
 | Prompt Packs IA | PromptBase + Etsy | LLM pur texte | Basse |
+
+**Notes :**
+- **Wall Art** : même stack que merch (Pollinations + Pillow), adaptation rapide — format PNG 300dpi + PDF A3/A4
+- **Excel templates** : 100% offline Python (openpyxl), aucune dépendance API, revenus récurrents sur Gumroad
 
 ---
 

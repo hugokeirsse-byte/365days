@@ -1,9 +1,0 @@
-{
-  "audited_at": "2026-05-27T02:10:46.095451Z",
-  "pipeline": "bible_verses_v2",
-  "model": "gemini-2.5-flash",
-  "verdict": "approve",
-  "issues": [],
-  "rating_0_100": 95,
-  "reasoning": "The image presents the Bible verse 'Psalm 23:1 The Lord is my shepherd, I shall not want' with excellent legibility and a clean, appealing aesthetic. The text is well-centered and uses a clear, readable font with good contrast against the subtle fern background. There are no visible errors in the text, and the overall composition is balanced and suitable for print-on-demand. The image quality appears high, with no pixelation or artifacts that would hinder printability."
-}

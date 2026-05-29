@@ -1,0 +1,133 @@
+{
+  "coloring_id": "coloring_2026-05-28",
+  "date_cdc": "2026-05-28",
+  "gate_cdc": "pending",
+  "concept": {
+    "titre": "Sacred Geometry Zen: Intricate Mandalas for Cosmic Calm",
+    "sous_titre": "An Adult Coloring Book for Mindfulness & Spiritual Awakening with Pure Black & White Designs",
+    "theme_principal": "mandala_sacred_geometry",
+    "style_artistique": "mandala|zentangle|intricate|botanical_precision|symmetrical_fractal",
+    "audience": "adult",
+    "niveau_complexite": "intricate",
+    "nombre_pages": 30,
+    "element_unique": "Ce livre se distingue par son focus exclusif sur les symboles de la géométrie sacrée (Fleur de Vie, Graine de Vie, Métatron, Vesica Piscis) intégrés dans des mandalas aux détails fins et organiques. La promesse est une pureté 'noir et blanc' absolue, sans aucun gris ni ombrage, garantissant des lignes ultra-nettes et un fond immaculé, pour une expérience de coloriage méditative et sans distraction, résolvant les problèmes courants de 'gris' des productions IA concurrentes."
+  },
+  "prompts_pollinations": {
+    "style_base": "black and white coloring page, clean outlines, no fill, white background, no gray, no shading, crisp lines, line art, vector illustration style, high contrast",
+    "style_modificateurs": [
+      "intricate geometric patterns",
+      "symmetrical fractal design",
+      "fine line art",
+      "spiritual symbols",
+      "cosmic aesthetic",
+      "highly detailed",
+      "precision drawing"
+    ],
+    "theme_keywords": [
+      "sacred geometry",
+      "mandala",
+      "flower of life",
+      "metatron's cube",
+      "seed of life",
+      "zen art",
+      "meditation",
+      "spiritual patterns",
+      "cosmic symbols"
+    ],
+    "negative_keywords": [
+      "gray",
+      "shading",
+      "shadow",
+      "gradient",
+      "color",
+      "photo",
+      "realistic texture",
+      "blurry",
+      "smudged",
+      "low quality",
+      "dark areas",
+      "fill",
+      "rough lines"
+    ],
+    "exemple_prompt_complet": "black and white coloring page, intricate Flower of Life mandala intertwined with delicate botanical elements, symmetrical fractal design, cosmic aesthetic, clean lines, no fill, white background, no gray, no shading, high detail, vector illustration style, line art, crisp outlines, precision drawing.",
+    "variantes_exemples": [
+      "Prompt page simple (débutant) : black and white coloring page, simple geometric mandala, large clear sections, balanced sacred geometry elements, clean lines, no fill, white background, no gray, no shading, clear outlines.",
+      "Prompt page medium (intermédiaire) : black and white coloring page, balanced sacred geometry mandala, medium intricacy, fine details, symmetrical patterns, clean lines, no fill, white background, no gray, no shading, crisp outlines.",
+      "Prompt page complexe (expert) : black and white coloring page, highly intricate Metatron's Cube mandala, dense patterns, tiny details, complex interweaving lines, spiritual symbols, clean lines, no fill, white background, no gray, no shading, ultra fine line art."
+    ],
+    "note_importante": "Toujours exclure les mots qui génèrent du gris ou du shading. La liste des negative_keywords est exhaustive. Tester impérativement 1 page avec l'exemple_prompt_complet et 1 page avec une variante complexe avant toute production en masse pour valider la pureté noir/blanc, l'absence de gris et la netteté des lignes."
+  },
+  "pages_distribution": {
+    "pages_simples": 6,
+    "pages_medium": 18,
+    "pages_complexes": 6,
+    "description_progression": "Le livre débute par 6 designs plus simples, avec des lignes plus larges et moins de détails, pour familiariser le coloriste avec les formes de la géométrie sacrée. Les 18 pages centrales augmentent progressivement en complexité, introduisant des motifs plus denses et des éléments de Zentangle ou botaniques. Les 6 dernières pages offrent les designs les plus complexes et détaillés, parfaits pour les coloristes expérimentés ou ceux cherchant un défi méditatif profond, assurant une progression engageante et une valeur de rejouabilité."
+  },
+  "public_cible": {
+    "persona": "C'est une femme (ou homme) âgée de 30 à 60 ans, soucieuse de son bien-être mental et spirituel. Elle pratique la méditation, le yoga, ou s'intéresse à l'ésotérisme et aux symboles anciens. Elle cherche une activité relaxante et créative pour réduire le stress, améliorer sa concentration et se connecter à une dimension plus profonde. Elle apprécie les designs esthétiques, la précision et la qualité d'impression, et est frustrée par les livres de coloriage aux lignes floues ou aux images grises.",
+    "tranche_age": "28-65 ans",
+    "pourquoi_ce_theme": "Le thème de la géométrie sacrée et des mandalas résonne profondément avec cette audience car il offre un support visuel pour la méditation, la concentration et l'exploration spirituelle. Les motifs symétriques et répétitifs sont intrinsèquement apaisants et peuvent induire un état de flow, idéal pour la réduction du stress et l'évasion créative. La promesse de pureté noir/blanc et de netteté répond à leur besoin d'une expérience de coloriage sans accroc, permettant à leurs couleurs de s'exprimer pleinement."
+  },
+  "cinq_concurrents_amazon": [
+    {
+      "titre": "Sacred Geometry Coloring Book: An Adult Coloring Book with Sacred Geometric Patterns and Mandalas for Stress Relief and Relaxation",
+      "note": 4.6,
+      "nb_avis": 820,
+      "ce_qui_manque": "Certains avis signalent des images trop simples ou répétitives, et des lignes parfois un peu 'floues' ou trop fines pour certaines techniques de coloriage. Manque de progression de difficulté.",
+      "notre_avantage": "Notre livre propose une progression claire de difficulté, des designs variés et une garantie de lignes ultra-nettes et épaisses, parfaites pour tous les médiums, sans répétition visuelle."
+    },
+    {
+      "titre": "Intricate Mandala Coloring Book for Adults: Stress Relief and Relaxation with Beautiful Mandala Designs",
+      "note": 4.4,
+      "nb_avis": 1350,
+      "ce_qui_manque": "Plaintes concernant des images qui ne sont pas purement noir et blanc, avec des nuances de gris ou des fonds légèrement ombragés, ce qui gâche l'expérience pour un coloriage pur.",
+      "notre_avantage": "Nous garantissons une production 100% pure noir et blanc, sans aucun gris ni ombrage, avec un fond blanc immaculé, résolvant ce problème critique pour les coloristes exigeants."
+    },
+    {
+      "titre": "The Ultimate Sacred Geometry Coloring Book: Mindful Mandalas for Meditation and Focus",
+      "note": 4.7,
+      "nb_avis": 680,
+      "ce_qui_manque": "Quelques retours mentionnent un manque de diversité dans les symboles de géométrie sacrée, se concentrant trop sur quelques motifs. Le papier est parfois jugé trop fin.",
+      "notre_avantage": "Notre collection inclut une large gamme de symboles de géométrie sacrée authentiques, variés et mélangés avec des éléments uniques. Nous recommandons toujours un papier épais de 60lb ou plus pour l'impression KDP."
+    },
+    {
+      "titre": "Spiritual Mandalas & Sacred Geometry: An Adult Coloring Book for Inner Peace and Self-Discovery",
+      "note": 4.5,
+      "nb_avis": 910,
+      "ce_qui_manque": "Des utilisateurs ont trouvé que certains motifs étaient mal centrés sur la page ou présentaient de légères distorsions, et la qualité d'image était parfois inconsistante, avec des pixels visibles sur certains détails.",
+      "notre_avantage": "Chaque image sera rigoureusement vérifiée pour un centrage parfait et une qualité haute résolution (300 DPI), sans aucune pixellisation ou distorsion, garantissant une finition professionnelle."
+    },
+    {
+      "titre": "Geometric Patterns Adult Coloring Book: Abstract Shapes, Mandalas, and Sacred Geometry Designs",
+      "note": 4.3,
+      "nb_avis": 750,
+      "ce_qui_manque": "Les motifs sont parfois jugés trop 'abstraits' ou manquant d'une connexion spirituelle claire, et certaines pages semblent génériques ou manquent de la 'touche' artistique attendue dans ce thème.",
+      "notre_avantage": "Nos designs intègrent la géométrie sacrée avec une intention spirituelle claire, mêlant précision géométrique et fluidité artistique, pour une expérience de coloriage à la fois ancrée et inspirante."
+    }
+  ],
+  "kdp_listing": {
+    "titre_amazon": "Sacred Geometry Zen: Intricate Mandalas & Cosmic Patterns - Adult Coloring Book for Mindfulness, Stress Relief & Spiritual Awakening - Pure Black & White Designs, No Gray",
+    "sous_titre_amazon": "Explore the Beauty of Flower of Life, Metatron's Cube & More! Relaxing Fine Line Art for Meditation & Inner Peace. Perfect Gift for Adults.",
+    "description": "Découvrez une oasis de calme et de créativité avec <b>Sacred Geometry Zen</b>, le livre de coloriage ultime pour adultes qui cherchent à s'évader du stress quotidien. Plongez dans 30 pages uniques de mandalas et de géométrie sacrée, méticuleusement conçues pour la pleine conscience et l'éveil spirituel.<br><br>🎨 <b>Pureté Noir & Blanc Inégalée :</b> Fini les gris et les ombrages ! Chaque illustration est garantie d'être d'un noir pur sur un fond blanc immaculé, offrant des lignes nettes et claires pour une expérience de coloriage sans pareille.<br>✨ <b>Designs de Géométrie Sacrée Intriqués :</b> Explorez la beauté du Métatron, de la Fleur de Vie, de la Graine de Vie et d'autres symboles cosmiques, enrichis de motifs botaniques et de détails Zentangle.<br>🧘‍♀️ <b>Soulagement du Stress & Concentration :</b> Laissez-vous porter par le flow méditatif du coloriage, idéal pour réduire l'anxiété, améliorer la concentration et cultiver la paix intérieure.<br>📈 <b>Progression de Complexité :</b> Des designs plus simples pour commencer en douceur aux illustrations complexes pour un défi apaisant, ce livre vous accompagne dans votre parcours créatif.<br>🎁 <b>Cadeau Idéal :</b> Parfait pour les amateurs de spiritualité, de yoga, de méditation ou toute personne cherchant une activité artistique relaxante.<br><br>Préparez-vous à transformer votre expérience de coloriage. Ajoutez <b>Sacred Geometry Zen</b> à votre panier dès aujourd'hui et commencez votre voyage vers la sérénité !",
+    "mots_cles": [
+      "sacred geometry coloring book",
+      "mandala adult coloring",
+      "stress relief coloring",
+      "mindfulness coloring book",
+      "flower of life coloring",
+      "metatron cube art",
+      "spiritual coloring book"
+    ],
+    "categories": [
+      "Arts & Photography > Drawing > Coloring Books for Grown-Ups",
+      "Self-Help > Stress Management"
+    ],
+    "prix_usd": 9.99
+  },
+  "criteres_validation": {
+    "test_style": "Générer 1 page test avec exemple_prompt_complet. Vérifier visuellement et avec un outil de pipette numérique (si possible) : le design doit être en pur noir et blanc (RVB 0,0,0 et 255,255,255). ABSOLUMENT AUCUN gris (RVB intermédiaires). Les lignes doivent être parfaitement nettes et le fond blanc pur et uniforme.",
+    "test_complexite": "Valider que les variantes de prompts (simple, medium, complexe) génèrent des images dont la densité et le niveau de détail correspondent aux niveaux de difficulté décrits pour l'audience adulte. Le niveau 'simple' doit rester engageant pour un adulte, pas enfantin.",
+    "test_impression": "Les lignes générées doivent être suffisamment épaisses pour une impression laser de qualité à 300 DPI. À une résolution de 1664px de large, les lignes les plus fines doivent mesurer un minimum de 2-3 pixels pour garantir leur visibilité et leur résistance à l'impression sans 'casser'.",
+    "test_marche": "Effectuer une recherche Amazon ('mandala sacred geometry coloring book') pour évaluer la saturation actuelle du marché. Vérifier que notre concept différenciant (pureté noir/blanc, focus sur symboles spécifiques, progression) reste pertinent et offre un avantage concurrentiel clair face aux best-sellers."
+  }
+}

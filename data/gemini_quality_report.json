@@ -1,40 +1,13 @@
 {
-  "audited_at": "2026-05-28T01:57:29.969043Z",
+  "audited_at": "2026-05-29T01:54:13.693951Z",
   "model": "gemini-2.5-flash",
-  "total_processed": 30,
+  "total_processed": 0,
   "counters": {
-    "approve": 2,
+    "approve": 0,
     "review": 0,
-    "reject": 1,
-    "skip": 52,
-    "error": 27
+    "reject": 0,
+    "skip": 0,
+    "error": 0
   },
-  "audits": [
-    {
-      "design_path": "bible_verses_v2/new/love/john_3_16_minimalist_gold",
-      "pipeline": "bible_verses_v2",
-      "verdict": "reject",
-      "issues": [
-        "Verse is incomplete"
-      ],
-      "rating_0_100": 40,
-      "reasoning": "The image displays only a partial segment of John 3:16 ('For God so loved the world') without indicating it is an excerpt. For a pipeline focused on bible verses, it is critical that the displayed text accurately represents the referenced scripture, either by providing the full verse or clearly marking partial text. This incompleteness could potentially mislead customers expecting the full verse, thus failing a strict quality control audit."
-    },
-    {
-      "design_path": "bible_verses_v2/new/rest/matthew_11_28_vintage_botanical",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 95,
-      "reasoning": "The image presents a clear and legible bible verse with its reference, 'Matthew 11:28 - Come to me all who are weary'. The typography is well-chosen and easy to read against the subtle, tasteful fern background. The composition is balanced, and the colors are harmonious, creating a serene and appropriate aesthetic for a bible verse design. There are no visible quality issues such as pixelation, blurriness, or misspellings, making it suitable for print-on-demand without further review."
-    },
-    {
-      "design_path": "bible_verses_v2/new/spirit/galatians_5_22_23_modern_mountains",
-      "pipeline": "bible_verses_v2",
-      "verdict": "approve",
-      "issues": [],
-      "rating_0_100": 100,
-      "reasoning": "The image clearly presents a bible verse reference and a corresponding quote, which perfectly aligns with the 'bible_verses_v2' pipeline. The text is highly legible, well-centered, and uses an appropriate font and color scheme that complements the serene background. There are no visible quality issues such as pixelation, misspellings, or design flaws, making it suitable for print-on-demand without any concerns."
-    }
-  ]
+  "audits": []
 }

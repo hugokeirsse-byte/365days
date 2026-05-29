@@ -345,8 +345,13 @@ def call_gemini(prompt: str, retries: int = 3) -> tuple[dict | None, str]:
         "contents": [{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "temperature": 0.8,
-            "responseMimeType": "application/json",
-            "maxOutputTokens": 4096,
+            # thinkingBudget=0 : désactive le thinking de gemini-2.5-flash.
+            # Sans ça, les tokens de "thinking" consomment tout le budget
+            # maxOutputTokens et la réponse JSON est tronquée ou vide.
+            # responseMimeType n'est PAS utilisé : combiné au thinking, il
+            # provoque des réponses vides (bug Gemini API confirmé en prod).
+            "thinkingConfig": {"thinkingBudget": 0},
+            "maxOutputTokens": 8000,
         },
     }).encode("utf-8")
     last_err = "inconnu"
@@ -360,15 +365,30 @@ def call_gemini(prompt: str, retries: int = 3) -> tuple[dict | None, str]:
             try:
                 with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
                     resp_data = json.loads(resp.read())
-                text = resp_data["candidates"][0]["content"]["parts"][0]["text"]
-                return json.loads(text), model
+                parts = resp_data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+                text = "".join(p.get("text", "") for p in parts)
+                if not text:
+                    raise ValueError(f"Réponse vide (finishReason={resp_data.get('candidates',[{}])[0].get('finishReason','?')})")
+                # Strip markdown fences si présentes (sans responseMimeType)
+                t = text.strip()
+                if t.startswith("```"):
+                    parts_fence = t.split("```")
+                    inner = parts_fence[1] if len(parts_fence) > 1 else ""
+                    if inner.startswith("json"):
+                        inner = inner[4:]
+                    t = inner.strip()
+                elif not (t.startswith("{") or t.startswith("[")):
+                    start = t.find("{")
+                    if start != -1:
+                        t = t[start:]
+                return json.loads(t), model
             except urllib.error.HTTPError as exc:
                 detail = exc.read()[:200].decode(errors="ignore")
                 last_err = f"{model}: HTTP {exc.code} {detail}"
                 print(f"    {last_err}")
                 if exc.code == 404:
                     break  # modèle inexistant/déprécié -> modèle suivant
-                time.sleep((8 if exc.code == 429 else 3) + attempt * 4)
+                time.sleep((30 if exc.code == 429 else 3) + attempt * 10)
             except Exception as exc:  # noqa: BLE001
                 last_err = f"{model}: {type(exc).__name__} {exc}"
                 print(f"    {last_err}")

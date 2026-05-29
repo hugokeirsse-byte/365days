@@ -3,8 +3,8 @@ name: Seasonal Planner (anticipation événements)
 on:
   workflow_dispatch: {}
   schedule:
-    # Tous les lundis matin 6h UTC = panier d'événements à anticiper
-    - cron: "0 6 * * 1"
+    # Tous les lundis 07h UTC (après b1_stratege 06h, avant vintage_pd 09h)
+    - cron: "0 7 * * 1"
   push:
     paths:
       - .triggers/seasonal
@@ -38,23 +38,15 @@ jobs:
       - name: Run seasonal planner
         run: python scripts/lib/seasonal_calendar.py
 
-      - name: Run agent saisonnier
-        run: |
-          if [ -f scripts/agent_saisonnier.py ]; then
-            python scripts/agent_saisonnier.py
-          else
-            echo "[SAISONNIER] Script introuvable — skip"
-          fi
-
-      - name: Commit upcoming events and seasonal reports
+      - name: Commit upcoming events
         if: always()
         run: |
-          mkdir -p data/reports
-          git add data/upcoming_events.json data/reports/ 2>/dev/null || echo "(rien à ajouter)"
+          mkdir -p data
+          git add data/upcoming_events.json 2>/dev/null || echo "(rien à ajouter)"
           if git diff --cached --quiet; then
             echo "Aucun changement."
           else
-            git commit -m "Seasonal planner + saisonnier update ($(date -u +%Y-%m-%d))"
+            git commit -m "Seasonal planner update ($(date -u +%Y-%m-%d))"
             for i in 1 2 3 4 5; do
               if git push origin HEAD:${{ github.ref_name }}; then break; fi
               git pull --rebase origin ${{ github.ref_name }} || true

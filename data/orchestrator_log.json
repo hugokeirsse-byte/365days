@@ -6,7 +6,18 @@
       "triggered_pipelines": [],
       "skipped_count": 10,
       "dry_run": false
+    },
+    {
+      "timestamp": "2026-05-28T18:20:55.990433Z",
+      "candidates_analyzed": 10,
+      "triggered_pipelines": [
+        "cultural_arbitrage"
+      ],
+      "skipped_count": 0,
+      "dry_run": false
     }
   ],
-  "last_triggered": {}
+  "last_triggered": {
+    "cultural_arbitrage": "2026-05-28T18:20:55.990438Z"
+  }
 }

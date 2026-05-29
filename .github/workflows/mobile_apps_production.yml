@@ -1,0 +1,92 @@
+name: Mobile Apps — Production scaffold depuis CdC approuvé
+
+# Déclenché quand Hugo approuve un CdC mobile_apps (gate_cdc = approved)
+# Génère le scaffold du projet : README, STORE_LISTING, UX_FLOW, entry point
+
+on:
+  push:
+    paths:
+      - 'products/mobile_apps/**/cdc.json'
+  workflow_dispatch:
+    inputs:
+      app_dir:
+        description: 'Dossier de l'app spécifique (ex: products/mobile_apps/app_2026-05-28_productivity_...). Vide = auto-détecte dernier approuvé.'
+        required: false
+        default: ''
+
+jobs:
+  check-gate:
+    runs-on: ubuntu-latest
+    outputs:
+      has_approved: ${{ steps.gate.outputs.has_approved }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérifier si un CdC est approuvé
+        id: gate
+        run: |
+          APPROVED=$(find products/mobile_apps -name cdc.json 2>/dev/null | xargs python3 -c "
+          import json, sys
+          files = sys.argv[1:]
+          for f in files:
+              try:
+                  d = json.load(open(f))
+                  if d.get('gate_cdc') == 'approved' and not d.get('production_status'):
+                      print(f)
+                      break
+              except: pass
+          " 2>/dev/null || echo "")
+          if [ -n "$APPROVED" ]; then
+            echo "has_approved=true" >> $GITHUB_OUTPUT
+            echo "CdC approuvé: $APPROVED"
+          else
+            echo "has_approved=false" >> $GITHUB_OUTPUT
+            echo "Aucun CdC mobile_apps approuvé en attente."
+          fi
+
+  produce:
+    needs: check-gate
+    if: needs.check-gate.outputs.has_approved == 'true' || github.event.inputs.app_dir != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dépendances
+        run: pip install requests
+
+      - name: Créer répertoires
+        run: mkdir -p products/mobile_apps data/logs
+
+      - name: Générer le scaffold de l'application mobile
+        run: python scripts/produce_mobile_app_scaffold.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          APP_DIR: ${{ github.event.inputs.app_dir }}
+        timeout-minutes: 15
+
+      - name: Commit scaffold généré
+        run: |
+          git config user.name "Mobile Apps Bot"
+          git config user.email "mobile-apps@365days.bot"
+          git add products/mobile_apps/
+          git diff --staged --quiet && echo "Nothing to commit" || {
+            SLUG=$(git diff --staged --name-only | head -1 | cut -d'/' -f3)
+            COUNT=$(git diff --staged --name-only | grep -E "\.(md|dart|tsx|html)$" | wc -l)
+            git commit -m "mobile_apps: ${SLUG} — scaffold généré (${COUNT} fichiers)"
+            git push
+            echo ""
+            echo "════════════════════════════════════════════════════"
+            echo "  SCAFFOLD MOBILE APP PRÊT"
+            echo "════════════════════════════════════════════════════"
+            echo "  → Voir products/mobile_apps/${SLUG}/"
+            echo "  → README.md pour les instructions de développement"
+            echo "  → STORE_LISTING.md pour la soumission App Store/Play"
+            echo "  → UX_FLOW.md pour les écrans et le flux de navigation"
+          }

@@ -232,7 +232,7 @@ EVENTS_OVERLAY = {
 }
 
 
-def pollinations_url(prompt: str, seed: int, width: int = 1664, height: int = 2160) -> str:
+def pollinations_url(prompt: str, seed: int, width: int = 1280, height: int = 1664) -> str:
     """Format portrait 5:6.5 pour respecter le ratio US Letter."""
     encoded = urllib.parse.quote(prompt, safe="")
     return (
@@ -256,27 +256,6 @@ def http_get(url: str, dest: Path, retries: int = 3) -> bool:
             print(f"    retry {attempt + 1}/{retries} : {exc}")
             time.sleep(8 + attempt * 6)
     return False
-
-
-TARGET_MIN_WIDTH = 2560
-TARGET_MIN_HEIGHT = 3328
-
-
-def upscale_2x(src: Path) -> None:
-    """2× LANCZOS upscale in-place to reach ≥2560×3328 (≈300 DPI for 8.5×11").
-
-    Pollinations returns images smaller than requested (e.g. 673×875 even when
-    1664×2160 is requested). This step guarantees the final image is large enough
-    for KDP 300 DPI print quality before the line-art cleanup pass.
-    """
-    img = Image.open(src)
-    w, h = img.size
-    if w < TARGET_MIN_WIDTH or h < TARGET_MIN_HEIGHT:
-        new_w = max(w * 2, TARGET_MIN_WIDTH)
-        new_h = max(h * 2, TARGET_MIN_HEIGHT)
-        img = img.resize((new_w, new_h), Image.LANCZOS)
-        img.save(src, "PNG")
-        print(f"        ↑ upscale {w}×{h} → {new_w}×{new_h}")
 
 
 def clean_line_art(src: Path, dest: Path) -> None:
@@ -318,7 +297,7 @@ def produce_page(niche_key: str, niche: dict, subject: str, page_num: int,
         from lib.hf_image_generator import get_image_for_pipeline
         img_bytes = get_image_for_pipeline(
             prompt, "coloring_books", niche_key,
-            width=1664, height=2160, negative_prompt=neg)
+            width=1280, height=1664, negative_prompt=neg)
     except Exception as exc:  # noqa: BLE001
         print(f"        HF indisponible ({exc}) -> fallback Pollinations")
     if img_bytes:
@@ -330,8 +309,6 @@ def produce_page(niche_key: str, niche: dict, subject: str, page_num: int,
             print("        echec Pollinations")
             return None
     try:
-        # 2× LANCZOS upscale to guarantee ≥2560×3328 for KDP 300 DPI
-        upscale_2x(raw)
         clean_line_art(raw, clean)
     except Exception as exc:  # noqa: BLE001
         print(f"        nettoyage echoue : {exc}")

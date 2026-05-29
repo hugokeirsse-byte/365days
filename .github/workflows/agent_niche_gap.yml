@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
   schedule:
     # Tous les jours à 4h UTC — niches sous-exploitées bougent moins vite
-    - cron: "0 4 * * *"
+    - cron: "0 3 * * *"
   push:
     paths:
       - .triggers/niche_gap

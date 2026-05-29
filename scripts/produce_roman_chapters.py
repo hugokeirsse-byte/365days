@@ -189,6 +189,7 @@ def write_chapter(
         user_prompt,
         temperature=0.85,
         max_tokens=3000,
+        json_mode=False,
     )
 
     if not text or count_words(text) < 400:

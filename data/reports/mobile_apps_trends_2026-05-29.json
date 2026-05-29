@@ -1,0 +1,84 @@
+{
+  "date": "2026-06-05",
+  "angle": "google_play_health_wellness_rising",
+  "categories_tendance": [
+    {
+      "categorie": "health",
+      "sous_niche": "menstrual_cycle_tracking",
+      "croissance": "fort",
+      "saturation": "moyenne",
+      "framework_recommande": "Flutter",
+      "monetisation_optimale": "freemium",
+      "arpu_estime_usd": 3.2,
+      "effort_mvp_jours": 21,
+      "pourquoi_ca_marche": "Strong demand for women's health tracking with personalized insights. Most apps lack privacy-first design and accurate cycle prediction algorithms.",
+      "app_faible_notes_exemple": "Period Tracker by Simple Design - 3.4 stars (too many ads, poor UX)"
+    },
+    {
+      "categorie": "health",
+      "sous_niche": "cognitive_training_post_stroke",
+      "croissance": "stable",
+      "saturation": "faible",
+      "framework_recommande": "React Native",
+      "monetisation_optimale": "subscription",
+      "arpu_estime_usd": 4.8,
+      "effort_mvp_jours": 28,
+      "pourquoi_ca_marche": "Underserved segment with medical-grade requirements. Existing apps are either too complex or lack clinical validation.",
+      "app_faible_notes_exemple": "Brain Exercise - 3.2 stars (generic exercises, no progression tracking)"
+    },
+    {
+      "categorie": "lifestyle",
+      "sous_niche": "digital_minimalism_coaching",
+      "croissance": "explosif",
+      "saturation": "faible",
+      "framework_recommande": "PWA",
+      "monetisation_optimale": "subscription",
+      "arpu_estime_usd": 5.1,
+      "effort_mvp_jours": 14,
+      "pourquoi_ca_marche": "Post-pandemic burnout driving demand for screen-time management. Most apps focus on tracking rather than behavior change.",
+      "app_faible_notes_exemple": "Screen Time Tracker - 2.9 stars (no actionable advice)"
+    },
+    {
+      "categorie": "health",
+      "sous_niche": "intermittent_fasting_ai_coach",
+      "croissance": "fort",
+      "saturation": "moyenne",
+      "framework_recommande": "Flutter",
+      "monetisation_optimale": "freemium",
+      "arpu_estime_usd": 2.9,
+      "effort_mvp_jours": 21,
+      "pourquoi_ca_marche": "AI-powered fasting guidance with meal suggestions. Existing apps lack personalization and have poor adherence tracking.",
+      "app_faible_notes_exemple": "Fast Track - 3.1 stars (unreliable notifications, generic content)"
+    },
+    {
+      "categorie": "tools",
+      "sous_niche": "sleep_sound_mixer_therapeutic",
+      "croissance": "stable",
+      "saturation": "faible",
+      "framework_recommande": "Swift/Kotlin",
+      "monetisation_optimale": "one_time",
+      "arpu_estime_usd": 1.8,
+      "effort_mvp_jours": 14,
+      "pourquoi_ca_marche": "Growing interest in ASMR and binaural beats for sleep. Most apps have short sound loops and intrusive ads.",
+      "app_faible_notes_exemple": "Deep Sleep Sounds - 3.5 stars (limited free content, ads interrupt playback)"
+    }
+  ],
+  "apps_a_rehabiliter": [
+    {
+      "nom": "HealthyHabits Pro",
+      "probleme": "3.3 stars due to buggy habit streaks and aggressive ads. Missing essential features like offline mode.",
+      "opportunite": "Rebuild with clean UI, reliable streak tracking, and ad-free premium tier. Add community challenges for stickiness."
+    },
+    {
+      "nom": "MoodMeter Daily",
+      "probleme": "3.0 stars for poor emotion tracking accuracy and intrusive journaling prompts. No export functionality.",
+      "opportunite": "Focus on NLP-powered mood analysis with private data storage. Add PDF export for therapy sessions."
+    },
+    {
+      "nom": "BreatheEasy",
+      "probleme": "3.2 stars for crashing during guided sessions and limited free content. No background audio support.",
+      "opportunite": "Optimize performance with native audio handling. Offer free foundation course with paid advanced techniques."
+    }
+  ],
+  "recommandation_principale": "Build a menstrual cycle tracking app with privacy-first design and AI-powered insights. Target the gap between simple period trackers and medical apps. Launch on ProductHunt with a waitlist for early adopters. Monetize via freemium model with ARPU potential of $3.20. MVP can be built in 21 days with Flutter."
+}

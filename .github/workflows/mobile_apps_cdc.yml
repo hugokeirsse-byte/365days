@@ -1,0 +1,69 @@
+name: Mobile Apps — Génération CdC manuelle
+
+# Génère un CdC pour une application mobile (App Store / Google Play)
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_category:
+        description: "Catégorie de l'application"
+        required: true
+        type: choice
+        options:
+          - productivity
+          - health
+          - finance
+          - lifestyle
+          - education
+          - tools
+          - creativity
+        default: productivity
+      app_niche:
+        description: "Sous-niche (ex: task manager anxiety-friendly, sleep tracker minimalist)"
+        required: true
+        default: 'task manager minimal'
+      nb_cdcs:
+        description: "Nombre de CdC à générer"
+        required: false
+        default: '1'
+
+jobs:
+  generate-cdc:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+      - run: mkdir -p products/mobile_apps data/logs data/reports
+
+      - name: Générer le CdC Mobile App
+        run: python scripts/agent_mobile_apps_cdc.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          APP_CATEGORY: ${{ github.event.inputs.app_category }}
+          APP_NICHE: ${{ github.event.inputs.app_niche }}
+
+      - name: Commit CdC
+        run: |
+          git config user.name "Mobile Apps CdC Bot"
+          git config user.email "mobile-apps@365days.bot"
+          git add products/mobile_apps/
+          git diff --staged --quiet && echo "Nothing to commit" || {
+            git commit -m "mobile_apps: CdC ${{ github.event.inputs.app_category }} '${{ github.event.inputs.app_niche }}' — gate=pending"
+            git push
+            echo ""
+            echo "═══════════════════════════════════════════"
+            echo "  CdC Mobile App généré — À VALIDER"
+            echo "═══════════════════════════════════════════"
+            echo "  Category: ${{ github.event.inputs.app_category }}"
+            echo "  Niche: ${{ github.event.inputs.app_niche }}"
+            echo "  → Lire CAHIER_DES_CHARGES.md dans products/mobile_apps/"
+            echo "  → gate_cdc = approved → push → scaffold généré"
+          }

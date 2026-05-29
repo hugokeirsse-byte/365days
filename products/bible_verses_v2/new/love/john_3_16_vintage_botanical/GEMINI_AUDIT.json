@@ -1,9 +1,0 @@
-{
-  "audited_at": "2026-05-26T01:54:38.914738Z",
-  "pipeline": "bible_verses_v2",
-  "model": "gemini-2.5-flash",
-  "verdict": "approve",
-  "issues": [],
-  "rating_0_100": 100,
-  "reasoning": "The image accurately displays the Bible verse 'For God so loved the world' and the reference 'John 3:16', with both text and reference being exact matches to the requirements. There are no watermarks or logos present. All text is clearly legible against the background, and the image quality is high, free from pixelation or blurriness. The content is appropriate for the 'bible_verses_v2' pipeline, and no essential elements are cropped. The design is clean and professional, meeting all critical quality control standards."
-}

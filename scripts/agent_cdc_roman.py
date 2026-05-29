@@ -10,7 +10,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
 
 REPORTS_DIR = Path("data/reports")
 NOVELS_DIR = Path("products/novels")
@@ -174,11 +174,7 @@ Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui."""
         print("[CdC Roman] Échec LLM.", file=sys.stderr)
         sys.exit(1)
 
-    clean = response.strip()
-    if clean.startswith("```"):
-        parts = clean.split("```")
-        clean = parts[1][4:] if parts[1].startswith("json") else parts[1]
-    clean = clean.strip()
+    clean = extract_json(response)
 
     try:
         cdc = json.loads(clean)

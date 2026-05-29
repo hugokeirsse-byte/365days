@@ -5,7 +5,7 @@ name: Vertical Optimizer — Boucle de Feedback
 
 on:
   schedule:
-    - cron: '0 6 * * 1'   # Lundi 06h UTC (après le rapporteur hebdo du dimanche)
+    - cron: '0 10 * * 1'   # Lundi 06h UTC (après le rapporteur hebdo du dimanche)
   workflow_dispatch:
     inputs:
       vertical:

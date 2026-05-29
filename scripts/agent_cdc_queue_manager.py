@@ -22,6 +22,7 @@ import os
 import random
 import subprocess
 import sys
+import time
 from datetime import date
 from pathlib import Path
 
@@ -29,6 +30,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 TARGET_PENDING = int(os.environ.get("TARGET", "10"))
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN", "5"))
+# Délai entre chaque génération pour rester sous la limite RPM de Gemini free tier.
+THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "8"))
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 
 # ── Pools de thèmes — diversité garantie, pas de répétition ──────────────────
@@ -200,6 +203,88 @@ POOLS = {
         ("sprite_pack", "magical girl anime style"),
         ("shader_pack", "pixel art retro crt effects"),
     ],
+    "mobile_games": [
+        # (genre, niche)
+        ("hyper_casual", "satisfying merge puzzle"),
+        ("puzzle", "word game dark humor"),
+        ("idle", "cute animals farm"),
+        ("platformer", "precision indie hardcore"),
+        ("hyper_casual", "brain training reflex"),
+        ("simulation", "cozy life management"),
+        ("arcade", "survival endless runner"),
+        ("puzzle", "logic grid minimalist"),
+        ("idle", "space exploration incremental"),
+        ("platformer", "retro pixel art adventure"),
+        ("hyper_casual", "color sorting calming"),
+        ("rpg", "roguelike dungeon minimal"),
+        ("simulation", "restaurant management casual"),
+        ("arcade", "rhythm music tapping"),
+        ("puzzle", "physics sandbox creative"),
+    ],
+    "mobile_apps": [
+        # (category, niche)
+        ("productivity", "task manager anxiety-friendly"),
+        ("health", "sleep tracker minimalist"),
+        ("finance", "expense tracker no-ads"),
+        ("lifestyle", "habit tracker cute gamification"),
+        ("tools", "password manager offline"),
+        ("creativity", "quick sketch doodle journal"),
+        ("education", "language flashcards spaced repetition"),
+        ("health", "water intake reminder gentle"),
+        ("productivity", "pomodoro timer focus"),
+        ("finance", "bill splitter friends"),
+        ("lifestyle", "mood journal private no-cloud"),
+        ("tools", "unit converter offline"),
+        ("education", "speed reading trainer"),
+        ("creativity", "daily writing prompt journal"),
+        ("health", "breathing exercise anxiety"),
+    ],
+    "svg_packs": [
+        # (type_pack, niche)
+        ("mandala", "boho wildflowers"),
+        ("floral", "cottagecore botanical"),
+        ("monogram", "wedding elegant script"),
+        ("seasonal", "halloween gothic witch"),
+        ("animal", "farmhouse rooster buffalo"),
+        ("geometric", "sacred geometry boho"),
+        ("quote_frame", "motivational vintage banner"),
+        ("bundle_mix", "christmas holiday mega bundle"),
+        ("mandala", "celestial moon phases"),
+        ("floral", "tropical leaves exotic"),
+        ("seasonal", "easter spring bunny"),
+        ("animal", "forest woodland deer fox"),
+        ("geometric", "art deco geometric seamless"),
+        ("monogram", "minimalist modern alphabet"),
+        ("quote_frame", "sunflower farmhouse frame"),
+    ],
+    "vintage_pd": [
+        # (collection, sujet, type_produit)
+        ("kohler_medizinal", "lavandula_officinalis", "coloring_page"),
+        ("kohler_medizinal", "rosa_canina", "merch_tshirt"),
+        ("kohler_medizinal", "mentha_piperita", "educational_coloring_book"),
+        ("kohler_medizinal", "chamomilla_recutita", "merch_mug"),
+        ("kohler_medizinal", "digitalis_purpurea", "merch_tote"),
+        ("redoute_roses", "rosa_centifolia", "coloring_page"),
+        ("redoute_roses", "rosa_gallica", "merch_tshirt"),
+        ("audubon_birds", "northern_cardinal", "coloring_page"),
+        ("audubon_birds", "american_flamingo", "merch_tshirt"),
+        ("audubon_birds", "great_blue_heron", "merch_tote"),
+        ("haeckel_kunstformen", "radiolaria", "coloring_page"),
+        ("haeckel_kunstformen", "sea_anemones_actiniae", "merch_tshirt"),
+        ("haeckel_kunstformen", "jellyfish_medusae", "coloring_page"),
+        ("haeckel_kunstformen", "orchids_tropical", "merch_tote"),
+        ("maria_sibylla_merian", "metamorphose_surinam_butterflies", "coloring_page"),
+        ("donovan_british_insects", "papillons_exotiques", "merch_tshirt"),
+        ("gould_birds_europe", "birds_of_paradise", "coloring_page"),
+        ("audubon_quadrupeds", "american_bison", "merch_mug"),
+        ("brehm_tierleben", "owls_hiboux", "coloring_page"),
+        ("gray_anatomy_1858", "human_skull_scientific", "merch_tshirt"),
+        ("kohler_medizinal", "valeriana_officinalis", "educational_coloring_book"),
+        ("redoute_lilies", "lilium_candidum", "coloring_page"),
+        ("wilson_american_ornithology", "woodpecker_species", "coloring_page"),
+        ("blaeu_atlas_1662", "ornate_world_map_detail", "kdp_journal_cover"),
+        ("haeckel_kunstformen", "cacti_desert_forms", "merch_mug"),
+    ],
 }
 
 # ── Config par vertical ───────────────────────────────────────────────────────
@@ -298,6 +383,57 @@ CONFIGS = {
             cdc.get("concept", {}).get("theme", ""),
         ),
     },
+    "mobile_games": {
+        "products_dir": "products/mobile_games",
+        "cdc_script": "scripts/agent_mobile_games_cdc.py",
+        "build_env": lambda t: {
+            "GAME_GENRE": t[0],
+            "GAME_NICHE": t[1],
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("concept", {}).get("genre", ""),
+            cdc.get("concept", {}).get("sous_niche", ""),
+        ),
+    },
+    "mobile_apps": {
+        "products_dir": "products/mobile_apps",
+        "cdc_script": "scripts/agent_mobile_apps_cdc.py",
+        "build_env": lambda t: {
+            "APP_CATEGORY": t[0],
+            "APP_NICHE": t[1],
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("concept", {}).get("categorie", ""),
+            cdc.get("concept", {}).get("sous_niche", cdc.get("concept", {}).get("valeur_unique", "")[:30]),
+        ),
+    },
+    "svg_packs": {
+        "products_dir": "products/svg_packs",
+        "cdc_script": "scripts/agent_svg_cdc.py",
+        "build_env": lambda t: {
+            "SVG_TYPE": t[0],
+            "SVG_NICHE": t[1],
+            "SVG_NB_ELEMENTS": "20",
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("concept", {}).get("type_pack", ""),
+            cdc.get("concept", {}).get("niche", ""),
+        ),
+    },
+    "vintage_pd": {
+        "products_dir": "products/vintage_pd",
+        "cdc_script": "scripts/agent_vintage_pd_cdc.py",
+        "build_env": lambda t: {
+            "VPD_COLLECTION": t[0],
+            "VPD_SUJET": t[1],
+            "VPD_PRODUCT_TYPE": t[2],
+        },
+        "theme_key": lambda cdc: (
+            cdc.get("source", {}).get("collection", ""),
+            cdc.get("source", {}).get("sujet", ""),
+            cdc.get("produit", {}).get("type", ""),
+        ),
+    },
 }
 
 
@@ -363,7 +499,7 @@ def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
             env=env,
             capture_output=True,
             text=True,
-            timeout=180,
+            timeout=300,
             cwd=str(ROOT),
         )
         if result.returncode == 0:
@@ -375,11 +511,11 @@ def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
                 print(f"    ✓ CdC généré (gate=pending)")
             return True
         else:
-            err = (result.stderr or result.stdout or "").strip()[:200]
-            print(f"    ✗ Erreur (rc={result.returncode}): {err}")
+            full = (result.stdout + result.stderr).strip()
+            print(f"    ✗ Erreur (rc={result.returncode}): {full[-800:]}")
             return False
     except subprocess.TimeoutExpired:
-        print(f"    ✗ Timeout (180s)")
+        print(f"    ✗ Timeout (300s)")
         return False
     except Exception as e:
         print(f"    ✗ Exception: {e}")
@@ -432,6 +568,11 @@ def fill_queue(vertical_name: str, config: dict) -> int:
             used_this_run.append(theme)
             # Rescan pour mettre à jour pending_themes
             pending_count, pending_themes = scan_pending(products_dir, config["theme_key"])
+
+        # Throttle entre générations pour rester sous la limite RPM de Gemini
+        # free tier (~10 req/min). Évite les rafales qui déclenchent les 429.
+        if i < to_generate - 1:
+            time.sleep(THROTTLE_SECONDS)
 
     print(f"  → {generated} CdC générés pour {vertical_name}")
     return generated
