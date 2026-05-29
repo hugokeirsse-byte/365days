@@ -8,9 +8,8 @@ on:
         required: false
         default: ""
   schedule:
-    # trends   : toutes les 4h
-    - cron: "0 */4 * * *"
-    # tools, optimization, niches : enchaînés via BRAIN_AGENT
+    # 1 run par jour à 02h UTC — évite les conflits avec les verticaux (04h-10h)
+    - cron: "0 2 * * *"
   push:
     paths:
       - .triggers/brain_meta

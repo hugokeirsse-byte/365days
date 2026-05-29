@@ -3,8 +3,8 @@ name: Seasonal Planner (anticipation événements)
 on:
   workflow_dispatch: {}
   schedule:
-    # Tous les lundis matin 6h UTC = panier d'événements à anticiper
-    - cron: "0 6 * * 1"
+    # Tous les lundis 07h UTC (après b1_stratege 06h, avant vintage_pd 09h)
+    - cron: "0 7 * * 1"
   push:
     paths:
       - .triggers/seasonal

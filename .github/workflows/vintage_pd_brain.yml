@@ -6,7 +6,7 @@ name: Vintage Public Domain Brain
 
 on:
   schedule:
-    - cron: '0 6 * * 1'   # Lundi 06h UTC
+    - cron: '0 9 * * 1'   # Lundi 06h UTC
   workflow_dispatch:
     inputs:
       angle_override:
