@@ -46,3 +46,6 @@
 {"ts": "2026-05-28T21:26:59.271882Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "gemini", "tokens_in": 0, "tokens_out": 0, "success": false}
 {"ts": "2026-05-28T21:26:59.272494Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "groq", "tokens_in": 0, "tokens_out": 0, "success": false}
 {"ts": "2026-05-28T21:26:59.272667Z", "date": "2026-05-28", "agent": "stl_cdc", "provider": "mistral", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-29T07:51:31.045709Z", "date": "2026-05-29", "agent": "stratege", "provider": "gemini", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-29T07:51:31.046144Z", "date": "2026-05-29", "agent": "stratege", "provider": "mistral", "tokens_in": 0, "tokens_out": 0, "success": false}
+{"ts": "2026-05-29T07:51:31.046219Z", "date": "2026-05-29", "agent": "stratege", "provider": "groq", "tokens_in": 0, "tokens_out": 0, "success": false}
