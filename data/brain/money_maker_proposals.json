@@ -1,7 +1,7 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-29T02:10:39.582425Z",
+  "timestamp": "2026-05-29T07:47:55.996302Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -137,69 +137,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Launch First Gothic & Cozy Cats Coloring Book on Amazon KDP",
-      "type": "upload",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 20,
-      "estimated_revenue_uplift_eur_30days_high": 150,
-      "hugo_effort_hours": 5,
-      "why_this_works_now": "The 'cozy/gothic' niche is highly seasonal and trending on social media. Using Together AI (free FLUX-schnell) via GitHub Actions, Hugo can generate 40 clean black-and-white vector-style line arts, compile them using a free Python PDF library (ReportLab) in Termux, and publish with zero financial cost.",
-      "first_action_today": "Run a bash script in Termux to call the Together AI API and generate 5 test coloring pages of 'Cozy Cat in a Witch Kitchen' with high-contrast line art settings."
-    },
-    {
-      "rank": 2,
-      "action_title": "Upload 50 Dark Academia & Goblincore Seamless Patterns",
-      "type": "upload",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 80,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "Redbubble requires no upfront fees and organic search traffic indexation happens within days. Seamless patterns generated via FLUX on Together AI can be tiled automatically. Dark Academia and Goblincore motifs have high search volume and low barrier to entry on apparel, phone cases, and notebooks.",
-      "first_action_today": "Set up a GitHub Actions workflow that loops 50 times to generate seamless tiling patterns using FLUX-schnell with prompt modifiers like 'seamless vector pattern, vintage dark academia botany'."
-    },
-    {
-      "rank": 3,
-      "action_title": "Publish Parametric Drawer Organizer & Cable Clips",
-      "type": "upload",
-      "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 100,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "Functional 3D prints sell consistently because they solve immediate problems. OpenSCAD scripts can easily be run via Termux to output customizable .STL files. Offering a parametric file where buyers can change dimensions attracts makers willing to pay 1.50€ to 3.00€ to save design time.",
-      "first_action_today": "Write a basic OpenSCAD script for a grid-based customizable drawer divider and render 5 standard size variations (.STL) directly in Termux."
-    },
-    {
-      "rank": 4,
-      "action_title": "Create a Premium Hardcover Version of the KDP Coloring Book",
-      "type": "pricing",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Hardcover books on KDP have a much higher perceived value and are frequently purchased as gifts. By using the exact same interior PDF as the paperback version and adjusting only the cover template size, Hugo can list a premium version priced at 14.99€ yielding a higher margin (4€+ per sale).",
-      "first_action_today": "Use the KDP Cover Calculator to generate the exact PDF template dimensions for a 40-page hardcover book."
-    },
-    {
-      "rank": 5,
-      "action_title": "Launch a Niche 'Sourdough Baking Logbook' & '3D Printing Log'",
+      "action_title": "Launch and Monetize the First KDP Coloring Book",
       "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 15,
       "estimated_revenue_uplift_eur_30days_high": 120,
       "hugo_effort_hours": 4,
-      "why_this_works_now": "Low-content logbooks are easy to generate programmatically. A python script using ReportLab can generate standard grid/log tables in seconds. Sourdough bakers and 3D printing enthusiasts are passionate hobbyists who love tracking variables (temperature, hydration, infill, speed) in physical books.",
-      "first_action_today": "Create a Python script on GitHub/Termux to output a clean, minimalist 120-page interior PDF containing tracking tables for 3D printing filament logs."
+      "why_this_works_now": "The coloring book pipeline is near completion. Launching the first high-quality book immediately targets high-margin organic search traffic on Amazon without ad spend, validating the generation engine.",
+      "first_action_today": "Select the best 25 images generated via Together AI/FLUX-schnell, compile them into a print-ready PDF using a GitHub Actions workflow, and upload to KDP."
     },
     {
-      "rank": 6,
-      "action_title": "Cross-Sell KDP Coloring Pages as Digital RPG Icons on Itch.io",
-      "type": "cross_sell",
-      "target_platform": "itch.io",
+      "rank": 2,
+      "action_title": "Bulk Upload 50 Scalable Vector Designs to Redbubble",
+      "type": "upload",
+      "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 40,
+      "estimated_revenue_uplift_eur_30days_high": 45,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Redbubble accounts require zero upfront listing fees. Leveraging the existing 'produce_merch_designs' pipeline with high-converting, text-based minimalist quotes bypasses complex image generation issues and matches current trends.",
+      "first_action_today": "Run the 'produce_quotes_minimal' pipeline to generate 50 clean SVG/PNG text designs and upload them using a simple Python script or Termux browser."
+    },
+    {
+      "rank": 3,
+      "action_title": "Publish 3 Functional Parametric STL Models on Cults3D",
+      "type": "upload",
+      "target_platform": "Cults3D",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 60,
       "hugo_effort_hours": 2,
-      "why_this_works_now": "Repurposing assets is key to high ROI per hour. The same prompt pipeline used for gothic/fantasy coloring pages can generate 2D asset packs (e.g., '50 Line Art Fantasy Weapon Icons'). Game developers on itch.io buy these cheap packs ($2-$5) to use as UI elements or coloring templates.",
-      "first_action_today": "Zip 50 of the generated fantasy line-art icons, write a simple markdown description, and create a free creator account on itch.io."
+      "why_this_works_now": "Functional 3D prints (brackets, organizers, adapters) sell consistently because buyers own 3D printers and seek immediate utility. OpenSCAD code can be generated programmatically on Termux.",
+      "first_action_today": "Execute the 'produce_stl_parametric' pipeline to generate 3 storage/utility models, render their previews, and list them on Cults3D at 1.99 EUR each."
+    },
+    {
+      "rank": 4,
+      "action_title": "Set Up an itch.io Storefront for Godot Assets",
+      "type": "new_stream",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 80,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "The Godot engine is exploding in popularity due to Unity's licensing shifts. Small game templates, UI kits, or script packages ('produce_godot_assets') have immediate demand among solo devs on itch.io.",
+      "first_action_today": "Package a simple 2D game scaffold or UI template from your existing Godot pipelines, write a short markdown description, and publish it as 'Pay What You Want' with a suggested price of 3.99 EUR."
+    },
+    {
+      "rank": 5,
+      "action_title": "Implement High-Conversion KDP Backend Metadata Optimization",
+      "type": "conversion",
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 1,
+      "why_this_works_now": "With zero budget for ads, search visibility is 100% dependent on the 7 backend keyword boxes and subtitle optimization. Maximizing long-tail niches ensures organic impressions.",
+      "first_action_today": "Extract search terms using free Amazon autocomplete search via Termux curl commands, then structure the coloring book's subtitle and backend keywords around low-competition search phrases."
     }
   ]
 }
