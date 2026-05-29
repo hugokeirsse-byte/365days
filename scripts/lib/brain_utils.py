@@ -4,6 +4,7 @@ Multi-provider LLM routing, angle rotation, report memory, quota logging.
 """
 import json
 import os
+import time
 import urllib.request
 import urllib.error
 from datetime import date, datetime
@@ -146,11 +147,17 @@ def llm_call(agent_type: str, system: str, user: str,
     config = routing.get(agent_type, DEFAULT_ROUTING.get(agent_type, {"primary": "gemini", "fallback": []}))
     providers = [config["primary"]] + config.get("fallback", [])
 
+    # Sur 429 (rate limit), on attend que la fenêtre RPM se libère puis on
+    # réessaie le MÊME provider. Backoff: 30s, 60s. Free tier Gemini ~10 RPM.
+    RATE_LIMIT_BACKOFF = [30, 60]
+    MAX_ATTEMPTS = 4
+
     for provider in providers:
         fn = PROVIDERS.get(provider)
         if fn is None:
             continue
-        for attempt in range(2):
+        rl_retries = 0
+        for attempt in range(MAX_ATTEMPTS):
             try:
                 print(f"[brain_utils] {agent_type} → {provider} (attempt {attempt+1})")
                 if provider == "gemini":
@@ -159,10 +166,20 @@ def llm_call(agent_type: str, system: str, user: str,
                     text, tokens_in, tokens_out = fn(system, user, temperature, max_tokens)
                 log_api_call(agent_type, provider, tokens_in, tokens_out, True)
                 return text
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and rl_retries < len(RATE_LIMIT_BACKOFF):
+                    wait = RATE_LIMIT_BACKOFF[rl_retries]
+                    rl_retries += 1
+                    print(f"[brain_utils] {provider} 429 rate-limit → attente {wait}s puis retry")
+                    time.sleep(wait)
+                    continue
+                print(f"[brain_utils] {provider} HTTP {e.code}: {e}")
+                break
             except (urllib.error.URLError, TimeoutError) as e:
                 print(f"[brain_utils] {provider} timeout/network: {e}")
                 if attempt == 0:
                     continue
+                break
             except Exception as e:
                 print(f"[brain_utils] {provider} error: {e}")
                 break

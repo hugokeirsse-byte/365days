@@ -22,6 +22,7 @@ import os
 import random
 import subprocess
 import sys
+import time
 from datetime import date
 from pathlib import Path
 
@@ -29,6 +30,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 TARGET_PENDING = int(os.environ.get("TARGET", "10"))
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN", "5"))
+# Délai entre chaque génération pour rester sous la limite RPM de Gemini free tier.
+THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "8"))
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 
 # ── Pools de thèmes — diversité garantie, pas de répétition ──────────────────
@@ -523,6 +526,11 @@ def fill_queue(vertical_name: str, config: dict) -> int:
             used_this_run.append(theme)
             # Rescan pour mettre à jour pending_themes
             pending_count, pending_themes = scan_pending(products_dir, config["theme_key"])
+
+        # Throttle entre générations pour rester sous la limite RPM de Gemini
+        # free tier (~10 req/min). Évite les rafales qui déclenchent les 429.
+        if i < to_generate - 1:
+            time.sleep(THROTTLE_SECONDS)
 
     print(f"  → {generated} CdC générés pour {vertical_name}")
     return generated
