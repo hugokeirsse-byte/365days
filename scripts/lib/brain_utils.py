@@ -4,6 +4,8 @@ Multi-provider LLM routing, angle rotation, report memory, quota logging.
 """
 import json
 import os
+import time
+import urllib.parse
 import urllib.request
 import urllib.error
 from datetime import date, datetime
@@ -39,20 +41,44 @@ def _load_routing():
 # --------------------------------------------------------------------------- #
 # Provider implementations (stdlib urllib only)
 # --------------------------------------------------------------------------- #
-def _call_gemini(system: str, user: str, temperature: float, max_tokens: int) -> tuple[str, int, int]:
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+
+
+def _call_gemini(system: str, user: str, temperature: float, max_tokens: int,
+                 json_mode: bool = True) -> tuple[str, int, int]:
     key = os.environ.get("GEMINI_API_KEY", "")
     if not key:
         raise ValueError("GEMINI_API_KEY not set")
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key={key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={key}"
+    gen_config = {
+        "temperature": temperature,
+        "maxOutputTokens": max_tokens,
+        # Gemini 2.5-flash dépense des tokens de "thinking" qui mangent le budget
+        # de sortie et tronquent les gros JSON (STL 15 variantes, merch 30 designs…).
+        # thinkingBudget=0 désactive le thinking → tout le budget va au JSON réel.
+        "thinkingConfig": {"thinkingBudget": 0},
+    }
     body = {
         "contents": [{"role": "user", "parts": [{"text": f"{system}\n\n{user}"}]}],
-        "generationConfig": {"temperature": temperature, "maxOutputTokens": max_tokens},
+        "generationConfig": gen_config,
     }
     data = json.dumps(body).encode()
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req, timeout=60) as resp:
+    with urllib.request.urlopen(req, timeout=180) as resp:
         result = json.loads(resp.read())
-    text = result["candidates"][0]["content"]["parts"][0]["text"]
+    candidates = result.get("candidates", [])
+    if not candidates:
+        raise ValueError(f"Gemini: aucune candidate (feedback={result.get('promptFeedback')})")
+    candidate = candidates[0]
+    finish = candidate.get("finishReason", "STOP")
+    # Extraction robuste du texte : si pas de parts (ex: MAX_TOKENS sur thinking),
+    # on lève une erreur claire pour déclencher le fallback provider.
+    parts = candidate.get("content", {}).get("parts", [])
+    text = "".join(p.get("text", "") for p in parts)
+    if not text:
+        raise ValueError(f"Gemini: réponse vide (finishReason={finish})")
+    if finish not in ("STOP", "MAX_TOKENS", "FINISH_REASON_STOP"):
+        print(f"[brain_utils] Gemini finishReason={finish} (non bloquant)")
     usage = result.get("usageMetadata", {})
     return text, usage.get("promptTokenCount", 0), usage.get("candidatesTokenCount", 0)
 
@@ -83,9 +109,10 @@ def _call_groq(system: str, user: str, temperature: float, max_tokens: int) -> t
     key = os.environ.get("GROQ_API_KEY", "")
     if not key:
         raise ValueError("GROQ_API_KEY not set")
+    model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
     return _call_openai_compat(
         "https://api.groq.com/openai/v1/chat/completions",
-        "llama-3.3-70b-versatile", key, system, user, temperature, max_tokens
+        model, key, system, user, temperature, max_tokens
     )
 
 
@@ -93,9 +120,10 @@ def _call_mistral(system: str, user: str, temperature: float, max_tokens: int) -
     key = os.environ.get("MISTRAL_API_KEY", "")
     if not key:
         raise ValueError("MISTRAL_API_KEY not set")
+    model = os.environ.get("MISTRAL_MODEL", "mistral-small-latest")
     return _call_openai_compat(
         "https://api.mistral.ai/v1/chat/completions",
-        "mistral-small-latest", key, system, user, temperature, max_tokens
+        model, key, system, user, temperature, min(max_tokens, 8192)
     )
 
 
@@ -110,26 +138,49 @@ PROVIDERS = {
 # Main LLM call
 # --------------------------------------------------------------------------- #
 def llm_call(agent_type: str, system: str, user: str,
-             temperature: float = 0.7, max_tokens: int = 4000) -> str:
-    """Try primary provider then fallbacks. Returns text or empty string."""
+             temperature: float = 0.7, max_tokens: int = 4000,
+             json_mode: bool = True) -> str:
+    """Try primary provider then fallbacks. Returns text or empty string.
+    json_mode=True (default): Gemini uses responseMimeType application/json — prevents truncation.
+    Set json_mode=False for free-text outputs (novel chapters, etc.).
+    """
     routing = _load_routing()
     config = routing.get(agent_type, DEFAULT_ROUTING.get(agent_type, {"primary": "gemini", "fallback": []}))
     providers = [config["primary"]] + config.get("fallback", [])
+
+    # Sur 429 (rate limit), on attend que la fenêtre RPM se libère puis on
+    # réessaie le MÊME provider. Backoff: 30s, 60s. Free tier Gemini ~10 RPM.
+    RATE_LIMIT_BACKOFF = [30, 60]
+    MAX_ATTEMPTS = 4
 
     for provider in providers:
         fn = PROVIDERS.get(provider)
         if fn is None:
             continue
-        for attempt in range(2):
+        rl_retries = 0
+        for attempt in range(MAX_ATTEMPTS):
             try:
                 print(f"[brain_utils] {agent_type} → {provider} (attempt {attempt+1})")
-                text, tokens_in, tokens_out = fn(system, user, temperature, max_tokens)
+                if provider == "gemini":
+                    text, tokens_in, tokens_out = fn(system, user, temperature, max_tokens, json_mode)
+                else:
+                    text, tokens_in, tokens_out = fn(system, user, temperature, max_tokens)
                 log_api_call(agent_type, provider, tokens_in, tokens_out, True)
                 return text
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and rl_retries < len(RATE_LIMIT_BACKOFF):
+                    wait = RATE_LIMIT_BACKOFF[rl_retries]
+                    rl_retries += 1
+                    print(f"[brain_utils] {provider} 429 rate-limit → attente {wait}s puis retry")
+                    time.sleep(wait)
+                    continue
+                print(f"[brain_utils] {provider} HTTP {e.code}: {e}")
+                break
             except (urllib.error.URLError, TimeoutError) as e:
                 print(f"[brain_utils] {provider} timeout/network: {e}")
                 if attempt == 0:
                     continue
+                break
             except Exception as e:
                 print(f"[brain_utils] {provider} error: {e}")
                 break
@@ -137,6 +188,99 @@ def llm_call(agent_type: str, system: str, user: str,
 
     print(f"[brain_utils] All providers failed for {agent_type}")
     return ""
+
+
+def generate_preview_images(
+    prompt: str,
+    out_dir,
+    nb: int = 5,
+    width: int = 512,
+    height: int = 640,
+    timeout: int = 45,
+) -> list:
+    """Generate N preview images via Pollinations.ai (free, no key required).
+
+    Only runs when env GENERATE_PREVIEWS=1.
+    Returns list of Path objects for images saved, empty list on skip or error.
+    """
+    from pathlib import Path as _Path
+    if os.environ.get("GENERATE_PREVIEWS", "0") != "1":
+        return []
+    if not prompt or not prompt.strip():
+        return []
+    out_dir = _Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    saved = []
+    encoded = urllib.parse.quote(prompt.strip())
+    print(f"[Preview] Génération de {nb} images test (Pollinations.ai)...")
+    for i in range(1, nb + 1):
+        seed = i * 137  # well-distributed seeds
+        url = (f"https://image.pollinations.ai/prompt/{encoded}"
+               f"?width={width}&height={height}&seed={seed}"
+               f"&nologo=true&model=flux&enhance=false")
+        path = out_dir / f"preview_{i}.jpg"
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "365days-preview/1.0"})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                path.write_bytes(resp.read())
+            print(f"[Preview] {i}/{nb} ✓ {path.name}")
+            saved.append(path)
+        except Exception as e:
+            print(f"[Preview] {i}/{nb} ✗ {e}")
+    return saved
+
+
+def preview_markdown_section(preview_paths: list, previews_dir_name: str = "previews") -> list:
+    """Return markdown lines for the preview images section."""
+    if not preview_paths:
+        return []
+    lines = [
+        "",
+        "---",
+        "",
+        "## 🖼️ Aperçu Visuel — 5 images test",
+        "",
+        "> Générées automatiquement avec Pollinations.ai pour valider le style.",
+        "> Choisir la direction visuelle avant d'approuver la production complète.",
+        "",
+    ]
+    # 3 columns, then 2
+    row1 = [f"![p{i}]({previews_dir_name}/preview_{i}.jpg)" for i in range(1, 4) if i <= len(preview_paths)]
+    row2 = [f"![p{i}]({previews_dir_name}/preview_{i}.jpg)" for i in range(4, 6) if i <= len(preview_paths)]
+    if row1:
+        lines.append("| " + " | ".join(row1) + " |")
+        lines.append("|" + "---|" * len(row1))
+    if row2:
+        lines.append("")
+        lines.append("| " + " | ".join(row2) + " |")
+        lines.append("|" + "---|" * len(row2))
+    lines += ["", f"*{len(preview_paths)} images dans `{previews_dir_name}/`*", ""]
+    return lines
+
+
+def extract_json(text: str) -> str:
+    """Extract JSON from LLM response, stripping markdown fences or surrounding prose."""
+    t = text.strip()
+    # Try direct parse first
+    if t.startswith("{") or t.startswith("["):
+        return t
+    # Strip ```json ... ``` or ``` ... ```
+    if "```" in t:
+        parts = t.split("```")
+        for part in parts[1::2]:  # odd parts are inside fences
+            inner = part.strip()
+            if inner.startswith("json"):
+                inner = inner[4:].strip()
+            if inner.startswith("{") or inner.startswith("["):
+                return inner
+    # Last resort: find first { or [
+    for ch, end in [("{", "}"), ("[", "]")]:
+        start = t.find(ch)
+        if start != -1:
+            last = t.rfind(end)
+            if last > start:
+                return t[start:last + 1]
+    return t
 
 
 # --------------------------------------------------------------------------- #
