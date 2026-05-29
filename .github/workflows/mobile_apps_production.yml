@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       app_dir:
-        description: 'Dossier de l'app spécifique (ex: products/mobile_apps/app_2026-05-28_productivity_...). Vide = auto-détecte dernier approuvé.'
+        description: "Dossier de l'app spécifique (ex: products/mobile_apps/app_2026-05-28_productivity_...). Vide = auto-détecte dernier approuvé."
         required: false
         default: ''
 
