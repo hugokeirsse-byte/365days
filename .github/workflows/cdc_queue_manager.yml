@@ -42,9 +42,9 @@ on:
         required: false
         default: '10'
       max_per_run:
-        description: 'Max générés par run par vertical (défaut: 5)'
+        description: 'Max générés par run par vertical (défaut: 10)'
         required: false
-        default: '5'
+        default: '10'
       dry_run:
         description: 'Afficher sans générer'
         required: false
@@ -101,7 +101,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
           TARGET: ${{ github.event.inputs.target || '10' }}
-          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '5' }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '10' }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
 
       - name: Commit nouveaux CdC
