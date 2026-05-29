@@ -1,4 +1,4 @@
-[Queue Manager] Cible: 10 CdC/vertical | Max/run: 5 | Dry: False
+[Queue Manager] Cible: 10 CdC/vertical | Max/run: 10 | Dry: False
 [Queue Manager] Date: 2026-05-29
 
 [Queue] ══ ÉTAT DES FILES CdC ══
@@ -12,6 +12,7 @@
   mobile_games :  0 pending  ⚠ (0/10)
   mobile_apps  :  0 pending  ⚠ (0/10)
   svg_packs    :  0 pending  ⚠ (0/10)
+  vintage_pd   :  0 pending  ⚠ (0/10)
   TOTAL        : 12 CdC disponibles pour Hugo
 
 
@@ -20,558 +21,139 @@
   ✓ File pleine (10 CdC en attente)
 
 [Queue] ── STL ──
-  Pending: 1/10 | À générer: 5
-  → Génération 1/5: plant_marker + witchy
-    ✗ Erreur (rc=1): [STL CdC] Type: plant_marker | Niche: witchy | Variantes: 15 | ID: stl_2026-05-29
+  Pending: 1/10 | À générer: 9
+  → Génération 1/9 [pool]: plant_marker + gardening
+    ✗ Erreur (rc=1): [STL CdC] Type: plant_marker | Niche: gardening | Variantes: 15 | ID: stl_2026-05-29
 [STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
 [brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
 [brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
 [brain_utils] stl_cdc → groq (attempt 1)
 [brain_utils] groq error: GROQ_API_KEY not set
 [brain_utils] stl_cdc → mistral (attempt 1)
 [brain_utils] mistral error: MISTRAL_API_KEY not set
 [brain_utils] All providers failed for stl_cdc
 [STL CdC] Échec LLM — aucune réponse.
-  → Génération 2/5: coaster + coffee
+  → Génération 2/9 [pool]: coaster + gaming
+    ✗ Erreur (rc=1): [STL CdC] Type: coaster | Niche: gaming | Variantes: 15 | ID: stl_2026-05-29
+[STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
+[brain_utils] stl_cdc → gemini (attempt 1)
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
+[brain_utils] stl_cdc → gemini (attempt 2)
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
+[brain_utils] stl_cdc → groq (attempt 1)
+[brain_utils] groq error: GROQ_API_KEY not set
+[brain_utils] stl_cdc → mistral (attempt 1)
+[brain_utils] mistral error: MISTRAL_API_KEY not set
+[brain_utils] All providers failed for stl_cdc
+[STL CdC] Échec LLM — aucune réponse.
+  → Génération 3/9 [pool]: keychain + dnd
+    ✗ Erreur (rc=1): [STL CdC] Type: keychain | Niche: dnd | Variantes: 15 | ID: stl_2026-05-29
+[STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
+[brain_utils] stl_cdc → gemini (attempt 1)
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
+[brain_utils] stl_cdc → gemini (attempt 2)
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
+[brain_utils] stl_cdc → groq (attempt 1)
+[brain_utils] groq error: GROQ_API_KEY not set
+[brain_utils] stl_cdc → mistral (attempt 1)
+[brain_utils] mistral error: MISTRAL_API_KEY not set
+[brain_utils] All providers failed for stl_cdc
+[STL CdC] Échec LLM — aucune réponse.
+  → Génération 4/9 [pool]: coaster + witchy
+    ✗ Erreur (rc=1): [STL CdC] Type: coaster | Niche: witchy | Variantes: 15 | ID: stl_2026-05-29
+[STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
+[brain_utils] stl_cdc → gemini (attempt 1)
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
+[brain_utils] stl_cdc → gemini (attempt 2)
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
+[brain_utils] stl_cdc → groq (attempt 1)
+[brain_utils] groq error: GROQ_API_KEY not set
+[brain_utils] stl_cdc → mistral (attempt 1)
+[brain_utils] mistral error: MISTRAL_API_KEY not set
+[brain_utils] All providers failed for stl_cdc
+[STL CdC] Échec LLM — aucune réponse.
+  → Génération 5/9 [pool]: bookmark + cottagecore
+    ✗ Erreur (rc=1): [STL CdC] Type: bookmark | Niche: cottagecore | Variantes: 15 | ID: stl_2026-05-29
+[STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
+[brain_utils] stl_cdc → gemini (attempt 1)
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
+[brain_utils] stl_cdc → gemini (attempt 2)
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
+[brain_utils] stl_cdc → groq (attempt 1)
+[brain_utils] groq error: GROQ_API_KEY not set
+[brain_utils] stl_cdc → mistral (attempt 1)
+[brain_utils] mistral error: MISTRAL_API_KEY not set
+[brain_utils] All providers failed for stl_cdc
+[STL CdC] Échec LLM — aucune réponse.
+  → Génération 6/9 [pool]: coaster + coffee
     ✗ Erreur (rc=1): [STL CdC] Type: coaster | Niche: coffee | Variantes: 15 | ID: stl_2026-05-29
 [STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
 [brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
 [brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
 [brain_utils] stl_cdc → groq (attempt 1)
 [brain_utils] groq error: GROQ_API_KEY not set
 [brain_utils] stl_cdc → mistral (attempt 1)
 [brain_utils] mistral error: MISTRAL_API_KEY not set
 [brain_utils] All providers failed for stl_cdc
 [STL CdC] Échec LLM — aucune réponse.
-  → Génération 3/5: door_plate + cottagecore
-    ✗ Erreur (rc=1): [STL CdC] Type: door_plate | Niche: cottagecore | Variantes: 15 | ID: stl_2026-05-29
+  → Génération 7/9 [pool]: coaster + botanical
+    ✗ Erreur (rc=1): [STL CdC] Type: coaster | Niche: botanical | Variantes: 15 | ID: stl_2026-05-29
 [STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
 [brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
 [brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
 [brain_utils] stl_cdc → groq (attempt 1)
 [brain_utils] groq error: GROQ_API_KEY not set
 [brain_utils] stl_cdc → mistral (attempt 1)
 [brain_utils] mistral error: MISTRAL_API_KEY not set
 [brain_utils] All providers failed for stl_cdc
 [STL CdC] Échec LLM — aucune réponse.
-  → Génération 4/5: door_plate + dnd
-    ✗ Erreur (rc=1): [STL CdC] Type: door_plate | Niche: dnd | Variantes: 15 | ID: stl_2026-05-29
+  → Génération 8/9 [pool]: bookmark + witchy
+    ✗ Erreur (rc=1): [STL CdC] Type: bookmark | Niche: witchy | Variantes: 15 | ID: stl_2026-05-29
 [STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
 [brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
 [brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
 [brain_utils] stl_cdc → groq (attempt 1)
 [brain_utils] groq error: GROQ_API_KEY not set
 [brain_utils] stl_cdc → mistral (attempt 1)
 [brain_utils] mistral error: MISTRAL_API_KEY not set
 [brain_utils] All providers failed for stl_cdc
 [STL CdC] Échec LLM — aucune réponse.
-  → Génération 5/5: plant_marker + botanical
-    ✗ Erreur (rc=1): [STL CdC] Type: plant_marker | Niche: botanical | Variantes: 15 | ID: stl_2026-05-29
+  → Génération 9/9 [pool]: plant_marker + witchy
+    ✗ Erreur (rc=1): [STL CdC] Type: plant_marker | Niche: witchy | Variantes: 15 | ID: stl_2026-05-29
 [STL CdC] Appel LLM Gemini (génération CdC complet, 15 variantes)...
 [brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 60s puis retry
 [brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
+[brain_utils] gemini 429 rate-limit → attente 120s puis retry
+[brain_utils] stl_cdc → gemini (attempt 3)
+[brain_utils] gemini HTTP 429: HTTP Error 429: Too Many Requests
 [brain_utils] stl_cdc → groq (attempt 1)
 [brain_utils] groq error: GROQ_API_KEY not set
 [brain_utils] stl_cdc → mistral (attempt 1)
 [brain_utils] mistral error: MISTRAL_API_KEY not set
 [brain_utils] All providers failed for stl_cdc
 [STL CdC] Échec LLM — aucune réponse.
-  → 0 CdC générés pour stl
-
-[Queue] ── LOWCONTENT ──
-  Pending: 1/10 | À générer: 5
-  → Génération 1/5: planner + gardening
-    ✗ Erreur (rc=1): [CdC Low-Content] Type: planner | Thème: gardening | Audience: adults
-[CdC Low-Content] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Low-Content] Échec LLM.
-  → Génération 2/5: tracker + bird_watching
-    ✗ Erreur (rc=1): [CdC Low-Content] Type: tracker | Thème: bird_watching | Audience: adults
-[CdC Low-Content] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Low-Content] Échec LLM.
-  → Génération 3/5: journal + camping
-    ✗ Erreur (rc=1): [CdC Low-Content] Type: journal | Thème: camping | Audience: adults
-[CdC Low-Content] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Low-Content] Échec LLM.
-  → Génération 4/5: tracker + budget
-    ✗ Erreur (rc=1): [CdC Low-Content] Type: tracker | Thème: budget | Audience: adults
-[CdC Low-Content] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Low-Content] Échec LLM.
-  → Génération 5/5: journal + creativity
-    ✗ Erreur (rc=1): [CdC Low-Content] Type: journal | Thème: creativity | Audience: adults
-[CdC Low-Content] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Low-Content] Échec LLM.
-  → 0 CdC générés pour lowcontent
-
-[Queue] ── JEUX_SOCIETE ──
-  Pending: 0/10 | À générer: 5
-  → Génération 1/5: board_game + gestion de ferme cozy + resource management
-    ✗ Erreur (rc=1): [CdC Jeu] Type: board_game | Thème: gestion de ferme cozy | Mécanique: resource management | Langue: fr
-[CdC Jeu] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Jeu] Échec LLM.
-  → Génération 2/5: board_game + gestion de ferme cozy + resource management
-    ✗ Erreur (rc=1): [CdC Jeu] Type: board_game | Thème: gestion de ferme cozy | Mécanique: resource management | Langue: fr
-[CdC Jeu] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Jeu] Échec LLM.
-  → Génération 3/5: card_game + dark humor pompiers + questions réponses
-    ✗ Erreur (rc=1): [CdC Jeu] Type: card_game | Thème: dark humor pompiers | Mécanique: questions réponses | Langue: fr
-[CdC Jeu] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Jeu] Échec LLM.
-  → Génération 4/5: board_game + exploration fantasy medieval + tile placement
-    ✗ Erreur (rc=1): [CdC Jeu] Type: board_game | Thème: exploration fantasy medieval | Mécanique: tile placement | Langue: fr
-[CdC Jeu] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Jeu] Échec LLM.
-  → Génération 5/5: board_game + gestion de ferme cozy + resource management
-    ✗ Erreur (rc=1): [CdC Jeu] Type: board_game | Thème: gestion de ferme cozy | Mécanique: resource management | Langue: fr
-[CdC Jeu] Appel LLM...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Jeu] Échec LLM.
-  → 0 CdC générés pour jeux_societe
-
-[Queue] ── ROMAN ──
-  Pending: 0/10 | À générer: 5
-  → Génération 1/5: romance + fake_dating + en
-    ✗ Erreur (rc=1): [CdC Roman] Genre: romance | Sous-genre: fake_dating | Langue: en
-[CdC Roman] Appel LLM (génération CdC complet)...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Roman] Échec LLM.
-  → Génération 2/5: romance + enemies_to_lovers + en
-    ✗ Erreur (rc=1): [CdC Roman] Genre: romance | Sous-genre: enemies_to_lovers | Langue: en
-[CdC Roman] Appel LLM (génération CdC complet)...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Roman] Échec LLM.
-  → Génération 3/5: paranormal_romance + fated_mates + en
-    ✗ Erreur (rc=1): [CdC Roman] Genre: paranormal_romance | Sous-genre: fated_mates | Langue: en
-[CdC Roman] Appel LLM (génération CdC complet)...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Roman] Échec LLM.
-  → Génération 4/5: mystery + cozy_amateur_sleuth + en
-    ✗ Erreur (rc=1): [CdC Roman] Genre: mystery | Sous-genre: cozy_amateur_sleuth | Langue: en
-[CdC Roman] Appel LLM (génération CdC complet)...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Roman] Échec LLM.
-  → Génération 5/5: paranormal_romance + fated_mates + en
-    ✗ Erreur (rc=1): [CdC Roman] Genre: paranormal_romance | Sous-genre: fated_mates | Langue: en
-[CdC Roman] Appel LLM (génération CdC complet)...
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Roman] Échec LLM.
-  → 0 CdC générés pour roman
-
-[Queue] ── MERCH_DESIGN ──
-  Pending: 0/10 | À générer: 5
-  → Génération 1/5: sarcastic motivational anti-hustle quotes + bold typography flat
-    ✗ Erreur (rc=1): [Merch CdC] Concept: 'sarcastic motivational anti-hustle quotes' | Designs: 30 | Style: bold typography flat | Langue: en | ID: merch_2026-05-29
-[Merch CdC] Appel LLM Gemini (génération CdC complet, 30 designs)...
-[brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] stl_cdc → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for stl_cdc
-[Merch CdC] Échec LLM — aucune réponse reçue.
-  → Génération 2/5: dark humor nurses profession quotes + bold typography minimal
-    ✗ Erreur (rc=1): [Merch CdC] Concept: 'dark humor nurses profession quotes' | Designs: 30 | Style: bold typography minimal | Langue: en | ID: merch_2026-05-29
-[Merch CdC] Appel LLM Gemini (génération CdC complet, 30 designs)...
-[brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] stl_cdc → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for stl_cdc
-[Merch CdC] Échec LLM — aucune réponse reçue.
-  → Génération 3/5: bookworm bibliophile literary humor + vintage illustration
-    ✗ Erreur (rc=1): [Merch CdC] Concept: 'bookworm bibliophile literary humor' | Designs: 30 | Style: vintage illustration | Langue: en | ID: merch_2026-05-29
-[Merch CdC] Appel LLM Gemini (génération CdC complet, 30 designs)...
-[brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] stl_cdc → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for stl_cdc
-[Merch CdC] Échec LLM — aucune réponse reçue.
-  → Génération 4/5: world proverbs translated to english funny literal illustration + flat colorful illustration
-    ✗ Erreur (rc=1): [Merch CdC] Concept: 'world proverbs translated to english funny literal illustration' | Designs: 30 | Style: flat colorful illustration | Langue: en | ID: merch_2026-05-29
-[Merch CdC] Appel LLM Gemini (génération CdC complet, 30 designs)...
-[brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] stl_cdc → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for stl_cdc
-[Merch CdC] Échec LLM — aucune réponse reçue.
-  → Génération 5/5: coffee addiction morning survival quotes + retro bold typography
-    ✗ Erreur (rc=1): [Merch CdC] Concept: 'coffee addiction morning survival quotes' | Designs: 30 | Style: retro bold typography | Langue: en | ID: merch_2026-05-29
-[Merch CdC] Appel LLM Gemini (génération CdC complet, 30 designs)...
-[brain_utils] stl_cdc → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stl_cdc → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] stl_cdc → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for stl_cdc
-[Merch CdC] Échec LLM — aucune réponse reçue.
-  → 0 CdC générés pour merch_design
-
-[Queue] ── GODOT_ASSETS ──
-  Pending: 0/10 | À générer: 5
-  → Génération 1/5: tileset + sci-fi space station interior
-    ✗ Erreur (rc=1): [CdC Godot] Type: tileset | Thème: sci-fi space station interior | 30 assets
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Godot] Échec LLM.
-  → Génération 2/5: ui_kit + horror dark gothic interface
-    ✗ Erreur (rc=1): [CdC Godot] Type: ui_kit | Thème: horror dark gothic interface | 30 assets
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Godot] Échec LLM.
-  → Génération 3/5: addon + dialogue system visual novel
-    ✗ Erreur (rc=1): [CdC Godot] Type: addon | Thème: dialogue system visual novel | 30 assets
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Godot] Échec LLM.
-  → Génération 4/5: tileset + sci-fi space station interior
-    ✗ Erreur (rc=1): [CdC Godot] Type: tileset | Thème: sci-fi space station interior | 30 assets
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Godot] Échec LLM.
-  → Génération 5/5: shader_pack + pixel art retro crt effects
-    ✗ Erreur (rc=1): [CdC Godot] Type: shader_pack | Thème: pixel art retro crt effects | 30 assets
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Godot] Échec LLM.
-  → 0 CdC générés pour godot_assets
-
-[Queue] ── MOBILE_GAMES ──
-  Pending: 0/10 | À générer: 5
-  → Génération 1/5: hyper_casual + color sorting calming
-    ✗ Erreur (rc=1): [CdC Mobile Games] Genre: hyper_casual | Niche: color sorting calming
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Games] LLM call failed.
-  → Génération 2/5: hyper_casual + brain training reflex
-    ✗ Erreur (rc=1): [CdC Mobile Games] Genre: hyper_casual | Niche: brain training reflex
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Games] LLM call failed.
-  → Génération 3/5: platformer + retro pixel art adventure
-    ✗ Erreur (rc=1): [CdC Mobile Games] Genre: platformer | Niche: retro pixel art adventure
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Games] LLM call failed.
-  → Génération 4/5: hyper_casual + satisfying merge puzzle
-    ✗ Erreur (rc=1): [CdC Mobile Games] Genre: hyper_casual | Niche: satisfying merge puzzle
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Games] LLM call failed.
-  → Génération 5/5: hyper_casual + color sorting calming
-    ✗ Erreur (rc=1): [CdC Mobile Games] Genre: hyper_casual | Niche: color sorting calming
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Games] LLM call failed.
-  → 0 CdC générés pour mobile_games
-
-[Queue] ── MOBILE_APPS ──
-  Pending: 0/10 | À générer: 5
-  → Génération 1/5: creativity + daily writing prompt journal
-    ✗ Erreur (rc=1): [CdC Mobile Apps] Category: creativity | Niche: daily writing prompt journal
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Apps] LLM call failed.
-  → Génération 2/5: health + water intake reminder gentle
-    ✗ Erreur (rc=1): [CdC Mobile Apps] Category: health | Niche: water intake reminder gentle
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Apps] LLM call failed.
-  → Génération 3/5: creativity + daily writing prompt journal
-    ✗ Erreur (rc=1): [CdC Mobile Apps] Category: creativity | Niche: daily writing prompt journal
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Apps] LLM call failed.
-  → Génération 4/5: tools + password manager offline
-    ✗ Erreur (rc=1): [CdC Mobile Apps] Category: tools | Niche: password manager offline
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Apps] LLM call failed.
-  → Génération 5/5: health + breathing exercise anxiety
-    ✗ Erreur (rc=1): [CdC Mobile Apps] Category: health | Niche: breathing exercise anxiety
-[brain_utils] cdc_generator → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] cdc_generator → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] All providers failed for cdc_generator
-[CdC Mobile Apps] LLM call failed.
-  → 0 CdC générés pour mobile_apps
-
-[Queue] ── SVG_PACKS ──
-  Pending: 0/10 | À générer: 5
-  → Génération 1/5: seasonal + easter spring bunny
-    ✗ Erreur (rc=1): [CdC SVG] Type: seasonal | Niche: easter spring bunny | 20 éléments
-[brain_utils] stratege → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] stratege → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] All providers failed for stratege
-[CdC SVG] Échec LLM.
-  → Génération 2/5: quote_frame + motivational vintage banner
-    ✗ Erreur (rc=1): [CdC SVG] Type: quote_frame | Niche: motivational vintage banner | 20 éléments
-[brain_utils] stratege → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] stratege → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] All providers failed for stratege
-[CdC SVG] Échec LLM.
-  → Génération 3/5: seasonal + halloween gothic witch
-    ✗ Erreur (rc=1): [CdC SVG] Type: seasonal | Niche: halloween gothic witch | 20 éléments
-[brain_utils] stratege → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] stratege → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] All providers failed for stratege
-[CdC SVG] Échec LLM.
-  → Génération 4/5: bundle_mix + christmas holiday mega bundle
-    ✗ Erreur (rc=1): [CdC SVG] Type: bundle_mix | Niche: christmas holiday mega bundle | 20 éléments
-[brain_utils] stratege → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] stratege → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] All providers failed for stratege
-[CdC SVG] Échec LLM.
-  → Génération 5/5: seasonal + easter spring bunny
-    ✗ Erreur (rc=1): [CdC SVG] Type: seasonal | Niche: easter spring bunny | 20 éléments
-[brain_utils] stratege → gemini (attempt 1)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → gemini (attempt 2)
-[brain_utils] gemini timeout/network: HTTP Error 429: Too Many Requests
-[brain_utils] stratege → mistral (attempt 1)
-[brain_utils] mistral error: MISTRAL_API_KEY not set
-[brain_utils] stratege → groq (attempt 1)
-[brain_utils] groq error: GROQ_API_KEY not set
-[brain_utils] All providers failed for stratege
-[CdC SVG] Échec LLM.
-  → 0 CdC générés pour svg_packs
-
-[Queue Manager] ✓ Total généré: 0 nouveaux CdC
-
-[Queue] ══ ÉTAT DES FILES CdC ══
-  coloring     : 10 pending  ✓
-  stl          :  1 pending  ⚠ (1/10)
-  lowcontent   :  1 pending  ⚠ (1/10)
-  jeux_societe :  0 pending  ⚠ (0/10)
-  roman        :  0 pending  ⚠ (0/10)
-  merch_design :  0 pending  ⚠ (0/10)
-  godot_assets :  0 pending  ⚠ (0/10)
-  mobile_games :  0 pending  ⚠ (0/10)
-  mobile_apps  :  0 pending  ⚠ (0/10)
-  svg_packs    :  0 pending  ⚠ (0/10)
-  TOTAL        : 12 CdC disponibles pour Hugo
-
