@@ -48,7 +48,14 @@ def _call_gemini(system: str, user: str, temperature: float, max_tokens: int,
     if not key:
         raise ValueError("GEMINI_API_KEY not set")
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={key}"
-    gen_config = {"temperature": temperature, "maxOutputTokens": max_tokens}
+    gen_config = {
+        "temperature": temperature,
+        "maxOutputTokens": max_tokens,
+        # Gemini 2.5-flash dépense des tokens de "thinking" qui mangent le budget
+        # de sortie et tronquent les gros JSON (STL 15 variantes, merch 30 designs…).
+        # thinkingBudget=0 désactive le thinking → tout le budget va au JSON réel.
+        "thinkingConfig": {"thinkingBudget": 0},
+    }
     body = {
         "contents": [{"role": "user", "parts": [{"text": f"{system}\n\n{user}"}]}],
         "generationConfig": gen_config,
@@ -57,11 +64,19 @@ def _call_gemini(system: str, user: str, temperature: float, max_tokens: int,
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"}, method="POST")
     with urllib.request.urlopen(req, timeout=180) as resp:
         result = json.loads(resp.read())
-    candidate = result["candidates"][0]
+    candidates = result.get("candidates", [])
+    if not candidates:
+        raise ValueError(f"Gemini: aucune candidate (feedback={result.get('promptFeedback')})")
+    candidate = candidates[0]
     finish = candidate.get("finishReason", "STOP")
+    # Extraction robuste du texte : si pas de parts (ex: MAX_TOKENS sur thinking),
+    # on lève une erreur claire pour déclencher le fallback provider.
+    parts = candidate.get("content", {}).get("parts", [])
+    text = "".join(p.get("text", "") for p in parts)
+    if not text:
+        raise ValueError(f"Gemini: réponse vide (finishReason={finish})")
     if finish not in ("STOP", "MAX_TOKENS", "FINISH_REASON_STOP"):
         print(f"[brain_utils] Gemini finishReason={finish} (non bloquant)")
-    text = candidate["content"]["parts"][0]["text"]
     usage = result.get("usageMetadata", {})
     return text, usage.get("promptTokenCount", 0), usage.get("candidatesTokenCount", 0)
 

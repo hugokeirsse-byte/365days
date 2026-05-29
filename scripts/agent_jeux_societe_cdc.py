@@ -235,7 +235,7 @@ Le jeu doit être :
 5. Jouable dès l'impression, sans matériel supplémentaire coûteux"""
 
     print("[CdC Jeu] Appel LLM...")
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=8000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=12000)
 
     if not response:
         print("[CdC Jeu] Échec LLM.", file=sys.stderr)

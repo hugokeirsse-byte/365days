@@ -172,7 +172,7 @@ JSON uniquement."""
 Le pack doit être VENDABLE sur Itch.io face à la concurrence gratuite.
 L'élément unique doit justifier le prix."""
 
-    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=8000)
+    response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=12000)
     if not response:
         print("[CdC Godot] Échec LLM.", file=sys.stderr)
         sys.exit(1)
