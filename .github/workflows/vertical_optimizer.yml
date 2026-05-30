@@ -22,6 +22,10 @@ on:
           - jeux_societe
           - merch_design
           - godot_assets
+          - svg
+          - vintage_pd
+          - mobile_games
+          - mobile_apps
       dry_run:
         description: 'Dry run (analyse sans générer de CdC)'
         required: false

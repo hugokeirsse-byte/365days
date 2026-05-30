@@ -1,0 +1,12 @@
+{
+  "taraxacum_officinale_38": {
+    "id": "38",
+    "name": "Dandelion",
+    "latin": "Taraxacum officinale",
+    "source_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Taraxacum_officinale_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-135.jpg",
+    "description": "A powerful detox herb for the liver and a natural diuretic.",
+    "file": "taraxacum_officinale_38.jpg",
+    "collection": "kohler_medizinal",
+    "licence": "public_domain_pre_1928"
+  }
+}

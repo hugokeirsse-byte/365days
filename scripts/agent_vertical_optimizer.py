@@ -124,6 +124,56 @@ VERTICALS = {
         "platform": "Itch.io / Godot Asset Library",
         "product_description": "asset pack Godot 4 (sprites, tilesets, UI kits, shaders, addons)",
     },
+    "svg": {
+        "products_dir": "products/svg_packs",
+        "brain_dir": "data/brain/svg",
+        "cdc_script": "scripts/agent_svg_cdc.py",
+        "cdc_env_vars": {
+            "SVG_TYPE": "type_from_llm",
+            "SVG_NICHE": "niche_from_llm",
+            "SVG_NB_ELEMENTS": "20",
+        },
+        "audit_verdict_field": "VERDICT",
+        "platform": "Etsy Digital Downloads (Cricut/Silhouette)",
+        "product_description": "pack SVG cuttable pour Cricut/Silhouette",
+    },
+    "vintage_pd": {
+        "products_dir": "products/vintage_pd",
+        "brain_dir": "data/brain/vintage_pd",
+        "cdc_script": "scripts/agent_vintage_pd_cdc.py",
+        "cdc_env_vars": {
+            "VPD_COLLECTION": "collection_from_llm",
+            "VPD_SUJET": "sujet_from_llm",
+            "VPD_PRODUCT_TYPE": "coloring_page",
+        },
+        "audit_verdict_field": "VERDICT",
+        "platform": "KDP / Etsy / Printify / Redbubble",
+        "product_description": "produit dérivé d'illustration domaine public (Köhler, Audubon, Haeckel...)",
+    },
+    "mobile_games": {
+        "products_dir": "products/mobile_games",
+        "brain_dir": "data/brain/mobile_games",
+        "cdc_script": "scripts/agent_mobile_games_cdc.py",
+        "cdc_env_vars": {
+            "GAME_GENRE": "genre_from_llm",
+            "GAME_NICHE": "niche_from_llm",
+        },
+        "audit_verdict_field": "VERDICT",
+        "platform": "Google Play / App Store / Itch.io",
+        "product_description": "jeu mobile HTML5/Godot (hyper-casual, puzzle, idle)",
+    },
+    "mobile_apps": {
+        "products_dir": "products/mobile_apps",
+        "brain_dir": "data/brain/mobile_apps",
+        "cdc_script": "scripts/agent_mobile_apps_cdc.py",
+        "cdc_env_vars": {
+            "APP_CATEGORY": "category_from_llm",
+            "APP_NICHE": "niche_from_llm",
+        },
+        "audit_verdict_field": "VERDICT",
+        "platform": "Google Play / App Store",
+        "product_description": "app mobile utilitaire (productivité, bien-être, outils)",
+    },
 }
 
 
@@ -392,25 +442,39 @@ Apprends des échecs (REJECT) et capitalise sur les succès (APPROVE)."""
 
     env = os.environ.copy()
     for env_key, default_val in config["cdc_env_vars"].items():
-        # Mapper les paramètres LLM aux variables d'env
-        if "merch_concept" in env_key.lower():
-            env[env_key] = params.get("concept", params.get("theme", default_val))
-        elif "godot_type" in env_key.lower():
-            env[env_key] = params.get("type", params.get("type_asset", default_val))
-        elif "theme" in env_key.lower():
-            env[env_key] = params.get("theme", default_val)
-        elif "type" in env_key.lower() or "lc_type" in env_key.lower():
-            env[env_key] = params.get("type", default_val)
-        elif "niche" in env_key.lower():
-            env[env_key] = params.get("niche", default_val)
-        elif "audience" in env_key.lower():
-            env[env_key] = params.get("audience", default_val)
-        elif "genre" in env_key.lower():
-            env[env_key] = params.get("genre", params.get("theme", default_val))
-        elif "sous_genre" in env_key.lower():
+        key = env_key.lower()
+        # Valeur de repli concrète si le marqueur "_from_llm" traîne encore
+        fallback = default_val if not default_val.endswith("_from_llm") else ""
+        # Mapper les paramètres LLM aux variables d'env (ordre = spécifique → générique)
+        if "merch_concept" in key:
+            env[env_key] = params.get("concept", params.get("theme", fallback))
+        elif "godot_type" in key:
+            env[env_key] = params.get("type", params.get("type_asset", fallback))
+        elif "product_type" in key:
+            env[env_key] = params.get("product_type", fallback)
+        elif "collection" in key:
+            env[env_key] = params.get("collection", fallback)
+        elif "sujet" in key:
+            env[env_key] = params.get("sujet", params.get("niche", fallback))
+        elif "category" in key:
+            env[env_key] = params.get("category", params.get("type", fallback))
+        elif "theme" in key:
+            env[env_key] = params.get("theme", fallback)
+        elif "type" in key:
+            env[env_key] = params.get("type", fallback)
+        elif "niche" in key:
+            env[env_key] = params.get("niche", fallback)
+        elif "audience" in key:
+            env[env_key] = params.get("audience", fallback)
+        elif "genre" in key:
+            env[env_key] = params.get("genre", params.get("theme", fallback))
+        elif "sous_genre" in key:
             env[env_key] = params.get("sous_genre", "contemporary")
         else:
-            env[env_key] = default_val
+            env[env_key] = fallback
+        # Sécurité : ne jamais transmettre une chaîne vide (le script CdC a ses defaults)
+        if not env[env_key]:
+            del env[env_key]
 
     try:
         result = subprocess.run(

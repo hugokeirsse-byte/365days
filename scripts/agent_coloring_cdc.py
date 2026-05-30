@@ -16,7 +16,8 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
+from scripts.lib.brain_utils import (llm_call, extract_json, get_previous_propositions,
+                                      generate_preview_images, preview_markdown_section)
 
 COLORING_DIR = Path("products/coloring_books")
 
@@ -161,8 +162,13 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
     cdc_json.write_text(json.dumps(cdc, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[CdC Coloring] cdc.json -> {cdc_json}")
 
+    # Generate 5 preview images (only if GENERATE_PREVIEWS=1)
+    prompts_data = cdc.get("prompts_pollinations", {})
+    test_prompt = prompts_data.get("exemple_prompt_complet", "")
+    previews = generate_preview_images(test_prompt, out_dir / "previews", height=700)
+
     # Build human-readable CdC markdown
-    prompts = cdc.get("prompts_pollinations", {})
+    prompts = prompts_data
     pages_dist = cdc.get("pages_distribution", {})
     public = cdc.get("public_cible", {})
     kdp = cdc.get("kdp_listing", {})
@@ -286,6 +292,8 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
         "",
         f"*CdC genere le {today} — GATE: pending*",
     ]
+
+    md_lines += preview_markdown_section(previews)
 
     md_path = out_dir / "CAHIER_DES_CHARGES.md"
     md_path.write_text("\n".join(md_lines), encoding="utf-8")

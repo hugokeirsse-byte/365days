@@ -29,7 +29,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
+from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions, generate_preview_images, preview_markdown_section
 
 ROOT = Path(__file__).resolve().parent.parent
 SVG_DIR = ROOT / "products" / "svg_packs"
@@ -221,8 +221,75 @@ Fournis :
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "cdc.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    svg_preview_prompt = (data.get("prompts_pollinations") or [{}])[0].get("prompt", "")
+    previews = generate_preview_images(svg_preview_prompt, out_dir / "previews", width=512, height=512)
+
     elements = data.get("elements", [])
     listing = data.get("listing_etsy", {})
+    concept = data.get("concept", {})
+    specs = data.get("specs_techniques", {})
+    checklist = data.get("checklist_upload", [])
+
+    md_lines = [
+        f"# {listing.get('titre', concept.get('titre_etsy', 'SVG Pack'))}",
+        "",
+        f"> **ID:** `{data.get('id', svg_id)}` | **Date:** {data.get('date', '')} | **Gate:** `{data.get('gate_cdc', 'pending')}`",
+        "",
+        "## Concept",
+        "",
+        f"**Type:** {data.get('type_pack', svg_type)}  |  **Niche:** {data.get('niche', svg_niche)}",
+        f"**Style visuel:** {concept.get('style_visuel', '')}",
+        f"**Machine cible:** {concept.get('machine_cible', spec.get('machine', ''))}",
+        "",
+        "## Listing Etsy",
+        "",
+        f"**Titre:** {listing.get('titre', '')}",
+        f"**Prix:** ${listing.get('prix_usd', '?')} USD",
+        f"**Tags:** {', '.join(listing.get('tags', []))}",
+        "",
+        f"> {listing.get('description', '')}",
+        "",
+        "## Specs techniques",
+        "",
+        f"**Nb éléments:** {specs.get('nb_elements', nb_elements)}",
+        f"**Formats:** {', '.join(specs.get('format_livraison', ['SVG']))}",
+        f"**ViewBox:** {specs.get('taille_recommandee', '')}",
+        f"**Stroke width:** {specs.get('stroke_width', '')}",
+        f"**Compatibilité DXF:** {'Oui' if specs.get('compatibilite_dxf') else 'Non'}",
+        "",
+        "## Éléments du pack",
+        "",
+        "| # | Nom | Description | Outil | Complexité |",
+        "|---|---|---|---|---|",
+    ]
+    for i, el in enumerate(elements, 1):
+        nom = el.get("nom", "").replace("|", "\\|")
+        desc = el.get("description", "").replace("|", "\\|")
+        outil = el.get("outil_production", "").replace("|", "\\|")
+        complexite = el.get("complexite", "")
+        md_lines.append(f"| {i} | {nom} | {desc} | {outil} | {complexite} |")
+
+    md_lines += [
+        "",
+        "## Checklist upload",
+        "",
+    ]
+    for item in checklist:
+        md_lines.append(f"- {item}")
+
+    md_lines += [
+        "",
+        "---",
+        "",
+        f"**Stratégie:** {data.get('strategie', '')}",
+        "",
+        "> **GATE: pending** — Hugo valide, puis production SVG.",
+    ]
+
+    md_lines += preview_markdown_section(previews)
+
+    (out_dir / "CAHIER_DES_CHARGES.md").write_text("\n".join(md_lines), encoding="utf-8")
+
     print(f"[CdC SVG] ✓ → {out_dir}/cdc.json")
     print(f"  Titre Etsy : {listing.get('titre', '')[:70]}")
     print(f"  Prix : ${listing.get('prix_usd', '?')} | {len(elements)} éléments")

@@ -1,7 +1,10 @@
-name: Mobile Games — Production scaffold depuis CdC approuvé
+name: Mobile Games — Production depuis CdC approuvé
 
 # Déclenché quand Hugo approuve un CdC mobile_games (gate_cdc = approved)
-# Génère le scaffold du projet : README, STORE_LISTING, project_structure, entry point
+# Routage automatique :
+#   → genres pure-code (text_rpg, escape_puzzle, sliding_puzzle, roguelike_text,
+#     puzzle_narrative, turn_based_rpg) → produce_mobile_game_godot.py (jeu complet)
+#   → autres genres → produce_mobile_game_scaffold.py (scaffold + doc)
 
 on:
   push:
@@ -10,7 +13,7 @@ on:
   workflow_dispatch:
     inputs:
       game_dir:
-        description: 'Dossier du jeu spécifique (ex: products/mobile_games/game_2026-05-28_puzzle_...). Vide = auto-détecte dernier approuvé.'
+        description: "Dossier du jeu spécifique (ex: products/mobile_games/game_2026-05-28_puzzle_...). Vide = auto-détecte dernier approuvé."
         required: false
         default: ''
 
@@ -62,31 +65,85 @@ jobs:
       - name: Créer répertoires
         run: mkdir -p products/mobile_games data/logs
 
-      - name: Générer le scaffold du jeu mobile
+      - name: Router — détecter genre et choisir le générateur
+        id: router
+        run: |
+          GAME_DIR="${{ github.event.inputs.game_dir }}"
+          if [ -z "$GAME_DIR" ]; then
+            GAME_DIR=$(find products/mobile_games -name cdc.json 2>/dev/null | python3 -c "
+          import json, sys
+          for f in sys.stdin.read().splitlines():
+              if not f.strip(): continue
+              try:
+                  d = json.load(open(f.strip()))
+                  if d.get('gate_cdc') == 'approved' and not d.get('production_status'):
+                      print(f.strip().replace('/cdc.json', ''))
+                      break
+              except: pass
+          " 2>/dev/null || echo "")
+          fi
+          echo "game_dir=$GAME_DIR" >> $GITHUB_OUTPUT
+
+          PURE_CODE_GENRES="text_rpg roguelike_text escape_puzzle sliding_puzzle puzzle_narrative turn_based_rpg"
+          GENRE=""
+          if [ -n "$GAME_DIR" ] && [ -f "$GAME_DIR/cdc.json" ]; then
+            GENRE=$(python3 -c "import json; d=json.load(open('$GAME_DIR/cdc.json')); print(d.get('concept',{}).get('genre',''))" 2>/dev/null || echo "")
+          fi
+
+          if echo "$PURE_CODE_GENRES" | grep -qw "$GENRE"; then
+            echo "script=godot" >> $GITHUB_OUTPUT
+            echo "→ Genre '$GENRE' → Godot 4 pur code (jeu complet)"
+          else
+            echo "script=scaffold" >> $GITHUB_OUTPUT
+            echo "→ Genre '$GENRE' → scaffold classique"
+          fi
+
+      - name: Générer jeu Godot 4 complet (genres pure-code)
+        if: steps.router.outputs.script == 'godot'
+        run: python scripts/produce_mobile_game_godot.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GAME_DIR: ${{ steps.router.outputs.game_dir }}
+        timeout-minutes: 30
+
+      - name: Générer scaffold (autres genres)
+        if: steps.router.outputs.script == 'scaffold'
         run: python scripts/produce_mobile_game_scaffold.py
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
-          GAME_DIR: ${{ github.event.inputs.game_dir }}
+          GAME_DIR: ${{ steps.router.outputs.game_dir }}
         timeout-minutes: 15
 
-      - name: Commit scaffold généré
+      - name: Commit projet généré
         run: |
           git config user.name "Mobile Games Bot"
           git config user.email "mobile-games@365days.bot"
           git add products/mobile_games/
           git diff --staged --quiet && echo "Nothing to commit" || {
             SLUG=$(git diff --staged --name-only | head -1 | cut -d'/' -f3)
-            COUNT=$(git diff --staged --name-only | grep -E "\.(md|gd|js|dart|tsx|html)$" | wc -l)
-            git commit -m "mobile_games: ${SLUG} — scaffold généré (${COUNT} fichiers)"
+            COUNT=$(git diff --staged --name-only | grep -E "\.(md|gd|js|dart|cfg|godot)$" | wc -l)
+            SCRIPT="${{ steps.router.outputs.script }}"
+            if [ "$SCRIPT" = "godot" ]; then
+              git commit -m "mobile_games: ${SLUG} — jeu Godot 4 complet (${COUNT} fichiers)"
+              echo ""
+              echo "════════════════════════════════════════════════════"
+              echo "  JEU GODOT 4 COMPLET GÉNÉRÉ"
+              echo "════════════════════════════════════════════════════"
+              echo "  → products/mobile_games/${SLUG}/"
+              echo "  → project.godot  — ouvrir dans Godot 4"
+              echo "  → main.gd        — point d'entrée principal"
+              echo "  → game_logic.gd  — logique de jeu complète"
+              echo "  → export_presets.cfg — config Android/iOS"
+            else
+              git commit -m "mobile_games: ${SLUG} — scaffold généré (${COUNT} fichiers)"
+              echo ""
+              echo "════════════════════════════════════════════════════"
+              echo "  SCAFFOLD MOBILE GAME PRÊT"
+              echo "════════════════════════════════════════════════════"
+              echo "  → products/mobile_games/${SLUG}/"
+              echo "  → README.md + STORE_LISTING.md"
+            fi
             git push
-            echo ""
-            echo "════════════════════════════════════════════════════"
-            echo "  SCAFFOLD MOBILE GAME PRÊT"
-            echo "════════════════════════════════════════════════════"
-            echo "  → Voir products/mobile_games/${SLUG}/"
-            echo "  → README.md pour les instructions de développement"
-            echo "  → STORE_LISTING.md pour la soumission App Store/Play"
-            echo "  → project_structure.md pour l'arborescence du projet"
           }

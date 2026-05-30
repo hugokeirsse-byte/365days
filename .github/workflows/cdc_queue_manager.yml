@@ -52,6 +52,11 @@ on:
         required: false
         default: 'false'
         type: boolean
+      generate_previews:
+        description: 'Générer 5 images aperçu par CdC visuel (coloring/merch/svg) — plus lent'
+        required: false
+        default: 'false'
+        type: boolean
 
 concurrency:
   group: cdc-queue-${{ github.ref }}
@@ -78,10 +83,10 @@ jobs:
       - name: Créer répertoires produits
         run: |
           mkdir -p products/coloring_books products/stl_3d products/lowcontent_kdp products/novels
-          mkdir -p products/jeux_societe products/merch products/godot_assets
+          mkdir -p products/jeux_societe products/merch products/game_assets
           mkdir -p products/mobile_games products/mobile_apps products/svg_packs products/vintage_pd
           mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman
-          mkdir -p data/brain/jeux_societe data/brain/merch data/brain/godot
+          mkdir -p data/brain/jeux_societe data/brain/merch data/brain/game_assets
           mkdir -p data/brain/mobile_games data/brain/mobile_apps data/brain/svg data/brain/vintage_pd
           mkdir -p data/reports
 
@@ -105,6 +110,7 @@ jobs:
           TARGET: ${{ github.event.inputs.target || '10' }}
           MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '10' }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+          GENERATE_PREVIEWS: ${{ github.event.inputs.generate_previews == 'true' && '1' || '0' }}
 
       - name: Commit nouveaux CdC
         if: ${{ always() && github.event.inputs.dry_run != 'true' }}

@@ -25,7 +25,8 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
+from scripts.lib.brain_utils import (llm_call, extract_json, get_previous_propositions,
+                                      generate_preview_images, preview_markdown_section)
 
 MERCH_DIR = Path("products/merch")
 
@@ -58,7 +59,7 @@ def _strip_json_fences(text: str) -> str:
     return clean
 
 
-def _write_markdown(out_dir: Path, cdc: dict) -> None:
+def _write_markdown(out_dir: Path, cdc: dict, previews: list = None) -> None:
     """Write human-readable CAHIER_DES_CHARGES.md."""
     ct = cdc.get("concept_theme", {})
     sv = cdc.get("style_visuel", {})
@@ -154,6 +155,8 @@ def _write_markdown(out_dir: Path, cdc: dict) -> None:
         "",
         "> **GATE: pending** — Hugo valide, puis `produce_merch_designs.py` génère les images.",
     ]
+
+    lines += preview_markdown_section(previews or [])
 
     (out_dir / "CAHIER_DES_CHARGES.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"[Merch CdC] CAHIER_DES_CHARGES.md écrit ({len(designs)} designs)")
@@ -327,8 +330,12 @@ Generate ALL {nb_designs} entries in the designs array. Each must be unique, cre
     cdc_path.write_text(json.dumps(cdc, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[Merch CdC] cdc.json écrit : {cdc_path}")
 
-    # Write markdown
-    _write_markdown(out_dir, cdc)
+    # Generate 5 preview images (only if GENERATE_PREVIEWS=1)
+    first_design_prompt = cdc.get("designs", [{}])[0].get("prompt_pollinations", "")
+    previews = generate_preview_images(first_design_prompt, out_dir / "previews", width=512, height=512)
+
+    # Write markdown (passing previews so section is included)
+    _write_markdown(out_dir, cdc, previews)
 
     print()
     print(f"  Collection : {titre}")
