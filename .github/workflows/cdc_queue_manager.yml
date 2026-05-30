@@ -83,10 +83,10 @@ jobs:
       - name: Créer répertoires produits
         run: |
           mkdir -p products/coloring_books products/stl_3d products/lowcontent_kdp products/novels
-          mkdir -p products/jeux_societe products/merch products/godot_assets
+          mkdir -p products/jeux_societe products/merch products/game_assets
           mkdir -p products/mobile_games products/mobile_apps products/svg_packs products/vintage_pd
           mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman
-          mkdir -p data/brain/jeux_societe data/brain/merch data/brain/godot
+          mkdir -p data/brain/jeux_societe data/brain/merch data/brain/game_assets
           mkdir -p data/brain/mobile_games data/brain/mobile_apps data/brain/svg data/brain/vintage_pd
           mkdir -p data/reports
 
