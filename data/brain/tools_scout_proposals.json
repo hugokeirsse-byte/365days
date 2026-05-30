@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-29T07:47:41.328975Z",
+  "timestamp": "2026-05-30T05:58:22.915588Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -100,6 +100,7 @@
     "agent_gemini_quality_check",
     "agent_godot_cdc",
     "agent_godot_trends",
+    "agent_gold_mines",
     "agent_idea_injector",
     "agent_ideator_offline",
     "agent_jeux_societe_cdc",
@@ -131,86 +132,88 @@
     "agent_trend_explosion",
     "agent_trendhunter",
     "agent_vertical_optimizer",
+    "agent_vintage_pd_cdc",
+    "agent_vintage_pd_trends",
     "agent_visual_audit",
     "agent_winner_amplifier"
   ],
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Jina AI Reader API",
-      "url": "https://jina.ai/reader/",
-      "category": "scraping",
-      "free_tier_concrete_limits": "1,000,000 free tokens per month via simple HTTP header authentication.",
-      "what_it_does_uniquely": "Converts any URL (including JS-heavy dynamic pages) into clean, LLM-friendly Markdown. Bypassess standard cloud scraping blocks effortlessly.",
-      "would_integrate_where": "GitHub Actions trend-hunting pipelines (`agent_trendhunter` / `agent_opportunity_hunter`). Allows scraping e-commerce bestseller lists directly into Gemini 2.5 Flash without headless browser overhead.",
+      "tool_or_platform": "Fal.ai (FLUX.1-schnell API)",
+      "url": "https://fal.ai/models/fal-ai/flux/schnell",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "15$ free credit upon registration, images cost ~$0.003 each (equivalent to ~5,000 free high-quality images, no credit card required initially).",
+      "what_it_does_uniquely": "Provides ultra-fast, commercial-use FLUX.1-schnell generation with exceptional prompt adherence and crisp vector-like output, far superior to Pollinations.",
+      "would_integrate_where": "Can be integrated directly into 'produce_coloring_book' and 'produce_merch_designs' scripts running in GitHub Actions using a simple HTTP POST request with the 'FAL_KEY' secret.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Subject to rate limits if burst-called; some highly protected sites (like Amazon) might require custom headers or premium proxies."
+      "risk_or_caveat": "Once the initial $15 credit is exhausted, it requires a pay-as-you-go top-up, though costs remain extremely low."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "No monthly fee. 5% + $0.50 per transaction fee. Unlimited products, hosting, and bandwidth.",
-      "what_it_does_uniquely": "Acts as a Merchant of Record (MoR). They automatically calculate, collect, and remit EU VAT (crucial for Hugo in France) and global sales taxes, removing 100% of accounting overhead for digital files.",
-      "would_integrate_where": "Direct sale of consolidated asset bundles (STL packs, gamedev assets, PDF book compilations) compiled by GitHub Actions and hosted/delivered automatically.",
+      "tool_or_platform": "Kittl (Free Tier)",
+      "url": "https://www.kittl.com/",
+      "category": "pod",
+      "free_tier_concrete_limits": "15 free credits per day, access to vector export tools and commercial license under free tier attributes.",
+      "what_it_does_uniquely": "An advanced AI-powered design platform tailored specifically for POD merchandise, permitting quick generation of t-shirt layouts, text-effects, and vectorization.",
+      "would_integrate_where": "Used manually by Hugo on his Android phone browser to quickly package, vectorize, and polish raw AI images generated via GitHub Actions before uploading to Redbubble.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Payouts require reaching a minimum threshold; strict policy against copyright-infringing content."
+      "risk_or_caveat": "Requires attribution under the free tier; SVG export is sometimes restricted to premium, but high-res PNG export is free."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Fab Marketplace (Epic Games)",
-      "url": "https://www.fab.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list. Epic Games takes a 12% revenue share (you keep 88%). No upfront fees.",
-      "what_it_does_uniquely": "Unified successor to Unreal Engine Marketplace, Sketchfab, and Quixel. Massive built-in audience of game developers looking for 3D models, 2D textures, and UI assets.",
-      "would_integrate_where": "Pipeline `produce_gamedev_asset_pack` or `produce_stl_parametric` to auto-package and target gamedevs alongside itch.io.",
+      "tool_or_platform": "Vectorizer.ai (via API or Web Interface)",
+      "url": "https://vectorizer.ai/",
+      "category": "dev_tool",
+      "free_tier_concrete_limits": "Free interactive web use; API offers a trial quota of credits upon email verification.",
+      "what_it_does_uniquely": "Converts pixel-art or raster coloring book pages (PNG/JPG) into true mathematical vector SVG format with unmatched precision, essential for high-quality KDP and SVG pack sales.",
+      "would_integrate_where": "Could be integrated into 'produce_svg_pack' or used manually to convert GitHub-generated coloring pages into high-end print-ready vector PDFs.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "High quality standards. Manual review process for first-time sellers can take several days."
+      "risk_or_caveat": "Fully automated API usage eventually requires payment, but the manual web interface remains highly accessible for batch processing."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Glif API",
-      "url": "https://glif.app/",
-      "category": "ai_image",
-      "free_tier_concrete_limits": "Generous daily free 'energy' tokens (~50-100 runs per day depending on the model used).",
-      "what_it_does_uniquely": "Allows building and calling micro-workflows (combining LLMs, ControlNet, FLUX, and SDXL) via a single API call. Excellent for specialized styling (e.g., turning sketches into clean vector-like line art).",
-      "would_integrate_where": "Pipeline `produce_coloring_book` or `produce_svg_pack` to generate clean, high-contrast black and white vector-like assets directly from text prompts.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Public runs on the free tier can be visible on their community feed; API schema changes occasionally."
+      "tool_or_platform": "Draft2Digital",
+      "url": "https://www.draft2digital.com/",
+      "category": "marketplace",
+      "free_tier_concrete_limits": "100% free to publish; they take a 10% cut of the retail price only when a sale is made.",
+      "what_it_does_uniquely": "Distributes ebooks and paperbacks to dozens of stores simultaneously (Barnes & Noble, Apple Books, Kobo, Scribd) from a single upload dashboard, expanding reach far beyond KDP.",
+      "would_integrate_where": "Pipeline 'produce_chess_book' or 'produce_roman_chapters' can output formatted EPUBs to be uploaded here to automate multi-channel book distribution.",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Formatting requirements are strict; covers must be precisely sized to avoid automated rejection during ingestion."
     },
     {
       "rank": 5,
-      "tool_or_platform": "Thangs",
-      "url": "https://thangs.com/",
+      "tool_or_platform": "OpenGameArt.org",
+      "url": "https://opengameart.org/",
       "category": "marketplace",
-      "free_tier_concrete_limits": "Free to list digital files. Optional membership program with 15% platform fee for paid downloads.",
-      "what_it_does_uniquely": "A rapidly growing 3D model search engine and community marketplace. Features geometric search, making it easier for custom OpenSCAD/STL designs to be discovered organically than on Cults3D.",
-      "would_integrate_where": "Pipeline `produce_stl_openscad` and `produce_stl_parametric`. Direct upload of generated STL configurations.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Heavily focused on functional and pop-culture 3D printing; pure artistic models have lower conversion rates."
+      "free_tier_concrete_limits": "100% free to upload, list, and showcase assets with no listing fees.",
+      "what_it_does_uniquely": "The largest repository for open-source and public domain gamedev assets; serves as an excellent traffic redirector to paid premium asset packs on itch.io or Cults3D.",
+      "would_integrate_where": "In 'produce_gamedev_asset_pack', Hugo can upload a 'Lite' version of a 2D tilemap or 3D low-poly pack here, with a README link pointing to his premium packs.",
+      "novelty_2026_1_10": 6,
+      "risk_or_caveat": "Licensing must be clearly specified (e.g., CC-BY or CC0) to prevent community backlash regarding AI-generated assets."
     },
     {
       "rank": 6,
-      "tool_or_platform": "Kokoro-82M TTS (via HF Spaces API)",
-      "url": "https://huggingface.co/hexgrad/Kokoro-82M",
-      "category": "ai_audio",
-      "free_tier_concrete_limits": "100% free open-source model. Zero-cost usage when run via public Hugging Face Spaces API endpoints.",
-      "what_it_does_uniquely": "An incredibly lightweight (82M parameters) text-to-speech model that rivals ElevenLabs in quality and emotional inflection, but can be run completely free and fast.",
-      "would_integrate_where": "Creating audio companions for KDP children's books or sound effects/narrations for game assets (`produce_mobile_game_scaffold`).",
-      "novelty_2026_1_10": 10,
-      "risk_or_caveat": "Requires Python integration to tap into Gradio/HF Space endpoints, which can occasionally go sleeping if inactive (requires a wake-up ping)."
+      "tool_or_platform": "SerpApi (Google Trends & Search API)",
+      "url": "https://serpapi.com/",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100 free searches per month.",
+      "what_it_does_uniquely": "Provides structured JSON data directly from Google Search, Google Images, and Google Trends without dealing with complex scraping blocks.",
+      "would_integrate_where": "Integrates into 'agent_trendhunter' or 'agent_merch_trends' to automatically extract rising search queries directly from GitHub Actions.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "100 requests per month is low, so searches must be highly targeted and cached to maximize efficiency."
     },
     {
       "rank": 7,
-      "tool_or_platform": "Serper.dev",
-      "url": "https://serper.dev/",
-      "category": "analytics",
-      "free_tier_concrete_limits": "2,500 free Google Search queries upon sign-up (no credit card required).",
-      "what_it_does_uniquely": "Provides lightning-fast, structured JSON search results from Google, including 'People Also Ask' questions and shopping results. Far more reliable than scraping Google raw.",
-      "would_integrate_where": "The niche analysis phase (`agent_niche_gap` / `agent_eclaireur_bestsellers`) to discover low-competition search terms and trends programmatically.",
-      "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Once the 2,500 free queries are exhausted, requires manual creation of a new free account or transitioning to their very cheap pay-as-you-go pricing ($1 per 1,000 queries)."
+      "tool_or_platform": "Luma Dream Machine API",
+      "url": "https://lumalabs.ai/dream-machine/api",
+      "category": "ai_audio",
+      "free_tier_concrete_limits": "Free credits on sign-up, scale-as-you-go model with low-cost entry tiers.",
+      "what_it_does_uniquely": "Generates highly realistic 3D assets, video clips, or spatial scenes from simple text or image prompts, opening up 3D asset generation workflows.",
+      "would_integrate_where": "Could be used in a future 'produce_3d_assets' pipeline to generate preview videos or marketing clips for Cults3D models automatically.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Heavy computational demand; API keys must be secured and call volume monitored closely to avoid unexpected usage."
     }
   ]
 }
