@@ -1,7 +1,7 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-29T07:47:58.148012Z",
+  "timestamp": "2026-05-30T05:58:21.617993Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -100,6 +100,7 @@
     "agent_gemini_quality_check",
     "agent_godot_cdc",
     "agent_godot_trends",
+    "agent_gold_mines",
     "agent_idea_injector",
     "agent_ideator_offline",
     "agent_jeux_societe_cdc",
@@ -131,98 +132,98 @@
     "agent_trend_explosion",
     "agent_trendhunter",
     "agent_vertical_optimizer",
+    "agent_vintage_pd_cdc",
+    "agent_vintage_pd_trends",
     "agent_visual_audit",
     "agent_winner_amplifier"
   ],
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Fragile Image Generation API Fallback Chain & Silent Crashes",
+      "issue_title": "Silent Failures in Image Generation with No Fallback Chain",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_kdp_cover",
+        "produce_coloring_from_cdc",
         "produce_merch_designs",
-        "produce_tumbler_wraps"
+        "produce_kdp_cover"
       ],
-      "current_pain_description": "Currently, HF is down, AI Horde is blocked by GitHub Actions IPs, and Gemini returns 429. If Pollinations or Together AI fails, the pipeline crashes mid-way, wasting workflow minutes and stopping Hugo's daily production completely.",
-      "proposed_fix": "Implement a robust pythonic API wrapper class (`FallbackImageGenerator`) with automated retries, exponential backoff, and a strict fallback hierarchy: 1. Runware (PAYG, high-quality FLUX), 2. Together AI (Free FLUX-schnell), 3. Cloudflare Workers AI (Free SDXL), 4. Pollinations (No-key fallback). Integrate this single client into all image pipelines.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Eliminates 95% of workflow failures due to API downtime, ensuring Hugo always gets a generated image.",
+      "current_pain_description": "GitHub Actions workflows crash or generate blank/corrupted assets when image generation endpoints (HF, Gemini, AI Horde) return 403, 429, or rate limits, wasting runner execution time without completing the product.",
+      "proposed_fix": "Implement a centralized Python helper class `ImageGeneratorFallback` imported by all image-producing pipelines. The helper attempts generation in a strict cascade: 1. Together AI (FLUX-schnell, free tier), 2. Cloudflare Workers AI (10k free neurons/day), 3. Pollinations (free fallback), 4. Runware (PAYG API key as absolute last resort). Wrap requests in robust retry blocks with exponential backoff.",
+      "estimated_implementation_hours_claude": 2.5,
+      "estimated_value_unlocked": "100% reduction in broken GitHub Action runs; saves Hugo's 10-hour weekly budget from manual debug tasks.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "Missing Quality Gate for AI-Generated Coloring Pages",
-      "category": "quality_bug",
+      "issue_title": "GitHub Actions API Quota & Run-Time Exceedance (Silent Ban Risk)",
+      "category": "security",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_coloring_from_cdc"
+        "agent_orchestrator",
+        "agent_auto_regen"
       ],
-      "current_pain_description": "Pollinations and raw models occasionally output images with grey shading, broken anatomy, double borders, or solid black fills, which are unsellable as coloring pages. Hugo has to manually inspect every image on his phone.",
-      "proposed_fix": "Add a post-generation validation step (`agent_gemini_quality_check`) using the free Gemini 2.5 Flash vision API. Gemini analyzes the generated image against strict criteria (no grayscale shading, closed clean black outlines, white background). If it fails, automatic regeneration is triggered with an adjusted prompt up to 3 times.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Saves hours of manual inspection time and prevents publishing low-quality, review-destroying books on Amazon KDP.",
+      "current_pain_description": "With over 50 agent pipelines and 30+ product pipelines, executing cron triggers too frequently or allowing long-running loops on GitHub Actions risks account suspension for resource abuse (violating GitHub Terms of Service on using actions as free compute servers).",
+      "proposed_fix": "Implement an execution budget controller in `agent_orchestrator`. Limit total daily run-time to 120 minutes across all workflows. Enforce strict timeouts (max 10 minutes per job) and verify that consecutive cron runs do not overlap by using a locks system stored in the repository's `.github/locks/` directory or GitHub cache.",
+      "estimated_implementation_hours_claude": 1.5,
+      "estimated_value_unlocked": "Eliminates the risk of account/repository ban which would completely halt the 365days project.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Git Bloat and Termux Storage Limits on Android",
-      "category": "code_quality",
+      "issue_title": "Manual Upload Bottleneck on Mobile-Only setup",
+      "category": "bottleneck",
       "affected_pipelines": [
+        "agent_publisher",
         "produce_coloring_book",
-        "produce_kdp_cover",
-        "produce_merch_designs",
-        "produce_tumbler_wraps"
+        "produce_lowcontent_kdp"
       ],
-      "current_pain_description": "Hugo works exclusively on an Android phone using Termux. Storing large generated PNG/PDF assets directly inside the GitHub repository will quickly inflate repository size, making `git pull` slow, resource-heavy, and prone to crashing Termux.",
-      "proposed_fix": "Modify the pipeline to avoid committing raw high-resolution output assets to the main branch. Instead, have GitHub Actions upload finalized PDFs/PNGs directly to a free-tier Cloudflare R2 bucket (10GB free/month) or as GitHub Release Assets, committing only the lightweight metadata JSON/CSV files to the repository.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Prevents Termux from running out of disk space/RAM and keeps git sync speeds fast on mobile connections.",
+      "current_pain_description": "Hugo only has an Android phone (Termux). Downloading large PDFs or high-resolution image ZIPs from GitHub artifacts to a mobile phone to manually upload them to KDP, Redbubble, and Cults3D is highly inefficient and prone to browser crashes.",
+      "proposed_fix": "Add a metadata-generation step in `agent_publisher` that generates optimized, copy-pasteable upload packages. For each product, write a single JSON/Markdown file containing: exact SEO titles, optimized descriptions, pre-formatted tags, and direct-download links to release assets. Deliver this directly to a private Telegram/Discord channel via webhook so Hugo can upload rapidly from his phone.",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Saves 15-20 minutes of tedious mobile-screen switching per product upload.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Manual Upload Bottleneck for KDP & Redbubble",
-      "category": "bottleneck",
+      "issue_title": "Lack of Automated Quality Auditing for AI-Generated Assets",
+      "category": "quality_bug",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_merch_designs",
-        "produce_lowcontent_kdp"
+        "produce_gamedev_asset_pack"
       ],
-      "current_pain_description": "Hugo has 10 hours a week. Generating 100 assets takes minutes on GHA, but uploading them manually via a mobile browser to KDP and Redbubble creates a massive bottleneck that stops him from reaching a 'live' state.",
-      "proposed_fix": "Create an automated 'Metadata Packager' at the end of every pipeline. This script must generate standard CSV templates pre-formatted for popular bulk upload tools (like Redbubble automation extensions or KDP bulk uploaders), along with organized ZIP files hosted on a direct download link, minimizing Hugo's manual input to simple copy-pastes.",
+      "current_pain_description": "AI models generate images with artifacts (e.g., grey gradients in coloring books, broken anatomy, or blurry lines). Currently, these are saved directly into the final product without verification, risking low-quality listings and bad reviews.",
+      "proposed_fix": "Integrate `agent_gemini_quality_check` directly into the post-generation phase of the pipelines. Use the free Gemini 2.5 Flash multimodal capability to inspect generated images. Programmatically ask Gemini: 'Is this image suitable for a clean coloring book? Answer strictly with YES or NO. If NO, list the defects.' Discard and regenerate images that fail the check.",
       "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Reduces publishing time per product from 15 minutes to under 2 minutes, enabling high-volume listing.",
+      "estimated_value_unlocked": "Guarantees a premium quality standard for published KDP books and assets without manual validation.",
       "priority_1_10": 8
     },
     {
       "rank": 5,
-      "issue_title": "Missed Vectorization and Cross-Pollination",
+      "issue_title": "Missed Cross-Pollination of Assets (1 Design -> N Products)",
       "category": "cross_polination",
       "affected_pipelines": [
         "produce_coloring_book",
         "produce_merch_designs",
         "produce_svg_pack"
       ],
-      "current_pain_description": "High-quality vector drawings generated for coloring books are stored as flat rasters. They are not being cross-pollinated into other highly profitable, low-competition formats like SVGs for Etsy or transparent PNGs for Redbubble stickers.",
-      "proposed_fix": "Introduce an automatic post-processing step using `potrace` (installed via GHA apt-get) to convert black-and-white coloring book pages into clean SVGs. Save these SVGs to the `produce_svg_pack` output folder automatically, instantly doubling the product output from a single generation run.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Turns 1 coloring book asset into 2 products (KDP interior page + Etsy SVG cut file) with zero extra API costs.",
+      "current_pain_description": "Designs generated for coloring books or SVG packs remain siloed in their respective pipelines, failing to maximize Hugo's return on computed assets.",
+      "proposed_fix": "Modify the output storage mechanism. When a high-quality line art vector/image is generated for `produce_coloring_book`, trigger sub-routines to automatically package it as an SVG cut file for Etsy, a transparent PNG for Redbubble stickers/t-shirts, and a transparent asset for game development packs. Save all outputs in a single structured 'distribution' folder.",
+      "estimated_implementation_hours_claude": 3,
+      "estimated_value_unlocked": "Increases product output variety by 3x per hour worked, maximizing ROI.",
       "priority_1_10": 7
     },
     {
       "rank": 6,
-      "issue_title": "Silent GHA Pipeline Failures on Mobile",
-      "category": "failure_mode",
+      "issue_title": "Brittle OpenSCAD Script Generation in STL Pipelines",
+      "category": "code_quality",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_publisher"
+        "produce_stl_openscad",
+        "produce_stl_parametric"
       ],
-      "current_pain_description": "Hugo is not constantly checking GitHub Actions on his phone. When a generation run fails due to quota limits, API timeouts, or syntax errors, the failure remains silent until Hugo manually checks GHA logs.",
-      "proposed_fix": "Add a lightweight notification step to the GitHub Actions YAML files. Use a curl request to a free Telegram Bot API or Discord Webhook, sending a direct message to Hugo's phone whenever a workflow fails, including the specific pipeline name and the error summary.",
-      "estimated_implementation_hours_claude": 1,
-      "estimated_value_unlocked": "Immediate feedback on mobile, reducing pipeline downtime and allowing quick debugging from Termux.",
+      "current_pain_description": "The LLM generates OpenSCAD scripts with syntax errors, unclosed brackets, or invalid geometry calculations, leading to empty or corrupted STL files that cannot be rendered on Cults3D.",
+      "proposed_fix": "Implement a local validation step in the GitHub Actions runner. Install the `openscad` CLI on the runner. Run a headless verification check (`openscad -o dummy.stl generated_file.scad`) to programmatically verify that the script compiles successfully. If compilation fails, feed the error log back to Gemini for self-correction (max 3 retries).",
+      "estimated_implementation_hours_claude": 2,
+      "estimated_value_unlocked": "Eliminates broken STL files and guarantees that all generated 3D assets are fully functional.",
       "priority_1_10": 7
     }
   ]
