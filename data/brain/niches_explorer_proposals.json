@@ -1,8 +1,8 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-29T07:47:55.575422Z",
-  "model": "gemini-flash-latest",
+  "timestamp": "2026-05-30T05:54:25.852839Z",
+  "model": "gemini-2.5-flash",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -100,6 +100,7 @@
     "agent_gemini_quality_check",
     "agent_godot_cdc",
     "agent_godot_trends",
+    "agent_gold_mines",
     "agent_idea_injector",
     "agent_ideator_offline",
     "agent_jeux_societe_cdc",
@@ -131,117 +132,144 @@
     "agent_trend_explosion",
     "agent_trendhunter",
     "agent_vertical_optimizer",
+    "agent_vintage_pd_cdc",
+    "agent_vintage_pd_trends",
     "agent_visual_audit",
     "agent_winner_amplifier"
   ],
   "proposals": [
     {
       "rank": 1,
-      "name": "Geotechnical Engineers & Soil Mechanics Professionals",
-      "type": "sub_culture",
-      "audience_size_estimate": 120000,
+      "name": "Forensic Science Enthusiasts & Professionals",
+      "type": "deep_niche",
+      "audience_size_estimate": 150000,
       "passion_level_1_10": 8,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Civil engineers, geologists, and soil mechanics researchers who love obscure technical humor, Mohr's circle formulas, and soil classification systems. They are proud of their highly specialized, dirt-focused niche.",
+      "buyer_persona": "Students, professionals (detectives, lab techs), and true-crime hobbyists fascinated by evidence analysis, crime scene investigation, and the scientific method. They appreciate accuracy, detail, and 'insider' references.",
       "product_angles": [
-        "Mohr's Circle stress-strain diagram minimalist apparel and desk mats",
-        "USCS (Unified Soil Classification System) reference cheat-sheet stickers",
-        "Humorous 'Not afraid to get dirty' technical engineering mugs and hoodies"
+        "Digital prints/posters with scientific illustrations of forensic tools (microscopes, fingerprint dusts, chromatographs)",
+        "Notebooks/journals with 'crime scene log' or 'case notes' templates",
+        "Merch designs featuring witty forensic science puns or stylized diagrams",
+        "Coloring books depicting detailed crime scenes (non-gory, focus on investigation elements)"
       ],
-      "best_pipeline_or_new": "produce_merch_designs",
-      "first_test_product": "Minimalist 'Mohr's Circle of Stress' vector graphic for Redbubble/Etsy t-shirts and mugs",
-      "estimated_monthly_revenue_year1_eur": 150
-    },
-    {
-      "rank": 2,
-      "name": "Print-and-Play (PnP) Solo Board Gamers",
-      "type": "adjacent_market",
-      "audience_size_estimate": 95000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Solo gamers who enjoy printing, cutting, and assembling their own tabletop games. They look for high-quality, ink-saving components, modular hex cards, and pocket-sized deck systems.",
-      "product_angles": [
-        "Ink-friendly modular hex-tile dungeon layouts (PDF/SVG)",
-        "Pocket-sized micro-game layout templates (9-card design frameworks)",
-        "3D printable custom miniature/token counters optimized for low-cost FDM printing"
-      ],
-      "best_pipeline_or_new": "produce_board_game",
-      "first_test_product": "A modular 18-card PNP fantasy crawler tile-set layout template (PDF on Etsy)",
+      "best_pipeline_or_new": "produce_merch_designs, produce_coloring_book, produce_lowcontent_kdp",
+      "first_test_product": "A set of 5 digital prints featuring stylized forensic tools (e.g., fingerprint analysis kit, DNA helix, blood spatter patterns) with subtle educational labels, sold on Redbubble.",
       "estimated_monthly_revenue_year1_eur": 250
     },
     {
-      "rank": 3,
-      "name": "Local Micro-Museums and Historical Societies",
-      "type": "b2b",
-      "audience_size_estimate": 65000,
-      "passion_level_1_10": 7,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Volunteers and curators of small-town local museums, castles, or preservation societies. They have zero budget for design agencies but need high-quality custom souvenirs for their gift shops.",
-      "product_angles": [
-        "Hyper-local customized coloring books featuring local historical monuments (using img2img line extraction)",
-        "Vector-restored vintage local maps packaged as high-res poster prints",
-        "Custom SVG historical architecture silhouettes for local merchandise"
-      ],
-      "best_pipeline_or_new": "produce_coloring_from_cdc",
-      "first_test_product": "A 15-page localized historical monuments coloring book template to pitch directly to French regional tourist offices via email",
-      "estimated_monthly_revenue_year1_eur": 300
-    },
-    {
-      "rank": 4,
-      "name": "Urban Sketchers & Plein Air Painters",
-      "type": "sub_culture",
-      "audience_size_estimate": 180000,
+      "rank": 2,
+      "name": "Urban Sketchers / Architectural Illustrators",
+      "type": "deep_niche",
+      "audience_size_estimate": 100000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Artists who travel and draw on-site in cities. They obsess over lightweight gear, compact watercolor setups, and specialized paper grids for perspective sketching.",
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Artists, architects, and hobbyists who enjoy sketching buildings, cityscapes, and historical sites. They value unique perspectives, drawing prompts, and tools that enhance their craft. Often active in online communities.",
       "product_angles": [
-        "3D printable ultra-lightweight thumb-ring watercolor palettes (Cults3D)",
-        "Perspective-grid pocket notebooks (1-point, 2-point, and 3-point faint layouts) on KDP",
-        "Minimalist pocket viewfinders and composition cards (SVG templates for laser cutting or 3D printing)"
+        "Digital sketch prompts/challenges featuring specific architectural styles or city elements",
+        "Printable sketch templates with faint perspective grids or famous building outlines",
+        "Merch designs with minimalist architectural line art or 'urban explorer' motifs",
+        "KDP journals with blank pages, but with unique cover designs appealing to urban sketchers (e.g., pen & ink style facades)"
       ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "A 3D-printable magnetic travel watercolor palette holding 6 half-pans (Cults3D)",
+      "best_pipeline_or_new": "produce_merch_designs, produce_lowcontent_kdp",
+      "first_test_product": "A collection of 10 printable PDF sketch prompts, each focusing on a different architectural detail (e.g., gargoyles, ornate doorways, specific window types), sold on Redbubble as digital downloads.",
       "estimated_monthly_revenue_year1_eur": 200
     },
     {
-      "rank": 5,
-      "name": "Godot 4 UI/UX Indie Game Developers",
+      "rank": 3,
+      "name": "Indie Game Developers (Godot/Unity/Unreal) - UI/UX Asset Packs",
       "type": "adjacent_market",
-      "audience_size_estimate": 110000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 3,
+      "audience_size_estimate": 500000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 5,
       "growth_trajectory": "exploding",
-      "buyer_persona": "Indie developers migrating to Godot 4 who struggle with creating aesthetic, functional user interfaces. They want drag-and-drop themes, modular SVGs, and vector buttons.",
+      "buyer_persona": "Solo or small-team indie game developers needing high-quality, consistent UI elements (buttons, health bars, inventory icons, fonts) to accelerate their development. They prioritize clean design, easy integration, and often specific themes (sci-fi, fantasy, pixel art).",
       "product_angles": [
-        "Retro-futuristic / Sci-Fi vector UI asset packs (SVGs optimized for Godot 9-patch scaling)",
-        "Minimalist dark-mode UI theme presets and icon fonts",
-        "Custom stylized vector crosshairs, health bars, and status icons"
+        "Themed UI icon packs (e.g., 'Cyberpunk HUD Elements', 'Fantasy RPG Inventory')",
+        "Seamless background textures for menus or loading screens",
+        "Animated UI elements (e.g., glowing buttons, pulsating health bars) as sprite sheets",
+        "Customizable UI kits (e.g., 'Build Your Own Retro UI')"
       ],
-      "best_pipeline_or_new": "produce_godot_assets",
-      "first_test_product": "A clean, vector-based Flat Cyberpunk UI asset pack (buttons, panels, icons) in SVG format on Etsy/Itch.io",
-      "estimated_monthly_revenue_year1_eur": 180
+      "best_pipeline_or_new": "produce_gamedev_asset_pack, produce_godot_assets",
+      "first_test_product": "A 'Pixel Art RPG UI Kit' containing 20 essential icons (inventory, health, magic, settings), 5 button states, and a simple font, exported as PNGs and a Godot scene, sold on Itch.io or similar indie dev marketplace.",
+      "estimated_monthly_revenue_year1_eur": 400
+    },
+    {
+      "rank": 4,
+      "name": "Historical Reenactors (Specific Eras: Roman, Medieval, Victorian)",
+      "type": "sub_culture",
+      "audience_size_estimate": 80000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Individuals deeply committed to historical accuracy in their costumes, props, and lifestyle during reenactments. They seek authentic designs, patterns, and accessories that reflect their chosen era. Insider knowledge is highly valued.",
+      "product_angles": [
+        "Printable historical patterns for clothing or accessories (e.g., 'Roman Tunic Pattern', 'Medieval Belt Pouch Template')",
+        "Merch designs with authentic historical motifs or Latin/Old English phrases relevant to their era",
+        "Coloring books featuring historically accurate scenes or garments from a specific period (e.g., 'Victorian Fashion Coloring Book')",
+        "Low-content journals designed to look like period documents (e.g., 'Medieval Scribe's Log')"
+      ],
+      "best_pipeline_or_new": "produce_merch_designs, produce_coloring_book, produce_lowcontent_kdp, new_historical_patterns",
+      "first_test_product": "A set of 5 digital patterns for common Roman reenactment accessories (e.g., fibulae, belt plates, sandal patterns), complete with historical context and assembly instructions, sold on Redbubble or Etsy.",
+      "estimated_monthly_revenue_year1_eur": 350
+    },
+    {
+      "rank": 5,
+      "name": "Professional Dog Groomers",
+      "type": "deep_niche",
+      "audience_size_estimate": 70000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Small business owners and employees in the dog grooming industry. They appreciate practical tools, professional-looking supplies, and items that reflect their dedication to animal care and styling. Often seek humor and recognition of their unique challenges.",
+      "product_angles": [
+        "Merch designs with witty quotes specific to dog grooming ('I Speak Fluent Bark', 'Hair Today, Gone Tomorrow')",
+        "Printable appointment cards or grooming report templates",
+        "Coloring books featuring various dog breeds being groomed (non-graphic, focus on cute styles)",
+        "Low-content logbooks for tracking client appointments, breed-specific notes, or supply inventory"
+      ],
+      "best_pipeline_or_new": "produce_merch_designs, produce_lowcontent_kdp, produce_coloring_book",
+      "first_test_product": "A collection of 10 unique t-shirt designs for dog groomers featuring humorous or prideful industry-specific phrases and clean, vector-style dog illustrations, sold on Redbubble.",
+      "estimated_monthly_revenue_year1_eur": 280
     },
     {
       "rank": 6,
-      "name": "Amateur Radio (HAM) Operators & DXers",
-      "type": "sub_culture",
-      "audience_size_estimate": 350000,
+      "name": "Notion Template Creators & Power Users",
+      "type": "adjacent_market",
+      "audience_size_estimate": 200000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Tech-savvy hobbyists who communicate globally via radio waves. They are deeply proud of their callsigns, love physical logbooks, and trade custom-designed QSL cards globally.",
+      "current_saturation_1_10": 6,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Individuals and businesses heavily reliant on Notion for productivity, project management, and personal organization. They constantly seek new, highly functional, and aesthetically pleasing templates to streamline workflows or solve specific problems. Value efficiency and customization.",
       "product_angles": [
-        "Customizable QSL card templates (Etsy digital downloads)",
-        "Radio logbook journals with highly optimized layouts for signal reporting (KDP)",
-        "Radio spectrum frequency allocation posters and desk mats"
+        "Specialized Notion templates (e.g., 'Indie Game Dev Project Tracker', 'Freelance Client Management System', 'Meal Prep & Grocery Planner')",
+        "Notion icon packs (custom SVG icons for pages/databases)",
+        "Notion banner images/headers (aesthetic covers for pages)",
+        "Guides/ebooks on advanced Notion formulas or automation techniques"
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "A highly functional HAM Radio Logbook with detailed fields for frequency, mode, power, and QSL tracking (KDP)",
-      "estimated_monthly_revenue_year1_eur": 120
+      "best_pipeline_or_new": "new_notion_templates, produce_svg_pack (for icons)",
+      "first_test_product": "A 'Solo Entrepreneur's Minimalist Business Hub' Notion template, including sections for client management, content calendar, and financial tracking, offered for sale on Gumroad or a dedicated Notion template marketplace.",
+      "estimated_monthly_revenue_year1_eur": 450
+    },
+    {
+      "rank": 7,
+      "name": "Amateur Astronomers & Astrophotographers",
+      "type": "deep_niche",
+      "audience_size_estimate": 100000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Hobbyists who spend significant time observing the night sky, often with telescopes, or capturing celestial objects through photography. They have a strong appreciation for scientific accuracy, stunning visuals, and the beauty of the cosmos. Value unique ways to display their passion.",
+      "product_angles": [
+        "Merch designs with stylized constellations, deep-sky objects, or astronomical equipment (telescopes, cameras)",
+        "Digital prints of scientifically accurate celestial maps or artistic interpretations of nebulae/galaxies",
+        "Low-content journals for logging observations, equipment settings, or astrophotography plans",
+        "Coloring books featuring intricate patterns of stars, planets, and space phenomena"
+      ],
+      "best_pipeline_or_new": "produce_merch_designs, produce_coloring_book, produce_lowcontent_kdp",
+      "first_test_product": "A set of 8 T-shirt designs on Redbubble featuring minimalist representations of famous nebulae (Orion, Horsehead) and constellations, appealing to both observers and photographers.",
+      "estimated_monthly_revenue_year1_eur": 320
     }
   ]
 }
