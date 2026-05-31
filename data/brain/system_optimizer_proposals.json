@@ -1,8 +1,8 @@
 {
   "agent": "system_optimizer",
   "title": "System Optimizer Brain",
-  "timestamp": "2026-05-30T05:58:21.617993Z",
-  "model": "gemini-flash-latest",
+  "timestamp": "2026-05-31T06:27:37.721375Z",
+  "model": "gemini-2.5-flash",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -69,6 +69,7 @@
     "produce_lowcontent_kdp",
     "produce_merch_designs",
     "produce_mobile_app_scaffold",
+    "produce_mobile_game_godot",
     "produce_mobile_game_scaffold",
     "produce_quotes_minimal",
     "produce_roman_chapters",
@@ -78,6 +79,7 @@
     "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
+    "produce_vintage_pd_from_cdc",
     "produce_viral_formats",
     "produce_viral_formats_v2",
     "produce_wedding_stationery",
@@ -140,91 +142,130 @@
   "proposals": [
     {
       "rank": 1,
-      "issue_title": "Silent Failures in Image Generation with No Fallback Chain",
+      "issue_title": "Critical dependency on free image generation - single point of failure",
       "category": "failure_mode",
       "affected_pipelines": [
         "produce_coloring_book",
-        "produce_coloring_from_cdc",
         "produce_merch_designs",
-        "produce_kdp_cover"
+        "produce_kdp_cover",
+        "produce_svg_pack",
+        "produce_tumbler_wraps",
+        "produce_gamedev_asset_pack",
+        "produce_board_game",
+        "produce_card_game",
+        "produce_vintage_pd_from_cdc",
+        "produce_lowcontent_from_cdc",
+        "produce_coloring_from_cdc",
+        "produce_svg_from_cdc"
       ],
-      "current_pain_description": "GitHub Actions workflows crash or generate blank/corrupted assets when image generation endpoints (HF, Gemini, AI Horde) return 403, 429, or rate limits, wasting runner execution time without completing the product.",
-      "proposed_fix": "Implement a centralized Python helper class `ImageGeneratorFallback` imported by all image-producing pipelines. The helper attempts generation in a strict cascade: 1. Together AI (FLUX-schnell, free tier), 2. Cloudflare Workers AI (10k free neurons/day), 3. Pollinations (free fallback), 4. Runware (PAYG API key as absolute last resort). Wrap requests in robust retry blocks with exponential backoff.",
-      "estimated_implementation_hours_claude": 2.5,
-      "estimated_value_unlocked": "100% reduction in broken GitHub Action runs; saves Hugo's 10-hour weekly budget from manual debug tasks.",
+      "current_pain_description": "The entire system's ability to produce visual assets is blocked or severely degraded by the instability of free image generation APIs. Current state shows Pollinations is operational but low quality, while others are blocked or require payment. This is a critical single point of failure for product generation.",
+      "proposed_fix": "Implement a robust multi-provider image generation strategy with intelligent fallback. Prioritize testing and integrating Together AI and Cloudflare Workers AI as primary free options. Implement `try-except` blocks around API calls, with a clear fallback sequence: 1. Together AI (FLUX-schnell/img2img) -> 2. Cloudflare Workers AI (FLUX-schnell/SD img2img) -> 3. Pollinations (if quality acceptable for specific use case) -> 4. Runware (if budget allows AND quality/volume is critical). Add a monitoring system (e.g., GitHub Actions workflow dispatch on failure) to alert Hugo if all free options fail for a prolonged period. The system should intelligently select the best available model based on required features (text2img, img2img, specific model quality).",
+      "estimated_implementation_hours_claude": 8,
+      "estimated_value_unlocked": "Unblocks all visual product generation, significantly reduces risk of system paralysis, improves output quality and reliability.",
       "priority_1_10": 10
     },
     {
       "rank": 2,
-      "issue_title": "GitHub Actions API Quota & Run-Time Exceedance (Silent Ban Risk)",
-      "category": "security",
+      "issue_title": "Manual update of `current_priorities` and `open_issues`",
+      "category": "bottleneck",
       "affected_pipelines": [
-        "agent_orchestrator",
-        "agent_auto_regen"
+        "agent_brain_meta"
       ],
-      "current_pain_description": "With over 50 agent pipelines and 30+ product pipelines, executing cron triggers too frequently or allowing long-running loops on GitHub Actions risks account suspension for resource abuse (violating GitHub Terms of Service on using actions as free compute servers).",
-      "proposed_fix": "Implement an execution budget controller in `agent_orchestrator`. Limit total daily run-time to 120 minutes across all workflows. Enforce strict timeouts (max 10 minutes per job) and verify that consecutive cron runs do not overlap by using a locks system stored in the repository's `.github/locks/` directory or GitHub cache.",
-      "estimated_implementation_hours_claude": 1.5,
-      "estimated_value_unlocked": "Eliminates the risk of account/repository ban which would completely halt the 365days project.",
+      "current_pain_description": "The `current_priorities` and `open_issues` fields in the system state are marked as 'mis à jour manuellement par Hugo ou par agent_state_collector.py'. While `agent_state_collector.py` exists, these critical fields are likely not fully automated, requiring Hugo's manual intervention or being out of sync with actual progress. This can lead to brains working on outdated information.",
+      "proposed_fix": "Automate the update of `current_priorities` and `open_issues` based on system activity and predefined rules. For `open_issues`, integrate a mechanism to parse GitHub Issues (if used for tracking) or a dedicated 'issues' file in the repo. For `current_priorities`, introduce an `agent_priority_manager` that analyzes the system state (e.g., `phase`, `recent_sales_summary`, `image_generation_status`, `llm_brains_status`) and past brain outputs to dynamically suggest or confirm priorities. This agent could also update `current_priorities` based on successful completion of previous tasks (e.g., 'Debloquer generateur d'image' -> done -> remove from priorities).",
+      "estimated_implementation_hours_claude": 5,
+      "estimated_value_unlocked": "Reduces manual overhead for Hugo, ensures brains operate on the most current and relevant priorities, improves overall system agility and responsiveness.",
       "priority_1_10": 9
     },
     {
       "rank": 3,
-      "issue_title": "Manual Upload Bottleneck on Mobile-Only setup",
-      "category": "bottleneck",
+      "issue_title": "Lack of automated quality check and audit for generated products",
+      "category": "quality_bug",
       "affected_pipelines": [
-        "agent_publisher",
         "produce_coloring_book",
-        "produce_lowcontent_kdp"
+        "produce_merch_designs",
+        "produce_kdp_cover",
+        "produce_lowcontent_kdp",
+        "produce_gamedev_asset_pack",
+        "produce_stl_openscad",
+        "produce_stl_parametric",
+        "produce_svg_pack",
+        "produce_tumbler_wraps",
+        "produce_bible_verses",
+        "produce_roman_chapters",
+        "produce_quotes_minimal",
+        "produce_literal_idioms",
+        "produce_chess_book"
       ],
-      "current_pain_description": "Hugo only has an Android phone (Termux). Downloading large PDFs or high-resolution image ZIPs from GitHub artifacts to a mobile phone to manually upload them to KDP, Redbubble, and Cults3D is highly inefficient and prone to browser crashes.",
-      "proposed_fix": "Add a metadata-generation step in `agent_publisher` that generates optimized, copy-pasteable upload packages. For each product, write a single JSON/Markdown file containing: exact SEO titles, optimized descriptions, pre-formatted tags, and direct-download links to release assets. Deliver this directly to a private Telegram/Discord channel via webhook so Hugo can upload rapidly from his phone.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Saves 15-20 minutes of tedious mobile-screen switching per product upload.",
+      "current_pain_description": "Many `produce_*` pipelines generate content, but there's no explicit mention of an automated quality assurance step before publishing. This means 'gibberish text, broken anatomy, off-topic outputs' generated by LLMs or image models could reach production, leading to poor customer reviews and wasted effort. Hugo would have to manually review everything, which is a bottleneck.",
+      "proposed_fix": "Integrate `agent_gemini_quality_check` more systematically across all product generation pipelines. For text-based products, implement checks for grammar, coherence, relevance, and uniqueness. For image-based products, implement checks for common visual artifacts (e.g., distorted anatomy, inconsistent styles, watermarks, text legibility). This could involve using a vision-capable LLM (if available within budget/free tiers) or simple rule-based checks (e.g., detecting specific keywords in image captions, checking aspect ratios). Add a 'review_required' flag or similar to generated assets that fail initial checks, prompting Hugo for manual review only when necessary.",
+      "estimated_implementation_hours_claude": 10,
+      "estimated_value_unlocked": "Significantly improves output quality, reduces risk of publishing low-quality products, saves Hugo's time by flagging only problematic assets for review, protects brand reputation.",
       "priority_1_10": 8
     },
     {
       "rank": 4,
-      "issue_title": "Lack of Automated Quality Auditing for AI-Generated Assets",
-      "category": "quality_bug",
+      "issue_title": "Limited exploitation of cross-pipeline content pollination",
+      "category": "cross_polination",
       "affected_pipelines": [
+        "produce_merch_designs",
+        "produce_svg_pack",
+        "produce_tumbler_wraps",
+        "produce_kdp_cover",
         "produce_coloring_book",
-        "produce_gamedev_asset_pack"
+        "produce_lowcontent_kdp",
+        "agent_trend_design_matcher",
+        "agent_vertical_optimizer"
       ],
-      "current_pain_description": "AI models generate images with artifacts (e.g., grey gradients in coloring books, broken anatomy, or blurry lines). Currently, these are saved directly into the final product without verification, risking low-quality listings and bad reviews.",
-      "proposed_fix": "Integrate `agent_gemini_quality_check` directly into the post-generation phase of the pipelines. Use the free Gemini 2.5 Flash multimodal capability to inspect generated images. Programmatically ask Gemini: 'Is this image suitable for a clean coloring book? Answer strictly with YES or NO. If NO, list the defects.' Discard and regenerate images that fail the check.",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Guarantees a premium quality standard for published KDP books and assets without manual validation.",
-      "priority_1_10": 8
+      "current_pain_description": "The system generates various types of assets (e.g., designs, text prompts, 3D models). However, there isn't a clear, automated pipeline to take a successful core concept or design from one product type and automatically adapt it for multiple other product types or platforms (e.g., a successful T-shirt design -> coloring book page -> KDP cover -> tumbler wrap). This misses significant ROI opportunities.",
+      "proposed_fix": "Introduce a `produce_multi_format_asset` pipeline or enhance `agent_vertical_optimizer` to identify and re-purpose successful assets. When a `produce_*` pipeline generates a high-quality or potentially successful asset (e.g., as determined by `agent_gemini_quality_check` or a future success metric), this asset should be queued for adaptation across other relevant formats. This would involve: 1. Identifying the core design/concept. 2. Generating variations suitable for different product types (e.g., converting a full-color design to a line art for coloring books, simplifying for SVG, adapting for KDP cover layout). 3. Leveraging the improved image generation capabilities for these adaptations. This requires a metadata system for assets to track their origin and potential re-purposing.",
+      "estimated_implementation_hours_claude": 12,
+      "estimated_value_unlocked": "Massively increases ROI per initial design, expands product catalog without significant new ideation, leverages successful concepts more effectively, reduces time to market for variations.",
+      "priority_1_10": 7
     },
     {
       "rank": 5,
-      "issue_title": "Missed Cross-Pollination of Assets (1 Design -> N Products)",
-      "category": "cross_polination",
+      "issue_title": "Lack of automated publishing and monitoring for `registered_not_live` platforms",
+      "category": "coverage_gap",
       "affected_pipelines": [
-        "produce_coloring_book",
-        "produce_merch_designs",
-        "produce_svg_pack"
+        "Redbubble",
+        "Amazon KDP",
+        "Cults3D (prevu)",
+        "agent_publisher",
+        "agent_rapporteur_hebdo"
       ],
-      "current_pain_description": "Designs generated for coloring books or SVG packs remain siloed in their respective pipelines, failing to maximize Hugo's return on computed assets.",
-      "proposed_fix": "Modify the output storage mechanism. When a high-quality line art vector/image is generated for `produce_coloring_book`, trigger sub-routines to automatically package it as an SVG cut file for Etsy, a transparent PNG for Redbubble stickers/t-shirts, and a transparent asset for game development packs. Save all outputs in a single structured 'distribution' folder.",
-      "estimated_implementation_hours_claude": 3,
-      "estimated_value_unlocked": "Increases product output variety by 3x per hour worked, maximizing ROI.",
-      "priority_1_10": 7
+      "current_pain_description": "Platforms like Redbubble, Amazon KDP, and Cults3D are registered but 'not live.' This indicates products are not being automatically published to these platforms, leaving generated content unmonetized. Hugo likely has to manually upload, which is a significant bottleneck and a gap in the 'digital product empire' vision.",
+      "proposed_fix": "Develop and integrate platform-specific publishing agents within `agent_publisher`. For each `registered_not_live` platform, create sub-agents (e.g., `agent_publisher_redbubble`, `agent_publisher_kdp`, `agent_publisher_cults3d`) that handle API integration for automatic product upload, metadata generation, pricing, and listing. This requires careful handling of platform-specific requirements (e.g., image sizes, file formats, keywords). Implement error handling for API failures and a reporting mechanism via `agent_rapporteur_hebdo` for successful/failed publications. Prioritize KDP and Redbubble given their status.",
+      "estimated_implementation_hours_claude": 15,
+      "estimated_value_unlocked": "Unlocks monetization on existing registered platforms, significantly reduces Hugo's manual workload, accelerates product launch cycles, expands market reach.",
+      "priority_1_10": 9
     },
     {
       "rank": 6,
-      "issue_title": "Brittle OpenSCAD Script Generation in STL Pipelines",
+      "issue_title": "Dependence on GitHub Actions for all compute and potential rate limits/ban risks",
+      "category": "security",
+      "affected_pipelines": [
+        "All pipelines using GitHub Actions for execution"
+      ],
+      "current_pain_description": "All compute relies solely on GitHub Actions, which is free but subject to rate limits and potential abuse detection, as seen with AI Horde blocking GitHub Actions IPs. A total reliance on one free service, especially for API calls to third-party providers, carries a risk of temporary or permanent service interruption if GitHub Actions IPs get blacklisted or usage patterns are deemed suspicious.",
+      "proposed_fix": "While sticking to GitHub Actions is a core constraint, implement strategies to mitigate risks: 1. Introduce random delays between API calls within GitHub Actions workflows to appear less robotic. 2. Implement robust exponential backoff and retry logic for all external API calls. 3. Monitor GitHub Actions runner usage limits (though generally generous for public repos). 4. If Cloudflare Workers AI is integrated, explore offloading some smaller, more frequent API calls to Workers to distribute the load and IP diversity, leveraging its own generous free tier. 5. Document a contingency plan for a paid CI/CD alternative (e.g., GitLab CI/CD free tier, or a minimal self-hosted runner if budget allows) if GitHub Actions becomes unreliable.",
+      "estimated_implementation_hours_claude": 6,
+      "estimated_value_unlocked": "Reduces risk of service interruption, improves robustness of external API integrations, prevents potential IP blacklisting, ensures system continuity.",
+      "priority_1_10": 7
+    },
+    {
+      "rank": 7,
+      "issue_title": "Lack of explicit versioning or clear change management for `produce_*` pipelines",
       "category": "code_quality",
       "affected_pipelines": [
-        "produce_stl_openscad",
-        "produce_stl_parametric"
+        "All `produce_*` pipelines",
+        "All `agent_*` pipelines"
       ],
-      "current_pain_description": "The LLM generates OpenSCAD scripts with syntax errors, unclosed brackets, or invalid geometry calculations, leading to empty or corrupted STL files that cannot be rendered on Cults3D.",
-      "proposed_fix": "Implement a local validation step in the GitHub Actions runner. Install the `openscad` CLI on the runner. Run a headless verification check (`openscad -o dummy.stl generated_file.scad`) to programmatically verify that the script compiles successfully. If compilation fails, feed the error log back to Gemini for self-correction (max 3 retries).",
-      "estimated_implementation_hours_claude": 2,
-      "estimated_value_unlocked": "Eliminates broken STL files and guarantees that all generated 3D assets are fully functional.",
-      "priority_1_10": 7
+      "current_pain_description": "The system lists numerous `produce_*` and `agent_*` pipelines, some with `_v2`, `_v3`, `_v4`, `_x` suffixes (e.g., `produce_bible_verses` vs `produce_bible_verses_v2`, `produce_iheart_hf` to `produce_iheart_x`). This suggests iterative development but also potential for duplicate code, confusion about which version is active/optimal, and difficulty in maintaining consistent quality or refactoring. Without clear versioning or a modular approach, code can become brittle and hard to manage.",
+      "proposed_fix": "Refactor `produce_*` and `agent_*` pipelines to use a more modular and configurable approach instead of creating new files for each iteration. Implement a base `produce_template` or `agent_template` and use configuration files (e.g., YAML, JSON) to define variations (e.g., different prompts, different image models, different post-processing steps). This allows for easier A/B testing, faster iteration, and reduces code duplication. For historical versions, clearly mark them as deprecated or archive them if no longer in use. Implement a system for 'promoting' successful configurations to 'production' status. This will improve maintainability, reduce bugs, and accelerate development.",
+      "estimated_implementation_hours_claude": 20,
+      "estimated_value_unlocked": "Significantly improves code maintainability, reduces technical debt, accelerates feature development and experimentation, simplifies pipeline management, reduces bugs.",
+      "priority_1_10": 6
     }
   ]
 }
