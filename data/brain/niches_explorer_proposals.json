@@ -1,8 +1,8 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-30T05:54:25.852839Z",
-  "model": "gemini-2.5-flash",
+  "timestamp": "2026-05-31T06:31:29.400060Z",
+  "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -69,6 +69,7 @@
     "produce_lowcontent_kdp",
     "produce_merch_designs",
     "produce_mobile_app_scaffold",
+    "produce_mobile_game_godot",
     "produce_mobile_game_scaffold",
     "produce_quotes_minimal",
     "produce_roman_chapters",
@@ -78,6 +79,7 @@
     "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
+    "produce_vintage_pd_from_cdc",
     "produce_viral_formats",
     "produce_viral_formats_v2",
     "produce_wedding_stationery",
@@ -140,136 +142,93 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "Forensic Science Enthusiasts & Professionals",
-      "type": "deep_niche",
+      "name": "B2B Local Historical Societies & Small Castles (Châteaux)",
+      "type": "b2b",
       "audience_size_estimate": 150000,
-      "passion_level_1_10": 8,
+      "passion_level_1_10": 9,
       "current_saturation_1_10": 2,
       "growth_trajectory": "steady",
-      "buyer_persona": "Students, professionals (detectives, lab techs), and true-crime hobbyists fascinated by evidence analysis, crime scene investigation, and the scientific method. They appreciate accuracy, detail, and 'insider' references.",
+      "buyer_persona": "Volunteer preservationists, local museum directors, and owners of private historic estates looking for budget-friendly custom merchandise to fund operations.",
       "product_angles": [
-        "Digital prints/posters with scientific illustrations of forensic tools (microscopes, fingerprint dusts, chromatographs)",
-        "Notebooks/journals with 'crime scene log' or 'case notes' templates",
-        "Merch designs featuring witty forensic science puns or stylized diagrams",
-        "Coloring books depicting detailed crime scenes (non-gory, focus on investigation elements)"
+        "Custom coloring books featuring the exact architectural details of their specific monument",
+        "Print-on-demand vintage-style postcards and posters of their local history using public domain assets",
+        "Laser-cut-ready STL/SVG architectural ornaments of their buildings for local gift shops"
       ],
-      "best_pipeline_or_new": "produce_merch_designs, produce_coloring_book, produce_lowcontent_kdp",
-      "first_test_product": "A set of 5 digital prints featuring stylized forensic tools (e.g., fingerprint analysis kit, DNA helix, blood spatter patterns) with subtle educational labels, sold on Redbubble.",
-      "estimated_monthly_revenue_year1_eur": 250
-    },
-    {
-      "rank": 2,
-      "name": "Urban Sketchers / Architectural Illustrators",
-      "type": "deep_niche",
-      "audience_size_estimate": 100000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Artists, architects, and hobbyists who enjoy sketching buildings, cityscapes, and historical sites. They value unique perspectives, drawing prompts, and tools that enhance their craft. Often active in online communities.",
-      "product_angles": [
-        "Digital sketch prompts/challenges featuring specific architectural styles or city elements",
-        "Printable sketch templates with faint perspective grids or famous building outlines",
-        "Merch designs with minimalist architectural line art or 'urban explorer' motifs",
-        "KDP journals with blank pages, but with unique cover designs appealing to urban sketchers (e.g., pen & ink style facades)"
-      ],
-      "best_pipeline_or_new": "produce_merch_designs, produce_lowcontent_kdp",
-      "first_test_product": "A collection of 10 printable PDF sketch prompts, each focusing on a different architectural detail (e.g., gargoyles, ornate doorways, specific window types), sold on Redbubble as digital downloads.",
-      "estimated_monthly_revenue_year1_eur": 200
-    },
-    {
-      "rank": 3,
-      "name": "Indie Game Developers (Godot/Unity/Unreal) - UI/UX Asset Packs",
-      "type": "adjacent_market",
-      "audience_size_estimate": 500000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 5,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Solo or small-team indie game developers needing high-quality, consistent UI elements (buttons, health bars, inventory icons, fonts) to accelerate their development. They prioritize clean design, easy integration, and often specific themes (sci-fi, fantasy, pixel art).",
-      "product_angles": [
-        "Themed UI icon packs (e.g., 'Cyberpunk HUD Elements', 'Fantasy RPG Inventory')",
-        "Seamless background textures for menus or loading screens",
-        "Animated UI elements (e.g., glowing buttons, pulsating health bars) as sprite sheets",
-        "Customizable UI kits (e.g., 'Build Your Own Retro UI')"
-      ],
-      "best_pipeline_or_new": "produce_gamedev_asset_pack, produce_godot_assets",
-      "first_test_product": "A 'Pixel Art RPG UI Kit' containing 20 essential icons (inventory, health, magic, settings), 5 button states, and a simple font, exported as PNGs and a Godot scene, sold on Itch.io or similar indie dev marketplace.",
-      "estimated_monthly_revenue_year1_eur": 400
-    },
-    {
-      "rank": 4,
-      "name": "Historical Reenactors (Specific Eras: Roman, Medieval, Victorian)",
-      "type": "sub_culture",
-      "audience_size_estimate": 80000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Individuals deeply committed to historical accuracy in their costumes, props, and lifestyle during reenactments. They seek authentic designs, patterns, and accessories that reflect their chosen era. Insider knowledge is highly valued.",
-      "product_angles": [
-        "Printable historical patterns for clothing or accessories (e.g., 'Roman Tunic Pattern', 'Medieval Belt Pouch Template')",
-        "Merch designs with authentic historical motifs or Latin/Old English phrases relevant to their era",
-        "Coloring books featuring historically accurate scenes or garments from a specific period (e.g., 'Victorian Fashion Coloring Book')",
-        "Low-content journals designed to look like period documents (e.g., 'Medieval Scribe's Log')"
-      ],
-      "best_pipeline_or_new": "produce_merch_designs, produce_coloring_book, produce_lowcontent_kdp, new_historical_patterns",
-      "first_test_product": "A set of 5 digital patterns for common Roman reenactment accessories (e.g., fibulae, belt plates, sandal patterns), complete with historical context and assembly instructions, sold on Redbubble or Etsy.",
-      "estimated_monthly_revenue_year1_eur": 350
-    },
-    {
-      "rank": 5,
-      "name": "Professional Dog Groomers",
-      "type": "deep_niche",
-      "audience_size_estimate": 70000,
-      "passion_level_1_10": 8,
-      "current_saturation_1_10": 2,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Small business owners and employees in the dog grooming industry. They appreciate practical tools, professional-looking supplies, and items that reflect their dedication to animal care and styling. Often seek humor and recognition of their unique challenges.",
-      "product_angles": [
-        "Merch designs with witty quotes specific to dog grooming ('I Speak Fluent Bark', 'Hair Today, Gone Tomorrow')",
-        "Printable appointment cards or grooming report templates",
-        "Coloring books featuring various dog breeds being groomed (non-graphic, focus on cute styles)",
-        "Low-content logbooks for tracking client appointments, breed-specific notes, or supply inventory"
-      ],
-      "best_pipeline_or_new": "produce_merch_designs, produce_lowcontent_kdp, produce_coloring_book",
-      "first_test_product": "A collection of 10 unique t-shirt designs for dog groomers featuring humorous or prideful industry-specific phrases and clean, vector-style dog illustrations, sold on Redbubble.",
-      "estimated_monthly_revenue_year1_eur": 280
-    },
-    {
-      "rank": 6,
-      "name": "Notion Template Creators & Power Users",
-      "type": "adjacent_market",
-      "audience_size_estimate": 200000,
-      "passion_level_1_10": 9,
-      "current_saturation_1_10": 6,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Individuals and businesses heavily reliant on Notion for productivity, project management, and personal organization. They constantly seek new, highly functional, and aesthetically pleasing templates to streamline workflows or solve specific problems. Value efficiency and customization.",
-      "product_angles": [
-        "Specialized Notion templates (e.g., 'Indie Game Dev Project Tracker', 'Freelance Client Management System', 'Meal Prep & Grocery Planner')",
-        "Notion icon packs (custom SVG icons for pages/databases)",
-        "Notion banner images/headers (aesthetic covers for pages)",
-        "Guides/ebooks on advanced Notion formulas or automation techniques"
-      ],
-      "best_pipeline_or_new": "new_notion_templates, produce_svg_pack (for icons)",
-      "first_test_product": "A 'Solo Entrepreneur's Minimalist Business Hub' Notion template, including sections for client management, content calendar, and financial tracking, offered for sale on Gumroad or a dedicated Notion template marketplace.",
+      "best_pipeline_or_new": "produce_chateau_local",
+      "first_test_product": "A high-quality 24-page physical coloring book of a specific regional French castle sold directly to their association shop.",
       "estimated_monthly_revenue_year1_eur": 450
     },
     {
-      "rank": 7,
-      "name": "Amateur Astronomers & Astrophotographers",
-      "type": "deep_niche",
-      "audience_size_estimate": 100000,
+      "rank": 2,
+      "name": "Solo Game Developers seeking UI/UX Asset Packs",
+      "type": "adjacent_market",
+      "audience_size_estimate": 250000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie game developers building cozy games, retro RPGs, or mobile puzzles who lack graphic design skills and need ready-to-import UI components.",
+      "product_angles": [
+        "Cozy cottagecore theme UI kits (buttons, panels, borders) in SVG and PNG",
+        "Retro pixel-art sci-fi terminal interfaces",
+        "Godot-optimized 2D UI themes ready to drag-and-drop"
+      ],
+      "best_pipeline_or_new": "produce_godot_assets",
+      "first_test_product": "A Cozy Forest UI Starter Pack with 50+ modular SVG elements on itch.io and Unity Asset Store.",
+      "estimated_monthly_revenue_year1_eur": 350
+    },
+    {
+      "rank": 3,
+      "name": "Solo Board Game Designers (PnP - Print & Play)",
+      "type": "sub_culture",
+      "audience_size_estimate": 90000,
       "passion_level_1_10": 9,
       "current_saturation_1_10": 3,
       "growth_trajectory": "steady",
-      "buyer_persona": "Hobbyists who spend significant time observing the night sky, often with telescopes, or capturing celestial objects through photography. They have a strong appreciation for scientific accuracy, stunning visuals, and the beauty of the cosmos. Value unique ways to display their passion.",
+      "buyer_persona": "Tabletop game hobbyists who print and assemble their own games at home, constantly looking for high-quality, low-cost thematic printouts.",
       "product_angles": [
-        "Merch designs with stylized constellations, deep-sky objects, or astronomical equipment (telescopes, cameras)",
-        "Digital prints of scientifically accurate celestial maps or artistic interpretations of nebulae/galaxies",
-        "Low-content journals for logging observations, equipment settings, or astrophotography plans",
-        "Coloring books featuring intricate patterns of stars, planets, and space phenomena"
+        "Minimalist Print & Play micro-games (18-card limit) with high replayability",
+        "Printable dry-erase legacy campaign tracking sheets",
+        "Custom dice tower STL models designed for low-filament FDM printing"
       ],
-      "best_pipeline_or_new": "produce_merch_designs, produce_coloring_book, produce_lowcontent_kdp",
-      "first_test_product": "A set of 8 T-shirt designs on Redbubble featuring minimalist representations of famous nebulae (Orion, Horsehead) and constellations, appealing to both observers and photographers.",
-      "estimated_monthly_revenue_year1_eur": 320
+      "best_pipeline_or_new": "produce_board_game",
+      "first_test_product": "A solo pocket-sized card game PDF with print-ready sheets and rulebook on Etsy and WargameVault.",
+      "estimated_monthly_revenue_year1_eur": 250
+    },
+    {
+      "rank": 4,
+      "name": "Hydroponics, Aquaponics & Soil-less Urban Gardeners",
+      "type": "deep_niche",
+      "audience_size_estimate": 120000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 2,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Tech-oriented apartment dwellers and urban farmers optimizing indoor vegetable growth using smart systems.",
+      "product_angles": [
+        "Parametric STL models of modular modular vertical planting towers for 3D printing",
+        "Indoor garden tracking journals and nutrient calculators (KDP and digital PDF)",
+        "Minimalist vector stickers for labeling nutrient reservoirs and seed pods"
+      ],
+      "best_pipeline_or_new": "produce_stl_parametric",
+      "first_test_product": "A set of 3D-printable modular hydroponic net-pot adapters and custom spacers on Cults3D.",
+      "estimated_monthly_revenue_year1_eur": 200
+    },
+    {
+      "rank": 5,
+      "name": "Historical European Martial Arts (HEMA) Practitioners",
+      "type": "sub_culture",
+      "audience_size_estimate": 65000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 1,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Passionate sword-fighters, historical researchers, and combat sport athletes who find mainstream medieval gear too 'fantasy-oriented' and want historical accuracy.",
+      "product_angles": [
+        "Logbooks specifically designed for tracking fencing bouts, weapon drills, and techniques (KDP)",
+        "High-contrast vector SVG graphics of authentic 15th-century fencing manuals (Liechtenauer, Fiore) for apparel",
+        "3D printable sword wall mounts and gear organizers optimized for heavy steel feders"
+      ],
+      "best_pipeline_or_new": "produce_lowcontent_kdp",
+      "first_test_product": "The HEMA Fighter's Training Logbook: a structured 120-page notebook for bout tracking and technique sketches on KDP.",
+      "estimated_monthly_revenue_year1_eur": 180
     }
   ]
 }
