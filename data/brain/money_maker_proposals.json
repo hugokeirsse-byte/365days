@@ -1,8 +1,8 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-30T05:54:52.495593Z",
-  "model": "gemini-2.5-flash",
+  "timestamp": "2026-05-31T06:31:29.364299Z",
+  "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -69,6 +69,7 @@
     "produce_lowcontent_kdp",
     "produce_merch_designs",
     "produce_mobile_app_scaffold",
+    "produce_mobile_game_godot",
     "produce_mobile_game_scaffold",
     "produce_quotes_minimal",
     "produce_roman_chapters",
@@ -78,6 +79,7 @@
     "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
+    "produce_vintage_pd_from_cdc",
     "produce_viral_formats",
     "produce_viral_formats_v2",
     "produce_wedding_stationery",
@@ -140,80 +142,58 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Upload 5-10 'Simple Coloring Book' PDFs to KDP",
+      "action_title": "Publish First Coloring Book on KDP using Runware PAYG",
       "type": "upload",
-      "target_platform": "KDP",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 20,
-      "hugo_effort_hours": 8,
-      "why_this_works_now": "KDP is a 'registered_not_live' platform, meaning the account is set up. The 'produce_coloring_book' pipeline exists, even with 'brute quality' from Pollinations. The goal is to get *any* product live to start testing the entire publishing workflow and gather initial sales data. Low-quality coloring books can still sell if the niche is right and expectations are managed. This prioritizes getting products out versus perfecting a new image generation pipeline, which is a system improvement (not revenue focused).",
-      "first_action_today": "Run 'produce_coloring_book' pipeline 5-10 times using Pollinations. Collect generated PDFs. Review KDP publishing guide for low-content books."
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 20,
+      "estimated_revenue_uplift_eur_30days_high": 150,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "The coloring book pipeline is ready, but blocked by image generation. Spending just 2€ of the 20€ budget on Runware PAYG unlocks 3,300 FLUX-schnell images. This breaks the deadlock and puts a physical, high-margin asset live on Amazon's organic search engine instantly.",
+      "first_action_today": "Fund Runware account with minimum 5€, grab the API key, and trigger the 'produce_coloring_book' GitHub Action."
     },
     {
       "rank": 2,
-      "action_title": "Upload 10-20 'Merch Designs' to Redbubble",
-      "type": "upload",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 2,
-      "estimated_revenue_uplift_eur_30days_high": 15,
-      "hugo_effort_hours": 5,
-      "why_this_works_now": "Redbubble is also 'registered_not_live'. The 'produce_merch_designs' pipeline exists. Even simple text-based or basic graphic designs can generate initial sales on Redbubble with minimal effort. The platform handles printing and shipping, making it a low-barrier entry for generating passive income once designs are uploaded. Focus on evergreen niches or trending but not saturated themes.",
-      "first_action_today": "Run 'produce_merch_designs' pipeline 10-20 times. Select the best 10-20 designs. Start uploading these to Redbubble, focusing on filling out product types and adding relevant tags."
+      "action_title": "Deploy Free-to-Paid Godot UI Asset Packs on Itch.io",
+      "type": "new_stream",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 10,
+      "estimated_revenue_uplift_eur_30days_high": 80,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "The Godot assets pipeline can generate UI templates, button packs, or simple code scaffolds. Itch.io allows a 'name your own price' model. Offering a high-quality free asset pack with a suggested donation of 2.99€ captures immediate indie gamedev interest.",
+      "first_action_today": "Run the 'produce_godot_assets' pipeline via GitHub Actions and upload the output ZIP to Itch.io with 'Suggest 2.99€' enabled."
     },
     {
       "rank": 3,
-      "action_title": "Test 'Together AI' for improved image quality for 5 Coloring Book variations",
-      "type": "conversion",
-      "target_platform": "KDP",
-      "estimated_revenue_uplift_eur_30days_low": 10,
+      "action_title": "Bulk Upload 50 Text-Based Designs on Redbubble via Free Vector Scripts",
+      "type": "upload",
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 5,
       "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "The system state indicates Together AI is 'à tester' and offers 'FLUX-schnell + img2img' which is a direct path to better quality images for coloring books. Higher quality images lead to better product covers, more appealing interior pages, and ultimately higher conversion rates and potentially better reviews/sales. This is a direct conversion uplift through product quality.",
-      "first_action_today": "Set up TOGETHER_API_KEY. Adapt 'produce_coloring_book' to use Together AI for image generation. Generate 5 new coloring books with improved images. Prepare for KDP upload."
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Redbubble is already registered. Text-based designs (funny, niche-specific quotes) require zero complex AI generation. They can be auto-generated as SVGs using Python on GitHub Actions, requiring 0€ budget and zero GPU dependencies.",
+      "first_action_today": "Run 'produce_quotes_minimal' to generate 50 transparent SVGs, and bulk upload them to Redbubble using their native multi-product uploader."
     },
     {
       "rank": 4,
-      "action_title": "Publish 3-5 basic STL files for 3D printing on Cults3D",
+      "action_title": "Launch Parametric STL Files on Cults3D with Print-in-Place Focus",
       "type": "upload",
-      "target_platform": "Cults3D",
-      "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 25,
-      "hugo_effort_hours": 6,
-      "why_this_works_now": "Cults3D is a 'prévu' platform, meaning Hugo intends to use it. The 'produce_stl_parametric' and 'produce_stl_openscad' pipelines exist. Even simple, functional 3D models can generate sales, especially if they solve a common problem or are customizable. This gets a new product category live on a new platform, diversifying revenue streams early.",
-      "first_action_today": "Run 'produce_stl_parametric' or 'produce_stl_openscad' 3-5 times focusing on simple, functional items (e.g., cable holders, small organizers). Create basic renders/photos using a free tool or even Pollinations. Register and start uploading to Cults3D."
+      "target_platform": "Cults3D (prevu)",
+      "estimated_revenue_uplift_eur_30days_low": 15,
+      "estimated_revenue_uplift_eur_30days_high": 90,
+      "hugo_effort_hours": 3,
+      "why_this_works_now": "Cults3D has a highly active organic user base searching for functional 3D prints (boxes, organizers, brackets). Using OpenSCAD via GitHub Actions ('produce_stl_parametric') bypasses GPU costs entirely to generate clean, math-perfect STLs that sell consistently for 1.50€ to 3.00€.",
+      "first_action_today": "Activate the Cults3D account and run 'produce_stl_parametric' to generate 5 variations of functional desk organizers."
     },
     {
       "rank": 5,
-      "action_title": "Create 1 'Low Content KDP' notebook with 3 different cover designs",
-      "type": "upload",
-      "target_platform": "KDP",
-      "estimated_revenue_uplift_eur_30days_low": 3,
-      "estimated_revenue_uplift_eur_30days_high": 10,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "The 'produce_lowcontent_kdp' pipeline exists, offering a very quick way to publish products. Low-content notebooks are extremely easy to produce and publish, requiring minimal image generation (mostly text and simple patterns for covers). Publishing multiple covers for the same interior increases discoverability and caters to different tastes, acting as a small-scale A/B test for cover appeal.",
-      "first_action_today": "Run 'produce_lowcontent_kdp' once for an interior. Then run 'produce_kdp_cover' three times with different design prompts. Upload the notebook with its three covers to KDP."
-    },
-    {
-      "rank": 6,
-      "action_title": "Implement basic SEO tags for all Redbubble designs (5-10 per design)",
+      "action_title": "Optimize KDP Book Description with Low-Competition Search Terms",
       "type": "conversion",
-      "target_platform": "Redbubble",
-      "estimated_revenue_uplift_eur_30days_low": 2,
-      "estimated_revenue_uplift_eur_30days_high": 8,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Improving SEO for existing or newly uploaded designs directly increases visibility on Redbubble and external search engines. More visibility leads to more clicks and potentially more sales without creating new products. This is a low-effort, high-impact conversion uplift strategy.",
-      "first_action_today": "Research relevant keywords for the uploaded Redbubble designs. Edit each design's listing to include 5-10 descriptive and trending tags. Ensure titles and descriptions are also optimized with keywords."
-    },
-    {
-      "rank": 7,
-      "action_title": "Explore 'Runware' for 1 high-quality coloring book if other options fail",
-      "type": "conversion",
-      "target_platform": "KDP",
-      "estimated_revenue_uplift_eur_30days_low": 15,
+      "target_platform": "Amazon KDP",
+      "estimated_revenue_uplift_eur_30days_low": 10,
       "estimated_revenue_uplift_eur_30days_high": 50,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Runware is identified as a 'quality/volume' option with a capped budget. If Together AI or Cloudflare don't yield satisfactory quality quickly, investing a small portion of the budget (up to 20€) for one truly high-quality coloring book could serve as a 'flagship' product. This product could set a quality benchmark, attract initial positive reviews, and potentially justify a higher price point, leading to a higher per-unit profit.",
-      "first_action_today": "If Together AI/Cloudflare tests fail to produce 'vendable' quality, set up Runware account (ensure it respects the 20€ budget). Generate images for one coloring book. Prepare for KDP upload with a slightly higher price point."
+      "hugo_effort_hours": 1,
+      "why_this_works_now": "When the first coloring book is published, organic visibility is everything. Using free Amazon auto-suggest keywords in the subtitle, backend search terms, and A+ content description directly drives search impressions without ad spend.",
+      "first_action_today": "Draft 7 highly specific backend search phrases (e.g., 'mindful mandalas for teens relaxation') using Amazon's search bar auto-complete on his phone."
     }
   ]
 }
