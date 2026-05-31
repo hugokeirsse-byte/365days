@@ -1,7 +1,7 @@
 {
   "agent": "tools_scout",
   "title": "Tools Scout Brain",
-  "timestamp": "2026-05-30T05:58:22.915588Z",
+  "timestamp": "2026-05-31T06:31:30.825432Z",
   "model": "gemini-flash-latest",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
@@ -69,6 +69,7 @@
     "produce_lowcontent_kdp",
     "produce_merch_designs",
     "produce_mobile_app_scaffold",
+    "produce_mobile_game_godot",
     "produce_mobile_game_scaffold",
     "produce_quotes_minimal",
     "produce_roman_chapters",
@@ -78,6 +79,7 @@
     "produce_svg_from_cdc",
     "produce_svg_pack",
     "produce_tumbler_wraps",
+    "produce_vintage_pd_from_cdc",
     "produce_viral_formats",
     "produce_viral_formats_v2",
     "produce_wedding_stationery",
@@ -140,80 +142,80 @@
   "proposals": [
     {
       "rank": 1,
-      "tool_or_platform": "Fal.ai (FLUX.1-schnell API)",
-      "url": "https://fal.ai/models/fal-ai/flux/schnell",
+      "tool_or_platform": "Segmind API",
+      "url": "https://www.segmind.com",
       "category": "ai_image",
-      "free_tier_concrete_limits": "15$ free credit upon registration, images cost ~$0.003 each (equivalent to ~5,000 free high-quality images, no credit card required initially).",
-      "what_it_does_uniquely": "Provides ultra-fast, commercial-use FLUX.1-schnell generation with exceptional prompt adherence and crisp vector-like output, far superior to Pollinations.",
-      "would_integrate_where": "Can be integrated directly into 'produce_coloring_book' and 'produce_merch_designs' scripts running in GitHub Actions using a simple HTTP POST request with the 'FAL_KEY' secret.",
+      "free_tier_concrete_limits": "100 free API credits daily (renewed every 24h). FLUX.1 Schnell costs 0.003 credits per image (~33,000 free images per day).",
+      "what_it_does_uniquely": "Provides stable, incredibly fast API endpoints for FLUX.1 Schnell, SDXL, and ControlNet. Unlike other free tiers, their credit allowance is highly generous for lightweight models and works seamlessly inside serverless environments like GitHub Actions without CORS or IP blocks.",
+      "would_integrate_where": "Integrates directly inside `produce_coloring_book` and `produce_merch_designs` as the primary image generation backend via a simple cURL/Python request with an API key.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Once the initial $15 credit is exhausted, it requires a pay-as-you-go top-up, though costs remain extremely low."
+      "risk_or_caveat": "Daily credits do not roll over; strict rate limiting under high concurrent request volume."
     },
     {
       "rank": 2,
-      "tool_or_platform": "Kittl (Free Tier)",
-      "url": "https://www.kittl.com/",
-      "category": "pod",
-      "free_tier_concrete_limits": "15 free credits per day, access to vector export tools and commercial license under free tier attributes.",
-      "what_it_does_uniquely": "An advanced AI-powered design platform tailored specifically for POD merchandise, permitting quick generation of t-shirt layouts, text-effects, and vectorization.",
-      "would_integrate_where": "Used manually by Hugo on his Android phone browser to quickly package, vectorize, and polish raw AI images generated via GitHub Actions before uploading to Redbubble.",
+      "tool_or_platform": "Krea AI API",
+      "url": "https://www.krea.ai",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "50 free image generations per day on the web/API sandbox interface.",
+      "what_it_does_uniquely": "Offers superior real-time image upscaling, enhancement, and vector-style generation. It is specifically tailored for clean vector aesthetics and high-resolution POD preparation, making it perfect for turning raw generations into crisp coloring pages.",
+      "would_integrate_where": "Integrates into the post-processing phase of `produce_coloring_from_cdc` to upscale raw outputs to print-ready 300 DPI vectors.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "Requires attribution under the free tier; SVG export is sometimes restricted to premium, but high-res PNG export is free."
+      "risk_or_caveat": "The official developer API is in closed beta, requiring web automation or unofficial client wrappers within Termux/Actions."
     },
     {
       "rank": 3,
-      "tool_or_platform": "Vectorizer.ai (via API or Web Interface)",
-      "url": "https://vectorizer.ai/",
-      "category": "dev_tool",
-      "free_tier_concrete_limits": "Free interactive web use; API offers a trial quota of credits upon email verification.",
-      "what_it_does_uniquely": "Converts pixel-art or raster coloring book pages (PNG/JPG) into true mathematical vector SVG format with unmatched precision, essential for high-quality KDP and SVG pack sales.",
-      "would_integrate_where": "Could be integrated into 'produce_svg_pack' or used manually to convert GitHub-generated coloring pages into high-end print-ready vector PDFs.",
-      "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Fully automated API usage eventually requires payment, but the manual web interface remains highly accessible for batch processing."
+      "tool_or_platform": "TeePublic",
+      "url": "https://www.teepublic.com",
+      "category": "pod",
+      "free_tier_concrete_limits": "100% free to sign up and upload. No listing fees, automated storefront.",
+      "what_it_does_uniquely": "Owned by Redbubble but operates on an independent, highly optimized search algorithm. It has a massive organic reach for niche pop-culture, text-based, and minimalist designs, requiring zero ad spend.",
+      "would_integrate_where": "An automated upload destination to run parallel to Redbubble inside the merch design pipelines (`produce_merch_designs`).",
+      "novelty_2026_1_10": 7,
+      "risk_or_caveat": "Strict copyright filter system; accounts can be suspended quickly if tags infringe on major trademarked brands."
     },
     {
       "rank": 4,
-      "tool_or_platform": "Draft2Digital",
-      "url": "https://www.draft2digital.com/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to publish; they take a 10% cut of the retail price only when a sale is made.",
-      "what_it_does_uniquely": "Distributes ebooks and paperbacks to dozens of stores simultaneously (Barnes & Noble, Apple Books, Kobo, Scribd) from a single upload dashboard, expanding reach far beyond KDP.",
-      "would_integrate_where": "Pipeline 'produce_chess_book' or 'produce_roman_chapters' can output formatted EPUBs to be uploaded here to automate multi-channel book distribution.",
-      "novelty_2026_1_10": 7,
-      "risk_or_caveat": "Formatting requirements are strict; covers must be precisely sized to avoid automated rejection during ingestion."
+      "tool_or_platform": "SerpApi (Google Lens API)",
+      "url": "https://serpapi.com",
+      "category": "analytics",
+      "free_tier_concrete_limits": "100 free searches per month.",
+      "what_it_does_uniquely": "Allows programmatic reverse image search via Google Lens. It can scan top-selling POD designs on Etsy/Amazon to find exactly what style is trending or verify if a generated image is too close to an existing copyrighted work.",
+      "would_integrate_where": "Used in `agent_visual_audit` and `agent_trend_design_matcher` to validate that generated designs are unique and target highly-searched visual styles.",
+      "novelty_2026_1_10": 8,
+      "risk_or_caveat": "Low monthly volume on the free tier; needs to be used sparingly only for final validation of top candidates."
     },
     {
       "rank": 5,
-      "tool_or_platform": "OpenGameArt.org",
-      "url": "https://opengameart.org/",
-      "category": "marketplace",
-      "free_tier_concrete_limits": "100% free to upload, list, and showcase assets with no listing fees.",
-      "what_it_does_uniquely": "The largest repository for open-source and public domain gamedev assets; serves as an excellent traffic redirector to paid premium asset packs on itch.io or Cults3D.",
-      "would_integrate_where": "In 'produce_gamedev_asset_pack', Hugo can upload a 'Lite' version of a 2D tilemap or 3D low-poly pack here, with a README link pointing to his premium packs.",
-      "novelty_2026_1_10": 6,
-      "risk_or_caveat": "Licensing must be clearly specified (e.g., CC-BY or CC0) to prevent community backlash regarding AI-generated assets."
+      "tool_or_platform": "Suno API (via unofficial open-source wrappers)",
+      "url": "https://github.com/Suno2api/Suno2api",
+      "category": "ai_audio",
+      "free_tier_concrete_limits": "50 credits per day (equivalent to 10 free songs/tracks per day on Suno's base engine).",
+      "what_it_does_uniquely": "Generates high-quality, radio-ready music, soundscapes, and loops. Perfect for creating game assets, ambient sounds for focus/meditation, or audiobooks.",
+      "would_integrate_where": "Integrates into `produce_gamedev_asset_pack` to add premium audio assets (background loops, SFX) to asset bundles sold on itch.io or Unity/Godot stores.",
+      "novelty_2026_1_10": 9,
+      "risk_or_caveat": "Commercial use of the free tier tracks is legally restricted by Suno’s ToS; tracks must be heavily modified or used as placeholders unless upgraded."
     },
     {
       "rank": 6,
-      "tool_or_platform": "SerpApi (Google Trends & Search API)",
-      "url": "https://serpapi.com/",
-      "category": "analytics",
-      "free_tier_concrete_limits": "100 free searches per month.",
-      "what_it_does_uniquely": "Provides structured JSON data directly from Google Search, Google Images, and Google Trends without dealing with complex scraping blocks.",
-      "would_integrate_where": "Integrates into 'agent_trendhunter' or 'agent_merch_trends' to automatically extract rising search queries directly from GitHub Actions.",
+      "tool_or_platform": "Vectorizer AI (via alternative API engines like Vectorizer.io)",
+      "url": "https://vectorizer.ai",
+      "category": "dev_tool",
+      "free_tier_concrete_limits": "Free interactive web conversions, or free credits upon account registration.",
+      "what_it_does_uniquely": "Converts raster PNG/JPG images into flawless, scalable SVG files using advanced geometric tracing. Far superior to standard Potrace engines for coloring books and cutting files (Cricut/SVG packs).",
+      "would_integrate_where": "Used inside `produce_svg_pack` and `produce_coloring_book` to convert AI-generated line art into true vector formats before packaging.",
       "novelty_2026_1_10": 8,
-      "risk_or_caveat": "100 requests per month is low, so searches must be highly targeted and cached to maximize efficiency."
+      "risk_or_caveat": "API transitions to paid quickly; requires rotating keys or fallback to local command-line tools like `potrace` inside GitHub Actions."
     },
     {
       "rank": 7,
       "tool_or_platform": "Luma Dream Machine API",
-      "url": "https://lumalabs.ai/dream-machine/api",
-      "category": "ai_audio",
-      "free_tier_concrete_limits": "Free credits on sign-up, scale-as-you-go model with low-cost entry tiers.",
-      "what_it_does_uniquely": "Generates highly realistic 3D assets, video clips, or spatial scenes from simple text or image prompts, opening up 3D asset generation workflows.",
-      "would_integrate_where": "Could be used in a future 'produce_3d_assets' pipeline to generate preview videos or marketing clips for Cults3D models automatically.",
+      "url": "https://lumalabs.ai/dream-machine",
+      "category": "ai_image",
+      "free_tier_concrete_limits": "30 free generations per month via web/developer portal.",
+      "what_it_does_uniquely": "Produces highly realistic, hyper-detailed 3D assets, videos, and complex imagery from simple prompts. Unmatched in cinematic lighting and structural coherence.",
+      "would_integrate_where": "Used in `produce_kdp_cover` to create eye-catching, high-impact book covers that stand out against amateur designs.",
       "novelty_2026_1_10": 9,
-      "risk_or_caveat": "Heavy computational demand; API keys must be secured and call volume monitored closely to avoid unexpected usage."
+      "risk_or_caveat": "Slow generation times and limited free quota; best reserved strictly for high-value hero assets (like main covers)."
     }
   ]
 }
