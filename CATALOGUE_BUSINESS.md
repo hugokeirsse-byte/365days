@@ -1123,23 +1123,218 @@ Ces business ont l'air rentables en théorie mais présentent des risques légau
 
 ---
 
-# RÉSUMÉ TIER LIST COMPLET
+# BUSINESS #91 À #95 — LES 5 NIDS À POGNON "CLAUDE PUR" ÉMERGENTS
 
-| Tier | Critère | Business |
-|------|---------|---------|
-| **S+** | Argent en < 2 semaines | #1, #2, #3, #4, #5, #6, #9, #19 |
-| **S** | Excellent, 2–6 semaines | #7, #8, #10, #11, #12, #13, #14, #15, #16, #17, #18, #20, #21, #22, #23, #53 |
-| **A** | Très bon, 1–3 mois | #24, #25, #26, #27, #28, #29, #30, #31, #32, #33, #34, #35, #36, #37, #38, #39, #40, #43, #48, #49, #54, #55, #56, #57, #58, #70 |
-| **B** | Bon, viable | #41, #42, #44, #45, #46, #47, #50, #51, #52, #59, #60, #61, #62, #63, #64, #65, #66, #67, #68, #69, #71, #72, #73, #74, #75 |
-| **C** | Long terme / effort perso | #76, #77, #78, #79, #80, #81, #82, #83 |
-| **D** | Ne pas toucher | #84, #85, #86, #87, #88, #89, #90 |
+---
 
-**Total : 90 business documentés**
-- Tier S+ et S : 24 business (lancer en priorité)
-- Tier A : 26 business (construire en parallèle)
-- Tier B : 25 business (opportunités secondaires)
-- Tier C : 8 business (long terme)
-- Tier D : 7 business (éviter absolument)
+## #91 — CONFORMITÉ AI ACT / GOUVERNANCE IA
+**C'est quoi simplement ?**
+L'AI Act européen est entré en vigueur en 2024. Toutes les entreprises qui utilisent ou déploient une IA ont jusqu'à 2026 pour se conformer. Elles ont besoin de : une politique d'usage de l'IA, un registre de leurs systèmes IA, une évaluation des risques, des procédures de contrôle. Les cabinets de conseil facturent €10 000–50 000 pour ça. Claude génère l'ensemble du dossier en 2 heures. Tu factures €500–2000. La demande est **urgente et massive en ce moment même** — la plupart des PME n'ont rien fait et la deadline approche.
+
+**Comment trouver les clients :** LinkedIn (DRH, DAF, DPO des PME de 20-200 personnes), cabinets comptables partenaires (ils ont les contacts), Malt.fr, approche directe par email avec un diagnostic gratuit de 10 minutes.
+**Revenu réaliste :** €2000–8000/mois (3 à 5 dossiers/mois suffisent)
+**Vitesse 1er € :** 1 à 2 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Facilité clients :** Moyen (il faut cibler les bons interlocuteurs)
+**Tier : S+**
+
+---
+
+## #92 — RÉPONSES AUX APPELS D'OFFRES PUBLICS
+**C'est quoi simplement ?**
+Les marchés publics en France = €200 milliards par an. Chaque appel d'offres (publié sur BOAMP ou marchés-publics.fr) exige une réponse structurée de 30 à 80 pages : mémoire technique, méthodologie, références, planning, prix. Des PME perdent des marchés de €200 000 à €1 million faute d'une bonne rédaction. Elles paient €1000–3000 pour une réponse professionnelle. Claude maîtrise ce format parfaitement. Tu prends le cahier des charges du client, Claude rédige, tu livres en 48h.
+
+**Comment trouver les clients :** BOAMP et marchés-publics.fr (tu vois qui répond à quels marchés), LinkedIn (PME BTP, IT, services), associations professionnelles de secteur.
+**Revenu réaliste :** €3000–8000/mois (3 à 5 réponses/mois)
+**Vitesse 1er € :** 1 à 2 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €0
+**Facilité clients :** Moyen (il faut approcher les dirigeants de PME qui candidatent régulièrement)
+**Tier : S+**
+
+---
+
+## #93 — SYSTEM PROMPT ENGINEERING
+**C'est quoi simplement ?**
+Chaque startup ou PME qui intègre une IA dans son produit (chatbot, assistant interne, outil d'analyse) a besoin d'un "system prompt" — le texte caché qui dit à l'IA comment se comporter, quoi ne pas dire, quel ton adopter. Un mauvais system prompt = une IA qui dit n'importe quoi, se fait manipuler par les utilisateurs, ou produit des réponses hors sujet. C'est une discipline toute neuve. Claude peut écrire, tester et documenter ces system prompts pour les boîtes qui déploient de l'IA. Valeur perçue très haute car rares sont ceux qui savent le faire bien.
+
+**Comment trouver les clients :** LinkedIn (fondateurs de startups tech), Product Hunt (nouvelles startups), communities Slack/Discord de founders, Malt.
+**Revenu réaliste :** €500–3000 par projet, €1500–6000/mois
+**Vitesse 1er € :** 2 à 4 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €0
+**Facilité clients :** Difficile (il faut trouver les boîtes qui déploient de l'IA maintenant)
+**Tier : A**
+
+---
+
+## #94 — NEWSLETTER DE VEILLE CONCURRENTIELLE B2B
+**C'est quoi simplement ?**
+Une lettre d'information hebdomadaire envoyée à des directeurs d'entreprise sur un secteur précis (medtech, fintech, immobilier commercial, retail tech...). Chaque édition résume : les nouveaux entrants, les levées de fonds, les brevets déposés, les mouvements de dirigeants, les signaux faibles du marché. Claude surveille les sources, analyse, rédige. L'abonné reçoit en 5 minutes de lecture ce qui lui prendrait 4 heures à compiler seul. Abonnement B2B à €99–299/mois. 50 abonnés sérieux = €5000–15000/mois récurrents.
+
+**Comment trouver les clients :** LinkedIn (directeurs stratégie, directeurs marketing d'ETI), cold email ciblé, conférences sectorielles, proposer 1 mois gratuit pour démonstration.
+**Revenu réaliste :** €2000–15000/mois (modèle abonnement récurrent)
+**Vitesse 1er € :** 3 à 6 semaines (temps de construire les 50 premiers abonnés)
+**Automatisation :** ★★★★☆
+**Investissement :** €0 (Beehiiv gratuit jusqu'à 2500 abonnés)
+**Facilité clients :** Difficile au début, puis bouche-à-oreille fort
+**Tier : S**
+
+---
+
+## #95 — DOCUMENTATION DE CODE "VIBE CODING"
+**C'est quoi simplement ?**
+En 2025, des milliers d'entrepreneurs et de PME ont fait développer leur logiciel entièrement par IA (Claude, Cursor, Copilot) sans faire appel à un vrai développeur. Résultat : ils ont un produit qui fonctionne mais dont **personne ne comprend le code**. Le jour où il faut faire évoluer le produit ou corriger un bug, c'est l'impasse. Claude lit le code source, produit la documentation technique complète : architecture du système, explication de chaque module, guide de maintenance, liste des dépendances, points fragiles. Service très demandé, quasi inexistant sur le marché aujourd'hui.
+
+**Comment trouver les clients :** Reddit r/entrepreneur, r/SaaS, IndieHackers, Hacker News, LinkedIn fondateurs de startups non-techniques.
+**Revenu réaliste :** €500–3000 par projet, €2000–6000/mois
+**Vitesse 1er € :** 1 à 2 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Facilité clients :** Facile (la douleur est concrète et exprimée publiquement)
+**Tier : A**
+
+---
+
+---
+
+# NOTE IMPORTANTE — LES PROMPT PACKS (#19) : SCEPTICISME JUSTIFIÉ
+
+**Tu as raison d'être sceptique.** "Pourquoi acheter des prompts alors que tout le monde peut en demander à l'IA ?"
+
+La vraie réponse : tu ne vends pas des prompts, tu vends du **temps et de la certitude**. Un professionnel qui a 10 ans d'expérience ne va pas passer 3 semaines à tester et optimiser ses prompts — il achète un système qui marche du premier coup.
+
+**Mais dans les faits**, le marché des "prompt packs génériques" est effectivement en train de mourir. Ce qui marche encore :
+- Les **systèmes complets** (20 prompts séquencés avec variables) pour un métier très précis
+- Les **packs B2B** vendus directement à des entreprises (pas à des particuliers)
+- Intégrés dans un service plus large (tu vends une formation + les prompts)
+
+**Verdict : à dé-prioriser.** Concentre l'énergie sur les B2B à forte valeur unitaire (#91, #92, #94). Le #19 peut rester dans le catalogue comme revenu d'appoint mais pas comme priorité.
+
+---
+
+---
+
+# TABLEAU MAÎTRE DE RÉFÉRENCE — 95 BUSINESS
+
+*Lecture rapide : Tier | Facilité de trouver des clients | Où vendre ou prospecter*
+
+**Facilité clients :** 🟢 Facile (clients cherchent activement) | 🟡 Moyen (prospection nécessaire) | 🔴 Difficile (cycle de vente long ou marché niche)
+
+| # | Business | Tier | Clients | Plateformes / Où prospecter |
+|---|---------|------|---------|----------------------------|
+| 1 | LinkedIn Ghostwriting | S+ | 🟡 Moyen | LinkedIn DM direct, Malt |
+| 2 | Malt semi-auto (copy-paste) | S+ | 🟢 Facile | Malt.fr, Upwork |
+| 3 | Couvertures livres KDP | S+ | 🟢 Facile | r/selfpublish, Fiverr, Malt |
+| 4 | Descriptions immobilières | S+ | 🟡 Moyen | Approche directe agences, SeLoger |
+| 5 | Contenu social media PME | S+ | 🟢 Facile | Instagram PME locales, Google Maps |
+| 6 | Business plans | S+ | 🟡 Moyen | Malt, Facebook entrepreneurs, CCI |
+| 7 | Agence contenu SEO local | S+ | 🟡 Moyen | Cold email PME, Malt |
+| 8 | Analyse concurrentielle | A | 🔴 Difficile | LinkedIn B2B, Malt |
+| 9 | Optimiseur CV | S+ | 🟢 Facile | Reddit r/emploi, LinkedIn, Gumroad |
+| 10 | Documentation technique code | A | 🟡 Moyen | Malt, GitHub communities |
+| 11 | Educational Worksheets (TPT) | S | 🟢 Facile | Teachers Pay Teachers (trafic intégré) |
+| 12 | Scrapbooking Digital Kits | S | 🟢 Facile | Creative Fabrica (trafic intégré) |
+| 13 | Clip Art / Illustration Packs | S | 🟢 Facile | Creative Fabrica, Etsy |
+| 14 | Données synthétiques IA (JSONL) | S | 🔴 Difficile | Hugging Face, LinkedIn B2B, direct |
+| 15 | Modules D&D / DMs Guild | S | 🟢 Facile | DMs Guild (trafic intégré), Itch.io |
+| 16 | LUTs cinématographiques | S | 🟢 Facile | VideoHive, Etsy, Gumroad |
+| 17 | Anki Decks certifications | S | 🟢 Facile | Etsy, Gumroad, Reddit r/medicalschool |
+| 18 | SVG/DXF Laser multicouche | S | 🟢 Facile | Etsy, xTool Creative Space |
+| 19 | AI Prompt Packs ⚠️ | B | 🔴 Difficile | Gumroad (faible valeur — voir note) |
+| 20 | Eco Packaging Dielines | S | 🟡 Moyen | Etsy, Noissue community, direct |
+| 21 | Game Balance Matrices | S | 🟡 Moyen | Itch.io, r/gamedev, Discord devs |
+| 22 | Textures PBR 4K | S | 🟢 Facile | ArtStation, Fab.com, Gumroad |
+| 23 | Adobe Stock / Shutterstock IA | S | 🟢 Facile | Adobe Stock, Shutterstock (upload direct) |
+| 24 | Palettes couleurs ASE | S | 🟢 Facile | Creative Fabrica, Etsy |
+| 25 | Maps tabletop D&D | A | 🟢 Facile | Itch.io, DMs Guild |
+| 26 | Planners GoodNotes | A | 🟢 Facile | Etsy, Gumroad |
+| 27 | Templates documents légaux | A | 🟢 Facile | Etsy, Gumroad |
+| 28 | Modèles financiers immo Excel | A | 🟡 Moyen | Etsy, Reddit r/investissement, SeLoger forums |
+| 29 | Checklists conformité RGPD | A | 🟡 Moyen | Etsy, Malt, approche directe PME |
+| 30 | Gabarits maroquinerie | A | 🟢 Facile | Etsy |
+| 31 | Progressions accords MIDI | A | 🟢 Facile | Gumroad, Beatstars, r/edmproduction |
+| 32 | Home Assistant YAML | A | 🟢 Facile | Forum HA officiel, Etsy, Gumroad |
+| 33 | Art mathématique GCODE | A | 🟡 Moyen | Etsy, communauté AxiDraw, Plotterfiles |
+| 34 | Fichiers broderie DST/PES | A | 🟢 Facile | Etsy, Creative Fabrica |
+| 35 | Fiches scolaires FR | B | 🟡 Moyen | Tes.com, Gumroad, Facebook enseignants |
+| 36 | Patterns seamless | A | 🟢 Facile | Spoonflower, Society6, Etsy |
+| 37 | Party + Wedding printables | A | 🟢 Facile | Etsy |
+| 38 | Sprite sheets + JSON | A | 🟡 Moyen | Itch.io, Unity Asset Store |
+| 39 | Livres illustrés enfants | B | 🟢 Facile | KDP Amazon |
+| 40 | Mock API data (OpenAPI) | A | 🟡 Moyen | Gumroad, r/webdev, Postman community |
+| 41 | Coloring Books KDP | B | 🟢 Facile | KDP Amazon |
+| 42 | STL 3D | B | 🟢 Facile | Cults3D, Printables.com, Etsy |
+| 43 | Miniatures D&D STL | A | 🟡 Moyen | Cults3D, MyMiniFactory, Patreon |
+| 44 | SVG Packs Cricut | B | 🟢 Facile | Creative Fabrica, Etsy |
+| 45 | Merch POD | B | 🟢 Facile | Redbubble, TeePublic, Merch by Amazon |
+| 46 | Low-content KDP | C | 🟢 Facile | KDP Amazon (mais saturé) |
+| 47 | Vintage Public Domain | B | 🟢 Facile | Etsy, Redbubble |
+| 48 | Roblox UGC items | B | 🟡 Moyen | Roblox Marketplace (intégré) |
+| 49 | Minecraft Texture Packs | B | 🟢 Facile | CurseForge, Modrinth |
+| 50 | Skins CS2 / TF2 Workshop | B | 🔴 Difficile | Steam Workshop (Valve décide) |
+| 51 | YouTube / TikTok faceless | C | 🟡 Moyen | YouTube, TikTok (organique) |
+| 52 | Newsletter niche | C | 🔴 Difficile | Beehiiv, cold email, LinkedIn |
+| 53 | Micro SaaS | S | 🔴 Difficile | Product Hunt, AppSumo, SEO organique |
+| 54 | Ghostwriting threads X | A | 🟢 Facile | Twitter DM direct, Malt |
+| 55 | Communiqués de presse | A | 🟢 Facile | Malt, r/startups, direct startups |
+| 56 | Scripts YouTube | A | 🟢 Facile | Fiverr, Malt, Discord creators |
+| 57 | Traduction / localisation | A | 🟢 Facile | Malt, ProZ.com, direct éditeurs logiciels |
+| 58 | Packaging / étiquettes PME | A | 🟡 Moyen | Instagram makers, Malt, direct |
+| 59 | Templates Canva | C | 🟢 Facile | Etsy, Creative Fabrica |
+| 60 | Templates Notion / Airtable | B | 🟡 Moyen | Etsy, Gumroad, Notion marketplace |
+| 61 | Templates CapCut / Reels | B | 🟡 Moyen | CapCut marketplace, TikTok |
+| 62 | Presets Lightroom niche | B | 🟢 Facile | Etsy, Creative Fabrica |
+| 63 | Presets synthétiseurs (FXP) | B | 🟡 Moyen | Gumroad, r/edmproduction |
+| 64 | Cartes de vœux / papeterie | B | 🟢 Facile | Etsy |
+| 65 | Game Assets Godot | B | 🟡 Moyen | Itch.io |
+| 66 | Templates CV / lettres | B | 🟢 Facile | Etsy, Gumroad |
+| 67 | Grilles point de croix | B | 🟢 Facile | Etsy |
+| 68 | Pinceaux Procreate | B | 🟢 Facile | Etsy, Creative Fabrica |
+| 69 | Assets 3D GLTF e-commerce | B | 🔴 Difficile | Shopify app stores, approche directe |
+| 70 | Patrons vitrail / mosaïque | A | 🟡 Moyen | Etsy, Facebook vitrail |
+| 71 | Config Tailwind CSS | C | 🔴 Difficile | r/webdev, GitHub |
+| 72 | Cheat sheets développeurs | B | 🟢 Facile | Gumroad, r/learnprogramming |
+| 73 | Patterns matelassage CNC | B | 🟡 Moyen | Etsy, communautés quilting |
+| 74 | Carnets de bord spécialisés | B | 🟢 Facile | Etsy, forums de niche |
+| 75 | Cartes affirmation / oracles | B | 🟢 Facile | Etsy, Gumroad |
+| 76 | Romans KDP | C | 🟢 Facile | KDP (invisible sans reviews) |
+| 77 | Jeux mobiles Godot | C | 🔴 Difficile | App stores (concurrence massive) |
+| 78 | Jeux Roblox (Lua) | C | 🔴 Difficile | Roblox (besoin de viral) |
+| 79 | Fortnite UEFN | C | 🔴 Difficile | Fortnite (imprévisible) |
+| 80 | Canva Templates (complet) | C | 🟢 Facile | Etsy, Creative Fabrica |
+| 81 | Assets Spatial Computing | C | 🔴 Difficile | Vision Pro App Store (embryonnaire) |
+| 82 | Polices / Fonts | C | 🟡 Moyen | Creative Fabrica, MyFonts, Etsy |
+| 83 | Schémas SQL | C | 🔴 Difficile | CodeCanyon, Gumroad |
+| 84 | Terraform ☠️ | D | — | NE PAS FAIRE |
+| 85 | Bases de données leads ☠️ | D | — | NE PAS FAIRE (RGPD) |
+| 86 | Shaders HLSL ☠️ | D | — | NE PAS FAIRE |
+| 87 | Moules micro-injection ☠️ | D | — | NE PAS FAIRE |
+| 88 | Audio Stems IA ☠️ | D | — | NE PAS FAIRE (droits) |
+| 89 | Applications mobiles ☠️ | D | — | NE PAS FAIRE |
+| 90 | Jeux de société physiques ☠️ | D | — | NE PAS FAIRE |
+| 91 | **Conformité AI Act** | **S+** | 🟡 Moyen | LinkedIn B2B, Malt, cabinets comptables |
+| 92 | **Réponses Appels d'Offres** | **S+** | 🟡 Moyen | BOAMP, marchés-publics.fr, LinkedIn PME |
+| 93 | System Prompt Engineering | A | 🔴 Difficile | LinkedIn startups tech, Product Hunt |
+| 94 | **Newsletter Veille B2B** | **S** | 🔴 Difficile | LinkedIn DM, cold email, Beehiiv |
+| 95 | **Documentation vibe coding** | **A** | 🟢 Facile | Reddit r/entrepreneur, IndieHackers, Malt |
+
+---
+
+## CLASSEMENT FINAL PAR PRIORITÉ ABSOLUE
+
+Si tu ne devais lancer que **5 business** dans l'ordre :
+
+```
+#1  → #91 Conformité AI Act        (argent rapide, B2B, besoin urgent)
+#2  → #92 Réponses Appels d'Offres (argent rapide, B2B, marché énorme)
+#3  → #11 Educational Worksheets   (passif pur, TPT trafic intégré, Claude seul)
+#4  → #95 Documentation vibe coding (B2B, douleur concrète, Claude seul)
+#5  → #16 LUTs cinématographiques  (passif pur, math pure, zéro coût)
+```
+
+**Règle d'or rappelée :** on ne passe au #2 que quand le #1 a un premier produit vendu ou un premier client payant.
 
 ---
 
