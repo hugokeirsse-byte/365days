@@ -4,9 +4,9 @@ on:
   push:
     paths: ['.triggers/eclaireur_bestsellers']
   workflow_dispatch:
-  schedule:
-    # Chaque mardi à 03h UTC — analyse marché en début de semaine
-    - cron: '0 3 * * 2'
+  # schedule:  # DÉSACTIVÉ
+  #   # Chaque mardi à 03h UTC — analyse marché en début de semaine
+  #   - cron: '0 3 * * 2'
 
 env:
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

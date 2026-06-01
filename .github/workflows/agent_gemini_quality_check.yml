@@ -14,9 +14,9 @@ on:
         description: "Auto-reject (1=oui)"
         required: false
         default: "0"
-  schedule:
-    # Tous les jours à minuit UTC — après les productions et visual_audit
-    - cron: "0 0 * * *"
+  # schedule:  # DÉSACTIVÉ
+  #   # Tous les jours à minuit UTC — après les productions et visual_audit
+  #   - cron: "0 0 * * *"
   push:
     paths:
       - .triggers/gemini_quality_check

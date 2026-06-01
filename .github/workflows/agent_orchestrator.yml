@@ -7,9 +7,9 @@ on:
         description: "Dry run (1=simule sans trigger)"
         required: false
         default: "0"
-  schedule:
-    # Jeudi 7h UTC — après opp_hunter (lundi) + ideator (mercredi)
-    - cron: "0 7 * * 4"
+  # schedule:  # DÉSACTIVÉ
+  #   # Jeudi 7h UTC — après opp_hunter (lundi) + ideator (mercredi)
+  #   - cron: "0 7 * * 4"
 
 concurrency:
   group: orchestrator-${{ github.ref }}

@@ -11,9 +11,9 @@ on:
         description: "Seuil rejected pour trigger regen"
         required: false
         default: "5"
-  schedule:
-    # Lundi minuit UTC — juste après gemini quality check
-    - cron: "30 0 * * 1"
+  # schedule:  # DÉSACTIVÉ
+  #   # Lundi minuit UTC — juste après gemini quality check
+  #   - cron: "30 0 * * 1"
 
 permissions:
   contents: write

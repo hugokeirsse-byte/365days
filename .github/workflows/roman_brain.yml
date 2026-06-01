@@ -1,7 +1,7 @@
 name: Roman Brain — Tendances KDP Fiction
 on:
-  schedule:
-    - cron: '0 5 * * 3'   # Mercredi 05h UTC
+  # schedule:  # DÉSACTIVÉ
+  #   - cron: '0 5 * * 3'   # Mercredi 05h UTC
   workflow_dispatch:
     inputs:
       angle: {description: 'Angle override', required: false, default: ''}

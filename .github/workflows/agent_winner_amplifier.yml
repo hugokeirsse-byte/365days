@@ -2,9 +2,9 @@ name: Agent Winner Amplifier (apprentissage des ventes)
 
 on:
   workflow_dispatch: {}
-  schedule:
-    # Dimanche 22h UTC — après que Hugo ait fait son point hebdo
-    - cron: "0 22 * * 0"
+  # schedule:  # DÉSACTIVÉ
+  #   # Dimanche 22h UTC — après que Hugo ait fait son point hebdo
+  #   - cron: "0 22 * * 0"
   push:
     paths:
       - data/sales_feedback.csv

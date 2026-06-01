@@ -1,7 +1,7 @@
 name: Mobile Games Brain — Tendances App Store / Google Play / Itch.io
 on:
-  schedule:
-    - cron: '0 5 * * 1'   # Lundi 05h UTC
+  # schedule:  # DÉSACTIVÉ
+  #   - cron: '0 5 * * 1'   # Lundi 05h UTC
   workflow_dispatch:
     inputs:
       angle: {description: 'Angle override', required: false, default: ''}

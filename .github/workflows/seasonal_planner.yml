@@ -2,9 +2,9 @@ name: Seasonal Planner (anticipation événements)
 
 on:
   workflow_dispatch: {}
-  schedule:
-    # Tous les lundis 07h UTC (après b1_stratege 06h, avant vintage_pd 09h)
-    - cron: "0 7 * * 1"
+  # schedule:  # DÉSACTIVÉ
+  #   # Tous les lundis 07h UTC (après b1_stratege 06h, avant vintage_pd 09h)
+  #   - cron: "0 7 * * 1"
   push:
     paths:
       - .triggers/seasonal

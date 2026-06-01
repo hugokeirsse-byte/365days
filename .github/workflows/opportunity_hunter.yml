@@ -2,9 +2,9 @@ name: Opportunity Hunter (cerveau hebdo)
 
 on:
   workflow_dispatch: {}
-  schedule:
-    # Lundi 8h UTC = après trend_explosion (6h *), niche_gap (4h), seasonal (6h)
-    - cron: "0 8 * * 1"
+  # schedule:  # DÉSACTIVÉ
+  #   # Lundi 8h UTC = après trend_explosion (6h *), niche_gap (4h), seasonal (6h)
+  #   - cron: "0 8 * * 1"
   push:
     paths:
       - .triggers/opportunity

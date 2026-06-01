@@ -5,8 +5,8 @@ name: Vintage Public Domain Brain
 # opportunités educational coloring books, tendances esthétiques vintage.
 
 on:
-  schedule:
-    - cron: '0 9 * * 1'   # Lundi 06h UTC
+  # schedule:  # DÉSACTIVÉ
+  #   - cron: '0 9 * * 1'   # Lundi 06h UTC
   workflow_dispatch:
     inputs:
       angle_override:

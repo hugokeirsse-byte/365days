@@ -1,7 +1,7 @@
 name: Low-Content Brain — Tendances KDP
 on:
-  schedule:
-    - cron: '0 5 * * 2'   # Mardi 05h UTC
+  # schedule:  # DÉSACTIVÉ
+  #   - cron: '0 5 * * 2'   # Mardi 05h UTC
   workflow_dispatch:
     inputs:
       angle: {description: 'Angle override', required: false, default: ''}

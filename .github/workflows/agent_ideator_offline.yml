@@ -2,9 +2,9 @@ name: Agent Ideator Offline (brainstorm combinatoire)
 
 on:
   workflow_dispatch: {}
-  schedule:
-    # Mercredi 6h UTC — après les agents Reddit et seasonal
-    - cron: "0 6 * * 3"
+  # schedule:  # DÉSACTIVÉ
+  #   # Mercredi 6h UTC — après les agents Reddit et seasonal
+  #   - cron: "0 6 * * 3"
   push:
     paths:
       - .triggers/ideator

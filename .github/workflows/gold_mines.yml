@@ -5,8 +5,8 @@ name: Gold Mines — Détecteur de Business Émergents
 # des business MODÈLES entiers qui émergent ou mutent.
 
 on:
-  schedule:
-    - cron: '0 5 * * 4'   # Jeudi 05h UTC (après jeux_societe_brain 04h)
+  # schedule:  # DÉSACTIVÉ
+  #   - cron: '0 5 * * 4'   # Jeudi 05h UTC (après jeux_societe_brain 04h)
   workflow_dispatch:
     inputs:
       angle_override:

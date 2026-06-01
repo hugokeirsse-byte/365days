@@ -4,9 +4,9 @@ on:
   push:
     paths: ['.triggers/rapporteur_hebdo']
   workflow_dispatch:
-  schedule:
-    # Chaque dimanche à 20h UTC — fin de semaine, Hugo lit le rapport
-    - cron: '0 20 * * 0'
+  # schedule:  # DÉSACTIVÉ
+  #   # Chaque dimanche à 20h UTC — fin de semaine, Hugo lit le rapport
+  #   - cron: '0 20 * * 0'
 
 env:
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}

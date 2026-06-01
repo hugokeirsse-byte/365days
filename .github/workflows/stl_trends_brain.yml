@@ -1,8 +1,8 @@
 name: STL Trends Brain
 
 on:
-  schedule:
-    - cron: '0 4 * * 3'   # Mercredi 04h UTC
+  # schedule:  # DÉSACTIVÉ
+  #   - cron: '0 4 * * 3'   # Mercredi 04h UTC
   workflow_dispatch:
     inputs:
       angle_override:
