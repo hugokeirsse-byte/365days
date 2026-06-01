@@ -707,16 +707,439 @@ MOIS 6-12 : YouTube/TikTok + Newsletter
 
 ---
 
-# RÉSUMÉ TIER LIST
+---
 
-| Tier | Critère | Business (numéros) |
-|------|---------|-------------------|
+# BUSINESS MANQUANTS — COMPLÉMENT (53 à 85)
+
+---
+
+## #53 — MICRO SAAS (UN OUTIL, UN PROBLÈME, UN ABONNEMENT)
+**C'est quoi simplement ?**
+Un "micro SaaS" c'est un petit logiciel en ligne qui résout un seul problème précis et que les gens paient chaque mois pour utiliser. Pas besoin de créer le prochain Slack. Exemples : "générateur automatique de tags Etsy SEO" (tu entres ton produit, il te sort les 13 meilleurs tags), "optimiseur de CV pour une offre précise", "générateur de cold emails personnalisés". Tu construis ça avec Claude en backend + une interface simple (Bubble.io sans coder, ou Flask si tu codes). 50 abonnés à €15/mois = €750/mois qui tombent sans rien faire.
+
+**Revenu réaliste :** €500–10000/mois selon la traction
+**Vitesse 1er € :** 3 à 6 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0–20
+**Tier : S**
+
+---
+
+## #54 — GHOSTWRITING DE THREADS X (TWITTER)
+**C'est quoi simplement ?**
+Même principe que le LinkedIn ghostwriting (#1) mais pour Twitter/X. Des créateurs de contenu et experts payent quelqu'un pour écrire leurs threads (ces longues suites de tweets qui expliquent un concept). Claude maîtrise parfaitement le format "thread". Moins rémunérateur que LinkedIn mais marché plus facile à atteindre.
+
+**Revenu réaliste :** €200–800/mois par client
+**Vitesse 1er € :** 5 à 10 jours
+**Automatisation :** ★★★★☆
+**Investissement :** €0
+**Tier : A**
+
+---
+
+## #55 — COMMUNIQUÉS DE PRESSE (PRESS RELEASES)
+**C'est quoi simplement ?**
+Quand une entreprise lance un produit, lève des fonds ou annonce quelque chose d'important, elle envoie un "communiqué de presse" à des journalistes. Rédiger un bon communiqué a un format précis. Claude le génère en 5 minutes. Les startups, les petites marques, les porteurs de projets en ont constamment besoin. €50–300 par communiqué.
+
+**Revenu réaliste :** €300–1500/mois
+**Vitesse 1er € :** 1 semaine
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Tier : A**
+
+---
+
+## #56 — SCRIPTS YOUTUBE SUR COMMANDE
+**C'est quoi simplement ?**
+Les YouTubeurs qui font des vidéos de 10 à 20 minutes ont besoin d'un script structuré : introduction, développement, conclusion, appel à l'action. Claude écrit dans leur voix et leur style. Ils paient €50–200 par script. Tu trouves les clients dans les communautés YouTube, sur Fiverr, sur Malt.
+
+**Revenu réaliste :** €500–2500/mois
+**Vitesse 1er € :** 1 semaine
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Tier : A**
+
+---
+
+## #57 — TRADUCTION ET LOCALISATION IA
+**C'est quoi simplement ?**
+La "localisation" c'est plus que de la traduction : c'est adapter un contenu pour qu'il sonne naturel dans une autre culture. Claude traduit ET adapte. Prix compétitif avec les traducteurs humains (€0.05–0.10/mot) mais vitesse ×50. Clients cibles : éditeurs de logiciels, jeux vidéo, boutiques e-commerce qui veulent toucher plusieurs marchés. Volume énorme possible.
+
+**Revenu réaliste :** €500–3000/mois
+**Vitesse 1er € :** 1 à 2 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Tier : A**
+
+---
+
+## #58 — PACKAGING ET ÉTIQUETTES POUR PME
+**C'est quoi simplement ?**
+Une petite marque qui lance un produit (bougie, cosmétique, alimentaire, vêtement) a besoin d'une étiquette ou d'un packaging visuellement professionnel. Fal.ai génère les visuels, Claude rédige le texte marketing réglementaire. Tu livres un fichier print-ready. Prix : €100–500 selon la complexité. Cible : créateurs qui lancent leur marque sur Etsy, Instagram ou en boutique locale.
+
+**Revenu réaliste :** €300–2000/mois
+**Vitesse 1er € :** 1 à 2 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €20 Fal.ai
+**Tier : A**
+
+---
+
+## #59 — TEMPLATES CANVA
+**C'est quoi simplement ?**
+Canva est le logiciel de design utilisé par des millions de non-designers. On peut y vendre des templates prêts à l'emploi : posts Instagram, présentations, menus de restaurant, flyers, invitations. Les gens les achètent, les modifient avec leur texte/couleurs, et les utilisent. Des vendeuses font €19 000/mois sur ce seul créneau. Le problème : tu dois créer les designs DANS Canva, ce qui nécessite du temps de design manuel. Claude peut aider pour la structure et le texte, mais le design visuel reste en partie manuel.
+
+**Revenu réaliste :** €500–5000/mois
+**Vitesse 1er € :** 4 à 8 semaines
+**Automatisation :** ★★☆☆☆ (design encore partiellement manuel)
+**Investissement :** Canva Pro €13/mois
+**Tier : B-C**
+
+---
+
+## #60 — TEMPLATES NOTION / AIRTABLE
+**C'est quoi simplement ?**
+Notion et Airtable sont des outils de gestion et d'organisation. Des millions de gens et d'entreprises les utilisent. Tu peux créer des "espaces de travail" tout prêts pour des cas précis : "CRM complet pour coach indépendant", "gestion de stock pour boutique vintage", "suivi de projets pour agence créative". Claude structure toute la logique, tu configures dans l'outil. Vendu €15–50 par template.
+
+**Revenu réaliste :** €200–1500/mois
+**Vitesse 1er € :** 3 à 5 semaines
+**Automatisation :** ★★★☆☆
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #61 — TEMPLATES CAPCUT / REELS
+**C'est quoi simplement ?**
+CapCut est l'application de montage vidéo la plus utilisée au monde (200M+ utilisateurs). Elle a un marketplace de templates vidéo : des montages pré-faits que les utilisateurs appliquent à leurs propres vidéos. Le marché de ces templates est en explosion en 2025. Tu peux créer des templates viraux (transitions, effets, mises en scène) avec CapCut et les monétiser.
+
+**Revenu réaliste :** €300–2000/mois
+**Vitesse 1er € :** 4 à 6 semaines
+**Automatisation :** ★★★☆☆ (CapCut reste partiellement manuel)
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #62 — PRESETS LIGHTROOM DE NICHE
+**C'est quoi simplement ?**
+Les photographes utilisent Lightroom pour retoucher leurs photos. Un "preset" c'est un filtre qui applique automatiquement un style visuel à une photo. Le marché est saturé en général mais il reste des niches peu exploitées : astrophotographie, photographie sous-marine, photographie culinaire, photographie de rues la nuit. Python peut générer les fichiers de presets mathématiquement.
+
+**Revenu réaliste :** €100–500/mois sur niche précise
+**Vitesse 1er € :** 3 à 5 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #63 — PRESETS DE SYNTHÉTISEURS (FXP / WAVETABLES)
+**C'est quoi simplement ?**
+Les producteurs de musique utilisent des synthétiseurs virtuels comme Serum ou Vital. Un "preset" c'est une configuration qui crée un son particulier (une basse lourde, un pad spatial, une lead mélodique). Écrire les fichiers de configuration de synthés c'est complexe à la main. Avec une bonne connaissance de la synthèse sonore, on peut générer des presets originaux. Marché actif sur Gumroad.
+
+**Revenu réaliste :** €100–500/mois
+**Vitesse 1er € :** 4 à 6 semaines
+**Automatisation :** ★★★☆☆
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #64 — CARTES DE VOEUX ET PAPETERIE PERSONNALISÉE
+**C'est quoi simplement ?**
+Fal.ai génère de belles illustrations, Claude rédige les messages. Tu vends des packs de cartes de voeux numériques (anniversaire, mariage, Noël, condoléances) sur Etsy. Les gens les téléchargent et les impriment chez eux ou les envoient par email. Le marché de la papeterie numérique est constant et régulier.
+
+**Revenu réaliste :** €100–600/mois
+**Vitesse 1er € :** 2 à 4 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €20 Fal.ai
+**Tier : B**
+
+---
+
+## #65 — GAME ASSETS POUR GODOT (DÉJÀ EN COURS)
+**C'est quoi simplement ?**
+Godot est un logiciel gratuit pour créer des jeux vidéo. Les développeurs indépendants achètent des "assets" : sprites de personnages, interfaces utilisateur, tilesets (les décors), shaders (effets visuels). Fal.ai génère les visuels. La pipeline existe déjà dans le système.
+
+**Revenu réaliste :** €200–1000/mois (Itch.io)
+**Vitesse 1er € :** 4 à 6 semaines
+**Automatisation :** ★★★☆☆
+**Investissement :** €20 Fal.ai
+**Tier : B**
+
+---
+
+## #66 — TEMPLATES CV / LETTRES DE MOTIVATION
+**C'est quoi simplement ?**
+Des modèles de CV et de lettres de motivation téléchargeables (Word, Google Docs, PDF). Le marché est très concurrencé mais tourne toujours. La vraie valeur c'est d'en faire par secteur très précis : "CV pour développeur junior", "CV pour infirmière en reconversion", "lettre de motivation spéciale premier emploi sans expérience".
+
+**Revenu réaliste :** €200–1000/mois
+**Vitesse 1er € :** 2 à 4 semaines
+**Automatisation :** ★★★☆☆
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #67 — GRILLES DE POINT DE CROIX
+**C'est quoi simplement ?**
+Le point de croix est une broderie traditionnelle où on suit une grille pixel par pixel pour créer un motif. Les amateurs achètent des grilles PDF numérotées sur Etsy. Fal.ai génère un visuel → Python le pixélise et génère la grille numérotée avec la légende des couleurs. Communauté très fidèle et acheteuse.
+
+**Revenu réaliste :** €200–1500/mois
+**Vitesse 1er € :** 2 à 4 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €20 Fal.ai
+**Tier : B**
+
+---
+
+## #68 — PINCEAUX PROCREATE
+**C'est quoi simplement ?**
+Procreate est l'application de dessin digital sur iPad utilisée par des millions d'artistes. Tu peux créer et vendre des "packs de pinceaux" qui imitent différents outils : crayon à papier, aquarelle, peinture à l'huile, charbon. Les fichiers de pinceaux définissent mathématiquement comment le trait réagit à la pression. Marché actif sur Etsy et Creative Fabrica.
+
+**Revenu réaliste :** €200–1500/mois
+**Vitesse 1er € :** 3 à 5 semaines
+**Automatisation :** ★★★☆☆ (nécessite des tests visuels)
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #69 — ASSETS 3D POUR E-COMMERCE (GLTF / GLB)
+**C'est quoi simplement ?**
+Les boutiques Shopify haut de gamme proposent désormais des visionneuses 3D : le client peut faire tourner le produit sous tous les angles avant de l'acheter. Pour ça, il faut des fichiers 3D du produit dans un format léger (GLTF ou GLB). Blender Python API peut créer et optimiser ces fichiers. Les marchands paient €30–150 par produit modélisé.
+
+**Revenu réaliste :** €300–1500/mois
+**Vitesse 1er € :** 4 à 6 semaines
+**Automatisation :** ★★★☆☆
+**Investissement :** €0 (Blender est gratuit)
+**Tier : B**
+
+---
+
+## #70 — PATRONS DE VITRAIL ET MOSAÏQUE
+**C'est quoi simplement ?**
+Les artisans verriers et les amateurs de mosaïque ont besoin de patrons : un plan en noir et blanc qui découpe l'image finale en pièces numérotées, avec la taille de chaque pièce et la couleur à utiliser. Fal.ai génère le visuel original, Python le découpe en pièces avec les informations techniques. Communauté niche mais passionnée et acheteuse.
+
+**Revenu réaliste :** €200–1000/mois
+**Vitesse 1er € :** 3 à 5 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €20 Fal.ai
+**Tier : A**
+
+---
+
+## #71 — FICHIERS CSS / TAILWIND POUR DÉVELOPPEURS
+**C'est quoi simplement ?**
+Tailwind est un système de design très utilisé par les développeurs web. Une "configuration Tailwind" personnalisée définit les couleurs, les polices, les espacements d'un site entier. Claude génère ces fichiers de configuration avec des systèmes de design complets et cohérents. Marché dev, petite taille mais clients qui savent ce qu'ils veulent et paient.
+
+**Revenu réaliste :** €100–500/mois
+**Vitesse 1er € :** 3 à 5 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #72 — AIDE-MÉMOIRE POUR DÉVELOPPEURS (CHEAT SHEETS)
+**C'est quoi simplement ?**
+Un "cheat sheet" c'est un document d'une page qui résume toute la syntaxe d'un langage de programmation ou d'un framework. Un développeur qui apprend Python, React ou SQL veut avoir toutes les commandes importantes en un seul endroit bien organisé. Claude génère ça parfaitement. Vendu €3–8 sur Gumroad. Volume très élevé, production instantanée.
+
+**Revenu réaliste :** €50–300/mois
+**Vitesse 1er € :** 1 à 2 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #73 — PATTERNS POUR MACHINES À MATELASSER (CNC)
+**C'est quoi simplement ?**
+Les machines à matelasser industrielles (qui cousent des motifs sur les couettes, les coussins, les couvre-lits) lisent des fichiers DXF ou EXP décrivant les trajectoires de couture. Générer des motifs complexes et infinis (seamless) pour ces machines est très technique. Python peut générer ces trajectoires mathématiquement. Marché niche de fabricants textiles.
+
+**Revenu réaliste :** €100–600/mois
+**Vitesse 1er € :** 4 à 6 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #74 — CARNETS DE BORD SPÉCIALISÉS (LOGBOOKS)
+**C'est quoi simplement ?**
+Des journaux de bord ultra-précis pour des passionnés : carnet de l'astronome amateur (une page par observation avec les champs "objet observé, heure, conditions météo, matériel, croquis"), journal de bord du plongeur, carnet de l'apiculteur, journal du pêcheur. Claude génère le contenu structuré, Python crée le PDF avec les bonnes cases. Communautés passionnées qui paient pour des outils adaptés.
+
+**Revenu réaliste :** €100–600/mois
+**Vitesse 1er € :** 2 à 4 semaines
+**Automatisation :** ★★★★★
+**Investissement :** €0
+**Tier : B**
+
+---
+
+## #75 — CARTES D'AFFIRMATION ET ORACLES
+**C'est quoi simplement ?**
+Des decks de cartes numériques (50 à 78 cartes) avec des affirmations positives ou des messages inspirants. Les gens les achètent pour le bien-être, la méditation, le développement personnel. Fal.ai génère les illustrations, Claude rédige les messages. Vendu €5–15 sur Etsy. La communauté "bien-être" achète régulièrement et recommande.
+
+**Revenu réaliste :** €200–1000/mois
+**Vitesse 1er € :** 2 à 4 semaines
+**Automatisation :** ★★★★☆
+**Investissement :** €20 Fal.ai
+**Tier : B**
+
+---
+
+---
+
+# BUSINESS "COUCHE C" — LONG TERME OU EFFORT PERSONNEL REQUIS
+
+Ces business fonctionnent mais demandent plus de temps avant le premier revenu, ou nécessitent ton implication directe au-delà de la supervision.
+
+---
+
+## #76 — ROMANS ET EBOOKS KDP
+**C'est quoi simplement ?**
+Écrire et publier des romans ou ebooks sur Amazon KDP. Claude peut rédiger, mais le problème c'est la visibilité : un nouveau livre sans avis est invisible sur Amazon. Il faut du temps pour construire un catalogue et des premières reviews. Fonctionne mieux si tu as une niche très précise et une stratégie de série (5+ tomes).
+
+**Revenu réaliste :** €50–300/mois (long tail)
+**Vitesse 1er € :** 3 à 6 mois
+**Automatisation :** ★★★☆☆
+**Tier : C**
+
+---
+
+## #77 — JEUX MOBILES (GODOT)
+**C'est quoi simplement ?**
+Le pipeline génère un squelette de jeu mobile. Mais un vrai jeu jouable nécessite des assets visuels cohérents, des sons, un équilibrage du gameplay. Toi tu dois ajouter ces couches. La machine donne la structure, tu fournis le cœur créatif. Pour des jeux hyper-simples (clicker, runner, puzzle à 2-3 mécaniques), c'est faisable en quelques semaines de travail.
+
+**Revenu réaliste :** €0–500/mois (variable)
+**Vitesse 1er € :** 2 à 4 mois
+**Automatisation :** ★★☆☆☆
+**Tier : C**
+
+---
+
+## #78 — JEUX ROBLOX (DÉVELOPPEMENT LUA)
+**C'est quoi simplement ?**
+Créer des "expériences" (jeux) sur Roblox avec le langage Lua. Les jeux populaires sur Roblox font des millions de dollars. Claude peut écrire du code Lua, mais créer un jeu complet et attractif reste un travail conséquent. Pour des mini-jeux simples, c'est abordable.
+
+**Revenu réaliste :** €0–2000/mois (très variable)
+**Vitesse 1er € :** 2 à 4 mois
+**Automatisation :** ★★☆☆☆
+**Tier : C**
+
+---
+
+## #79 — FORTNITE UEFN (CREATIVE 2.0)
+**C'est quoi simplement ?**
+Epic Games (créateur de Fortnite) permet aux créateurs de construire leurs propres îles et modes de jeu avec un outil professionnel (Unreal Editor for Fortnite). Les créateurs dont les îles attirent du monde gagnent de l'argent selon le temps de jeu. C'est un modèle "engagement-based" pas encore très prévisible.
+
+**Revenu réaliste :** €0–2000/mois (très aléatoire)
+**Vitesse 1er € :** 3 à 6 mois
+**Automatisation :** ★★☆☆☆
+**Tier : C**
+
+---
+
+## #80 — TEMPLATES CANVA (détaillé)
+**C'est quoi simplement ?**
+Voir #59. Potentiel très élevé (€5000–20000/mois pour les tops) mais nécessite un vrai travail de design dans Canva qui n'est pas entièrement automatisable aujourd'hui. À développer en parallèle quand on a du temps, pas en priorité pour les revenus rapides.
+
+**Tier : C** (plafond élevé mais rampe longue)
+
+---
+
+## #81 — ASSETS SPATIAL COMPUTING (APPLE VISION PRO / META QUEST)
+**C'est quoi simplement ?**
+Les casques de réalité virtuelle et augmentée (Vision Pro d'Apple, Meta Quest) ont besoin de contenu 3D. C'est un marché en construction. Les fichiers USDZ (format Vision Pro) peuvent être générés avec Blender. Trop tôt pour du revenu sérieux aujourd'hui, mais dans 18–24 mois ce sera un marché massif. À garder en tête.
+
+**Revenu réaliste :** Marginal aujourd'hui, potentiel fort en 2027
+**Tier : C** (investissement sur l'avenir)
+
+---
+
+## #82 — POLICES DE CARACTÈRES (FONTS)
+**C'est quoi simplement ?**
+Créer et vendre des polices d'écriture sur Creative Fabrica, MyFonts, Etsy. Les agences de branding et graphistes paient €10–100 par famille de police. La création de polices de qualité nécessite des outils spécialisés (Glyphs, FontForge) et un travail de précision sur chaque lettre, chiffre et signe. Moins automatisable que les autres.
+
+**Revenu réaliste :** €200–2000/mois pour des polices de qualité
+**Automatisation :** ★★☆☆☆
+**Tier : C**
+
+---
+
+## #83 — SCHÉMAS DE BASES DE DONNÉES SQL
+**C'est quoi simplement ?**
+Claude génère des architectures de bases de données optimisées pour des logiciels spécifiques (application de gestion pour clinique vétérinaire, ERP pour boulangerie, CRM pour agence). Marché sur CodeCanyon, Gumroad. Claude est excellent pour ça mais le marché est niche et le volume limité.
+
+**Revenu réaliste :** €100–500/mois
+**Automatisation :** ★★★★★
+**Tier : C**
+
+---
+
+---
+
+# BUSINESS "TIER D" — NE PAS TOUCHER (ET POURQUOI)
+
+Ces business ont l'air rentables en théorie mais présentent des risques légaux, techniques ou financiers qui les rendent dangereux pour toi.
+
+---
+
+## #84 — SCRIPTS TERRAFORM / INFRASTRUCTURE CLOUD
+**Pourquoi éviter :** Si ton script a un bug, le serveur cloud du client tourne à plein régime pendant des jours sans que personne ne s'en rende compte. Factures AWS de €5000 inattendues. Tu es responsable. Risque juridique et financier réel.
+
+---
+
+## #85 — BASES DE DONNÉES DE LEADS / PROSPECTS
+**Pourquoi éviter :** En France et en Europe, collecter et vendre des données de contact de personnes sans leur consentement explicite est interdit par le RGPD. Amendes jusqu'à 4% du chiffre d'affaires mondial ou €20M. Risque pénal réel.
+
+---
+
+## #86 — SHADERS HLSL / GLSL (CODE GRAPHIQUE)
+**Pourquoi éviter :** Claude génère du code shader mais il est souvent non-compilable ou produit des artefacts visuels. Les clients qui achètent du code technique s'attendent à ce qu'il fonctionne. Taux de remboursement et mauvaises reviews assurés.
+
+---
+
+## #87 — MOULES DE MICRO-INJECTION (FICHIERS STEP)
+**Pourquoi éviter :** Les moules industriels nécessitent une précision au dixième de millimètre. Une erreur de tolérance et le moule est inutilisable (et coûteux à produire). L'IA ne peut pas garantir ces précisions. Responsabilité industrielle.
+
+---
+
+## #88 — STEMS AUDIO IA POUR USAGE COMMERCIAL
+**Pourquoi éviter :** Le statut légal de la musique générée par IA pour un usage commercial (revente) n'est pas encore clarifié en France et aux USA. Des procès sont en cours. Risque de DMCA et de poursuites futures.
+
+---
+
+## #89 — APPLICATIONS MOBILES (HORS SCAFFOLD)
+**Pourquoi éviter :** Une vraie application mobile nécessite du support continu (bugs, mises à jour iOS/Android, service client). Ce n'est pas un produit passif, c'est un engagement long terme. Sans les ressources pour le maintenir, tu auras des avis 1 étoile.
+
+---
+
+## #90 — JEUX DE SOCIÉTÉ PHYSIQUES
+**Pourquoi éviter :** Le coût de production physique (impression, cartes, plateau, boîte) est élevé (€15–25 par unité minimum). La distribution est complexe. Le retour sur investissement est très long. Meilleure alternative : jeux de société en PDF/Print-and-Play vendus sur Itch.io ou Gumroad.
+
+---
+
+---
+
+# RÉSUMÉ TIER LIST COMPLET
+
+| Tier | Critère | Business |
+|------|---------|---------|
 | **S+** | Argent en < 2 semaines | #1, #2, #3, #4, #5, #6, #9, #19 |
-| **S** | Excellent, 2–6 semaines | #7, #10, #11, #12, #13, #14, #15, #16, #17, #18, #20, #21, #22, #23 |
-| **A** | Très bon, 1–3 mois | #24–#40, #48, #49, #51 |
-| **B** | Bon, mais concurrence ou volume limité | #41–#47, #50, #52 |
-| **C** | Long terme ou effort manuel | Romans KDP, Mobile Games, Canva Templates, YouTube (longue rampe) |
-| **D** | Ne pas toucher | Terraform, Lead databases, Shaders HLSL, Audio Stems, Mobile Apps |
+| **S** | Excellent, 2–6 semaines | #7, #8, #10, #11, #12, #13, #14, #15, #16, #17, #18, #20, #21, #22, #23, #53 |
+| **A** | Très bon, 1–3 mois | #24, #25, #26, #27, #28, #29, #30, #31, #32, #33, #34, #35, #36, #37, #38, #39, #40, #43, #48, #49, #54, #55, #56, #57, #58, #70 |
+| **B** | Bon, viable | #41, #42, #44, #45, #46, #47, #50, #51, #52, #59, #60, #61, #62, #63, #64, #65, #66, #67, #68, #69, #71, #72, #73, #74, #75 |
+| **C** | Long terme / effort perso | #76, #77, #78, #79, #80, #81, #82, #83 |
+| **D** | Ne pas toucher | #84, #85, #86, #87, #88, #89, #90 |
+
+**Total : 90 business documentés**
+- Tier S+ et S : 24 business (lancer en priorité)
+- Tier A : 26 business (construire en parallèle)
+- Tier B : 25 business (opportunités secondaires)
+- Tier C : 8 business (long terme)
+- Tier D : 7 business (éviter absolument)
 
 ---
 
