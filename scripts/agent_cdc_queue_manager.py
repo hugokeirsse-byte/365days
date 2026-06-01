@@ -7,7 +7,7 @@ Règle : chaque vertical a toujours TARGET_PENDING CdC avec gate=pending.
 - Hugo en rejette 3 → 3 nouveaux CdC se génèrent
 - À tout moment : exactement TARGET_PENDING CdC disponibles à valider
 
-Ce script tourne en cron (toutes les 6h, décalé de trend_explosion) et vérifie les niveaux.
+Ce script tourne en cron (toutes les 4h) et vérifie les niveaux.
 Il est aussi déclenché quand Hugo pousse une modification de cdc.json.
 
 Variables d'env :
@@ -37,7 +37,7 @@ THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "60"))
 INTER_VERTICAL_DELAY = int(os.environ.get("INTER_VERTICAL_DELAY", "30"))
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 
-# ── Pools de thèmes — diversité garantie, pas de répétition ──────────────────
+# ── Pools de thèmes — diversité garantie, pas de répétition ────────────────────────────────
 
 POOLS = {
     "coloring": [
@@ -304,7 +304,7 @@ POOLS = {
     ],
 }
 
-# ── Config par vertical ───────────────────────────────────────────────────────
+# ── Config par vertical ──────────────────────────────────────────────────
 
 CONFIGS = {
     "coloring": {
@@ -454,7 +454,13 @@ CONFIGS = {
 }
 
 
-# ── Pont Brain → CdC ──────────────────────────────────────────────────────────
+# ── Pont Brain → CdC ──────────────────────────────────────────────────
+# Pour chaque vertical disposant d'un cerveau (trends), on déclare où lire ses
+# propositions et comment les convertir en tuples au format de la pool.
+# Les recommandations Gemini sont ainsi RÉELLEMENT injectées dans la génération,
+# avec priorité sur les pools statiques (fallback). Les verticaux sans extracteur
+# (coloring, mobile_*) continuent d'utiliser uniquement leur pool statique.
+
 def _stl_brain(d):
     out = []
     r = d.get("recommandation_cdc", {})
@@ -544,11 +550,17 @@ def scan_pending(products_dir: Path, theme_key_fn) -> tuple[int, list]:
 
 def pick_next_theme(pool: list, already_pending: list, already_used: list,
                     recycle: bool = True) -> tuple | None:
-    """Choisit le prochain thème en évitant les doublons."""
+    """Choisit le prochain thème en évitant les doublons.
+
+    recycle=True  : si tout est consommé, on repart de la pool complète (statique).
+    recycle=False : si tout est consommé, on retourne None (themes brain : épuisés
+                    une fois utilisés, on bascule alors sur la pool statique).
+    """
     used_set = set(map(str, already_pending + already_used))
     candidates = [t for t in pool if str(t) not in used_set]
 
     if not candidates and recycle:
+        # Pool épuisé — recommencer depuis le début avec la pool complète
         all_pending_set = set(map(str, already_pending))
         candidates = [t for t in pool if str(t) not in all_pending_set]
 
@@ -559,7 +571,12 @@ def pick_next_theme(pool: list, already_pending: list, already_used: list,
 
 
 def _brain_themes(vertical_name: str, config: dict) -> list:
-    """Lit les propositions des cerveaux (trends) et les convertit en tuples pool."""
+    """Lit les propositions des cerveaux (trends) d'un vertical et les convertit
+    en tuples au format de la pool. Renvoie [] si aucun cerveau/extracteur.
+
+    C'est le pont Brain → CdC : les recommandations Gemini alimentent réellement
+    la génération de CdC, au lieu de se limiter aux pools statiques.
+    """
     extractor = config.get("brain_extract")
     brain_dir = config.get("brain_dir")
     if not extractor or not brain_dir:
@@ -568,6 +585,7 @@ def _brain_themes(vertical_name: str, config: dict) -> list:
     if not bdir.exists():
         return []
 
+    # latest en priorité, puis quelques fichiers datés récents
     files = list(bdir.glob("*_latest.json"))
     dated = sorted([f for f in bdir.glob("*.json") if "_latest" not in f.name],
                    reverse=True)[:6]
@@ -598,6 +616,7 @@ def run_cdc_generator(cdc_script: Path, env_vars: dict) -> bool:
     """Lance un générateur de CdC en subprocess."""
     env = os.environ.copy()
     env.update(env_vars)
+    # Injection d'un ID unique pour éviter les collisions de dossiers
     today = date.today().isoformat()
     import time
     ts = str(int(time.time()))[-5:]
@@ -661,6 +680,7 @@ def fill_queue(vertical_name: str, config: dict) -> int:
     used_this_run = []
 
     for i in range(to_generate):
+        # Priorité aux propositions des cerveaux (Brain → CdC), puis pool statique
         theme = pick_next_theme(brain_pool, pending_themes, used_this_run, recycle=False)
         source = "🧠 brain"
         if theme is None:
@@ -684,8 +704,11 @@ def fill_queue(vertical_name: str, config: dict) -> int:
         if success:
             generated += 1
             used_this_run.append(theme)
+            # Rescan pour mettre à jour pending_themes
             pending_count, pending_themes = scan_pending(products_dir, config["theme_key"])
 
+        # Throttle entre générations pour rester sous la limite RPM de Gemini
+        # free tier (~10 req/min). Évite les rafales qui déclenchent les 429.
         if i < to_generate - 1:
             time.sleep(THROTTLE_SECONDS)
 
