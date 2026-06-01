@@ -194,6 +194,22 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "prix_usd": 9.99
   }},
 
+  "strategie_produit": {{
+    "pilier": "domaine_public",
+    "justification": "Ce produit est TOUJOURS domaine_public — l'illustration source est une oeuvre historique pré-1928 confirmée",
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication exacte",
+      "source_telechargement": "URL Wikimedia Commons ou archive.org précise et vérifiable",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé (préciser la date de publication)",
+      "qualite_disponible": "300 DPI / vectorisable / restauration nécessaire — état précis de l'image",
+      "angle_commercial": "Comment on monétise cette oeuvre PD concrètement pour ce type de produit"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les ventes (collection complète, multi-produits même illustration, bundle saisonnier...)"
+  }},
   "checklist_validation": {{
     "verifier_source": "Confirmer l'URL Wikimedia Commons et télécharger un aperçu",
     "verifier_legal": "Vérifier la date de publication — doit être < 1928 pour domaine public USA",
@@ -216,6 +232,12 @@ PRIORITÉS :
 2. Le statut domaine public doit être CONFIRMÉ avec justification légale précise.
 3. Le pipeline de traitement doit être ACTIONNABLE avec Pillow + OpenCV en Python.
 4. Le listing commercial doit être VENDEUR pour l'audience cible.
+
+STRATÉGIE PRODUIT : Ce projet est TOUJOURS domaine_public.
+- Confirme l'oeuvre source avec titre + auteur + année de publication exacte
+- Donne l'URL Wikimedia Commons précise et vérifiable
+- Explique comment on monétise concrètement cette illustration pour le type "{product_type}"
+- Estime le potentiel de revenus en scénario conservateur et optimiste
 
 Pour le texte décoratif : propose une composition typographique précise
 (font, placement, couleur) qui valorise l'illustration sans la surcharger."""
@@ -282,6 +304,8 @@ def _write_markdown(cdc: dict, out_dir: Path, today: str) -> None:
     marche  = cdc.get("marche", {})
     listing = cdc.get("listing", {})
     checklist = cdc.get("checklist_validation", {})
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
 
     titre = produit.get("titre_commercial", "Vintage PD Project")
     prod_type = produit.get("type", "?")
@@ -379,6 +403,30 @@ def _write_markdown(cdc: dict, out_dir: Path, today: str) -> None:
             lines.append(f"- **{k}** : {v}")
 
     lines += [
+        "",
+        "---",
+        "",
+        "## 4b. Stratégie Produit",
+        "",
+        f"**Pilier** : `domaine_public` (toujours pour les produits Vintage PD)",
+        f"**Justification** : {strategie.get('justification', '?')}",
+        "",
+    ]
+
+    dp = strategie.get("domaine_public", {})
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    lines += [
+        f"**Oeuvre source** : {dp.get('oeuvre_source', source.get('auteur_original', '?'))}",
+        f"**Source téléchargement** : {dp.get('source_telechargement', source.get('wikimedia_commons_path', '?'))}",
+        f"**Licence confirmée** : {dp.get('licence_confirmee', source.get('statut_domaine_public', '?'))}",
+        f"**Qualité disponible** : {dp.get('qualite_disponible', source.get('qualite_estimee', '?'))}",
+        f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
         "",
         "---",
         "",

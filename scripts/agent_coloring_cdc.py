@@ -68,22 +68,6 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "nombre_pages": {pages},
     "element_unique": "Ce qui le différencie des 200+ autres sur Amazon — sois précis et concret"
   }},
-  "references_marche": {{
-    "leaders_du_marche": [
-      {{
-        "nom": "ex: Coco Wyo / Johanna Basford / Millie Marotta",
-        "type": "auteur KDP / brand Amazon",
-        "pourquoi_ca_marche": "analyse précise : style, format, audience, prix",
-        "style_caracteristiques": "description visuelle ultra-précise (densité, type de traits, sujets récurrents, ambiance)",
-        "format_typique": "ex: 8.5x11, 100 pages, dos carré collé, noir/blanc",
-        "prix_moyen": "$X.XX",
-        "nb_avis_typique": "5000+",
-        "elements_a_imiter": "les 3-5 éléments spécifiques qu'on doit reproduire",
-        "comment_se_differencier": "notre twist unique pour ne pas copier mais s'inspirer"
-      }}
-    ],
-    "style_prompt_reference": "prompt Pollinations qui imite précisément le style du leader (ex: 'adult coloring book page in the style of Johanna Basford Secret Garden, intricate botanical illustrations, delicate line art, white background, black outlines only, no shading, enchanted garden theme')"
-  }},
   "prompts_pollinations": {{
     "style_base": "black and white coloring page, clean outlines, no fill, white background, no gray, no shading",
     "style_modificateurs": ["modificateur 1 adapté au thème", "modificateur 2", "modificateur 3"],
@@ -108,6 +92,22 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "tranche_age": "ex: 25-55 ans",
     "pourquoi_ce_theme": "Pourquoi ce thème résonne avec cette audience ?"
   }},
+  "references_marche": {{
+    "leaders_du_marche": [
+      {{
+        "nom": "ex: Coco Wyo / Johanna Basford / Millie Marotta",
+        "type": "auteur KDP / brand Amazon",
+        "pourquoi_ca_marche": "analyse précise : style, format, audience, prix",
+        "style_caracteristiques": "description visuelle ultra-précise (densité, type de traits, sujets récurrents, ambiance)",
+        "format_typique": "ex: 8.5x11, 100 pages, dos carré collé, noir/blanc",
+        "prix_moyen": "$X.XX",
+        "nb_avis_typique": "5000+",
+        "elements_a_imiter": "les 3-5 éléments spécifiques qu'on doit reproduire",
+        "comment_se_differencier": "notre twist unique pour ne pas copier mais s'inspirer"
+      }}
+    ],
+    "style_prompt_reference": "prompt Pollinations qui imite précisément le style du leader (ex: 'adult coloring book page in the style of Johanna Basford Secret Garden, intricate botanical illustrations, delicate line art, white background, black outlines only, no shading, enchanted garden theme')"
+  }},
   "cinq_concurrents_amazon": [
     {{
       "titre": "Titre concurrent réaliste",
@@ -125,11 +125,39 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "categories": ["Catégorie KDP 1", "Catégorie KDP 2"],
     "prix_usd": 9.99
   }},
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CE livre de coloriage spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / TikTok / Pinterest / Amazon observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Wikimedia Commons / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "300 DPI / vectorisable / conversion en lineart possible",
+      "angle_commercial": "Comment on utilise ces illustrations PD pour le livre de coloriage"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact du livre qui explose sur Amazon KDP",
+      "pourquoi_ca_marche": "Analyse précise de son succès (rang BSR, avis, prix)",
+      "ce_qui_est_mal_fait": "Ce que les acheteurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (style inspiré ≠ plagiat)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les ventes (série, thèmes connexes, traductions, bundles...)"
+  }},
   "criteres_validation": {{
     "test_style": "Générer 1 page test avec exemple_prompt_complet — vérifier : pur noir/blanc, ZERO gris, lignes nettes, fond blanc",
     "test_complexite": "Niveau de difficulté approprié à l'audience cible ? (adult=intricate ok, child=simple obligatoire)",
     "test_impression": "Lignes assez épaisses pour impression laser 300 DPI ? (min 2-3px à 1664px de large)",
-    "test_marche": "Le thème est-il fraîs ou saturé sur Amazon aujourd'hui ? Chercher '{theme} coloring book' sur Amazon"
+    "test_marche": "Le thème est-il frais ou saturé sur Amazon aujourd'hui ? Chercher '{theme} coloring book' sur Amazon"
   }}
 }}
 JSON uniquement, sans markdown ni balises. Tous les champs doivent être remplis avec du contenu concret, pas des placeholders."""
@@ -144,13 +172,13 @@ PRIORITÉ ABSOLUE : les prompts Pollinations doivent garantir des images
 pur noir/blanc sans aucun gris. C'est le problème critique qui a rendu
 les productions précédentes inutilisables.
 
-Génère un concept différenciant qui se vendra bien sur Amazon KDP dès aujourd'hui.
-Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans cette niche).
+STRATÉGIE PRODUIT — détermine lequel des 3 piliers s'applique et justifie avec des preuves :
+1. creation_originale — si un signal Google Trends / TikTok / Pinterest / Amazon clair indique une tendance émergente non saturée
+2. domaine_public — si des illustrations historiques (pré-1928, Köhler, Audubon, Haeckel...) peuvent être converties en lineart pour ce livre
+3. imitation_amelioree — si un livre concurrent explose déjà sur Amazon KDP mais avec des failles exploitables (mauvaise qualité, gris, descriptions trompeuses)
 
-Pour references_marche : cite des auteurs/brands RÉELS qui cartonnent sur Amazon
-dans la niche '{theme} coloring book' (Coco Wyo, Johanna Basford, Millie Marotta, etc.
-selon la niche). Analyse précisément leur style pour que style_prompt_reference
-imite fidèlement ce qui marche."""
+Génère un concept différenciant qui se vendra bien sur Amazon KDP dès aujourd'hui.
+Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans cette niche)."""
 
     print("[CdC Coloring] Appel LLM (génération CdC complet)...")
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=8000)
@@ -183,7 +211,8 @@ imite fidèlement ce qui marche."""
     cdc_json.write_text(json.dumps(cdc, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[CdC Coloring] cdc.json -> {cdc_json}")
 
-    # Generate 5 preview images — priorité au style_prompt_reference (imite le leader du marché)
+    # Generate 5 preview images (only if GENERATE_PREVIEWS=1)
+    # Priorité au style_prompt_reference (imite le leader du marché) pour comparer
     prompts_data = cdc.get("prompts_pollinations", {})
     test_prompt = prompts_data.get("exemple_prompt_complet", "")
     ref_prompt = cdc.get("references_marche", {}).get("style_prompt_reference", "")
@@ -196,6 +225,8 @@ imite fidèlement ce qui marche."""
     public = cdc.get("public_cible", {})
     kdp = cdc.get("kdp_listing", {})
     criteres = cdc.get("criteres_validation", {})
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
 
     md_lines = [
         f"# CAHIER DES CHARGES — {titre}",
@@ -225,7 +256,48 @@ imite fidèlement ce qui marche."""
         "",
         f"**Element unique** : {concept.get('element_unique', '?')}",
         "",
-        "## 2. STRATEGIE PROMPTS POLLINATIONS",
+        "## 2. Stratégie Produit",
+        f"**Pilier** : `{strategie.get('pilier', '?')}`",
+        f"**Justification** : {strategie.get('justification', '?')}",
+        "",
+    ]
+
+    pilier = strategie.get("pilier", "")
+    if pilier == "creation_originale":
+        co = strategie.get("creation_originale", {})
+        md_lines += [
+            "**Signaux trend** : " + " | ".join(co.get("signaux_trend", [])),
+            f"**Timing** : {co.get('timing_optimal', '?')}",
+            f"**Risque saturation** : {co.get('risque_saturation', '?')}",
+        ]
+    elif pilier == "domaine_public":
+        dp = strategie.get("domaine_public", {})
+        md_lines += [
+            f"**Oeuvre source** : {dp.get('oeuvre_source', '?')}",
+            f"**Source** : {dp.get('source_telechargement', '?')}",
+            f"**Licence** : {dp.get('licence_confirmee', '?')}",
+            f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        ]
+    elif pilier == "imitation_amelioree":
+        ia = strategie.get("imitation_amelioree", {})
+        md_lines += [
+            f"**Produit cible** : {ia.get('produit_cible', '?')}",
+            f"**Pourquoi ça marche** : {ia.get('pourquoi_ca_marche', '?')}",
+            f"**Ce qui est mal fait** : {ia.get('ce_qui_est_mal_fait', '?')}",
+            f"**Notre amélioration** : {ia.get('notre_amelioration_concrete', '?')}",
+            f"**Différenciation légale** : {ia.get('differentiation_legale', '?')}",
+        ]
+
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    md_lines += [
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
+        "",
+        "## 3. STRATEGIE PROMPTS POLLINATIONS",
         "",
         "> Ces prompts sont la CLE du projet. Tester avant de valider.",
         "",
@@ -266,13 +338,13 @@ imite fidèlement ce qui marche."""
         "",
         f"**Note importante** : {prompts.get('note_importante', '?')}",
         "",
-        "## 3. Distribution des Pages",
+        "## 4. Distribution des Pages",
         f"- Pages simples : {pages_dist.get('pages_simples', '?')}",
         f"- Pages medium : {pages_dist.get('pages_medium', '?')}",
         f"- Pages complexes : {pages_dist.get('pages_complexes', '?')}",
         f"- Progression : {pages_dist.get('description_progression', '?')}",
         "",
-        "## 4. Public Cible",
+        "## 5. Public Cible",
         f"**Persona** : {public.get('persona', '?')}",
         f"**Age** : {public.get('tranche_age', '?')}",
         f"**Pourquoi ce theme** : {public.get('pourquoi_ce_theme', '?')}",
@@ -282,7 +354,7 @@ imite fidèlement ce qui marche."""
     refs = cdc.get("references_marche", {})
     leaders = refs.get("leaders_du_marche", [])
     if leaders:
-        md_lines += ["## 5. Références Marché — Ce qui cartonne déjà", ""]
+        md_lines += ["## 6. Références Marché — Ce qui cartonne déjà", ""]
         md_lines.append("> Livres/brands existants qui dominent cette niche. Previews générées dans leur style.")
         md_lines.append("")
         for leader in leaders:
@@ -295,18 +367,18 @@ imite fidèlement ce qui marche."""
                 f"**Notre différence** : {leader.get('comment_se_differencier', '?')}",
                 "",
             ]
-        ref_prompt_md = refs.get("style_prompt_reference", "")
-        if ref_prompt_md:
+        ref_prompt = refs.get("style_prompt_reference", "")
+        if ref_prompt:
             md_lines += [
                 "**Prompt style référence (utilisé pour les previews + production)** :",
                 "```",
-                ref_prompt_md,
+                ref_prompt,
                 "```",
                 "",
             ]
 
     md_lines += [
-        "## 6. Analyse Concurrence Amazon",
+        "## 7. Analyse Concurrence Amazon",
     ]
 
     for i, concur in enumerate(cdc.get("cinq_concurrents_amazon", []), 1):
@@ -320,7 +392,7 @@ imite fidèlement ce qui marche."""
 
     md_lines += [
         "",
-        "## 7. Listing KDP",
+        "## 8. Listing KDP",
         f"**Titre Amazon** : {kdp.get('titre_amazon', '?')}",
         f"**Sous-titre** : {kdp.get('sous_titre_amazon', '?')}",
         f"**Prix** : ${kdp.get('prix_usd', 9.99)}",
@@ -331,7 +403,7 @@ imite fidèlement ce qui marche."""
         "**Mots-cles** : " + ", ".join(kdp.get("mots_cles", [])),
         "**Categories** : " + ", ".join(kdp.get("categories", [])),
         "",
-        "## 8. Checklist de Validation",
+        "## 9. Checklist de Validation",
         "",
         "Avant de changer gate_cdc a `approved` :",
         "",
