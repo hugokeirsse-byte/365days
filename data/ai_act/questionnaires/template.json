@@ -1,0 +1,35 @@
+{
+  "_instructions": "Remplir ce questionnaire et envoyer à votre prestataire. ~10 minutes.",
+  "entreprise": {
+    "nom": "",
+    "siren": "",
+    "secteur": "",
+    "taille": "",
+    "pays": "France",
+    "contact_nom": "",
+    "contact_email": ""
+  },
+  "systeme_ia": {
+    "description": "Décrivez en 2-3 phrases ce que fait votre système IA",
+    "fournisseur": "Développé en interne / Nom du fournisseur",
+    "version_deployee": "",
+    "date_deploiement": "",
+    "donnees_traitees": "Quels types de données le système traite-t-il ?",
+    "decisions_automatisees": "Quelles décisions le système prend-il ou aide-t-il à prendre ?",
+    "supervision_humaine": "Un humain peut-il toujours outrepasser la décision du système ?",
+    "documentation_existante": "Avez-vous une documentation technique du système ?"
+  },
+  "usage": {
+    "depuis": "Année de déploiement",
+    "nombre_decisions_mois": "Nombre approximatif de décisions/mois",
+    "impact_personne": "Quel est l'impact concret sur les personnes concernées ?",
+    "secteurs_sensibles": "Le système est-il utilisé dans : RH / Crédit / Santé / Éducation / Justice / Infrastructure critique ?"
+  },
+  "conformite_actuelle": {
+    "dpo_nomme": "Oui / Non",
+    "registre_traitements": "Oui / Non / Partiel",
+    "etude_impact_realisee": "Oui / Non",
+    "documentation_ia": "Oui / Non / En cours",
+    "formation_equipes": "Oui / Non"
+  }
+}

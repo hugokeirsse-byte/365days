@@ -1,0 +1,111 @@
+name: AI Act — Production (Audit + Mini-audit + Scanner)
+
+# Workflow principal pour le business Conformité EU AI Act.
+# Trois modes :
+#   audit     — rapport complet depuis questionnaire client (→ livrable €990)
+#   mini      — mini-audit gratuit pour prospect (→ outil acquisition)
+#   scanner   — scan d'un secteur pour trouver des prospects
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Mode de production'
+        required: true
+        default: 'scanner'
+        type: choice
+        options:
+          - scanner
+          - mini
+          - audit
+      # Pour mode=audit
+      input_file:
+        description: '[audit] Chemin vers le questionnaire client JSON'
+        required: false
+        default: ''
+      # Pour mode=mini
+      company_name:
+        description: '[mini] Nom de l''entreprise prospect'
+        required: false
+        default: ''
+      company_sector:
+        description: '[mini] Secteur de l''entreprise'
+        required: false
+        default: ''
+      company_ai_use:
+        description: '[mini] Usage IA décrit en 1 phrase'
+        required: false
+        default: ''
+      # Pour mode=scanner
+      sector:
+        description: '[scanner] Secteur à scanner (ex: ressources humaines, finance, santé)'
+        required: false
+        default: 'ressources humaines'
+      max_prospects:
+        description: '[scanner] Nombre de prospects à identifier'
+        required: false
+        default: '5'
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer dépendances
+        run: |
+          pip install requests fpdf2 2>/dev/null || pip install requests
+
+      - name: Créer répertoires
+        run: mkdir -p data/ai_act/{questionnaires,rapports,mini_audits,prospects}
+
+      - name: Générer rapport d'audit complet
+        if: github.event.inputs.mode == 'audit'
+        run: python scripts/produce_ai_act_audit.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          INPUT_FILE: ${{ github.event.inputs.input_file }}
+          OUTPUT_DIR: data/ai_act/rapports
+
+      - name: Générer mini-audit prospect
+        if: github.event.inputs.mode == 'mini'
+        run: python scripts/produce_ai_act_mini.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          COMPANY_NAME: ${{ github.event.inputs.company_name }}
+          COMPANY_SECTOR: ${{ github.event.inputs.company_sector }}
+          COMPANY_AI_USE: ${{ github.event.inputs.company_ai_use }}
+
+      - name: Scanner un secteur pour prospects
+        if: github.event.inputs.mode == 'scanner'
+        run: python scripts/agent_ai_act_scanner.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          SECTOR: ${{ github.event.inputs.sector || 'ressources humaines' }}
+          REGION: France
+          MAX_PROSPECTS: ${{ github.event.inputs.max_prospects || '5' }}
+
+      - name: Commit résultats
+        run: |
+          git config user.name "AI Act Producer"
+          git config user.email "ai-act@365days.bot"
+          git add data/ai_act/
+          git diff --staged --quiet && echo "Rien à committer" || {
+            MODE="${{ github.event.inputs.mode }}"
+            git commit -m "ai-act: ${MODE} — $(date +%Y-%m-%d %H:%M)"
+            for i in 1 2 3 4; do
+              git push origin HEAD && break
+              sleep $((i * 2))
+            done
+          }
