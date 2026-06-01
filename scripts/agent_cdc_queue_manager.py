@@ -30,9 +30,11 @@ ROOT = Path(__file__).resolve().parent.parent
 
 TARGET_PENDING = int(os.environ.get("TARGET", "10"))
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN", "5"))
-# Délai entre chaque génération. 70s = bien en dessous du RPM free tier Gemini.
-# Avec 10 verticals × 10 CdC = 100 CdC max → ~117 min total, parfaitement OK pour un cron.
-THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "70"))
+# 3 min entre chaque CdC — évite les collisions avec les autres workflows Gemini.
+# 2 min entre chaque vertical — laisse la fenêtre RPM se réinitialiser.
+# Calcul : 11 verticals × 3 CdC × 180s + 11 × 120s = ~110 min par run. OK pour cron 4h.
+THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "180"))
+INTER_VERTICAL_DELAY = int(os.environ.get("INTER_VERTICAL_DELAY", "120"))
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 
 # ── Pools de thèmes — diversité garantie, pas de répétition ──────────────────
@@ -745,9 +747,15 @@ def run():
         sys.exit(1)
 
     total_generated = 0
-    for vname, config in targets.items():
+    verticals_list = list(targets.items())
+    for idx, (vname, config) in enumerate(verticals_list):
         n = fill_queue(vname, config)
         total_generated += n
+        # Pause inter-vertical : laisse la fenêtre RPM Gemini se réinitialiser
+        # avant d'attaquer le prochain vertical, sauf après le dernier.
+        if idx < len(verticals_list) - 1 and n > 0 and not DRY_RUN:
+            print(f"  [pause inter-vertical {INTER_VERTICAL_DELAY}s avant {verticals_list[idx+1][0]}]")
+            time.sleep(INTER_VERTICAL_DELAY)
 
     print(f"\n[Queue Manager] ✓ Total généré: {total_generated} nouveaux CdC")
     print_queue_status()

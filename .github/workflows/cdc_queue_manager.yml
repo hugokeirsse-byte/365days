@@ -5,7 +5,7 @@ name: CdC Queue Manager — 10 CdC par vertical en permanence
 
 on:
   schedule:
-    - cron: '0 */4 * * *'   # Toutes les 4 heures
+    - cron: '0 2,9,15,21 * * *'   # Décalé de trend_explosion (0h,6h,12h,18h) pour éviter conflit RPM Gemini
   push:
     paths:
       - 'products/coloring_books/**/cdc.json'

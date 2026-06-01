@@ -150,9 +150,10 @@ def llm_call(agent_type: str, system: str, user: str,
     providers = [config["primary"]] + config.get("fallback", [])
 
     # Sur 429 (rate limit), on attend que la fenêtre RPM se libère puis on
-    # réessaie le MÊME provider. Backoff: 60s, 120s. Free tier Gemini 15 RPM.
-    RATE_LIMIT_BACKOFF = [60, 120]
-    MAX_ATTEMPTS = 4
+    # réessaie le MÊME provider. Backoffs progressifs : 1min → 2min → 5min → 10min.
+    # Le 429 peut venir d'un chevauchement avec d'autres workflows Gemini concurrents.
+    RATE_LIMIT_BACKOFF = [60, 120, 300, 600]
+    MAX_ATTEMPTS = 6
 
     for provider in providers:
         fn = PROVIDERS.get(provider)
