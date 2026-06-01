@@ -5,7 +5,7 @@ name: CdC Queue Manager — 10 CdC par vertical en permanence
 
 on:
   schedule:
-    - cron: '0 */4 * * *'   # Toutes les 4 heures
+    - cron: '0 2,9,15,21 * * *'   # Décalé de trend_explosion (0h,6h,12h,18h) pour éviter conflit RPM Gemini
   push:
     paths:
       - 'products/coloring_books/**/cdc.json'
@@ -14,7 +14,7 @@ on:
       - 'products/novels/**/cdc.json'
       - 'products/jeux_societe/**/cdc.json'
       - 'products/merch/**/cdc.json'
-      - 'products/godot_assets/**/cdc.json'
+      - 'products/game_assets/**/cdc.json'
       - 'products/mobile_games/**/cdc.json'
       - 'products/mobile_apps/**/cdc.json'
       - 'products/svg_packs/**/cdc.json'
@@ -34,7 +34,7 @@ on:
           - roman
           - jeux_societe
           - merch_design
-          - godot_assets
+          - game_assets
           - mobile_games
           - mobile_apps
           - svg_packs
@@ -110,7 +110,7 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
           TARGET: ${{ github.event.inputs.target || '10' }}
-          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '3' }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || (github.event_name == 'push' && '10' || '3') }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
           GENERATE_PREVIEWS: ${{ github.event.inputs.generate_previews == 'true' && '1' || '0' }}
 

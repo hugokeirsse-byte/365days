@@ -20,10 +20,10 @@ DEFAULT_ROUTING = {
     "stratege": {"primary": "gemini", "fallback": ["mistral", "groq"]},
     "roman_planner": {"primary": "gemini", "fallback": ["groq"]},
     "roman_writer": {"primary": "groq", "fallback": ["gemini", "mistral"]},
-    "cdc_generator": {"primary": "gemini", "fallback": ["mistral"]},
+    "cdc_generator": {"primary": "groq", "fallback": ["gemini", "mistral"]},
     "conseil": {"primary": "gemini", "fallback": ["mistral"]},
     "stl_trends": {"primary": "gemini", "fallback": ["groq", "mistral"]},
-    "stl_cdc": {"primary": "gemini", "fallback": ["groq", "mistral"]},
+    "stl_cdc": {"primary": "groq", "fallback": ["gemini", "mistral"]},
     "code_scout": {"primary": "gemini", "fallback": ["groq", "mistral"]},
 }
 
@@ -150,9 +150,10 @@ def llm_call(agent_type: str, system: str, user: str,
     providers = [config["primary"]] + config.get("fallback", [])
 
     # Sur 429 (rate limit), on attend que la fenêtre RPM se libère puis on
-    # réessaie le MÊME provider. Backoff: 60s, 120s. Free tier Gemini 15 RPM.
-    RATE_LIMIT_BACKOFF = [60, 120]
-    MAX_ATTEMPTS = 4
+    # réessaie le MÊME provider. Backoffs progressifs : 1min → 2min → 5min → 10min.
+    # Le 429 peut venir d'un chevauchement avec d'autres workflows Gemini concurrents.
+    RATE_LIMIT_BACKOFF = [60, 120, 300, 600]
+    MAX_ATTEMPTS = 6
 
     for provider in providers:
         fn = PROVIDERS.get(provider)
@@ -275,7 +276,7 @@ def extract_json(text: str) -> str:
             if inner.startswith("{") or inner.startswith("["):
                 return inner
     # Last resort: find first { or [
-    for ch, end in [("{", "}"), ("[", "]")]:
+    for ch, end in [("{" , "}"), ("[", "]")]:
         start = t.find(ch)
         if start != -1:
             last = t.rfind(end)
