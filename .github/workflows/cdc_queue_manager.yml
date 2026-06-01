@@ -34,7 +34,7 @@ on:
           - roman
           - jeux_societe
           - merch_design
-          - godot_assets
+          - game_assets
           - mobile_games
           - mobile_apps
           - svg_packs
