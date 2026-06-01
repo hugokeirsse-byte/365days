@@ -121,6 +121,33 @@ def _write_markdown(out_dir: Path, cdc: dict, previews: list = None) -> None:
         f"**Tags communs:** {', '.join(lp.get('tags_communs', []))}",
         f"**Prix T-shirt:** ${lp.get('prix_tshirt_usd', '')}  |  **Prix Mug:** ${lp.get('prix_mug_usd', '')}",
         "",
+        "## Références Marché — Ce qui cartonne déjà",
+        "",
+        "> Sellers/brands qui dominent cette niche. Previews générées dans leur style.",
+        "",
+    ]
+    refs = cdc.get("references_marche", {})
+    for leader in refs.get("leaders_redbubble_amazon", []):
+        lines += [
+            f"### 🏆 {leader.get('nom', '?')} ({leader.get('plateforme', '?')})",
+            f"**Pourquoi ça marche** : {leader.get('pourquoi_ca_marche', '?')}",
+            f"**Style** : {leader.get('style_caracteristiques', '?')}",
+            f"**Best-sellers** : {leader.get('best_sellers', '?')}",
+            f"**Prix moyen** : {leader.get('prix_moyen', '?')}",
+            f"**À imiter** : {leader.get('elements_a_imiter', '?')}",
+            f"**Notre différence** : {leader.get('comment_se_differencier', '?')}",
+            "",
+        ]
+    ref_prompt = refs.get("style_prompt_reference", "")
+    if ref_prompt:
+        lines += [
+            "**Prompt style référence (utilisé pour previews + production)** :",
+            "```",
+            ref_prompt,
+            "```",
+            "",
+        ]
+    lines += [
         "## Analyse marché",
         "",
         f"**Potentiel:** {am.get('potentiel', '')}",
@@ -273,6 +300,21 @@ Return this exact JSON structure with ALL {nb_designs} designs fully specified:
     "prix_tshirt_usd": 24.99,
     "prix_mug_usd": 17.99
   }},
+  "references_marche": {{
+    "leaders_redbubble_amazon": [
+      {{
+        "nom": "ex: LooksLikeAWin / TypoKing / specific top seller name",
+        "plateforme": "Redbubble|Merch by Amazon|Etsy",
+        "pourquoi_ca_marche": "analyse précise : ton, style graphique, audience, viralité",
+        "style_caracteristiques": "description visuelle ultra-précise (couleurs, typography, densité, humour level)",
+        "best_sellers": "les 2-3 designs les plus vendus de ce seller et pourquoi",
+        "prix_moyen": "$X.XX",
+        "elements_a_imiter": "les éléments spécifiques (format texte, palette, style illus)",
+        "comment_se_differencier": "notre angle unique pour ne pas copier"
+      }}
+    ],
+    "style_prompt_reference": "prompt Pollinations imitant le style leader (ex: 'funny nurse mug design, bold sans-serif typography, dark humor quote, flat minimal illustration, white background, no text in image, clean professional POD design')"
+  }},
   "analyse_marche": {{
     "potentiel": "Market potential analysis (2-3 sentences)",
     "concurrence": "faible|moyenne|forte",
@@ -330,9 +372,11 @@ Generate ALL {nb_designs} entries in the designs array. Each must be unique, cre
     cdc_path.write_text(json.dumps(cdc, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[Merch CdC] cdc.json écrit : {cdc_path}")
 
-    # Generate 5 preview images (only if GENERATE_PREVIEWS=1)
+    # Generate 5 preview images — priorité au style_prompt_reference (imite le leader du marché)
     first_design_prompt = cdc.get("designs", [{}])[0].get("prompt_pollinations", "")
-    previews = generate_preview_images(first_design_prompt, out_dir / "previews", width=512, height=512)
+    ref_prompt = cdc.get("references_marche", {}).get("style_prompt_reference", "")
+    preview_prompt = ref_prompt if ref_prompt else first_design_prompt
+    previews = generate_preview_images(preview_prompt, out_dir / "previews", width=512, height=512)
 
     # Write markdown (passing previews so section is included)
     _write_markdown(out_dir, cdc, previews)

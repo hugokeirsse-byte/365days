@@ -92,6 +92,22 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "tranche_age": "ex: 25-55 ans",
     "pourquoi_ce_theme": "Pourquoi ce thème résonne avec cette audience ?"
   }},
+  "references_marche": {{
+    "leaders_du_marche": [
+      {{
+        "nom": "ex: Coco Wyo / Johanna Basford / Millie Marotta",
+        "type": "auteur KDP / brand Amazon",
+        "pourquoi_ca_marche": "analyse précise : style, format, audience, prix",
+        "style_caracteristiques": "description visuelle ultra-précise (densité, type de traits, sujets récurrents, ambiance)",
+        "format_typique": "ex: 8.5x11, 100 pages, dos carré collé, noir/blanc",
+        "prix_moyen": "$X.XX",
+        "nb_avis_typique": "5000+",
+        "elements_a_imiter": "les 3-5 éléments spécifiques qu'on doit reproduire",
+        "comment_se_differencier": "notre twist unique pour ne pas copier mais s'inspirer"
+      }}
+    ],
+    "style_prompt_reference": "prompt Pollinations qui imite précisément le style du leader (ex: 'adult coloring book page in the style of Johanna Basford Secret Garden, intricate botanical illustrations, delicate line art, white background, black outlines only, no shading, enchanted garden theme')"
+  }},
   "cinq_concurrents_amazon": [
     {{
       "titre": "Titre concurrent réaliste",
@@ -163,9 +179,12 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
     print(f"[CdC Coloring] cdc.json -> {cdc_json}")
 
     # Generate 5 preview images (only if GENERATE_PREVIEWS=1)
+    # Priorité au style_prompt_reference (imite le leader du marché) pour comparer
     prompts_data = cdc.get("prompts_pollinations", {})
     test_prompt = prompts_data.get("exemple_prompt_complet", "")
-    previews = generate_preview_images(test_prompt, out_dir / "previews", height=700)
+    ref_prompt = cdc.get("references_marche", {}).get("style_prompt_reference", "")
+    preview_prompt = ref_prompt if ref_prompt else test_prompt
+    previews = generate_preview_images(preview_prompt, out_dir / "previews", height=700)
 
     # Build human-readable CdC markdown
     prompts = prompts_data
@@ -254,7 +273,36 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
         f"**Age** : {public.get('tranche_age', '?')}",
         f"**Pourquoi ce theme** : {public.get('pourquoi_ce_theme', '?')}",
         "",
-        "## 5. Analyse Concurrence Amazon",
+    ]
+
+    refs = cdc.get("references_marche", {})
+    leaders = refs.get("leaders_du_marche", [])
+    if leaders:
+        md_lines += ["## 5. Références Marché — Ce qui cartonne déjà", ""]
+        md_lines.append("> Livres/brands existants qui dominent cette niche. Previews générées dans leur style.")
+        md_lines.append("")
+        for leader in leaders:
+            md_lines += [
+                f"### 🏆 {leader.get('nom', '?')} ({leader.get('type', '?')})",
+                f"**Pourquoi ça marche** : {leader.get('pourquoi_ca_marche', '?')}",
+                f"**Style visuel** : {leader.get('style_caracteristiques', '?')}",
+                f"**Format** : {leader.get('format_typique', '?')} | **Prix** : {leader.get('prix_moyen', '?')} | **Avis** : {leader.get('nb_avis_typique', '?')}",
+                f"**À imiter** : {leader.get('elements_a_imiter', '?')}",
+                f"**Notre différence** : {leader.get('comment_se_differencier', '?')}",
+                "",
+            ]
+        ref_prompt = refs.get("style_prompt_reference", "")
+        if ref_prompt:
+            md_lines += [
+                "**Prompt style référence (utilisé pour les previews + production)** :",
+                "```",
+                ref_prompt,
+                "```",
+                "",
+            ]
+
+    md_lines += [
+        "## 6. Analyse Concurrence Amazon",
     ]
 
     for i, concur in enumerate(cdc.get("cinq_concurrents_amazon", []), 1):
@@ -268,7 +316,7 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
 
     md_lines += [
         "",
-        "## 6. Listing KDP",
+        "## 7. Listing KDP",
         f"**Titre Amazon** : {kdp.get('titre_amazon', '?')}",
         f"**Sous-titre** : {kdp.get('sous_titre_amazon', '?')}",
         f"**Prix** : ${kdp.get('prix_usd', 9.99)}",
@@ -279,7 +327,7 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
         "**Mots-cles** : " + ", ".join(kdp.get("mots_cles", [])),
         "**Categories** : " + ", ".join(kdp.get("categories", [])),
         "",
-        "## 7. Checklist de Validation",
+        "## 8. Checklist de Validation",
         "",
         "Avant de changer gate_cdc a `approved` :",
         "",
