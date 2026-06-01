@@ -1,0 +1,224 @@
+{
+  "stl_id": "stl_2026-06-01",
+  "date_cdc": "2026-06-01",
+  "gate_cdc": "pending",
+  "identite_commerciale": {
+    "nom_boutique": "Pixel Forge Prints",
+    "slogan": "Level Up Your Space",
+    "niche_principale": "gaming"
+  },
+  "concept": {
+    "titre": "Gamer's Wisdom Coaster Collection",
+    "type_produit": "coaster",
+    "niche": "gaming",
+    "theme": "Retro pixel art, gaming quotes, minimalist",
+    "element_unique": "Des citations de jeux vidéo emblématiques et des phrases d'accroche pour gamers, gravées avec une police de caractère pixélisée et un motif de bordure inspiré des interfaces de jeux rétro.",
+    "pourquoi_ca_va_vendre": "Les gamers sont une niche passionnée qui adore personnaliser leur espace. Ces sous-verres offrent une touche subtile mais reconnaissable de leur passion, avec des designs épurés qui s'intègrent à tout décor de gaming setup. Le côté paramétrique permettra une personnalisation future et une adaptabilité."
+  },
+  "variantes": [
+    {
+      "slug": "gg_no_re",
+      "texte": "GG, No Re",
+      "description_courte": "The ultimate sign-off for a truly epic game.",
+      "emoji_thumbnail": "🎮",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "pwned_you_noob",
+      "texte": "PWNED You, Noob",
+      "description_courte": "For those moments of undisputed digital dominance.",
+      "emoji_thumbnail": "💥",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "respawn_in_5",
+      "texte": "Respawn in 5...",
+      "description_courte": "A gentle reminder that every defeat is temporary.",
+      "emoji_thumbnail": "⏳",
+      "prix_cults3d_usd": 2.0
+    },
+    {
+      "slug": "do_a_barrel_roll",
+      "texte": "Do a Barrel Roll!",
+      "description_courte": "A classic command for the true retro gamers.",
+      "emoji_thumbnail": "🚀",
+      "prix_cults3d_usd": 3.0
+    },
+    {
+      "slug": "its_dangerous_alone",
+      "texte": "It's Dangerous to Go Alone!",
+      "description_courte": "Take this coaster, and keep your table safe.",
+      "emoji_thumbnail": "⚔️",
+      "prix_cults3d_usd": 3.5
+    },
+    {
+      "slug": "afk_brb_xp",
+      "texte": "AFK, BRB for XP",
+      "description_courte": "When real life calls, but the grind never stops.",
+      "emoji_thumbnail": "💤",
+      "prix_cults3d_usd": 2.0
+    },
+    {
+      "slug": "press_any_key",
+      "texte": "Press Any Key to Continue",
+      "description_courte": "The most fundamental instruction in gaming history.",
+      "emoji_thumbnail": "⌨️",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "lag_is_real",
+      "texte": "Lag is Real",
+      "description_courte": "For every gamer who's blamed the internet.",
+      "emoji_thumbnail": "🌐",
+      "prix_cults3d_usd": 1.5
+    },
+    {
+      "slug": "eat_sleep_game_repeat",
+      "texte": "Eat, Sleep, Game, Repeat",
+      "description_courte": "The mantra of every dedicated gamer's life.",
+      "emoji_thumbnail": "🕹️",
+      "prix_cults3d_usd": 3.0
+    },
+    {
+      "slug": "i_need_healing",
+      "texte": "I Need Healing!",
+      "description_courte": "A cry for help, or just a reminder for your drink.",
+      "emoji_thumbnail": "🩹",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "quest_accepted",
+      "texte": "Quest Accepted!",
+      "description_courte": "Ready for your next adventure (or just your coffee).",
+      "emoji_thumbnail": "📜",
+      "prix_cults3d_usd": 3.5
+    },
+    {
+      "slug": "game_over_man",
+      "texte": "Game Over, Man!",
+      "description_courte": "A classic movie quote, perfect for game night.",
+      "emoji_thumbnail": "💀",
+      "prix_cults3d_usd": 2.5
+    },
+    {
+      "slug": "git_gud",
+      "texte": "Git Gud",
+      "description_courte": "The harsh but true advice for improving your skills.",
+      "emoji_thumbnail": "💪",
+      "prix_cults3d_usd": 2.0
+    },
+    {
+      "slug": "xp_farm",
+      "texte": "XP Farm in Progress",
+      "description_courte": "Warning: May contain excessive grinding.",
+      "emoji_thumbnail": "✨",
+      "prix_cults3d_usd": 2.0
+    },
+    {
+      "slug": "dont_feed_the_troll",
+      "texte": "Don't Feed The Troll",
+      "description_courte": "A wise reminder for online interactions.",
+      "emoji_thumbnail": "👹",
+      "prix_cults3d_usd": 3.0
+    }
+  ],
+  "spec_openscad": {
+    "product_type": "coaster",
+    "dimensions_mm": {
+      "width": 90,
+      "height": 90,
+      "thickness": 5
+    },
+    "text_area_mm": {
+      "width": 80,
+      "height": 70
+    },
+    "font": "Press Start 2P",
+    "text_size_mm": 9,
+    "engrave_depth_mm": 0.8,
+    "corner_radius_mm": 5,
+    "decoration": "pixel_border_groove",
+    "decoration_options": "pixel_border_groove|minimal|retro_chip_corner|circuit_trace",
+    "print_settings": {
+      "layer_height_mm": 0.2,
+      "infill_pct": 20,
+      "supports_needed": false,
+      "material": "PLA",
+      "print_time_min_estimate": 60
+    }
+  },
+  "listing_cults3d": {
+    "titre_listing": "Gaming Coaster STL - Retro Pixel Quotes - 15 Variants for Gamers",
+    "description_longue": "Level up your gaming setup with our exclusive Gamer's Wisdom Coaster Collection! This STL pack features 15 unique, gaming-themed coasters, each engraved with an iconic phrase or funny quote that every true gamer will appreciate. Designed with a retro pixel art aesthetic and a clean, minimalist border, these coasters are perfect for protecting your surfaces from spills while adding a touch of personalized flair to your battlestation, desk, or game room.\n\nCrafted for 3D printing enthusiasts, these parametric OpenSCAD files are easy to print and require no supports. We recommend using PLA for vibrant colors, but feel free to experiment with other materials like PETG for extra durability. Each coaster has a diameter of 90mm and a thickness of 5mm, with a 0.8mm deep engraving for clear, crisp text. The pixelated font and border detail are designed to evoke nostalgia for classic video games.\n\nWhy gamers love these: They're a subtle nod to their passion, a conversation starter, and a practical item all in one. Perfect as a gift for your gaming buddies, a stocking stuffer, or simply to treat yourself. Collect all 15 variants to fully embrace the gamer's journey! Easy to print, fun to display, and a must-have for any gaming setup. Print in your favorite colors to match your rig!",
+    "tags": [
+      "gaming",
+      "coaster",
+      "gamer gift",
+      "stl",
+      "3d print",
+      "retro gaming",
+      "video game",
+      "desk accessory",
+      "pixel art",
+      "gift for gamers"
+    ],
+    "categorie": "Home & Decor / Coasters",
+    "licence": "Creative Commons - Attribution - Non-Commercial - No Derivatives"
+  },
+  "strategie_produit": {
+    "pilier": "creation_originale",
+    "justification": "Bien que les sous-verres gaming existent, la combinaison spécifique de 'citations de jeux vidéo emblématiques', 'police pixélisée', et 'motif de bordure inspiré des interfaces de jeux rétro' est un angle frais et non saturé. La demande pour des produits gaming personnalisables et thématiques est constante et forte, sans un signal de 'hype' spécifique mais plutôt une demande de fond solide. Le style pixel art est intemporel dans la niche gaming.",
+    "creation_originale": {
+      "signaux_trend": [
+        "Recherche constante sur Etsy/Cults pour 'gaming decor', 'gamer gift'",
+        "Popularité des polices pixel art sur les plateformes de design",
+        "Contenu gaming 'quote' sur TikTok/Reddit avec bon engagement"
+      ],
+      "timing_optimal": "Maintenant est le bon moment car le marché des accessoires gaming imprimés en 3D est mature mais toujours en croissance, et il y a une opportunité de se positionner avec un design unique avant que des tendances plus spécifiques n'émergent et saturent le marché.",
+      "risque_saturation": "moyen — dans 12-18 mois"
+    }
+  },
+  "potentiel_revenu": {
+    "scenario_conservateur": {
+      "ventes_mois_1": 15,
+      "ventes_mois_6": 70,
+      "revenu_annuel_estime": "$750"
+    },
+    "scenario_optimiste": {
+      "ventes_mois_1": 60,
+      "ventes_mois_6": 400,
+      "revenu_annuel_estime": "$4000"
+    },
+    "levier_croissance": "Création de bundles (ex: 'Top 5 Quotes Bundle'), extension à d'autres formats (porte-clés, plaques murales), ajout de personnalisation sur demande (nom du joueur), ciblage de jeux spécifiques (ex: 'Minecraft Quotes Coasters')."
+  },
+  "analyse_marche": {
+    "concurrents_cults3d": [
+      {
+        "titre": "Gaming Coaster Pack",
+        "prix": 2.99,
+        "downloads": 600,
+        "note": "Souvent des logos de jeux ou des symboles génériques. Manque de texte mémorable et de design cohésif."
+      },
+      {
+        "titre": "Retro Game Coasters",
+        "prix": 1.5,
+        "downloads": 350,
+        "note": "Qualité d'engraving parfois faible, police générique. Pas de véritable 'collection' cohérente."
+      },
+      {
+        "titre": "Customizable Gamer Coaster",
+        "prix": 4.0,
+        "downloads": 800,
+        "note": "Permet la personnalisation de nom, mais le design de base est simple. Notre collection offre des textes déjà choisis et un design plus stylisé."
+      }
+    ],
+    "notre_positionnement": "Notre version se distingue par une collection cohérente de 15 variantes avec des textes de gaming authentiques et un design pixel art rétro unique. La qualité de l'engraving et le choix de la police sont pensés pour la lisibilité et l'esthétique, offrant un produit plus 'premium' et réfléchi que la concurrence générique ou trop simpliste. Le caractère paramétrique via OpenSCAD est un plus pour les makers qui souhaitent ajuster ou créer leurs propres variantes.",
+    "revenue_estime_mensuel_usd": 0
+  },
+  "criteres_validation": {
+    "texte_lisible_imprime": "Tester sur imprimante avec 'It's Dangerous to Go Alone!' et 'Don't Feed The Troll' pour vérifier la lisibilité de la police 'Press Start 2P' à 0.8mm de profondeur.",
+    "dimensions_ok_slicer": "Vérifier la taille et l'épaisseur du modèle dans PrusaSlicer et Cura pour s'assurer qu'il rentre sur un plateau d'impression standard (min 150x150mm).",
+    "fichier_sans_erreur": "Passer le STL final dans Meshmixer ou Netfabb pour vérifier l'intégrité du maillage et corriger les éventuelles erreurs.",
+    "photos_pro": "Prendre au moins 5 photos de haute qualité: vue de face, vue 45° (avec une boisson posée dessus), gros plan sur le texte gravé, vue d'ensemble de quelques variantes, et une photo 'lifestyle' dans un setup gaming."
+  }
+}
