@@ -106,9 +106,11 @@ jobs:
           python scripts/agent_cdc_queue_manager.py 2>&1 | tee data/logs/queue_run_latest.txt
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
           TARGET: ${{ github.event.inputs.target || '10' }}
-          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '10' }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '3' }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
           GENERATE_PREVIEWS: ${{ github.event.inputs.generate_previews == 'true' && '1' || '0' }}
 

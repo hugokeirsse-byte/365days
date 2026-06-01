@@ -112,7 +112,7 @@ def _call_groq(system: str, user: str, temperature: float, max_tokens: int) -> t
     model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
     return _call_openai_compat(
         "https://api.groq.com/openai/v1/chat/completions",
-        model, key, system, user, temperature, max_tokens
+        model, key, system, user, temperature, min(max_tokens, 8192)
     )
 
 
