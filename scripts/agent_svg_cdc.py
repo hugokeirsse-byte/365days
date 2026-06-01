@@ -180,6 +180,22 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "Créer mosaïque preview 4:5 pour Etsy (premier visuel = plus important)",
     "Uploader ZIP sur Etsy → Digital Download → prix {spec['prix_typique'].split('-')[0]} USD"
   ],
+  "references_marche": {{
+    "leaders_etsy": [
+      {{
+        "nom": "ex: TheHungryJPEG / SVGHut / DesignBundles top seller",
+        "plateforme": "Etsy|Creative Fabrica|Design Bundles",
+        "pourquoi_ca_marche": "analyse précise : niche, style, volume, marketing",
+        "style_caracteristiques": "description visuelle ultra-précise (épaisseur trait, sujets, density, aesthetique)",
+        "best_sellers": "les 2-3 packs les plus vendus et pourquoi",
+        "prix_moyen": "$X.XX",
+        "nb_ventes_typique": "5000+",
+        "elements_a_imiter": "les éléments spécifiques (style, format ZIP, previews mockup)",
+        "comment_se_differencier": "notre angle unique"
+      }}
+    ],
+    "style_prompt_reference": "prompt Pollinations imitant précisément le style leader pour les previews"
+  }},
   "strategie": "..."
 }}
 JSON uniquement."""
@@ -221,8 +237,11 @@ Fournis :
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "cdc.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    # Priorité au style_prompt_reference (imite le leader Etsy) pour les previews
     svg_preview_prompt = (data.get("prompts_pollinations") or [{}])[0].get("prompt", "")
-    previews = generate_preview_images(svg_preview_prompt, out_dir / "previews", width=512, height=512)
+    ref_prompt = data.get("references_marche", {}).get("style_prompt_reference", "")
+    previews = generate_preview_images(ref_prompt if ref_prompt else svg_preview_prompt,
+                                       out_dir / "previews", width=512, height=512)
 
     elements = data.get("elements", [])
     listing = data.get("listing_etsy", {})
@@ -276,6 +295,37 @@ Fournis :
     ]
     for item in checklist:
         md_lines.append(f"- {item}")
+
+    refs = data.get("references_marche", {})
+    leaders = refs.get("leaders_etsy", [])
+    if leaders:
+        md_lines += [
+            "",
+            "## Références Marché — Ce qui cartonne sur Etsy",
+            "",
+            "> Sellers qui dominent cette niche. Previews générées dans leur style.",
+            "",
+        ]
+        for leader in leaders:
+            md_lines += [
+                f"### 🏆 {leader.get('nom', '?')} ({leader.get('plateforme', '?')})",
+                f"**Pourquoi ça marche** : {leader.get('pourquoi_ca_marche', '?')}",
+                f"**Style** : {leader.get('style_caracteristiques', '?')}",
+                f"**Best-sellers** : {leader.get('best_sellers', '?')}",
+                f"**Prix** : {leader.get('prix_moyen', '?')} | **Ventes** : {leader.get('nb_ventes_typique', '?')}",
+                f"**À imiter** : {leader.get('elements_a_imiter', '?')}",
+                f"**Notre différence** : {leader.get('comment_se_differencier', '?')}",
+                "",
+            ]
+        ref_prompt = refs.get("style_prompt_reference", "")
+        if ref_prompt:
+            md_lines += [
+                "**Prompt style référence (previews + production)** :",
+                "```",
+                ref_prompt,
+                "```",
+                "",
+            ]
 
     md_lines += [
         "",
