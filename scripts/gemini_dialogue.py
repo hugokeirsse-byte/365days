@@ -37,6 +37,7 @@ from datetime import datetime
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
+MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY", "")
 
 TOPIC = os.environ.get("TOPIC", "")
 GOAL = os.environ.get("GOAL", "")
@@ -103,7 +104,6 @@ def call_gemini(system_prompt: str, history: list, user_message: str,
 
 def call_groq(system_prompt: str, history: list, user_message: str,
               temperature: float = 0.7) -> str:
-    import urllib.request
     url = "https://api.groq.com/openai/v1/chat/completions"
     messages = [{"role": "system", "content": system_prompt}]
     for msg in history:
@@ -120,46 +120,87 @@ def call_groq(system_prompt: str, history: list, user_message: str,
         "Content-Type": "application/json",
         "Authorization": f"Bearer {GROQ_API_KEY}"
     }, method="POST")
-    with urllib.request.urlopen(req, timeout=90) as resp:
-        result = json.loads(resp.read())
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            result = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")[:200]
+        raise RuntimeError(f"Groq HTTP {e.code}: {body}") from None
     return result["choices"][0]["message"]["content"].strip()
 
 
-def llm(system_prompt: str, history: list, user_message: str, temperature: float = 0.7) -> str:
-    """Appelle Gemini en priorité, retries sur 429, puis fallback Groq."""
-    if not GEMINI_API_KEY and not GROQ_API_KEY:
-        raise RuntimeError("Aucune clé API disponible (GEMINI_API_KEY ou GROQ_API_KEY requis)")
+def call_mistral(system_prompt: str, history: list, user_message: str,
+                 temperature: float = 0.7) -> str:
+    url = "https://api.mistral.ai/v1/chat/completions"
+    messages = [{"role": "system", "content": system_prompt}]
+    for msg in history:
+        messages.append({"role": msg["role"], "content": msg["content"]})
+    messages.append({"role": "user", "content": user_message})
+    payload = {
+        "model": "mistral-small-latest",
+        "messages": messages,
+        "temperature": temperature,
+        "max_tokens": 4096
+    }
+    data = json.dumps(payload).encode()
+    req = urllib.request.Request(url, data=data, headers={
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {MISTRAL_API_KEY}"
+    }, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            result = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")[:200]
+        raise RuntimeError(f"Mistral HTTP {e.code}: {body}") from None
+    return result["choices"][0]["message"]["content"].strip()
 
-    # Tentatives Gemini (primary)
+
+def _is_auth_error(msg: str) -> bool:
+    return any(code in msg for code in ["401", "403", "invalid_api_key", "Forbidden", "Unauthorized"])
+
+
+def _is_rate_limit(msg: str) -> bool:
+    return any(x in msg.lower() for x in ["429", "quota", "rate limit", "exceeded"])
+
+
+def llm(system_prompt: str, history: list, user_message: str, temperature: float = 0.7) -> str:
+    """Appelle Gemini → Mistral → Groq avec gestion fine des erreurs.
+    - 429/quota : attend 90s et réessaie (jusqu'à 8 fois)
+    - 401/403   : erreur d'auth → passe directement au suivant, pas de retry
+    """
+    if not any([GEMINI_API_KEY, MISTRAL_API_KEY, GROQ_API_KEY]):
+        raise RuntimeError("Aucune clé API disponible")
+
+    providers = []
     if GEMINI_API_KEY:
-        for attempt in range(3):
+        providers.append(("Gemini", call_gemini))
+    if MISTRAL_API_KEY:
+        providers.append(("Mistral", call_mistral))
+    if GROQ_API_KEY:
+        providers.append(("Groq", call_groq))
+
+    for provider_name, call_fn in providers:
+        max_attempts = 8 if provider_name == "Gemini" else 3
+        for attempt in range(max_attempts):
             try:
-                return call_gemini(system_prompt, history, user_message, temperature)
+                result = call_fn(system_prompt, history, user_message, temperature)
+                if attempt > 0:
+                    print(f"   ✅ {provider_name} OK (tentative {attempt + 1})")
+                return result
             except Exception as e:
                 msg = str(e)
-                is_rate_limit = "429" in msg or "quota" in msg.lower() or "rate" in msg.lower()
-                if attempt < 2:
-                    # 429 = quota par minute → attendre 60s pour reset ; sinon backoff court
-                    wait = 60 if is_rate_limit else (attempt + 1) * 10
-                    print(f"   ⚠️  Gemini erreur ({msg[:80]}) — retry dans {wait}s...")
+                if _is_auth_error(msg):
+                    print(f"   ✗ {provider_name} auth invalide ({msg[:60]}) → prochain fournisseur")
+                    break  # Pas de retry sur erreur d'auth
+                if attempt < max_attempts - 1:
+                    wait = 90 if _is_rate_limit(msg) else (attempt + 1) * 10
+                    print(f"   ⚠️  {provider_name} erreur ({msg[:60]}) — retry dans {wait}s...")
                     time.sleep(wait)
                 else:
-                    print(f"   ⚠️  Gemini épuisé après 3 tentatives — fallback Groq")
+                    print(f"   ✗ {provider_name} épuisé ({max_attempts} tentatives) → prochain fournisseur")
 
-    # Fallback Groq
-    if GROQ_API_KEY:
-        for attempt in range(3):
-            try:
-                return call_groq(system_prompt, history, user_message, temperature)
-            except Exception as e:
-                if attempt < 2:
-                    wait = (attempt + 1) * 10
-                    print(f"   ⚠️  Groq erreur ({str(e)[:80]}) — retry dans {wait}s...")
-                    time.sleep(wait)
-                else:
-                    raise
-
-    raise RuntimeError("Tous les LLM ont échoué (Gemini + Groq)")
+    raise RuntimeError(f"Tous les LLM ont échoué ({', '.join(p for p, _ in providers)})")
 
 
 def generate_agent_role(agent: str, topic: str, goal: str) -> str:

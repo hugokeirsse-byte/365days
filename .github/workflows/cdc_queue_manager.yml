@@ -1,24 +1,11 @@
 name: CdC Queue Manager — 10 CdC par vertical en permanence
 
 # Maintient TARGET_PENDING CdC avec gate=pending par vertical.
-# Hugo en approuve/rejette → ce workflow détecte le manque → remplit auto.
+# DÉSACTIVÉ en cron — pivot vers AI Act. Lancement manuel uniquement.
 
 on:
-  schedule:
-    - cron: '0 2,9,15,21 * * *'   # Décalé de trend_explosion (0h,6h,12h,18h) pour éviter conflit RPM Gemini
-  push:
-    paths:
-      - 'products/coloring_books/**/cdc.json'
-      - 'products/stl_3d/**/cdc.json'
-      - 'products/lowcontent_kdp/**/cdc.json'
-      - 'products/novels/**/cdc.json'
-      - 'products/jeux_societe/**/cdc.json'
-      - 'products/merch/**/cdc.json'
-      - 'products/game_assets/**/cdc.json'
-      - 'products/mobile_games/**/cdc.json'
-      - 'products/mobile_apps/**/cdc.json'
-      - 'products/svg_packs/**/cdc.json'
-      - 'products/vintage_pd/**/cdc.json'
+  # schedule:  # DÉSACTIVÉ — pivot vers Conformité AI Act
+  #   - cron: '0 2,9,15,21 * * *'
   workflow_dispatch:
     inputs:
       vertical:
@@ -32,11 +19,7 @@ on:
           - stl
           - lowcontent
           - roman
-          - jeux_societe
           - merch_design
-          - game_assets
-          - mobile_games
-          - mobile_apps
           - svg_packs
           - vintage_pd
       target:
@@ -44,16 +27,11 @@ on:
         required: false
         default: '10'
       max_per_run:
-        description: 'Max générés par run par vertical (défaut: 10)'
+        description: 'Max générés par run par vertical (défaut: 3)'
         required: false
-        default: '10'
+        default: '3'
       dry_run:
         description: 'Afficher sans générer'
-        required: false
-        default: 'false'
-        type: boolean
-      generate_previews:
-        description: 'Générer 5 images aperçu par CdC visuel (coloring/merch/svg) — plus lent'
         required: false
         default: 'false'
         type: boolean
@@ -83,11 +61,9 @@ jobs:
       - name: Créer répertoires produits
         run: |
           mkdir -p products/coloring_books products/stl_3d products/lowcontent_kdp products/novels
-          mkdir -p products/jeux_societe products/merch products/game_assets
-          mkdir -p products/mobile_games products/mobile_apps products/svg_packs products/vintage_pd
+          mkdir -p products/merch products/svg_packs products/vintage_pd
           mkdir -p data/brain/coloring data/brain/stl data/brain/lowcontent data/brain/roman
-          mkdir -p data/brain/jeux_societe data/brain/merch data/brain/game_assets
-          mkdir -p data/brain/mobile_games data/brain/mobile_apps data/brain/svg data/brain/vintage_pd
+          mkdir -p data/brain/merch data/brain/svg data/brain/vintage_pd
           mkdir -p data/reports
 
       - name: Vérifier l'état des files (avant)
@@ -110,9 +86,8 @@ jobs:
           MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
           TARGET: ${{ github.event.inputs.target || '10' }}
-          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || (github.event_name == 'push' && '10' || '3') }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '3' }}
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
-          GENERATE_PREVIEWS: ${{ github.event.inputs.generate_previews == 'true' && '1' || '0' }}
 
       - name: Commit nouveaux CdC
         if: ${{ always() && github.event.inputs.dry_run != 'true' }}
@@ -125,16 +100,7 @@ jobs:
             git commit -m "queue: +${COUNT} CdC générés (gate=pending) — $(date +%Y-%m-%d %H:%M)"
             for i in 1 2 3 4; do
               if git push origin HEAD:${{ github.ref_name }}; then break; fi
-              echo "retry push $i/4"
               git pull --rebase origin ${{ github.ref_name }} || true
               sleep $((i * 2))
             done
-            echo ""
-            echo "════════════════════════════════════════════"
-            echo "  ${COUNT} NOUVEAUX CdC DISPONIBLES POUR HUGO"
-            echo "════════════════════════════════════════════"
-            echo ""
-            echo "Lire dans GitHub → products/*/{slug}/cdc.json"
-            echo "Valider : changer gate_cdc = 'approved' dans cdc.json et push"
-            echo "Rejeter : changer gate_cdc = 'rejected' dans cdc.json et push"
           }
