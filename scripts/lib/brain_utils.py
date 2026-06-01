@@ -24,6 +24,7 @@ DEFAULT_ROUTING = {
     "conseil": {"primary": "gemini", "fallback": ["mistral"]},
     "stl_trends": {"primary": "gemini", "fallback": ["groq", "mistral"]},
     "stl_cdc": {"primary": "gemini", "fallback": ["groq", "mistral"]},
+    "code_scout": {"primary": "gemini", "fallback": ["groq", "mistral"]},
 }
 
 def _load_routing():

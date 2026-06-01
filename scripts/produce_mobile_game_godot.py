@@ -47,6 +47,39 @@ GODOT_PURE_CODE_GENRES = {
 }
 
 
+def load_code_scout_results(game_dir: Path) -> dict:
+    """Lit code_scout_results.json s'il existe et retourne les données pertinentes."""
+    scout_path = game_dir / "code_scout_results.json"
+    if not scout_path.exists():
+        return {}
+    try:
+        data = json.loads(scout_path.read_text(encoding="utf-8"))
+        recommended = data.get("recommended_bases", [])
+        notes = data.get("integration_notes", "")
+        if recommended or notes:
+            print(f"[Godot] Code Scout results loaded: {len(recommended)} recommended base(s)")
+            return {"recommended_bases": recommended, "integration_notes": notes}
+    except Exception as e:
+        print(f"[Godot] Could not read code_scout_results.json: {e}")
+    return {}
+
+
+def make_scout_injection(scout: dict) -> str:
+    """Construit le bloc à injecter dans les prompts système si Code Scout a trouvé des résultats."""
+    if not scout:
+        return ""
+    recommended = scout.get("recommended_bases", [])
+    notes = scout.get("integration_notes", "")
+    parts = []
+    if recommended:
+        parts.append(f"EXISTING CODE BASES TO USE:\nRepos: {', '.join(recommended)}")
+    if notes:
+        parts.append(f"Integration notes: {notes}")
+    if not parts:
+        return ""
+    return "\n\n" + "\n".join(parts) + "\n"
+
+
 def find_approved_game() -> Path | None:
     """Trouve le dernier CdC approuvé non encore produit dans products/mobile_games/."""
     base = ROOT / "products" / "mobile_games"
@@ -169,7 +202,7 @@ portrait_launch_screens/iphone_2x=""
 
 # ── Générateurs de code par genre ─────────────────────────────────────────────
 
-def generate_text_rpg_files(cdc: dict) -> dict[str, str]:
+def generate_text_rpg_files(cdc: dict, scout_injection: str = "") -> dict[str, str]:
     """Génère les fichiers GDScript pour un jeu text_rpg ou roguelike_text."""
     concept = cdc.get("concept", {})
     titre = concept.get("titre", "Text RPG")
@@ -184,7 +217,7 @@ def generate_text_rpg_files(cdc: dict) -> dict[str, str]:
 Generate complete, functional GDScript files for a text-based RPG/dungeon game.
 The code must be 100% programmatic — no .tscn files, everything created in code.
 Style: black background, green/amber monospace text, retro terminal aesthetic.
-Output ONLY the raw GDScript code, no markdown fences, no explanation."""
+Output ONLY the raw GDScript code, no markdown fences, no explanation.""" + scout_injection
 
     # main.gd
     user_main = f"""Generate main.gd for Godot 4 — the root scene script.
@@ -258,7 +291,7 @@ The script must:
     }
 
 
-def generate_escape_puzzle_files(cdc: dict) -> dict[str, str]:
+def generate_escape_puzzle_files(cdc: dict, scout_injection: str = "") -> dict[str, str]:
     """Génère les fichiers GDScript pour un escape_puzzle style Rusty Lake."""
     concept = cdc.get("concept", {})
     titre = concept.get("titre", "Escape Puzzle")
@@ -272,7 +305,7 @@ def generate_escape_puzzle_files(cdc: dict) -> dict[str, str]:
 Generate complete, functional GDScript files for a room escape puzzle game.
 100% programmatic — no .tscn files, everything created in code.
 Dark, surrealist aesthetic inspired by Rusty Lake / Cube Escape games.
-Output ONLY the raw GDScript code, no markdown fences, no explanation."""
+Output ONLY the raw GDScript code, no markdown fences, no explanation.""" + scout_injection
 
     # main.gd
     user_main = f"""Generate main.gd for Godot 4 — the root scene.
@@ -351,7 +384,7 @@ Save state: use ConfigFile for auto-save after each puzzle solved.
     }
 
 
-def generate_sliding_puzzle_files(cdc: dict) -> dict[str, str]:
+def generate_sliding_puzzle_files(cdc: dict, scout_injection: str = "") -> dict[str, str]:
     """Génère les fichiers GDScript pour un sliding_puzzle."""
     concept = cdc.get("concept", {})
     titre = concept.get("titre", "Sliding Puzzle")
@@ -366,7 +399,7 @@ def generate_sliding_puzzle_files(cdc: dict) -> dict[str, str]:
 Generate complete, functional GDScript files for a sliding puzzle (taquin) mobile game.
 100% programmatic — no .tscn files, everything created in code.
 Clean minimalist UI, smooth animations.
-Output ONLY the raw GDScript code, no markdown fences, no explanation."""
+Output ONLY the raw GDScript code, no markdown fences, no explanation.""" + scout_injection
 
     # main.gd + board.gd combined approach
     user_main = f"""Generate main.gd for Godot 4 — the root scene.
@@ -428,7 +461,7 @@ PlayerPrefs via ConfigFile: save best_moves and best_time per level.
     }
 
 
-def generate_puzzle_narrative_files(cdc: dict) -> dict[str, str]:
+def generate_puzzle_narrative_files(cdc: dict, scout_injection: str = "") -> dict[str, str]:
     """Génère les fichiers GDScript pour un puzzle_narrative ou turn_based_rpg."""
     concept = cdc.get("concept", {})
     titre = concept.get("titre", "Puzzle Narrative")
@@ -444,6 +477,7 @@ def generate_puzzle_narrative_files(cdc: dict) -> dict[str, str]:
             "Generate complete, functional GDScript files for a grid-based tactical combat game.\n"
             "100% programmatic — no sprites or .tscn files, tiles and units drawn with ColorRect and labels.\n"
             "Output ONLY the raw GDScript code, no markdown fences, no explanation."
+            + scout_injection
         )
     else:
         system_prompt = (
@@ -451,6 +485,7 @@ def generate_puzzle_narrative_files(cdc: dict) -> dict[str, str]:
             "Generate complete, functional GDScript files for a narrative puzzle / tactical RPG.\n"
             "100% programmatic — no .tscn files, everything created in code.\n"
             "Output ONLY the raw GDScript code, no markdown fences, no explanation."
+            + scout_injection
         )
 
     features_str = ", ".join(features[:5])
@@ -646,20 +681,20 @@ Sections needed:
 
 # ── Dispatcher par genre ───────────────────────────────────────────────────────
 
-def generate_game_files(cdc: dict, genre: str) -> dict[str, str]:
+def generate_game_files(cdc: dict, genre: str, scout_injection: str = "") -> dict[str, str]:
     """Dispatch vers le bon générateur selon le genre."""
     if genre in ("text_rpg", "roguelike_text"):
-        return generate_text_rpg_files(cdc)
+        return generate_text_rpg_files(cdc, scout_injection=scout_injection)
     elif genre == "escape_puzzle":
-        return generate_escape_puzzle_files(cdc)
+        return generate_escape_puzzle_files(cdc, scout_injection=scout_injection)
     elif genre == "sliding_puzzle":
-        return generate_sliding_puzzle_files(cdc)
+        return generate_sliding_puzzle_files(cdc, scout_injection=scout_injection)
     elif genre in ("puzzle_narrative", "turn_based_rpg"):
-        return generate_puzzle_narrative_files(cdc)
+        return generate_puzzle_narrative_files(cdc, scout_injection=scout_injection)
     else:
         # Fallback pour les genres non spécialisés — utilise text_rpg comme base
         print(f"[Godot] Genre '{genre}' non spécialisé — fallback text_rpg")
-        return generate_text_rpg_files(cdc)
+        return generate_text_rpg_files(cdc, scout_injection=scout_injection)
 
 
 def run():
@@ -722,9 +757,15 @@ def run():
     (game_dir / "export_presets.cfg").write_text(export_cfg, encoding="utf-8")
     print("[Godot] ✓ export_presets.cfg")
 
+    # ── Lire les résultats Code Scout (s'ils existent) ────────────────────────
+    scout = load_code_scout_results(game_dir)
+    scout_injection = make_scout_injection(scout)
+    if scout_injection:
+        print(f"[Godot] Code Scout injection: {len(scout.get('recommended_bases', []))} repo(s) injected into prompts")
+
     # ── Étape 3 : Fichiers GDScript par genre ─────────────────────────────────
     print(f"\n[Godot] Generating GDScript files for genre '{genre}'...")
-    game_files = generate_game_files(cdc, genre)
+    game_files = generate_game_files(cdc, genre, scout_injection=scout_injection)
 
     generated_script_names = []
     for filename, content in game_files.items():

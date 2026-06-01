@@ -62,6 +62,34 @@ jobs:
       - name: Créer répertoires
         run: mkdir -p products/mobile_apps data/logs
 
+      - name: Détecter app_dir
+        id: router
+        run: |
+          APP_DIR="${{ github.event.inputs.app_dir }}"
+          if [ -z "$APP_DIR" ]; then
+            APP_DIR=$(find products/mobile_apps -name cdc.json 2>/dev/null | python3 -c "
+          import json, sys
+          for f in sys.stdin.read().splitlines():
+              if not f.strip(): continue
+              try:
+                  d = json.load(open(f.strip()))
+                  if d.get('gate_cdc') == 'approved' and not d.get('production_status'):
+                      print(f.strip().replace('/cdc.json', ''))
+                      break
+              except: pass
+          " 2>/dev/null || echo "")
+          fi
+          echo "app_dir=$APP_DIR" >> $GITHUB_OUTPUT
+
+      - name: Code Scout — recherche bases open-source
+        run: python scripts/agent_code_scout.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRODUCT_DIR: ${{ steps.router.outputs.app_dir }}
+        continue-on-error: true  # Ne pas bloquer si le scout échoue
+
       - name: Générer le scaffold de l'application mobile
         run: python scripts/produce_mobile_app_scaffold.py
         env:

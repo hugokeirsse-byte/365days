@@ -98,6 +98,15 @@ jobs:
             echo "→ Genre '$GENRE' → scaffold classique"
           fi
 
+      - name: Code Scout — recherche bases open-source
+        run: python scripts/agent_code_scout.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRODUCT_DIR: ${{ steps.router.outputs.game_dir }}
+        continue-on-error: true  # Ne pas bloquer si le scout échoue
+
       - name: Générer jeu Godot 4 complet (genres pure-code)
         if: steps.router.outputs.script == 'godot'
         run: python scripts/produce_mobile_game_godot.py
