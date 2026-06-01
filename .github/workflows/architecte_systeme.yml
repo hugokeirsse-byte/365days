@@ -3,8 +3,8 @@ on:
   push:
     paths: ['.triggers/architecte_systeme']
   workflow_dispatch:
-  schedule:
-    - cron: '0 4 * * 0'
+  # schedule:
+  # - cron: '0 4 * * 0'
 env:
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
   MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}

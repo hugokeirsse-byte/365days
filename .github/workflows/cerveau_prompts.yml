@@ -1,0 +1,71 @@
+name: Cerveau Prompts — Générateur de Rôles Experts
+
+# Génère un system prompt expert optimisé pour un agent IA donné.
+# Avec auto-validation par l'auditrice intégrée.
+# Résultat sauvegardé dans data/prompts/{slug}.json
+
+on:
+  workflow_dispatch:
+    inputs:
+      role_type:
+        description: 'Rôle à générer (ex: expert conformité AI Act, analyste appels offres)'
+        required: true
+        default: ''
+      domain:
+        description: 'Domaine de compétences'
+        required: false
+        default: ''
+      context:
+        description: "Contexte d'utilisation du rôle"
+        required: false
+        default: ''
+      output_slug:
+        description: 'Nom du fichier (ex: expert_ai_act). Vide = auto-généré.'
+        required: false
+        default: ''
+      validate:
+        description: 'Valider automatiquement le prompt généré'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Créer répertoires
+        run: mkdir -p data/prompts data/audit_logs
+
+      - name: Générer le rôle expert
+        run: python scripts/cerveau_prompts.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          ROLE_TYPE: ${{ github.event.inputs.role_type }}
+          DOMAIN: ${{ github.event.inputs.domain }}
+          CONTEXT: ${{ github.event.inputs.context }}
+          OUTPUT_SLUG: ${{ github.event.inputs.output_slug }}
+          VALIDATE: ${{ github.event.inputs.validate == 'true' && '1' || '0' }}
+
+      - name: Commit le prompt généré
+        run: |
+          git config user.name "Cerveau Prompts"
+          git config user.email "cerveau@365days.bot"
+          git add data/prompts/
+          git diff --staged --quiet && echo "Rien à committer" || {
+            git commit -m "prompts: ${{ github.event.inputs.role_type }} — $(date +%Y-%m-%d)"
+            for i in 1 2 3 4; do
+              git push origin HEAD && break
+              sleep $((i * 2))
+            done
+          }

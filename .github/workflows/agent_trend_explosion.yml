@@ -2,9 +2,9 @@ name: Agent Trend Explosion (Voie A — scan ce qui explose)
 
 on:
   workflow_dispatch: {}
-  schedule:
+  # schedule:
     # Toutes les 6 heures — données fraîches sur les explosions du moment
-    - cron: "0 */6 * * *"
+    # - cron: "0 */6 * * *"
   push:
     paths:
       - .triggers/trend_explosion

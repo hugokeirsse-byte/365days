@@ -3,8 +3,8 @@ on:
   push:
     paths: ['.triggers/prospecteur_emergence']
   workflow_dispatch:
-  schedule:
-    - cron: '0 5 * * 4'
+  # schedule:
+  # - cron: '0 5 * * 4'
 env:
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
   GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}

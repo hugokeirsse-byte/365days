@@ -11,9 +11,9 @@ on:
         description: "Nb covers par niche"
         required: false
         default: "8"
-  schedule:
+  # schedule:
     # Tous les jeudis 3h UTC — rafraîchissement hebdo des styles dominants
-    - cron: "0 3 * * 4"
+    # - cron: "0 3 * * 4"
   push:
     paths:
       - .triggers/coloring_intel

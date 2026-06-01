@@ -4,8 +4,8 @@ name: Vertical Optimizer — Boucle de Feedback
 # sans intervention de Claude. Hugo valide en 1 minute.
 
 on:
-  schedule:
-    - cron: '0 10 * * 1'   # Lundi 06h UTC (après le rapporteur hebdo du dimanche)
+  # schedule:
+  # - cron: '0 10 * * 1'   # Lundi 06h UTC (après le rapporteur hebdo du dimanche)
   workflow_dispatch:
     inputs:
       vertical:

@@ -7,9 +7,9 @@ on:
         description: "Brain à lancer (trends/tools/optimization/niches/vide=tous)"
         required: false
         default: ""
-  schedule:
+  # schedule:
     # 1 run par jour à 02h UTC — évite les conflits avec les verticaux (04h-10h)
-    - cron: "0 2 * * *"
+    # - cron: "0 2 * * *"
   push:
     paths:
       - .triggers/brain_meta

@@ -11,9 +11,9 @@ on:
         description: "Tenter Etsy live (1) ou fallback local (0)"
         required: false
         default: "1"
-  schedule:
+  # schedule:
     # Tous les mardis 5h UTC — pour découvrir de nouveaux formats viraux
-    - cron: "0 6 * * 2"
+    # - cron: "0 6 * * 2"
   push:
     paths:
       - .triggers/trend_design_matcher
