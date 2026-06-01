@@ -2,11 +2,11 @@
   {
     "event": "Pride Month",
     "date": "2026-06-01",
-    "days_to_event": 14,
-    "weeks_to_event": 2.0,
+    "days_to_event": 0,
+    "weeks_to_event": 0.0,
     "anticipation_weeks": 6,
     "optimal_production_start": "2026-04-20",
-    "days_to_optimal_start": -28,
+    "days_to_optimal_start": -42,
     "status": "OVERDUE \u2014 start NOW",
     "intensity": 4,
     "countries": [
@@ -37,11 +37,11 @@
   {
     "event": "Father's Day (US)",
     "date": "2026-06-21",
-    "days_to_event": 34,
-    "weeks_to_event": 4.9,
+    "days_to_event": 20,
+    "weeks_to_event": 2.9,
     "anticipation_weeks": 6,
     "optimal_production_start": "2026-05-10",
-    "days_to_optimal_start": -8,
+    "days_to_optimal_start": -22,
     "status": "OVERDUE \u2014 start NOW",
     "intensity": 4,
     "countries": [
@@ -68,11 +68,11 @@
   {
     "event": "Summer Solstice",
     "date": "2026-06-21",
-    "days_to_event": 34,
-    "weeks_to_event": 4.9,
+    "days_to_event": 20,
+    "weeks_to_event": 2.9,
     "anticipation_weeks": 6,
     "optimal_production_start": "2026-05-10",
-    "days_to_optimal_start": -8,
+    "days_to_optimal_start": -22,
     "status": "OVERDUE \u2014 start NOW",
     "intensity": 4,
     "countries": [
@@ -99,12 +99,12 @@
   {
     "event": "Independence Day (US)",
     "date": "2026-07-04",
-    "days_to_event": 47,
-    "weeks_to_event": 6.7,
+    "days_to_event": 33,
+    "weeks_to_event": 4.7,
     "anticipation_weeks": 4,
     "optimal_production_start": "2026-06-06",
-    "days_to_optimal_start": 19,
-    "status": "PLAN \u2014 start in 2-3 weeks",
+    "days_to_optimal_start": 5,
+    "status": "URGENT \u2014 start this week",
     "intensity": 4,
     "countries": [
       "US"
@@ -131,12 +131,12 @@
   {
     "event": "Bastille Day (FR)",
     "date": "2026-07-14",
-    "days_to_event": 57,
-    "weeks_to_event": 8.1,
+    "days_to_event": 43,
+    "weeks_to_event": 6.1,
     "anticipation_weeks": 4,
     "optimal_production_start": "2026-06-16",
-    "days_to_optimal_start": 29,
-    "status": "FUTURE \u2014 keep on radar",
+    "days_to_optimal_start": 15,
+    "status": "PLAN \u2014 start in 2-3 weeks",
     "intensity": 2,
     "countries": [
       "FR"
@@ -161,11 +161,11 @@
   {
     "event": "Friendship Day",
     "date": "2026-08-04",
-    "days_to_event": 78,
-    "weeks_to_event": 11.1,
+    "days_to_event": 64,
+    "weeks_to_event": 9.1,
     "anticipation_weeks": 4,
     "optimal_production_start": "2026-07-07",
-    "days_to_optimal_start": 50,
+    "days_to_optimal_start": 36,
     "status": "FUTURE \u2014 keep on radar",
     "intensity": 3,
     "countries": [
@@ -186,6 +186,40 @@
       "Friendship Day \u00d7 vintage aesthetic 90s",
       "Friendship Day \u00d7 anime manga style",
       "Friendship Day \u00d7 litRPG fantasy"
+    ]
+  },
+  {
+    "event": "Back to School",
+    "date": "2026-08-15",
+    "days_to_event": 75,
+    "weeks_to_event": 10.7,
+    "anticipation_weeks": 6,
+    "optimal_production_start": "2026-07-04",
+    "days_to_optimal_start": 33,
+    "status": "FUTURE \u2014 keep on radar",
+    "intensity": 5,
+    "countries": [
+      "WORLD",
+      "US"
+    ],
+    "niches_primary": [
+      "school",
+      "teacher gifts",
+      "student",
+      "study",
+      "organization",
+      "supplies"
+    ],
+    "double_trend_combos": [
+      "Back to School \u00d7 cottagecore aesthetic",
+      "Back to School \u00d7 dark academia",
+      "Back to School \u00d7 witchy mystical",
+      "Back to School \u00d7 romantasy fantasy romance",
+      "Back to School \u00d7 cute kawaii (Coco Wyo style)",
+      "Back to School \u00d7 boho minimalist",
+      "Back to School \u00d7 vintage aesthetic 90s",
+      "Back to School \u00d7 anime manga style",
+      "Back to School \u00d7 litRPG fantasy"
     ]
   }
 ]
