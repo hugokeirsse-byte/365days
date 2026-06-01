@@ -1,0 +1,109 @@
+name: Gemini Dialogue A↔B — Collaboration Adversariale
+
+# Lance un dialogue entre Gemini A (questionneurateur) et Gemini B (créateur)
+# pour produire un livrable optimisé par itérations successives.
+# Déclenché par workflow_dispatch (GitHub UI) OU par push de .triggers/gemini_dialogue.json
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Sujet du dialogue'
+        required: false
+        default: ''
+      goal:
+        description: 'Objectif précis / livrable attendu'
+        required: false
+        default: ''
+      max_turns:
+        description: 'Nombre max de tours A↔B (défaut: 8)'
+        required: false
+        default: '8'
+      tempo:
+        description: 'Secondes entre appels API (défaut: 5)'
+        required: false
+        default: '5'
+      min_audit_score:
+        description: 'Score min pour auto-commit (défaut: 70)'
+        required: false
+        default: '70'
+      auto_commit:
+        description: 'Auto-commit sur GitHub si validé'
+        required: false
+        default: 'true'
+        type: boolean
+  # Déclenchement par fichier trigger — push .triggers/gemini_dialogue.json
+  push:
+    paths:
+      - '.triggers/gemini_dialogue.json'
+
+concurrency:
+  group: gemini-dialogue-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  dialogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Créer répertoires
+        run: mkdir -p data/dialogues data/prompts data/audit_logs
+
+      - name: Lire les paramètres depuis trigger file (si push)
+        if: github.event_name == 'push'
+        run: |
+          TRIGGER=".triggers/gemini_dialogue.json"
+          if [ -f "$TRIGGER" ]; then
+            echo "TOPIC=$(jq -r '.topic // ""' $TRIGGER)" >> $GITHUB_ENV
+            echo "GOAL=$(jq -r '.goal // ""' $TRIGGER)" >> $GITHUB_ENV
+            echo "MAX_TURNS=$(jq -r '.max_turns // "8"' $TRIGGER)" >> $GITHUB_ENV
+            echo "TEMPO=$(jq -r '.tempo // "5"' $TRIGGER)" >> $GITHUB_ENV
+            echo "MIN_AUDIT_SCORE=$(jq -r '.min_audit_score // "70"' $TRIGGER)" >> $GITHUB_ENV
+            echo "AUTO_COMMIT=$(jq -r '.auto_commit // "1"' $TRIGGER)" >> $GITHUB_ENV
+          fi
+
+      - name: Définir les paramètres (si workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "TOPIC=${{ github.event.inputs.topic }}" >> $GITHUB_ENV
+          echo "GOAL=${{ github.event.inputs.goal }}" >> $GITHUB_ENV
+          echo "MAX_TURNS=${{ github.event.inputs.max_turns || '8' }}" >> $GITHUB_ENV
+          echo "TEMPO=${{ github.event.inputs.tempo || '5' }}" >> $GITHUB_ENV
+          echo "MIN_AUDIT_SCORE=${{ github.event.inputs.min_audit_score || '70' }}" >> $GITHUB_ENV
+          echo "AUTO_COMMIT=${{ github.event.inputs.auto_commit == 'true' && '1' || '0' }}" >> $GITHUB_ENV
+
+      - name: Lancer le dialogue Gemini A↔B
+        run: python scripts/gemini_dialogue.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TOPIC: ${{ env.TOPIC }}
+          GOAL: ${{ env.GOAL }}
+          MAX_TURNS: ${{ env.MAX_TURNS }}
+          TEMPO: ${{ env.TEMPO }}
+          MIN_AUDIT_SCORE: ${{ env.MIN_AUDIT_SCORE }}
+          AUTO_COMMIT: ${{ env.AUTO_COMMIT }}
+
+      - name: Commit résultats
+        run: |
+          git config user.name "Gemini Dialogue Bot"
+          git config user.email "dialogue@365days.bot"
+          git add data/dialogues/ data/audit_logs/
+          git diff --staged --quiet && echo "Rien à committer" || {
+            SLUG=$(echo "${{ env.TOPIC }}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_' | cut -c1-30)
+            git commit -m "dialogue: ${SLUG} — $(date +%Y-%m-%d)"
+            for i in 1 2 3 4; do
+              git push origin HEAD:${{ github.ref_name }} && break
+              sleep $((i * 2))
+            done
+          }

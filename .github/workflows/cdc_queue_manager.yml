@@ -1,10 +1,10 @@
 name: CdC Queue Manager — 10 CdC par vertical en permanence
 
 # Maintient TARGET_PENDING CdC avec gate=pending par vertical.
-# CRON DÉSACTIVÉ — pivot vers Conformité AI Act. Lancement manuel uniquement.
+# DÉSACTIVÉ en cron — pivot vers AI Act. Lancement manuel uniquement.
 
 on:
-  # schedule:  # DÉSACTIVÉ
+  # schedule:  # DÉSACTIVÉ — pivot vers Conformité AI Act
   #   - cron: '0 2,9,15,21 * * *'
   workflow_dispatch:
     inputs:
@@ -82,6 +82,8 @@ jobs:
           python scripts/agent_cdc_queue_manager.py 2>&1 | tee data/logs/queue_run_latest.txt
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
           VERTICAL: ${{ github.event.inputs.vertical || 'all' }}
           TARGET: ${{ github.event.inputs.target || '10' }}
           MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '3' }}
@@ -93,7 +95,7 @@ jobs:
           git config user.name "CdC Queue Manager"
           git config user.email "cdc-queue@365days.bot"
           git add products/ data/logs/queue_run_latest.txt
-          git diff --staged --quiet && echo "Rien à committer" || {
+          git diff --staged --quiet && echo "Rien à committer (files déjà pleines)" || {
             COUNT=$(git diff --staged --name-only | grep cdc.json | wc -l)
             git commit -m "queue: +${COUNT} CdC générés (gate=pending) — $(date +%Y-%m-%d %H:%M)"
             for i in 1 2 3 4; do
