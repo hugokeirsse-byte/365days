@@ -1,8 +1,8 @@
 {
   "agent": "niches_explorer",
   "title": "Niches & Assets Explorer Brain",
-  "timestamp": "2026-05-31T06:31:29.400060Z",
-  "model": "gemini-flash-latest",
+  "timestamp": "2026-06-01T07:11:01.443587Z",
+  "model": "gemini-2.5-flash",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -142,93 +142,150 @@
   "proposals": [
     {
       "rank": 1,
-      "name": "B2B Local Historical Societies & Small Castles (Châteaux)",
-      "type": "b2b",
-      "audience_size_estimate": 150000,
+      "name": "Amateur Radio (Ham Radio) Operators",
+      "type": "deep_niche",
+      "audience_size_estimate": 750000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 2,
+      "current_saturation_1_10": 4,
       "growth_trajectory": "steady",
-      "buyer_persona": "Volunteer preservationists, local museum directors, and owners of private historic estates looking for budget-friendly custom merchandise to fund operations.",
+      "buyer_persona": "Dedicated hobbyists, often engineers or tech-savvy individuals, deeply invested in the technical and communicative aspects of radio. They appreciate precise, functional designs, historical references, and inside jokes related to call signs, Q codes, and equipment. Age range tends to be 40+, but a younger demographic is emerging.",
       "product_angles": [
-        "Custom coloring books featuring the exact architectural details of their specific monument",
-        "Print-on-demand vintage-style postcards and posters of their local history using public domain assets",
-        "Laser-cut-ready STL/SVG architectural ornaments of their buildings for local gift shops"
+        "Vintage radio schematic designs for t-shirts/posters",
+        "Q-code cheat sheet mugs/mousepads",
+        "Custom call sign merchandise (mug, hat, patch)",
+        "Logbook templates (KDP)",
+        "Antenna design diagrams (vector art for merch/3D print STL)",
+        "3D printable accessories for specific radio models (e.g., stand, knob, case)"
       ],
-      "best_pipeline_or_new": "produce_chateau_local",
-      "first_test_product": "A high-quality 24-page physical coloring book of a specific regional French castle sold directly to their association shop.",
+      "best_pipeline_or_new": "produce_merch_designs, produce_kdp_cover, produce_stl_parametric",
+      "first_test_product": "T-shirt with a detailed vintage radio schematic and a common Q-code phrase (e.g., 'CQ DX')",
       "estimated_monthly_revenue_year1_eur": 450
     },
     {
       "rank": 2,
-      "name": "Solo Game Developers seeking UI/UX Asset Packs",
-      "type": "adjacent_market",
-      "audience_size_estimate": 250000,
+      "name": "Urban Sketchers / Plein Air Artists",
+      "type": "deep_niche",
+      "audience_size_estimate": 150000,
       "passion_level_1_10": 8,
-      "current_saturation_1_10": 4,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Indie game developers building cozy games, retro RPGs, or mobile puzzles who lack graphic design skills and need ready-to-import UI components.",
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Artists who enjoy drawing on location, often in urban environments. They value portability, durability, and unique ways to document their experiences. They are creative, community-oriented, and appreciate items that reflect their passion for capturing moments and scenes. Often active on Instagram and local meetups.",
       "product_angles": [
-        "Cozy cottagecore theme UI kits (buttons, panels, borders) in SVG and PNG",
-        "Retro pixel-art sci-fi terminal interfaces",
-        "Godot-optimized 2D UI themes ready to drag-and-drop"
+        "Sketchbook covers with architectural elements or cityscapes (KDP)",
+        "Printable travel journal inserts for sketching trips",
+        "Merch designs with minimalist drawing tools (pens, brushes, sketchbooks)",
+        "3D printable palette/water pot holders for on-the-go sketching",
+        "Digital brush packs for Procreate/Clip Studio Paint (adjacent to gamedev assets)",
+        "Notion templates for organizing sketch challenges and art progress"
       ],
-      "best_pipeline_or_new": "produce_godot_assets",
-      "first_test_product": "A Cozy Forest UI Starter Pack with 50+ modular SVG elements on itch.io and Unity Asset Store.",
+      "best_pipeline_or_new": "produce_kdp_cover, produce_merch_designs, produce_stl_parametric, new_digital_art_assets",
+      "first_test_product": "KDP paperback sketchbook with a unique cover featuring a stylized urban scene and encouraging prompts on interior pages.",
       "estimated_monthly_revenue_year1_eur": 350
     },
     {
       "rank": 3,
-      "name": "Solo Board Game Designers (PnP - Print & Play)",
-      "type": "sub_culture",
-      "audience_size_estimate": 90000,
+      "name": "Indie TTRPG (Tabletop Role-Playing Game) Creators/Players",
+      "type": "adjacent_market",
+      "audience_size_estimate": 500000,
       "passion_level_1_10": 9,
-      "current_saturation_1_10": 3,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Tabletop game hobbyists who print and assemble their own games at home, constantly looking for high-quality, low-cost thematic printouts.",
+      "current_saturation_1_10": 5,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Creative individuals who design, play, and consume independently published TTRPGs. They seek unique mechanics, diverse settings, and tools to enhance their storytelling. They appreciate art, clear rules, and resources that streamline game preparation and play. Often active on itch.io, Kickstarter, and specialized forums.",
       "product_angles": [
-        "Minimalist Print & Play micro-games (18-card limit) with high replayability",
-        "Printable dry-erase legacy campaign tracking sheets",
-        "Custom dice tower STL models designed for low-filament FDM printing"
+        "Printable character sheets for niche TTRPG systems (KDP/Etsy)",
+        "Digital maps and asset packs (top-down views, tokens, props)",
+        "AI prompt packs for generating TTRPG plot hooks, NPCs, or magic items",
+        "Merch designs with minimalist dice, fantasy creatures, or specific TTRPG tropes",
+        "3D printable terrain pieces or mini bases",
+        "Notion templates for campaign planning and session prep"
       ],
-      "best_pipeline_or_new": "produce_board_game",
-      "first_test_product": "A solo pocket-sized card game PDF with print-ready sheets and rulebook on Etsy and WargameVault.",
-      "estimated_monthly_revenue_year1_eur": 250
+      "best_pipeline_or_new": "produce_gamedev_asset_pack, produce_kdp_cover, produce_merch_designs, produce_stl_parametric, new_ai_prompt_packs, new_notion_templates",
+      "first_test_product": "Printable PDF pack of 5 unique character sheets for a generic fantasy TTRPG, including themed art and functional layout.",
+      "estimated_monthly_revenue_year1_eur": 500
     },
     {
       "rank": 4,
-      "name": "Hydroponics, Aquaponics & Soil-less Urban Gardeners",
-      "type": "deep_niche",
-      "audience_size_estimate": 120000,
-      "passion_level_1_10": 8,
+      "name": "Museum Gift Shops (Local & Niche Museums)",
+      "type": "b2b",
+      "audience_size_estimate": 10000,
+      "passion_level_1_10": 7,
       "current_saturation_1_10": 2,
-      "growth_trajectory": "exploding",
-      "buyer_persona": "Tech-oriented apartment dwellers and urban farmers optimizing indoor vegetable growth using smart systems.",
+      "growth_trajectory": "slow",
+      "buyer_persona": "Museum gift shop managers or directors looking for unique, locally relevant merchandise that tells a story and generates revenue. They need items that reflect their specific collection, history, or geographic location, often with a focus on educational value or artistic merit. Budget-conscious, but value quality and authenticity.",
       "product_angles": [
-        "Parametric STL models of modular modular vertical planting towers for 3D printing",
-        "Indoor garden tracking journals and nutrient calculators (KDP and digital PDF)",
-        "Minimalist vector stickers for labeling nutrient reservoirs and seed pods"
+        "Custom coloring books based on museum collections (e.g., local history, specific artifacts)",
+        "SVG packs of historical artifacts or local landmarks for their own merch/signage",
+        "Postcards/prints featuring public domain art from their collection (if applicable)",
+        "3D printable replicas of small, non-copyrighted artifacts for educational kits or display",
+        "Low-content journals with themed historical facts or designs",
+        "Merch designs (t-shirts, mugs) featuring unique museum logos, dates, or historical figures"
       ],
-      "best_pipeline_or_new": "produce_stl_parametric",
-      "first_test_product": "A set of 3D-printable modular hydroponic net-pot adapters and custom spacers on Cults3D.",
-      "estimated_monthly_revenue_year1_eur": 200
+      "best_pipeline_or_new": "produce_coloring_book, produce_svg_pack, produce_vintage_pd_from_cdc, produce_stl_parametric, produce_merch_designs, new_b2b_custom_assets",
+      "first_test_product": "A sample coloring book PDF (e.g., 5 pages) based on a local historical society's public domain archives, to pitch as a custom product.",
+      "estimated_monthly_revenue_year1_eur": 600
     },
     {
       "rank": 5,
-      "name": "Historical European Martial Arts (HEMA) Practitioners",
-      "type": "sub_culture",
-      "audience_size_estimate": 65000,
-      "passion_level_1_10": 10,
-      "current_saturation_1_10": 1,
-      "growth_trajectory": "steady",
-      "buyer_persona": "Passionate sword-fighters, historical researchers, and combat sport athletes who find mainstream medieval gear too 'fantasy-oriented' and want historical accuracy.",
+      "name": "Specialty Coffee Roasters & Baristas (B2B/Sub-Culture)",
+      "type": "sub_culture / b2b",
+      "audience_size_estimate": 300000,
+      "passion_level_1_10": 9,
+      "current_saturation_1_10": 6,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Individuals and small businesses deeply immersed in the craft of specialty coffee. They value quality, origin, brewing techniques, and the aesthetic of coffee culture. Baristas, roasters, coffee shop owners, and serious home brewers. They appreciate insider terminology, minimalist design, and tools that enhance their craft. They are distinct from 'generic coffee lovers'.",
       "product_angles": [
-        "Logbooks specifically designed for tracking fencing bouts, weapon drills, and techniques (KDP)",
-        "High-contrast vector SVG graphics of authentic 15th-century fencing manuals (Liechtenauer, Fiore) for apparel",
-        "3D printable sword wall mounts and gear organizers optimized for heavy steel feders"
+        "Merch designs with minimalist coffee bean/equipment illustrations, brewing diagrams, or coffee chemistry formulas",
+        "KDP journals for logging coffee tastings and brew recipes",
+        "SVG packs of coffee plant illustrations, latte art patterns, or roasting profiles for local roasters to use",
+        "Notion templates for coffee shop inventory, shift schedules, or roast profiling",
+        "3D printable tamper holders, portafilter stands, or dosing funnels for specific espresso machines",
+        "Coloring books depicting the coffee journey from bean to cup, focusing on origins and methods."
       ],
-      "best_pipeline_or_new": "produce_lowcontent_kdp",
-      "first_test_product": "The HEMA Fighter's Training Logbook: a structured 120-page notebook for bout tracking and technique sketches on KDP.",
-      "estimated_monthly_revenue_year1_eur": 180
+      "best_pipeline_or_new": "produce_merch_designs, produce_kdp_cover, produce_svg_pack, produce_stl_parametric, produce_coloring_book, new_notion_templates",
+      "first_test_product": "SVG pack of 10 stylized, minimalist coffee bean and brewing equipment icons for use by small roasters/cafes on their own branding or merch.",
+      "estimated_monthly_revenue_year1_eur": 400
+    },
+    {
+      "rank": 6,
+      "name": "Niche Godot Engine Developers (e.g., Pixel Art, Mobile, Educational)",
+      "type": "adjacent_market",
+      "audience_size_estimate": 100000,
+      "passion_level_1_10": 8,
+      "current_saturation_1_10": 4,
+      "growth_trajectory": "exploding",
+      "buyer_persona": "Indie game developers using the Godot Engine, often focused on specific art styles (pixel art), platforms (mobile), or game genres (educational, puzzle). They seek high-quality, ready-to-use assets that save time and fit their project's aesthetic. They appreciate open-source values and community support. Often on itch.io, Godot Asset Library, and Reddit.",
+      "product_angles": [
+        "Pixel art asset packs (characters, tilesets, props) specifically designed for Godot's tilemap system",
+        "Godot project templates for common mobile game mechanics (e.g., endless runner, puzzle platformer)",
+        "Sound effect packs (8-bit, chiptune) for indie Godot games",
+        "UI/UX asset packs optimized for mobile Godot interfaces",
+        "Merch designs for Godot engine enthusiasts (e.g., stylized engine logo, GDScript jokes)",
+        "Notion templates for Godot game development project management"
+      ],
+      "best_pipeline_or_new": "produce_gamedev_asset_pack, produce_godot_assets, produce_merch_designs, new_sound_fx_packs, new_notion_templates",
+      "first_test_product": "A small pixel art asset pack (e.g., 1 character, 1 tileset, 3 props) fully integrated and demonstrated in a simple Godot demo project.",
+      "estimated_monthly_revenue_year1_eur": 550
+    },
+    {
+      "rank": 7,
+      "name": "Historical Reenactors (Specific Eras: Roman, Medieval, WWII)",
+      "type": "deep_niche / sub_culture",
+      "audience_size_estimate": 200000,
+      "passion_level_1_10": 10,
+      "current_saturation_1_10": 3,
+      "growth_trajectory": "steady",
+      "buyer_persona": "Individuals deeply committed to historical accuracy in their portrayal of past eras. They spend significant time and money on authentic costumes, props, and research. They value detailed information, accurate designs, and functional items that enhance their reenactment experience. Strong community bonds and often involved in living history events.",
+      "product_angles": [
+        "KDP journals/notebooks with historically accurate covers (e.g., Roman legionary shield, medieval illuminated manuscript style)",
+        "Merch designs featuring historical symbols, unit insignias, or quotes from the era (non-copyrighted)",
+        "3D printable replicas of small, non-weapon historical artifacts (e.g., Roman dice, medieval belt buckles, WWII era buttons)",
+        "Coloring books depicting daily life or famous battles of a specific era",
+        "Printable historical maps or period documents (public domain)",
+        "SVG packs of historical patterns or motifs for costume makers"
+      ],
+      "best_pipeline_or_new": "produce_kdp_cover, produce_merch_designs, produce_stl_parametric, produce_coloring_book, produce_svg_pack, new_historical_printables",
+      "first_test_product": "A KDP journal with a cover featuring a historically accurate (public domain) Roman mosaic pattern and blank, aged-looking interior pages.",
+      "estimated_monthly_revenue_year1_eur": 400
     }
   ]
 }
