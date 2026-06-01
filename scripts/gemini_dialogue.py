@@ -36,8 +36,6 @@ import urllib.error
 from datetime import datetime
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
-MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY", "")
 
 TOPIC = os.environ.get("TOPIC", "")
 GOAL = os.environ.get("GOAL", "")
@@ -102,105 +100,26 @@ def call_gemini(system_prompt: str, history: list, user_message: str,
     return candidates[0]["content"]["parts"][0]["text"].strip()
 
 
-def call_groq(system_prompt: str, history: list, user_message: str,
-              temperature: float = 0.7) -> str:
-    url = "https://api.groq.com/openai/v1/chat/completions"
-    messages = [{"role": "system", "content": system_prompt}]
-    for msg in history:
-        messages.append({"role": msg["role"], "content": msg["content"]})
-    messages.append({"role": "user", "content": user_message})
-    payload = {
-        "model": "llama-3.3-70b-versatile",
-        "messages": messages,
-        "temperature": temperature,
-        "max_tokens": 4096
-    }
-    data = json.dumps(payload).encode()
-    req = urllib.request.Request(url, data=data, headers={
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {GROQ_API_KEY}"
-    }, method="POST")
-    try:
-        with urllib.request.urlopen(req, timeout=90) as resp:
-            result = json.loads(resp.read())
-    except urllib.error.HTTPError as e:
-        body = e.read().decode(errors="replace")[:200]
-        raise RuntimeError(f"Groq HTTP {e.code}: {body}") from None
-    return result["choices"][0]["message"]["content"].strip()
-
-
-def call_mistral(system_prompt: str, history: list, user_message: str,
-                 temperature: float = 0.7) -> str:
-    url = "https://api.mistral.ai/v1/chat/completions"
-    messages = [{"role": "system", "content": system_prompt}]
-    for msg in history:
-        messages.append({"role": msg["role"], "content": msg["content"]})
-    messages.append({"role": "user", "content": user_message})
-    payload = {
-        "model": "mistral-small-latest",
-        "messages": messages,
-        "temperature": temperature,
-        "max_tokens": 4096
-    }
-    data = json.dumps(payload).encode()
-    req = urllib.request.Request(url, data=data, headers={
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {MISTRAL_API_KEY}"
-    }, method="POST")
-    try:
-        with urllib.request.urlopen(req, timeout=90) as resp:
-            result = json.loads(resp.read())
-    except urllib.error.HTTPError as e:
-        body = e.read().decode(errors="replace")[:200]
-        raise RuntimeError(f"Mistral HTTP {e.code}: {body}") from None
-    return result["choices"][0]["message"]["content"].strip()
-
-
-def _is_auth_error(msg: str) -> bool:
-    return any(code in msg for code in ["401", "403", "invalid_api_key", "Forbidden", "Unauthorized"])
-
-
-def _is_rate_limit(msg: str) -> bool:
-    return any(x in msg.lower() for x in ["429", "quota", "rate limit", "exceeded"])
-
-
 def llm(system_prompt: str, history: list, user_message: str, temperature: float = 0.7) -> str:
-    """Appelle Gemini → Mistral → Groq avec gestion fine des erreurs.
-    - 429/quota : attend 90s et réessaie (jusqu'à 8 fois)
-    - 401/403   : erreur d'auth → passe directement au suivant, pas de retry
-    """
-    if not any([GEMINI_API_KEY, MISTRAL_API_KEY, GROQ_API_KEY]):
-        raise RuntimeError("Aucune clé API disponible")
+    """Appelle Gemini. Sur 429/quota : attend 90s et réessaie (8 tentatives max)."""
+    if not GEMINI_API_KEY:
+        raise RuntimeError("GEMINI_API_KEY non configurée")
 
-    providers = []
-    if GEMINI_API_KEY:
-        providers.append(("Gemini", call_gemini))
-    if MISTRAL_API_KEY:
-        providers.append(("Mistral", call_mistral))
-    if GROQ_API_KEY:
-        providers.append(("Groq", call_groq))
-
-    for provider_name, call_fn in providers:
-        max_attempts = 8 if provider_name == "Gemini" else 3
-        for attempt in range(max_attempts):
-            try:
-                result = call_fn(system_prompt, history, user_message, temperature)
-                if attempt > 0:
-                    print(f"   ✅ {provider_name} OK (tentative {attempt + 1})")
-                return result
-            except Exception as e:
-                msg = str(e)
-                if _is_auth_error(msg):
-                    print(f"   ✗ {provider_name} auth invalide ({msg[:60]}) → prochain fournisseur")
-                    break  # Pas de retry sur erreur d'auth
-                if attempt < max_attempts - 1:
-                    wait = 90 if _is_rate_limit(msg) else (attempt + 1) * 10
-                    print(f"   ⚠️  {provider_name} erreur ({msg[:60]}) — retry dans {wait}s...")
-                    time.sleep(wait)
-                else:
-                    print(f"   ✗ {provider_name} épuisé ({max_attempts} tentatives) → prochain fournisseur")
-
-    raise RuntimeError(f"Tous les LLM ont échoué ({', '.join(p for p, _ in providers)})")
+    for attempt in range(8):
+        try:
+            result = call_gemini(system_prompt, history, user_message, temperature)
+            if attempt > 0:
+                print(f"   ✅ Gemini OK (tentative {attempt + 1})")
+            return result
+        except Exception as e:
+            msg = str(e)
+            is_quota = any(x in msg.lower() for x in ["429", "quota", "rate limit", "exceeded"])
+            if attempt < 7:
+                wait = 90 if is_quota else (attempt + 1) * 10
+                print(f"   ⚠️  Gemini erreur ({msg[:80]}) — retry dans {wait}s...")
+                time.sleep(wait)
+            else:
+                raise RuntimeError(f"Gemini épuisé après 8 tentatives : {msg[:100]}") from None
 
 
 def generate_agent_role(agent: str, topic: str, goal: str) -> str:
