@@ -33,7 +33,6 @@ def read_brain_signals() -> str:
 def run_cdc_roman():
     today = date.today().isoformat()
 
-    # Read parameters from environment (set by CI from trigger file)
     genre = os.environ.get("ROMAN_GENRE", "romance")
     sous_genre = os.environ.get("ROMAN_SOUS_GENRE", "contemporary")
     langue = os.environ.get("ROMAN_LANGUE", "en")
@@ -81,6 +80,34 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "tranche_age": "...",
     "interets": ["...", "..."],
     "pourquoi_ce_livre": "..."
+  }},
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CE roman spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / TikTok / Reddit / BookTok observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Project Gutenberg / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "texte complet / partiel / traduction nécessaire",
+      "angle_commercial": "Comment on monétise cette oeuvre PD concrètement (réécriture, adaptation, fanfic officielle)"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact du roman qui explose sur Amazon KDP",
+      "pourquoi_ca_marche": "Analyse précise de son succès (rang BSR, avis, prix)",
+      "ce_qui_est_mal_fait": "Ce que les lecteurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (style inspiré ≠ plagiat)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les ventes (série, traductions, bundles, audiobook...)"
   }},
   "analyse_marche": {{
     "taille_marche_estimee": "...",
@@ -165,7 +192,12 @@ Signaux marché actuels :
 {brain_signals[:2000]}
 
 Genre cible : {genre} / {sous_genre} en {langue}.
-Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui."""
+Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui.
+
+STRATÉGIE PRODUIT — détermine lequel des 3 piliers s'applique et justifie avec des preuves :
+1. creation_originale — si un signal Google Trends / TikTok / BookTok / Reddit clair indique une tendance émergente non saturée
+2. domaine_public — si une œuvre classique (pré-1928) peut être adaptée, réécrite ou prolongée concrètement (ex: fanfic officielle, retelling)
+3. imitation_amelioree — si un roman concurrent explose déjà sur Amazon KDP mais avec des failles exploitables (avis négatifs précis, style creux, personnages plats)"""
 
     print("[CdC Roman] Appel LLM (génération CdC complet)...")
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=8000)
@@ -186,23 +218,22 @@ Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui."""
         print(f"[CdC Roman] Raw sauvegardé → {debug_path}", file=sys.stderr)
         sys.exit(1)
 
-    # Create output directory
     nom_plume = cdc.get("identite_commerciale", {}).get("nom_de_plume", "auteur")
     titre = cdc.get("concept", {}).get("titre_principal", roman_id)
     slug = f"{roman_id}_{titre[:30].lower().replace(' ', '_')}"
     out_dir = NOVELS_DIR / slug
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save JSON
     cdc_json = out_dir / "cdc.json"
     cdc_json.write_text(json.dumps(cdc, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[CdC Roman] cdc.json → {cdc_json}")
 
-    # Generate readable CdC markdown
     concept = cdc.get("concept", {})
     identite = cdc.get("identite_commerciale", {})
     public = cdc.get("public_cible", {})
     style = cdc.get("guide_style", {})
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
 
     md_lines = [
         f"# CAHIER DES CHARGES — {titre}",
@@ -230,6 +261,50 @@ Génère un roman qui se vendra bien sur Amazon KDP dès aujourd'hui."""
         f"**Langue** : {concept.get('langue', '?')}",
         f"**Longueur** : {concept.get('longueur_cible_mots', '?')} mots / {concept.get('nombre_chapitres', '?')} chapitres",
         "",
+        "## 2b. Stratégie Produit",
+        f"**Pilier** : `{strategie.get('pilier', '?')}`",
+        f"**Justification** : {strategie.get('justification', '?')}",
+        "",
+    ]
+
+    pilier = strategie.get("pilier", "")
+    if pilier == "creation_originale":
+        co = strategie.get("creation_originale", {})
+        md_lines += [
+            "**Signaux trend** : " + " | ".join(co.get("signaux_trend", [])),
+            f"**Timing** : {co.get('timing_optimal', '?')}",
+            f"**Risque saturation** : {co.get('risque_saturation', '?')}",
+        ]
+    elif pilier == "domaine_public":
+        dp = strategie.get("domaine_public", {})
+        md_lines += [
+            f"**Oeuvre source** : {dp.get('oeuvre_source', '?')}",
+            f"**Source** : {dp.get('source_telechargement', '?')}",
+            f"**Licence** : {dp.get('licence_confirmee', '?')}",
+            f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        ]
+    elif pilier == "imitation_amelioree":
+        ia = strategie.get("imitation_amelioree", {})
+        md_lines += [
+            f"**Produit cible** : {ia.get('produit_cible', '?')}",
+            f"**Pourquoi ça marche** : {ia.get('pourquoi_ca_marche', '?')}",
+            f"**Ce qui est mal fait** : {ia.get('ce_qui_est_mal_fait', '?')}",
+            f"**Notre amélioration** : {ia.get('notre_amelioration_concrete', '?')}",
+            f"**Différenciation légale** : {ia.get('differentiation_legale', '?')}",
+        ]
+
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    md_lines += [
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
+        "",
+    ]
+
+    md_lines += [
         "## 3. Public Cible",
         f"**Persona** : {public.get('persona_principal', '?')}",
         f"**Âge** : {public.get('tranche_age', '?')}",

@@ -124,6 +124,34 @@ RESPONSE FORMAT — STRICT JSON:
     "features_v1": ["..."],
     "features_v2_plus": ["..."],
     "effort_estimé_jours": 21
+  }},
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CETTE app spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / TikTok / Reddit / App Store observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Project Gutenberg / Wikimedia Commons / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "300 DPI / vectorisable / restauration nécessaire",
+      "angle_commercial": "Comment on monétise cette oeuvre PD concrètement"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact de l'app qui explose sur App Store/Google Play",
+      "pourquoi_ca_marche": "Analyse précise de son succès (téléchargements, avis, revenus estimés)",
+      "ce_qui_est_mal_fait": "Ce que les utilisateurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (UX inspirée ≠ clone)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les revenus (abonnement, IAP, version Pro, B2B...)"
   }}
 }}
 JSON only."""
@@ -135,7 +163,12 @@ JSON only."""
 
 The app must be viable on App Store and Google Play.
 The monetization model must match category conventions (subscription for lifestyle/health, one_time for tools).
-Focus on a tight MVP scope — solve one problem exceptionally well."""
+Focus on a tight MVP scope — solve one problem exceptionally well.
+
+PRODUCT STRATEGY — determine which of the 3 pillars applies and justify with evidence:
+1. creation_originale — if a clear signal from Google Trends / TikTok / Reddit / App Store charts indicates an emerging need not yet addressed
+2. domaine_public — if a public domain methodology, book, or system (pre-1928) can be digitized and monetized as an app feature
+3. imitation_amelioree — if a competitor app is already exploding but with exploitable flaws (bad UX, no offline, intrusive ads, missing features)"""
 
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=8000)
     if not response:
@@ -163,6 +196,8 @@ Focus on a tight MVP scope — solve one problem exceptionally well."""
     monetisation = cdc.get("monetisation", {})
     mvp = cdc.get("mvp_scope", {})
     ux_screens = cdc.get("ux_key_screens", [])
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
 
     md = [
         f"# CAHIER DES CHARGES — {titre}",
@@ -178,6 +213,47 @@ Focus on a tight MVP scope — solve one problem exceptionally well."""
         f"**Problem solved** : {concept.get('probleme_resolu', '?')}",
         f"**Unique value** : {concept.get('valeur_unique', '?')}",
         f"**Target audience** : {concept.get('public_cible', '?')}",
+        "",
+        "## Stratégie Produit",
+        f"**Pilier** : `{strategie.get('pilier', '?')}`",
+        f"**Justification** : {strategie.get('justification', '?')}",
+        "",
+    ]
+
+    pilier = strategie.get("pilier", "")
+    if pilier == "creation_originale":
+        co = strategie.get("creation_originale", {})
+        md += [
+            "**Signaux trend** : " + " | ".join(co.get("signaux_trend", [])),
+            f"**Timing** : {co.get('timing_optimal', '?')}",
+            f"**Risque saturation** : {co.get('risque_saturation', '?')}",
+        ]
+    elif pilier == "domaine_public":
+        dp = strategie.get("domaine_public", {})
+        md += [
+            f"**Oeuvre source** : {dp.get('oeuvre_source', '?')}",
+            f"**Source** : {dp.get('source_telechargement', '?')}",
+            f"**Licence** : {dp.get('licence_confirmee', '?')}",
+            f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        ]
+    elif pilier == "imitation_amelioree":
+        ia = strategie.get("imitation_amelioree", {})
+        md += [
+            f"**Produit cible** : {ia.get('produit_cible', '?')}",
+            f"**Pourquoi ça marche** : {ia.get('pourquoi_ca_marche', '?')}",
+            f"**Ce qui est mal fait** : {ia.get('ce_qui_est_mal_fait', '?')}",
+            f"**Notre amélioration** : {ia.get('notre_amelioration_concrete', '?')}",
+            f"**Différenciation légale** : {ia.get('differentiation_legale', '?')}",
+        ]
+
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    md += [
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
         "",
         "## Framework",
         f"**Choice** : {framework.get('choix', '?')}",
