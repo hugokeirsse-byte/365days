@@ -82,6 +82,34 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "interets": ["...", "..."],
     "pourquoi_ce_livre": "..."
   }},
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CE roman spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / TikTok / Reddit / BookTok observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Project Gutenberg / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "texte complet / partiel / traduction nécessaire",
+      "angle_commercial": "Comment on monétise cette oeuvre PD concrètement (réécriture, adaptation, fanfic officielle)"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact du roman qui explose sur Amazon KDP",
+      "pourquoi_ca_marche": "Analyse précise de son succès (rang BSR, avis, prix)",
+      "ce_qui_est_mal_fait": "Ce que les lecteurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (style inspiré ≠ plagiat)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les ventes (série, traductions, bundles, audiobook...)"
+  }},
   "analyse_marche": {{
     "taille_marche_estimee": "...",
     "tendance": "croissante|stable|déclinante",

@@ -101,6 +101,34 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
   }},
   "mots_cles_kdp": ["...", "...", "...", "...", "...", "...", "..."],
   "categories_kdp": ["...", "..."],
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CE produit spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / TikTok / Reddit observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Project Gutenberg / Wikimedia Commons / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "300 DPI / vectorisable / restauration nécessaire",
+      "angle_commercial": "Comment on monétise cette oeuvre PD concrètement"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact du produit qui explose sur Amazon KDP",
+      "pourquoi_ca_marche": "Analyse précise de son succès (volume, avis, prix)",
+      "ce_qui_est_mal_fait": "Ce que les acheteurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (style inspiré ≠ plagiat)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les ventes (série, traductions, bundles...)"
+  }},
   "pricing": {{
     "prix_paperback_usd": 8.99,
     "royaltie_estimee_usd": 3.45,
@@ -127,7 +155,12 @@ JSON uniquement."""
 - Audience : {lc_audience}
 
 Ce livre doit être entièrement généré par ReportLab (Python), sans image externe.
-Le layout doit être précis au millimètre pour que le script de production puisse l'implémenter directement."""
+Le layout doit être précis au millimètre pour que le script de production puisse l'implémenter directement.
+
+STRATÉGIE PRODUIT — détermine lequel des 3 piliers s'applique et justifie avec des preuves :
+1. creation_originale — si un signal Google Trends / TikTok / Reddit clair indique une tendance émergente non saturée
+2. domaine_public — si une illustration ou texte historique (pré-1928) peut enrichir ce livre concrètement
+3. imitation_amelioree — si un livre concurrent explose déjà sur Amazon KDP mais avec des failles exploitables"""
 
     print("[CdC Low-Content] Appel LLM...")
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=8000)
@@ -160,6 +193,8 @@ Le layout doit être précis au millimètre pour que le script de production pui
     identite = cdc.get("identite_commerciale", {})
     structure = cdc.get("structure_pages", {})
     spec_rl = cdc.get("spec_reportlab", {})
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
 
     md_lines = [
         f"# CAHIER DES CHARGES — {titre}",
@@ -180,6 +215,46 @@ Le layout doit être précis au millimètre pour que le script de production pui
         f"**Type** : {concept.get('type', '?')} | **Thème** : {concept.get('theme', '?')}",
         f"**Pages** : {concept.get('nombre_pages', '?')} | **Format** : {concept.get('format', '?')}",
         f"**Élément unique** : {concept.get('element_unique', '?')}",
+        "",
+        "## 2b. Stratégie Produit",
+        f"**Pilier** : `{strategie.get('pilier', '?')}`",
+        f"**Justification** : {strategie.get('justification', '?')}",
+    ]
+
+    pilier = strategie.get("pilier", "")
+    if pilier == "creation_originale":
+        co = strategie.get("creation_originale", {})
+        md_lines += [
+            "**Signaux trend** : " + " | ".join(co.get("signaux_trend", [])),
+            f"**Timing** : {co.get('timing_optimal', '?')}",
+            f"**Risque saturation** : {co.get('risque_saturation', '?')}",
+        ]
+    elif pilier == "domaine_public":
+        dp = strategie.get("domaine_public", {})
+        md_lines += [
+            f"**Oeuvre source** : {dp.get('oeuvre_source', '?')}",
+            f"**Source** : {dp.get('source_telechargement', '?')}",
+            f"**Licence** : {dp.get('licence_confirmee', '?')}",
+            f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        ]
+    elif pilier == "imitation_amelioree":
+        ia = strategie.get("imitation_amelioree", {})
+        md_lines += [
+            f"**Produit cible** : {ia.get('produit_cible', '?')}",
+            f"**Pourquoi ça marche** : {ia.get('pourquoi_ca_marche', '?')}",
+            f"**Ce qui est mal fait** : {ia.get('ce_qui_est_mal_fait', '?')}",
+            f"**Notre amélioration** : {ia.get('notre_amelioration_concrete', '?')}",
+            f"**Différenciation légale** : {ia.get('differentiation_legale', '?')}",
+        ]
+
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    md_lines += [
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
         "",
         "## 3. Structure des Pages",
     ]

@@ -208,6 +208,34 @@ FORMAT RÉPONSE — JSON STRICTEMENT (aucun texte avant ou après, aucun markdow
     "categorie": "Catégorie Cults3D appropriée",
     "licence": "Creative Commons - Attribution - Non-Commercial - No Derivatives"
   }},
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CE produit spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / TikTok / Reddit observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Project Gutenberg / Wikimedia Commons / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "300 DPI / vectorisable / restauration nécessaire",
+      "angle_commercial": "Comment on monétise cette oeuvre PD concrètement"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact du produit qui explose sur Cults3D/Etsy/Amazon",
+      "pourquoi_ca_marche": "Analyse précise de son succès (volume, téléchargements, prix)",
+      "ce_qui_est_mal_fait": "Ce que les acheteurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (style inspiré ≠ plagiat)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les ventes (série, bundles, niches connexes...)"
+  }},
   "analyse_marche": {{
     "concurrents_cults3d": [
       {{
@@ -256,6 +284,11 @@ ID produit : {stl_id}
 Ce produit sera vendu sur Cults3D comme fichier STL paramétrique (OpenSCAD).
 Chaque variante = un texte différent engravé sur le même modèle.
 Le prix par variante est entre $1.50 et $4.00.
+
+STRATÉGIE PRODUIT — détermine lequel des 3 piliers s'applique et justifie avec des preuves :
+1. creation_originale — si un signal Google Trends / TikTok / Reddit clair indique une tendance émergente
+2. domaine_public — si une illustration ou design historique (pré-1928) peut être réutilisé concrètement
+3. imitation_amelioree — si un produit concurrent explose déjà mais avec des failles exploitables (avis négatifs, qualité médiocre)
 
 Génère {nb_variantes} variantes créatives et vendables pour la niche "{stl_niche}".
 Le JSON doit être complet et directement utilisable par le script de production OpenSCAD."""
@@ -324,6 +357,8 @@ def _build_md_cdc(cdc: dict, today: str) -> list[str]:
     marche = cdc.get("analyse_marche", {})
     criteres = cdc.get("criteres_validation", {})
     print_settings = spec.get("print_settings", {})
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
 
     titre = concept.get("titre", "?")
 
@@ -355,6 +390,50 @@ def _build_md_cdc(cdc: dict, today: str) -> list[str]:
         "",
         f"**Pourquoi ça va vendre** :",
         concept.get("pourquoi_ca_va_vendre", "?"),
+        "",
+        "---",
+        "",
+        "## 2b. Stratégie Produit",
+        f"**Pilier** : `{strategie.get('pilier', '?')}`",
+        f"**Justification** : {strategie.get('justification', '?')}",
+        "",
+    ]
+
+    pilier = strategie.get("pilier", "")
+    if pilier == "creation_originale":
+        co = strategie.get("creation_originale", {})
+        lines += [
+            "**Signaux trend** : " + " | ".join(co.get("signaux_trend", [])),
+            f"**Timing** : {co.get('timing_optimal', '?')}",
+            f"**Risque saturation** : {co.get('risque_saturation', '?')}",
+        ]
+    elif pilier == "domaine_public":
+        dp = strategie.get("domaine_public", {})
+        lines += [
+            f"**Oeuvre source** : {dp.get('oeuvre_source', '?')}",
+            f"**Source** : {dp.get('source_telechargement', '?')}",
+            f"**Licence** : {dp.get('licence_confirmee', '?')}",
+            f"**Qualité** : {dp.get('qualite_disponible', '?')}",
+            f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        ]
+    elif pilier == "imitation_amelioree":
+        ia = strategie.get("imitation_amelioree", {})
+        lines += [
+            f"**Produit cible** : {ia.get('produit_cible', '?')}",
+            f"**Pourquoi ça marche** : {ia.get('pourquoi_ca_marche', '?')}",
+            f"**Ce qui est mal fait** : {ia.get('ce_qui_est_mal_fait', '?')}",
+            f"**Notre amélioration** : {ia.get('notre_amelioration_concrete', '?')}",
+            f"**Différenciation légale** : {ia.get('differentiation_legale', '?')}",
+        ]
+
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    lines += [
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
         "",
         "---",
         "",
