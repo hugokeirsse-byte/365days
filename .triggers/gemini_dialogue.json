@@ -1,8 +1,8 @@
 {
   "topic": "Service Conformité EU AI Act — Architecture et lancement",
   "goal": "Produire un plan opérationnel complet pour lancer un service de conformité EU AI Act en France en juin 2026 : structure de l'offre (prix, livrables, délais), pipeline technique (scanner prospects + générateur de rapport PDF), stratégie d'acquisition des premiers clients (Malt.fr, LinkedIn, Gumroad), modèle de CDC pour les audits, et les 5 premières actions concrètes à faire dans les 7 prochains jours. Tout doit être actionnable immédiatement avec des outils gratuits (Gemini API free tier, GitHub Actions, Gumroad free, Malt.fr free).",
-  "max_turns": 8,
-  "tempo": 6,
+  "max_turns": 7,
+  "tempo": 8,
   "min_audit_score": 70,
   "auto_commit": "1"
 }

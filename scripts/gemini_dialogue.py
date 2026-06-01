@@ -31,6 +31,8 @@ import re
 import sys
 import time
 import subprocess
+import urllib.request
+import urllib.error
 from datetime import datetime
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
@@ -38,10 +40,27 @@ GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 
 TOPIC = os.environ.get("TOPIC", "")
 GOAL = os.environ.get("GOAL", "")
-MAX_TURNS = int(os.environ.get("MAX_TURNS", "8"))
-TEMPO = int(os.environ.get("TEMPO", "5"))        # secondes entre appels API
+MAX_TURNS = int(os.environ.get("MAX_TURNS", "8") or "8")
+TEMPO = int(os.environ.get("TEMPO", "5") or "5")  # secondes entre appels API
 AUTO_COMMIT = os.environ.get("AUTO_COMMIT", "1")  # 1 = commit sur GitHub si validé
-MIN_AUDIT_SCORE = int(os.environ.get("MIN_AUDIT_SCORE", "70"))
+MIN_AUDIT_SCORE = int(os.environ.get("MIN_AUDIT_SCORE", "70") or "70")
+
+# Fallback robuste : si TOPIC/GOAL non fournis par le workflow, lire le trigger file
+# directement (évite tout problème d'échappement shell dans GITHUB_ENV).
+_TRIGGER_FILE = ".triggers/gemini_dialogue.json"
+if (not TOPIC or not GOAL) and os.path.exists(_TRIGGER_FILE):
+    try:
+        with open(_TRIGGER_FILE, encoding="utf-8") as _f:
+            _t = json.load(_f)
+        TOPIC = TOPIC or _t.get("topic", "")
+        GOAL = GOAL or _t.get("goal", "")
+        MAX_TURNS = int(_t.get("max_turns", MAX_TURNS))
+        TEMPO = int(_t.get("tempo", TEMPO))
+        AUTO_COMMIT = str(_t.get("auto_commit", AUTO_COMMIT))
+        MIN_AUDIT_SCORE = int(_t.get("min_audit_score", MIN_AUDIT_SCORE))
+        print(f"   ℹ️  Paramètres lus depuis {_TRIGGER_FILE}")
+    except Exception as _e:
+        print(f"   ⚠️  Lecture trigger file échouée : {_e}")
 
 
 def call_gemini(system_prompt: str, history: list, user_message: str,
@@ -50,9 +69,14 @@ def call_gemini(system_prompt: str, history: list, user_message: str,
     url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
            f"gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}")
 
+    # Gemini n'accepte que les rôles "user" et "model" (pas "assistant" comme OpenAI/Groq)
+    role_map = {"assistant": "model", "user": "user", "model": "model"}
     contents = []
     for msg in history:
-        contents.append({"role": msg["role"], "parts": [{"text": msg["content"]}]})
+        contents.append({
+            "role": role_map.get(msg["role"], "user"),
+            "parts": [{"text": msg["content"]}]
+        })
     contents.append({"role": "user", "parts": [{"text": user_message}]})
 
     payload = {
@@ -63,9 +87,18 @@ def call_gemini(system_prompt: str, history: list, user_message: str,
     data = json.dumps(payload).encode()
     req = urllib.request.Request(url, data=data,
                                   headers={"Content-Type": "application/json"}, method="POST")
-    with urllib.request.urlopen(req, timeout=90) as resp:
-        result = json.loads(resp.read())
-    return result["candidates"][0]["content"]["parts"][0]["text"].strip()
+    try:
+        with urllib.request.urlopen(req, timeout=90) as resp:
+            result = json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")[:300]
+        raise RuntimeError(f"Gemini HTTP {e.code}: {body}") from None
+    # Gemini peut renvoyer un candidat sans texte (filtré, MAX_TOKENS…)
+    candidates = result.get("candidates", [])
+    if not candidates or "content" not in candidates[0]:
+        finish = candidates[0].get("finishReason", "?") if candidates else "no_candidates"
+        raise RuntimeError(f"Gemini réponse vide (finishReason={finish})")
+    return candidates[0]["content"]["parts"][0]["text"].strip()
 
 
 def call_groq(system_prompt: str, history: list, user_message: str,
@@ -93,20 +126,40 @@ def call_groq(system_prompt: str, history: list, user_message: str,
 
 
 def llm(system_prompt: str, history: list, user_message: str, temperature: float = 0.7) -> str:
-    for attempt in range(3):
-        try:
-            if GEMINI_API_KEY:
+    """Appelle Gemini en priorité, retries sur 429, puis fallback Groq."""
+    if not GEMINI_API_KEY and not GROQ_API_KEY:
+        raise RuntimeError("Aucune clé API disponible (GEMINI_API_KEY ou GROQ_API_KEY requis)")
+
+    # Tentatives Gemini (primary)
+    if GEMINI_API_KEY:
+        for attempt in range(3):
+            try:
                 return call_gemini(system_prompt, history, user_message, temperature)
-            elif GROQ_API_KEY:
+            except Exception as e:
+                msg = str(e)
+                is_rate_limit = "429" in msg or "quota" in msg.lower() or "rate" in msg.lower()
+                if attempt < 2:
+                    # 429 = quota par minute → attendre 60s pour reset ; sinon backoff court
+                    wait = 60 if is_rate_limit else (attempt + 1) * 10
+                    print(f"   ⚠️  Gemini erreur ({msg[:80]}) — retry dans {wait}s...")
+                    time.sleep(wait)
+                else:
+                    print(f"   ⚠️  Gemini épuisé après 3 tentatives — fallback Groq")
+
+    # Fallback Groq
+    if GROQ_API_KEY:
+        for attempt in range(3):
+            try:
                 return call_groq(system_prompt, history, user_message, temperature)
-            raise RuntimeError("Aucune clé API disponible")
-        except Exception as e:
-            if attempt < 2:
-                wait = (attempt + 1) * 10
-                print(f"   ⚠️  Erreur API ({e}) — retry dans {wait}s...")
-                time.sleep(wait)
-            else:
-                raise
+            except Exception as e:
+                if attempt < 2:
+                    wait = (attempt + 1) * 10
+                    print(f"   ⚠️  Groq erreur ({str(e)[:80]}) — retry dans {wait}s...")
+                    time.sleep(wait)
+                else:
+                    raise
+
+    raise RuntimeError("Tous les LLM ont échoué (Gemini + Groq)")
 
 
 def generate_agent_role(agent: str, topic: str, goal: str) -> str:
