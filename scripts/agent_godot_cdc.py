@@ -28,10 +28,11 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scripts.lib.brain_utils import llm_call, extract_json, get_previous_propositions
+from scripts.lib.brain_utils import (llm_call, extract_json, get_previous_propositions,
+                                      generate_preview_images, preview_markdown_section)
 
 ROOT = Path(__file__).resolve().parent.parent
-GODOT_DIR = ROOT / "products" / "godot_assets"
+GODOT_DIR = ROOT / "products" / "game_assets"
 
 TYPE_SPECS = {
     "sprite_pack": {
@@ -81,7 +82,7 @@ def run():
     godot_id = os.environ.get("GODOT_ID", f"godot_{today}")
 
     spec = TYPE_SPECS.get(godot_type, TYPE_SPECS["sprite_pack"])
-    previous = get_previous_propositions("products/godot_assets", "godot_cdc")
+    previous = get_previous_propositions("products/game_assets", "godot_cdc")
 
     print(f"[CdC Godot] Type: {godot_type} | Thème: {godot_theme} | {nb_assets} assets")
 
@@ -193,6 +194,17 @@ L'élément unique doit justifier le prix."""
 
     (out_dir / "cdc.json").write_text(json.dumps(cdc, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    # Previews visuelles pour les types avec un rendu graphique (sprite, UI, tileset)
+    previews = []
+    if godot_type in ("sprite_pack", "ui_kit", "tileset"):
+        preview_prompt = (
+            f"{godot_theme} game asset {godot_type}, "
+            f"{concept.get('description', '')} "
+            "pixel art style, clean sprites, indie game, transparent background, "
+            "high quality, professional game asset pack"
+        )
+        previews = generate_preview_images(preview_prompt, out_dir / "previews", width=512, height=512)
+
     listing = cdc.get("listing_itchio", {})
     contenu = cdc.get("contenu_pack", [])
     md = [
@@ -215,6 +227,7 @@ L'élément unique doit justifier le prix."""
         md.append(f"- **{cat.get('categorie')}** × {cat.get('nb')} — {cat.get('description')} ({cat.get('format')})")
         for ex in cat.get("exemples", [])[:3]:
             md.append(f"  - {ex}")
+    md += preview_markdown_section(previews)
     md += [
         "",
         f"## Listing Itch.io",
