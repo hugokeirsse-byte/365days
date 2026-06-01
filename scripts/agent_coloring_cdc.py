@@ -68,6 +68,22 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "nombre_pages": {pages},
     "element_unique": "Ce qui le différencie des 200+ autres sur Amazon — sois précis et concret"
   }},
+  "references_marche": {{
+    "leaders_du_marche": [
+      {{
+        "nom": "ex: Coco Wyo / Johanna Basford / Millie Marotta",
+        "type": "auteur KDP / brand Amazon",
+        "pourquoi_ca_marche": "analyse précise : style, format, audience, prix",
+        "style_caracteristiques": "description visuelle ultra-précise (densité, type de traits, sujets récurrents, ambiance)",
+        "format_typique": "ex: 8.5x11, 100 pages, dos carré collé, noir/blanc",
+        "prix_moyen": "$X.XX",
+        "nb_avis_typique": "5000+",
+        "elements_a_imiter": "les 3-5 éléments spécifiques qu'on doit reproduire",
+        "comment_se_differencier": "notre twist unique pour ne pas copier mais s'inspirer"
+      }}
+    ],
+    "style_prompt_reference": "prompt Pollinations qui imite précisément le style du leader (ex: 'adult coloring book page in the style of Johanna Basford Secret Garden, intricate botanical illustrations, delicate line art, white background, black outlines only, no shading, enchanted garden theme')"
+  }},
   "prompts_pollinations": {{
     "style_base": "black and white coloring page, clean outlines, no fill, white background, no gray, no shading",
     "style_modificateurs": ["modificateur 1 adapté au thème", "modificateur 2", "modificateur 3"],
@@ -113,7 +129,7 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "test_style": "Générer 1 page test avec exemple_prompt_complet — vérifier : pur noir/blanc, ZERO gris, lignes nettes, fond blanc",
     "test_complexite": "Niveau de difficulté approprié à l'audience cible ? (adult=intricate ok, child=simple obligatoire)",
     "test_impression": "Lignes assez épaisses pour impression laser 300 DPI ? (min 2-3px à 1664px de large)",
-    "test_marche": "Le thème est-il frais ou saturé sur Amazon aujourd'hui ? Chercher '{theme} coloring book' sur Amazon"
+    "test_marche": "Le thème est-il fraîs ou saturé sur Amazon aujourd'hui ? Chercher '{theme} coloring book' sur Amazon"
   }}
 }}
 JSON uniquement, sans markdown ni balises. Tous les champs doivent être remplis avec du contenu concret, pas des placeholders."""
@@ -129,7 +145,12 @@ pur noir/blanc sans aucun gris. C'est le problème critique qui a rendu
 les productions précédentes inutilisables.
 
 Génère un concept différenciant qui se vendra bien sur Amazon KDP dès aujourd'hui.
-Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans cette niche)."""
+Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans cette niche).
+
+Pour references_marche : cite des auteurs/brands RÉELS qui cartonnent sur Amazon
+dans la niche '{theme} coloring book' (Coco Wyo, Johanna Basford, Millie Marotta, etc.
+selon la niche). Analyse précisément leur style pour que style_prompt_reference
+imite fidèlement ce qui marche."""
 
     print("[CdC Coloring] Appel LLM (génération CdC complet)...")
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.80, max_tokens=8000)
@@ -162,10 +183,12 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
     cdc_json.write_text(json.dumps(cdc, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[CdC Coloring] cdc.json -> {cdc_json}")
 
-    # Generate 5 preview images (only if GENERATE_PREVIEWS=1)
+    # Generate 5 preview images — priorité au style_prompt_reference (imite le leader du marché)
     prompts_data = cdc.get("prompts_pollinations", {})
     test_prompt = prompts_data.get("exemple_prompt_complet", "")
-    previews = generate_preview_images(test_prompt, out_dir / "previews", height=700)
+    ref_prompt = cdc.get("references_marche", {}).get("style_prompt_reference", "")
+    preview_prompt = ref_prompt if ref_prompt else test_prompt
+    previews = generate_preview_images(preview_prompt, out_dir / "previews", height=700)
 
     # Build human-readable CdC markdown
     prompts = prompts_data
@@ -254,7 +277,36 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
         f"**Age** : {public.get('tranche_age', '?')}",
         f"**Pourquoi ce theme** : {public.get('pourquoi_ce_theme', '?')}",
         "",
-        "## 5. Analyse Concurrence Amazon",
+    ]
+
+    refs = cdc.get("references_marche", {})
+    leaders = refs.get("leaders_du_marche", [])
+    if leaders:
+        md_lines += ["## 5. Références Marché — Ce qui cartonne déjà", ""]
+        md_lines.append("> Livres/brands existants qui dominent cette niche. Previews générées dans leur style.")
+        md_lines.append("")
+        for leader in leaders:
+            md_lines += [
+                f"### 🏆 {leader.get('nom', '?')} ({leader.get('type', '?')})",
+                f"**Pourquoi ça marche** : {leader.get('pourquoi_ca_marche', '?')}",
+                f"**Style visuel** : {leader.get('style_caracteristiques', '?')}",
+                f"**Format** : {leader.get('format_typique', '?')} | **Prix** : {leader.get('prix_moyen', '?')} | **Avis** : {leader.get('nb_avis_typique', '?')}",
+                f"**À imiter** : {leader.get('elements_a_imiter', '?')}",
+                f"**Notre différence** : {leader.get('comment_se_differencier', '?')}",
+                "",
+            ]
+        ref_prompt_md = refs.get("style_prompt_reference", "")
+        if ref_prompt_md:
+            md_lines += [
+                "**Prompt style référence (utilisé pour les previews + production)** :",
+                "```",
+                ref_prompt_md,
+                "```",
+                "",
+            ]
+
+    md_lines += [
+        "## 6. Analyse Concurrence Amazon",
     ]
 
     for i, concur in enumerate(cdc.get("cinq_concurrents_amazon", []), 1):
@@ -268,7 +320,7 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
 
     md_lines += [
         "",
-        "## 6. Listing KDP",
+        "## 7. Listing KDP",
         f"**Titre Amazon** : {kdp.get('titre_amazon', '?')}",
         f"**Sous-titre** : {kdp.get('sous_titre_amazon', '?')}",
         f"**Prix** : ${kdp.get('prix_usd', 9.99)}",
@@ -279,7 +331,7 @@ Les 5 concurrents doivent être réalistes (titres qui existent vraiment dans ce
         "**Mots-cles** : " + ", ".join(kdp.get("mots_cles", [])),
         "**Categories** : " + ", ".join(kdp.get("categories", [])),
         "",
-        "## 7. Checklist de Validation",
+        "## 8. Checklist de Validation",
         "",
         "Avant de changer gate_cdc a `approved` :",
         "",
