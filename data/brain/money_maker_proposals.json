@@ -1,8 +1,8 @@
 {
   "agent": "money_maker",
   "title": "Money Maker Brain",
-  "timestamp": "2026-05-31T06:31:29.364299Z",
-  "model": "gemini-flash-latest",
+  "timestamp": "2026-06-01T07:10:51.704985Z",
+  "model": "gemini-2.5-flash",
   "system_state_snapshot": {
     "_doc": "Etat du projet 365days lu par les cerveaux perpetuels (agent_brain_meta.py). Mis a jour manuellement par Hugo ou par agent_state_collector.py.",
     "last_updated": "2026-05-22T05:10:00Z",
@@ -142,58 +142,69 @@
   "proposals": [
     {
       "rank": 1,
-      "action_title": "Publish First Coloring Book on KDP using Runware PAYG",
-      "type": "upload",
-      "target_platform": "Amazon KDP",
-      "estimated_revenue_uplift_eur_30days_low": 20,
-      "estimated_revenue_uplift_eur_30days_high": 150,
-      "hugo_effort_hours": 4,
-      "why_this_works_now": "The coloring book pipeline is ready, but blocked by image generation. Spending just 2€ of the 20€ budget on Runware PAYG unlocks 3,300 FLUX-schnell images. This breaks the deadlock and puts a physical, high-margin asset live on Amazon's organic search engine instantly.",
-      "first_action_today": "Fund Runware account with minimum 5€, grab the API key, and trigger the 'produce_coloring_book' GitHub Action."
-    },
-    {
-      "rank": 2,
-      "action_title": "Deploy Free-to-Paid Godot UI Asset Packs on Itch.io",
-      "type": "new_stream",
-      "target_platform": "itch.io",
-      "estimated_revenue_uplift_eur_30days_low": 10,
-      "estimated_revenue_uplift_eur_30days_high": 80,
-      "hugo_effort_hours": 3,
-      "why_this_works_now": "The Godot assets pipeline can generate UI templates, button packs, or simple code scaffolds. Itch.io allows a 'name your own price' model. Offering a high-quality free asset pack with a suggested donation of 2.99€ captures immediate indie gamedev interest.",
-      "first_action_today": "Run the 'produce_godot_assets' pipeline via GitHub Actions and upload the output ZIP to Itch.io with 'Suggest 2.99€' enabled."
-    },
-    {
-      "rank": 3,
-      "action_title": "Bulk Upload 50 Text-Based Designs on Redbubble via Free Vector Scripts",
+      "action_title": "Upload 10 'Coloring Book' samples to Redbubble (as digital downloads)",
       "type": "upload",
       "target_platform": "Redbubble",
       "estimated_revenue_uplift_eur_30days_low": 5,
-      "estimated_revenue_uplift_eur_30days_high": 40,
-      "hugo_effort_hours": 2,
-      "why_this_works_now": "Redbubble is already registered. Text-based designs (funny, niche-specific quotes) require zero complex AI generation. They can be auto-generated as SVGs using Python on GitHub Actions, requiring 0€ budget and zero GPU dependencies.",
-      "first_action_today": "Run 'produce_quotes_minimal' to generate 50 transparent SVGs, and bulk upload them to Redbubble using their native multi-product uploader."
-    },
-    {
-      "rank": 4,
-      "action_title": "Launch Parametric STL Files on Cults3D with Print-in-Place Focus",
-      "type": "upload",
-      "target_platform": "Cults3D (prevu)",
-      "estimated_revenue_uplift_eur_30days_low": 15,
-      "estimated_revenue_uplift_eur_30days_high": 90,
+      "estimated_revenue_uplift_eur_30days_high": 20,
       "hugo_effort_hours": 3,
-      "why_this_works_now": "Cults3D has a highly active organic user base searching for functional 3D prints (boxes, organizers, brackets). Using OpenSCAD via GitHub Actions ('produce_stl_parametric') bypasses GPU costs entirely to generate clean, math-perfect STLs that sell consistently for 1.50€ to 3.00€.",
-      "first_action_today": "Activate the Cults3D account and run 'produce_stl_parametric' to generate 5 variations of functional desk organizers."
+      "why_this_works_now": "Redbubble allows digital product sales. Even if the 'first quality coloring book' isn't fully ready, small, attractive samples (e.g., 5 pages from a future book, or even single high-quality pages) can be sold as instant downloads. This validates the niche and platform without needing a full product. Leverage Pollinations for initial simple images if Together AI/Cloudflare still blocked.",
+      "first_action_today": "Select 10 simple coloring page themes (e.g., 'mandala', 'animals', 'geometric'). Generate basic line art using Pollinations. Create Redbubble listings for each as digital downloads priced at 1-2€."
     },
     {
-      "rank": 5,
-      "action_title": "Optimize KDP Book Description with Low-Competition Search Terms",
-      "type": "conversion",
+      "rank": 2,
+      "action_title": "Publish 3 'Low Content KDP' books on Amazon KDP (using Pollinations for covers)",
+      "type": "upload",
       "target_platform": "Amazon KDP",
       "estimated_revenue_uplift_eur_30days_low": 10,
       "estimated_revenue_uplift_eur_30days_high": 50,
+      "hugo_effort_hours": 5,
+      "why_this_works_now": "KDP is registered. Low content books (notebooks, journals, planners) require minimal internal content generation. The main effort is a good cover and niche targeting. Pollinations can generate abstract or simple graphic covers. This gets products live quickly and starts accumulating sales history.",
+      "first_action_today": "Identify 3 simple low-content niches (e.g., 'gratitude journal', 'lined notebook for writers', 'daily planner'). Design basic covers using Pollinations (text2img for abstract patterns/colors, then add text via simple online editor). Prepare KDP listings."
+    },
+    {
+      "rank": 3,
+      "action_title": "Reactivate 'produce_merch_designs' pipeline for Redbubble, 20 designs",
+      "type": "reactivate",
+      "target_platform": "Redbubble",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 30,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "The 'merch_designs' pipeline exists. Even if the image generation isn't perfect, simple text-based or abstract designs can be uploaded to Redbubble on various products (t-shirts, mugs, stickers). This leverages existing tooling and a registered platform without waiting for perfect image quality or a full product launch.",
+      "first_action_today": "Run 'produce_merch_designs' pipeline for 20 simple, text-based or abstract graphic designs using Pollinations (or simple online tools). Prioritize evergreen niches. Upload immediately to Redbubble."
+    },
+    {
+      "rank": 4,
+      "action_title": "Affiliate marketing for image generation tools (Together AI/Cloudflare)",
+      "type": "new_stream",
+      "target_platform": "direct",
+      "estimated_revenue_uplift_eur_30days_low": 0,
+      "estimated_revenue_uplift_eur_30days_high": 10,
       "hugo_effort_hours": 1,
-      "why_this_works_now": "When the first coloring book is published, organic visibility is everything. Using free Amazon auto-suggest keywords in the subtitle, backend search terms, and A+ content description directly drives search impressions without ad spend.",
-      "first_action_today": "Draft 7 highly specific backend search phrases (e.g., 'mindful mandalas for teens relaxation') using Amazon's search bar auto-complete on his phone."
+      "why_this_works_now": "Hugo is actively testing these tools. If they prove viable, he can create a simple blog post or social media share about his findings and include affiliate links (if available). This is a low-effort potential income stream directly related to his current work.",
+      "first_action_today": "Check if Together AI and Cloudflare Workers AI have affiliate programs. If so, sign up. Draft a short post about 'Solving GitHub Actions Image Generation' with initial findings and affiliate links."
+    },
+    {
+      "rank": 5,
+      "action_title": "Price Experiment: Offer 'Pay What You Want' for a simple digital asset on Itch.io",
+      "type": "pricing",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 0,
+      "estimated_revenue_uplift_eur_30days_high": 15,
+      "hugo_effort_hours": 2,
+      "why_this_works_now": "Itch.io is a platform for digital assets, including game dev assets, and allows 'Pay What You Want' (PWYW) pricing. This can generate initial traction and email list sign-ups even for a basic asset (e.g., a small SVG pack, 3D model, or even a simple coloring page sample). It's a low-barrier way to get first sales and collect feedback.",
+      "first_action_today": "Select one simple asset (e.g., 'produce_svg_pack' with 5 basic icons, or a single 'stl_openscad' model). Register on Itch.io. Create a listing with PWYW pricing, suggesting a minimum of 0.50€."
+    },
+    {
+      "rank": 6,
+      "action_title": "Create 5 'Gamedev Asset Pack' listings on Itch.io (basic images/models)",
+      "type": "upload",
+      "target_platform": "itch.io",
+      "estimated_revenue_uplift_eur_30days_low": 5,
+      "estimated_revenue_uplift_eur_30days_high": 25,
+      "hugo_effort_hours": 4,
+      "why_this_works_now": "The 'produce_gamedev_asset_pack' and 'produce_godot_assets' pipelines exist. Even simple assets (e.g., abstract textures generated by Pollinations, basic 3D shapes from OpenSCAD, or public domain sprites) can be bundled and listed. Itch.io has a lower barrier to entry than Cults3D for initial sales and can generate early revenue.",
+      "first_action_today": "Identify 5 simple asset categories (e.g., 'sci-fi textures', 'basic UI icons', 'low-poly rocks'). Use Pollinations for textures/icons or OpenSCAD for models. Bundle and list them on Itch.io at a low price (1-3€)."
     }
   ]
 }
