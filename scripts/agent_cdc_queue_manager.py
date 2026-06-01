@@ -30,11 +30,11 @@ ROOT = Path(__file__).resolve().parent.parent
 
 TARGET_PENDING = int(os.environ.get("TARGET", "10"))
 MAX_PER_RUN = int(os.environ.get("MAX_PER_RUN", "5"))
-# 3 min entre chaque CdC — évite les collisions avec les autres workflows Gemini.
-# 2 min entre chaque vertical — laisse la fenêtre RPM se réinitialiser.
-# Calcul : 11 verticals × 3 CdC × 180s + 11 × 120s = ~110 min par run. OK pour cron 4h.
-THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "180"))
-INTER_VERTICAL_DELAY = int(os.environ.get("INTER_VERTICAL_DELAY", "120"))
+# 60s entre CdC : safe pour Groq (primary, 30 RPM) et Gemini fallback (15 RPM = 4s/req).
+# 30s entre verticals : laisse la fenêtre RPM se réinitialiser.
+# Calcul : 11 verticals × 3 CdC × 60s + 11 × 30s = ~2310s = ~38 min/run. OK pour cron 6h.
+THROTTLE_SECONDS = int(os.environ.get("THROTTLE_SECONDS", "60"))
+INTER_VERTICAL_DELAY = int(os.environ.get("INTER_VERTICAL_DELAY", "30"))
 DRY_RUN = os.environ.get("DRY_RUN", "0") == "1"
 
 # ── Pools de thèmes — diversité garantie, pas de répétition ──────────────────
