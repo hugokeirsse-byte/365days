@@ -156,6 +156,34 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "mise_a_jour_prevue": "v2 dans 30 jours (20 assets supplémentaires)",
     "serie_possible": true
   }},
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CE pack d'assets spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / Reddit r/godot / Itch.io / GameDev observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Wikimedia Commons / OpenGameArt / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "300 DPI / vectorisable / restauration nécessaire",
+      "angle_commercial": "Comment on monétise cette oeuvre PD comme asset Godot concrètement"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact du pack d'assets qui explose sur Itch.io/Unity Asset Store",
+      "pourquoi_ca_marche": "Analyse précise de son succès (téléchargements, revenus, avis)",
+      "ce_qui_est_mal_fait": "Ce que les développeurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (style inspiré ≠ plagiat)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les revenus (mises à jour, extensions thématiques, bundles, version complète...)"
+  }},
   "criteres_validation": {{
     "assets_coherents": "Style visuel homogène sur tous les assets ?",
     "demo_fonctionnelle": "La scène démo se charge dans Godot 4 sans erreur ?",
@@ -171,7 +199,12 @@ JSON uniquement."""
 - Nombre d'assets : {nb_assets}
 
 Le pack doit être VENDABLE sur Itch.io face à la concurrence gratuite.
-L'élément unique doit justifier le prix."""
+L'élément unique doit justifier le prix.
+
+STRATÉGIE PRODUIT — détermine lequel des 3 piliers s'applique et justifie avec des preuves :
+1. creation_originale — si un signal Reddit r/godot / Itch.io / GameDev indique une tendance émergente dans cette niche d'assets
+2. domaine_public — si des illustrations ou musiques historiques (pré-1928) peuvent être converties en assets Godot réutilisables
+3. imitation_amelioree — si un pack concurrent explose déjà mais avec des failles exploitables (résolution insuffisante, pas de démo, documentation absente)"""
 
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.82, max_tokens=12000)
     if not response:
@@ -207,6 +240,8 @@ L'élément unique doit justifier le prix."""
 
     listing = cdc.get("listing_itchio", {})
     contenu = cdc.get("contenu_pack", [])
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
     md = [
         f"# CAHIER DES CHARGES — {titre}",
         f"**Type** : {godot_type} | **Thème** : {godot_theme}",
@@ -220,6 +255,47 @@ L'élément unique doit justifier le prix."""
         f"**Titre** : {titre}",
         f"**Élément unique** : {concept.get('element_unique', '?')}",
         f"**Assets** : {concept.get('nb_assets', '?')} | **Compatibilité** : {concept.get('compatibilite', '?')}",
+        "",
+        "## Stratégie Produit",
+        f"**Pilier** : `{strategie.get('pilier', '?')}`",
+        f"**Justification** : {strategie.get('justification', '?')}",
+        "",
+    ]
+
+    pilier = strategie.get("pilier", "")
+    if pilier == "creation_originale":
+        co = strategie.get("creation_originale", {})
+        md += [
+            "**Signaux trend** : " + " | ".join(co.get("signaux_trend", [])),
+            f"**Timing** : {co.get('timing_optimal', '?')}",
+            f"**Risque saturation** : {co.get('risque_saturation', '?')}",
+        ]
+    elif pilier == "domaine_public":
+        dp = strategie.get("domaine_public", {})
+        md += [
+            f"**Oeuvre source** : {dp.get('oeuvre_source', '?')}",
+            f"**Source** : {dp.get('source_telechargement', '?')}",
+            f"**Licence** : {dp.get('licence_confirmee', '?')}",
+            f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        ]
+    elif pilier == "imitation_amelioree":
+        ia = strategie.get("imitation_amelioree", {})
+        md += [
+            f"**Produit cible** : {ia.get('produit_cible', '?')}",
+            f"**Pourquoi ça marche** : {ia.get('pourquoi_ca_marche', '?')}",
+            f"**Ce qui est mal fait** : {ia.get('ce_qui_est_mal_fait', '?')}",
+            f"**Notre amélioration** : {ia.get('notre_amelioration_concrete', '?')}",
+            f"**Différenciation légale** : {ia.get('differentiation_legale', '?')}",
+        ]
+
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    md += [
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
         "",
         "## Contenu du pack",
     ]

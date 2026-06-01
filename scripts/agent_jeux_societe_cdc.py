@@ -194,6 +194,34 @@ FORMAT RÉPONSE — JSON STRICTEMENT :
     "type_fichier": "PDF print-and-play",
     "licence": "Personal use only / Commercial use allowed"
   }},
+  "strategie_produit": {{
+    "pilier": "creation_originale|domaine_public|imitation_amelioree",
+    "justification": "Pourquoi CE pilier pour CE jeu spécifique, avec preuves concrètes",
+    "creation_originale": {{
+      "signaux_trend": ["signal Google Trends / TikTok / Reddit observé", "..."],
+      "timing_optimal": "Pourquoi MAINTENANT et pas dans 6 mois",
+      "risque_saturation": "faible|moyen|fort — dans combien de mois"
+    }},
+    "domaine_public": {{
+      "oeuvre_source": "Titre + auteur + année de publication",
+      "source_telechargement": "archive.org / Project Gutenberg / Wikimedia Commons / etc.",
+      "licence_confirmee": "CC0 / domaine public US + pays cibles confirmé",
+      "qualite_disponible": "300 DPI / vectorisable / restauration nécessaire",
+      "angle_commercial": "Comment on monétise cette oeuvre PD concrètement"
+    }},
+    "imitation_amelioree": {{
+      "produit_cible": "Titre exact du jeu qui explose sur Etsy/Itch.io/Amazon",
+      "pourquoi_ca_marche": "Analyse précise de son succès (volume, avis, prix)",
+      "ce_qui_est_mal_fait": "Ce que les acheteurs reprochent (avis 1-3 étoiles précis)",
+      "notre_amelioration_concrete": "Comment on fait strictement mieux, point par point",
+      "differentiation_legale": "En quoi on ne copie pas (style inspiré ≠ plagiat)"
+    }}
+  }},
+  "potentiel_revenu": {{
+    "scenario_conservateur": {{"ventes_mois_1": 10, "ventes_mois_6": 50, "revenu_annuel_estime": "$500"}},
+    "scenario_optimiste": {{"ventes_mois_1": 50, "ventes_mois_6": 300, "revenu_annuel_estime": "$3000"}},
+    "levier_croissance": "ce qui peut multiplier les ventes (série, extensions, traductions, bundles...)"
+  }},
   "cinq_concurrents": [
     {{
       "titre": "...",
@@ -232,7 +260,12 @@ Le jeu doit être :
 2. Vendable en PDF sur {spec['plateformes']}
 3. Suffisamment niche pour avoir un public captif (pas un jeu générique)
 4. Livré avec des RÈGLES COMPLÈTES (cause #1 de mauvaises reviews)
-5. Jouable dès l'impression, sans matériel supplémentaire coûteux"""
+5. Jouable dès l'impression, sans matériel supplémentaire coûteux
+
+STRATÉGIE PRODUIT — détermine lequel des 3 piliers s'applique et justifie avec des preuves :
+1. creation_originale — si un signal Google Trends / TikTok / Reddit / BoardGameGeek clair indique une tendance émergente non saturée
+2. domaine_public — si un jeu classique, un texte ou une illustration historique (pré-1928) peut être réutilisé concrètement
+3. imitation_amelioree — si un jeu concurrent explose déjà sur Etsy/Itch.io mais avec des failles exploitables (règles confuses, manque de contenu, avis négatifs précis)"""
 
     print("[CdC Jeu] Appel LLM...")
     response = llm_call("cdc_generator", system_prompt, user_prompt, temperature=0.85, max_tokens=12000)
@@ -269,6 +302,8 @@ Le jeu doit être :
     spec_prod = cdc.get("spec_production", {})
     contenu = cdc.get("contenu_cartes", {})
     cal = cdc.get("calendrier", {})
+    strategie = cdc.get("strategie_produit", {})
+    potentiel = cdc.get("potentiel_revenu", {})
 
     md = [
         f"# CAHIER DES CHARGES — {titre}",
@@ -291,7 +326,48 @@ Le jeu doit être :
         f"**Complexité** : {concept.get('niveau_complexite', '?')}",
         f"**Élément unique** : {concept.get('element_unique', '?')}",
         "",
-        "## 2. Composants",
+        "## 2. Stratégie Produit",
+        f"**Pilier** : `{strategie.get('pilier', '?')}`",
+        f"**Justification** : {strategie.get('justification', '?')}",
+        "",
+    ]
+
+    pilier = strategie.get("pilier", "")
+    if pilier == "creation_originale":
+        co = strategie.get("creation_originale", {})
+        md += [
+            "**Signaux trend** : " + " | ".join(co.get("signaux_trend", [])),
+            f"**Timing** : {co.get('timing_optimal', '?')}",
+            f"**Risque saturation** : {co.get('risque_saturation', '?')}",
+        ]
+    elif pilier == "domaine_public":
+        dp = strategie.get("domaine_public", {})
+        md += [
+            f"**Oeuvre source** : {dp.get('oeuvre_source', '?')}",
+            f"**Source** : {dp.get('source_telechargement', '?')}",
+            f"**Licence** : {dp.get('licence_confirmee', '?')}",
+            f"**Angle commercial** : {dp.get('angle_commercial', '?')}",
+        ]
+    elif pilier == "imitation_amelioree":
+        ia = strategie.get("imitation_amelioree", {})
+        md += [
+            f"**Produit cible** : {ia.get('produit_cible', '?')}",
+            f"**Pourquoi ça marche** : {ia.get('pourquoi_ca_marche', '?')}",
+            f"**Ce qui est mal fait** : {ia.get('ce_qui_est_mal_fait', '?')}",
+            f"**Notre amélioration** : {ia.get('notre_amelioration_concrete', '?')}",
+            f"**Différenciation légale** : {ia.get('differentiation_legale', '?')}",
+        ]
+
+    sc = potentiel.get("scenario_conservateur", {})
+    so = potentiel.get("scenario_optimiste", {})
+    md += [
+        "",
+        "### Potentiel Revenu",
+        f"**Conservateur** : M1={sc.get('ventes_mois_1','?')} ventes, M6={sc.get('ventes_mois_6','?')} ventes, annuel {sc.get('revenu_annuel_estime','?')}",
+        f"**Optimiste** : M1={so.get('ventes_mois_1','?')} ventes, M6={so.get('ventes_mois_6','?')} ventes, annuel {so.get('revenu_annuel_estime','?')}",
+        f"**Levier croissance** : {potentiel.get('levier_croissance', '?')}",
+        "",
+        "## 3. Composants",
     ]
 
     for comp in composants:
@@ -300,13 +376,13 @@ Le jeu doit être :
 
     md += [
         "",
-        "## 3. Règles (résumé)",
+        "## 4. Règles (résumé)",
         f"**Objectif** : {regles.get('objectif_victoire', '?')}",
         f"**Setup** : {regles.get('mise_en_place', '?')}",
         f"**Tour de jeu** : {regles.get('deroulement_tour', '?')}",
         f"**Fin** : {regles.get('fin_de_partie', '?')}",
         "",
-        "## 4. Contenu des cartes",
+        "## 5. Contenu des cartes",
     ]
 
     for cat in contenu.get("categories", []):
@@ -316,7 +392,7 @@ Le jeu doit être :
 
     md += [
         "",
-        "## 5. Production",
+        "## 6. Production",
         f"**Outil** : {spec_prod.get('outil_principal', '?')}",
         "**Fichiers à produire** :",
     ]
@@ -329,12 +405,12 @@ Le jeu doit être :
 
     md += [
         "",
-        "## 6. Listing",
+        "## 7. Listing",
         f"**Plateforme** : {listing.get('plateforme_principale', '?')} + {listing.get('plateforme_secondaire', '?')}",
         f"**Prix** : {listing.get('prix_usd', '?')} USD",
         f"**Tags** : {', '.join(listing.get('tags', []))}",
         "",
-        "## 7. Checklist Validation Hugo",
+        "## 8. Checklist Validation Hugo",
         f"- [ ] {cdc.get('criteres_validation', {}).get('regles_claires', '?')}",
         f"- [ ] {cdc.get('criteres_validation', {}).get('composants_imprimables', '?')}",
         f"- [ ] {cdc.get('criteres_validation', {}).get('theme_original', '?')}",
