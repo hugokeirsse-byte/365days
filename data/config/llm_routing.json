@@ -26,13 +26,13 @@
     "max_calls_per_run": 50
   },
   "cdc_generator": {
-    "primary": "groq",
-    "fallback": ["gemini", "mistral"],
+    "primary": "gemini",
+    "fallback": ["groq", "mistral"],
     "max_calls_per_run": 50
   },
   "stl_cdc": {
-    "primary": "groq",
-    "fallback": ["gemini", "mistral"],
+    "primary": "gemini",
+    "fallback": ["groq", "mistral"],
     "max_calls_per_run": 50
   },
   "conseil": {
