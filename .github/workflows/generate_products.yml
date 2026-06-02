@@ -6,12 +6,17 @@ on:
       - "scripts/tpt/themes/*.svg"
       - "scripts/tpt/themes/*.png"
       - "scripts/tpt/pipeline_cbc.py"
+      - "scripts/tpt/generators/math_drills.py"
       - "scripts/kdp/pipeline_kdp.py"
       - "scripts/brand.py"
   workflow_dispatch:
     inputs:
       themes:
         description: "Thèmes (vide = tous) ex: halloween,christmas"
+        required: false
+        default: ""
+      product_types:
+        description: "Types (vide = tous) ex: math_drills,color_by_code"
         required: false
         default: ""
 
@@ -33,21 +38,34 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --quiet reportlab svglib pillow
+          pip install --quiet reportlab svglib pillow requests google-generativeai
 
-      - name: Generate TPT packs
+      - name: Download Nunito font (if missing)
+        run: |
+          mkdir -p scripts/tpt/fonts
+          if [ ! -f scripts/tpt/fonts/Nunito-Regular.ttf ]; then
+            curl -sL "https://raw.githubusercontent.com/google/fonts/main/ofl/nunito/Nunito%5Bwght%5D.ttf" \
+              -o scripts/tpt/fonts/Nunito-Regular.ttf
+            cp scripts/tpt/fonts/Nunito-Regular.ttf scripts/tpt/fonts/Nunito-Bold.ttf
+            cp scripts/tpt/fonts/Nunito-Regular.ttf scripts/tpt/fonts/Nunito-SemiBold.ttf
+            cp scripts/tpt/fonts/Nunito-Regular.ttf scripts/tpt/fonts/Nunito-ExtraBold.ttf
+            echo "Nunito downloaded."
+          else
+            echo "Nunito already present."
+          fi
+
+      - name: Generate Math Drills (TPT)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OUT_DIR: products/tpt/math_drills
+        run: python scripts/tpt/generators/math_drills.py
+
+      - name: Generate Color-by-Code packs (TPT)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           THEME: ${{ github.event.inputs.themes }}
           OUT_DIR: products/tpt/packs
         run: python scripts/tpt/pipeline_cbc.py
-
-      - name: Generate KDP books
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          THEMES: ${{ github.event.inputs.themes }}
-          OUT_DIR: products/kdp/books
-        run: python scripts/kdp/pipeline_kdp.py
 
       - name: Commit & push products
         run: |
