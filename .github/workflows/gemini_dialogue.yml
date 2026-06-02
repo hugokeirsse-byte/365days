@@ -5,6 +5,9 @@ name: Gemini Dialogue A↔B — Collaboration Adversariale
 # Déclenché par workflow_dispatch (GitHub UI) OU par push de .triggers/gemini_dialogue.json
 
 on:
+  # Reset quota Gemini ~7h UTC. Lance automatiquement depuis main (lit .triggers/gemini_dialogue.json)
+  schedule:
+    - cron: '0 8 2 6 *'
   workflow_dispatch:
     inputs:
       topic:
@@ -60,8 +63,8 @@ jobs:
       - name: Créer répertoires
         run: mkdir -p data/dialogues data/prompts data/audit_logs
 
-      - name: Lire les paramètres depuis trigger file (si push)
-        if: github.event_name == 'push'
+      - name: Lire les paramètres depuis trigger file (si push ou schedule)
+        if: github.event_name == 'push' || github.event_name == 'schedule'
         run: |
           TRIGGER=".triggers/gemini_dialogue.json"
           if [ -f "$TRIGGER" ]; then
