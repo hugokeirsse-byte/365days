@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CC0 1.0 Public Domain — Valentine Heart Coloring Page -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" width="400" height="460">
+  <rect width="400" height="460" fill="white"/>
+
+  <!-- Decorative small stars in background -->
+  <polygon points="60,60 64,74 78,74 67,82 71,96 60,88 49,96 53,82 42,74 56,74" fill="white" stroke="black" stroke-width="2"/>
+  <polygon points="340,55 343,66 354,66 346,73 349,84 340,77 331,84 334,73 326,66 337,66" fill="white" stroke="black" stroke-width="2"/>
+  <polygon points="55,350 58,360 68,360 61,366 63,376 55,370 47,376 49,366 42,360 52,360" fill="white" stroke="black" stroke-width="2"/>
+  <polygon points="345,348 348,358 358,358 351,364 353,374 345,368 337,374 339,364 332,358 342,358" fill="white" stroke="black" stroke-width="2"/>
+
+  <!-- Small dots scattered -->
+  <circle cx="100" cy="108" r="5" fill="white" stroke="black" stroke-width="2"/>
+  <circle cx="300" cy="95"  r="5" fill="white" stroke="black" stroke-width="2"/>
+  <circle cx="88"  cy="290" r="5" fill="white" stroke="black" stroke-width="2"/>
+  <circle cx="312" cy="310" r="5" fill="white" stroke="black" stroke-width="2"/>
+
+  <!-- Ribbon bow at top -->
+  <path d="M165,118 C142,95 110,105 118,125 C125,140 155,132 165,118 Z" fill="white" stroke="black" stroke-width="3"/>
+  <path d="M235,118 C258,95 290,105 282,125 C275,140 245,132 235,118 Z" fill="white" stroke="black" stroke-width="3"/>
+  <circle cx="200" cy="122" r="10" fill="white" stroke="black" stroke-width="3"/>
+
+  <!-- Main heart -->
+  <path d="M200,405
+           C155,370 70,320 58,242
+           C48,175 90,128 138,128
+           C163,128 185,140 200,158
+           C215,140 237,128 262,128
+           C310,128 352,175 342,242
+           C330,320 245,370 200,405 Z"
+        fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- Inner heart -->
+  <path d="M200,365
+           C168,342 118,310 108,262
+           C100,222 124,196 152,196
+           C170,196 186,206 200,220
+           C214,206 230,196 248,196
+           C276,196 300,222 292,262
+           C282,310 232,342 200,365 Z"
+        fill="white" stroke="black" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- Cute face in heart -->
+  <circle cx="180" cy="248" r="6" fill="black"/>
+  <circle cx="220" cy="248" r="6" fill="black"/>
+  <path d="M183,272 Q200,285 217,272" fill="none" stroke="black" stroke-width="3" stroke-linecap="round"/>
+  <!-- Cheeks -->
+  <ellipse cx="165" cy="268" rx="12" ry="8" fill="white" stroke="black" stroke-width="2"/>
+  <ellipse cx="235" cy="268" rx="12" ry="8" fill="white" stroke="black" stroke-width="2"/>
+</svg>

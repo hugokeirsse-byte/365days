@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pumpkin Jack-o-Lantern Coloring Page
+  License: CC0 1.0 Universal (Public Domain Dedication)
+  https://creativecommons.org/publicdomain/zero/1.0/
+  No rights reserved. Free for any use including commercial.
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 400 450"
+     width="400" height="450"
+     style="background:white;">
+
+  <!-- Stem -->
+  <path d="M190,80 C185,55 200,35 215,20 C210,35 220,50 200,70 Z"
+        fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Pumpkin body - left lobe -->
+  <ellipse cx="145" cy="270" rx="80" ry="105"
+           fill="white" stroke="black" stroke-width="4"/>
+
+  <!-- Pumpkin body - center lobe (slightly taller) -->
+  <ellipse cx="200" cy="260" rx="85" ry="115"
+           fill="white" stroke="black" stroke-width="4"/>
+
+  <!-- Pumpkin body - right lobe -->
+  <ellipse cx="255" cy="270" rx="80" ry="105"
+           fill="white" stroke="black" stroke-width="4"/>
+
+  <!-- Pumpkin body outline / base curve to unify bottom -->
+  <path d="M80,305 Q90,390 145,405 Q200,415 255,405 Q310,390 320,305"
+        fill="none" stroke="black" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Inner rib lines for pumpkin segments -->
+  <path d="M200,155 Q195,260 200,375"
+        fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Left eye - classic triangle -->
+  <polygon points="135,225 115,265 155,265"
+           fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Right eye - classic triangle -->
+  <polygon points="265,225 245,265 285,265"
+           fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Nose - small triangle -->
+  <polygon points="200,275 188,300 212,300"
+           fill="white" stroke="black" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Mouth - classic jagged jack-o-lantern smile -->
+  <path d="M148,325 L162,310 L176,330 L190,310 L200,325 L210,310 L224,330 L238,310 L252,325"
+        fill="none" stroke="black" stroke-width="4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Mouth baseline to close it as a shape outline -->
+  <path d="M148,325 Q200,350 252,325"
+        fill="none" stroke="black" stroke-width="4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>

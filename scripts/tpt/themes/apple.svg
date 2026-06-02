@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CC0 1.0 Public Domain — Back to School Apple Coloring Page -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" width="400" height="460">
+  <rect width="400" height="460" fill="white"/>
+
+  <!-- Sky background (region answer label placed at top-left) -->
+  <rect width="400" height="460" fill="white" stroke="none"/>
+
+  <!-- Apple body — main round shape -->
+  <path d="M200,115
+           C168,95 115,105 95,155
+           C72,215 78,295 108,345
+           C133,385 165,408 200,408
+           C235,408 267,385 292,345
+           C322,295 328,215 305,155
+           C285,105 232,95 200,115 Z"
+        fill="white" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+
+  <!-- Dip at top of apple -->
+  <path d="M175,118 C185,100 215,100 225,118"
+        fill="white" stroke="black" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Shine spot (upper-left of apple) -->
+  <ellipse cx="148" cy="178" rx="22" ry="15"
+           fill="white" stroke="black" stroke-width="3"
+           transform="rotate(-30,148,178)"/>
+
+  <!-- Leaf -->
+  <path d="M218,85 C245,42 295,52 278,88 C262,72 240,80 218,85 Z"
+        fill="white" stroke="black" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- Leaf vein -->
+  <path d="M218,85 C248,68 272,72 278,88"
+        fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Stem -->
+  <path d="M200,112 C198,88 202,65 205,52"
+        fill="none" stroke="black" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Worm (optional fun detail) - peeking out of apple -->
+  <circle cx="248" cy="208" r="12" fill="white" stroke="black" stroke-width="3"/>
+  <circle cx="252" cy="202" r="3" fill="black"/>
+  <circle cx="244" cy="202" r="3" fill="black"/>
+  <path d="M245,214 Q248,218 251,214" fill="none" stroke="black" stroke-width="2" stroke-linecap="round"/>
+  <!-- Worm body going into apple -->
+  <path d="M248,220 Q248,240 252,252" fill="none" stroke="black" stroke-width="8" stroke-linecap="round"/>
+</svg>
