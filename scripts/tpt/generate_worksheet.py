@@ -33,6 +33,21 @@ from reportlab.lib.units import inch
 from reportlab.lib.colors import HexColor, white, black
 from reportlab.pdfgen import canvas
 
+try:
+    from svglib.svglib import svg2rlg
+    from reportlab.graphics import renderPDF
+    _SVGLIB = True
+except ImportError:
+    _SVGLIB = False
+
+_CLIPART_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "_shared", "clipart")
+
+# theme → list of SVG filenames in _CLIPART_DIR (used as corner decorations)
+_THEME_CLIPART = {
+    "halloween": ["halloween_pumpkin.svg"],
+    "christmas": ["christmas_snowflake.svg"],
+}
+
 # ----------------------------------------------------------------------------- #
 # CONFIG
 # ----------------------------------------------------------------------------- #
@@ -186,6 +201,38 @@ def _problem_grid(c, problems, start_y, is_answer_key, theme):
 # PAGES
 # ----------------------------------------------------------------------------- #
 
+def _draw_corner_decorations(c, theme, count=4):
+    """Draw small SVG clip art in the four corners of the content area."""
+    if not _SVGLIB:
+        return
+    names = _THEME_CLIPART.get(theme, [])
+    if not names:
+        return
+    svg_path = os.path.join(_CLIPART_DIR, names[0])
+    if not os.path.exists(svg_path):
+        return
+    try:
+        drawing = svg2rlg(svg_path)
+    except Exception:
+        return
+    if not drawing:
+        return
+    size = 0.75 * inch
+    scale = size / max(drawing.width, drawing.height)
+    positions = [
+        (MARGIN, PAGE_H - MARGIN - size),
+        (PAGE_W - MARGIN - size, PAGE_H - MARGIN - size),
+        (MARGIN, MARGIN + 0.2 * inch),
+        (PAGE_W - MARGIN - size, MARGIN + 0.2 * inch),
+    ]
+    for x, y in positions[:count]:
+        c.saveState()
+        c.translate(x, y)
+        c.scale(scale, scale)
+        renderPDF.draw(drawing, c, 0, 0)
+        c.restoreState()
+
+
 def build_worksheet_pdf(path, cfg, content_by_level, is_answer_key):
     c = canvas.Canvas(path, pagesize=letter)
     title = cfg["title_short"]
@@ -198,6 +245,7 @@ def build_worksheet_pdf(path, cfg, content_by_level, is_answer_key):
         _name_line(c, y)
         y -= 0.4 * inch
         _problem_grid(c, problems, y, is_answer_key, cfg["theme"])
+        _draw_corner_decorations(c, cfg["theme"])
         _footer(c, cfg["author"])
         c.showPage()
     c.save()

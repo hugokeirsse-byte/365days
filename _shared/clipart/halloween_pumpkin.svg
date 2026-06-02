@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 130">
+  <!-- Stem -->
+  <rect x="54" y="5" width="12" height="26" rx="4" fill="#2D7A2D"/>
+  <!-- Leaf -->
+  <ellipse cx="46" cy="18" rx="15" ry="7" transform="rotate(-35 46 18)" fill="#3AAA3A"/>
+  <!-- Pumpkin body -->
+  <ellipse cx="60" cy="82" rx="52" ry="46" fill="#E8771A"/>
+  <!-- Left lobe -->
+  <ellipse cx="24" cy="82" rx="30" ry="42" fill="#CC6600" opacity="0.55"/>
+  <!-- Right lobe -->
+  <ellipse cx="96" cy="82" rx="30" ry="42" fill="#CC6600" opacity="0.55"/>
+  <!-- Rib lines -->
+  <path d="M38,36 Q24,82 38,126" fill="none" stroke="#B35500" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M82,36 Q96,82 82,126" fill="none" stroke="#B35500" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Left eye -->
+  <polygon points="36,73 22,93 50,93" fill="#111111"/>
+  <!-- Right eye -->
+  <polygon points="84,73 70,93 98,93" fill="#111111"/>
+  <!-- Mouth -->
+  <path d="M25,108 L36,100 L47,110 L60,100 L73,110 L84,100 L95,108 Q60,130 25,108Z" fill="#111111"/>
+  <!-- Highlight -->
+  <ellipse cx="40" cy="65" rx="8" ry="11" fill="white" opacity="0.18"/>
+</svg>

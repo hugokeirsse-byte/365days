@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Main cross arms -->
+  <line x1="60" y1="5"  x2="60"  y2="115" stroke="#4A90D9" stroke-width="7" stroke-linecap="round"/>
+  <line x1="5"  y1="60" x2="115" y2="60"  stroke="#4A90D9" stroke-width="7" stroke-linecap="round"/>
+  <!-- Diagonal arms -->
+  <line x1="18" y1="18" x2="102" y2="102" stroke="#4A90D9" stroke-width="5" stroke-linecap="round"/>
+  <line x1="102" y1="18" x2="18" y2="102" stroke="#4A90D9" stroke-width="5" stroke-linecap="round"/>
+  <!-- Branch tips on vertical -->
+  <line x1="60" y1="22" x2="45" y2="37" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <line x1="60" y1="22" x2="75" y2="37" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <line x1="60" y1="98" x2="45" y2="83" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <line x1="60" y1="98" x2="75" y2="83" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <!-- Branch tips on horizontal -->
+  <line x1="22" y1="60" x2="37" y2="45" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <line x1="22" y1="60" x2="37" y2="75" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <line x1="98" y1="60" x2="83" y2="45" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <line x1="98" y1="60" x2="83" y2="75" stroke="#4A90D9" stroke-width="4" stroke-linecap="round"/>
+  <!-- Center -->
+  <circle cx="60" cy="60" r="9" fill="#4A90D9"/>
+  <circle cx="60" cy="60" r="5" fill="white"/>
+</svg>
