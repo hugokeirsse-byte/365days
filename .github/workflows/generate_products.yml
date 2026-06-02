@@ -1,22 +1,21 @@
-name: 2. Generate TPT + KDP Products
+name: 2. Generate TPT Products
 
 on:
   push:
+    branches: [main]
     paths:
+      - "scripts/tpt/generators/*.py"
       - "scripts/tpt/themes/*.svg"
       - "scripts/tpt/themes/*.png"
-      - "scripts/tpt/pipeline_cbc.py"
-      - "scripts/tpt/generators/math_drills.py"
-      - "scripts/kdp/pipeline_kdp.py"
       - "scripts/brand.py"
   workflow_dispatch:
     inputs:
-      themes:
-        description: "Thèmes (vide = tous) ex: halloween,christmas"
+      generators:
+        description: "Générateurs à lancer (vide=tous) ex: mystery_picture,task_cards"
         required: false
         default: ""
-      product_types:
-        description: "Types (vide = tous) ex: math_drills,color_by_code"
+      themes:
+        description: "Thèmes (vide=tous) ex: halloween,christmas"
         required: false
         default: ""
 
@@ -36,10 +35,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: |
-          pip install --quiet reportlab svglib pillow requests google-generativeai
+        run: pip install --quiet reportlab svglib pillow google-generativeai
 
-      - name: Download Nunito font (if missing)
+      - name: Setup Nunito font
         run: |
           mkdir -p scripts/tpt/fonts
           if [ ! -f scripts/tpt/fonts/Nunito-Regular.ttf ]; then
@@ -48,23 +46,15 @@ jobs:
             cp scripts/tpt/fonts/Nunito-Regular.ttf scripts/tpt/fonts/Nunito-Bold.ttf
             cp scripts/tpt/fonts/Nunito-Regular.ttf scripts/tpt/fonts/Nunito-SemiBold.ttf
             cp scripts/tpt/fonts/Nunito-Regular.ttf scripts/tpt/fonts/Nunito-ExtraBold.ttf
-            echo "Nunito downloaded."
-          else
-            echo "Nunito already present."
           fi
 
-      - name: Generate Math Drills (TPT)
+      - name: Run all generators
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          OUT_DIR: products/tpt/math_drills
-        run: python scripts/tpt/generators/math_drills.py
-
-      - name: Generate Color-by-Code packs (TPT)
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          THEME: ${{ github.event.inputs.themes }}
-          OUT_DIR: products/tpt/packs
-        run: python scripts/tpt/pipeline_cbc.py
+          GENERATORS: ${{ github.event.inputs.generators }}
+          THEMES: ${{ github.event.inputs.themes }}
+          OUT_DIR: products/tpt
+        run: python scripts/tpt/run_all.py
 
       - name: Commit & push products
         run: |
@@ -72,6 +62,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add products/
           git diff --staged --quiet && echo "Rien de nouveau." || (
-            git commit -m "Auto-generate products [$(date +%Y-%m-%d %H:%M)]"
+            git commit -m "Auto-generate TPT products [$(date +%Y-%m-%d)]"
             git push
           )
