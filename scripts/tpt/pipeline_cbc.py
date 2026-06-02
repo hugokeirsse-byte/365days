@@ -2,13 +2,17 @@
 TPT Color-by-Code — Pipeline complet
 Génère N packs finis (worksheet + answer key + cover + listing.md + ZIP)
 
+Workflow :
+  1. Télécharge un SVG CC0 depuis ASSETS_CC0.md
+  2. Dépose-le dans scripts/tpt/themes/<nom>.svg
+  3. Lance ce script → pack prêt en 10 secondes
+
 Prérequis :
   pip install reportlab svglib pillow
 
-Clés optionnelles (améliorent le résultat mais ne bloquent pas) :
-  GEMINI_API_KEY — génère les images de coloriage (gemini-2.0-flash-exp)
-                   ET les descriptions SEO (gemini-2.5-flash)
-                   Sans la clé : SVG procéduraux + listing template
+Clé optionnelle :
+  GEMINI_API_KEY — génère les descriptions SEO (gemini-2.5-flash)
+                   Sans la clé : listing template utilisé
 
 Usage :
   python scripts/tpt/pipeline_cbc.py              # tous les thèmes
@@ -17,7 +21,6 @@ Usage :
 """
 from __future__ import annotations
 
-import base64
 import json
 import math
 import os
@@ -86,6 +89,7 @@ THEMES: dict[str, dict] = {
             (18, 0.82, 0.14),  # moon
             (15, 0.12, 0.10),  # sky
         ],
+        "download_url": "https://freesvg.org/carved-pumpkin-coloring-vector-drawing",
         "tags": ["halloween", "multiplication", "3rd grade", "color by code",
                  "no prep", "October", "math facts", "differentiated"],
     },
@@ -126,6 +130,7 @@ THEMES: dict[str, dict] = {
             (12, 0.35, 0.38),  # shine spot
             (15, 0.10, 0.10),  # sky background
         ],
+        "download_url": "https://freesvg.org/apple-outline",
         "tags": ["back to school", "addition", "1st grade", "color by code",
                  "no prep", "August", "September", "apple", "math"],
     },
@@ -166,6 +171,7 @@ THEMES: dict[str, dict] = {
             ( 6, 0.50, 0.06),  # star top
             (15, 0.10, 0.10),  # background sky
         ],
+        "download_url": "https://freesvg.org/christmas-tree-drawing",
         "tags": ["christmas", "subtraction", "2nd grade", "color by code",
                  "no prep", "December", "winter", "math facts"],
     },
@@ -205,6 +211,7 @@ THEMES: dict[str, dict] = {
             (3, 0.85, 0.12),  # background star right
             (5, 0.50, 0.22),  # bow center
         ],
+        "download_url": "https://freesvg.org/heart-outline",
         "tags": ["valentine's day", "addition", "kindergarten", "color by code",
                  "no prep", "February", "heart", "math"],
     },
@@ -246,6 +253,7 @@ THEMES: dict[str, dict] = {
             ( 8, 0.50, 0.42),  # scarf
             (12, 0.10, 0.10),  # sky background
         ],
+        "download_url": "https://freesvg.org/snowman-vector-clip-art-graphics",
         "tags": ["winter", "snowman", "addition", "2nd grade", "color by code",
                  "no prep", "December", "January", "math"],
     },
@@ -253,36 +261,8 @@ THEMES: dict[str, dict] = {
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# GEMINI HELPERS
+# GEMINI — texte uniquement (SEO listings)
 # ──────────────────────────────────────────────────────────────────────────────
-
-def _gemini_image(prompt: str, model: str = "gemini-2.0-flash-preview-image-generation") -> bytes | None:
-    """Appelle Gemini pour générer un coloriage PNG. Retourne None si KO."""
-    if not GEMINI_KEY:
-        return None
-    url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
-           f"{model}:generateContent?key={GEMINI_KEY}")
-    body = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"responseModalities": ["IMAGE", "TEXT"]},
-    }
-    req = urllib.request.Request(
-        url, data=json.dumps(body).encode(),
-        headers={"Content-Type": "application/json"}, method="POST")
-    try:
-        with urllib.request.urlopen(req, timeout=120) as r:
-            resp = json.loads(r.read())
-    except Exception as exc:
-        print(f"  [Gemini image] erreur: {exc}")
-        return None
-    for cand in resp.get("candidates", []):
-        for part in cand.get("content", {}).get("parts", []):
-            inline = part.get("inline_data") or part.get("inlineData", {})
-            if inline.get("data"):
-                return base64.b64decode(inline["data"])
-    print(f"  [Gemini image] pas d'image dans la réponse")
-    return None
-
 
 def _gemini_text(prompt: str, model: str = "gemini-2.5-flash") -> str | None:
     if not GEMINI_KEY:
@@ -312,37 +292,50 @@ def _gemini_text(prompt: str, model: str = "gemini-2.5-flash") -> str | None:
 
 def get_image(theme_id: str, cfg: dict, out_dir: Path) -> Path:
     """
-    Retourne le chemin de l'image de coloriage (PNG ou SVG).
-    Ordre de priorité :
-      1. Gemini API (si clé dispo) → PNG
-      2. SVG procédural local → SVG
+    Cherche l'image CC0 dans scripts/tpt/themes/.
+    Formats acceptés : .svg (priorité), .png, .jpg
+    Si PNG/JPG → upscale automatique à 300 DPI équivalent.
+    Si absent → erreur claire avec lien de téléchargement.
     """
-    # 1. Try Gemini
-    if GEMINI_KEY:
-        png_path = out_dir / "coloring.png"
-        if not png_path.exists():
-            print(f"  → Gemini image en cours...")
-            img_bytes = _gemini_image(cfg["image_prompt"])
-            if img_bytes:
-                png_path.write_bytes(img_bytes)
-                print(f"  → Image Gemini sauvée ({len(img_bytes)//1024}ko)")
-                return png_path
-            print("  → Gemini KO, fallback SVG")
-
-    # 2. Fallback: SVG procédural
     svg_name = cfg["svg"]
+    base = svg_name.rsplit(".", 1)[0]
 
-    # Pumpkin: use the one already in cbc_halloween
-    if svg_name == "halloween_pumpkin.svg":
-        alt = ROOT / "products" / "tpt" / "cbc_halloween" / "pumpkin_coloring.svg"
-        if alt.exists():
-            return alt
+    # Cherche SVG en priorité (vectoriel = qualité parfaite)
+    for ext in (".svg", ".png", ".jpg", ".jpeg"):
+        candidate = SVG_DIR / (base + ext)
+        if candidate.exists():
+            if ext in (".png", ".jpg", ".jpeg"):
+                return _upscale_png(candidate, out_dir)
+            return candidate
 
-    svg_path = SVG_DIR / svg_name
-    if svg_path.exists():
-        return svg_path
+    # Introuvable → message clair
+    dl_url = cfg.get("download_url", "voir ASSETS_CC0.md")
+    raise FileNotFoundError(
+        f"\n  ✗ Image manquante pour '{theme_id}'\n"
+        f"  → Télécharge le SVG CC0 : {dl_url}\n"
+        f"  → Dépose-le ici          : scripts/tpt/themes/{svg_name}\n"
+        f"  → Puis relance           : python scripts/tpt/pipeline_cbc.py\n"
+    )
 
-    raise FileNotFoundError(f"SVG introuvable: {svg_path}")
+
+def _upscale_png(src: Path, out_dir: Path) -> Path:
+    """
+    Upscale un PNG à 3× via Lanczos (300 DPI pour impression).
+    Résultat mis en cache dans out_dir/coloring_upscaled.png.
+    """
+    from PIL import Image
+    out_dir.mkdir(parents=True, exist_ok=True)
+    dst = out_dir / "coloring_upscaled.png"
+    if dst.exists():
+        return dst
+    img = Image.open(src).convert("RGBA")
+    w, h = img.size
+    scale = max(1, min(4, 1800 // min(w, h)))   # cible ~1800px côté court
+    if scale > 1:
+        img = img.resize((w * scale, h * scale), Image.LANCZOS)
+        print(f"  → Upscale ×{scale} ({w}×{h} → {w*scale}×{h*scale})")
+    img.save(dst, dpi=(300, 300))
+    return dst
 
 
 # ──────────────────────────────────────────────────────────────────────────────
