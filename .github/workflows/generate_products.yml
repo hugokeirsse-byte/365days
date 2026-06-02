@@ -1,10 +1,12 @@
-name: Generate TPT + KDP Products
+name: 2. Generate TPT + KDP Products
 
 on:
   push:
     paths:
-      - "scripts/tpt/**"
-      - "scripts/kdp/**"
+      - "scripts/tpt/themes/*.svg"
+      - "scripts/tpt/themes/*.png"
+      - "scripts/tpt/pipeline_cbc.py"
+      - "scripts/kdp/pipeline_kdp.py"
       - "scripts/brand.py"
   workflow_dispatch:
     inputs:

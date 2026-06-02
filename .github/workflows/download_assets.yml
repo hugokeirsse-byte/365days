@@ -1,0 +1,53 @@
+name: 1. Download CC0 Assets
+
+on:
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: "Thème spécifique (vide = tous)"
+        required: false
+        default: ""
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download CC0 SVGs
+        run: |
+          if [ -n "${{ github.event.inputs.theme }}" ]; then
+            python scripts/tpt/download_assets.py "${{ github.event.inputs.theme }}"
+          else
+            python scripts/tpt/download_assets.py
+          fi
+
+      - name: Commit downloaded assets
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/tpt/themes/
+          git diff --staged --quiet && echo "Aucun nouvel asset." || (
+            git commit -m "Download CC0 SVG assets [auto]"
+            git push
+          )
+
+      - name: Trigger product generation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'generate_products.yml',
+              ref: context.ref
+            })
