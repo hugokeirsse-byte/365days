@@ -1,0 +1,58 @@
+name: Generate TPT + KDP Products
+
+on:
+  push:
+    paths:
+      - "scripts/tpt/**"
+      - "scripts/kdp/**"
+      - "scripts/brand.py"
+  workflow_dispatch:
+    inputs:
+      themes:
+        description: "Thèmes (vide = tous) ex: halloween,christmas"
+        required: false
+        default: ""
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --quiet reportlab svglib pillow
+
+      - name: Generate TPT packs
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          THEME: ${{ github.event.inputs.themes }}
+          OUT_DIR: products/tpt/packs
+        run: python scripts/tpt/pipeline_cbc.py
+
+      - name: Generate KDP books
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          THEMES: ${{ github.event.inputs.themes }}
+          OUT_DIR: products/kdp/books
+        run: python scripts/kdp/pipeline_kdp.py
+
+      - name: Commit & push products
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add products/
+          git diff --staged --quiet && echo "Rien de nouveau." || (
+            git commit -m "Auto-generate products [$(date +%Y-%m-%d %H:%M)]"
+            git push
+          )
