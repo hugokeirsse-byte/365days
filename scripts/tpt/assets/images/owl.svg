@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>path,circle,ellipse,rect,line,polyline,polygon{stroke:#2C3E50;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+  
+  <!-- corps -->
+  <ellipse cx="40" cy="50" rx="22" ry="26"/>
+  <!-- tête -->
+  <circle cx="40" cy="26" r="18"/>
+  <!-- oreilles/touffes -->
+  <path d="M26,12 L22,4 L30,10"/>
+  <path d="M54,12 L58,4 L50,10"/>
+  <!-- yeux -->
+  <circle cx="33" cy="24" r="6"/>
+  <circle cx="47" cy="24" r="6"/>
+  <circle cx="33" cy="24" r="2.5" style="fill:#2C3E50"/>
+  <circle cx="47" cy="24" r="2.5" style="fill:#2C3E50"/>
+  <!-- bec -->
+  <path d="M37,30 L40,34 L43,30 Z" style="fill:#2C3E50"/>
+  <!-- ailes -->
+  <path d="M18,42 Q10,50 14,60 Q20,55 18,42"/>
+  <path d="M62,42 Q70,50 66,60 Q60,55 62,42"/>
+  <!-- pattes -->
+  <path d="M32,74 L30,80 M36,75 L34,81 M40,75 L40,81"/>
+  <path d="M48,74 L50,80 M44,75 L46,81 M40,75 L40,81"/>
+  <!-- ventre rayures -->
+  <path d="M32,52 Q40,55 48,52"/>
+  <path d="M30,58 Q40,62 50,58"/>
+  <!-- chapeau de diplômé -->
+  <rect x="26" y="8" width="28" height="5" rx="1" style="fill:#2C3E50"/>
+  <path d="M40,8 L40,2"/>
+  <circle cx="40" cy="2" r="2" style="fill:#2C3E50"/>
+
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>path,circle,ellipse,rect,line,polyline,polygon{stroke:#2C3E50;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+  
+  <!-- axes principaux -->
+  <line x1="40" y1="8" x2="40" y2="72"/>
+  <line x1="8" y1="40" x2="72" y2="40"/>
+  <line x1="17" y1="17" x2="63" y2="63"/>
+  <line x1="63" y1="17" x2="17" y2="63"/>
+  <!-- branches -->
+  <path d="M40,18 L34,24 M40,18 L46,24"/>
+  <path d="M40,62 L34,56 M40,62 L46,56"/>
+  <path d="M18,40 L24,34 M18,40 L24,46"/>
+  <path d="M62,40 L56,34 M62,40 L56,46"/>
+  <path d="M23,23 L23,30 M23,23 L30,23"/>
+  <path d="M57,23 L57,30 M57,23 L50,23"/>
+  <path d="M23,57 L23,50 M23,57 L30,57"/>
+  <path d="M57,57 L57,50 M57,57 L50,57"/>
+  <!-- centre -->
+  <circle cx="40" cy="40" r="4" style="fill:#2C3E50"/>
+
+</svg>

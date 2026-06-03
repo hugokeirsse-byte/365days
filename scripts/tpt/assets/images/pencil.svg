@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>path,circle,ellipse,rect,line,polyline,polygon{stroke:#2C3E50;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+  
+  <!-- corps du crayon -->
+  <rect x="28" y="10" width="24" height="52" rx="4"/>
+  <!-- pointe -->
+  <path d="M28,62 L40,78 L52,62"/>
+  <!-- gomme -->
+  <rect x="28" y="10" width="24" height="10" rx="4" style="fill:#E0E0E0"/>
+  <line x1="28" y1="20" x2="52" y2="20"/>
+  <!-- ligne centrale -->
+  <line x1="40" y1="10" x2="40" y2="62" stroke-width="1.5"/>
+  <!-- mine -->
+  <path d="M36,68 L40,78 L44,68" style="fill:#2C3E50"/>
+  <!-- visage -->
+  <circle cx="36" cy="38" r="2.5" style="fill:#2C3E50"/>
+  <circle cx="44" cy="38" r="2.5" style="fill:#2C3E50"/>
+  <path d="M35,45 Q40,50 45,45"/>
+
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <style>path,circle,ellipse,rect,line,polyline,polygon{stroke:#2C3E50;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;fill:none}</style>
+  
+  <path d="M40,68 Q14,50 14,32 Q14,16 28,14 Q36,12 40,22 Q44,12 52,14 Q66,16 66,32 Q66,50 40,68 Z"/>
+  <!-- visage -->
+  <circle cx="33" cy="36" r="2.5" style="fill:#2C3E50"/>
+  <circle cx="47" cy="36" r="2.5" style="fill:#2C3E50"/>
+  <path d="M32,44 Q40,50 48,44"/>
+
+</svg>
