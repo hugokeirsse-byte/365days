@@ -199,12 +199,29 @@ Tu crées un fichier une fois, tu le mets en vente, il se vend pendant que tu do
 **C'est quoi simplement ?**
 Teachers Pay Teachers (TPT) est un site américain où des enseignants achètent des ressources pédagogiques : fiches d'exercices, quiz, activités pour les élèves. La plateforme a versé 253 millions de dollars à ses créateurs. Claude génère le contenu, Python crée le PDF, tu uploades.
 
-**Exemples de produits :** fiches de maths CE2, quiz sur la Révolution française, exercices d'anglais pour débutants, activités scientifiques pour primaire.
+**Exemples de produits :** Math fact fluency drills, word problems saisonniers, spelling lists SOR-aligned, daily spiral review, phonics worksheets, bar models Singapore, anchor charts.
 
-**Revenu réaliste :** €500–5000/mois pour un vendeur établi
+**Stratégie images — générateurs gratuits :**
+Les illustrations sur TPT sont des dessins enfantins simples (citrouilles, fantômes, étoiles, animaux cartoon). Un générateur gratuit suffit largement :
+- **Ideogram.ai** (gratuit) — prompt type : "simple black and white line drawing, cute clipart, children's worksheet, [sujet], white background, clean lines, no shading, coloring book style"
+- **Adobe Firefly** (gratuit, tier free)
+- **DALL-E via ChatGPT** (gratuit, tier free)
+Générer 15-20 images par thème une seule fois → stocker dans `assets/images/[theme]/` → injecter avec parcimonie (1-2 par page max) via ReportLab `drawImage()`. Résultat : look professionnel, 0€ de coût.
+
+**Types les plus vendables sans images (pur texte/grilles) :**
+1. Math fact fluency drills (addition/soustraction/multiplication/division) — 500–5000 avis
+2. Daily Spiral Review Grades 3–5 — 300–2000 avis, 28–35$/bundle annuel
+3. Word Problems saisonniers — 200–3000 avis, 14–18$/bundle
+4. Spelling Lists SOR-aligned — 200–2000 avis, UFLI-aligned = mot-clé peu concurrencé
+5. Phonics worksheets — 500–5000 avis, boom Science of Reading depuis 2022
+
+**Niche différenciante : French Immersion (USA/Canada)**
+Aucun créateur sérieux ne couvre les ressources math/science alignées CCSS rédigées en français pour les classes d'immersion américaines et canadiennes. C'est un monopole de fait disponible immédiatement.
+
+**Revenu réaliste :** €500–5000/mois pour un vendeur établi (médiane TPT : 27$/mois ; top 1% : 770 000$/an)
 **Vitesse 1er € :** 2 à 4 semaines
 **Automatisation :** ★★★★★
-**Investissement :** €0
+**Investissement :** €0 (images générées gratuitement)
 
 ---
 
@@ -1335,6 +1352,116 @@ Si tu ne devais lancer que **5 business** dans l'ordre :
 ```
 
 **Règle d'or rappelée :** on ne passe au #2 que quand le #1 a un premier produit vendu ou un premier client payant.
+
+---
+
+---
+
+---
+
+# PLATEFORMES AVEC AUDIENCE INTÉGRÉE — ALTERNATIVES À TPT (#96–#100)
+
+Ces plateformes fonctionnent comme TPT : tu uploades un produit une fois, la plateforme apporte son propre trafic. Pas besoin de construire une audience.
+
+---
+
+## #96 — TES.COM (Enseignants UK, Australie, global)
+**C'est quoi simplement ?**
+Tes.com (anciennement TES Resources) est le TPT du Royaume-Uni mais avec une audience mondiale de 20 millions d'enseignants (UK, Australie, Afrique du Sud, Inde, USA). Mêmes types de ressources que TPT : fiches, quiz, unités. Commission de seulement 15% (vs 20–45% sur TPT). Très peu de créateurs francophones — tout ce qu'on produit pour TPT peut être uploadé là sans travail supplémentaire pour doubler l'audience touchée.
+
+**Ce qui différencie :** Le curriculum UK est différent (GCSE, KS1/KS2/KS3) mais les ressources math/literacy génériques s'y vendent sans adaptation. La niche "French Immersion" y est encore plus vide que sur TPT.
+
+**Revenu réaliste :** +30–50% sur le revenu TPT pour zéro travail supplémentaire
+**Commission :** 15%
+**Audience :** 20M enseignants inscrits
+**Automatisation :** ★★★★★ (même fichiers que TPT)
+**Investissement :** €0
+**Tier : S** — upload parallèle immédiat à chaque sortie TPT
+
+---
+
+## #97 — BOOM LEARNING (Orthophonistes & Special Ed)
+**C'est quoi simplement ?**
+Boom Learning est une plateforme de "task cards" numériques interactives massivement utilisée par les orthophonistes (SLP — Speech-Language Pathologists) et les enseignants de Special Education aux USA. Les "Boom Cards" sont des activités HTML5 auto-correctées que les élèves font sur tablette/ordinateur. La plateforme a sa propre marketplace avec son propre trafic. Les SLP représentent ~200 000 professionnels aux USA, ils achètent en permanence des ressources pour leurs séances.
+
+**Format différent de TPT :** pas un PDF, mais un deck de cartes interactives (boutons cliquables, drag-and-drop, réponses validées automatiquement). Créé via l'interface Boom Learning (pas de Python requis pour commencer) ou exporté depuis des outils tiers.
+
+**Niches sous-exploitées :** phonological awareness, articulation cards, AAC support, executive function, reading fluency pour dyslexiques.
+
+**Revenu réaliste :** €300–3000/mois pour un créateur avec 50+ decks
+**Commission :** ~30% (Boom garde une partie des revenus)
+**Audience :** 600 000+ éducateurs actifs
+**Automatisation :** ★★★☆☆ (format différent, interface web à utiliser)
+**Investissement :** €0
+**Tier : A** — niche captive, acheteurs très fidèles
+
+---
+
+## #98 — SERMONCENTRAL.COM (Pasteurs & Ministres religieux)
+**C'est quoi simplement ?**
+SermonCentral est littéralement le TPT des pasteurs et ministres protestants. Des millions de ministres (principalement USA mais aussi UK, Australie, Afrique) achètent des ressources prêtes-à-l'emploi pour leurs services et études bibliques. Ils sont extrêmement occupés, paient volontiers pour gagner du temps, et forment une communauté très fidèle.
+
+**Ce qui se vend :** plans de sermon complets (outline + développement), études bibliques en groupe (avec questions de discussion), matériel enfants/jeunesse pour l'école du dimanche, illustrations pour sermons, planners liturgiques, ressources pour petits groupes.
+
+**Pourquoi c'est sous-exploité pour nous :** 100% texte et tableaux. Claude génère des plans de sermon sur n'importe quel passage biblique en 5 minutes. Python formate le PDF. Audience massive et captive. Très peu de créateurs pensent à cette niche dans le monde du "digital products".
+
+**Prix :** Plans de sermon individuels : 5–15$ ; bundles série thématique : 20–50$ ; curriculum école du dimanche : 25–75$
+
+**Revenu réaliste :** €500–3000/mois avec un catalogue de 50+ ressources
+**Commission :** variable selon le plan (plateforme prend ~30%)
+**Audience :** Millions de ministres inscrits, audience captive USA/anglophone
+**Automatisation :** ★★★★★ (100% texte, parfait pour Claude + Python)
+**Investissement :** €0
+**Tier : A** — early mover, audience captive, 0 concurrent IA identifié
+
+---
+
+## #99 — RAVELRY + LOVECRAFTS (Artisanat tricot/crochet)
+**C'est quoi simplement ?**
+Ravelry (ravelry.com) est la plateforme mondiale du tricot et du crochet : 11 millions d'utilisateurs inscrits, 1,1M visites/mois. LoveCrafts (lovecrafts.com) est son équivalent européen. Les créateurs vendent des patrons PDF (instructions pour créer un objet : pull, sac, peluche, décoration). **Commission Ravelry : seulement 3,5%** — la plus basse de toutes les plateformes de ce catalogue.
+
+**Pourquoi c'est pertinent pour nous :** Un patron PDF bien formaté c'est exactement le même type de fichier qu'on sait déjà produire. La structure d'un patron est 100% typographique : introduction, matériel nécessaire, abréviations, instructions étape par étape, schéma (optionnel). Claude génère le contenu, Python formate le PDF.
+
+**Niches sous-exploitées :** patrons à thèmes scientifiques (organes, plantes, atomes), accessoires de bureau (porte-stylos, sous-verre, organiseurs), thèmes géographiques locaux, animaux peu communs.
+
+**Revenu réaliste :** €300–2000/mois avec 50–100 patrons (10 ventes/patron/mois à 7$ moyen)
+**Commission :** 3,5% (Ravelry) / 5% (LoveCrafts)
+**Audience :** 11M + audience internationale
+**Automatisation :** ★★★☆☆ (contenu nécessite connaissance des abréviations standard de tricot/crochet)
+**Investissement :** €0
+**Tier : B** — très basse commission, audience captive, courbe d'apprentissage du format patron
+
+---
+
+## #100 — STUDOCU (Étudiants & notes de cours)
+**C'est quoi simplement ?**
+Studocu est une plateforme où des étudiants partagent et vendent leurs notes de cours, résumés, fiches de révision, annales corrigées. 20 millions d'étudiants dans 40 pays. Les "Study Notes" bien formatées se vendent 3–15$ pièce.
+
+**Ce qui se vend :** résumés de cours par chapitre, fiches de révision structurées, schémas de synthèse, annales avec corrigés détaillés. 100% texte et tableaux — parfaitement automatisable.
+
+**Niches à fort volume :** médecine/pharmacie, droit, comptabilité/finance, sciences (physique/chimie), prépa aux grandes écoles (marché FR).
+
+**Attention :** Studocu a des règles strictes sur l'authenticité du contenu — les ressources doivent être liées à de vrais cours universitaires. Les ressources génériques de "révision" fonctionnent mieux sur Gumroad.
+
+**Revenu réaliste :** €100–800/mois
+**Commission :** variable selon plan
+**Automatisation :** ★★★★☆
+**Investissement :** €0
+**Tier : B** — audience captive mais règles de contenu plus contraignantes
+
+---
+
+---
+
+# MISE À JOUR DU TABLEAU MAÎTRE — ENTRÉES #96–#100
+
+| # | Business | Tier | Clients | Plateformes / Où prospecter |
+|---|---------|------|---------|----------------------------|
+| 96 | **Tes.com** (upload parallèle TPT) | **S** | 🟢 Facile | Tes.com (trafic intégré, 20M enseignants) |
+| 97 | **Boom Learning** (SLP / Special Ed) | **A** | 🟢 Facile | Boom Learning (trafic intégré) |
+| 98 | **SermonCentral** (Pasteurs) | **A** | 🟢 Facile | SermonCentral (trafic intégré) |
+| 99 | **Ravelry + LoveCrafts** (patrons artisanat) | **B** | 🟢 Facile | Ravelry + LoveCrafts (trafic intégré) |
+| 100 | **Studocu** (notes étudiants) | **B** | 🟢 Facile | Studocu (trafic intégré, 20M étudiants) |
 
 ---
 
