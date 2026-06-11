@@ -1,0 +1,194 @@
+{
+  "generated_at": "2026-06-11",
+  "total_signals": 368.0,
+  "keywords_analyzed": 17,
+  "top_keywords": [
+    {
+      "rank": 1,
+      "keyword": "geometric",
+      "score": 30.0,
+      "category": "geometric"
+    },
+    {
+      "rank": 2,
+      "keyword": "school",
+      "score": 30.0,
+      "category": null
+    },
+    {
+      "rank": 3,
+      "keyword": "classic",
+      "score": 30.0,
+      "category": null
+    },
+    {
+      "rank": 4,
+      "keyword": "bold",
+      "score": 30.0,
+      "category": "maximalist"
+    },
+    {
+      "rank": 5,
+      "keyword": "americana",
+      "score": 24.0,
+      "category": null
+    },
+    {
+      "rank": 6,
+      "keyword": "patriotic",
+      "score": 24.0,
+      "category": null
+    },
+    {
+      "rank": 7,
+      "keyword": "stars",
+      "score": 24.0,
+      "category": "celestial"
+    },
+    {
+      "rank": 8,
+      "keyword": "stripes",
+      "score": 24.0,
+      "category": "geometric"
+    },
+    {
+      "rank": 9,
+      "keyword": "stars stripes",
+      "score": 24.0,
+      "category": "geometric"
+    },
+    {
+      "rank": 10,
+      "keyword": "tropical",
+      "score": 16.0,
+      "category": null
+    },
+    {
+      "rank": 11,
+      "keyword": "beach",
+      "score": 16.0,
+      "category": "coastal"
+    },
+    {
+      "rank": 12,
+      "keyword": "nautical",
+      "score": 16.0,
+      "category": "coastal"
+    },
+    {
+      "rank": 13,
+      "keyword": "sunshine",
+      "score": 16.0,
+      "category": null
+    },
+    {
+      "rank": 14,
+      "keyword": "leaf",
+      "score": 16.0,
+      "category": "botanical"
+    },
+    {
+      "rank": 15,
+      "keyword": "pumpkin",
+      "score": 16.0,
+      "category": null
+    },
+    {
+      "rank": 16,
+      "keyword": "mushroom",
+      "score": 16.0,
+      "category": "woodland"
+    },
+    {
+      "rank": 17,
+      "keyword": "harvest",
+      "score": 16.0,
+      "category": null
+    }
+  ],
+  "by_category": {
+    "geometric": [
+      "geometric",
+      "stripes",
+      "stars stripes"
+    ],
+    "maximalist": [
+      "bold"
+    ],
+    "celestial": [
+      "stars"
+    ],
+    "coastal": [
+      "beach",
+      "nautical"
+    ],
+    "botanical": [
+      "leaf"
+    ],
+    "woodland": [
+      "mushroom"
+    ]
+  },
+  "upcoming_events": [
+    {
+      "event": "Summer Solstice",
+      "date": "2026-06-21",
+      "days_away": 10,
+      "urgency": 2,
+      "niches": [
+        "tropical",
+        "beach",
+        "nautical",
+        "sunshine"
+      ]
+    },
+    {
+      "event": "4th of July",
+      "date": "2026-07-04",
+      "days_away": 23,
+      "urgency": 3,
+      "niches": [
+        "americana",
+        "patriotic",
+        "stars stripes"
+      ]
+    },
+    {
+      "event": "Back to School",
+      "date": "2026-09-01",
+      "days_away": 82,
+      "urgency": 5,
+      "niches": [
+        "geometric",
+        "school",
+        "classic",
+        "bold"
+      ]
+    },
+    {
+      "event": "Autumn Equinox",
+      "date": "2026-09-22",
+      "days_away": 103,
+      "urgency": 2,
+      "niches": [
+        "leaf",
+        "pumpkin",
+        "mushroom",
+        "harvest"
+      ]
+    }
+  ],
+  "spoonflower_contests": [],
+  "recommended_niches": [
+    "geometric",
+    "school",
+    "classic",
+    "bold",
+    "americana",
+    "patriotic",
+    "stars",
+    "stripes",
+    "stars stripes",
+    "tropical"
+  ]
+}

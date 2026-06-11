@@ -1,6 +1,6 @@
 # 🎯 STRATEGY — document unique de référence stratégique
 
-**Mise à jour** : 2026-05-18
+**Mise à jour** : 2026-06-03
 Consolide : EMPIRE_HUGO + BRIEFING_18MAI + LECONS_DU_WEB + AUDIT_SYSTEME + MASTER_LOOP + BRAND_IDENTITY + NOUVELLES_IDEES (archivés dans `archive/`).
 
 ---
@@ -15,7 +15,7 @@ Consolide : EMPIRE_HUGO + BRIEFING_18MAI + LECONS_DU_WEB + AUDIT_SYSTEME + MASTE
 
 ---
 
-## 🎯 LES 4 PILIERS DE LA STRATÉGIE FINALE (post-audit)
+## 🎯 LES 5 PILIERS DE LA STRATÉGIE (v2 — juin 2026)
 
 Après audit honnête (cf. archive/LECONS_DU_WEB.md), on concentre sur 4 piliers gratuits :
 
@@ -45,6 +45,35 @@ Après audit honnête (cf. archive/LECONS_DU_WEB.md), on concentre sur 4 piliers
 - T-shirts, posters, stickers, mugs, marque-pages
 - 0€ à l'inscription, marge fixée par nous
 - Pipelines : `produce_iheart_v3/v4`, `produce_viral_formats_v2`, `produce_quotes_minimal`, `produce_bible_verses_v2`, `produce_cultural_arbitrage_v2`, `produce_literal_idioms_v2`, `produce_wedding_stationery`, `produce_tumbler_wraps`
+
+### Pilier 5 : 🧵 SURFACE DESIGN (Spoonflower + Society6 + Redbubble patterns)
+
+**LE VRAI AVANTAGE CONCURRENTIEL : détecter les opportunités avant les autres.**
+
+- **Spoonflower** : fabric by the yard, wallpaper, giftwrap — audience intégrée de couturières et décorateurs
+- **Society6** : phone cases, art prints, tapestries, throw pillows, shower curtains
+- **Redbubble** : stickers, shower curtains, tote bags, duvets
+- **Principe** : 1 pattern → déployé sur 3 plateformes × 10+ produits chacune = 30+ SKUs/pattern
+- **Sources d'images** :
+  - IA générative (FLUX via Runware — setup par Hugo, ou HF gratuit)
+  - Archives domaine public réhabilitées (Europeana, MET, LoC, DPLA)
+- **Pipeline** : `scripts/pod/pipeline.py` (5 agents en séquence)
+
+**Pipeline 5 agents :**
+```
+[Agent Radar]     → data/pod/trend.json           — Reddit + Google + Etsy + Spoonflower + saisons
+      ↓
+[Art Director]    → data/pod/cahier_des_charges.json — prompts FLUX, palettes, tags SEO, specs
+      ↓
+[AI Forge]        → products/pod/generated/        — génération IA (Runware ou HF) — MANUEL
+[Public Domain]   → products/pod/raw_pd/           — archives libres de droits scrappées
+      ↓
+[Quality Inspector] → products/pod/ready/          — seamless check + upscale 8000px
+      ↓
+[Distribution]    → Hugo upload manuellement       — Spoonflower / Society6 / Redbubble
+```
+
+**Avantage compétitif réel :** Les designs génériques "floral pattern" se vendent. Mais ceux qui catachent exactement la micro-niche du moment (ex: "dark cottagecore mushroom" en septembre quand c'est le pic automne) × juste avant un événement × dans un style non encore surexploité = ventes. Le Radar est la vraie valeur ajoutée, pas la production.
 
 ---
 
